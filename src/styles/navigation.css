@@ -6,7 +6,7 @@
 .tego-header .tego-nav-trigger:hover,.tego-header .tego-nav-direct:hover,.tego-header .is-current,.tego-header [aria-current='page']{color:#fff}
 .tego-header .tego-nav-trigger>svg{transition:transform .18s}
 .tego-header .tego-nav-trigger[aria-expanded='true']>svg{transform:rotate(180deg)}
-.tego-header .tego-nav-panel{position:absolute;top:calc(100% + 14px);left:-28px;width:650px;max-width:calc(100vw - 64px);padding:22px;background:linear-gradient(125deg,#112d4f88,#0c193b94);-webkit-backdrop-filter:none;backdrop-filter:none;isolation:isolate;border:1px solid #bad7ff40;border-radius:16px;box-shadow:0 22px 65px #0006,inset 0 0 32px #7eaeff08;color:#edf3ff}
+.tego-header .tego-nav-panel{position:absolute;top:calc(100% + 14px);left:-28px;width:650px;max-width:calc(100vw - 64px);padding:20px;background:linear-gradient(125deg,#132843f5,#101c34f7);-webkit-backdrop-filter:none;backdrop-filter:none;isolation:isolate;border:1px solid #bad7ff40;border-radius:16px;box-shadow:0 22px 65px #0006,inset 0 0 32px #7eaeff08;color:#edf3ff}
 .tego-header .tego-nav-panel[hidden]{display:none!important}
 .tego-header .tego-nav-solutions{width:690px;left:-120px}
 .tego-header .tego-nav-panel-body{display:grid;gap:24px}
@@ -38,12 +38,17 @@
 /* Product capability names and the approved one-line summaries. */
 @media(min-width:1101px){
  .tego-header .tego-nav-group:has(.tego-nav-product){position:static}
- .tego-header .tego-nav-product{width:1000px;max-width:calc(100vw - 64px);left:50%;top:calc(100% - 3px);transform:translateX(-50%)}
+ .tego-header .tego-nav-product{width:820px;max-width:calc(100vw - 64px);left:50%;top:calc(100% - 3px);transform:translateX(-50%)}
+ .tego-header .tego-nav-product .tego-nav-item{display:grid;grid-template-columns:36px minmax(0,1fr);gap:5px 10px}
+ .tego-header .tego-nav-product .tego-nav-label{display:contents}
+ .tego-header .tego-nav-product .tego-nav-label>span{grid-column:2;grid-row:1}
+ .tego-header .tego-nav-product .tego-nav-label small{grid-column:1/-1}
+ .tego-header .tego-nav-product .tego-nav-icon{grid-column:1;grid-row:1;align-self:center;margin-top:0}
 }
 .tego-header .tego-nav-label{display:grid;gap:5px;min-width:0}
 .tego-header .tego-nav-label small{display:block;font-size:12px;font-weight:400;line-height:1.7;color:#bfd0e8;white-space:nowrap}
-.tego-header .tego-nav-product .tego-nav-item{padding-block:14px}
-.tego-header .tego-nav-product .tego-nav-icon{align-self:flex-start;margin-top:3px}
+.tego-header .tego-nav-product .tego-nav-item{padding-block:12px}
+html:is([lang='en'],[lang='ja']) .tego-header .tego-nav-label small{white-space:normal}
 @media(max-width:1100px){
  .tego-header .tego-nav-product .tego-nav-grid{grid-template-columns:1fr}
  .tego-header .tego-nav-product .tego-nav-item{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px 10px}
@@ -55,14 +60,14 @@
 @media(max-width:420px){.tego-header .tego-nav-label small{font-size:10px}}
 
 .tego-header .tego-nav-panel-title{font-size:14px;font-weight:550;color:#d6e5fa;margin:0 0 15px;padding-left:10px}
-.tego-header .tego-nav-solutions .tego-nav-panel-body{grid-template-columns:minmax(0,1fr) 245px;gap:22px}
+.tego-header .tego-nav-solutions .tego-nav-panel-body{grid-template-columns:minmax(0,1fr) 210px;gap:18px}
 .tego-header .tego-nav-solutions .tego-nav-deployment{border:1px solid #a9caff30;padding:14px 8px}
 .tego-header .tego-nav-deployment .tego-nav-item{align-items:flex-start}
 .tego-header .tego-nav-deployment .tego-nav-label small{white-space:normal;line-height:1.9;margin-top:3px}
 .tego-header .tego-nav-solutions .tego-nav-grid{row-gap:12px}
 @media(min-width:1101px){
  .tego-header .tego-nav-group:has(.tego-nav-solutions){position:static}
- .tego-header .tego-nav-solutions{width:1040px;max-width:calc(100vw - 64px);left:50%;top:calc(100% - 3px);transform:translateX(-50%)}
+ .tego-header .tego-nav-solutions{width:820px;max-width:calc(100vw - 64px);left:50%;top:calc(100% - 3px);transform:translateX(-50%)}
 }
 @media(max-width:1100px){
  .tego-header .tego-nav-solutions .tego-nav-panel-body{grid-template-columns:1fr}
@@ -78,3 +83,15 @@
 .tego-header .tego-nav-item.is-pointed{color:#fff}
 .tego-header .tego-nav-item.is-pointed .tego-nav-label small{color:#d5e9ff}
 @media(max-width:1100px){.tego-header .tego-nav-panel{position:relative;top:auto;left:auto;transform:none}}
+
+.tego-language-group{position:relative}
+.tego-header .language-link{display:flex;align-items:center;gap:6px;min-height:40px;padding:0;background:none;border:0;color:#d1dfef;font:inherit;font-size:13px;cursor:pointer}
+.tego-header .language-link>svg:last-child{transition:transform .2s}
+.tego-header .language-link[aria-expanded='true']>svg:last-child{transform:rotate(180deg)}
+.tego-language-panel{position:absolute;top:calc(100% + 13px);right:0;width:166px;padding:7px;border:1px solid #9ecbff38;border-radius:12px;background:linear-gradient(125deg,#142940fa,#101c34fc);box-shadow:0 15px 40px #0006}
+.tego-language-panel[hidden]{display:none!important}
+.tego-language-panel ul{list-style:none;padding:0;margin:0}
+.tego-language-panel a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:7px;font-size:14px;line-height:1.5;color:#d4e0f1}
+.tego-language-panel a:hover,.tego-language-panel a[aria-current]{color:#fff;background:#65b6ff21}
+.tego-language-panel a>svg{color:#82d4ff}
+@media(max-width:480px){.tego-header .header-cta{display:flex;min-height:34px;padding-inline:16px;font-size:13px}.tego-header .header-cta>svg{display:none}.tego-header .header-tools{gap:12px}.tego-header .language-link{gap:4px}.tego-header .language-link>svg:last-child{display:none}.tego-header .header-inner{gap:14px}}

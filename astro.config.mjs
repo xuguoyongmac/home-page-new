@@ -27,11 +27,11 @@ export default defineConfig({
   }] }) },
   i18n: {
     defaultLocale: 'zh',
-    locales: ['zh', 'en'],
+    locales: ['zh', 'en', 'zh-Hant', 'ja'],
     routing: { prefixDefaultLocale: true },
   },
   integrations: [sitemap({
-    i18n: { defaultLocale: 'zh', locales: { zh: 'zh-CN', en: 'en' } },
+    i18n: { defaultLocale: 'zh', locales: { zh: 'zh-CN', en: 'en', 'zh-Hant': 'zh-Hant', ja: 'ja' } },
     filter: (page) => !page.includes('/404') && !Object.keys(legacy).some(slug => new URL(page).pathname.endsWith(`/${slug}/`)),
   })],
   redirects: {

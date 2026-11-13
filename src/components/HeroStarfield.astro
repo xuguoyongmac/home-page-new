@@ -1,5 +1,5 @@
 ---
-import silk from '../assets/ocean-silk-critical_V1.0.webp?inline';
+import silk from '../assets/ocean-silk-critical_V1.1.webp?inline';
 // Static field renders with HTML. Only the small foreground stars breathe.
 const stars = Array.from({ length: 72 }, (_, i) => ({
   x: 12 + ((i * 397 + i * i * 13) % 1416),
@@ -13,7 +13,7 @@ const nearStars = [
 ].map(([x,y],i)=>({x,y,size:8,delay:-(i*1.73),duration:7.8+(i%7)*.85,warm:false,flare:false}));
 ---
 <div class="hero-starfield hero-deep-space" aria-hidden="true">
- <img class="hero-space-texture" src={silk} width="1672" height="941" alt="" loading="eager" decoding="sync"/>
+ <img class="hero-space-texture" src={silk} width="3344" height="1882" alt="" loading="eager" decoding="sync"/>
  <div class="hero-nebula"></div>
  <svg viewBox="0 0 1440 800" preserveAspectRatio="none" fill="none">
   <g class="hero-far-stars">{stars.map(star=><circle cx={star.x} cy={star.y} r={star.radius} style={`opacity:${star.opacity}`}/>)}</g>

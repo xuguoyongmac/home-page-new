@@ -23,16 +23,19 @@ import SiteHeader from '../components/navigation/SiteHeader.astro';
 import Brand from '../components/Brand.astro';
 import Icon from '../components/Icon.astro';
 import { site, pathFor, appFor, ui } from '../lib/site';
+import { languages, languagePathFor, websiteLanguageFor } from '../lib/languages';
 import { industries } from '../data/industries';
 import type { Locale } from '../data/types';
 interface Props { locale: Locale; title: string; description: string; page?: string; noindex?: boolean; }
 const { locale, title, description, page = '', noindex = false } = Astro.props;
 const zh = locale === 'zh';
 const t = ui[locale];
-const canonical = new URL(pathFor(locale, page), site.origin).href;
+const language = websiteLanguageFor(Astro.params.locale || locale);
+const activeLanguage = languages.find(item => item.id === language)!;
+const canonical = new URL(languagePathFor(language, page), site.origin).href;
 ---
 <!doctype html>
-<html lang={zh ? 'zh-CN' : 'en'} data-theme="dark">
+<html lang={activeLanguage.tag} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,13 +48,14 @@ const canonical = new URL(pathFor(locale, page), site.origin).href;
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="zh-CN" href={new URL(pathFor('zh', page), site.origin).href} />
     <link rel="alternate" hreflang="en" href={new URL(pathFor('en', page), site.origin).href} />
+    {page === '' && languages.filter(item => item.id === 'zh-Hant' || item.id === 'ja').map(item => <link rel="alternate" hreflang={item.tag} href={new URL(languagePathFor(item.id),site.origin).href}/>)}
     <link rel="alternate" hreflang="x-default" href={new URL(pathFor('zh', page), site.origin).href} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={`${title} · TeGo`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL('/images/saaslauncher/team-workspace_V1.2.webp', site.origin).href} />
-    <meta property="og:locale" content={zh ? 'zh_CN' : 'en_US'} />
+    <meta property="og:locale" content={language === 'zh-Hant' ? 'zh_TW' : language === 'ja' ? 'ja_JP' : zh ? 'zh_CN' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="alternate" type="application/rss+xml" title={zh ? 'TeGo 产品博客' : 'TeGo Blog'} href={`/${locale}/blog/rss.xml`} />
   </head>
