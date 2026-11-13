@@ -3,7 +3,7 @@ body,.home-value-edition{background:#060b12;color:#f4f7fb}.site-header{backgroun
 .desktop-nav>a,.nav-solutions>a{color:#b5bec8}.desktop-nav>a:hover,.nav-solutions>a:hover{color:#fff}
 .button,.home-value-edition .button{background:#009dff;border-color:#15a6ff;color:#fff!important;box-shadow:0 7px 26px #008ae51a}
 .button:hover,.home-value-edition .button:hover{background:#23acff;border-color:#46b9ff;box-shadow:0 9px 30px #008ae533;color:#fff!important}
-.button.header-cta{background:#fff;border-color:#fff;color:#080e16!important;box-shadow:none}.button.header-cta:hover{background:#eaf5ff;border-color:#eaf5ff;color:#080e16!important}
+.button.header-cta{background:var(--brand-blue);border-color:#15a6ff;color:#fff!important;box-shadow:none}.button.header-cta:hover{background:var(--accent-hover);border-color:#46b9ff;color:#fff!important}
 .home-value-edition .sl-actions .button.button-white,.button.button-white{background:#080e1766!important;border-color:#b9cbd2a6;color:#f4f8fc!important;box-shadow:none}
 .home-value-edition .sl-actions .button.button-white:hover,.button.button-white:hover{background:#0b253a!important;border-color:#e4f3ff;color:#fff!important}
 .home-value-edition .sl-hero{background:radial-gradient(ellipse at 61% 9%,#003656b3,transparent 57%),radial-gradient(ellipse at 82% 52%,#00497559,transparent 53%),#060b12}

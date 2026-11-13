@@ -21,7 +21,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
         <button type="button" class="language-link" aria-label={zh ? '选择语言' : 'Choose language'} aria-expanded="false" aria-controls="language-options" data-nav-disclosure><Icon name="globe" size={15}/><span>{activeLanguage.short}</span><Icon name="chevron" size={11}/></button>
         <div id="language-options" class="tego-language-panel" hidden><ul>{languages.map(item => <li><a href={languagePathFor(item.id,page)} lang={item.tag} hreflang={item.tag} aria-current={language === item.id ? 'true' : undefined} data-language-option>{item.label}{language === item.id && <Icon name="check" size={15}/>}</a></li>)}</ul></div>
       </div>
-      <a class="button button-small header-cta" href={appFor(locale)}>{zh ? '登录' : 'Log in'}<Icon name="external" size={13}/></a>
+      <a class="button button-small header-cta" href={appFor(locale)}>{zh ? '登录' : 'Log in'}</a>
       <button type="button" class="menu-toggle icon-button" aria-label={t.menu} data-open-label={t.menu} data-close-label={t.close} aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
     </div>
   </div>

@@ -1,64 +1,36 @@
 ---
-import Icon from './Icon.astro';
-import { appFor, pathFor } from '../lib/site';
 import type { Locale } from '../data/types';
+import { renderAnywhereTopology } from '../lib/anywhere-topology';
+import '../styles/anywhere-topology.css';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
-const channels = [ ['weixin',zh?'微信':'WeChat'], ['qq','QQ'], ['wecom', zh?'企业微信':'WeCom'], ['feishu', zh?'飞书':'Feishu'], ['dingtalk', zh?'钉钉':'DingTalk'] ];
-const clients = [ ['monitor','PC'], ['globe','Web'], ['android','Android'], ['ios','iOS'], ['harmonyos',zh?'鸿蒙 Web':'HarmonyOS Web'] ];
-const employees=zh?[['chart','经营分析'],['file','方案文书'],['book','知识管理']]:[['chart','Analysis'],['file','Proposals'],['book','Knowledge']];
-const results=zh?[
- ['chart','经营分析报告','趋势、原因与行动建议','DOCX'],
- ['file','业务数据表','指标明细与分类汇总','XLSX'],
- ['monitor','经营汇报材料','核心结论与决策要点','PPTX']
-]:[
- ['chart','Business analysis','Trends, drivers, and recommended actions','DOCX'],
- ['file','Business data','Metric details and category summaries','XLSX'],
- ['monitor','Management presentation','Findings and decision points','PPTX']
-];
 ---
 <section class="work-anywhere" aria-labelledby="anywhere-title">
  <div class="container">
-  <header class="anywhere-heading"><h2 id="anywhere-title">{zh?<><span>随时随地，</span><span>把任务交给数字员工</span></>:'Your work moves forward, wherever you are.'}</h2></header>
-  <div class="anywhere-workflow" aria-label={zh?'多端交办、数字员工工作台与成果交付':'Connected channels, digital employee workspace, and deliverables'}>
-   <div class="anywhere-entry-column">
-    <h3 class="anywhere-column-heading">{zh?'在熟悉的入口交办':'Delegate through familiar apps'}</h3>
-    <div class="anywhere-entry-body">
-     <div class="anywhere-entry-grid">{channels.map(([key,label])=><div class="anywhere-entry"><img src={`/images/platforms/${key}_V1.0.svg`} width="26" height="26" alt="" loading="lazy"/><span>{label}</span></div>)}<div class="anywhere-entry"><Icon name="network" size={25}/><span>OA</span></div></div>
-     <div class="anywhere-message"><span class="anywhere-message-at">@{zh?'经营分析助理':'Business analyst'}</span><p>{zh?'帮我看一下本月经营情况，整理变化原因和后续建议。':'Review this month’s business, explain the changes, and recommend next steps.'}</p><span class="anywhere-message-meta"><Icon name="check" size={12}/>{zh?'任务已送达':'Task received'}</span></div>
-     <svg class="anywhere-connector anywhere-connector-in" viewBox="0 0 56 260" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M0 45H15Q28 45 28 58V117Q28 130 41 130H56M0 130H56M0 215H15Q28 215 28 202V143Q28 130 41 130"/><circle cx="52" cy="130" r="3"/></svg>
-    </div>
-   </div>
-   <div class="anywhere-workspace-column">
-    <h3 class="anywhere-column-heading anywhere-column-main">{zh?'数字员工工作台':'Digital employee workspace'}</h3>
-    <div class="anywhere-workbench" role="img" aria-label={zh?'数字员工工作台概念界面：接收经营分析任务，连接知识、技能和业务数据，整理分析并交付成果':'Concept workspace: receive an analysis task, connect knowledge, skills and business data, and deliver results'}>
-     <div class="anywhere-appbar"><span><Icon name="layers" size={17}/>TeGo</span><span>{zh?'协作工作空间':'Shared workspace'}</span><span class="anywhere-appdots" aria-hidden="true">•••</span></div>
-     <div class="anywhere-workbench-body">
-      <div class="anywhere-employee-roster">{employees.map(([icon,label],index)=><div class:list={['anywhere-employee',{'is-selected':index===0}]}><Icon name={icon} size={17}/><span>{label}</span></div>)}</div>
-      <div class="anywhere-task-heading"><strong>{zh?'本月经营分析':'Monthly business analysis'}</strong><span>{zh?'成果待复核':'Ready for review'}</span></div>
-      <div class="anywhere-task-request"><Icon name="message" size={16}/><p>{zh?'汇总收入变化，分析主要原因，形成可执行建议。':'Summarize revenue changes, explain the drivers, and prepare actionable recommendations.'}</p></div>
-      <div class="anywhere-context">{(zh?[['plug','业务数据'],['book','企业知识'],['layers','岗位技能']]:[['plug','Business data'],['book','Knowledge'],['layers','Skills']]).map(([icon,label])=><span><Icon name={icon} size={13}/>{label}</span>)}</div>
-      <ol class="anywhere-execution">{(zh?['读取任务资料','整理分析依据','生成工作成果']:['Read task materials','Organize the analysis','Prepare deliverables']).map(label=><li><span><Icon name="check" size={12}/></span>{label}</li>)}</ol>
-      <div class="anywhere-workbench-footer"><span><i></i>{zh?'成果已归入项目':'Deliverables saved to the project'}</span><Icon name="folder" size={15}/></div>
-     </div>
-    </div>
-   </div>
-   <div class="anywhere-results-column">
-    <h3 class="anywhere-column-heading">{zh?'交付可用的工作成果':'Receive work you can use'}</h3>
-    <div class="anywhere-deliverables">
-     <svg class="anywhere-connector anywhere-connector-out" viewBox="0 0 56 260" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M0 130H15Q28 130 28 117V52Q28 39 41 39H56M0 130H56M0 130H15Q28 130 28 143V208Q28 221 41 221H56"/><circle cx="4" cy="130" r="3"/></svg>
-     {results.map(([icon,title,description,type],index)=><div class:list={['anywhere-deliverable',`anywhere-deliverable-${index}`]}><span class="anywhere-file-symbol"><Icon name={icon} size={23}/><small>{type}</small></span><div><strong>{title}</strong><p>{description}</p></div><span class="anywhere-file-check"><Icon name="check" size={14}/></span></div>)}
-     <p class="anywhere-results-note">{zh?'交给团队审阅，接着推进下一步工作。':'Ready for team review and the next step.'}</p>
-    </div>
-   </div>
-  </div>
-  <div class="anywhere-access">
-   <div class="anywhere-access-group">
-    <div class="anywhere-platform-row" aria-label={zh?'客户端与浏览器入口':'Client and browser access'}>{clients.map(([key,label])=><span title={key==='harmonyos'?(zh?'鸿蒙通过浏览器访问':'Browser access on HarmonyOS'):undefined}>{['monitor','globe'].includes(key)?<Icon name={key} size={21}/>:<img src={`/images/platforms/${key}_V1.0.svg`} width="21" height="21" alt="" loading="lazy"/>}<b>{label}</b></span>)}</div>
-    <div class="anywhere-access-links"><a href={appFor(locale)}>{zh?'打开 Web 工作台':'Open web workspace'}<Icon name="external" size={14}/></a><a href={pathFor(locale,'download')}>{zh?'下载客户端':'Get the apps'}<Icon name="download" size={14}/></a></div>
-   </div>
-   <div class="anywhere-access-group anywhere-integration-access"><span><Icon name="network" size={19}/>{zh?'OA 与业务系统通过 OpenAPI 接入':'Connect OA and business systems through OpenAPI'}</span><a href={pathFor(locale,'ecosystem')+'#build'}>{zh?'渠道与系统接入':'Channels & integrations'}<Icon name="arrow" size={15}/></a></div>
-  </div>
+  <header class="anywhere-heading">
+   <h2 id="anywhere-title">{zh?<><span>随时随地，</span><span>把任务交给数字员工</span></>:'Your work moves forward, wherever you are.'}</h2>
+   <p>{zh?'支持 PC、Web、移动端与常用 IM 入口。一句话交办任务，让数字员工协同完成处理，把沟通转成可交付的业务成果。':'Delegate through desktop, web, mobile, and familiar messaging tools. Digital employees work together to turn each request into a usable business deliverable.'}</p>
+  </header>
+  <div set:html={renderAnywhereTopology(locale)} />
  </div>
 </section>
+<script>
+ const diagram = document.querySelector<HTMLElement>('.anywhere-topology');
+ const flow = diagram?.querySelector<SVGSVGElement>('.topology-links');
+ if (diagram && flow) {
+  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const hero = document.querySelector<HTMLElement>('[data-hero-motion]');
+  let visible = false;
+  const sync = () => {
+   const paused = !visible || document.hidden || preference.matches || hero?.dataset.heroMotion === 'paused';
+   diagram.dataset.topologyMotion = paused ? 'paused' : 'running';
+   if (paused) flow.pauseAnimations(); else flow.unpauseAnimations();
+  };
+  flow.pauseAnimations();
+  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }).observe(diagram);
+  document.addEventListener('visibilitychange', sync);
+  preference.addEventListener('change', sync);
+  if (hero) new MutationObserver(sync).observe(hero, { attributes:true, attributeFilter:['data-hero-motion'] });
+ }
+</script>
