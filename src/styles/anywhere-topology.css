@@ -9,20 +9,8 @@
 .topology-oa{fill:none;stroke:#84bbeb;stroke-width:1.8;stroke-linejoin:round}
 .topology-devices{position:relative;margin:.5cqw -.2cqw 0 -.5cqw;height:20cqw}
 .topology-device-stack{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 18px #0003)}
-.topology-platform{position:absolute;z-index:1;left:34%;top:14%;width:40%;height:72%;padding:2.1cqw 1.7cqw;border:1px solid #77d9f6a6;border-radius:24px;background:linear-gradient(145deg,#174a6bd9,#15354dd9 55%,#166087c7);box-shadow:inset 0 0 25px #79dcff14,0 15px 40px #0002;overflow:hidden}
-.topology-platform-flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.38}.topology-platform-flow path{fill:none;stroke:#57cbed;stroke-width:1.2}.topology-platform>*:not(.topology-platform-flow){position:relative;z-index:1}
-.topology-workforce{padding:1.15cqw;border:1px solid #85e2f578;border-radius:1.7cqw;background:#53bce611;box-shadow:inset 0 0 22px #66cfff14}
-.home-value-edition .topology-platform h3,.topology-platform h3{font-size:1.94cqw;line-height:1.5;letter-spacing:.01em;font-weight:650;text-align:center;margin:0;color:#fff}
-.topology-dispatch{text-align:center;margin:1.2cqw 0 1.9cqw;font-size:1.15cqw;color:#aabdd1;line-height:1.5}
-.topology-employees{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9cqw}
-.topology-employee{display:flex;align-items:center;justify-content:center;min-height:4.2cqw;padding:.7cqw .3cqw;border:1px solid transparent;border-radius:10px;background:#b5e7f7;color:#102a42;font-size:1.26cqw;line-height:1.5;white-space:nowrap;transition:background .2s,transform .2s}
-.topology-employee-0,.topology-employee-4{background:linear-gradient(155deg,#b9edfa,#7ecbf0)}
-.topology-employee-1,.topology-employee-3{background:linear-gradient(155deg,#c5f5f0,#98e3dc)}
-.topology-employee-2,.topology-employee-5{background:linear-gradient(155deg,#d5dcff,#b8b4f4)}
-.anywhere-topology[data-topology-locale="en"] .topology-employee{white-space:normal;text-align:center;font-size:1.05cqw}
-.topology-employee:hover{transform:translateY(-2px)}
-.topology-status{position:relative;min-height:1.8cqw;margin-top:1.3cqw;font-size:1.15cqw;line-height:1.6;text-align:center;color:#b4cada}
-.topology-phase{position:absolute;inset:0;opacity:0}
+.topology-platform{position:absolute;z-index:1;left:31.5%;top:8%;width:45%;height:80%;display:flex;align-items:center;justify-content:center}
+.topology-platform-art{display:block;width:100%;height:auto;object-fit:contain}
 .topology-links{position:absolute;z-index:2;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .topology-links path{fill:none;stroke:#23c5ec;stroke-opacity:.45;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 #topology-flow-route{stroke:none}.topology-flow-dot{opacity:0}
@@ -43,9 +31,7 @@
  .topology-input-group h4{font-size:16px;margin-bottom:13px}.topology-im-group{margin-top:25px}
  .topology-channels{gap:10px}.topology-channel{min-height:45px;border-radius:9px;padding:7px 10px;gap:7px;font-size:13px}.topology-channel img,.topology-oa{width:27px;height:27px}
  .topology-devices{left:auto;right:auto;top:auto;height:auto;margin:0 -4px}.topology-device-stack{width:100%;height:auto}
- .topology-workforce{padding:10px;border-radius:16px}
- .topology-platform{padding:24px 15px;border-radius:20px}.home-value-edition .topology-platform h3,.topology-platform h3{font-size:20px}.topology-dispatch{font-size:14px;margin:14px 0 23px}.topology-employees{gap:9px}.topology-employee{min-height:55px;padding:8px 2px;font-size:12px;border-radius:8px}.topology-status{margin-top:16px;min-height:25px;font-size:14px}
- .anywhere-topology[data-topology-locale="en"] .topology-employee{font-size:11px}
+ .topology-platform{display:block;padding:0;margin:8px 0;border:0;background:none;box-shadow:none}.topology-platform-art{width:100%;height:auto}
  .topology-links{display:none}.topology-results{max-width:350px;height:380px;margin:auto}
  .topology-artifact{width:68.5%;padding:16px;border-radius:14px}.topology-artifact strong{font-size:17px}.topology-artifact svg{margin-top:12px}
  .topology-artifact-system svg{height:65px;margin-top:6px}
@@ -54,18 +40,6 @@
 }
 /* Live motion */
 .topology-flow-dot{animation:topology-dot-visibility 10s linear infinite}
-.topology-employee-2{animation:topology-understand 10s linear infinite}
-.topology-employee-0{animation:topology-analyze 10s linear infinite}
-.topology-employee-1{animation:topology-create 10s linear infinite}
-.topology-phase-0{animation:topology-phase-understand 10s linear infinite}
-.topology-phase-1{animation:topology-phase-analyze 10s linear infinite}
-.topology-phase-2{animation:topology-phase-create 10s linear infinite}
 @keyframes topology-dot-visibility{0%,3%,85%,100%{opacity:0}5%,81%{opacity:.65}}
-@keyframes topology-understand{0%,20%,35%,100%{border-color:transparent;box-shadow:none}22%,33%{border-color:#e4f7ff;box-shadow:inset 0 0 0 1px #e4f7ff}}
-@keyframes topology-analyze{0%,38%,53%,100%{border-color:transparent;box-shadow:none}40%,51%{border-color:#e4f7ff;box-shadow:inset 0 0 0 1px #e4f7ff}}
-@keyframes topology-create{0%,56%,71%,100%{border-color:transparent;box-shadow:none}58%,69%{border-color:#e4f7ff;box-shadow:inset 0 0 0 1px #e4f7ff}}
-@keyframes topology-phase-understand{0%,21%,35%,100%{opacity:0}23%,33%{opacity:1}}
-@keyframes topology-phase-analyze{0%,39%,53%,100%{opacity:0}41%,51%{opacity:1}}
-@keyframes topology-phase-create{0%,57%,71%,100%{opacity:0}59%,69%{opacity:1}}
 .anywhere-topology[data-topology-motion='paused'] *{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){.anywhere-topology *{animation:none!important;transition:none!important}.topology-flow-dot{opacity:0}}
