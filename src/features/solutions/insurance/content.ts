@@ -2,7 +2,7 @@ import type { SolutionModule } from '../types';
 
 export default {
   "slug": "insurance",
-  "order": 2,
+  "order": 1,
   "category": "industry",
   "copy": {
     "zh": {
@@ -64,6 +64,18 @@ export default {
       ],
       "scope": "A configurable solution direction requiring knowledge, process and integration implementation. Authorized staff make underwriting, claims and customer-facing decisions.",
       "image": "collaborative-review"
+    }
+  },
+  "navigation": {
+    "zh": {
+      "name": "保险",
+      "description": "营销支持、投保理赔、保全续期",
+      "icon": "shield"
+    },
+    "en": {
+      "name": "Insurance",
+      "description": "Sales support, claims and policy renewals",
+      "icon": "shield"
     }
   }
 } satisfies SolutionModule;

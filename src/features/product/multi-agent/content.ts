@@ -2,13 +2,13 @@ import type { CapabilityModule } from '../types';
 
 export default {
   "slug": "multi-agent",
-  "order": 2,
+  "order": 1,
   "icon": "layers",
   "copy": {
     "zh": {
-      "name": "专业 Agent 分工",
+      "name": "任务执行",
       "title": "复杂任务有分工，各项成果能汇合",
-      "description": "主 Agent 按配置委派专业子任务，展示进度并汇总各项工作结果。",
+      "description": "主副 Agent 专业分工，围绕目标规划、调用工具并交付。",
       "features": [
         {
           "icon": "layers",
@@ -34,9 +34,9 @@ export default {
       ]
     },
     "en": {
-      "name": "Specialist Agent delegation",
+      "name": "Task execution",
       "title": "Coordinate specialists around one task",
-      "description": "Delegate configured specialist tasks, follow progress and collect results.",
+      "description": "Plan, use tools and deliver through specialist Agent coordination.",
       "features": [
         {
           "icon": "layers",

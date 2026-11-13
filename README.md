@@ -39,7 +39,7 @@ PUBLIC_SITE_URL=https://www.zhama.com npm run build
 
 ## 多人协作
 
-页面按 `src/features/product/`、`src/features/solutions/`、`src/features/pricing/`、`src/features/download/` 拆分，每位同事维护自己的模块。目录分工、路由、资料和提交检查见 [多人协作开发约定](docs/多人协作开发约定_V1.0.md)。
+页面按 `src/features/product/`、`src/features/solutions/`、`src/features/pricing/`、`src/features/download/` 拆分，每位同事维护自己的模块。目录分工、路由、资料和提交检查见 [多人协作开发约定](docs/多人协作开发约定_V1.1.md)。
 
 ## 源码目录
 

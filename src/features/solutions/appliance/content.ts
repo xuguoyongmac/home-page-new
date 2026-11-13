@@ -8,7 +8,7 @@ export default {
     "zh": {
       "slug": "appliance",
       "icon": "cpu",
-      "name": "行业一体机",
+      "name": "软硬一体机",
       "tag": "行业一体机",
       "title": "把数字员工工作空间，部署在企业现场",
       "description": "围绕行业任务、企业知识和本地运行需求，沟通软硬一体交付与部署方案。",
@@ -38,7 +38,7 @@ export default {
     "en": {
       "slug": "appliance",
       "icon": "cpu",
-      "name": "Industry appliance",
+      "name": "Integrated appliance",
       "tag": "Industry appliance",
       "title": "Bring the digital workspace on site",
       "description": "Scope an integrated hardware and software deployment around industry tasks, enterprise knowledge and local operation.",
@@ -64,6 +64,18 @@ export default {
           "output": "Configuration records and deliverables"
         }
       ]
+    }
+  },
+  "navigation": {
+    "zh": {
+      "name": "软硬一体机",
+      "description": "出厂预置大模型与算力，开箱即用，数据不出域。",
+      "icon": "cpu"
+    },
+    "en": {
+      "name": "Integrated appliance",
+      "description": "Preinstalled models and compute. Ready to use, with data kept on site.",
+      "icon": "cpu"
     }
   }
 } satisfies SolutionModule;

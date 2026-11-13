@@ -6,9 +6,9 @@ export default {
   "icon": "shield",
   "copy": {
     "zh": {
-      "name": "权限与企业管理",
+      "name": "权限与审计",
       "title": "让数字员工进入企业，也进入管理体系",
-      "description": "管理组织、角色、业务委托、审计和模型用量，明确访问与执行范围。",
+      "description": "基于组织身份与业务委托严格授权，全过程留痕，成果可追溯。",
       "features": [
         {
           "icon": "shield",
@@ -34,9 +34,9 @@ export default {
       ]
     },
     "en": {
-      "name": "Enterprise governance",
+      "name": "Access & audit",
       "title": "Bring digital employees into enterprise governance",
-      "description": "Manage organization, roles, delegation, audit records and model usage.",
+      "description": "Authorize by identity and delegation. Trace work and deliverables.",
       "features": [
         {
           "icon": "shield",

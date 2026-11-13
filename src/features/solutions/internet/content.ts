@@ -65,5 +65,17 @@ export default {
         }
       ]
     }
+  },
+  "navigation": {
+    "zh": {
+      "name": "互联网与泛行业",
+      "description": "研发协同、运营提效、综合办公",
+      "icon": "globe"
+    },
+    "en": {
+      "name": "Internet & cross-industry",
+      "description": "Development, operations and office workflows",
+      "icon": "globe"
+    }
   }
 } satisfies SolutionModule;

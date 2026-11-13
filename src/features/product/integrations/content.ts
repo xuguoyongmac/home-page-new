@@ -2,13 +2,13 @@ import type { CapabilityModule } from '../types';
 
 export default {
   "slug": "integrations",
-  "order": 4,
+  "order": 2,
   "icon": "plug",
   "copy": {
     "zh": {
-      "name": "业务系统与工具",
+      "name": "系统连接",
       "title": "把知识处理，接到实际业务动作",
-      "description": "通过业务插件、MCP、OpenAPI 和授权设备，把资料处理接到具体操作。",
+      "description": "通过插件、MCP 与 API，无缝对接业务系统与外部工具。",
       "features": [
         {
           "icon": "plug",
@@ -34,9 +34,9 @@ export default {
       ]
     },
     "en": {
-      "name": "Business systems and tools",
+      "name": "System connections",
       "title": "Connect thinking to business actions",
-      "description": "Connect plugins, MCP, OpenAPI and authorized devices to concrete operations.",
+      "description": "Connect business systems and external tools through plugins, MCP and APIs.",
       "features": [
         {
           "icon": "plug",

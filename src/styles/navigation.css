@@ -34,3 +34,39 @@
 }
 @media(max-width:420px){.tego-header .tego-nav-grid{grid-template-columns:1fr}.tego-header .tego-nav-item{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.tego-header *{transition:none!important}}
+
+/* Product capability names and the approved one-line summaries. */
+@media(min-width:1101px){
+ .tego-header .tego-nav-group:has(.tego-nav-product){position:static}
+ .tego-header .tego-nav-product{width:1000px;max-width:calc(100vw - 64px);left:50%;top:calc(100% - 3px);transform:translateX(-50%)}
+}
+.tego-header .tego-nav-label{display:grid;gap:5px;min-width:0}
+.tego-header .tego-nav-label small{display:block;font-size:12px;font-weight:400;line-height:1.7;color:#aebed5;white-space:nowrap}
+.tego-header .tego-nav-product .tego-nav-item{padding-block:14px}
+.tego-header .tego-nav-product .tego-nav-icon{align-self:flex-start;margin-top:3px}
+@media(max-width:1100px){
+ .tego-header .tego-nav-product .tego-nav-grid{grid-template-columns:1fr}
+ .tego-header .tego-nav-product .tego-nav-item{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px 10px}
+ .tego-header .tego-nav-product .tego-nav-icon{margin-top:0;grid-column:1;grid-row:1}
+ .tego-header .tego-nav-product .tego-nav-label{display:contents}
+ .tego-header .tego-nav-product .tego-nav-label>span{grid-column:2;grid-row:1}
+ .tego-header .tego-nav-product .tego-nav-label small{grid-column:1/-1;margin-top:3px}
+}
+@media(max-width:420px){.tego-header .tego-nav-label small{font-size:10px}}
+
+.tego-header .tego-nav-panel-title{font-size:14px;font-weight:550;color:#d6e5fa;margin:0 0 15px;padding-left:10px}
+.tego-header .tego-nav-solutions .tego-nav-panel-body{grid-template-columns:minmax(0,1fr) 245px;gap:22px}
+.tego-header .tego-nav-solutions .tego-nav-deployment{border:1px solid #a9caff30;padding:14px 8px}
+.tego-header .tego-nav-deployment .tego-nav-item{align-items:flex-start}
+.tego-header .tego-nav-deployment .tego-nav-label small{white-space:normal;line-height:1.9;margin-top:3px}
+.tego-header .tego-nav-solutions .tego-nav-grid{row-gap:12px}
+@media(min-width:1101px){
+ .tego-header .tego-nav-group:has(.tego-nav-solutions){position:static}
+ .tego-header .tego-nav-solutions{width:1040px;max-width:calc(100vw - 64px);left:50%;top:calc(100% - 3px);transform:translateX(-50%)}
+}
+@media(max-width:1100px){
+ .tego-header .tego-nav-solutions .tego-nav-panel-body{grid-template-columns:1fr}
+ .tego-header .tego-nav-solutions .tego-nav-grid{grid-template-columns:1fr}
+ .tego-header .tego-nav-solutions .tego-nav-label small{font-size:11px}
+ .tego-header .tego-nav-solutions .tego-nav-deployment{padding:14px 8px}
+}

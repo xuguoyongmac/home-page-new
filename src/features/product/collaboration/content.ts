@@ -2,13 +2,13 @@ import type { CapabilityModule } from '../types';
 
 export default {
   "slug": "collaboration",
-  "order": 1,
+  "order": 3,
   "icon": "folder",
   "copy": {
     "zh": {
-      "name": "项目与团队协作",
+      "name": "团队协作",
       "title": "让资料、协作与成果，围绕同一个项目展开",
-      "description": "共用项目资料，在工作会话中讨论、交办和跟进，保留文件与成果版本。",
+      "description": "在项目与工作会话中，实现人机协同、文件共享与成果交付。",
       "features": [
         {
           "icon": "folder",
@@ -34,9 +34,9 @@ export default {
       ]
     },
     "en": {
-      "name": "Projects and collaboration",
+      "name": "Team collaboration",
       "title": "Keep the team, context and deliverables together",
-      "description": "Share project files, assign work in conversation and retain deliverable versions.",
+      "description": "Share files, collaborate and deliver in projects and work conversations.",
       "features": [
         {
           "icon": "folder",

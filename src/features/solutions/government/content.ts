@@ -65,5 +65,17 @@ export default {
       "scope": "A solution assembled from general platform capabilities. Public-sector connections and document approval require project-specific implementation.",
       "image": "knowledge-research"
     }
+  },
+  "navigation": {
+    "zh": {
+      "name": "数字政务",
+      "description": "综合文稿、会议协同、政务办理",
+      "icon": "landmark"
+    },
+    "en": {
+      "name": "Digital government",
+      "description": "Documents, meetings and public services",
+      "icon": "landmark"
+    }
   }
 } satisfies SolutionModule;

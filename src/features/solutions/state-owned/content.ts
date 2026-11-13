@@ -65,5 +65,17 @@ export default {
       "scope": "Assembled from the platform, bid and EHS capabilities. Private deployment, local models, LDAP and Kylin delivery depend on the agreed environment.",
       "image": "enterprise-connections"
     }
+  },
+  "navigation": {
+    "zh": {
+      "name": "央国企",
+      "description": "集团管控、跨部门协同、知识沉淀",
+      "icon": "buildings"
+    },
+    "en": {
+      "name": "State-owned enterprises",
+      "description": "Group governance, collaboration and knowledge",
+      "icon": "buildings"
+    }
   }
 } satisfies SolutionModule;

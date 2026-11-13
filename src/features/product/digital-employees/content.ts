@@ -6,9 +6,9 @@ export default {
   "icon": "network",
   "copy": {
     "zh": {
-      "name": "按岗位配置数字员工",
+      "name": "岗位数字员工",
       "title": "让岗位有明确分工，让工作有合适的人选",
-      "description": "通过数字员工模板招募数字员工，为岗位配置职责、企业知识、技能和工具。",
+      "description": "按真实岗位配置职责、权限与技能，招募即上岗。",
       "features": [
         {
           "icon": "network",
@@ -34,9 +34,9 @@ export default {
       ]
     },
     "en": {
-      "name": "Role-based digital employees",
+      "name": "Role-based employees",
       "title": "Give each role the right digital employee",
-      "description": "Recruit from templates and configure responsibilities, knowledge, skills and tools.",
+      "description": "Define role responsibilities, access and skills. Recruit and get to work.",
       "features": [
         {
           "icon": "network",

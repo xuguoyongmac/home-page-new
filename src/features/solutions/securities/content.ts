@@ -65,5 +65,17 @@ export default {
       "scope": "Configure role skills for research and business analysis. Data licensing, integrations and delivery scope are agreed for each project; business professionals review investment-related content.",
       "image": "knowledge-research"
     }
+  },
+  "navigation": {
+    "zh": {
+      "name": "证券",
+      "description": "财富管理、投研投顾、合规内控",
+      "icon": "chart"
+    },
+    "en": {
+      "name": "Securities",
+      "description": "Wealth management, research and compliance",
+      "icon": "chart"
+    }
   }
 } satisfies SolutionModule;

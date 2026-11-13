@@ -2,7 +2,7 @@ import type { SolutionModule } from '../types';
 
 export default {
   "slug": "banking",
-  "order": 1,
+  "order": 2,
   "category": "industry",
   "copy": {
     "zh": {
@@ -64,6 +64,18 @@ export default {
           "output": "Draft minutes and action lists"
         }
       ]
+    }
+  },
+  "navigation": {
+    "zh": {
+      "name": "银行",
+      "description": "信贷审核、网点运营、风控合规",
+      "icon": "bank"
+    },
+    "en": {
+      "name": "Banking",
+      "description": "Credit review, branch operations and risk",
+      "icon": "bank"
     }
   }
 } satisfies SolutionModule;

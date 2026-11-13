@@ -8,5 +8,6 @@ export interface SolutionModule {
   slug: string;
   order: number;
   category: 'industry' | 'general' | 'deployment';
+  navigation?: Record<Locale, { name: string; description: string; icon: string }>;
   copy: Record<Locale, Industry>;
 }

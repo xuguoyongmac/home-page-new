@@ -2,13 +2,13 @@ import type { CapabilityModule } from '../types';
 
 export default {
   "slug": "knowledge",
-  "order": 3,
+  "order": 4,
   "icon": "book",
   "copy": {
     "zh": {
-      "name": "企业知识与记忆",
+      "name": "知识与记忆",
       "title": "让企业经验成为每一次工作的依据",
-      "description": "使用已授权的企业知识和项目资料，检索引用，让经验延续到下一次工作。",
+      "description": "接入企业专有知识库，结合项目资料与工作记忆，让回答有据可依。",
       "features": [
         {
           "icon": "book",
@@ -34,9 +34,9 @@ export default {
       ]
     },
     "en": {
-      "name": "Knowledge and memory",
+      "name": "Knowledge & memory",
       "title": "Put enterprise knowledge to work",
-      "description": "Use authorized enterprise knowledge, project materials and source references.",
+      "description": "Ground answers in enterprise knowledge, project files and work memory.",
       "features": [
         {
           "icon": "book",
