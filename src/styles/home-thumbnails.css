@@ -1,0 +1,111 @@
+/* Fit complete windows inside the existing thumbnail area. */
+main:has(> .launch-carousel) :is(.home-feature-art, .resource-art) > .product-composition {
+  container-type: size;
+  padding: 8px;
+}
+
+main:has(> .launch-carousel) :is(.home-feature-art, .resource-art) .product-window {
+  width: min(100%, 150cqh);
+  flex: 0 0 auto;
+}
+
+main:has(> .launch-carousel) .home-feature-art .product-art-collaboration .product-window {
+  width: min(100%, 140cqh);
+}
+
+/* Secondary labels keep their space without competing with the main content. */
+main:has(> .launch-carousel) :is(.home-feature-art, .resource-art) .product-window :is(
+  .product-window-section,
+  .product-window-tools
+) {
+  visibility: hidden;
+}
+
+main:has(> .launch-carousel) .home-feature-art :is(
+  .scene-breadcrumb,
+  .rail-title,
+  .rail-caption,
+  .rail-source,
+  .rail-foot,
+  .project-goal,
+  .items-heading > span,
+  .work-item > div > span,
+  .item-status,
+  .recent-label,
+  .recent-file > div > span,
+  .inquiry-state,
+  .inquiry-card p,
+  .reply-chip,
+  .context-mini,
+  .scene-wide-heading > .field-label,
+  .source-section,
+  .source-bottom,
+  .citation-bridge > span,
+  .citation-source > div > span,
+  .review-context > .field-label,
+  .context-file,
+  .review-question > p,
+  .response-area
+) {
+  visibility: hidden;
+}
+
+/* Keep the source sentence and its use in the draft visible. */
+main:has(> .launch-carousel) .home-feature-art .core-knowledge :is(
+  .source-extract,
+  .cited-document > p
+) {
+  font-size: max(9px, 2.8cqw);
+  line-height: 1.55;
+}
+
+main:has(> .launch-carousel) .home-feature-art .core-knowledge :is(
+  .source-document > h4,
+  .cited-document > h4
+),
+main:has(> .launch-carousel) .home-feature-art .core-review :is(
+  .review-context > h4,
+  .review-question > h4
+) {
+  font-size: max(10px, 3.1cqw);
+}
+
+main:has(> .launch-carousel) .home-feature-art .citation-source > div > strong {
+  font-size: max(8px, 2.4cqw);
+}
+
+/* Remove secondary blocks completely so they cannot leave empty color bars. */
+main:has(> .launch-carousel) .home-feature-art .core-knowledge :is(
+  .source-section,
+  .source-bottom
+),
+main:has(> .launch-carousel) .home-feature-art .core-review :is(
+  .await-position,
+  .context-file,
+  .review-question > p,
+  .response-area,
+  .reply-chip
+) {
+  display: none;
+}
+
+main:has(> .launch-carousel) .resource-art :is(
+  .resource-tile > p,
+  .resource-tag,
+  .journal-main > .overline,
+  .article-category,
+  .journal-excerpt,
+  .journal-topics,
+  .journal-sidebar > .overline,
+  .category-index,
+  .desktop-project-head .overline,
+  .project-navigation,
+  .project-files > .draft-file > div > span,
+  .project-files > .pending-work > div > span,
+  .mobile-project > .overline,
+  .mobile-pending > span:not(.status-dot),
+  .mobile-project > p,
+  .client-platforms
+) {
+  visibility: hidden;
+}

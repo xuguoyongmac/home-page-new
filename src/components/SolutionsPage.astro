@@ -1,0 +1,26 @@
+---
+import type { Locale } from '../data/types';
+import SolutionExplorer from './SolutionExplorer.astro';
+import PageHeroArt from './PageHeroArt.astro';
+import CallToAction from './CallToAction.astro';
+import Icon from './Icon.astro';
+import { pathFor } from '../lib/site';
+interface Props {locale:Locale;}
+const {locale}=Astro.props;
+const zh=locale==='zh';
+const steps=zh?[
+ ['选择岗位工作','明确希望处理的资料、任务与成果，从一个具体工作开始。'],
+ ['组合平台能力','配置知识、技能与插件，连接获得授权的系统和设备。'],
+ ['衔接人工判断','约定需要问询、审批与接手的环节，核对内容与业务依据。'],
+ ['形成项目成果','在项目中审阅、修改和定稿，保留文件版本并导出成果。'],
+]:[
+ ['Choose a task','Define the sources, work and deliverables for a specific role.'],
+ ['Configure capabilities','Connect authorized knowledge, skills, plugins and systems.'],
+ ['Involve people','Define questions, approvals and review points.'],
+ ['Deliver the result','Review, edit and export, with project versions retained.'],
+];
+---
+<section class="page-hero"><PageHeroArt variant="collaboration"/><div class="container inner-hero-content"><div class="inner-hero-copy"><p class="eyebrow">{zh?'行业解决方案':'INDUSTRY SOLUTIONS'}</p><h1>{zh?'从具体业务，找到协作的起点':'Start with the work your team knows'}</h1><p>{zh?'以岗位工作为起点，明确输入资料、执行动作、人工判断与交付成果，再组合数字员工、企业知识和业务连接。':'Start with a role and define its sources, actions, human decisions and deliverables. Then combine digital employees, knowledge and business connections.'}</p><div class="hero-actions"><a class="button" href={pathFor(locale,'contact')}>{zh?'沟通业务场景':'Discuss your workflow'}<Icon name="external" size={14}/></a></div></div></div></section>
+<section class="sl-section sl-solutions-page"><div class="container"><SolutionExplorer locale={locale}/></div></section>
+<section class="sl-section sl-alt"><div class="container"><div class="sl-heading"><p class="eyebrow">{zh?'落地方式':'GETTING STARTED'}</p><h2>{zh?'先明确工作与成果，再组合能力':'Define the result, then combine capabilities'}</h2></div><div class="workflow-strip">{steps.map(([title,body],index)=><article><span>{String(index+1).padStart(2,'0')}</span><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
+<CallToAction locale={locale}/>

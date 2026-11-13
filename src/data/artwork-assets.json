@@ -1,0 +1,72 @@
+{
+  "clients": {
+    "file": "sculpted-clients_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "collaboration": {
+    "file": "collaboration-flow-base_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "contact": {
+    "file": "sculpted-contact_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "deliverables": {
+    "file": "sculpted-deliverables_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "ecosystem": {
+    "file": "sculpted-ecosystem_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "enterprise": {
+    "file": "sculpted-enterprise_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "faq": {
+    "file": "sculpted-faq_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "journal": {
+    "file": "sculpted-journal_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "knowledge": {
+    "file": "knowledge-flow-base_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "releases": {
+    "file": "sculpted-releases_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "resources": {
+    "file": "sculpted-resources_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "review": {
+    "file": "sculpted-review_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "solutions": {
+    "file": "sculpted-solutions_V1.0",
+    "width": 1536,
+    "height": 1024
+  },
+  "team": {
+    "file": "sculpted-team_V1.0",
+    "width": 1536,
+    "height": 1024
+  }
+}

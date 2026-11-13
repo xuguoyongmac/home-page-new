@@ -1,0 +1,11 @@
+---
+import type { Locale } from '../data/types';
+import { pathFor, appFor } from '../lib/site';
+import Icon from './Icon.astro';
+const {locale = 'zh', home = false} = Astro.props as {locale:Locale;home?:boolean};
+const zh = locale === 'zh';
+---
+<section class:list={["sl-closing",{"brand-closing":home}]}>
+  <img src="/images/saaslauncher/team-workspace_V1.2.webp" alt="" width="1536" height="1024" loading="lazy"/>
+  <div class="container"><p class="eyebrow">TeGo {zh?'数字员工协作平台':'DIGITAL WORKFORCE COLLABORATION'}</p><h2>{zh ? <>让协作看得见，<br/>让成果可验收</> : <>Make collaboration visible.<br/>Make outcomes verifiable.</>}</h2><p>{zh ? '让每一个企业，都拥有一支面向岗位、协同共生、持续进化的数字员工团队。' : 'A role-focused digital workforce that collaborates and evolves with every enterprise.'}</p><div class="sl-actions"><a class="button" href={pathFor(locale,'contact')}>{zh ? '聊聊你的业务场景' : 'Discuss your workflow'}<Icon name="external" size={16}/></a><a class="button button-white" href={appFor(locale)}>{zh ? '开始与数字员工协作' : 'Open workspace'}</a></div></div>
+</section>

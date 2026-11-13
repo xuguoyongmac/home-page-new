@@ -1,0 +1,15 @@
+import { readdirSync, unlinkSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const dist=path.join(root,'dist');
+const walk=directory=>readdirSync(directory,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(directory,entry.name)):[path.join(directory,entry.name)]);
+const files=walk(dist);
+const references=files.filter(file=>/\.(html|css|js|json|xml|svg)$/.test(file)).map(file=>readFileSync(file,'utf8')).join('\n');
+let removed=0;
+// 历史素材保留在源工程；静态发布仅携带实际引用的配图。
+for(const file of files.filter(file=>file.includes('/images/')||file.includes('/artwork/')||/\/social-card.*\.png$/.test(file))){
+ const asset='/'+path.relative(dist,file).split(path.sep).join('/');
+ if(!references.includes(asset)){unlinkSync(file);removed++;}
+}
+console.log(`发布素材清理完成，排除 ${removed} 项未引用的历史素材。`);

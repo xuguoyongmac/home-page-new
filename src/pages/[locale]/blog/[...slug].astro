@@ -1,0 +1,173 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import Icon from '../../../components/Icon.astro';
+import { pathFor } from '../../../lib/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('blog');
+  return entries.map((entry) => ({
+    params: { locale: entry.data.locale, slug: entry.data.legacySlug },
+    props: { entry },
+  }));
+}
+
+interface Props { entry: CollectionEntry<'blog'>; }
+const { entry } = Astro.props;
+const { data } = entry;
+const locale = data.locale;
+const zh = locale === 'zh';
+const { Content } = await render(entry);
+const date = new Intl.DateTimeFormat(zh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(data.date);
+const related = (await getCollection('blog', ({ data: other }) => other.locale === locale && other.legacySlug !== data.legacySlug))
+  .sort((left, right) => Number(right.data.category === data.category) - Number(left.data.category === data.category) || right.data.date.getTime() - left.data.date.getTime())
+  .slice(0, 3);
+---
+<Layout locale={locale} title={data.title} description={data.description} page={`blog/${data.legacySlug}`}>
+  <div class="container">
+    <article class="article-shell">
+      <a class="text-link" href={pathFor(locale, 'blog')}><Icon name="arrow" size={16} class="back-arrow"/>{zh ? '返回产品博客' : 'Back to blog'}</a>
+      <h1>{data.title}</h1>
+      <div class="article-meta"><time datetime={data.date.toISOString()}>{date}</time><span>{data.category}</span><span>{data.author}</span></div>
+      <p class="article-historical">{zh ? `本文发布于 ${date}。产品当前能力参见` : `Published ${date}. For current capabilities, see the `}<a href={pathFor(locale, 'product')}>{zh ? '产品能力' : 'product overview'}</a>{zh ? '。' : '.'}</p>
+      {data.image && <img class="article-cover" src={data.image} alt="" width="1200" height="750" decoding="async" />}
+      <div class="prose"><Content/></div>
+      <nav class="article-tags" aria-label={zh ? '文章标签' : 'Article tags'}>{data.tags.map((tag) => <span>{tag}</span>)}</nav>
+      <div class="article-actions">
+        <a class="text-link" href={pathFor(locale, 'blog')}>{zh ? '浏览全部文章' : 'Browse all articles'}<Icon name="arrow" size={16}/></a>
+        <button class="text-link share-article" type="button" data-share-title={data.title} data-copied={zh ? '链接已复制' : 'Link copied'} data-share-label={zh ? '分享文章' : 'Share article'}>{zh ? '分享文章' : 'Share article'}<Icon name="external" size={16}/></button>
+        <span class="sr-only" role="status" aria-live="polite" id="share-status"></span>
+      </div>
+    </article>
+    <section aria-labelledby="related-title">
+      <div class="section-heading"><h2 class="section-title" id="related-title">{zh ? '继续阅读' : 'Keep reading'}</h2></div>
+      <div class="article-grid">
+        {related.map(({ data: post }) => <article class="article-card"><div class="article-body"><div class="article-meta"><span>{post.category}</span><time datetime={post.date.toISOString()}>{post.date.toISOString().slice(0, 10)}</time></div><h2><a href={pathFor(locale, `blog/${post.legacySlug}`)}>{post.title}</a></h2><p>{post.description}</p><a class="text-link" href={pathFor(locale, `blog/${post.legacySlug}`)}>{zh ? '阅读全文' : 'Read article'}<Icon name="arrow" size={16}/></a></div></article>)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .back-arrow{transform:rotate(180deg)}
+  .article-historical a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+  .article-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:35px}
+  .article-tags span{font-size:11px;color:var(--muted);padding:6px 10px;background:var(--soft);border-radius:5px}
+  .article-actions{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-top:35px}
+  .share-article{background:transparent;padding:0}
+  .prose :global(.article-diagram){margin:28px 0;padding:22px;background:var(--soft);border-radius:10px;overflow:auto}
+  .prose :global(.article-diagram-output){text-align:center;min-width:0}
+  .prose :global(.article-diagram-output svg){height:auto;max-width:100%}
+  .prose :global(.article-diagram details){font-size:12px;color:var(--muted);margin-top:15px}
+  .prose :global(.article-diagram summary){cursor:pointer;width:fit-content}
+  .prose :global(.article-diagram pre){margin-bottom:0;padding-inline:0}
+  .prose :global(.article-diagram-status){font-size:12px;line-height:1.8;color:var(--muted)}
+  .prose :global(.article-diagram-output[hidden]),.prose :global(.article-diagram-status[hidden]){display:none}
+</style>
+
+<script>
+  const shareButton = document.querySelector<HTMLButtonElement>('.share-article');
+  const shareStatus = document.querySelector<HTMLElement>('#share-status');
+  shareButton?.addEventListener('click', async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: shareButton.dataset.shareTitle, url });
+      } else if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(url);
+        if (shareStatus) shareStatus.textContent = shareButton.dataset.copied || '';
+      } else {
+        window.prompt(shareButton.dataset.shareLabel || '', url);
+      }
+    } catch (error) {
+      if (!(error instanceof DOMException && error.name === 'AbortError')) window.prompt(shareButton.dataset.shareLabel || '', url);
+    }
+  });
+
+  async function initializeArticleDiagrams() {
+    const blocks = Array.from(document.querySelectorAll<HTMLPreElement>('.prose pre[data-language="mermaid"]'));
+    if (!blocks.length) return;
+    const zh = document.documentElement.lang.startsWith('zh');
+    let mermaid: (typeof import('mermaid'))['default'];
+    try {
+      mermaid = (await import('mermaid')).default;
+    } catch (error) {
+      blocks.forEach((block) => {
+        const status = document.createElement('p');
+        status.className = 'article-diagram-status';
+        status.setAttribute('role', 'status');
+        status.textContent = zh ? '流程图组件未能载入，原始图表文本保留在下方。' : 'The diagram renderer could not load. The original diagram text is available below.';
+        block.before(status);
+      });
+      console.warn('Article diagram renderer could not load.', error);
+      return;
+    }
+
+    const diagrams = blocks.map((block, index) => {
+      const source = block.textContent || '';
+      const figure = document.createElement('figure');
+      figure.className = 'article-diagram';
+      const output = document.createElement('div');
+      output.className = 'article-diagram-output';
+      output.hidden = true;
+      const status = document.createElement('p');
+      status.className = 'article-diagram-status';
+      status.setAttribute('role', 'status');
+      status.hidden = true;
+      const details = document.createElement('details');
+      details.open = true;
+      const summary = document.createElement('summary');
+      summary.textContent = zh ? '查看图表源文本' : 'View diagram source';
+      details.append(summary);
+      block.replaceWith(figure);
+      details.append(block);
+      figure.append(output, status, details);
+      return { source, index, output, status, details };
+    });
+
+    let rendering = false;
+    let redrawRequested = false;
+    let revision = 0;
+    async function drawDiagrams() {
+      if (rendering) { redrawRequested = true; return; }
+      rendering = true;
+      try {
+        do {
+          redrawRequested = false;
+          revision += 1;
+          const dark = document.documentElement.dataset.theme === 'dark';
+          mermaid.initialize({
+            startOnLoad: false,
+            securityLevel: 'strict',
+            suppressErrorRendering: true,
+            htmlLabels: false,
+            theme: dark ? 'dark' : 'default',
+            fontFamily: '"Plus Jakarta Sans Variable", "PingFang SC", sans-serif',
+          });
+          for (const diagram of diagrams) {
+            try {
+              const { svg } = await mermaid.render(`tego-article-diagram-${revision}-${diagram.index}`, diagram.source);
+              diagram.output.innerHTML = svg;
+              diagram.output.querySelector('svg')?.setAttribute('aria-label', zh ? `文章流程图 ${diagram.index + 1}` : `Article diagram ${diagram.index + 1}`);
+              diagram.output.hidden = false;
+              diagram.status.hidden = true;
+              diagram.details.open = false;
+            } catch (error) {
+              diagram.output.hidden = true;
+              diagram.status.textContent = zh ? '这幅流程图未能绘制，原始图表文本保留在下方。' : 'This diagram could not be drawn. Its original source is available below.';
+              diagram.status.hidden = false;
+              diagram.details.open = true;
+              console.warn(`Article diagram ${diagram.index + 1} could not be rendered.`, error);
+            }
+          }
+        } while (redrawRequested);
+      } finally {
+        rendering = false;
+      }
+    }
+    await drawDiagrams();
+    new MutationObserver(() => { void drawDiagrams(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+
+  void initializeArticleDiagrams();
+</script>

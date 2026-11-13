@@ -1,0 +1,6 @@
+---
+interface Props { variant?: 'collaboration'|'ecosystem'|'enterprise'; compact?: boolean; }
+const {variant = 'collaboration'} = Astro.props;
+const image = variant === 'enterprise' ? 'enterprise-connections' : variant === 'ecosystem' ? 'knowledge-research' : 'collaborative-review';
+---
+<div class="inner-page-art" aria-hidden="true"><img src={`/images/saaslauncher/${image}_V1.2.webp`} alt="" width="1672" height="941" decoding="async"/></div>

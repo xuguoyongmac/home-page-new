@@ -1,0 +1,41 @@
+---
+import Icon from './Icon.astro';
+import MaterialGlyph from './MaterialGlyph.astro';
+import type { Locale } from '../data/types';
+interface Props { kind:'knowledge'|'connections'|'delegation'|'assets'|'permissions'; locale:Locale; }
+const {kind,locale}=Astro.props;
+const zh=locale==='zh';
+const labels={knowledge:zh?'企业知识检索与原文引用概念图':'Enterprise knowledge and source citations',connections:zh?'数字员工与企业知识、业务插件、工具、模型的连接关系':'Connections between digital employees and enterprise capabilities',delegation:zh?'主 Agent 统筹、专业 Agent 分工、人工审阅与成果汇总流程':'Main Agent coordination, specialist delegation and human review',assets:zh?'岗位方法通过技能与数字员工模板持续复用':'Reusable skills and digital employee templates',permissions:zh?'组织身份、知识授权与业务委托分别控制访问和执行':'Identity, knowledge permissions and business delegation'};
+---
+<figure class:list={['marketing-visual',`visual-${kind}`]} data-visual-kind={kind} role="img" aria-label={labels[kind]}>
+ <div aria-hidden="true">
+ {kind==='knowledge'&&<div class="knowledge-concept">
+  <img src="/images/saaslauncher/knowledge-research_V1.2.webp" alt="" width="1672" height="941" loading="lazy"/>
+  <div class="knowledge-query"><Icon name="search" size={17}/><span>{zh?'客户方案需要哪些产品资料？':'Which materials support this proposal?'}</span></div>
+  <div class="citation-card"><span class="visual-label"><Icon name="book" size={14}/>{zh?'产品与方案知识库':'Product and proposal knowledge'}</span><strong>{zh?'找到依据，再组织回答':'Find sources. Then build the answer.'}</strong><p>{zh?'关联产品说明、交付规范与历史方案，保留对应的原文引用。':'Connect product guides, delivery standards and prior proposals with source references.'}</p><div class="source-pills"><span><Icon name="file" size={12}/>{zh?'产品能力说明':'Product guide'}</span><span><Icon name="file" size={12}/>{zh?'交付规范':'Delivery standards'}</span></div></div>
+  <span class="knowledge-permission"><Icon name="key" size={13}/>{zh?'按知识库授权使用':'Knowledge-base access controls'}</span>
+ </div>}
+ {kind==='connections'&&<div class="connection-map">
+  <svg class="connection-lines" viewBox="0 0 500 400" preserveAspectRatio="none"><path d="M250 200C250 70 100 70 100 70M250 200C250 70 400 70 400 70M250 200H70M250 200H430M250 200C250 330 100 330 100 330M250 200C250 330 400 330 400 330"/><circle cx="250" cy="200" r="71"/><circle cx="250" cy="200" r="93"/></svg>
+  <div class="connection-hub"><MaterialGlyph name="layers" size={62}/><strong>TeGo OS</strong><span>{zh?'数字员工':'Digital employees'}</span></div>
+  {(zh?[['book','企业知识','资料与引用'],['layers','业务插件','CRM · 招投标 · EHS'],['plug','MCP 工具','授权调用'],['terminal','OpenAPI','平台服务'],['cpu','模型服务','按企业环境选择'],['message','协作渠道','企微 · 钉钉 · 飞书']]:[['book','Knowledge','Sources and citations'],['layers','Plugins','CRM · Bidding · EHS'],['plug','MCP tools','Authorized calls'],['terminal','OpenAPI','Platform services'],['cpu','Models','Your environment'],['message','Channels','WeCom · DingTalk · Feishu']]).map(([icon,title,body],i)=><div class:list={['connection-node',`node-${i}`]}><span><MaterialGlyph name={icon} size={44}/></span><strong>{title}</strong><small>{body}</small></div>)}
+ </div>}
+ {kind==='delegation'&&<div class="delegation-flow">
+  <div class="flow-request"><Icon name="message" size={17}/><span>{zh?'请根据项目资料，准备一份行业方案':'Prepare an industry proposal using the project files'}</span></div>
+  <div class="flow-stem"></div>
+  <div class="flow-coordinator"><span><MaterialGlyph name="network" size={48}/></span><div><small>{zh?'数字员工 · 主 Agent':'Digital employee · Main Agent'}</small><strong>{zh?'理解目标，拆解工作':'Understand the goal. Organize the work.'}</strong></div><span class="flow-state">{zh?'统筹':'Coordinate'}</span></div>
+  <div class="flow-branches"><svg viewBox="0 0 600 38" preserveAspectRatio="none"><path d="M300 0V15H100V38M300 15V38M300 15H500V38"/></svg></div>
+  <div class="flow-specialists">{(zh?[['book','资料研究','检索知识 · 保留出处'],['chart','业务分析','梳理场景 · 形成判断'],['file','文档编制','组织结构 · 生成初稿']]:[['book','Research','Find sources · Keep citations'],['chart','Analysis','Structure the business context'],['file','Writing','Organize and draft']]).map(([icon,title,body])=><div><MaterialGlyph name={icon} size={62}/><small>{zh?'专业 Agent':'Specialist Agent'}</small><strong>{title}</strong><p>{body}</p></div>)}</div>
+  <div class="flow-merge"><Icon name="chevron" size={20}/></div>
+  <div class="flow-review"><span><Icon name="check" size={16}/>{zh?'汇总成果':'Collect results'}</span><Icon name="arrow" size={16}/><span><Icon name="message" size={16}/>{zh?'同事审阅与确认':'Colleague review'}</span><Icon name="arrow" size={16}/><span><Icon name="file" size={16}/>{zh?'交付项目文件':'Deliver project files'}</span></div>
+ </div>}
+ {kind==='assets'&&<div class="asset-composition">
+  <div class="asset-method"><div class="asset-method-heading"><Icon name="terminal" size={17}/><span>Tego Studio</span><small>{zh?'岗位能力建设':'Build role capabilities'}</small></div><div class="method-content"><span>SKILL.md</span><strong>{zh?'把一项工作的方法写清楚':'Capture how the work gets done'}</strong><dl><div><dt>{zh?'职责':'Role'}</dt><dd>{zh?'分析采购需求，准备响应材料':'Analyze requirements and prepare responses'}</dd></div><div><dt>{zh?'依据':'Sources'}</dt><dd>{zh?'招标文件、企业资料、编制规范':'Tender files, company materials, writing rules'}</dd></div><div><dt>{zh?'交付':'Output'}</dt><dd>{zh?'需求清单、响应提纲、方案初稿':'Requirements, response outline, draft proposal'}</dd></div></dl></div></div>
+  <div class="asset-reuse"><span class="asset-template"><MaterialGlyph name="network" size={49}/><strong>{zh?'数字员工模板':'Digital employee template'}</strong><small>{zh?'职责 · 知识 · 技能 · 工具':'Role · Knowledge · Skills · Tools'}</small></span><div class="asset-skill-stack">{(zh?['资料分析','方案编制','数据核对','周期报告']:['Research','Proposals','Data review','Reports']).map((label,i)=><span><Icon name={['book','file','chart','clock'][i]} size={16}/>{label}<Icon name="check" size={12}/></span>)}</div></div>
+  <div class="asset-lifecycle">{(zh?['定义方法','校验与打包','版本管理','发布复用']:['Define','Validate & package','Version','Publish & reuse']).map((label,i)=><><span>{label}</span>{i<3&&<Icon name="arrow" size={13}/>}</>)}</div>
+ </div>}
+ {kind==='permissions'&&<div class="permission-diagram">
+  <div class="permission-identity"><MaterialGlyph name="shield" size={72}/><strong>{zh?'企业身份':'Enterprise identity'}</strong><span>{zh?'组织 · 角色 · 使用关系':'Organization · Roles · Access'}</span></div><div class="permission-bridge"><Icon name="arrow" size={22}/></div><div class="permission-scopes">{(zh?[['book','知识访问','按知识库分配访问与引用权限'],['folder','项目协作','按项目成员与角色共享文件'],['key','业务执行','通过授权与可撤销委托执行']]:[['book','Knowledge','Library access and citation rights'],['folder','Projects','Project membership and roles'],['key','Execution','Authorization and revocable delegation']]).map(([icon,title,body])=><div><span><MaterialGlyph name={icon} size={44}/></span><div><strong>{title}</strong><small>{body}</small></div></div>)}</div>
+ </div>}
+ </div>
+</figure>

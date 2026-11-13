@@ -1,0 +1,387 @@
+---
+interface Props {
+  locale: 'zh' | 'en';
+  variant: 'knowledge' | 'review' | 'deliverables' | 'clients' | 'resources' | 'journal';
+  idPrefix: string;
+  class?: string;
+}
+
+const { locale, variant, idPrefix, class: className } = Astro.props;
+const en = locale === 'en';
+const id = (name: string) => `${idPrefix}-${name}`;
+const paint = (name: string) => `url(#${id(name)})`;
+const icon = (name: string) => `#${id(name)}`;
+const labels = {
+  knowledge: en ? 'Original research materials and citations carried through into a shared research deliverable' : '原文资料与引用依据贯穿共同的研究成果',
+  review: en ? 'Human judgement at the intersection of team collaboration, with work continuing toward a shared deliverable' : '人的判断连接团队协作路径，工作继续走向共同成果',
+  deliverables: en ? 'A deliverable built from shared objectives, source evidence, colleague review and version history' : '工作目标、资料依据、同事审阅与成果版本汇聚为可核对交付',
+  clients: en ? 'People and digital employees working on the same task across different work entry points' : '人与数字员工通过不同工作入口围绕同一事项协作',
+  resources: en ? 'An open book connecting user guides, reference material and layers of knowledge' : '开放的书页连接操作手册、参考资料与知识层次',
+  journal: en ? 'Role-specific practice refined into shared and reusable working methods' : '岗位实践经过提炼与沉淀，形成可复用的工作方法',
+};
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" preserveAspectRatio="xMidYMid meet" role="img" aria-label={labels[variant]} class:list={['business-art', `business-art-${variant}`, className]}>
+  <defs>
+    <linearGradient id={id('glass')} x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#484e4b" stop-opacity=".94"/>
+      <stop offset=".34" stop-color="#2d312f" stop-opacity=".91"/>
+      <stop offset="1" stop-color="#161817" stop-opacity=".97"/>
+    </linearGradient>
+    <linearGradient id={id('deep-glass')} x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#353b38" stop-opacity=".9"/>
+      <stop offset=".48" stop-color="#222624" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#121413" stop-opacity=".98"/>
+    </linearGradient>
+    <linearGradient id={id('edge')} x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d6dbd8" stop-opacity=".69"/>
+      <stop offset=".4" stop-color="#99a59f" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#97a39d" stop-opacity=".49"/>
+    </linearGradient>
+    <linearGradient id={id('side')} x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#111212"/>
+      <stop offset=".5" stop-color="#434a46"/>
+      <stop offset="1" stop-color="#1d1f1e"/>
+    </linearGradient>
+    <linearGradient id={id('blue')} x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#c7cdca"/>
+      <stop offset=".4" stop-color="#a0aba6"/>
+      <stop offset="1" stop-color="#85938c"/>
+    </linearGradient>
+    <linearGradient id={id('cyan')} x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#e5e8e6"/>
+      <stop offset=".45" stop-color="#a7b1ac"/>
+      <stop offset="1" stop-color="#85938c"/>
+    </linearGradient>
+    <linearGradient id={id('beam')} x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#8f9d96" stop-opacity=".1"/>
+      <stop offset=".4" stop-color="#a6b0ab" stop-opacity=".75"/>
+      <stop offset=".8" stop-color="#b9c1bd"/>
+      <stop offset="1" stop-color="#9da9a3" stop-opacity=".6"/>
+    </linearGradient>
+    <linearGradient id={id('veil')} x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d7dcda" stop-opacity=".09"/>
+      <stop offset=".55" stop-color="#b7c0bb" stop-opacity=".02"/>
+      <stop offset="1" stop-color="#93a19a" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id={id('halo')}>
+      <stop stop-color="#778880" stop-opacity=".19"/>
+      <stop offset=".56" stop-color="#65726b" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#65726b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id={id('sphere')} cx=".3" cy=".23" r=".9">
+      <stop stop-color="#e0e4e2"/>
+      <stop offset=".4" stop-color="#afb9b4"/>
+      <stop offset="1" stop-color="#74857d"/>
+    </radialGradient>
+    <radialGradient id={id('node')}>
+      <stop stop-color="#dadfdc" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#404643" stop-opacity=".08"/>
+    </radialGradient>
+    <filter id={id('shadow')} x="-35%" y="-35%" width="170%" height="190%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="21" stdDeviation="19" flood-color="#060706" flood-opacity=".57"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0a0a0a" flood-opacity=".45"/>
+    </filter>
+    <filter id={id('float')} x="-35%" y="-35%" width="170%" height="190%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="11" stdDeviation="11" flood-color="#060706" flood-opacity=".5"/>
+    </filter>
+    <filter id={id('glow')} x="-100%" y="-100%" width="300%" height="300%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <symbol id={id('person')} viewBox="0 0 100 120">
+      <circle cx="50" cy="29" r="22" fill="currentColor"/>
+      <path d="M8 110c2-35 16-53 42-53s40 18 42 53Z" fill="currentColor" fill-opacity=".68"/>
+      <path d="M16 110h68" fill="none" stroke="currentColor" stroke-opacity=".7" stroke-width="2"/>
+    </symbol>
+    <symbol id={id('employee')} viewBox="0 0 100 100">
+      <path d="M50 6c5 25 19 39 44 44-25 5-39 19-44 44C45 69 31 55 6 50 31 45 45 31 50 6Z" fill="currentColor" fill-opacity=".82"/>
+      <path d="m50 26 24 24-24 24-24-24Z" fill="none" stroke="#f0f2f1" stroke-opacity=".76" stroke-width="1.4"/>
+    </symbol>
+    <symbol id={id('folio')} viewBox="0 0 100 130">
+      <path d="M8 2h61l23 24v94a8 8 0 0 1-8 8H8a6 6 0 0 1-6-6V8a6 6 0 0 1 6-6Z" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="2"/>
+      <path d="M69 3v22h22M20 55h51M20 74h51M20 93h35" fill="none" stroke="currentColor" stroke-opacity=".65" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id={id('quote')} viewBox="0 0 70 54">
+      <path d="M3 48V28C3 11 12 4 28 3v10c-8 1-12 5-12 12h13v23Zm37 0V28C40 11 49 4 65 3v10c-8 1-12 5-12 12h13v23Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+
+  <ellipse cx="505" cy="399" rx="425" ry="284" fill={paint('halo')}/>
+
+  {variant === 'knowledge' && (
+    <g>
+      <path d="M195 359c115-139 271-120 493-23M254 453c139-61 270-42 437-83M354 274c108 17 217 17 333 64" class="light-path" stroke={paint('beam')} stroke-width="12" opacity=".22" filter={paint('glow')}/>
+      <g transform="translate(116 245) rotate(-12 105 167)" filter={paint('shadow')}>
+        <path d="m0 15 14-11h188l12 12v305l-14 14H0Z" fill={paint('side')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="M14 4h162l38 39v278H14Z" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.4"/>
+        <path d="M176 5v39h37" fill="#474d4a" stroke="#a1aca6" stroke-opacity=".35"/>
+        <use href={icon('quote')} x="38" y="75" width="48" height="37" color="#a1ada7" opacity=".7"/>
+        <path d="M39 158h139M39 181h122M39 204h135M39 257h105" class="source-trace"/>
+        <path d="M38 230h142" stroke="#a1ada7" stroke-width="6" stroke-linecap="round" stroke-opacity=".43"/>
+      </g>
+      <g transform="translate(229 150) rotate(-4 108 175)" filter={paint('shadow')}>
+        <path d="M9 12h196l16 14v316l-13 14H9Z" fill={paint('side')} stroke={paint('edge')}/>
+        <path d="M0 0h183l38 39v303H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.6"/>
+        <path d="M183 1v38h37" fill="#474e4a" stroke="#aeb7b2" stroke-opacity=".4"/>
+        <text x="25" y="76" class="label">{en ? 'Research' : '研究资料'}</text>
+        <use href={icon('quote')} x="25" y="110" width="51" height="40" color="#aab5b0"/>
+        <path d="M26 192h163M26 215h141M26 238h158M26 286h122" class="source-trace"/>
+        <path d="M25 264h165" stroke="#aab5b0" stroke-width="7" stroke-linecap="round" stroke-opacity=".55"/>
+        <path d="M0 0h182l-135 342H0Z" fill={paint('veil')}/>
+      </g>
+      <g transform="translate(364 287) rotate(8 97 137)" filter={paint('float')}>
+        <path d="M8 9h191v268l-10 11H8Z" fill={paint('side')} stroke={paint('edge')}/>
+        <path d="M0 0h166l33 33v244H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="M166 1v32h32" fill="#4d5652" stroke="#aeb7b2" stroke-opacity=".35"/>
+        <text x="24" y="74" class="label">{en ? 'Evidence' : '原文依据'}</text>
+        <path d="M25 113h148M25 137h128M25 161h140M25 219h111" class="source-trace"/>
+        <path d="M23 188h151" stroke="#b0b9b4" stroke-width="7" stroke-linecap="round" stroke-opacity=".65"/>
+      </g>
+      <path d="M287 418c144-39 254-35 423-51M403 411c93-53 193-48 303-57M490 476c78-7 126-48 220-94" class="light-path" stroke={paint('beam')} stroke-width="2.5"/>
+      <path d="M526 385c72-21 111-24 180-23" class="light-path" stroke="#cdd3d0" stroke-width="6" opacity=".48" filter={paint('glow')}/>
+      <g transform="translate(615 173) rotate(5 124 200)" filter={paint('shadow')}>
+        <path d="M9 12h230l14 14v367l-12 15H9Z" fill={paint('side')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="M0 0h205l48 48v345H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.8"/>
+        <path d="M205 1v47h47" fill="#4f5753" stroke="#c1c8c4" stroke-opacity=".45"/>
+        <text x="27" y="94" class="label">{en ? 'Research output' : '研究成果'}</text>
+        <path d="M28 131h181M28 154h154" class="source-trace"/>
+        <path d="M0 190h253v83H0Z" fill="#87968e" fill-opacity=".1"/>
+        <path d="M0 191h253M0 272h253" stroke="#aab5b0" stroke-opacity=".3" stroke-width="1.2"/>
+        <use href={icon('quote')} x="28" y="211" width="47" height="36" color="#b9c2be"/>
+        <path d="M95 223h124M95 242h105" stroke="#b8c1bc" stroke-opacity=".68" stroke-width="4" stroke-linecap="round"/>
+        <path d="M28 316h181M28 339h148M28 362h165" class="source-trace"/>
+        <path d="M0 0h204L49 393H0Z" fill={paint('veil')}/>
+      </g>
+      <circle cx="616" cy="366" r="5" fill="#d8dcda"/>
+      <circle cx="616" cy="366" r="15" fill="none" stroke="#c0c8c4" stroke-opacity=".35"/>
+    </g>
+  )}
+
+  {variant === 'review' && (
+    <g>
+      <path d="M190 249c168-23 167 139 306 130s158-75 291-29M194 531c140 7 177-123 305-152s189 113 286-28M243 393c90-60 162-32 257-15" class="light-path" stroke="#697870" stroke-opacity=".24" stroke-width="11" filter={paint('glow')}/>
+      <path d="M190 249c168-23 167 139 306 130s158-75 291-29M194 531c140 7 177-123 305-152s189 113 286-28" class="light-path" stroke={paint('beam')} stroke-width="2"/>
+      <path d="M501 379c102-12 172-42 285-28" class="light-path" stroke="#b8c1bc" stroke-opacity=".73" stroke-width="3"/>
+      <g transform="translate(185 247)" filter={paint('float')}>
+        <ellipse rx="70" ry="71" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.7"/>
+        <ellipse cx="-5" cy="-5" rx="59" ry="60" fill={paint('node')} stroke="#b7bfbb" stroke-opacity=".18"/>
+        <use href={icon('person')} x="-34" y="-46" width="68" height="82" color="#b0b9b4"/>
+      </g>
+      <text x="185" y="354" text-anchor="middle" class="label muted">{en ? 'Colleagues' : '同事协作'}</text>
+      <g transform="translate(198 528)" filter={paint('float')}>
+        <ellipse rx="66" ry="67" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.7"/>
+        <ellipse cx="-5" cy="-5" rx="55" ry="56" fill={paint('node')} stroke="#b7bfbb" stroke-opacity=".18"/>
+        <use href={icon('employee')} x="-37" y="-37" width="74" height="74" color="#a3aea8"/>
+      </g>
+      <text x="198" y="630" text-anchor="middle" class="label muted">{en ? 'Digital employee' : '数字员工'}</text>
+      <g filter={paint('shadow')}>
+        <ellipse cx="499" cy="399" rx="146" ry="109" fill="#1c1f1e" fill-opacity=".7" stroke={paint('edge')} stroke-width="1.5" transform="rotate(-19 499 399)"/>
+        <ellipse cx="499" cy="399" rx="126" ry="91" fill={paint('node')} stroke="#a1ada7" stroke-opacity=".22" transform="rotate(-19 499 399)"/>
+        <path d="M420 432c5-63 31-91 80-91s75 28 80 91l-8 30H428Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.7"/>
+        <path d="M438 432c6-47 24-67 62-67s56 20 62 67" fill={paint('blue')} fill-opacity=".7"/>
+        <circle cx="500" cy="280" r="47" fill={paint('sphere')} stroke="#d2d8d5" stroke-opacity=".8" stroke-width="1.3"/>
+        <path d="M421 432c49 25 106 25 158 0" fill="none" stroke="#c1c8c4" stroke-opacity=".5" stroke-width="1.7"/>
+      </g>
+      <text x="500" y="165" text-anchor="middle" class="headline">{en ? 'Human judgement' : '人的判断'}</text>
+      <g transform="translate(726 267) rotate(9 68 115)" filter={paint('shadow')}>
+        <path d="M-13 15H96l34 33v193H-13Z" fill={paint('deep-glass')} stroke={paint('edge')}/>
+        <path d="M0 0h109l34 34v193H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.6"/>
+        <path d="M109 1v33h33" fill="#505854" stroke="#b0bab5" stroke-opacity=".35"/>
+        <path d="M25 88h94M25 112h80M25 137h89M25 181h69" class="source-trace"/>
+        <path d="M23 159h98" stroke="#b2bcb7" stroke-opacity=".6" stroke-width="6" stroke-linecap="round"/>
+      </g>
+      <text x="794" y="568" text-anchor="middle" class="label">{en ? 'Work continues' : '继续协作'}</text>
+      <circle cx="631" cy="357" r="5" fill="#c9cfcc"/>
+      <circle cx="350" cy="419" r="4" fill="#9faba5"/>
+      <circle cx="340" cy="325" r="4" fill="#9faba5"/>
+    </g>
+  )}
+
+  {variant === 'deliverables' && (
+    <g>
+      <g opacity=".73" filter={paint('shadow')}>
+        <path d="m226 166 420-64 190 114-420 66Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.6"/>
+        <path d="m226 166 190 116v16L226 182ZM416 282l420-66v17l-420 65Z" fill={paint('side')} stroke="#6c7671" stroke-opacity=".35"/>
+        <text x="343" y="177" class="label" transform="rotate(-9 343 177)">{en ? 'Shared objective' : '工作目标'}</text>
+        <ellipse cx="665" cy="199" rx="49" ry="21" fill="none" stroke="#9ca9a2" stroke-opacity=".55" stroke-width="1.8" transform="rotate(-9 665 199)"/>
+        <ellipse cx="665" cy="199" rx="28" ry="12" fill="none" stroke="#b3bdb8" stroke-opacity=".75" stroke-width="1.8" transform="rotate(-9 665 199)"/>
+        <circle cx="665" cy="199" r="4" fill="#cbd2ce"/>
+      </g>
+      <g opacity=".88" filter={paint('shadow')}>
+        <path d="m203 268 420-64 190 114-420 66Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.6"/>
+        <path d="m203 268 190 116v16L203 284ZM393 384l420-66v17l-420 65Z" fill={paint('side')} stroke="#6c7671" stroke-opacity=".35"/>
+        <text x="320" y="279" class="label" transform="rotate(-9 320 279)">{en ? 'Source evidence' : '资料依据'}</text>
+        <use href={icon('quote')} x="604" y="275" width="54" height="41" color="#a8b3ae" transform="matrix(1 -.15 .6 .45 -175 230)"/>
+        <path d="m591 294 88-13m-68 29 89-13" stroke="#a4ada8" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <g filter={paint('shadow')}>
+        <path d="m180 370 420-64 190 114-420 66Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.6"/>
+        <path d="m180 370 190 116v16L180 386ZM370 486l420-66v17l-420 65Z" fill={paint('side')} stroke="#6c7671" stroke-opacity=".35"/>
+        <text x="297" y="381" class="label" transform="rotate(-9 297 381)">{en ? 'Colleague review' : '同事审阅'}</text>
+        <path d="m569 393 92-14m-67 29 92-14m-68 29 92-14" stroke="#acb7b2" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"/>
+        <path d="m705 353 11 6-38 32-14 3 4-10Z" fill="#a1ada7" fill-opacity=".75" stroke="#dbdfdd" stroke-opacity=".45"/>
+      </g>
+      <g filter={paint('shadow')}>
+        <path d="m157 472 420-64 190 114-420 66Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.8"/>
+        <path d="m157 472 190 116v19L157 491ZM347 588l420-66v20l-420 65Z" fill={paint('side')} stroke="#a1ada7" stroke-opacity=".45"/>
+        <path d="m157 472 420-64 96 58-420 65Z" fill={paint('veil')}/>
+        <text x="274" y="483" class="label" transform="rotate(-9 274 483)">{en ? 'Deliverable versions' : '成果版本'}</text>
+        <path d="m555 506 98-15 43 26-98 16Zm32 11 98-15m-65 27-43-26m76-12 43 26" fill="none" stroke="#96a39c" stroke-opacity=".65" stroke-width="1.6"/>
+        <path d="m698 517 40-6 15 9-40 6Z" fill="#616f68" stroke="#acb6b1" stroke-opacity=".6"/>
+      </g>
+      <path d="M741 243c115 68 77 262-36 311" class="light-path" stroke="#919e98" stroke-opacity=".14" stroke-width="14" filter={paint('glow')}/>
+      <path d="M741 243c115 68 77 262-36 311" class="light-path" stroke={paint('beam')} stroke-width="2.2"/>
+      <circle cx="800" cy="372" r="5" fill="#bec6c2"/>
+      <circle cx="786" cy="468" r="5" fill="#bec6c2"/>
+      <circle cx="705" cy="554" r="5" fill="#bec6c2"/>
+      <text x="490" y="653" text-anchor="middle" class="headline">{en ? 'A verifiable deliverable' : '可核对交付'}</text>
+    </g>
+  )}
+
+  {variant === 'clients' && (
+    <g>
+      <path d="M252 325c-37 123 74 205 224 141s254-14 334-53M353 191c-23 99 46 156 128 194M661 190c22 91-32 148-119 194M508 435v132" class="light-path" stroke="#6d7c75" stroke-opacity=".2" stroke-width="13" filter={paint('glow')}/>
+      <path d="M252 325c-37 123 74 205 224 141s254-14 334-53M353 191c-23 99 46 156 128 194M661 190c22 91-32 148-119 194M508 435v132" class="light-path" stroke={paint('beam')} stroke-width="2"/>
+      <g transform="translate(337 168)" filter={paint('float')}>
+        <circle r="52" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <use href={icon('person')} x="-25" y="-35" width="50" height="60" color="#b9c2be"/>
+      </g>
+      <text x="337" y="256" text-anchor="middle" class="label muted">{en ? 'People' : '同事'}</text>
+      <g transform="translate(660 168)" filter={paint('float')}>
+        <circle r="52" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <use href={icon('employee')} x="-31" y="-31" width="62" height="62" color="#a8b2ad"/>
+      </g>
+      <text x="660" y="256" text-anchor="middle" class="label muted">{en ? 'Digital employee' : '数字员工'}</text>
+      <g transform="translate(112 284) rotate(-8 103 88)" filter={paint('shadow')}>
+        <rect width="220" height="145" rx="12" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.7"/>
+        <rect x="12" y="12" width="196" height="119" rx="6" fill="#202221" stroke="#65706a" stroke-opacity=".4"/>
+        <path d="M-17 146h254l24 14a6 6 0 0 1-3 11H-38a6 6 0 0 1-3-11Z" fill={paint('side')} stroke={paint('edge')} stroke-width="1.4"/>
+        <path d="M100 43h21l12 12v48h-33Z" fill="#68766f" fill-opacity=".22" stroke="#b3bcb8" stroke-width="1.3"/>
+        <path d="M111 62h12M111 76h12M111 90h8" stroke="#b1bbb6" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(762 285) rotate(8 49 107)" filter={paint('shadow')}>
+        <rect width="99" height="214" rx="20" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.8"/>
+        <rect x="10" y="12" width="79" height="187" rx="13" fill="#202221" stroke="#65706a" stroke-opacity=".4"/>
+        <path d="M30 19h39" stroke="#0f1110" stroke-width="5" stroke-linecap="round"/>
+        <path d="M34 78h21l12 12v48H34Z" fill="#68766f" fill-opacity=".22" stroke="#b3bcb8" stroke-width="1.3"/>
+        <path d="M45 97h12M45 111h12M45 125h8" stroke="#b1bbb6" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(384 303) rotate(3 117 120)" filter={paint('shadow')}>
+        <path d="M10 13h181l40 40v203H10Z" fill={paint('side')} stroke={paint('edge')} stroke-width="1.4"/>
+        <path d="M0 0h191l40 40v203H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.8"/>
+        <path d="M191 1v39h39" fill="#515a56" stroke="#bbc4c0" stroke-opacity=".45"/>
+        <text x="115" y="103" text-anchor="middle" class="label">{en ? 'One shared task' : '共同事项'}</text>
+        <path d="M35 145h159M35 169h134M35 193h151" class="source-trace"/>
+        <path d="M0 0h190L85 243H0Z" fill={paint('veil')}/>
+      </g>
+      <g transform="translate(492 577)" filter={paint('float')}>
+        <path d="M-58 42h116l8 13H-66Z" fill={paint('side')} stroke={paint('edge')}/>
+        <path d="M-10 6h20v37h-20Z" fill={paint('side')} stroke={paint('edge')}/>
+        <rect x="-94" y="-67" width="188" height="115" rx="12" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.7"/>
+        <rect x="-83" y="-56" width="166" height="89" rx="5" fill="#202221" stroke="#65706a" stroke-opacity=".4"/>
+        <path d="M-16-41H6l12 12v48h-34Z" fill="#68766f" fill-opacity=".22" stroke="#b3bcb8" stroke-width="1.3"/>
+        <path d="M-5-22H8M-5-8H8M-5 6h9" stroke="#b1bbb6" stroke-opacity=".6" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <circle cx="362" cy="455" r="5" fill="#b3bcb8"/>
+      <circle cx="698" cy="444" r="5" fill="#b3bcb8"/>
+    </g>
+  )}
+
+  {variant === 'resources' && (
+    <g>
+      <g transform="translate(609 133) rotate(13 99 148)" opacity=".54" filter={paint('float')}>
+        <path d="M10 12h183v270l-12 12H10Z" fill={paint('side')} stroke={paint('edge')}/>
+        <path d="M0 0h155l38 38v244H0Z" fill={paint('deep-glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="M155 1v37h37" fill="#49524e" stroke="#a1aca6" stroke-opacity=".3"/>
+        <path d="M26 93h140M26 118h116M26 143h130M26 199h123M26 224h95" class="source-trace"/>
+      </g>
+      <g transform="translate(513 164) rotate(5 99 147)" opacity=".8" filter={paint('float')}>
+        <path d="M10 12h183v270l-12 12H10Z" fill={paint('side')} stroke={paint('edge')}/>
+        <path d="M0 0h155l38 38v244H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="M155 1v37h37" fill="#545c58" stroke="#a1aca6" stroke-opacity=".4"/>
+        <use href={icon('folio')} x="28" y="71" width="59" height="77" color="#aeb7b2"/>
+        <path d="M28 187h137M28 212h112M28 237h126" class="source-trace"/>
+      </g>
+      <g filter={paint('shadow')}>
+        <path d="M196 327q139-27 303 33 158-60 308-33l-13 254q-147-17-295 32-147-49-291-32Z" fill="#121312" stroke="#59615d" stroke-width="1.7"/>
+        <path d="M190 309q148-31 309 32 156-63 315-32l-15 251q-151-22-300 31-148-53-294-31Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.9"/>
+        <path d="M190 309q148-31 309 32v250q-148-53-294-31Z" fill={paint('veil')}/>
+        <path d="M499 343v246" stroke="#0d0f0e" stroke-width="8"/>
+        <path d="M494 344v241" stroke="#b8c1bc" stroke-opacity=".25" stroke-width="1.4"/>
+        <path d="M218 332q114-17 252 24M526 356q131-41 260-24" fill="none" stroke="#a1aca6" stroke-opacity=".27" stroke-width="1.4"/>
+        <text x="244" y="403" class="headline">{en ? 'Guides' : '操作手册'}</text>
+        <text x="552" y="403" class="headline">{en ? 'Reference' : '功能参考'}</text>
+        <path d="M244 445q110-7 204 17M244 473q104-7 204 17M244 501q92-7 167 11" fill="none" stroke="#959e9a" stroke-opacity=".48" stroke-width="4" stroke-linecap="round"/>
+        <path d="M553 461q104-24 202-17M553 489q103-24 202-17M553 517q85-21 162-18" fill="none" stroke="#959e9a" stroke-opacity=".48" stroke-width="4" stroke-linecap="round"/>
+        <path d="M767 310v83l-18-12-18 12v-76" fill={paint('blue')} stroke="#bfc6c2" stroke-opacity=".55" stroke-width="1.2"/>
+        <path d="M211 575q141-17 288 37 151-54 290-37" fill="none" stroke="#acb5b0" stroke-opacity=".35" stroke-width="1.5"/>
+      </g>
+      <g transform="translate(239 246) rotate(-18)" filter={paint('float')}>
+        <path d="M36 36 80 80" stroke={paint('side')} stroke-width="20" stroke-linecap="round"/>
+        <path d="M36 36 80 80" stroke="#97a39d" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+        <circle r="60" fill="#434a46" fill-opacity=".13" stroke={paint('edge')} stroke-width="9"/>
+        <circle r="50" fill={paint('node')} stroke="#b0bab5" stroke-opacity=".23" stroke-width="1.3"/>
+        <path d="M-28-15H28M-28 4h48M-28 23H9" stroke="#acb6b1" stroke-opacity=".64" stroke-width="3" stroke-linecap="round"/>
+        <path d="M-32-33a46 46 0 0 1 64 0" fill="none" stroke="#dbe0de" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+  )}
+
+  {variant === 'journal' && (
+    <g>
+      <path d="M331 426c90-124 196-138 288-36s111 91 180 109" class="light-path" stroke="#88968f" stroke-opacity=".24" stroke-width="13" filter={paint('glow')}/>
+      <path d="M331 426c90-124 196-138 288-36s111 91 180 109" class="light-path" stroke={paint('beam')} stroke-width="2.2"/>
+      <g transform="translate(155 173) rotate(-8 145 201)" filter={paint('shadow')}>
+        <path d="M11 13h267l18 17v364l-13 16H11Z" fill={paint('side')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="M0 0h246l50 50v344H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.8"/>
+        <path d="M246 1v49h49" fill="#515a56" stroke="#b4bdb8" stroke-opacity=".45"/>
+        <text x="29" y="95" class="headline">{en ? 'Role practice' : '岗位实践'}</text>
+        <path d="M30 135h229M30 161h201" class="source-trace"/>
+        <path d="M68 202h109M68 224h89" stroke="#acb7b2" stroke-opacity=".57" stroke-width="4" stroke-linecap="round"/>
+        <path d="M43 211c-8-34 57-54 119-35 55 17 63 56 23 74-41 18-133 9-148-20m155-42 39-18m-12 0h14v14" fill="none" stroke="#b1bab5" stroke-opacity=".71" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M30 282h225M30 308h179M30 334h207" class="source-trace"/>
+        <path d="M0 0h245L81 394H0Z" fill={paint('veil')}/>
+      </g>
+      <g filter={paint('shadow')}>
+        <path d="m513 271 111-46 126 72-111 49Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="m513 271 126 75v16l-126-75Zm126 75 111-49v16l-111 49Z" fill={paint('side')} stroke="#95a19b" stroke-opacity=".4"/>
+        <path d="m502 324 111-46 126 72-111 49Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="m502 324 126 75v16l-126-75Zm126 75 111-49v16l-111 49Z" fill={paint('side')} stroke="#95a19b" stroke-opacity=".4"/>
+        <path d="m491 377 111-46 126 72-111 49Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="m491 377 126 75v16l-126-75Zm126 75 111-49v16l-111 49Z" fill={paint('side')} stroke="#95a19b" stroke-opacity=".4"/>
+        <path d="m480 430 111-46 126 72-111 49Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.5"/>
+        <path d="m480 430 126 75v16l-126-75Zm126 75 111-49v16l-111 49Z" fill={paint('side')} stroke="#95a19b" stroke-opacity=".4"/>
+        <path d="m617 281 33 19-28 12-34-19Z" fill="#bac3be" fill-opacity=".6"/>
+        <path d="m606 334 33 19-28 12-34-19Zm-11 53 33 19-28 12-34-19Zm-11 53 33 19-28 12-34-19Z" fill="#a4afaa" fill-opacity=".28"/>
+      </g>
+      <text x="617" y="175" text-anchor="middle" class="label muted">{en ? 'Refine' : '提炼沉淀'}</text>
+      <g transform="translate(701 410) rotate(8 86 108)" filter={paint('shadow')}>
+        <path d="M-11 16h164l24 23v194H-11Z" fill={paint('side')} stroke={paint('edge')} stroke-width="1.3"/>
+        <path d="M0 0h153l24 24v193H0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.6"/>
+        <path d="M153 1v23h23" fill="#4e5652" stroke="#aeb7b2" stroke-opacity=".35"/>
+        <text x="24" y="74" class="label">{en ? 'Methods' : '复用方法'}</text>
+        <path d="M25 113h128M25 137h105M25 161h118" class="source-trace"/>
+        <path d="M25 189h78" stroke="#acb6b1" stroke-width="5" stroke-opacity=".55" stroke-linecap="round"/>
+      </g>
+      <circle cx="472" cy="346" r="5" fill="#bbc3bf"/>
+      <circle cx="678" cy="459" r="5" fill="#bbc3bf"/>
+    </g>
+  )}
+</svg>
+
+<style>
+  .business-art {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    font-family: var(--font-sans, 'Plus Jakarta Sans Variable', 'PingFang SC', 'Microsoft YaHei', sans-serif);
+    text-rendering: optimizeLegibility;
+  }
+  .business-art text { fill: #e2e6e4; font-weight: 550; }
+  .business-art .headline { font-size: 33px; font-weight: 600; letter-spacing: -.6px; }
+  .business-art .label { font-size: 27px; font-weight: 550; letter-spacing: -.3px; }
+  .business-art .muted { fill: #a5ada9; }
+  .business-art .source-trace { fill: none; stroke: #919a96; stroke-opacity: .43; stroke-width: 4; stroke-linecap: round; }
+  .business-art .light-path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+</style>

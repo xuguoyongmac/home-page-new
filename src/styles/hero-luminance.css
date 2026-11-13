@@ -1,0 +1,57 @@
+/* At the top, the hero continues behind navigation without moving its content. */
+.header-scroll-marker{position:absolute;top:24px;left:0;width:1px;height:1px;pointer-events:none;visibility:hidden}
+.is-home .site-header{margin-bottom:-80px;background:transparent;box-shadow:none;backdrop-filter:none;transition:background-color .2s ease}
+.is-home .site-header[data-scrolled='true'],.is-home .site-header:has(.mobile-nav.is-open){background:#060e18f7}
+.is-home .home-value-edition .sl-hero{padding-top:80px}
+@media(max-width:700px){.is-home .site-header{margin-bottom:-72px}.is-home .home-value-edition .sl-hero{padding-top:72px}}
+/* Separate the navy shell, luminous blue surfaces and bright data marks. */
+.hero-team-composition .team-window{background:#081a2e;box-shadow:inset 0 0 0 1.25px #76b9ee6b,2px 2px 0 #34688ca6,4px 4px 0 #102e48,12px 16px 24px #02091670,24px 35px 55px -18px #00060fb3,0 0 60px #008cff1f}
+.hero-team-composition .team-window-bar{background:linear-gradient(110deg,#244f75,#15354f);color:#bfdcf1}
+.hero-team-composition .team-app-mark{color:#fff}
+.hero-team-composition .team-app-mark svg,.hero-team-composition .team-rail-brand{color:#6dceff}
+.hero-team-composition .team-content{background:radial-gradient(ellipse at 40% 0,#048ee51a,transparent 64%),#0b2239}
+.hero-team-composition .team-rail{background:linear-gradient(180deg,#091b30,#061626)}
+.hero-team-composition .team-rail-item{color:#93bddc}
+.hero-team-composition .team-rail-item.is-current{color:#a1e2ff;background:#0878c447;box-shadow:inset 0 0 0 1px #54bdff5c}
+.hero-team-composition .team-heading>strong{color:#f4fbff}
+.hero-team-composition .team-heading>span{color:#a5c8e3}
+.hero-team-composition .team-employees>button{background:linear-gradient(140deg,#21486a,#173956);border-color:#76b9ef3d;color:#ddecfa}
+.hero-team-composition .team-employees>button[aria-selected='true']{background:linear-gradient(115deg,#087fc3,#075b96);border-color:#57c9ffb3;color:#fff;box-shadow:inset 0 0 0 1px #75dcff1f,0 4px 13px #00122b4d}
+.hero-team-composition .team-employee-icon{color:#94cfff}
+.hero-team-composition .team-employees small{color:#a0c6e5}
+.hero-team-composition .team-employees>[aria-selected='true'] small{color:#caefff}
+.hero-team-composition .team-employees>[aria-selected='true'] .team-employee-icon{color:#b6f0ff;filter:none}
+.hero-team-composition .business-dashboard{--chart-sage:#16b8ff;--chart-gold:#5be3d5;--chart-slate:#a99bff;color:#e6f4ff}
+.hero-team-composition .analytics-heading>span{color:#a4c3dc}
+.hero-team-composition .analytics-metrics>div{background:linear-gradient(135deg,#1b4569,#133553);border-color:#6dbdff42}
+.hero-team-composition .analytics-metrics>div>span{color:#bad8ef}
+.hero-team-composition .analytics-metrics>div>span svg{color:#7cd1ff}
+.hero-team-composition .analytics-metrics strong{color:#fff}
+.hero-team-composition .analytics-metrics strong small{color:#b4d3ea}
+.hero-team-composition .analytics-metrics em{color:#72dcff}
+.hero-team-composition .analytics-panel{background:linear-gradient(140deg,#143954,#102d46);border-color:#67adeb36}
+.home-value-edition .hero-team-composition .analytics-panel-heading h3{color:#e2f3ff}
+.hero-team-composition .analytics-panel-heading>span,.hero-team-composition .analytics-panel-heading>svg{color:#a3c9e7}
+.hero-team-composition .analytics-legend{color:#b9d9ee}
+.hero-team-composition .analytics-panel svg text{fill:#a5c9e2}
+.hero-team-composition .chart-grid{stroke:#96c8ed29}
+.hero-team-composition .chart-dot{fill:#dbf7ff;stroke:#16b8ff}
+.hero-team-composition .analytics-panel .donut-value{fill:#fff}
+.hero-team-composition .analytics-panel .donut-caption{fill:#b0d2eb}
+.hero-team-composition .analytics-mix-legend>div{color:#bad7ed}
+.hero-team-composition .analytics-mix-legend strong{color:#edf9ff}
+.hero-team-composition .order-bar,.hero-team-composition .order-bar:nth-of-type(2n){fill:#179fef}
+.hero-team-composition .order-bar.order-bar-current{fill:#70daff}
+.hero-team-composition .analytics-drivers>div>span{color:#b4d6ee}
+.hero-team-composition .driver-track{background:#83c6f229}
+.hero-team-composition .driver-bar{background:linear-gradient(90deg,#078ee8,#52d2ff)}
+.hero-team-composition .driver-bar.driver-negative{background:linear-gradient(90deg,#b28f77,#f1bf95)}
+.hero-team-composition .analytics-drivers strong{color:#93e3ff}
+.hero-team-composition .analytics-drivers .driver-value-negative{color:#f2c9a8}
+.hero-team-composition .analytics-driver-period{color:#a4c6e1}
+.hero-team-composition .analytics-insights{background:linear-gradient(110deg,#105a89,#123d61);border-color:#39b6f280;box-shadow:none}
+.hero-team-composition .analytics-insight-heading>span{color:#c7eeff}
+.hero-team-composition .analytics-insight-heading>span:last-child{color:#aed3ed}
+.hero-team-composition .analytics-insights p{color:#e1f3ff}
+.hero-team-composition .analytics-insights p>strong{color:#7addff}
+@media(prefers-reduced-motion:reduce){.is-home .site-header{transition:none}}

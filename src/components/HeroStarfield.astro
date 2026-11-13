@@ -1,0 +1,22 @@
+---
+import silk from '../assets/ocean-silk-critical_V1.0.webp?inline';
+// Static field renders with HTML. Only the small foreground stars breathe.
+const stars = Array.from({ length: 72 }, (_, i) => ({
+  x: 12 + ((i * 397 + i * i * 13) % 1416),
+  y: 9 + ((i * 173 + i * i * 7) % 782),
+  radius: i % 23 === 0 ? 1.05 : i % 5 === 0 ? .7 : .4,
+  opacity: i % 23 === 0 ? .7 : i % 5 === 0 ? .45 : .24,
+}));
+const nearStars = [
+ [8,18],[24,9],[43,7],[70,8],[95,15],[4,43],
+ [97,45],[7,86],[25,79],[48,82],[78,87],[91,94],
+].map(([x,y],i)=>({x,y,size:8,delay:-(i*1.73),duration:7.8+(i%7)*.85,warm:false,flare:false}));
+---
+<div class="hero-starfield hero-deep-space" aria-hidden="true">
+ <img class="hero-space-texture" src={silk} width="1672" height="941" alt="" loading="eager" decoding="sync"/>
+ <div class="hero-nebula"></div>
+ <svg viewBox="0 0 1440 800" preserveAspectRatio="none" fill="none">
+  <g class="hero-far-stars">{stars.map(star=><circle cx={star.x} cy={star.y} r={star.radius} style={`opacity:${star.opacity}`}/>)}</g>
+ </svg>
+ {nearStars.map(star=><span class:list={['hero-star',{'is-warm':star.warm,'has-flare':star.flare}]} style={`left:${star.x}%;top:${star.y}%;--star-size:${star.size}px;--star-delay:${star.delay}s;--star-duration:${star.duration}s`}></span>)}
+</div>

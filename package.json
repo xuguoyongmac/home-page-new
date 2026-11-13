@@ -1,0 +1,29 @@
+{
+  "name": "tego-corporate-website",
+  "version": "1.46.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/clear-preview-port.mjs",
+    "dev": "astro dev --host 127.0.0.1 --port 4350",
+    "check": "astro check",
+    "build": "astro build && node scripts/prepare-publish.mjs",
+    "prepreview": "node scripts/clear-preview-port.mjs",
+    "preview": "astro preview --host 127.0.0.1 --port 4350",
+    "verify": "node scripts/verify-site.mjs"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "0.4.8",
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource-variable/plus-jakarta-sans": "5.3.0",
+    "astro": "7.4.10",
+    "mermaid": "12.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "typescript": "^5.9.3"
+  }
+}

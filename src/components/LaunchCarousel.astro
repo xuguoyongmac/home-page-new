@@ -1,0 +1,114 @@
+---
+import type { Locale } from '../data/types';
+import { brand } from '../data/brand';
+import { appFor, pathFor } from '../lib/site';
+import Icon from './Icon.astro';
+import ProductArt from './ProductArt.astro';
+import HeroWorkArt from './HeroWorkArt.astro';
+const { locale } = Astro.props as { locale: Locale };
+const zh = locale === 'zh';
+const slides = zh ? [
+  { key: 'collaboration', label: '数字员工协作', category: brand.zh.name, title: brand.zh.headline[0], accent: brand.zh.headline[1], description: '面向金融等强监管行业，让人与数字员工围绕项目协同，交付可核对的成果。', primary: '开启协作', href: appFor(locale), secondary: '探索产品能力', target: pathFor(locale, 'product') },
+  { key: 'ecosystem', label: '开放能力生态', category: 'TEGO STUDIO · OPEN ECOSYSTEM', title: '连接你的业务，', accent: '拓展工作能力。', description: '沉淀岗位技能，连接业务系统，让能力进入具体工作。', primary: '探索开放生态', href: pathFor(locale, 'ecosystem'), secondary: '了解开发与集成', target: pathFor(locale, 'ecosystem') + '#integrations' },
+  { key: 'enterprise', label: '企业级部署', category: 'TEGO · BUILT FOR ENTERPRISE', title: '在企业边界内，', accent: '组织团队协同。', description: '云端使用或私有化部署，适配企业网络、模型与权限要求。', primary: '了解企业部署', href: pathFor(locale, 'enterprise'), secondary: '沟通部署需求', target: pathFor(locale, 'contact') },
+] : [
+  { key: 'collaboration', label: 'Workforce', category: 'TEGO · DIGITAL WORKFORCE COLLABORATION', title: brand.en.headline[0], accent: brand.en.headline[1], description: 'People and digital employees, working toward verifiable outcomes. Built for financial services and other regulated industries.', primary: 'Start working together', href: appFor(locale), secondary: 'Explore the platform', target: pathFor(locale, 'product') },
+  { key: 'ecosystem', label: 'Ecosystem', category: 'TEGO STUDIO · OPEN ECOSYSTEM', title: 'Your business.', accent: 'More connected.', description: 'Turn working methods into skills. Connect your systems and bring capabilities into the work.', primary: 'Explore the ecosystem', href: pathFor(locale, 'ecosystem'), secondary: 'Development & integrations', target: pathFor(locale, 'ecosystem') + '#integrations' },
+  { key: 'enterprise', label: 'Enterprise', category: 'TEGO · BUILT FOR ENTERPRISE', title: 'Teamwork,', accent: 'within your boundaries.', description: 'Cloud or private deployment, aligned with your network, models and access requirements.', primary: 'Explore enterprise', href: pathFor(locale, 'enterprise'), secondary: 'Discuss deployment', target: pathFor(locale, 'contact') },
+];
+---
+<section class="launch-carousel" aria-label={zh ? 'TeGo 产品焦点' : 'TeGo product highlights'} aria-roledescription="carousel" data-launch-carousel data-paused="false" data-pause-label={zh ? '暂停自动切换' : 'Pause automatic rotation'} data-play-label={zh ? '开始自动切换' : 'Start automatic rotation'}>
+  <ul class="launch-track" tabindex="0" aria-label={zh ? '横向浏览产品焦点' : 'Browse product highlights horizontally'}>
+    {slides.map((slide, index) => <li class="launch-slide" id={`launch-${slide.key}`} role="group" aria-roledescription="slide" aria-label={slide.label} aria-hidden={index === 0 ? 'false' : 'true'} inert={index !== 0} data-active={index === 0 ? 'true' : 'false'}>
+      {slide.key === 'collaboration' ? <HeroWorkArt locale={locale}/> : <ProductArt locale={locale} variant={slide.key as 'ecosystem' | 'enterprise'} idPrefix={`launch-${slide.key}-art`} class="launch-product-art"/>}
+      <div class="launch-shade" aria-hidden="true"></div>
+      <div class="container launch-slide-inner">
+        <div class="launch-copy">
+          <p class="launch-kicker"><span></span>{slide.category}</p>
+          {index === 0 ? <h1>{slide.title}<br/><span>{slide.accent}</span></h1> : <h2>{slide.title}<br/><span>{slide.accent}</span></h2>}
+          <p class="launch-description">{slide.description}</p>
+          <div class="launch-actions"><a class="button launch-primary" href={slide.href}>{slide.primary}<Icon name="arrow" size={19}/></a><a class="text-link" href={slide.target}>{slide.secondary}<Icon name="arrow" size={18}/></a></div>
+        </div>
+      </div>
+    </li>)}
+  </ul>
+  <div class="container launch-navigation">
+    <div class="launch-selectors" aria-label={zh ? '选择产品焦点' : 'Choose a product highlight'}>
+      {slides.map((slide,index) => <button type="button" data-launch-select={index} aria-pressed={index === 0 ? 'true' : 'false'} aria-controls={`launch-${slide.key}`}><span class="launch-nav-label">{slide.label}</span><span class="launch-nav-progress" aria-hidden="true"></span></button>)}
+    </div>
+    <div class="launch-controls">
+      <button class="launch-control" data-launch-previous aria-label={zh ? '上一个产品焦点' : 'Previous highlight'}><Icon name="arrow" class="launch-previous-icon" size={19}/></button>
+      <button class="launch-control launch-pause" data-launch-pause aria-label={zh ? '暂停自动切换' : 'Pause automatic rotation'}><svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path class="launch-pause-symbol" d="M5 4h3v12H5zM12 4h3v12h-3z"/><path class="launch-play-symbol" d="m6 3 11 7-11 7z"/></svg></button>
+      <button class="launch-control" data-launch-next aria-label={zh ? '下一个产品焦点' : 'Next highlight'}><Icon name="arrow" size={19}/></button>
+    </div>
+  </div>
+  <p class="sr-only" aria-live="polite" aria-atomic="true" data-launch-status></p>
+</section>
+<script>
+  const carousel = document.querySelector<HTMLElement>('[data-launch-carousel]');
+  if (carousel) {
+    const track = carousel.querySelector<HTMLElement>('.launch-track')!;
+    const slides = [...carousel.querySelectorAll<HTMLElement>('.launch-slide')];
+    const selectors = [...carousel.querySelectorAll<HTMLButtonElement>('[data-launch-select]')];
+    const pause = carousel.querySelector<HTMLButtonElement>('[data-launch-pause]')!;
+    const status = carousel.querySelector<HTMLElement>('[data-launch-status]')!;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let active = 0;
+    let userPaused = reducedMotion.matches;
+    let hovered = false;
+    let timer: number | undefined;
+    let scrollFrame = 0;
+    const stopTimer = () => { window.clearTimeout(timer); timer = undefined; };
+    const schedule = () => {
+      stopTimer();
+      const running = !userPaused && !hovered && !document.hidden;
+      carousel.dataset.rotating = String(running);
+      if (running) timer = window.setTimeout(() => moveTo((active + 1) % slides.length), 8500);
+    };
+    const setPaused = (value: boolean) => {
+      userPaused = value;
+      carousel.dataset.paused = String(value);
+      pause.setAttribute('aria-label', value ? carousel.dataset.playLabel! : carousel.dataset.pauseLabel!);
+      schedule();
+    };
+    const reflect = (index: number, announce = false) => {
+      active = index;
+      slides.forEach((slide,i) => { const selected = i === index; slide.inert = !selected; slide.dataset.active = String(selected); slide.setAttribute('aria-hidden', String(!selected)); });
+      selectors.forEach((button,i) => button.setAttribute('aria-pressed', String(i === index)));
+      if (announce) status.textContent = slides[index].getAttribute('aria-label') || '';
+    };
+    const moveTo = (index: number, manual = false) => {
+      if (manual) setPaused(true);
+      reflect(index, manual);
+      track.scrollTo({ left: index * track.clientWidth, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+      schedule();
+    };
+    selectors.forEach((button,index) => button.addEventListener('click', () => moveTo(index, true)));
+    carousel.querySelector('[data-launch-previous]')?.addEventListener('click', () => moveTo((active - 1 + slides.length) % slides.length, true));
+    carousel.querySelector('[data-launch-next]')?.addEventListener('click', () => moveTo((active + 1) % slides.length, true));
+    pause.addEventListener('click', () => setPaused(!userPaused));
+    carousel.addEventListener('mouseenter', () => { hovered = true; schedule(); });
+    carousel.addEventListener('mouseleave', () => { hovered = false; schedule(); });
+    carousel.addEventListener('focusin', event => { if (event.target !== pause) setPaused(true); });
+    track.addEventListener('pointerdown', () => setPaused(true));
+    track.addEventListener('wheel', event => { if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) setPaused(true); }, { passive: true });
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => { const index = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / track.clientWidth))); if (index !== active) reflect(index); });
+    }, { passive: true });
+    carousel.addEventListener('keydown', event => {
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+      let index: number;
+      if (event.key === 'ArrowRight') index = (active + 1) % slides.length;
+      else if (event.key === 'ArrowLeft') index = (active - 1 + slides.length) % slides.length;
+      else if (event.key === 'Home') index = 0;
+      else if (event.key === 'End') index = slides.length - 1;
+      else return;
+      event.preventDefault(); moveTo(index, true);
+    });
+    new ResizeObserver(() => track.scrollTo({left: active * track.clientWidth, behavior: 'instant'})).observe(track);
+    document.addEventListener('visibilitychange', schedule);
+    reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) setPaused(true); else schedule(); });
+    setPaused(userPaused);
+  }
+</script>

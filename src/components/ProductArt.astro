@@ -1,0 +1,40 @@
+---
+import type { Locale } from '../data/types';
+import { artworkFor, type ProductScene } from '../data/artwork';
+import CollaborationFlow from './CollaborationFlow.astro';
+import KnowledgeFlow from './KnowledgeFlow.astro';
+export type { ProductScene } from '../data/artwork';
+
+interface Props {
+  variant: ProductScene;
+  locale: Locale;
+  idPrefix: string;
+  class?: string;
+}
+
+const { variant, locale, idPrefix, class: className } = Astro.props;
+const art = artworkFor(variant);
+const decorative = idPrefix.startsWith('closing-');
+const launch = idPrefix.startsWith('launch-');
+const pageHero = idPrefix.startsWith('page-');
+const source = `/artwork/sculpted-${variant}_V1.0.webp`;
+---
+{variant === 'collaboration' ? <CollaborationFlow locale={locale} launch={launch} pageHero={pageHero} decorative={decorative} class={className}/> : variant === 'knowledge' ? <KnowledgeFlow locale={locale} launch={launch} pageHero={pageHero} decorative={decorative} class={className}/> : <div
+  class:list={['product-art', 'raster-artwork', `product-art-${variant}`, className]}
+  data-product-scene={variant}
+  data-art-kind="raster-concept"
+  aria-hidden={decorative ? 'true' : undefined}
+>
+  <picture>
+    <source srcset={source} type="image/webp" />
+    <img
+      src={source}
+      width="1536"
+      height="1024"
+      alt={decorative ? '' : art.alt[locale]}
+      loading={launch || pageHero ? 'eager' : 'lazy'}
+      fetchpriority={pageHero ? 'high' : undefined}
+      decoding="async"
+    />
+  </picture>
+</div>}

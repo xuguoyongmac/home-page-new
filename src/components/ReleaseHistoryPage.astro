@@ -1,0 +1,254 @@
+---
+import Icon from './Icon.astro';
+import releaseIndex from '../../public/releases/index.json';
+import { releaseArchive } from '../data/legacy';
+import { pathFor, site } from '../lib/site';
+import type { Locale } from '../data/types';
+import PageHeroArt from './PageHeroArt.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const defaultVersion = releaseArchive.defaultVersion;
+const products: Record<string, string> = zh
+  ? { desktop: 'TeGo OS 桌面端', mobile: 'TeGo OS 移动端', studio: 'Tego Studio', avatar: 'TeGo OS 服务端', workflow: '工作流服务' }
+  : { desktop: 'TeGo OS Desktop', mobile: 'TeGo OS Mobile', studio: 'Tego Studio', avatar: 'TeGo OS Server', workflow: 'Workflow service' };
+const manifestLabel = (file: (typeof releaseIndex.files)[number]) => [products[file.product] || file.product, file.source.includes('service-images') ? (zh ? '服务镜像包' : 'Service images') : file.source.includes('/compose/') ? 'Compose' : '', file.arch || ''].filter(Boolean).join(' · ');
+const defaultFiles = releaseIndex.files.filter(file => file.version === defaultVersion);
+const config = { versions: releaseIndex.versions, files: releaseIndex.files.map(({ path, version, product, arch }) => ({ path, version, product, arch })), defaultVersion };
+---
+<section class="page-hero inner-page-hero inner-support-hero">
+  <PageHeroArt variant="enterprise" compact/>
+  <div class="container inner-hero-content"><div class="inner-hero-copy">
+    <p class="eyebrow">RELEASES</p>
+    <h1>{zh ? '历史版本与部署包' : 'Previous releases and deployment packages'}</h1>
+    <p>{zh ? '按版本查找客户端、服务部署包与校验文件。' : 'Find client packages, server bundles, and checksum files by release.'}</p>
+    <div class="hero-actions"><a class="text-link" href={pathFor(locale, 'download')}>{zh ? '查看当前客户端下载' : 'Current client downloads'}<Icon name="arrow" size={18}/></a><a class="text-link" href={`${site.docs}requirements/`}>{zh ? '部署要求' : 'Deployment requirements'}<Icon name="external" size={16}/></a></div>
+  </div></div>
+</section>
+<section class="container release-history inner-releases" data-release-config={JSON.stringify(config)} data-locale={locale} aria-label={zh ? '版本选择' : 'Release selection'}>
+  <div class="release-controls field-pair">
+    <div class="field"><label for="release-version">{zh ? '发布版本' : 'Release version'}</label><select id="release-version" aria-controls="release-items">{releaseIndex.versions.map(version => <option value={version} selected={version === defaultVersion}>{version}</option>)}</select></div>
+    <div class="field"><label for="release-manifest">{zh ? '产品与部署包' : 'Product and package'}</label><select id="release-manifest" aria-controls="release-items">{defaultFiles.map(file => <option value={file.path}>{manifestLabel(file)}</option>)}</select></div>
+  </div>
+  <p class="release-sync">{zh ? '发布清单同步于2026-11-12' : 'Release index synced on 2026-11-12'}</p>
+  <p class="release-notice" id="release-version-notice" hidden></p>
+  <div class="release-status-row"><p id="release-status" role="status" aria-live="polite">{zh ? '正在读取所选版本的安装包。' : 'Retrieving packages for the selected release.'}</p><button id="release-retry" class="filter-button" type="button" hidden>{zh ? '重试' : 'Retry'}</button></div>
+  <div class="download-grid release-items" id="release-items" aria-busy="true"></div>
+  <div class="download-footer release-links"><a id="release-manifest-link" class="text-link" href={defaultFiles[0]?.path || releaseArchive.indexUrl} download>{zh ? '下载所选发布清单' : 'Download selected manifest'}<Icon name="download" size={16}/></a><a class="text-link" href={releaseArchive.indexUrl} download="tego-release-index.json">{zh ? '下载全部版本索引' : 'Download complete release index'}<Icon name="download" size={16}/></a></div>
+  <noscript><p class="release-notice">{zh ? '启用浏览器 JavaScript 后可选择历史版本和安装包；也可下载版本索引。' : 'Enable JavaScript to select releases and packages, or download the release index.'}</p></noscript>
+</section>
+<style>
+  .release-history{padding-bottom:90px}.release-controls{max-width:850px;gap:24px}.release-controls select{min-width:0}.release-sync{font-size:11px;color:var(--muted);margin-top:18px}.release-notice{font-size:13px;color:var(--muted);line-height:1.8;margin-top:17px}.release-notice[hidden]{display:none}.release-status-row{display:flex;align-items:center;gap:18px;min-height:65px;margin:17px 0}.release-status-row p{font-size:13px;color:var(--muted);line-height:1.8}.release-status-row button[hidden]{display:none}.release-links{display:flex;gap:25px;flex-wrap:wrap}.release-links .text-link{font-size:12px}.release-links a[hidden]{display:none}.release-items :global(.download-card){min-width:0;display:flex;flex-direction:column}.release-items :global(.download-card h2){font-size:20px;margin:0 0 12px;overflow-wrap:anywhere}.release-items :global(.release-package-context){font-size:12px;margin-bottom:15px}.release-items :global(.release-package-meta){margin-top:12px;font-size:11px;overflow-wrap:anywhere}.release-items :global(.download-version){align-self:flex-start;margin-top:0}.release-items :global(.release-package-actions){display:flex;flex-direction:column;gap:15px;margin-top:auto;padding-top:22px}.release-items :global(.release-package-actions .button){margin-top:0}.release-items :global(.release-package-actions .text-link){font-size:11px}.release-items :global(.release-checksum){margin-top:20px}.release-items :global(.release-checksum label){font-size:11px}.release-items :global(.release-checksum textarea){font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;min-height:65px;padding:11px;overflow-wrap:anywhere;word-break:break-all}.release-items :global(.release-checksum button){font-size:11px;margin-top:10px;min-height:35px;padding:7px 12px}.release-items :global(.release-copy-status){font-size:11px;line-height:1.8;margin-top:8px}.release-items :global(.release-image-value){font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;word-break:break-all;font-size:12px;min-height:78px;line-height:1.8}.release-items :global(.release-image-title){font-size:12px;overflow-wrap:anywhere;margin-bottom:12px}@media(max-width:800px){.release-controls{grid-template-columns:1fr;gap:20px}.release-history{padding-bottom:65px}}@media(max-width:480px){.release-status-row{align-items:flex-start;flex-direction:column;gap:10px;padding-block:10px}.release-links{gap:20px}}
+</style>
+<script>
+  interface ManifestFile { path: string; version: string; product: string; arch: string | null; }
+  interface ReleaseConfig { versions: string[]; files: ManifestFile[]; defaultVersion: string; }
+  type Manifest = Record<string, unknown>;
+  const historyRoot = document.querySelector<HTMLElement>('[data-release-config]');
+  const versionSelect = document.querySelector<HTMLSelectElement>('#release-version');
+  const manifestSelect = document.querySelector<HTMLSelectElement>('#release-manifest');
+  const items = document.querySelector<HTMLElement>('#release-items');
+  const releaseStatus = document.querySelector<HTMLElement>('#release-status');
+  const versionNotice = document.querySelector<HTMLElement>('#release-version-notice');
+  const retry = document.querySelector<HTMLButtonElement>('#release-retry');
+  const manifestLink = document.querySelector<HTMLAnchorElement>('#release-manifest-link');
+  if (historyRoot && versionSelect && manifestSelect && items && releaseStatus && versionNotice && retry && manifestLink) {
+    const chinese = historyRoot.dataset.locale === 'zh';
+    const config = JSON.parse(historyRoot.dataset.releaseConfig || '{}') as ReleaseConfig;
+    const productLabels: Record<string, string> = chinese
+      ? { desktop: 'TeGo OS 桌面端', mobile: 'TeGo OS 移动端', studio: 'Tego Studio', avatar: 'TeGo OS 服务端', workflow: '工作流服务' }
+      : { desktop: 'TeGo OS Desktop', mobile: 'TeGo OS Mobile', studio: 'Tego Studio', avatar: 'TeGo OS Server', workflow: 'Workflow service' };
+    const platformLabels: Record<string, string> = { windows: 'Windows', macos: 'macOS', linux: 'Linux', kylin: chinese ? '银河麒麟' : 'Kylin', android: 'Android', ios: 'iOS' };
+    const formatLabels: Record<string, string> = { dmg: 'DMG', exe: 'EXE', apk: 'APK', deb: 'DEB', zip: 'ZIP', tar: 'TAR', 'tar.gz': 'TAR.GZ', flatpak: 'Flatpak', testflight: 'TestFlight', AppImage: 'AppImage' };
+    let controller: AbortController | undefined;
+    const record = (value: unknown): value is Manifest => typeof value === 'object' && value !== null && !Array.isArray(value);
+    const text = (value: unknown) => typeof value === 'string' ? value : '';
+    const allowedDownload = (value: unknown) => {
+      if (typeof value !== 'string') return null;
+      try {
+        const url = new URL(value);
+        return url.protocol === 'https:' && ['cdn.zhama.com.cn', 'testflight.apple.com'].includes(url.hostname) && !url.username && !url.password && (!url.port || url.port === '443') ? value : null;
+      } catch { return null; }
+    };
+    const make = <K extends keyof HTMLElementTagNameMap>(tag: K, value = '', className = '') => {
+      const element = document.createElement(tag);
+      element.textContent = value;
+      if (className) element.className = className;
+      return element;
+    };
+    const friendlyDate = (value: unknown) => {
+      if (typeof value !== 'string') return '';
+      const parsed = new Date(value);
+      if (Number.isNaN(parsed.getTime())) return '';
+      return new Intl.DateTimeFormat(chinese ? 'zh-CN' : 'en-GB', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).format(parsed) + (chinese ? ' · 北京时间' : ' · UTC+8');
+    };
+    const formatSize = (value: unknown) => {
+      if (typeof value !== 'number' || !Number.isFinite(value) || value < 0) return '';
+      if (value < 1024) return `${value} B`;
+      const units = ['KiB', 'MiB', 'GiB', 'TiB'];
+      let size = value / 1024;
+      let unit = 0;
+      while (size >= 1024 && unit < units.length - 1) { size /= 1024; unit += 1; }
+      return `${size.toLocaleString(chinese ? 'zh-CN' : 'en', { maximumFractionDigits: 2 })} ${units[unit]}`;
+    };
+    const link = (label: string, href: string, className = 'text-link') => {
+      const element = make('a', label, className);
+      element.href = href;
+      return element;
+    };
+    const addCopy = (card: HTMLElement, label: string, value: string) => {
+      const group = make('div', '', 'field release-checksum');
+      const input = make('textarea');
+      input.readOnly = true;
+      input.rows = 2;
+      input.value = value;
+      input.setAttribute('aria-label', label);
+      const button = make('button', `${chinese ? '复制' : 'Copy'} ${label}`, 'filter-button');
+      button.type = 'button';
+      const message = make('p', '', 'release-copy-status');
+      message.setAttribute('role', 'status');
+      button.addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(value);
+          message.textContent = chinese ? '已复制。' : 'Copied.';
+        } catch {
+          input.focus(); input.select(); input.setSelectionRange(0, input.value.length);
+          message.textContent = chinese ? '无法写入剪贴板，内容已选中，请手动复制。' : 'Clipboard access was blocked. Copy the selected text manually.';
+        }
+      });
+      group.append(input, button, message);
+      card.append(group);
+    };
+    const cardFor = (title: string, context: string, version: string, releasedAt: unknown) => {
+      const card = make('article', '', 'download-card');
+      card.append(make('p', context, 'release-package-context'), make('h2', title));
+      if (version) card.append(make('span', version, 'download-version'));
+      const dateLabel = friendlyDate(releasedAt);
+      if (dateLabel) card.append(make('p', dateLabel, 'release-package-meta'));
+      return card;
+    };
+    const renderManifest = (manifest: Manifest, file: ManifestFile) => {
+      const content = document.createDocumentFragment();
+      let count = 0;
+      let blocked = 0;
+      const product = productLabels[file.product] || file.product;
+      const version = text(manifest.version) || file.version;
+      if (record(manifest.platforms)) {
+        const versions = record(manifest.targetVersions) ? manifest.targetVersions : {};
+        const dates = record(manifest.targetDates) ? manifest.targetDates : {};
+        Object.entries(manifest.platforms).forEach(([platform, targets]) => {
+          if (!record(targets)) return;
+          Object.entries(targets).forEach(([arch, formats]) => {
+            if (!record(formats)) return;
+            const target = arch === 'downloads' ? platform : `${platform}/${arch}`;
+            Object.entries(formats).forEach(([format, rawUrl]) => {
+              const url = allowedDownload(rawUrl);
+              if (!url) { blocked += 1; return; }
+              const platformTitle = platformLabels[platform] || platform;
+              const archLabel = arch === 'downloads' ? '' : platform === 'macos' ? (arch === 'arm64' ? 'Apple silicon · ARM64' : arch === 'x64' ? 'Intel · x64' : arch) : arch;
+              const formatTitle = formatLabels[format] || format;
+              const targetVersion = text(versions[target]) || version;
+              const card = cardFor(platformTitle, [product, archLabel, formatTitle].filter(Boolean).join(' · '), targetVersion, dates[target] || manifest.releaseDate);
+              const action = format === 'testflight' ? (chinese ? '打开 TestFlight' : 'Open TestFlight') : `${chinese ? '下载' : 'Download'} ${formatTitle}`;
+              const actions = make('div', '', 'release-package-actions');
+              const download = link(action, url, 'button button-outline');
+              download.setAttribute('aria-label', [product, platformTitle, archLabel, targetVersion, action].filter(Boolean).join(' · '));
+              actions.append(download); card.append(actions); content.append(card); count += 1;
+            });
+          });
+        });
+      }
+      if ('url' in manifest) {
+        const url = allowedDownload(manifest.url);
+        if (url) {
+          const kind = text(manifest.kind);
+          const kindLabel = kind === 'service-images' ? (chinese ? '服务镜像包' : 'Service images') : kind === 'compose' ? (chinese ? 'Compose 部署包' : 'Compose bundle') : kind;
+          const card = cardFor(kindLabel || product, [product, text(manifest.arch) || file.arch].filter(Boolean).join(' · '), version, manifest.releaseDate);
+          const size = formatSize(manifest.size);
+          if (size) card.append(make('p', size, 'release-package-meta'));
+          if (typeof manifest.sha256 === 'string' && manifest.sha256) addCopy(card, 'SHA-256', manifest.sha256);
+          const actions = make('div', '', 'release-package-actions');
+          actions.append(link(chinese ? '下载部署包' : 'Download bundle', url, 'button button-outline'));
+          const checksumUrl = allowedDownload(manifest.checksumUrl);
+          if (checksumUrl) actions.append(link(chinese ? '下载 SHA-256 校验文件' : 'Download SHA-256 checksum file', checksumUrl));
+          else if (manifest.checksumUrl) blocked += 1;
+          card.append(actions); content.append(card); count += 1;
+        } else blocked += 1;
+      }
+      const appendImages = (value: unknown, keys: string[] = []) => {
+        if (Array.isArray(value)) { value.forEach((entry, index) => appendImages(entry, [...keys, String(index)])); return; }
+        if (record(value)) { Object.entries(value).forEach(([key, entry]) => appendImages(entry, [...keys, key])); return; }
+        if (typeof value !== 'string' || !value || !keys.some(key => /^(images?|tags?|repository|registry)$/i.test(key))) return;
+        const card = cardFor(chinese ? '镜像信息' : 'Image information', product, version, manifest.releaseDate);
+        card.append(make('p', keys.join(' / '), 'release-image-title'));
+        addCopy(card, chinese ? '镜像信息' : 'image reference', value);
+        content.append(card); count += 1;
+      };
+      Object.entries(manifest).filter(([key]) => /^(images?|tags?|repository|registry)$/i.test(key)).forEach(([key, value]) => appendImages(value, [key]));
+      items.replaceChildren(content);
+      releaseStatus.textContent = count
+        ? (chinese ? `${product} · ${version}${blocked ? '。部分地址不在已发布下载域名中，请查看原始清单。' : ''}` : `${product} · ${version}${blocked ? '. Some addresses are outside the published download domains; check the original manifest.' : ''}`)
+        : (chinese ? '此清单未列出可下载的安装包，请查看原始发布清单。' : 'This manifest has no available package links. Open the original manifest for details.');
+    };
+    const loadManifest = async () => {
+      controller?.abort();
+      const currentController = new AbortController();
+      controller = currentController;
+      const file = config.files.find(entry => entry.path === manifestSelect.value && entry.version === versionSelect.value);
+      retry.hidden = true;
+      items.replaceChildren();
+      items.setAttribute('aria-busy', 'true');
+      if (!file) {
+        releaseStatus.textContent = chinese ? '当前版本未收录发布清单，请选择其他版本。' : 'No manifest is listed for this version. Choose another release.';
+        manifestLink.hidden = true; items.setAttribute('aria-busy', 'false'); return;
+      }
+      manifestLink.hidden = false; manifestLink.href = file.path;
+      releaseStatus.textContent = chinese ? '正在读取所选版本的安装包。' : 'Retrieving packages for the selected release.';
+      try {
+        const url = new URL(file.path, location.origin);
+        if (url.origin !== location.origin || !url.pathname.startsWith('/releases/manifests/')) throw new Error(chinese ? '发布清单路径不在本站版本目录中' : 'Manifest path is outside the release directory');
+        const response = await fetch(url, { signal: currentController.signal, credentials: 'same-origin' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        let manifest: unknown;
+        try { manifest = await response.json(); } catch { throw new Error(chinese ? '清单不是有效的 JSON' : 'Manifest is not valid JSON'); }
+        if (!record(manifest) || manifest.schemaVersion !== 1) throw new Error(chinese ? '清单结构无法识别' : 'Manifest schema is not supported');
+        if (!currentController.signal.aborted) renderManifest(manifest, file);
+      } catch (error) {
+        if (currentController.signal.aborted) return;
+        const reason = error instanceof Error ? error.message : (chinese ? '连接中断' : 'Connection interrupted');
+        releaseStatus.textContent = chinese ? `无法读取所选发布清单（${reason}）。请重试，或下载原始清单。` : `Could not retrieve the selected manifest (${reason}). Retry or download the original manifest.`;
+        retry.hidden = false;
+      } finally {
+        if (controller === currentController) items.setAttribute('aria-busy', 'false');
+      }
+    };
+    const selectVersion = (updateUrl: boolean) => {
+      const files = config.files.filter(file => file.version === versionSelect.value);
+      const options = document.createDocumentFragment();
+      files.forEach(file => {
+        const kind = file.path.includes('/service-images/') ? (chinese ? '服务镜像包' : 'Service images') : file.path.includes('/compose/') ? 'Compose' : '';
+        const option = make('option', [productLabels[file.product] || file.product, kind, file.arch].filter(Boolean).join(' · '));
+        option.value = file.path; options.append(option);
+      });
+      manifestSelect.replaceChildren(options);
+      manifestSelect.disabled = files.length === 0;
+      if (updateUrl) {
+        const url = new URL(location.href); url.searchParams.set('version', versionSelect.value); history.replaceState(null, '', url);
+        versionNotice.hidden = true;
+      }
+      void loadManifest();
+    };
+    const requested = new URL(location.href).searchParams.get('version');
+    versionSelect.value = requested && config.versions.includes(requested) ? requested : config.defaultVersion;
+    if (requested && !config.versions.includes(requested)) {
+      versionNotice.hidden = false;
+      versionNotice.textContent = chinese ? `链接中的版本未收录，当前显示 ${config.defaultVersion}。` : `The requested version is not listed. Showing ${config.defaultVersion}.`;
+    }
+    versionSelect.addEventListener('change', () => selectVersion(true));
+    manifestSelect.addEventListener('change', () => { void loadManifest(); });
+    retry.addEventListener('click', () => { void loadManifest(); });
+    selectVersion(false);
+  }
+</script>

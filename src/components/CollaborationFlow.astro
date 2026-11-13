@@ -1,0 +1,37 @@
+---
+import type { Locale } from '../data/types';
+import '../styles/collaboration-flow.css';
+interface Props { locale: Locale; launch?: boolean; pageHero?: boolean; decorative?: boolean; class?: string; }
+const {locale, launch=false, pageHero=false, decorative=false, class:className} = Astro.props;
+const zh = locale === 'zh';
+const labels = zh ? {
+  project:'同一项目，共同推进', input:'目标与资料', employee:'数字员工执行', output:'成果与版本',
+  feedback:'同事参与 · 回应后继续',
+  alt:'项目目标与资料交给数字员工执行，形成文档、表格和演示稿等成果。遇到需要人工判断的事项，向同事发起问询，收到回应后继续推进。',
+} : {
+  project:'One project. Shared progress.', input:'Goals & sources', employee:'Digital employee', output:'Files & versions',
+  feedback:'Human input · Work continues',
+  alt:'Project goals and source materials reach a digital employee, which produces documents, spreadsheets and presentations. Colleagues provide input when human judgment is needed, so the work can continue.',
+};
+const arrowId = `collab-arrow-${crypto.randomUUID()}`;
+---
+<div class:list={['product-art','semantic-flow','collaboration-flow',className]} data-product-scene="collaboration" data-art-kind="illustrated-flow" aria-hidden={decorative?'true':undefined}>
+  <picture class="collab-base">
+    <source srcset="/artwork/collaboration-flow-base_V1.0.webp" type="image/webp"/>
+    <img src="/artwork/collaboration-flow-base_V1.0.webp" width="1536" height="1024" alt={decorative?'':labels.alt} loading={launch||pageHero?'eager':'lazy'} fetchpriority={launch||pageHero?'high':undefined} decoding="async"/>
+  </picture>
+  <span class="collab-project">{labels.project}</span>
+  <strong class="collab-label collab-input" data-flow-role="project-input">{labels.input}</strong>
+  <strong class="collab-label collab-employee" data-flow-role="employee">{labels.employee}</strong>
+  <strong class="collab-label collab-output" data-flow-role="deliverables">{labels.output}</strong>
+  <span class="collab-feedback" data-flow-role="colleague-feedback">{labels.feedback}</span>
+  <div class="collab-lines" aria-hidden="true">
+    <svg viewBox="0 0 1536 1024" fill="none">
+      <defs><marker id={arrowId} markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M1 1L7 4L1 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+      <path class="collab-main-line" d="M492 420 H585" marker-end={`url(#${arrowId})`}/>
+      <path class="collab-main-line" d="M949 420 H1010" marker-end={`url(#${arrowId})`}/>
+      <path class="collab-return-line" d="M700 601 V628 Q700 640 685 640 H570 Q545 640 545 665 V697 H584" marker-end={`url(#${arrowId})`}/>
+      <path class="collab-return-line" d="M974 709 H1001 Q1022 709 1022 685 V625 Q1022 610 1000 610 H948" marker-end={`url(#${arrowId})`}/>
+    </svg>
+  </div>
+</div>

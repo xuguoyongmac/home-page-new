@@ -1,0 +1,303 @@
+---
+interface Props {
+  locale: 'zh' | 'en';
+  variant: 'collaboration' | 'ecosystem' | 'enterprise';
+  idPrefix: string;
+  class?: string;
+}
+
+const { locale, variant, idPrefix, class: className } = Astro.props;
+const zh = locale === 'zh';
+const id = (name: string) => `${idPrefix}-${name}`;
+const paint = (name: string) => `url(#${id(name)})`;
+const shape = (name: string) => `#${id(name)}`;
+const copy = zh ? {
+  labels: {
+    collaboration: '业务人员与数字员工围绕共同事项协作，将研究资料与业务判断汇聚为可供同事复核的方案成果',
+    ecosystem: '已授权知识、岗位方法与业务工具形成相互衔接的工作层，汇聚为团队的工作能力',
+    enterprise: '业务人员与数字员工在清晰的身份、授权与部署边界内，共同研究资料并核对业务方案',
+  },
+  research: '研究', operations: '运营', review: '复核', employee: '数字员工', plan: '业务方案',
+  sources: '资料引用', knowledge: '知识', skills: '技能', systems: '业务系统', capability: '团队能力',
+  identity: '身份', access: '授权', deployment: '部署', shared: '共同事项',
+} : {
+  labels: {
+    collaboration: 'People and digital employees share one work objective, bringing research and business judgment into a proposal for colleague review',
+    ecosystem: 'Authorized knowledge, working methods and business tools form connected layers of reusable team capabilities',
+    enterprise: 'People and digital employees collaborate on source materials and business proposals within identity, access and deployment boundaries',
+  },
+  research: 'Research', operations: 'Operations', review: 'Review', employee: 'Digital employee', plan: 'Business proposal',
+  sources: 'Sources', knowledge: 'Knowledge', skills: 'Skills', systems: 'Business systems', capability: 'Team capability',
+  identity: 'Identity', access: 'Access', deployment: 'Deployment', shared: 'Shared objective',
+};
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1000 760"
+  width="1000"
+  height="760"
+  preserveAspectRatio="xMidYMid meet"
+  role="img"
+  aria-label={copy.labels[variant]}
+  class:list={['workspace-art', `workspace-art-${variant}`, className]}
+>
+  <defs>
+    <linearGradient id={id('glass')} x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#525b56" stop-opacity=".78"/>
+      <stop offset=".4" stop-color="#323735" stop-opacity=".76"/>
+      <stop offset="1" stop-color="#1d1f1e" stop-opacity=".94"/>
+    </linearGradient>
+    <linearGradient id={id('navy-glass')} x1=".08" y1=".1" x2=".9" y2="1">
+      <stop stop-color="#59645e" stop-opacity=".96"/>
+      <stop offset=".58" stop-color="#3b413e" stop-opacity=".97"/>
+      <stop offset="1" stop-color="#252927"/>
+    </linearGradient>
+    <linearGradient id={id('sheet')} x1=".05" y1="0" x2=".85" y2="1">
+      <stop stop-color="#484e4b" stop-opacity=".72"/>
+      <stop offset=".42" stop-color="#313533" stop-opacity=".56"/>
+      <stop offset="1" stop-color="#212423" stop-opacity=".87"/>
+    </linearGradient>
+    <linearGradient id={id('facet')} x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#a0aba5" stop-opacity=".47"/>
+      <stop offset=".48" stop-color="#55605a" stop-opacity=".23"/>
+      <stop offset="1" stop-color="#2e3330" stop-opacity=".65"/>
+    </linearGradient>
+    <linearGradient id={id('edge')} x1=".1" y1="0" x2=".85" y2="1">
+      <stop stop-color="#dde2e0" stop-opacity=".75"/>
+      <stop offset=".35" stop-color="#a8b2ad" stop-opacity=".39"/>
+      <stop offset=".7" stop-color="#73837b" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#9ca9a2" stop-opacity=".45"/>
+    </linearGradient>
+    <linearGradient id={id('ice')} x1=".1" y1="0" x2=".85" y2="1">
+      <stop stop-color="#d5dbd8" stop-opacity=".92"/>
+      <stop offset=".3" stop-color="#9da8a2" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#545e59" stop-opacity=".92"/>
+    </linearGradient>
+    <linearGradient id={id('blue')} x1=".08" y1=".04" x2=".85" y2="1">
+      <stop stop-color="#cad0cd"/>
+      <stop offset=".4" stop-color="#8d9b94"/>
+      <stop offset="1" stop-color="#54605a"/>
+    </linearGradient>
+    <linearGradient id={id('path')} x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#919f98" stop-opacity=".1"/>
+      <stop offset=".45" stop-color="#adb7b2" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#d2d8d5"/>
+    </linearGradient>
+    <linearGradient id={id('volume')} x1=".05" y1="0" x2=".8" y2="1">
+      <stop stop-color="#82918a" stop-opacity=".1"/>
+      <stop offset=".45" stop-color="#54605a" stop-opacity=".11"/>
+      <stop offset="1" stop-color="#393e3c" stop-opacity=".28"/>
+    </linearGradient>
+    <radialGradient id={id('halo')}>
+      <stop stop-color="#6a7972" stop-opacity=".19"/>
+      <stop offset=".6" stop-color="#474d4a" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#2b2f2d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id={id('pool')}>
+      <stop stop-color="#96a39c" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#73847c" stop-opacity="0"/>
+    </radialGradient>
+    <filter id={id('shadow')} x="-35%" y="-30%" width="170%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="21" stdDeviation="18" flood-color="#090909" flood-opacity=".61"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#090a0a" flood-opacity=".3"/>
+    </filter>
+    <filter id={id('soft-shadow')} x="-35%" y="-35%" width="170%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="13" stdDeviation="11" flood-color="#0b0c0c" flood-opacity=".48"/>
+    </filter>
+    <filter id={id('glow')} x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <symbol id={id('person')} viewBox="0 0 104 145">
+      <ellipse cx="52" cy="132" rx="43" ry="12" fill="#0b0d0c" fill-opacity=".43"/>
+      <path d="M20 122V94c0-23 12-37 32-37s32 14 32 37v28c-18 11-46 11-64 0Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.1"/>
+      <path d="M52 58c21 0 32 14 32 37v27l-12 5V93c0-17-7-28-20-35Z" fill="#323734" fill-opacity=".56"/>
+      <path d="M29 95c0-16 7-27 19-31" fill="none" stroke="#c0c8c4" stroke-opacity=".24" stroke-width="1.2"/>
+      <ellipse cx="52" cy="29" rx="19" ry="24" fill={paint('ice')} stroke="#bec6c2" stroke-opacity=".43" stroke-width=".9"/>
+      <path d="M51 7c-12 2-18 13-18 26 0 9 4 16 9 20-4-9-6-16-3-26 2-8 6-14 12-20Z" fill="#e0e4e2" fill-opacity=".24"/>
+    </symbol>
+    <symbol id={id('employee')} viewBox="0 0 110 148">
+      <ellipse cx="55" cy="135" rx="46" ry="12" fill="#0d0e0e" fill-opacity=".48"/>
+      <path d="M20 124V96c0-24 14-39 35-39s35 15 35 39v28c-22 13-48 13-70 0Z" fill={paint('blue')} fill-opacity=".88" stroke="#c4cbc8" stroke-opacity=".73" stroke-width="1.2"/>
+      <path d="M56 59c23 0 34 17 34 39v26l-14 6V98c0-18-7-31-20-39Z" fill="#4b5650" fill-opacity=".72"/>
+      <path d="M29 98c0-18 8-29 21-34" fill="none" stroke="#dee2e0" stroke-opacity=".56" stroke-width="1.3"/>
+      <ellipse cx="55" cy="28" rx="20" ry="24" fill={paint('blue')} stroke="#d8dcda" stroke-opacity=".62"/>
+      <path d="m55 15 3.5 9.5L68 28l-9.5 3.5L55 41l-3.5-9.5L42 28l9.5-3.5L55 15Z" fill="#ebeeec" fill-opacity=".87"/>
+      <path d="m55 81 3 8 8 3-8 3-3 8-3-8-8-3 8-3 3-8Z" fill="#e9eceb" fill-opacity=".58"/>
+    </symbol>
+    <symbol id={id('report')} viewBox="0 0 220 290">
+      <path d="M14 7h147l45 45v227H14V7Z" fill={paint('navy-glass')} stroke="#adb7b2" stroke-opacity=".64" stroke-width="1.3"/>
+      <path d="M161 7v45h45" fill="#77837d" fill-opacity=".64" stroke="#bbc4c0" stroke-opacity=".48" stroke-width="1.1"/>
+      <path d="M24 20h4v242h-4Z" fill="#d1d6d3" fill-opacity=".11"/>
+      <text x="39" y="91" fill="#e5e8e6" font-size="15" font-weight="550" class="object-label report-label">{copy.plan}</text>
+      <path d="M40 116h128M40 130h143M40 144h111" fill="none" stroke="#a6b0ab" stroke-opacity=".56" stroke-width="3" stroke-linecap="round" class="document-line"/>
+      <path d="M40 174h143M40 187h125" fill="none" stroke="#a6b0ab" stroke-opacity=".27" stroke-width="2.5" stroke-linecap="round" class="document-line quiet"/>
+      <path d="M41 217v-10h12v10H41Zm19 0v-10h12v10H60Z" fill="#b4beb9" fill-opacity=".53"/>
+      <text x="81" y="217" fill="#c7cecb" font-size="10" class="source-label">{copy.sources}</text>
+      <path d="M40 239h141" fill="none" stroke="#a6b0ab" stroke-opacity=".27" stroke-width="2.5" stroke-linecap="round" class="document-line quiet"/>
+    </symbol>
+    <symbol id={id('book')} viewBox="0 0 180 122">
+      <path d="m11 46 64-30 26 9 64-1v58l-65 25-27-8-62 7V46Z" fill="#2b302d" stroke={paint('edge')} stroke-width="1.1"/>
+      <path d="m14 40 62-28 26 11 62-3v57l-63 27-26-10-61 7V40Z" fill={paint('ice')} fill-opacity=".87"/>
+      <path d="m76 13-1 81 26 10 1-81-26-10Z" fill="#58625d" fill-opacity=".7"/>
+      <path d="m25 50 38-17M25 63l38-17M25 76l30-13M115 39l36-5M115 53l36-7M115 67l29-8" fill="none" stroke="#414844" stroke-opacity=".68" stroke-width="2.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id={id('method')} viewBox="0 0 160 125">
+      <path d="m16 39 81-28 47 26-81 30-47-28Z" fill="#393f3c" stroke="#a6b1ac" stroke-opacity=".4"/>
+      <path d="M16 39v49l47 28V67L16 39Z" fill="#2f3432" stroke="#7c8982" stroke-opacity=".26"/>
+      <path d="m63 67 81-30v48l-81 31V67Z" fill={paint('facet')} stroke="#b6bfbb" stroke-opacity=".35"/>
+      <path d="m37 40 59-20 27 15-59 22-27-17Z" fill="#abb5b0" fill-opacity=".44"/>
+      <path d="m81 76 43-17M81 89l32-12" fill="none" stroke="#bfc7c3" stroke-opacity=".61" stroke-width="2.3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id={id('business')} viewBox="0 0 190 135">
+      <path d="m12 47 79-34 86 37-78 36-87-39Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.1"/>
+      <path d="m12 47 87 39v32L12 79V47Z" fill="#373d3a" stroke="#7c8982" stroke-opacity=".3"/>
+      <path d="m99 86 78-36v32l-78 36V86Z" fill={paint('facet')} stroke="#a4b0aa" stroke-opacity=".36"/>
+      <path d="m49 45 21-9 20 9-21 10-20-10Zm39 18 21-10 20 9-21 10-20-9Zm22-28 21-9 20 9-21 10-20-10Z" fill="#bbc3bf" fill-opacity=".6"/>
+      <path d="m70 54 18 9m21-10 21-9" fill="none" stroke="#d5dbd8" stroke-opacity=".63" stroke-width="1.8"/>
+    </symbol>
+  </defs>
+
+  <ellipse cx="557" cy="385" rx="365" ry="265" fill={paint('halo')}/>
+
+  {variant === 'collaboration' && (
+    <g>
+      <ellipse cx="558" cy="544" rx="310" ry="99" fill={paint('pool')}/>
+      <path d="m144 441 345-133 395 178-350 160-390-205Z" fill={paint('sheet')} fill-opacity=".37" stroke="#7d8a84" stroke-opacity=".16"/>
+      <path d="m144 441 390 205 350-160v11L535 658 144 453v-12Z" fill="#2a2e2c" fill-opacity=".44"/>
+
+      <g fill="none" stroke-linecap="round">
+        <path d="M249 369c87-2 88 73 174 73h140c30 0 48-24 58-53M360 244c0 71 57 76 94 112 21 20 19 59 44 75M786 558c-73 39-130 30-150-33" stroke="#a6b1ab" stroke-opacity=".14" stroke-width="13" filter={paint('glow')}/>
+        <path d="M249 369c87-2 88 73 174 73h140c30 0 48-24 58-53" stroke={paint('path')} stroke-width="2.4"/>
+        <path d="M360 244c0 71 57 76 94 112 21 20 19 59 44 75" stroke={paint('path')} stroke-width="2"/>
+        <path d="M786 558c-73 39-130 30-150-33" stroke="#abb6b0" stroke-opacity=".67" stroke-width="2"/>
+      </g>
+
+      <g filter={paint('soft-shadow')}>
+        <use href={shape('person')} x="171" y="245" width="119" height="166"/>
+        <text x="230" y="439" fill="#c2c9c5" class="role-label">{copy.research}</text>
+        <use href={shape('person')} x="302" y="108" width="116" height="162"/>
+        <text x="360" y="293" fill="#c2c9c5" class="role-label">{copy.operations}</text>
+      </g>
+      <g transform="rotate(-13 235 494)" filter={paint('soft-shadow')}>
+        <path d="M166 451h111l26 27v92H166V451Z" fill={paint('glass')} stroke={paint('edge')} stroke-width="1.1"/>
+        <path d="M277 451v27h26M186 490h78M186 505h91M186 520h66" fill="none" stroke="#aab4af" stroke-opacity=".43" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="m186 539 15-6 15 6-15 6-15-6Z" fill="#b0b9b4" fill-opacity=".5"/>
+      </g>
+
+      <g filter={paint('shadow')}>
+        <use href={shape('employee')} x="402" y="349" width="132" height="178"/>
+        <text x="468" y="555" fill="#dadedc" class="role-label bright">{copy.employee}</text>
+      </g>
+
+      <g transform="rotate(8 702 376)" filter={paint('shadow')}>
+        <path d="M568 218h232v332H568V218Z" fill="#242726" stroke="#6b7771" stroke-opacity=".34"/>
+        <path d="M579 208h230v332H579V208Z" fill="#313533" stroke="#99a49e" stroke-opacity=".35"/>
+        <use href={shape('report')} x="587" y="187" width="253" height="334"/>
+      </g>
+
+      <g filter={paint('soft-shadow')}>
+        <use href={shape('person')} x="775" y="465" width="103" height="144"/>
+        <text x="826" y="634" fill="#c2c9c5" class="role-label">{copy.review}</text>
+      </g>
+      <g transform="translate(646 522) rotate(-21)" filter={paint('soft-shadow')}>
+        <circle r="41" fill="#393f3c" fill-opacity=".62" stroke="#b4beb9" stroke-opacity=".65" stroke-width="6"/>
+        <circle r="31" fill="#bdc5c1" fill-opacity=".06" stroke="#ccd3d0" stroke-opacity=".24"/>
+        <path d="M-17-5h34M-17 7H9" fill="none" stroke="#c3cbc7" stroke-opacity=".71" stroke-width="3" stroke-linecap="round"/>
+        <path d="m27 31 31 35" stroke="#494f4c" stroke-width="13" stroke-linecap="round"/>
+        <path d="m28 31 31 35" stroke="#adb7b2" stroke-opacity=".42" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </g>
+  )}
+
+  {variant === 'ecosystem' && (
+    <g>
+      <ellipse cx="545" cy="570" rx="295" ry="76" fill={paint('pool')}/>
+
+      <g filter={paint('shadow')}>
+        <path d="m254 457 271-116 311 128-270 127-312-139Z" fill={paint('sheet')} stroke={paint('edge')} stroke-width="1.2"/>
+        <path d="m254 457 312 139 270-127v22L566 618 254 479v-22Z" fill={paint('facet')} stroke="#97a49e" stroke-opacity=".23"/>
+        <use href={shape('business')} x="417" y="404" width="171" height="121"/>
+        <text x="673" y="498" fill="#d3d8d5" class="layer-label">{copy.systems}</text>
+      </g>
+
+      <g filter={paint('shadow')}>
+        <path d="m145 332 268-116 294 123-267 124-295-131Z" fill={paint('sheet')} stroke={paint('edge')} stroke-width="1.2"/>
+        <path d="m145 332 295 131 267-124v21L440 484 145 353v-21Z" fill={paint('facet')} stroke="#97a49e" stroke-opacity=".23"/>
+        <use href={shape('method')} x="309" y="280" width="149" height="117"/>
+        <text x="549" y="367" fill="#d3d8d5" class="layer-label">{copy.skills}</text>
+      </g>
+
+      <g filter={paint('shadow')}>
+        <path d="m187 213 269-116 288 121-268 124-289-129Z" fill={paint('sheet')} stroke={paint('edge')} stroke-width="1.2"/>
+        <path d="m187 213 289 129 268-124v21L476 363 187 234v-21Z" fill={paint('facet')} stroke="#97a49e" stroke-opacity=".23"/>
+        <use href={shape('book')} x="329" y="150" width="166" height="112"/>
+        <text x="592" y="249" fill="#d3d8d5" class="layer-label">{copy.knowledge}</text>
+      </g>
+
+      <g fill="none" stroke-linecap="round">
+        <path d="M744 236c55 0 65 36 65 85M707 357c45 0 65 9 92 22M836 491c33-37 26-74 8-91" stroke="#a9b3ae" stroke-opacity=".18" stroke-width="13" filter={paint('glow')}/>
+        <path d="M744 236c55 0 65 36 65 85M707 357c45 0 65 9 92 22M836 491c33-37 26-74 8-91" stroke="#bec5c2" stroke-opacity=".65" stroke-width="2"/>
+      </g>
+      <g filter={paint('soft-shadow')}>
+        <ellipse cx="804" cy="422" rx="97" ry="37" fill="#2f3431" stroke="#a7b2ac" stroke-opacity=".38"/>
+        <ellipse cx="804" cy="413" rx="97" ry="37" fill={paint('glass')} stroke={paint('edge')}/>
+        <use href={shape('person')} x="725" y="293" width="84" height="117" opacity=".83"/>
+        <use href={shape('person')} x="814" y="282" width="87" height="122"/>
+        <use href={shape('employee')} x="762" y="278" width="101" height="136"/>
+        <text x="804" y="474" fill="#dadedc" class="role-label bright">{copy.capability}</text>
+      </g>
+    </g>
+  )}
+
+  {variant === 'enterprise' && (
+    <g>
+      <ellipse cx="553" cy="570" rx="315" ry="83" fill={paint('pool')}/>
+
+      <path d="M130 402V252c0-14 7-24 20-30L502 96c13-6 27-5 40 1l333 147c13 6 21 17 21 31v143" fill="none" stroke="#95a29c" stroke-opacity=".23" stroke-width="1.2"/>
+      <path d="M151 414V272c0-13 6-22 19-28L503 120c12-6 25-5 37 1l312 140c12 5 20 16 20 29v140" fill="none" stroke="#a7b2ac" stroke-opacity=".29" stroke-width="1.2"/>
+      <path d="M174 424V291c0-12 6-21 17-26l313-119c11-5 23-5 34 0l291 132c12 5 18 15 18 28v134" fill="none" stroke="#c1c8c4" stroke-opacity=".33" stroke-width="1.2"/>
+
+      <path d="M174 426V291c0-12 6-21 17-26l313-119c11-5 23-5 34 0l291 132c12 5 18 15 18 28v134L525 591 174 426Z" fill={paint('volume')} stroke="#707c76" stroke-opacity=".13"/>
+      <path d="M174 426 516 275l331 165-322 151-351-165Z" fill={paint('sheet')} fill-opacity=".68" stroke={paint('edge')} stroke-width="1.2"/>
+      <path d="m174 426 351 165 322-151v17L525 610 174 444v-18Z" fill={paint('facet')} stroke="#96a29c" stroke-opacity=".24"/>
+
+      <text x="251" y="223" fill="#aab4af" class="boundary-label" transform="rotate(-21 251 223)">{copy.identity}</text>
+      <text x="377" y="192" fill="#aab4af" class="boundary-label" transform="rotate(-21 377 192)">{copy.access}</text>
+      <text x="658" y="191" fill="#aab4af" class="boundary-label" transform="rotate(24 658 191)">{copy.deployment}</text>
+
+      <g fill="none" stroke-linecap="round">
+        <path d="M369 394c49 51 91 62 153 60M549 406c55-18 103-18 146 18" stroke="#a9b4ae" stroke-opacity=".16" stroke-width="12" filter={paint('glow')}/>
+        <path d="M369 394c49 51 91 62 153 60M549 406c55-18 103-18 146 18" stroke="#b3bdb8" stroke-opacity=".58" stroke-width="1.8"/>
+      </g>
+
+      <g filter={paint('soft-shadow')}>
+        <use href={shape('person')} x="310" y="259" width="112" height="157"/>
+        <use href={shape('person')} x="655" y="314" width="111" height="155"/>
+        <use href={shape('employee')} x="464" y="282" width="127" height="171"/>
+      </g>
+      <g transform="rotate(-12 584 487)" filter={paint('shadow')}>
+        <path d="M503 394h149v192H503V394Z" fill="#2a2f2c" stroke="#77847e" stroke-opacity=".4"/>
+        <use href={shape('report')} x="510" y="380" width="159" height="210"/>
+      </g>
+      <g transform="rotate(-19 297 462)" filter={paint('soft-shadow')}>
+        <use href={shape('book')} x="218" y="424" width="151" height="102"/>
+      </g>
+      <text x="529" y="643" fill="#c2c9c5" class="role-label">{copy.shared}</text>
+    </g>
+  )}
+</svg>
+
+<style>
+  .workspace-art{display:block;width:100%;height:auto;font-family:'Avenir Next','PingFang SC','Microsoft YaHei',sans-serif;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+  .workspace-art text{font-weight:500;fill:#c7cdca;letter-spacing:.1px}
+  .workspace-art .role-label{font-size:17px;text-anchor:middle;fill:#c2c9c5;letter-spacing:1px}
+  .workspace-art .bright{fill:#dadedc}
+  .workspace-art .layer-label{font-size:18px;text-anchor:middle;fill:#d3d8d5;letter-spacing:1px}
+  .workspace-art .boundary-label{font-size:16px;text-anchor:middle;fill:#aab4af;letter-spacing:1.3px}
+  .workspace-art .object-label{font-size:17px;font-weight:550;fill:#e5e8e6;letter-spacing:.1px}
+  .workspace-art .report-label{font-size:15px}
+  .workspace-art .source-label{font-size:10px;fill:#c7cecb;letter-spacing:.2px}
+  .workspace-art .document-line{fill:none;stroke:#a6b0ab;stroke-opacity:.56;stroke-width:3;stroke-linecap:round}
+  .workspace-art .document-line.quiet{stroke-opacity:.27;stroke-width:2.5}
+</style>

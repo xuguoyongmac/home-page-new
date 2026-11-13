@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+import { appFor, pathFor } from '../lib/site';
+import type { Locale } from '../data/types';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const channels = [ ['wecom', zh?'企业微信':'WeCom'], ['dingtalk', zh?'钉钉':'DingTalk'], ['feishu', zh?'飞书':'Feishu'], ['qq','QQ'], ['weixin',zh?'微信':'WeChat'] ];
+const clients = [ ['monitor','PC',zh?'桌面客户端':'Desktop app'], ['globe','Web',zh?'浏览器访问':'Browser access'], ['android','Android',zh?'移动客户端':'Mobile app'], ['ios','iOS',zh?'移动客户端':'Mobile app'], ['harmonyos',zh?'鸿蒙':'HarmonyOS',zh?'Web 访问':'Web access'] ];
+---
+<section class="work-anywhere" aria-labelledby="anywhere-title">
+ <div class="container">
+  <div class="anywhere-heading"><h2 id="anywhere-title">{zh?<>随时随地，<br/>把任务交给数字员工</>:<>Wherever work happens,<br/>put your team in motion.</>}</h2><p>{zh?'坐在电脑前，或是在外出途中，都有适合当下的工作入口。':'At your desk or on the move, choose the way that fits your work.'}</p></div>
+  <div class="anywhere-grid">
+   <article class="anywhere-workspace">
+    <div class="anywhere-copy"><h3>{zh?'在工作台里，展开完整协作':'A workspace for work that goes further'}</h3><p>{zh?'电脑上处理复杂工作，手机上交办任务、跟进进展。':'Organize files and review deliverables on your computer. Assign tasks and follow progress on your phone.'}</p></div>
+    <div class="anywhere-client-logos" aria-label={zh?'支持的工作入口':'Workspace access'}>{clients.map(([icon,label,note])=><div><span class="anywhere-client-symbol">{['monitor','globe'].includes(icon)?<Icon name={icon} size={28}/>:<img src={`/images/platforms/${icon}_V1.0.svg`} width="30" height="30" alt="" loading="lazy"/>}</span><b>{label}</b><span>{note}</span></div>)}</div>
+    <div class="anywhere-devices" role="img" aria-label={zh?'电脑工作空间与手机任务会话的概念重绘':'Concept illustration of a desktop workspace and mobile task conversation'}>
+     <div class="anywhere-desktop"><div class="anywhere-window"><span><Icon name="layers" size={15}/>TeGo</span><span>{zh?'工作空间':'Workspace'}</span><i></i></div><div class="anywhere-screen"><div class="anywhere-sidebar"><Icon name="message" size={17}/><Icon name="folder" size={17}/><Icon name="chart" size={17}/></div><div class="anywhere-project"><strong>{zh?'经营分析项目':'Business analysis'}</strong><div class="anywhere-task"><Icon name="chart" size={24}/><div><b>{zh?'经营分析助理':'Business analyst'}</b><span>{zh?'收入趋势与原因分析':'Revenue trends & drivers'}</span></div></div><div class="anywhere-result"><Icon name="file" size={21}/><span>{zh?'经营分析报告.docx':'Business analysis.docx'}</span><Icon name="check" size={17}/></div><div class="anywhere-spark" aria-hidden="true"><svg viewBox="0 0 320 65" fill="none"><path d="M0 52 50 46 103 48 156 27 211 32 264 18 320 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M0 52 50 46 103 48 156 27 211 32 264 18 320 7V65H0Z" fill="currentColor" opacity=".07"/></svg></div></div></div></div>
+     <div class="anywhere-phone"><div class="anywhere-phone-speaker"></div><div class="anywhere-phone-title"><Icon name="chevron" size={12}/>{zh?'经营分析助理':'Business analyst'}</div><div class="anywhere-mobile-request">{zh?'整理本月收入变化，分析主要原因。':'Explain revenue changes.'}</div><div class="anywhere-mobile-reply"><span class="anywhere-agent-mark"><Icon name="layers" size={15}/></span><p>{zh?'已整理分析结果':'Report ready'}</p><div><Icon name="file" size={16}/>{zh?'经营分析报告':'Business brief'}</div></div><div class="anywhere-phone-input"><span>{zh?'继续交办任务':'Continue the conversation'}</span><Icon name="plus" size={12}/></div></div>
+    </div>
+    <div class="anywhere-actions"><a class="button" href={appFor(locale)}>{zh?'打开 Web 工作台':'Open web workspace'}<Icon name="external" size={16}/></a><a class="anywhere-action-link" href={pathFor(locale,'download')}>{zh?'下载客户端':'Get the apps'}<Icon name="download" size={17}/></a></div>
+   </article>
+   <article class="anywhere-channels">
+    <div class="anywhere-copy"><h3>{zh?'在熟悉的聊天里，直接交办':'Delegate through your everyday chat'}</h3><p>{zh?'接入企业协作工具，让数字员工在已有的消息入口接收任务、反馈结果。':'Connect company messaging tools to send tasks and receive responses through familiar channels.'}</p></div>
+    <div class="anywhere-channel-logos" aria-label={zh?'可连接的消息渠道':'Messaging channels'}>{channels.map(([key,label])=><div><img src={`/images/platforms/${key}_V1.0.svg`} width="38" height="38" alt="" loading="lazy"/><b>{label}</b></div>)}</div>
+    <div class="anywhere-conversation" role="img" aria-label={zh?'通过办公消息交办经营分析任务的概念重绘':'Concept illustration of assigning an analysis task through messaging'}><div class="anywhere-chat-heading"><Icon name="message" size={20}/><strong>{zh?'业务协作':'Team conversation'}</strong><span>TeGo</span></div><div class="anywhere-chat-request"><span>{zh?'@经营分析助理':'@Business analyst'}</span>{zh?'整理本月收入变化，分析主要原因。':'Review monthly revenue changes and identify the main drivers.'}</div><div class="anywhere-chat-response"><span class="anywhere-agent-mark"><Icon name="layers" size={21}/></span><div><strong>{zh?'经营分析助理':'Business analyst'}</strong><p>{zh?'从业务数据出发，梳理趋势与变化原因。':'Review the business data to explain the trend and its drivers.'}</p><div class="anywhere-chat-file"><Icon name="file" size={22}/><span>{zh?'经营分析报告.docx':'Business analysis.docx'}</span></div></div></div></div>
+    <div class="anywhere-channel-footer"><a class="anywhere-action-link" href={pathFor(locale,'ecosystem')+'#build'}>{zh?'了解渠道接入':'Explore channel connections'}<Icon name="arrow" size={18}/></a></div>
+   </article>
+  </div>
+  <div class="anywhere-business"><span class="anywhere-business-icon"><Icon name="network" size={29}/></span><div><h3>{zh?'接入 OA，让数字员工走进业务流程':'Connect your OA and business systems'}</h3><p>{zh?'通过 OpenAPI 对接企业办公与业务系统，把任务接入已有流程。':'Use OpenAPI to connect enterprise office and business systems with existing workflows.'}</p></div><a class="anywhere-action-link" href={pathFor(locale,'ecosystem')+'#build'}>{zh?'了解系统集成':'Explore integrations'}<Icon name="arrow" size={18}/></a></div>
+ </div>
+</section>

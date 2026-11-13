@@ -1,0 +1,56 @@
+---
+import type { Locale } from '../data/types';
+import { pathFor, site } from '../lib/site';
+import Icon from './Icon.astro';
+import CallToAction from './CallToAction.astro';
+import PageHeroArt from './PageHeroArt.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const resources = locale === 'zh' ? [
+  { icon: 'book', category: '产品文档', title: '文档中心', body: '查阅产品介绍、操作手册、参考说明、最佳实践与运维部署文档。', href: site.docs, action: '进入文档中心', external: true },
+  { icon: 'network', category: '操作手册', title: '使用产品开展工作', body: '查找数字员工、项目、会话、知识与成果处理的操作入口和步骤。', href: `${site.docs}product-manual/`, action: '阅读操作手册', external: true },
+  { icon: 'cpu', category: '部署参考', title: '环境要求', body: '核对系统架构、主机资源、执行权限、网络与基础设施等部署条件。', href: `${site.docs}ops-deployment/deployment/requirements`, action: '查看部署条件', external: true },
+  { icon: 'terminal', category: '运维支持', title: '运维常见问题', body: '按安装、升级、运行、知识处理与渠道连接等具体现象查找处理办法。', href: `${site.docs}ops-deployment/faq`, action: '查阅运维问答', external: true },
+  { icon: 'file', category: '产品文章', title: '产品博客', body: '阅读产品更新、能力介绍与围绕具体工作的实践文章。', href: pathFor(locale, 'blog'), action: '浏览文章', external: false },
+  { icon: 'monitor', category: '客户端', title: '下载中心', body: '按设备平台查找 TeGo OS 客户端，查看对应版本与下载入口。', href: pathFor(locale, 'download'), action: '查看客户端', external: false },
+  { icon: 'message', category: '产品问答', title: '常见问题', body: '了解数字员工、各端文件能力、知识边界、渠道接入与部署选项。', href: pathFor(locale, 'faq'), action: '查看产品问答', external: false },
+  { icon: 'plug', category: '能力扩展', title: '生态与开发', body: '了解技能、数字员工模板、业务插件、MCP、OpenAPI 与 Tego Studio。', href: pathFor(locale, 'ecosystem'), action: '探索开放生态', external: false },
+  { icon: 'network', category: '业务交流', title: '联系团队', body: '围绕岗位工作、系统连接和交付环境，沟通适合企业的产品组合。', href: pathFor(locale, 'contact'), action: '预约交流', external: false },
+] : [
+  { icon: 'book', category: 'Documentation', title: 'Documentation center', body: 'Find product introductions, user guides, reference material, practices and deployment documentation.', href: site.docs, action: 'Open documentation', external: true },
+  { icon: 'network', category: 'User guide', title: 'Work with the platform', body: 'Find entry points and steps for digital employees, projects, conversations, knowledge and deliverables.', href: `${site.docs}product-manual/`, action: 'Read the user guide', external: true },
+  { icon: 'cpu', category: 'Deployment reference', title: 'Environment requirements', body: 'Check system architecture, host resources, execution rights, network and infrastructure prerequisites.', href: `${site.docs}ops-deployment/deployment/requirements`, action: 'Check prerequisites', external: true },
+  { icon: 'terminal', category: 'Operations', title: 'Operations FAQ', body: 'Find fixes for specific installation, upgrade, runtime, knowledge processing and connection issues.', href: `${site.docs}ops-deployment/faq`, action: 'Read operations FAQ', external: true },
+  { icon: 'file', category: 'Product articles', title: 'Product blog', body: 'Read product updates, capability introductions and articles about getting specific work done.', href: pathFor(locale, 'blog'), action: 'Browse articles', external: false },
+  { icon: 'monitor', category: 'Clients', title: 'Downloads', body: 'Find TeGo OS clients for your device platform, including version information and download links.', href: pathFor(locale, 'download'), action: 'Find your client', external: false },
+  { icon: 'message', category: 'Product answers', title: 'Frequently asked questions', body: 'Understand digital employees, client file capabilities, knowledge boundaries, channels and deployment options.', href: pathFor(locale, 'faq'), action: 'Read product FAQ', external: false },
+  { icon: 'plug', category: 'Extensions', title: 'Ecosystem and development', body: 'Explore skills, digital employee templates, business plugins, MCP, OpenAPI and Tego Studio.', href: pathFor(locale, 'ecosystem'), action: 'Explore the ecosystem', external: false },
+  { icon: 'network', category: 'Talk with the team', title: 'Contact us', body: 'Discuss a product configuration around your team’s work, system connections and delivery environment.', href: pathFor(locale, 'contact'), action: 'Talk to us', external: false },
+];
+---
+<section class="page-hero inner-page-hero inner-support-hero">
+  <PageHeroArt variant="ecosystem" compact/>
+  <div class="container inner-hero-content"><div class="inner-hero-copy">
+    <p class="eyebrow">{locale === 'zh' ? '资源中心' : 'Resources'}</p>
+    <h1>{locale === 'zh' ? '找到下一步工作所需的资源' : 'Resources for your next step'}</h1>
+    <p>{locale === 'zh' ? '从产品使用到企业部署，查阅文档、下载客户端，找到具体问题的答案。' : 'Find documentation, download a client and get answers about product use and enterprise deployment.'}</p>
+  </div></div>
+</section>
+<section id="manual" class="section container anchor-target inner-resources" aria-labelledby="resources-title">
+  <h2 id="resources-title" class="sr-only">{locale === 'zh' ? '产品与支持资源' : 'Product and support resources'}</h2>
+  <div class="resource-grid">
+    {resources.map((resource, index) => (
+      <article class="resource-card">
+        <div class:list={['resource-art', { ink: index === 0 || index === 7 }]} aria-hidden="true"><Icon name={resource.icon}/></div>
+        <div class="resource-card-content">
+          <p class="eyebrow">{resource.category}</p>
+          <h3>{resource.title}</h3>
+          <p>{resource.body}</p>
+          <a class="text-link" href={resource.href}>{resource.action}<Icon name={resource.external ? 'external' : 'arrow'} size={16}/></a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+<CallToAction locale={locale}/>
