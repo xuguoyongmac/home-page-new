@@ -5,7 +5,6 @@ import SolutionsPage from '../../components/SolutionsPage.astro';
 import ResourcesPage from '../../components/ResourcesPage.astro';
 import FaqPage from '../../components/FaqPage.astro';
 import ContactPage from '../../components/ContactPage.astro';
-import DownloadPage from '../../components/DownloadPage.astro';
 import LegalPage from '../../components/LegalPage.astro';
 import ReleaseHistoryPage from '../../components/ReleaseHistoryPage.astro';
 import { detailPages } from '../../data/pages';
@@ -13,7 +12,7 @@ import { legalContent } from '../../data/legacy';
 import type { Locale, DetailPageId } from '../../data/types';
 
 export function getStaticPaths() {
-  const pages = ['product','solutions','ecosystem','enterprise','resources','faq','contact','download','releases','privacy','terms'];
+  const pages = ['product','solutions','ecosystem','enterprise','resources','faq','contact','releases','privacy','terms'];
   return ['zh','en'].flatMap(locale => pages.map(page => ({params:{locale,page}})));
 }
 const locale = Astro.params.locale as Locale;
@@ -39,7 +38,7 @@ const otherMeta = {
     terms: {title:legalContent.en.terms.title,description:'Terms governing the use of the TeGo OS website and services.'},
   },
 };
-const meta = page === 'solutions' ? (locale === 'zh' ? {title:'行业解决方案',description:'探索政务、券商、通用办公、保险与央国企的数字员工工作方案，明确输入资料、执行动作、交付成果与实施范围。'} : {title:'Industry solutions',description:'Explore digital employee workflows for government, securities, general business, insurance and state-owned enterprises.'}) : detail || otherMeta[locale][page as keyof typeof otherMeta.zh];
+const meta = page === 'solutions' ? (locale === 'zh' ? {title:'行业解决方案',description:'探索证券、银行、保险、政务、央国企、互联网与通用办公的数字员工工作方案，明确输入资料、执行动作、交付成果与实施范围。'} : {title:'Industry solutions',description:'Explore digital employee workflows for securities, banking, insurance, government, state-owned enterprises, internet and general business.'}) : detail || otherMeta[locale][page as keyof typeof otherMeta.zh];
 ---
 <Layout locale={locale} title={meta.title} description={meta.description} page={page}>
   {page === 'solutions' && <SolutionsPage locale={locale}/>}
@@ -47,7 +46,6 @@ const meta = page === 'solutions' ? (locale === 'zh' ? {title:'行业解决方�
   {page === 'resources' && <ResourcesPage locale={locale}/>}
   {page === 'faq' && <FaqPage locale={locale}/>}
   {page === 'contact' && <ContactPage locale={locale}/>}
-  {page === 'download' && <DownloadPage locale={locale}/>}
   {page === 'releases' && <ReleaseHistoryPage locale={locale}/>}
   {(page === 'privacy' || page === 'terms') && <LegalPage locale={locale} kind={page}/>}
 </Layout>

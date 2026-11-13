@@ -1,0 +1,13 @@
+---
+import { quotePlans } from './content';
+import Icon from '../../components/Icon.astro';
+import PageHeroArt from '../../components/PageHeroArt.astro';
+import { pathFor } from '../../lib/site';
+import type { Locale } from '../../data/types';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+---
+<section class="page-hero inner-page-hero"><PageHeroArt variant="enterprise" compact/><div class="container inner-hero-content"><div class="inner-hero-copy"><p class="eyebrow">{zh ? '价格方案' : 'PRICING'}</p><h1>{zh ? '从业务需要出发，\n选择合适的投入方式' : 'Choose the right approach for your business'}</h1><p>{zh ? '按团队规模、部署方式与交付范围沟通报价。' : 'Discuss pricing based on team scale, deployment and delivery scope.'}</p></div></div></section>
+<section class="sl-section"><div class="container"><div class="quote-grid">{quotePlans[locale].map(plan => <article class="quote-card" id={plan.id}><Icon name={plan.icon} size={30}/><h2>{plan.name}</h2><p>{plan.description}</p><strong>{zh ? '按方案报价' : 'Custom quote'}</strong><ul>{plan.items.map(item => <li><Icon name="check" size={16}/>{item}</li>)}</ul><a class="button" href={pathFor(locale,'contact')}>{zh ? '获取方案报价' : 'Request a quote'}<Icon name="arrow" size={17}/></a></article>)}</div></div></section>
+<style>.page-hero h1{white-space:pre-line}.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.quote-card{display:flex;flex-direction:column;padding:32px;border:1px solid var(--line);border-radius:16px;background:#111e30}.quote-card>svg{color:#a5baff}.quote-card h2{font-size:24px;margin:24px 0 12px}.quote-card p{color:var(--muted);line-height:1.8}.quote-card strong{font-size:28px;margin-top:28px}.quote-card ul{list-style:none;padding:0;margin:28px 0 32px;display:grid;gap:16px}.quote-card li{display:flex;align-items:center;gap:10px;font-size:14px}.quote-card .button{margin-top:auto}@media(max-width:900px){.quote-grid{grid-template-columns:1fr}.quote-card{padding:28px}}</style>

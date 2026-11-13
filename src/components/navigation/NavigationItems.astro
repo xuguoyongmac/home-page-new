@@ -1,0 +1,30 @@
+---
+import Icon from '../Icon.astro';
+import { capabilities } from '../../features/product';
+import { solutionModules } from '../../features/solutions';
+import { pathFor, site } from '../../lib/site';
+import type { Locale } from '../../data/types';
+interface Props { locale: Locale; page: string; prefix: string; }
+const { locale, page, prefix } = Astro.props;
+const zh = locale === 'zh';
+const groups = [
+  { id: 'product', label: zh ? '产品能力' : 'Product', title: zh ? '产品能力' : 'Capabilities', entries: capabilities.map(entry => ({ label: entry.copy[locale].name, icon: entry.icon, path: `product/${entry.slug}` })) },
+  { id: 'solutions', label: zh ? '解决方案' : 'Solutions', title: zh ? '行业解决方案' : 'Industries', entries: solutionModules.filter(entry => entry.category === 'industry').map(entry => ({ label: entry.copy[locale].name.replace('解决方案','').replace('券商','证券'), icon: entry.copy[locale].icon, path: `solutions/${entry.slug}` })) },
+];
+const directLinks = [
+  { href: pathFor(locale,'pricing'), label: zh ? '价格' : 'Pricing', active: page === 'pricing', external: false },
+  { href: site.docs, label: zh ? '文档中心' : 'Docs', active: false, external: true },
+  { href: pathFor(locale,'download'), label: zh ? '资源下载' : 'Downloads', active: page === 'download' || page === 'releases', external: false },
+  { href: site.blog, label: zh ? '博客' : 'Blog', active: page.startsWith('blog'), external: true },
+];
+---
+{groups.map(group => <div class="tego-nav-group" data-nav-group>
+  <button type="button" class:list={['tego-nav-trigger', {'is-current': page.startsWith(group.id)}]} aria-expanded="false" aria-controls={`${prefix}-${group.id}`} data-nav-disclosure>{group.label}<Icon name="chevron" size={13}/></button>
+  <div class:list={['tego-nav-panel', {'tego-nav-solutions': group.id === 'solutions'}]} id={`${prefix}-${group.id}`} hidden>
+    <div class="tego-nav-panel-body">
+      <div><p class="tego-nav-heading">{group.title}</p><ul class="tego-nav-grid">{group.entries.map(entry => <li><a class="tego-nav-item" href={pathFor(locale,entry.path)} aria-current={page === entry.path ? 'page' : undefined}><span class="tego-nav-icon"><Icon name={entry.icon} size={21}/></span><span>{entry.label}</span></a></li>)}</ul></div>
+      {group.id === 'solutions' && <div class="tego-nav-deployment"><p class="tego-nav-heading">{zh ? '专属部署' : 'Deployment'}</p>{solutionModules.filter(entry => entry.category === 'deployment').map(entry => <a class="tego-nav-item" href={pathFor(locale,`solutions/${entry.slug}`)} aria-current={page === `solutions/${entry.slug}` ? 'page' : undefined}><span class="tego-nav-icon"><Icon name={entry.copy[locale].icon} size={21}/></span><span>{entry.copy[locale].name}</span></a>)}</div>}
+    </div>
+  </div>
+</div>)}
+{directLinks.map(link => <a class="tego-nav-direct" href={link.href} aria-current={link.active ? 'page' : undefined} rel={link.external ? 'external' : undefined}>{link.label}</a>)}

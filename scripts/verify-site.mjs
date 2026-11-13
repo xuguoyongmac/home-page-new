@@ -134,11 +134,17 @@ for(const document of documents.values()) {
   const src=attributes(match[1]).src;if(src)validateReference(src,document,'脚本');
  }
 }
-const industries=['government','securities','general','insurance','state-owned'];
+const industries=['government','securities','general','insurance','state-owned','banking','internet','appliance'];
+const capabilities=['digital-employees','collaboration','multi-agent','knowledge','integrations','governance'];
 const routes=['','product','solutions','ecosystem','enterprise','resources','download','releases','faq','contact','privacy','terms','blog'];
 for(const locale of ['zh','en']){
- for(const route of [...routes,...industries.map(i=>`solutions/${i}`)])check(existsSync(path.join(dist,locale,route,'index.html')),`${locale}/${route} 页面缺失`);
+ for(const route of [...routes,...industries.map(i=>`solutions/${i}`), 'pricing', ...capabilities.map(i=>`product/${i}`)])check(existsSync(path.join(dist,locale,route,'index.html')),`${locale}/${route} 页面缺失`);
  const home=documentFor(path.join(dist,locale,'index.html'));
+ for(const id of ['desktop-product','desktop-solutions','mobile-product','mobile-solutions'])check(home.ids.has(id),`${locale} 缺少导航分组 ${id}`);
+ check(home.tags.some(t=>t.name==='a'&&t.attrs.href==='https://docs.zhama.com.cn/'),`${locale} 文档中心链接不正确`);
+ check(home.tags.some(t=>t.name==='a'&&t.attrs.href==='https://www.zhama.com/zh/blog'),`${locale} 博客链接不正确`);
+ for(const slug of capabilities)check(home.tags.some(t=>t.name==='a'&&t.attrs.href===`/${locale}/product/${slug}/`),`${locale} 能力菜单缺失 ${slug}`);
+
  check(home.tags.filter(t=>t.attrs.role==='tab'&&t.attrs.id?.startsWith('tab-')).length===5,`${locale} 首页应保留五类行业方案`);
  check(home.tags.filter(t=>t.attrs.role==='tabpanel'&&t.attrs.id?.startsWith('panel-')&&t.attrs.hidden===undefined).length===1,`${locale} 首页行业页签初始选中不唯一`);
  const visible=decodeEntities(home.markup.replace(/<[^>]+>/g,' '));

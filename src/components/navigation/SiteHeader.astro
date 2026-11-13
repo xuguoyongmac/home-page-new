@@ -1,0 +1,81 @@
+---
+import Brand from '../Brand.astro';
+import Icon from '../Icon.astro';
+import NavigationItems from './NavigationItems.astro';
+import { pathFor, ui } from '../../lib/site';
+import type { Locale } from '../../data/types';
+interface Props { locale: Locale; page: string; }
+const { locale, page } = Astro.props;
+const zh = locale === 'zh';
+const t = ui[locale];
+const other = zh ? 'en' : 'zh';
+---
+<header class="site-header tego-header" data-site-header>
+  <div class="header-inner container">
+    <a class="brand-link" href={pathFor(locale)} aria-label={zh ? 'TeGo 数字员工协作平台首页' : 'TeGo home'}><Brand locale={locale}/></a>
+    <nav class="desktop-nav" aria-label={zh ? '主导航' : 'Main navigation'}><NavigationItems locale={locale} page={page} prefix="desktop"/></nav>
+    <div class="header-tools">
+      <a class="language-link" href={pathFor(other,page)} lang={other} aria-label={zh ? 'Switch to English' : '切换至中文'}><Icon name="globe" size={14}/>{zh ? 'EN' : '中'}</a>
+      <a class="button button-small header-cta" href={pathFor(locale,'contact')}>{t.contact}<Icon name="external" size={13}/></a>
+      <button type="button" class="menu-toggle icon-button" aria-label={t.menu} data-open-label={t.menu} data-close-label={t.close} aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label={zh ? '移动端导航' : 'Mobile navigation'} inert><NavigationItems locale={locale} page={page} prefix="mobile"/></nav>
+</header>
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  if (header) {
+    const marker = document.querySelector('.header-scroll-marker');
+    if (marker) {
+      header.dataset.scrolled = String(window.scrollY > 24);
+      new IntersectionObserver(([entry]) => { header.dataset.scrolled = String(!entry.isIntersecting); }).observe(marker);
+    }
+    const toggles = [...header.querySelectorAll<HTMLButtonElement>('[data-nav-disclosure]')];
+    const mobileToggle = header.querySelector<HTMLButtonElement>('.menu-toggle');
+    const mobile = header.querySelector<HTMLElement>('#mobile-nav');
+    const setDisclosure = (button: HTMLButtonElement, open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      const panel = document.getElementById(button.getAttribute('aria-controls')!);
+      if (panel) panel.hidden = !open;
+      header.dataset.dropdownOpen = String(toggles.some(item => item.getAttribute('aria-expanded') === 'true'));
+    };
+    const closeDisclosures = () => toggles.forEach(button => setDisclosure(button, false));
+    const closeMobile = () => {
+      mobileToggle?.setAttribute('aria-expanded', 'false');
+      if (mobileToggle) mobileToggle.setAttribute('aria-label', mobileToggle.dataset.openLabel!);
+      mobile?.classList.remove('is-open');
+      if (mobile) mobile.inert = true;
+      closeDisclosures();
+    };
+    toggles.forEach(button => button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      closeDisclosures(); setDisclosure(button, open);
+    }));
+    mobileToggle?.addEventListener('click', () => {
+      const open = mobileToggle.getAttribute('aria-expanded') !== 'true';
+      closeDisclosures();
+      mobileToggle.setAttribute('aria-expanded', String(open));
+      mobileToggle.setAttribute('aria-label', open ? mobileToggle.dataset.closeLabel! : mobileToggle.dataset.openLabel!);
+      mobile?.classList.toggle('is-open', open);
+      if (mobile) mobile.inert = !open;
+    });
+    document.addEventListener('click', event => { if (event.target instanceof Node && !header.contains(event.target)) closeMobile(); });
+    header.addEventListener('focusout', event => { if (event.relatedTarget instanceof Node && !header.contains(event.relatedTarget)) closeMobile(); });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      const expanded = toggles.find(button => button.getAttribute('aria-expanded') === 'true');
+      if (expanded) { closeDisclosures(); expanded.focus(); }
+      else if (mobileToggle?.getAttribute('aria-expanded') === 'true') { closeMobile(); mobileToggle.focus(); }
+    });
+    header.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobile));
+    window.matchMedia('(min-width: 1101px)').addEventListener('change', closeMobile);
+    const language = header.querySelector<HTMLAnchorElement>('.language-link');
+    if (language) {
+      const destination = new URL(language.href); destination.hash = location.hash;
+      if (location.pathname.endsWith('/releases/')) {
+        const version = new URLSearchParams(location.search).get('version'); if (version) destination.searchParams.set('version', version);
+      }
+      language.href = destination.pathname + destination.search + destination.hash;
+    }
+  }
+</script>

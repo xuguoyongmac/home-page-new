@@ -6,14 +6,11 @@ export const site = {
   origin: import.meta.env.PUBLIC_SITE_URL || 'https://www.zhama.com',
   app: 'https://zhama.ai/',
   docs: 'https://docs.zhama.com.cn/',
+  blog: 'https://www.zhama.com/zh/blog',
   email: 'business@zhama.com',
 };
 export const pathFor = (locale: Locale, page = '') => `/${locale}/${page ? `${page}/` : ''}`;
 export const appFor = (locale: Locale) => `${site.app}?lang=${locale}&utm_source=zhama.com&utm_medium=website&utm_campaign=tego_os`;
-export const nav = {
-  zh: [ ['product', '产品能力'], ['solutions', '行业方案'], ['ecosystem', '开放生态'], ['enterprise', '企业部署'], ['resources', '资源中心'] ],
-  en: [ ['product', 'Product'], ['solutions', 'Solutions'], ['ecosystem', 'Ecosystem'], ['enterprise', 'Enterprise'], ['resources', 'Resources'] ],
-} as const;
 export const ui = {
   zh: { try: '开始使用', contact: '预约交流', learn: '了解更多', docs: '文档中心', menu: '打开导航', close: '关闭导航', light: '浅色', dark: '深色', system: '跟随系统', theme: '外观', all: '查看全部', arrow: '探索产品能力', footer: '让协作看得见，让成果可验收', privacy: '隐私政策', terms: '服务协议', download: '下载中心', faq: '常见问题', blog: '产品博客', back: '返回首页' },
   en: { try: 'Get started', contact: 'Talk to us', learn: 'Learn more', docs: 'Documentation', menu: 'Open navigation', close: 'Close navigation', light: 'Light', dark: 'Dark', system: 'System', theme: 'Appearance', all: 'View all', arrow: 'Explore the platform', footer: 'Make collaboration visible. Make outcomes verifiable.', privacy: 'Privacy', terms: 'Terms', download: 'Downloads', faq: 'FAQ', blog: 'Blog', back: 'Back to home' },

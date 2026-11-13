@@ -1,0 +1,9 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Page from '../../features/pricing/Page.astro';
+import { locales } from '../../lib/site';
+export function getStaticPaths() { return locales.map(locale => ({ params: { locale }, props: { locale } })); }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+---
+<Layout locale={locale} title={zh ? '价格方案' : 'Pricing'} description={zh ? '了解团队协作、企业私有化与行业一体机的方案报价方式。' : 'Discuss team, private deployment and industry appliance pricing.'} page="pricing"><Page locale={locale}/></Layout>

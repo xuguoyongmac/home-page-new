@@ -1,5 +1,5 @@
 ---
-import { industries } from '../data/industries';
+import { industries, homeIndustrySlugs } from '../data/industries';
 import { homeIndustries } from '../data/home-industries';
 import type { Locale } from '../data/types';
 import { pathFor } from '../lib/site';
@@ -7,12 +7,14 @@ import Icon from './Icon.astro';
 interface Props { locale: Locale; home?: boolean; }
 const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
+const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : industries[locale];
+const defaultSlug = 'general';
 ---
 <div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer>
   <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
-    {industries[locale].map((industry,index) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={index === 2} aria-controls={`panel-${industry.slug}`} tabindex={index === 2 ? 0 : -1}><Icon name={industry.icon} size={18}/>{home && zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
+    {visibleIndustries.map((industry) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={industry.slug === defaultSlug} aria-controls={`panel-${industry.slug}`} tabindex={industry.slug === defaultSlug ? 0 : -1}><Icon name={industry.icon} size={18}/>{home && zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
   </div>
-  {industries[locale].map((industry,index) => <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={index !== 2}>
+  {visibleIndustries.map((industry) => <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
     <div class="solution-image"><img src={`/images/saaslauncher/${industry.image}_V1.2.webp`} alt="" width="1672" height="941" loading="lazy" decoding="async"/><span>{industry.tag}</span>{home && <div class="industry-deliverables"><strong>{zh?'工作交付':'DELIVERABLES'}</strong>{homeIndustries[locale][industry.slug].outputs.map(output=><div><Icon name="file" size={19}/><span>{output}</span><Icon name="check" size={16}/></div>)}</div>}</div>
     <div class="solution-copy"><p class="eyebrow">{industry.tag}</p><h3>{home ? homeIndustries[locale][industry.slug].title : industry.title}</h3>{home ? <><div class="industry-pain"><span>{zh?'业务难点':'THE CHALLENGE'}</span><p>{homeIndustries[locale][industry.slug].pain}</p></div><div class="industry-value"><span>{zh?'方案价值':'THE APPROACH'}</span><p>{homeIndustries[locale][industry.slug].value}</p></div></> : <><p>{industry.description}</p><ul class="task-chips">{industry.tasks.map(task=><li><Icon name="check" size={13}/>{task.title}</li>)}</ul></>}<a class="button button-small" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看解决方案' : 'Explore solution'}<Icon name="external" size={16}/></a></div>
   </div>)}

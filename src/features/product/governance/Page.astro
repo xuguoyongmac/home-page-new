@@ -1,0 +1,8 @@
+---
+import CapabilityPage from '../../../components/pages/CapabilityPage.astro';
+import content from './content';
+import type { Locale } from '../../../data/types';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+<CapabilityPage locale={locale} capability={content}/>

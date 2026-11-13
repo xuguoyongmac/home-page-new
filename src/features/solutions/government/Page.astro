@@ -1,0 +1,8 @@
+---
+import IndustryPage from '../../../components/pages/IndustryPage.astro';
+import content from './content';
+import type { Locale } from '../../../data/types';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+<IndustryPage locale={locale} industry={content.copy[locale]}/>

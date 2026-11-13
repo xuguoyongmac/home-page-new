@@ -13,11 +13,9 @@ let ringOffset=0;
 const segments=data.categories.map((category,index)=>{const size=Number(category.amounts.at(-1))/current*100;const segment={...category,index,size,offset:ringOffset};ringOffset+=size;return segment;});
 const netRevenueChange=contributions.reduce((total,category)=>total+category.change,0);
 const subscriptionShare=(contributions.find(category=>category.id==='subscription')!.change/netRevenueChange*100).toFixed(1);
-const previousMargin=data.categories.reduce((total,category)=>total+category.amounts.at(-2)!*category.margin,0)/(current-netRevenueChange)*100;
-const marginGain=(margin-previousMargin).toFixed(1);
 const insightLines = [
- { label: zh ? '判断' : 'Finding', text: zh ? `本月收入增长 ${growth.toFixed(1)}%，订阅贡献 ${subscriptionShare}% 的净增量，毛利率提升 ${marginGain} 个百分点；增长由高毛利业务拉动，渠道回落仍需关注。` : `Revenue grew ${growth.toFixed(1)}%; subscriptions drove ${subscriptionShare}% of net growth and gross margin rose ${marginGain} percentage points. Higher-margin business is leading growth, while channel revenue remains a concern.` },
- { label: zh ? '建议' : 'Action', text: zh ? '优先筛选高使用量、临近到期客户的续约与增购机会；按渠道和客户定位收入缺口，核查延期订单与转化障碍；同步复盘项目工时、外采成本，形成有负责人、有优先级的下月行动清单。' : 'Prioritize renewal and expansion opportunities among high-usage accounts and upcoming renewals. Trace channel shortfalls to delayed orders or conversion barriers; review project hours and external costs, then assign owners and priorities for next month.' },
+ { label: zh ? '判断' : 'Finding', text: zh ? `收入增长 ${growth.toFixed(1)}%，订阅贡献 ${subscriptionShare}% 净增量，是本月增长的核心驱动力。` : `Revenue +${growth.toFixed(1)}%; subscriptions drove ${subscriptionShare}% of net growth.` },
+ { label: zh ? '建议' : 'Action', text: zh ? '优先推进临期客户续约增购，排查渠道收入缺口，明确下月重点客户与跟进责任。' : 'Prioritize renewals and expansion; resolve channel gaps and assign account actions.' },
 ];
 const metricValues=[
  {label:zh?'营业收入':'Revenue',value:current.toFixed(1),unit:zh?'万元':'× ¥10k',note:`+${growth.toFixed(1)}%`,icon:'chart'},
@@ -66,7 +64,7 @@ const metricValues=[
    const animation=chart.getAnimations()[0];
    const phase=Number(animation?.currentTime ?? 0)%14000;
    let start=560;
-   const step=6600/lines.reduce((total,line)=>total+line.text.length,0);
+   const step=Math.min(34,3400/lines.reduce((total,line)=>total+line.text.length,0));
    let next=14000;
    lines.forEach(line=>{
     const count=reduced?line.text.length:Math.max(0,Math.min(line.text.length,Math.floor((phase-start)/step)));
