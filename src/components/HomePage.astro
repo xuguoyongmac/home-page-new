@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../data/types';
-import EnterpriseValueMatrix from './EnterpriseValueMatrix.astro';
+import WorkforceMatrix from './WorkforceMatrix.astro';
 import HeroCarousel from './HeroCarousel.astro';
 import SolutionExplorer from './SolutionExplorer.astro';
 import WorkAnywhere from './WorkAnywhere.astro';
@@ -13,7 +13,7 @@ const zh = locale === 'zh';
 <div class="home-value-edition">
 <HeroCarousel locale={locale}/>
 <WorkAnywhere locale={locale}/>
-<EnterpriseValueMatrix locale={locale}/>
+<WorkforceMatrix locale={locale}/>
 <section class="value-section industry-section" id="solutions" aria-labelledby="industry-title"><div class="container"><div class="value-heading"><p class="eyebrow">{zh?'行业解决方案':'INDUSTRY SOLUTIONS'}</p><h2 id="industry-title">{zh?<>深入行业现场，<span class="title-second">解决具体业务难题</span></>:'Industry context. Concrete business challenges.'}</h2><p>{zh?'从高频工作切入，把行业知识、岗位方法与交付要求放进一套协作方案。':'Connect industry knowledge, role methods and deliverables around the work your team does.'}</p></div><SolutionExplorer locale={locale} home/></div></section>
 <CallToAction locale={locale} home/>
 </div>
