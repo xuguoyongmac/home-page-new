@@ -2,8 +2,7 @@
 import type { Locale } from '../data/types';
 import Icon from './Icon.astro';
 import MaterialGlyph from './MaterialGlyph.astro';
-import HeroStarfield from './HeroStarfield.astro';
-import HeroWorkspace from './HeroWorkspace.astro';
+import HeroCarousel from './HeroCarousel.astro';
 import SolutionExplorer from './SolutionExplorer.astro';
 import WorkAnywhere from './WorkAnywhere.astro';
 import CallToAction from './CallToAction.astro';
@@ -32,17 +31,7 @@ const domains = zh ? [
 ];
 ---
 <div class="home-value-edition">
-<section class="sl-hero" aria-labelledby="home-title" data-hero-motion="running">
-  <HeroStarfield/>
-  <div class="container hero-center">
-    <div class="hero-message">
-    <h1 id="home-title">{zh ? '让数字员工，' : 'Bring digital employees'}<br/>{zh ? '成为团队的一员' : 'into your team.'}</h1>
-    <p class="sl-hero-description">{zh ? '连接企业知识与业务系统，' : 'Connect knowledge and business tools.'}<br/>{zh ? '与数字员工一起，把工作做成可交付的成果。' : 'Work together. Deliver work that can be reviewed.'}</p>
-    <div class="sl-actions"><a class="button" href={pathFor(locale,'contact')}>{zh ? '预约方案交流' : 'Discuss your workflow'}</a><a class="button button-white" href="#solutions">{zh ? '探索行业方案' : 'Explore solutions'}</a></div>
-    </div><HeroWorkspace locale={locale}/>
-
-  </div>
-</section>
+<HeroCarousel locale={locale}/>
 <WorkAnywhere locale={locale}/>
 <section class="value-section domain-section" id="work-scenarios" aria-labelledby="domain-title"><div class="container">
   <div class="value-heading"><p class="eyebrow">{zh?'覆盖业务的关键环节':'WHERE WORK HAPPENS'}</p><h2 id="domain-title">{zh?<>把数字员工，<span class="title-second">放到业务最需要的地方</span></>:'Put digital employees where the work needs them'}</h2><p>{zh?'从知识、文书到客户与项目，为不同岗位找到具体的工作切入点。':'Find a concrete starting point across knowledge, documents, customer work and projects.'}</p></div>
