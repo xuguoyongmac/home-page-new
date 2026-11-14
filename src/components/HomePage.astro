@@ -36,7 +36,7 @@ const domains = zh ? [
   <HeroStarfield/>
   <div class="container hero-center">
     <div class="hero-message">
-    <h1 id="home-title">{zh ? '让数字员工，' : 'Bring digital employees'}<br/>{zh ? '成为团队的一员' : 'into your team.'}</h1>
+    <h1 id="home-title" class:list={{'hero-title-zh':zh}}><span>{zh ? '让数字员工，' : 'Bring digital employees'}</span><br/><span>{zh ? '成为团队的一员' : 'into your team.'}</span></h1>
     <p class="sl-hero-description">{zh ? '连接企业知识与业务系统，' : 'Connect knowledge and business tools.'}<br/>{zh ? '与数字员工一起，把工作做成可交付的成果。' : 'Work together. Deliver work that can be reviewed.'}</p>
     <div class="sl-actions"><a class="button" href={pathFor(locale,'contact')}>{zh ? '预约方案交流' : 'Discuss your workflow'}<Icon name="external" size={16}/></a><a class="button button-white" href="#solutions">{zh ? '探索行业方案' : 'Explore solutions'}<Icon name="arrow" size={16}/></a></div>
     </div><HeroWorkspace locale={locale}/>
