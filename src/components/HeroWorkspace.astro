@@ -42,29 +42,22 @@ const employees=zh?[
  </div>
 </div>
 <script>
+ import { observeMotion } from '../lib/motion';
  document.querySelectorAll<HTMLElement>('[data-hero-workspace]').forEach(workspace=>{
   const hero=workspace.closest<HTMLElement>('[data-hero-motion]');
   const motionButton=workspace.querySelector<HTMLButtonElement>('[data-hero-motion-toggle]');
   if(hero && motionButton && !hero.hasAttribute('data-hero-carousel')){
-   const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
-   let paused=false;
-   let inView=true;
-   const update=()=>{
-    hero.dataset.heroMotion=preference.matches?'reduced':paused?'paused':'running';
-    hero.dataset.motionSuspended=String(document.hidden || !inView);
-    motionButton.hidden=preference.matches;
-    motionButton.setAttribute('aria-pressed',String(paused));
-    const label=(paused?motionButton.dataset.playLabel:motionButton.dataset.pauseLabel) || '';
+   const playback=observeMotion(hero,state=>{
+    hero.dataset.heroMotion=state.reduced?'reduced':state.paused?'paused':'running';
+    hero.dataset.motionSuspended=String(state.suspended);
+    motionButton.hidden=state.reduced;
+    motionButton.setAttribute('aria-pressed',String(state.paused));
+    const label=(state.paused?motionButton.dataset.playLabel:motionButton.dataset.pauseLabel) || '';
     motionButton.setAttribute('aria-label',label);
     motionButton.title=label;
     hero.dispatchEvent(new Event('hero-motion-change'));
-   };
-   motionButton.addEventListener('click',()=>{paused=!paused;update();});
-   preference.addEventListener('change',update);
-   document.addEventListener('visibilitychange',update);
-   const observer=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;update();},{threshold:.05});
-   observer.observe(hero);
-   update();
+   });
+   motionButton.addEventListener('click',()=>playback.setPaused(motionButton.getAttribute('aria-pressed')!=='true'));
   }
   const tabs=[...workspace.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
   const panels=[...workspace.querySelectorAll<HTMLElement>('[role="tabpanel"]')];

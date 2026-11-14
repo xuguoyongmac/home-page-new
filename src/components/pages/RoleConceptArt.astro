@@ -7,5 +7,5 @@ const artwork = roleConceptArtwork[locale];
 ---
 <picture class="role-concept-visual">
   <source media="(max-width: 760px)" srcset={artwork.mobile} width={artwork.mobileWidth} height={artwork.mobileHeight}/>
-  <img src={artwork.desktop} width={artwork.width} height={artwork.height} alt={artwork.alt} loading="eager" fetchpriority="high" decoding="async"/>
+  <img src={artwork.desktop} width={artwork.width} height={artwork.height} alt={artwork.alt} loading="lazy" decoding="async"/>
 </picture>

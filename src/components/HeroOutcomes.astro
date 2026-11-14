@@ -5,5 +5,5 @@ const {locale}=Astro.props;
 const zh=locale==='zh';
 ---
 <div class="banner-outcomes-visual banner-visual">
-  <div class="outcomes-art"><img src={`/images/hero/always-on-${locale}_V1.7.webp`} width="1586" height="992" loading="eager" decoding="async" alt={zh?'一位数字员工持续在线，服务时间 7x24，持续完成监控告警、经营日报、舆情分析、业务核对、热点追踪与资料归集。':'One digital employee, available 24/7 for monitoring alerts, daily reporting, sentiment analysis, record reconciliation, trend tracking and knowledge archiving.'}/></div>
+  <div class="outcomes-art"><img data-hero-src={`/images/hero/always-on-${locale}_V1.7.webp`} width="1586" height="992" loading="lazy" decoding="async" alt={zh?'一位数字员工持续在线，服务时间 7x24，持续完成监控告警、经营日报、舆情分析、业务核对、热点追踪与资料归集。':'One digital employee, available 24/7 for monitoring alerts, daily reporting, sentiment analysis, record reconciliation, trend tracking and knowledge archiving.'}/></div>
 </div>

@@ -13,7 +13,7 @@
 .sl-hero[data-hero-motion] .chart-dot:last-of-type{filter:drop-shadow(0 0 2.5px #4bc5ff);animation:tego-trend-endpoint 14s ease-in-out infinite}
 .sl-hero[data-hero-motion] .order-bar{transform-box:fill-box;transform-origin:center bottom;animation:tego-orders-reveal 14s ease-in-out infinite}
 .sl-hero[data-hero-motion] .driver-bar{transform-origin:left center;animation:tego-driver-reveal 14s ease-in-out infinite}
-.sl-hero[data-hero-motion='paused'] *,.sl-hero[data-motion-suspended='true'] *{animation-play-state:paused!important}
+.sl-hero[data-hero-motion='paused'] :is(.hero-star,[data-hero-workspace] *),.sl-hero[data-motion-suspended='true'] *{animation-play-state:paused!important}
 .sl-hero[data-hero-motion='reduced'] *{animation:none!important}
 @keyframes tego-near-star-breathe{0%,100%{opacity:.26}50%{opacity:.85}}
 @keyframes tego-trend-draw{0%,4%{stroke-dashoffset:100;opacity:.3}25%,94%{stroke-dashoffset:0;opacity:1}99%,100%{stroke-dashoffset:0;opacity:.3}}

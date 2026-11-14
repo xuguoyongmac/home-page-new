@@ -129,6 +129,11 @@ for(const document of documents.values()) {
  for(const tag of tags){
   if(tag.attrs.href!==undefined)validateReference(tag.attrs.href,document);
   if(tag.attrs.src!==undefined)validateReference(tag.attrs.src,document,'资源');
+  for(const attribute of ['data-hero-src','data-hero-poster'])if(tag.attrs[attribute])validateReference(tag.attrs[attribute],document,'延迟媒体');
+  for(const attribute of ['srcset','data-hero-srcset'])if(tag.attrs[attribute]){
+   for(const candidate of tag.attrs[attribute].split(','))validateReference(candidate.trim().split(/\s+/)[0],document,'响应式图片');
+   if(tag.name==='img'&&/\d+w(?:,|$)/.test(tag.attrs[attribute]))check(Boolean(tag.attrs.sizes),`${label}：响应式图片缺少 sizes`);
+  }
  }
  for(const match of html.matchAll(/<script\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi)) {
   const src=attributes(match[1]).src;if(src)validateReference(src,document,'脚本');

@@ -20,8 +20,10 @@ import '../styles/hero-space.css';
 import '../styles/site-scale.css';
 import '../styles/navigation.css';
 import '../styles/industry-tabs.css';
+import '../styles/page-canvas.css';
 import SiteHeader from '../components/navigation/SiteHeader.astro';
 import SiteFooter from '../components/navigation/SiteFooter.astro';
+import MotionRegions from '../components/MotionRegions.astro';
 import { site, pathFor } from '../lib/site';
 import { languages, languagePathFor, websiteLanguageFor } from '../lib/languages';
 import type { Locale } from '../data/types';
@@ -62,8 +64,9 @@ const canonical = new URL(languagePathFor(language, page), site.origin).href;
     {page === '' && <div class="header-scroll-marker" aria-hidden="true"></div>}
     <a class="skip-link" href="#main">{zh ? '跳转到正文' : 'Skip to content'}</a>
     <SiteHeader locale={locale} page={page}/>
-    <main id="main"><slot/></main>
+    <main id="main" class="page-canvas"><slot/></main>
     <SiteFooter locale={locale}/>
+    <MotionRegions/>
 
   </body>
 </html>

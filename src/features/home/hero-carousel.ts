@@ -1,3 +1,17 @@
+import { observeMotion, type MotionState } from '../../lib/motion';
+
+function hydrateSlide(slide: HTMLElement) {
+  const video = slide.querySelector<HTMLVideoElement>('video');
+  const needsVideoLoad = Boolean(video?.querySelector('source[data-hero-src]'));
+  slide.querySelectorAll<HTMLImageElement | HTMLSourceElement>('[data-hero-src]').forEach(media => {
+    if (media.dataset.heroSrcset) media.setAttribute('srcset', media.dataset.heroSrcset);
+    media.setAttribute('src', media.dataset.heroSrc!);
+    if (media.tagName === 'IMG') media.setAttribute('loading', 'eager');
+    delete media.dataset.heroSrc;
+  });
+  if (video && needsVideoLoad) video.load();
+}
+
 export function initializeHeroCarousels() {
   document.querySelectorAll<HTMLElement>('[data-hero-carousel]').forEach(hero => {
     if (hero.dataset.initialized) return;
@@ -12,17 +26,20 @@ export function initializeHeroCarousels() {
     const compactViewport = window.matchMedia('(max-width: 700px)');
     const taskVideo = hero.querySelector<HTMLVideoElement>('[data-hero-task-video]');
     const taskSlide = taskVideo?.closest<HTMLElement>('[data-hero-slide]');
-    let taskVideoPaused = false;
+    let workspacePaused = false;
     let active = 0;
-    let userPaused = preference.matches;
+    let userPaused = false;
     let hovered = false;
-    let inView = true;
+    let motionState: MotionState = { running: false, reduced: preference.matches, suspended: true, paused: false, enabled: true };
+    let playPending = false;
+    let interruptedRetries = 0;
     let gesture: { id: number; x: number; y: number; horizontal: boolean } | undefined;
     let suppressClickUntil = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
     let started = 0;
     const duration = () => Number(slides[active].dataset.duration);
     let remaining = duration();
+    const shouldPlayTask = () => taskSlide === slides[active] && motionState.running;
 
     const stopClock = () => {
       if (timer === undefined) return;
@@ -32,9 +49,9 @@ export function initializeHeroCarousels() {
     };
     const sync = () => {
       stopClock();
-      const suspended = document.hidden || !inView;
+      const suspended = motionState.suspended;
       const paused = userPaused || hovered || Boolean(gesture);
-      hero.dataset.heroMotion = preference.matches ? 'reduced' : paused ? 'paused' : 'running';
+      hero.dataset.heroMotion = preference.matches ? 'reduced' : active === 0 && workspacePaused ? 'paused' : 'running';
       hero.dataset.motionSuspended = String(suspended);
       hero.dataset.carouselPaused = String(paused || suspended || preference.matches || compactViewport.matches);
       toggle.hidden = preference.matches || compactViewport.matches;
@@ -42,20 +59,32 @@ export function initializeHeroCarousels() {
       toggle.setAttribute('aria-label', (userPaused || preference.matches ? toggle.dataset.playLabel : toggle.dataset.pauseLabel) || '');
       if (workspaceToggle) {
         workspaceToggle.hidden = preference.matches;
-        workspaceToggle.setAttribute('aria-pressed', String(userPaused));
-        const label = (userPaused ? workspaceToggle.dataset.playLabel : workspaceToggle.dataset.pauseLabel) || '';
+        workspaceToggle.setAttribute('aria-pressed', String(workspacePaused));
+        const label = (workspacePaused ? workspaceToggle.dataset.playLabel : workspaceToggle.dataset.pauseLabel) || '';
         workspaceToggle.setAttribute('aria-label', label);
         workspaceToggle.title = label;
       }
       slideRegion.setAttribute('aria-live', paused || preference.matches ? 'polite' : 'off');
-      // Choosing a slide stops rotation; its task session continues playing.
       if (taskVideo) {
-        const playTask = taskSlide === slides[active] && !suspended && !preference.matches && !taskVideoPaused;
-        if (playTask) {
-          if (taskVideo.paused) void taskVideo.play().catch(() => {
-            taskVideo.dataset.playback = 'blocked';
-          });
-        } else taskVideo.pause();
+        if (shouldPlayTask()) {
+          if (taskVideo.paused && !playPending) {
+            hydrateSlide(slides[active]);
+            playPending = true;
+            let retryInterrupted = false;
+            void taskVideo.play().then(() => {
+              interruptedRetries = 0;
+              if (!shouldPlayTask()) taskVideo.pause();
+              else taskVideo.dataset.playback = 'playing';
+            }).catch((error: unknown) => {
+              retryInterrupted = error instanceof Error && error.name === 'AbortError' && interruptedRetries < 1;
+              if (retryInterrupted) interruptedRetries++;
+              taskVideo.dataset.playback = shouldPlayTask() ? 'blocked' : 'paused';
+            }).finally(() => {
+              playPending = false;
+              if (retryInterrupted && shouldPlayTask()) sync();
+            });
+          }
+        } else { taskVideo.pause(); taskVideo.dataset.playback = 'paused'; }
       }
       hero.dispatchEvent(new Event('hero-motion-change'));
       if (!paused && !suspended && !preference.matches && !compactViewport.matches) {
@@ -68,16 +97,11 @@ export function initializeHeroCarousels() {
       const previous = active;
       hero.dataset.carouselDirection = next < active ? 'previous' : 'next';
       active = (next + slides.length) % slides.length;
-      if (taskVideo && previous !== active) {
-        taskVideo.pause();
-        taskVideo.currentTime = 0;
-        taskVideoPaused = false;
-      }
+      if (taskVideo && previous !== active) taskVideo.pause();
       if (manual) userPaused = true;
       slides.forEach((slide, index) => {
         const current = index === active;
         slide.dataset.active = String(current);
-        slide.dataset.complete = String(current && manual);
         slide.classList.toggle('is-active', current);
         slide.classList.toggle('is-leaving', !current && index === previous);
         slide.setAttribute('aria-hidden', String(!current));
@@ -85,15 +109,14 @@ export function initializeHeroCarousels() {
         if (current) selectors[index].setAttribute('aria-current', 'true');
         else selectors[index].removeAttribute('aria-current');
       });
+      hydrateSlide(slides[active]);
       remaining = duration();
       if (manual) announcement.textContent = slides[active].getAttribute('aria-label') || '';
       sync();
     };
     const togglePlayback = () => {
       userPaused = !userPaused;
-      taskVideoPaused = userPaused;
       if (!userPaused) {
-        slides[active].dataset.complete = 'false';
         if (remaining < 200) remaining = duration();
       }
       sync();
@@ -111,7 +134,7 @@ export function initializeHeroCarousels() {
       });
     });
     toggle.addEventListener('click', togglePlayback);
-    workspaceToggle?.addEventListener('click', togglePlayback);
+    workspaceToggle?.addEventListener('click', () => { workspacePaused = !workspacePaused; sync(); });
     hero.querySelector('[data-carousel-prev]')?.addEventListener('click', () => select(active - 1, true));
     hero.querySelector('[data-carousel-next]')?.addEventListener('click', () => select(active + 1, true));
     const finishGesture = (event: PointerEvent, commit: boolean) => {
@@ -166,13 +189,13 @@ export function initializeHeroCarousels() {
     hero.addEventListener('focusin', event => {
       if ((event.target as HTMLElement).matches(':focus-visible')) { userPaused = true; sync(); }
     });
-    document.addEventListener('visibilitychange', sync);
-    preference.addEventListener('change', () => { if (preference.matches) userPaused = true; sync(); });
     compactViewport.addEventListener('change', sync);
-    const observer = new IntersectionObserver(entries => { inView = entries[0].isIntersecting; sync(); }, { threshold: .1 });
-    observer.observe(hero);
-    window.addEventListener('pagehide', () => { stopClock(); taskVideo?.pause(); observer.disconnect(); });
-    window.addEventListener('pageshow', event => { if (event.persisted) { observer.observe(hero); sync(); } });
-    sync();
+    taskVideo?.addEventListener('loadeddata', () => { taskVideo.dataset.frameReady = 'true'; });
+    taskVideo?.addEventListener('playing', () => {
+      if (!shouldPlayTask()) taskVideo.pause();
+      else { taskVideo.dataset.frameReady = 'true'; taskVideo.dataset.playback = 'playing'; }
+    });
+    taskVideo?.addEventListener('error', () => { taskVideo.dataset.frameReady = 'false'; taskVideo.dataset.playback = 'error'; });
+    observeMotion(hero, state => { motionState = state; sync(); });
   });
 }

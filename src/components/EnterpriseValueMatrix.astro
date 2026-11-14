@@ -39,23 +39,18 @@ const profiles = [
   </div>
 </section>
 <script>
+  import { observeMotion } from '../lib/motion';
   const matrix = document.querySelector<HTMLElement>('[data-enterprise-value]');
   if (matrix) {
     const stage = matrix.querySelector<HTMLElement>('[data-matrix-motion]')!;
     const toggle = matrix.querySelector<HTMLButtonElement>('[data-matrix-toggle]')!;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let paused = reducedMotion.matches;
-    let inView = false;
-    const update = () => {
-      stage.dataset.matrixMotion = paused ? 'paused' : 'playing';
-      stage.dataset.motionSuspended = String(document.hidden || !inView);
-      toggle.setAttribute('aria-label', (paused ? toggle.dataset.labelPlay : toggle.dataset.labelPause)!);
-    };
-    toggle.hidden = false;
-    toggle.addEventListener('click', () => { paused = !paused; update(); });
-    reducedMotion.addEventListener('change', event => { paused = event.matches; update(); });
-    document.addEventListener('visibilitychange', update);
-    new IntersectionObserver(entries => { inView = entries[0].isIntersecting; update(); }, { rootMargin: '100px' }).observe(stage);
-    update();
+    const playback = observeMotion(stage, state => {
+      stage.dataset.matrixMotion = state.running ? 'playing' : 'paused';
+      stage.dataset.motionSuspended = String(state.suspended);
+      toggle.hidden = state.reduced;
+      toggle.setAttribute('aria-pressed', String(state.paused));
+      toggle.setAttribute('aria-label', (state.paused ? toggle.dataset.labelPlay : toggle.dataset.labelPause)!);
+    });
+    toggle.addEventListener('click', () => playback.setPaused(toggle.getAttribute('aria-pressed') !== 'true'));
   }
 </script>
