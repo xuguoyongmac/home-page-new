@@ -95,3 +95,8 @@ html:is([lang='en'],[lang='ja']) .tego-header .tego-nav-label small{white-space:
 .tego-language-panel a:hover,.tego-language-panel a[aria-current]{color:#fff;background:#65b6ff21}
 .tego-language-panel a>svg{color:#82d4ff}
 @media(max-width:480px){.tego-header .header-cta{display:flex;min-height:34px;padding-inline:16px;font-size:13px}.tego-header .header-cta>svg{display:none}.tego-header .header-tools{gap:12px}.tego-header .language-link{gap:4px}.tego-header .language-link>svg:last-child{display:none}.tego-header .header-inner{gap:14px}}
+
+.tego-header .header-cta{min-width:92px;padding-inline:24px;justify-content:center;white-space:nowrap}
+.tego-header .language-link{white-space:nowrap}
+@media(max-width:480px){.tego-header .header-cta{min-width:72px;padding-inline:16px}}
+@media(max-width:380px){.tego-header .brand .official-wordmark{width:112px}.tego-header .header-inner{gap:10px}.tego-header .header-tools{gap:10px}}
