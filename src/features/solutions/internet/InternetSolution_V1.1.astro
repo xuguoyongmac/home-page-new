@@ -1,0 +1,301 @@
+---
+import Icon from '../../../components/Icon.astro';
+import { pathFor } from '../../../lib/site';
+import type { Locale } from '../../../data/types';
+import { experience } from './experience_V1.1';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const copy = experience[locale];
+const task = copy.workflows[0];
+const diagram = locale === 'zh' ? {
+  employee: '数字员工整理', action: '归纳需求、标出冲突与资料缺口',
+  output: '形成评审材料', review: '团队审阅', decision: '确认范围、技术判断与发布内容',
+  collaboration: '在同一项目内推进',
+  stages: [
+    { title: '团队提供目标与资料', body: '在项目内组织目标、资料和成员，按项目权限协作。' },
+    { title: '数字员工执行任务', body: '调用已配置的知识、技能和工具；需要补充信息时向同事问询，收到回应后继续。' },
+    { title: '团队审阅并继续修改', body: '在同一份成果上审阅和修改，保留文件版本，继续交办后续工作。' },
+  ],
+  connections: [
+    { title: '授权文件', body: '数字员工读取资料，编制文稿、表格和汇报材料。' },
+    { title: '插件与 MCP', body: '数字员工调用已授权的业务工具。CRM 随插件安装与授权启用。' },
+    { title: 'OpenAPI', body: '外部业务系统调用数字员工，按接口、调用身份与权限配置。' },
+  ],
+} : {
+  employee: 'Digital employee', action: 'Organize requirements, conflicts and missing information',
+  output: 'Prepare review materials', review: 'Team review', decision: 'Confirm scope, technical judgments and release content',
+  collaboration: 'Work within the same project',
+  stages: [
+    { title: 'The team provides goals and sources', body: 'Share goals, sources and member access within the project.' },
+    { title: 'The digital employee works on the task', body: 'Use configured knowledge, skills and tools. Ask colleagues when information is missing and continue from their responses.' },
+    { title: 'The team reviews and revises', body: 'Review and edit the same deliverable, retain file versions and continue with the next task.' },
+  ],
+  connections: [
+    { title: 'Authorized files', body: 'Digital employees read sources and prepare documents, spreadsheets and presentations.' },
+    { title: 'Plugins & MCP', body: 'Digital employees call authorized business tools. CRM requires its installed and authorized plugin.' },
+    { title: 'OpenAPI', body: 'External business systems invoke digital employees with configured interfaces, calling identities and permissions.' },
+  ],
+};
+---
+
+<div class="internet-solution" lang={locale} data-internet-solution>
+  <section class="internet-hero" aria-labelledby="internet-title">
+    <div class="container internet-hero-grid">
+      <div class="internet-hero-copy">
+        <h1 id="internet-title">{copy.headline.map(line => <span>{line}</span>)}</h1>
+        <p>{copy.description}</p>
+      </div>
+
+      <figure class="internet-delivery" aria-labelledby="delivery-title">
+        <figcaption id="delivery-title">{task.task}</figcaption>
+        <div class="internet-delivery-input">
+          <h2>{copy.labels.sources}</h2>
+          <p>{task.sources.join(locale === 'zh' ? '、' : ' · ')}</p>
+        </div>
+        <div class="internet-flow-link" aria-hidden="true"></div>
+        <div class="internet-delivery-employee">
+          <h2>{diagram.employee}</h2>
+          <p>{diagram.action}</p>
+        </div>
+        <div class="internet-flow-link" aria-hidden="true"></div>
+        <div class="internet-delivery-output">
+          <h2>{diagram.output}</h2>
+          <ul>{task.outputs.map(output => <li><Icon name="file" size={18}/><span>{output.title}</span></li>)}</ul>
+        </div>
+        <div class="internet-flow-link" aria-hidden="true"></div>
+        <div class="internet-delivery-review"><h2>{diagram.review}</h2><p>{diagram.decision}</p></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="internet-section internet-workflows" id="team-workflows" aria-labelledby="workflow-title">
+    <div class="container">
+      <h2 class="internet-section-title" id="workflow-title">{copy.scenarios.title}</h2>
+      <div class="internet-tabs" role="tablist" aria-label={copy.scenarios.label}>
+        {copy.workflows.map((workflow, index) => <button type="button" role="tab" id={`workflow-tab-${workflow.id}`} aria-controls={`workflow-panel-${workflow.id}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1}>{workflow.label}</button>)}
+      </div>
+      {copy.workflows.map((workflow, index) => <div class="internet-workflow-panel" id={`workflow-panel-${workflow.id}`} role="tabpanel" aria-labelledby={`workflow-tab-${workflow.id}`} tabindex="0" hidden={index !== 0}>
+        <div class="internet-workflow-copy">
+          <h3>{workflow.title}</h3>
+          <p>{workflow.description}</p>
+          <div class="internet-activities">{workflow.activities.map(activity => <article><h4>{activity.title}</h4><p>{activity.body}</p></article>)}</div>
+        </div>
+        <div class="internet-task">
+          <h3>{workflow.task}</h3>
+          <div class="internet-task-input"><h4>{copy.labels.sources}</h4><p>{workflow.sources.join(locale === 'zh' ? '、' : ' · ')}</p></div>
+          <p class="internet-task-request">{workflow.request}</p>
+          <h4 class="internet-output-title">{copy.labels.outputs}</h4>
+          <ul class="internet-outputs">{workflow.outputs.map(output => <li><div><strong>{output.title}</strong><span>{output.format}</span></div><p>{output.body}</p></li>)}</ul>
+          <div class="internet-task-review"><h4>{copy.labels.review}</h4><p>{workflow.review}</p></div>
+        </div>
+      </div>)}
+    </div>
+  </section>
+
+  <section class="internet-section internet-collaboration" aria-labelledby="collaboration-title">
+    <div class="container internet-collaboration-grid">
+      <div class="internet-collaboration-copy">
+        <h2 class="internet-section-title" id="collaboration-title">{copy.collaboration.title.map(line => <span>{line}</span>)}</h2>
+        <p>{copy.collaboration.body}</p>
+      </div>
+      <div class="internet-project">
+        <h3>{diagram.collaboration}</h3>
+        <ol>{diagram.stages.map(stage => <li><h4>{stage.title}</h4><p>{stage.body}</p></li>)}</ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="internet-section internet-foundations" aria-labelledby="foundations-title">
+    <div class="container">
+      <h2 class="internet-section-title" id="foundations-title">{copy.foundations.title}</h2>
+      <div class="internet-foundation-grid">
+        <article class="internet-foundation">
+          <h3>{copy.foundations.knowledge.title}</h3>
+          <p>{copy.foundations.knowledge.body}</p>
+          <dl>{copy.foundations.knowledge.items.map(item => <div><dt>{item.title}</dt><dd>{item.body}</dd></div>)}</dl>
+        </article>
+        <article class="internet-foundation">
+          <h3>{copy.foundations.connections.title}</h3>
+          <dl>{diagram.connections.map(item => <div><dt>{item.title}</dt><dd>{item.body}</dd></div>)}</dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="internet-closing" aria-labelledby="internet-closing-title">
+    <div class="container"><h2 class="internet-section-title" id="internet-closing-title">{copy.closing.title}</h2><p>{copy.closing.body}</p><a class="internet-button" href={pathFor(locale, 'contact')}>{copy.primary}<Icon name="arrow" size={19}/></a></div>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-internet-solution]').forEach(root => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    const selectTab = (tab: HTMLButtonElement) => {
+      tabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', event => {
+        let next: number | undefined;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === undefined) return;
+        event.preventDefault();
+        selectTab(tabs[next]);
+        tabs[next].focus();
+      });
+    });
+  });
+</script>
+
+<style>
+  .internet-solution{--ink:#edf4fb;--muted:#a4b6c8;--blue:#9ad9ff;--line:#293e51;background:#070d14;color:var(--ink)}
+  .internet-solution :is(h1,h2,h3,h4,p,figure,ul,ol,dl,dd){margin:0}
+  .internet-solution :is(h1,h2,h3,h4){font-weight:550}
+  .internet-solution [hidden]{display:none!important}
+  .internet-solution :is(a,button,[role='tabpanel']):focus-visible{outline:2px solid var(--blue);outline-offset:5px}
+  .internet-hero{padding:70px 0 82px;background:radial-gradient(ellipse at 80% 32%,#12334c38,transparent 60%)}
+  .internet-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .internet-hero-copy h1{font-size:clamp(38px,4.15vw,57px);letter-spacing:-.05em;line-height:1.3}
+  .internet-hero-copy h1 span{display:block}
+  .internet-hero-copy h1 span:last-child{color:var(--blue)}
+  .internet-hero-copy>p{margin-top:28px;max-width:490px;font-size:16px;line-height:1.95;color:var(--muted)}
+  .internet-delivery{min-width:0;padding:28px 30px;background:#101c29;border:1px solid var(--line);border-radius:12px}
+  .internet-delivery figcaption{font-size:23px;line-height:1.45;margin-bottom:24px;letter-spacing:-.025em}
+  .internet-delivery h2{font-size:16px;line-height:1.5}
+  .internet-delivery p{font-size:14px;line-height:1.7;color:var(--muted);margin-top:6px}
+  .internet-delivery-input{padding:0 16px}
+  .internet-delivery-employee{padding:17px 20px;background:#184565;border:1px solid #487c9c;border-radius:7px}
+  .internet-delivery-employee h2{color:#dbf2ff}
+  .internet-delivery-employee p{color:#b9d7ec}
+  .internet-delivery-output{padding:19px 20px;background:#eaf3fa;border-radius:7px;color:#17354c}
+  .internet-delivery-output ul{list-style:none;display:grid;gap:12px;margin-top:16px}
+  .internet-delivery-output li{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.5}
+  .internet-delivery-output svg{color:#56819e;flex-shrink:0}
+  .internet-delivery-review{padding:0 16px}
+  .internet-flow-link{position:relative;height:29px;color:#7497b1}
+  .internet-flow-link:before{content:'';position:absolute;top:1px;bottom:5px;left:50%;border-left:1.5px solid currentColor}
+  .internet-flow-link:after{content:'';position:absolute;bottom:5px;left:calc(50% - 3px);width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}
+  .internet-section{padding:84px 0}
+  .internet-section-title{font-size:clamp(28px,2.8vw,39px);letter-spacing:-.035em;line-height:1.5}
+  .internet-workflows{padding-top:38px}
+  .internet-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:34px 0 24px;gap:8px;padding:5px;background:#0e1b28;border:1px solid #253a4d;border-radius:9px}
+  .internet-tabs button{min-height:52px;padding:12px 16px;border-radius:5px;color:#9fb2c4;background:transparent;font:inherit;font-size:15px;line-height:1.5;cursor:pointer}
+  .internet-tabs button:hover{color:#e4f4ff;background:#173249}
+  .internet-tabs button[aria-selected='true']{background:#214c6a;color:#e1f4ff}
+  .internet-workflow-panel{display:grid;grid-template-columns:1fr 1fr;background:#101d2c;border:1px solid #293d51;border-radius:12px;overflow:hidden}
+  .internet-workflow-copy{padding:38px}
+  .internet-workflow-copy>h3{font-size:27px;line-height:1.6;letter-spacing:-.025em;max-width:400px;text-wrap:balance}
+  .internet-workflow-copy>p{margin-top:18px;color:var(--muted);font-size:15px;line-height:1.9}
+  .internet-activities{display:grid;gap:27px;margin-top:34px}
+  .internet-activities h4{font-size:16px;line-height:1.6;color:#dceaf6}
+  .internet-activities p{margin-top:7px;color:var(--muted);font-size:14px;line-height:1.85}
+  .internet-task{padding:32px;margin:16px 16px 16px 0;background:#182c40;border-radius:8px}
+  .internet-task>h3{font-size:24px;line-height:1.5;letter-spacing:-.025em}
+  .internet-task h4{font-size:14px;line-height:1.6;color:#bed1e3}
+  .internet-task-input{margin-top:24px}
+  .internet-task-input p{margin-top:6px;color:var(--muted);font-size:14px;line-height:1.8}
+  .internet-task-request{font-size:15px;line-height:1.9;margin-top:20px!important;color:#d5e3ef}
+  .internet-output-title{margin-top:25px!important}
+  .internet-outputs{list-style:none;display:grid;gap:16px;margin-top:13px!important}
+  .internet-outputs li>div{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  .internet-outputs strong{font-size:15px;font-weight:500;line-height:1.6}
+  .internet-outputs span{font-size:14px;color:#94b1ca;flex-shrink:0}
+  .internet-outputs p{font-size:14px;line-height:1.7;color:#a2b8cc;margin-top:4px}
+  .internet-task-review{margin-top:25px}
+  .internet-task-review p{font-size:14px;line-height:1.8;color:#a9bfd2;margin-top:6px}
+  .internet-collaboration{background:#0c1824}
+  .internet-collaboration-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .internet-collaboration-copy h2 span{display:block}
+  .internet-collaboration-copy>p{font-size:16px;line-height:1.95;color:var(--muted);margin-top:24px}
+  .internet-project{padding:30px 32px;border:1px solid var(--line);border-radius:10px;background:#101e2c}
+  .internet-project>h3{font-size:22px;line-height:1.5;margin-bottom:28px}
+  .internet-project ol{list-style:none;display:grid;gap:30px}
+  .internet-project li{position:relative;padding-left:26px}
+  .internet-project li:before{content:'';position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:#8dc9ef}
+  .internet-project li:not(:last-child):after{content:'';position:absolute;left:3px;top:24px;bottom:-20px;border-left:1px solid #3a596f}
+  .internet-project h4{font-size:17px;line-height:1.6}
+  .internet-project p{font-size:14px;line-height:1.9;margin-top:7px;color:var(--muted)}
+  .internet-foundation-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:38px}
+  .internet-foundation{min-width:0;padding:32px;background:#101d2b;border-radius:10px;border:1px solid #293d51}
+  .internet-foundation h3{font-size:25px;line-height:1.6;letter-spacing:-.025em;text-wrap:balance}
+  .internet-foundation>p{font-size:15px;color:var(--muted);line-height:1.9;margin-top:16px}
+  .internet-foundation dl{display:grid;gap:25px;margin-top:28px}
+  .internet-foundation dt{font-size:16px;line-height:1.6;color:#dcebf7}
+  .internet-foundation dd{font-size:15px;line-height:1.85;color:var(--muted);margin-top:7px}
+  .internet-closing{text-align:center;padding:80px 0 90px;background:#0c1926}
+  .internet-closing p{font-size:16px;line-height:1.9;max-width:590px;margin:21px auto 28px;color:var(--muted)}
+  .internet-button{display:inline-flex;align-items:center;justify-content:center;gap:23px;min-height:49px;padding:12px 22px;font-size:15px;font-weight:500;line-height:1.5;background:#159de9;color:white;border-radius:7px;transition:background .15s}
+  .internet-button:hover{background:#37adf0}
+  @media(max-width:1100px){
+    .internet-hero-grid,.internet-collaboration-grid{gap:40px}
+    .internet-hero-copy h1{font-size:43px}
+    .internet-delivery{padding:25px}
+    .internet-workflow-copy{padding:30px}
+    .internet-task{padding:26px}
+    .internet-foundation-grid{gap:24px}
+    .internet-foundation{padding:28px}
+  }
+  @media(max-width:800px){
+    .internet-hero{padding:50px 0 60px}
+    .internet-hero-grid,.internet-collaboration-grid{grid-template-columns:1fr;gap:38px}
+    .internet-hero-copy h1{font-size:49px}
+    .internet-hero-copy>p{max-width:610px}
+    .internet-delivery{max-width:600px;width:100%;margin-inline:auto!important;box-sizing:border-box}
+    .internet-section{padding:64px 0}
+    .internet-workflows{padding-top:20px}
+    .internet-workflow-panel{grid-template-columns:1fr}
+    .internet-workflow-copy{padding:32px}
+    .internet-workflow-copy>h3{max-width:550px}
+    .internet-task{margin:0 16px 16px;padding:30px}
+    .internet-foundation-grid{grid-template-columns:1fr}
+    .internet-collaboration-copy h2 span{display:inline}
+    .internet-solution:lang(en) .internet-collaboration-copy h2 span+span:before{content:' '}
+    .internet-project{padding:30px}
+    .internet-closing{padding:65px 0 70px}
+  }
+  @media(max-width:480px){
+    .internet-hero{padding:38px 0 48px}
+    .internet-hero-copy h1{font-size:clamp(31px,8.6vw,40px)}
+    .internet-hero-copy>p{font-size:15px;margin-top:22px;line-height:1.85}
+    .internet-hero-grid{gap:32px}
+    .internet-delivery{padding:23px 20px}
+    .internet-delivery figcaption{font-size:22px;margin-bottom:21px}
+    .internet-delivery-input,.internet-delivery-review{padding:0 3px}
+    .internet-delivery-employee,.internet-delivery-output{padding:16px}
+    .internet-delivery-output li{align-items:flex-start}
+    .internet-delivery-output svg{margin-top:2px}
+    .internet-section{padding:48px 0}
+    .internet-workflows{padding-top:16px}
+    .internet-section-title{font-size:27px}
+    .internet-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin-top:25px;margin-bottom:16px}
+    .internet-tabs button{font-size:14px;padding:11px 7px;min-height:47px}
+    .internet-workflow-copy{padding:26px 23px}
+    .internet-workflow-copy>h3{font-size:24px}
+    .internet-workflow-copy>p{font-size:15px}
+    .internet-activities{margin-top:28px;gap:25px}
+    .internet-task{padding:24px 20px;margin:0 10px 10px}
+    .internet-task>h3{font-size:22px}
+    .internet-outputs li>div{gap:10px}
+    .internet-collaboration-copy>p{font-size:15px}
+    .internet-project{padding:25px 22px}
+    .internet-project>h3{font-size:21px}
+    .internet-project li{padding-left:22px}
+    .internet-project h4{font-size:16px}
+    .internet-foundation-grid{margin-top:28px;gap:18px}
+    .internet-foundation{padding:25px 23px}
+    .internet-foundation h3{font-size:23px}
+    .internet-closing{padding:54px 0 60px}
+    .internet-closing p{font-size:15px}
+  }
+  @media(prefers-reduced-motion:reduce){.internet-solution *{transition:none!important}}
+</style>

@@ -1,0 +1,138 @@
+---
+import Icon from '../../../components/Icon.astro';
+import { pathFor } from '../../../lib/site';
+import type { Locale } from '../../../data/types';
+import { valueCopy } from './value_V1.2';
+import ValueDepth from './ValueDepth_V1.3.astro';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const copy = valueCopy[locale];
+---
+
+<div class="value-page" lang={locale} data-value-page>
+  <section class="value-hero" aria-labelledby="value-title">
+    <div class="container">
+      <h1 id="value-title">{copy.headline.map(line => <span>{line}</span>)}</h1>
+      <p>{copy.intro}</p>
+    </div>
+  </section>
+
+  <section class="value-stories" aria-label={locale === 'zh' ? '互联网团队的业务价值' : 'Business value for internet teams'}>
+    <div class="container">
+      <div class="value-tabs" role="tablist" aria-label={locale === 'zh' ? '选择业务价值' : 'Choose a business outcome'}>
+        {copy.tabs.map((title, index) => <button type="button" role="tab" id={`value-tab-${index}`} aria-controls={`value-panel-${index}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1}><Icon name={['layers', 'chart', 'message', 'folder'][index]} size={21}/>{title}</button>)}
+      </div>
+      {copy.cases.map((story, index) => <div class={`value-story story-${story.id}`} id={`value-panel-${index}`} role="tabpanel" aria-labelledby={`value-tab-${index}`} tabindex="0" hidden={index !== 0}>
+        <div class="story-copy">
+          <h2>{story.title.map(line => <span>{line}</span>)}</h2>
+          <p class="story-problem">{story.problem}</p>
+          <p class="story-outcome">{story.outcome}</p>
+          <div class="business-shift"><span>{story.shift[0]}</span><Icon name="arrow" size={25}/><strong>{story.shift[1]}</strong></div>
+        </div>
+
+        <figure class="story-evidence" data-evidence data-mode="after">
+          <div class="evidence-toolbar">
+            <span>{copy.preview}</span>
+            <div class="evidence-switch" role="group" aria-label={locale === 'zh' ? '对比业务场景' : 'Compare the scenario'}>
+              <button type="button" data-view="before" aria-pressed="false">{copy.before}</button>
+              <button type="button" data-view="after" aria-pressed="true">{copy.after}</button>
+            </div>
+          </div>
+          <div class="evidence-before" hidden>
+            {story.sources.map((source, sourceIndex) => <div class={`loose-source source-${sourceIndex}`}><Icon name={['message', 'file', 'folder'][sourceIndex]} size={22}/><p>{source}</p></div>)}
+            <div class="loose-question">{story.shift[0]}<span aria-hidden="true">?</span></div>
+          </div>
+          <div class="evidence-after">
+            <div class="evidence-sources">{story.sourceNames.map(name => <span><Icon name="file" size={17}/>{name}</span>)}</div>
+            <div class="evidence-bridge" aria-hidden="true"><svg viewBox="0 0 480 40" preserveAspectRatio="none"><path d="M70 0 V12 Q70 21 82 21 H228 Q240 21 240 34 M240 0 V34 M410 0 V12 Q410 21 398 21 H252 Q240 21 240 34"/><path d="m235 29 5 5 5-5"/></svg></div>
+            <div class="decision-paper">
+              <figcaption>{story.artifact}</figcaption>
+              <div class="decision-grid">
+                {story.items.map((item, itemIndex) => <div class={`decision-item decision-${itemIndex}`}>
+                  <div class="decision-label"><span class="decision-dot" aria-hidden="true"></span>{story.groups[itemIndex]}</div>
+                  <h3>{item}</h3>
+                  <p class="decision-evidence">{story.evidence[itemIndex]}</p>
+                  <div class="decision-state"><Icon name={itemIndex === 0 ? 'check' : 'message'} size={18}/>{story.decision[itemIndex]}</div>
+                </div>)}
+              </div>
+            </div>
+          </div>
+          <p class="evidence-takeaway">{story.takeaway}</p>
+        </figure>
+      </div>)}
+    </div>
+  </section>
+
+  <ValueDepth locale={locale}/>
+
+  <section class="value-closing" aria-labelledby="closing-title"><div class="container"><h2 id="closing-title">{copy.closing}</h2><p>{copy.closingBody}</p><a href={pathFor(locale, 'contact')}>{copy.cta}<Icon name="arrow" size={20}/></a></div></section>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-value-page]').forEach(root => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('.value-tabs [role="tab"]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('.value-story[role="tabpanel"]')];
+    const select = (tab: HTMLButtonElement) => {
+      tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
+      panels.forEach(panel => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', event => {
+        const next = event.key === 'ArrowRight' ? (index + 1) % tabs.length : event.key === 'ArrowLeft' ? (index + tabs.length - 1) % tabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : undefined;
+        if (next === undefined) return;
+        event.preventDefault(); select(tabs[next]); tabs[next].focus();
+      });
+    });
+    root.querySelectorAll<HTMLElement>('[data-evidence]').forEach(figure => {
+      const controls = [...figure.querySelectorAll<HTMLButtonElement>('[data-view]')];
+      controls.forEach(button => button.addEventListener('click', () => {
+        const mode = button.dataset.view;
+        figure.dataset.mode = mode;
+        controls.forEach(control => control.setAttribute('aria-pressed', String(control === button)));
+        figure.querySelector<HTMLElement>('.evidence-before')!.hidden = mode !== 'before';
+        figure.querySelector<HTMLElement>('.evidence-after')!.hidden = mode !== 'after';
+      }));
+    });
+  });
+</script>
+
+<style>
+  .value-page{--ink:#edf4f8;--muted:#a4b3c1;--accent:#b7e3ca;--line:#2b3b43;background:#0a1218;color:var(--ink);overflow:clip}
+  .value-page :is(h1,h2,h3,p,figure){margin:0}
+  .value-page :is(h1,h2,h3){font-weight:550}
+  .value-page [hidden]{display:none!important}
+  .value-page :is(button,a,[role='tabpanel']):focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+  .value-hero{padding:60px 0 36px;background:radial-gradient(ellipse at 80% 20%,#3e776723,transparent 66%)}
+  .value-hero h1{font-size:clamp(43px,5vw,66px);line-height:1.18;letter-spacing:-.055em}
+  .value-hero h1 span{display:block}.value-hero h1 span:last-child{color:var(--accent)}
+  .value-hero p{font-size:18px;line-height:1.9;color:var(--muted);max-width:900px;margin-top:22px;text-wrap:pretty}
+  .value-stories{padding-bottom:100px}
+  .value-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:#121f28;padding:7px;border-radius:12px;margin-bottom:48px}
+  .value-tabs button{display:flex;align-items:center;justify-content:center;gap:11px;padding:18px 12px;cursor:pointer;border:0;border-radius:7px;background:transparent;color:#a4b8c4;font:inherit;font-size:16px;line-height:1.5}
+  .value-tabs button:hover{background:#20332f;color:#e6f5ed}.value-tabs button[aria-selected='true']{background:#c2e7d2;color:#173b2b}
+  .value-story{display:grid;grid-template-columns:.8fr 1.35fr;gap:60px;align-items:center;min-width:0}
+  .story-copy h2{font-size:clamp(29px,3.1vw,42px);line-height:1.45;letter-spacing:-.04em}.story-copy h2 span{display:block}
+  .story-copy>p{font-size:16px;line-height:1.9}.story-problem{margin-top:24px!important;color:#8fa2b1}.story-outcome{margin-top:16px!important;color:#d7e3eb}
+  .business-shift{display:flex;flex-direction:column;align-items:flex-start;gap:13px;margin-top:32px;font-size:16px}.business-shift>span{color:#8fa2b1}.business-shift>svg{transform:rotate(90deg);color:#7ca88f}.business-shift strong{font-weight:500;font-size:19px;color:#c1e7d1}
+  .story-evidence{min-width:0;background:#14232b;border:1px solid #30464d;border-radius:16px;padding:22px;box-shadow:0 24px 70px #0003}
+  .evidence-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:27px;font-size:14px;color:#a5bac3}
+  .evidence-switch{display:flex;padding:3px;background:#0b171f;border-radius:7px;gap:2px}.evidence-switch button{font:inherit;font-size:14px;line-height:1.5;padding:8px 12px;color:#a7bac4;background:transparent;border:0;border-radius:5px;cursor:pointer}.evidence-switch button[aria-pressed='true']{background:#354d52;color:#e5f4f0}
+  .evidence-after,.evidence-before{min-height:390px}
+  .evidence-sources{display:flex;justify-content:space-between;gap:9px}.evidence-sources>span{display:flex;align-items:center;justify-content:center;gap:7px;flex:1;font-size:14px;line-height:1.5;padding:12px 6px;color:#c6d7df;background:#20343e;border-radius:6px;text-align:center}
+  .evidence-sources svg{flex-shrink:0;color:#a5c4ce}.evidence-bridge{height:39px;padding:0 8px}.evidence-bridge svg{width:100%;height:100%;fill:none;stroke:#86b6a5;stroke-width:1.2}
+  .decision-paper{padding:26px;background:#eff4ed;color:#1c352a;border-radius:6px;box-shadow:0 7px 0 #c3cfbf30,0 14px 0 #c3cfbf10}
+  .decision-paper figcaption{font-size:24px;letter-spacing:-.03em;line-height:1.5;margin-bottom:23px;font-weight:550}
+  .decision-grid{display:grid;gap:17px}.decision-item{padding:0 0 17px}.decision-item:last-child{padding-bottom:0}.decision-label{display:flex;gap:8px;align-items:center;font-size:14px;color:#536b5d;line-height:1.5}.decision-dot{height:7px;width:7px;flex-shrink:0;border-radius:50%;background:#30875b}.decision-1 .decision-dot{background:#ad8751}
+  .decision-item h3{font-size:21px;line-height:1.5;margin-top:7px;letter-spacing:-.025em}.decision-evidence{font-size:14px;color:#62736a;line-height:1.7;margin-top:5px!important}.decision-state{display:flex;align-items:center;gap:7px;font-size:14px;line-height:1.6;margin-top:11px;padding:9px 11px;background:#dfe9dd;border-radius:4px;color:#3c604a}.decision-state svg{flex-shrink:0}.decision-1 .decision-state{background:#e9e7dc;color:#746344}
+  .evidence-takeaway{font-size:15px;line-height:1.7;color:#c4d9d2;margin-top:30px!important;min-height:26px}
+  .evidence-before{display:flex;flex-direction:column;justify-content:center;gap:20px;padding:10px 4px}.loose-source{display:flex;gap:15px;align-items:flex-start;padding:22px;background:#24353e;border:1px solid #3b4d55;border-radius:7px;font-size:16px;line-height:1.8;max-width:91%}.loose-source svg{flex-shrink:0;margin-top:3px;color:#9ab6c3}.source-1{align-self:flex-end;transform:rotate(1deg)}.source-0{transform:rotate(-1deg)}.source-2{transform:rotate(-.7deg)}.loose-question{display:flex;justify-content:space-between;align-items:center;padding:8px 15px;color:#a6b9c1;font-size:17px;line-height:1.7}.loose-question span{font-size:38px;color:#c4af89}
+
+
+  .value-closing{padding:94px 0 105px;text-align:center}.value-closing h2{font-size:clamp(28px,3vw,40px);line-height:1.5;letter-spacing:-.035em}.value-closing p{max-width:620px;margin:22px auto 30px;font-size:17px;color:var(--muted);line-height:1.9}.value-closing a{display:inline-flex;align-items:center;gap:16px;background:#c2e7d2;color:#173b2b;padding:16px 24px;border-radius:6px;text-decoration:none;font-size:16px;font-weight:550}.value-closing a:hover{background:#dbf4e5}
+  .value-page[lang='en'] .value-tabs button{font-size:14px}.value-page[lang='en'] .story-copy h2{font-size:clamp(29px,3vw,40px)}.value-page[lang='en'] .evidence-after,.value-page[lang='en'] .evidence-before{min-height:470px}.value-page[lang='en'] .decision-paper figcaption{font-size:22px}
+  @media(min-width:1500px){.value-page .container{max-width:1280px}}
+  @media(max-width:1000px){.value-story{gap:30px;grid-template-columns:.85fr 1.15fr}.value-tabs button{gap:8px;font-size:14px}.value-tabs button svg{display:none}.story-evidence{padding:18px}.evidence-sources>span{font-size:14px;padding:10px 5px}.evidence-sources svg{display:none}.decision-paper{padding:20px}.decision-paper figcaption{font-size:22px}}
+  @media(max-width:760px){.value-hero{padding:55px 0 38px}.value-hero h1{font-size:clamp(37px,7.2vw,56px)}.value-hero p{font-size:16px;line-height:1.8;margin-top:23px}.value-tabs{grid-template-columns:1fr 1fr;margin-bottom:34px;gap:5px}.value-tabs button{padding:13px 6px;min-height:48px;font-size:15px}.value-story{grid-template-columns:1fr;gap:30px}.story-copy h2{font-size:32px}.story-copy h2 span{display:block}.story-problem{margin-top:19px!important}.story-outcome{margin-top:13px!important}.business-shift{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px;margin-top:23px}.business-shift>svg{transform:none;width:20px}.business-shift strong{font-size:17px}.business-shift>span{font-size:15px}.value-stories{padding-bottom:55px}.story-evidence{padding:18px}.evidence-after,.evidence-before{min-height:0}.evidence-toolbar{margin-bottom:22px}.evidence-sources{gap:6px}.evidence-sources>span{padding:10px 4px}.decision-paper{padding:22px 20px}.evidence-takeaway{margin-top:25px!important}.value-closing{padding:60px 0 65px}.value-closing h2{font-size:28px}.value-closing p{font-size:16px}.value-page[lang='en'] .evidence-after,.value-page[lang='en'] .evidence-before{min-height:0}}
+  @media(max-width:380px){.value-tabs button{font-size:14px}.evidence-toolbar{flex-wrap:wrap;gap:12px}.story-evidence{padding:15px}.evidence-switch{margin-left:auto}.decision-paper{padding:18px 15px}.evidence-sources>span{font-size:14px}.business-shift{flex-direction:column;align-items:flex-start;gap:9px}.business-shift>svg{transform:rotate(90deg)}}
+</style>
