@@ -8,9 +8,19 @@ import type { Locale } from '../../data/types';
 interface Props { locale: Locale; page: string; prefix: string; }
 const { locale, page, prefix } = Astro.props;
 const zh = locale === 'zh';
+const appliancePath = 'solutions/appliance';
+const solutionEntries = [
+  ...solutionModules.filter(entry => entry.category === 'industry').map(entry => ({ label: entry.navigation?.[locale].name || entry.copy[locale].name, description: entry.navigation?.[locale].description, icon: entry.navigation?.[locale].icon || entry.copy[locale].icon, path: `solutions/${entry.slug}` })),
+  {
+    label: zh ? '一体机解决方案' : 'AI appliance solution',
+    description: zh ? '软件、硬件、大模型与算力一体交付。' : 'Software, hardware, LLMs and compute in one appliance.',
+    icon: 'cpu',
+    path: appliancePath,
+  },
+];
 const groups = [
-  { id: 'product', label: zh ? '产品能力' : 'Product', title: zh ? '产品能力' : 'Capabilities', entries: capabilities.map(entry => ({ label: entry.copy[locale].name, description: entry.copy[locale].navigationDescription || entry.copy[locale].description, icon: entry.icon, path: `product/${entry.slug}` })) },
-  { id: 'solutions', label: zh ? '解决方案' : 'Solutions', title: zh ? '行业解决方案' : 'Industry solutions', entries: solutionModules.filter(entry => entry.category === 'industry').map(entry => ({ label: entry.navigation?.[locale].name || entry.copy[locale].name, description: entry.navigation?.[locale].description, icon: entry.navigation?.[locale].icon || entry.copy[locale].icon, path: `solutions/${entry.slug}` })) },
+  { id: 'product', label: zh ? '产品能力' : 'Product', title: zh ? '产品能力' : 'Capabilities', active: page.startsWith('product'), entries: capabilities.map(entry => ({ label: entry.copy[locale].name, description: entry.copy[locale].navigationDescription || entry.copy[locale].description, icon: entry.icon, path: `product/${entry.slug}` })) },
+  { id: 'solutions', label: zh ? '解决方案' : 'Solutions', title: zh ? '解决方案' : 'Solutions', active: page.startsWith('solutions'), entries: solutionEntries },
 ];
 const directLinks = [
   { href: pathFor(locale,'pricing'), label: zh ? '价格' : 'Pricing', active: page === 'pricing', external: false },
@@ -21,13 +31,12 @@ const directLinks = [
 ];
 ---
 {groups.map(group => <div class="tego-nav-group" data-nav-group>
-  <button type="button" class:list={['tego-nav-trigger', {'is-current': page.startsWith(group.id)}]} aria-expanded="false" aria-controls={`${prefix}-${group.id}`} data-nav-disclosure>{group.label}<Icon name="chevron" size={13}/></button>
+  <button type="button" class:list={['tego-nav-trigger', {'is-current': group.active}]} aria-expanded="false" aria-controls={`${prefix}-${group.id}`} data-nav-disclosure>{group.label}<Icon name="chevron" size={13}/></button>
   <div class:list={['tego-nav-panel', {'tego-nav-solutions': group.id === 'solutions', 'tego-nav-product': group.id === 'product'}]} id={`${prefix}-${group.id}`} hidden>
     <div class="tego-nav-highlight" aria-hidden="true" data-nav-highlight></div>
     <p class="tego-nav-panel-title">{group.title}</p>
     <div class="tego-nav-panel-body">
-      <div>{group.id === 'solutions' && <p class="tego-nav-heading">{zh ? '行业与客群' : 'Industries & organizations'}</p>}<ul class="tego-nav-grid">{group.entries.map(entry => <li><a class="tego-nav-item" href={pathFor(locale,entry.path)} aria-current={page === entry.path ? 'page' : undefined}><span class="tego-nav-icon"><NavigationIcon name={entry.icon}/></span><span class="tego-nav-label"><span>{entry.label}</span>{entry.description && <small>{entry.description}</small>}</span></a></li>)}</ul></div>
-      {group.id === 'solutions' && <div class="tego-nav-deployment"><p class="tego-nav-heading">{zh ? '交付形态' : 'Delivery model'}</p>{solutionModules.filter(entry => entry.category === 'deployment').map(entry => <a class="tego-nav-item" href={pathFor(locale,`solutions/${entry.slug}`)} aria-current={page === `solutions/${entry.slug}` ? 'page' : undefined}><span class="tego-nav-icon"><NavigationIcon name={entry.navigation?.[locale].icon || entry.copy[locale].icon}/></span><span class="tego-nav-label"><span>{entry.navigation?.[locale].name || entry.copy[locale].name}</span><small>{entry.navigation?.[locale].description}</small></span></a>)}</div>}
+      <ul class="tego-nav-grid">{group.entries.map(entry => <li><a class="tego-nav-item" href={pathFor(locale,entry.path)} aria-current={page === entry.path ? 'page' : undefined}><span class="tego-nav-icon"><NavigationIcon name={entry.icon}/></span><span class="tego-nav-label"><span>{entry.label}</span>{entry.description && <small>{entry.description}</small>}</span></a></li>)}</ul>
     </div>
   </div>
 </div>)}
