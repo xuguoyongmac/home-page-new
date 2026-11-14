@@ -1,7 +1,7 @@
 ---
 import type { Locale } from '../data/types';
 import Icon from './Icon.astro';
-import MaterialGlyph from './MaterialGlyph.astro';
+import WorkforceMatrix from './WorkforceMatrix.astro';
 import HeroCarousel from './HeroCarousel.astro';
 import SolutionExplorer from './SolutionExplorer.astro';
 import WorkAnywhere from './WorkAnywhere.astro';
@@ -10,33 +10,12 @@ import { pathFor } from '../lib/site';
 interface Props { locale: Locale; }
 const {locale} = Astro.props;
 const zh = locale === 'zh';
-const domains = zh ? [
- ['book','知识管理','把企业经验，变成工作依据','制度问答 · 资料检索','government'],
- ['file','方案文书','把分散材料，组织成完整方案','方案编制 · 汇报材料','general'],
- ['chart','经营分析','让业务数据，回答经营问题','指标分析 · 经营简报','securities'],
- ['message','客户经营','梳理客户需求，准备业务沟通','需求整理 · 跟进准备','general'],
- ['layers','招投标协作','读懂采购要求，组织响应材料','条款拆解 · 标书编制','state-owned'],
- ['network','会议协同','把会议共识，接到后续行动','会议纪要 · 事项跟进','general'],
- ['folder','项目协作','让资料与成果，围绕项目协作','资料共享 · 成果审阅','state-owned'],
- ['cpu','研究支持','从海量信息中，整理研究依据','研报速读 · 主题研究','securities'],
-] : [
- ['book','Enterprise knowledge','Put company experience within reach','Policy answers · Source retrieval','government'],
- ['file','Proposals & documents','Turn scattered sources into a clear proposal','Proposals · Presentations','general'],
- ['chart','Business analysis','Put business questions to your data','Metrics · Business briefs','securities'],
- ['message','Customer operations','Bring context into the next conversation','Needs · Follow-up preparation','general'],
- ['layers','Bid collaboration','Connect requirements with response materials','Requirements · Bid preparation','state-owned'],
- ['network','Meeting follow-through','Turn shared decisions into next steps','Minutes · Action lists','general'],
- ['folder','Project collaboration','Keep files, discussions and deliverables together','Shared files · Reviews','state-owned'],
- ['cpu','Research support','Organize research with traceable sources','Report reading · Thematic research','securities'],
-];
+
 ---
 <div class="home-value-edition">
 <HeroCarousel locale={locale}/>
 <WorkAnywhere locale={locale}/>
-<section class="value-section domain-section" id="work-scenarios" aria-labelledby="domain-title"><div class="container">
-  <div class="value-heading"><p class="eyebrow">{zh?'覆盖业务的关键环节':'WHERE WORK HAPPENS'}</p><h2 id="domain-title">{zh?<>把数字员工，<span class="title-second">放到业务最需要的地方</span></>:'Put digital employees where the work needs them'}</h2><p>{zh?'从知识、文书到客户与项目，为不同岗位找到具体的工作切入点。':'Find a concrete starting point across knowledge, documents, customer work and projects.'}</p></div>
-  <div class="domain-grid">{domains.map(([icon,title,value,tasks,slug])=><a class="domain-card" href={pathFor(locale,`solutions/${slug}`)}><MaterialGlyph name={icon} size={84}/><h3>{title}</h3><p>{value}</p><span>{tasks}</span></a>)}</div>
-</div></section>
+<WorkforceMatrix locale={locale}/>
 <section class="value-section outcomes-section" id="workflow" aria-labelledby="outcomes-title"><div class="container">
   <div class="value-heading"><p class="eyebrow">{zh?'工作的价值，落在成果里':'FROM TASK TO OUTCOME'}</p><h2 id="outcomes-title">{zh?<>让工作向前推进，<span class="title-second">让成果真正落地</span></>:'Move the work forward. Bring outcomes into reach.'}</h2><p>{zh?'用企业的知识做事，围绕同一份成果协作，把做成的方法留给团队。':'Ground work in company knowledge, review together and retain the methods behind the result.'}</p></div>
   <div class="outcomes-grid">
