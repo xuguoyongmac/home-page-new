@@ -5,13 +5,5 @@ const {locale}=Astro.props;
 const zh=locale==='zh';
 ---
 <div class="banner-outcomes-visual banner-visual">
-  <div class="outcome-efficiency">
-    <span>{zh?'经营报表编制':'Business reporting'}</span>
-    <div class="outcome-time-comparison"><div><span>{zh?'人工处理':'Manual work'}</span><strong><small>{zh?'约':'About'}</small>4.5<em>{zh?'小时 / 次':'hours / report'}</em></strong></div><span class="outcome-time-transition" aria-hidden="true">→</span><div><span>{zh?'数字员工':'Digital employee'}</span><strong><small>{zh?'约':'About'}</small>12<em>{zh?'分钟出表':'minutes to report'}</em></strong></div></div>
-  </div>
-  <div class="outcome-comparison-table" role="table" aria-label={zh?'人工处理与数字员工工作方式对比':'Manual work and digital employee comparison'}>
-    <div role="row"><span role="rowheader">{zh?'跨系统核对':'Cross-system work'}</span><span role="cell">{zh?'多人反复沟通':'Repeated coordination'}</span><strong role="cell">{zh?'一次任务串联多系统，过程留痕':'One task across systems, with traceable actions'}</strong></div>
-    <div role="row"><span role="rowheader">{zh?'结果复核':'Result review'}</span><span role="cell">{zh?'人工返工与核验':'Manual rework and checking'}</span><strong role="cell">{zh?'结论附数据来源，可复核、可回溯':'Source-linked findings for review and traceability'}</strong></div>
-  </div>
-  <div class="outcomes-art"><img src={`/images/hero/business-outcomes-${locale}_V1.1.webp`} width={zh?1983:1774} height={zh?793:887} loading="lazy" decoding="async" alt={zh?'证券经营分析：赎回结构与重点跟进；保险客户跟进：保单核对、续期沟通与归档；政务文稿协作：材料归集与周度工作简报':'Securities analysis with category redemptions and follow-up priorities; insurance policy reviews and renewal plans; government materials consolidated into a weekly brief'}/></div>
+  <div class="outcomes-art"><img src={`/images/hero/always-on-${locale}_V1.7.webp`} width="1586" height="992" loading="eager" decoding="async" alt={zh?'一位数字员工持续在线，服务时间 7x24，持续完成监控告警、经营日报、舆情分析、业务核对、热点追踪与资料归集。':'One digital employee, available 24/7 for monitoring alerts, daily reporting, sentiment analysis, record reconciliation, trend tracking and knowledge archiving.'}/></div>
 </div>
