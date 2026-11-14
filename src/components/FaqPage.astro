@@ -1,68 +1,64 @@
 ---
 import type { Locale } from '../data/types';
 import { faqs } from '../data/pages';
+import { pathFor } from '../lib/site';
 import Icon from './Icon.astro';
-import CallToAction from './CallToAction.astro';
-import PageHeroArt from './PageHeroArt.astro';
-
+import Shell from '../features/resources/Shell.astro';
+import Hero from '../features/resources/Hero.astro';
+import { docsLinks } from '../features/resources/content';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
-const other = locale === 'zh' ? 'en' : 'zh';
+const zh = locale === 'zh';
+const other = zh ? 'en' : 'zh';
+const categories = [
+  ['all', zh ? '全部问题' : 'All questions'],
+  ['work', zh ? '数字员工与协作' : 'Employees & collaboration'],
+  ['knowledge', zh ? '知识与连接' : 'Knowledge & integrations'],
+  ['deploy', zh ? '部署与终端' : 'Deployment & clients'],
+];
+const groups = ['work','work','deploy','work','knowledge','knowledge','knowledge','deploy','deploy','knowledge','work'];
 const questions = faqs[locale];
 ---
-<section class="page-hero inner-page-hero inner-support-hero">
-  <PageHeroArt variant="collaboration" compact/>
-  <div class="container inner-hero-content"><div class="inner-hero-copy">
-    <p class="eyebrow">{locale === 'zh' ? '常见问题' : 'FAQ'}</p>
-    <h1>{locale === 'zh' ? '关于 TeGo，常见的几个问题' : 'Questions about TeGo'}</h1>
-    <p>{locale === 'zh' ? '了解产品概念、协作方式、各端能力与企业部署。' : 'Understand product concepts, collaboration, client capabilities and enterprise deployment.'}</p>
-    <label class="sr-only" for="faq-query">{locale === 'zh' ? '搜索问题与答案' : 'Search questions and answers'}</label>
-    <input id="faq-query" class="faq-search" type="search" placeholder={locale === 'zh' ? '搜索问题与答案' : 'Search questions and answers'} autocomplete="off" aria-controls="faq-results" data-faq-query/>
-  </div></div>
-</section>
-<section class="faq-section inner-faq" data-faq-search data-locale={locale} aria-labelledby="faq-list-title">
-  <div class="container">
-    <h2 id="faq-list-title" class="sr-only">{locale === 'zh' ? '产品问题与答案' : 'Product questions and answers'}</h2>
-    <div class="faq-list" id="faq-results">
-      <p class="sr-only" role="status" aria-live="polite" aria-atomic="true" data-faq-status>{locale === 'zh' ? `${questions.length} 个问题` : `${questions.length} questions`}</p>
-      {questions.map((faq, index) => (
-        <details data-faq-item data-search={`${faq.question} ${faq.answer} ${faqs[other][index]?.question ?? ''} ${faqs[other][index]?.answer ?? ''}`.toLowerCase()}>
-          <summary>{faq.question}<Icon name="plus" size={20}/></summary>
-          <p>{faq.answer}</p>
-        </details>
-      ))}
-      <div class="faq-empty" data-faq-empty hidden>
-        <p>{locale === 'zh' ? '没有找到与搜索词匹配的问题。' : 'No questions match your search.'}</p>
-        <button type="button" class="button button-outline button-small" data-faq-reset>{locale === 'zh' ? '清除搜索' : 'Clear search'}</button>
-      </div>
+<Shell locale={locale} page="faq">
+  <Hero label={zh ? '常见问题' : 'FAQ'} title={zh ? '找到产品与使用问题的答案' : 'Answers about working with TeGo'} description={zh ? '数字员工、团队协作、知识连接与企业部署。' : 'Digital employees, team collaboration, knowledge and enterprise deployment.'} compact>
+    <div class="support-search"><Icon name="search" size={19}/><label class="sr-only" for="faq-query">{zh ? '搜索问题与答案' : 'Search questions and answers'}</label><input id="faq-query" type="search" placeholder={zh ? '搜索问题与答案' : 'Search questions and answers'} autocomplete="off" aria-controls="faq-results" data-faq-query/><button type="button" aria-label={zh ? '清除搜索' : 'Clear search'} data-faq-clear hidden><Icon name="close" size={17}/></button></div>
+  </Hero>
+  <section class="container support-section faq-content" data-faq-search data-locale={locale} aria-label={zh ? '产品问题与答案' : 'Product questions and answers'}>
+    <div class="support-toolbar"><div class="support-filters" aria-label={zh ? '问题分类' : 'Question categories'}>{categories.map(([id,label]) => <button type="button" data-faq-category={id} aria-pressed={id === 'all'}>{label}</button>)}</div><p class="support-count" role="status" aria-live="polite" data-faq-status>{zh ? `${questions.length} 个问题` : `${questions.length} questions`}</p></div>
+    <div class="support-accordion" id="faq-results">
+      {questions.map((faq,index) => <details data-faq-item data-category={groups[index]} data-search={`${faq.question} ${faq.answer} ${faqs[other][index]?.question ?? ''} ${faqs[other][index]?.answer ?? ''}`.toLowerCase()}><summary>{faq.question}<Icon name="plus" size={19}/></summary><p>{faq.answer}</p></details>)}
     </div>
-  </div>
-</section>
-<CallToAction locale={locale}/>
+    <div class="support-empty" data-faq-empty hidden><p>{zh ? '没有找到匹配的问题。' : 'No questions match these filters.'}</p><button type="button" class="button button-outline" data-faq-reset>{zh ? '重置筛选' : 'Reset filters'}</button></div>
+    <div class="faq-related"><a class="text-link" href={pathFor(locale,'pricing')}>{zh ? '方案与功能清单' : 'Plans & capabilities'}<Icon name="arrow" size={16}/></a><a class="text-link" href={docsLinks.troubleshooting}>{zh ? '故障排查' : 'Troubleshooting'}<Icon name="external" size={15}/></a><a class="text-link" href={docsLinks.tickets}>{zh ? '提交工单' : 'Submit a ticket'}<Icon name="external" size={15}/></a></div>
+  </section>
+</Shell>
+<style>.faq-content{max-width:1080px;padding-top:22px}.faq-related{display:flex;flex-wrap:wrap;gap:26px;margin-top:40px}@media(max-width:600px){.faq-content{padding-top:14px}.faq-related{gap:18px 24px}}</style>
 <script>
-  const faqSearch = document.querySelector<HTMLElement>('[data-faq-search]');
-  const faqQuery = document.querySelector<HTMLInputElement>('[data-faq-query]');
-  if (faqSearch && faqQuery) {
-    const items = [...faqSearch.querySelectorAll<HTMLDetailsElement>('[data-faq-item]')];
-    const empty = faqSearch.querySelector<HTMLElement>('[data-faq-empty]');
-    const status = faqSearch.querySelector<HTMLElement>('[data-faq-status]');
+  const root = document.querySelector<HTMLElement>('[data-faq-search]');
+  const query = document.querySelector<HTMLInputElement>('[data-faq-query]');
+  if(root && query){
+    const items = [...root.querySelectorAll<HTMLDetailsElement>('[data-faq-item]')];
+    const categories = [...root.querySelectorAll<HTMLButtonElement>('[data-faq-category]')];
+    const empty = root.querySelector<HTMLElement>('[data-faq-empty]');
+    const status = root.querySelector<HTMLElement>('[data-faq-status]');
+    const clear = document.querySelector<HTMLButtonElement>('[data-faq-clear]');
+    let category = 'all';
     const update = () => {
-      const query = faqQuery.value.trim().toLowerCase();
-      let count = 0;
-      for (const item of items) {
-        const matches = !query || (item.dataset.search ?? '').includes(query);
-        item.hidden = !matches;
-        if (matches) count += 1;
-        else item.open = false;
+      const terms = query.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let count=0;
+      for(const item of items){
+        const matches = (category==='all'||item.dataset.category===category) && terms.every(term=>(item.dataset.search||'').includes(term));
+        item.hidden=!matches;
+        if(matches)count++; else item.open=false;
       }
-      if (empty) empty.hidden = count !== 0;
-      if (status) status.textContent = faqSearch.dataset.locale === 'zh' ? `找到 ${count} 个问题` : `${count} questions found`;
+      categories.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.faqCategory===category)));
+      if(empty)empty.hidden=count!==0;
+      if(clear)clear.hidden=!query.value;
+      if(status)status.textContent=root.dataset.locale==='zh'?`${count} 个问题`:`${count} questions`;
     };
-    faqQuery.addEventListener('input', update);
-    faqSearch.querySelector<HTMLButtonElement>('[data-faq-reset]')?.addEventListener('click', () => {
-      faqQuery.value = '';
-      update();
-      faqQuery.focus();
-    });
+    categories.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.faqCategory||'all';update();}));
+    query.addEventListener('input',update);
+    clear?.addEventListener('click',()=>{query.value='';update();query.focus();});
+    root.querySelector('[data-faq-reset]')?.addEventListener('click',()=>{category='all';query.value='';update();query.focus();});
   }
 </script>

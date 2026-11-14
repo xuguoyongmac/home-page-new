@@ -6,4 +6,4 @@ export function getStaticPaths() { return locales.map(locale => ({ params: { loc
 const { locale } = Astro.props;
 const zh = locale === 'zh';
 ---
-<Layout locale={locale} title={zh ? '价格方案' : 'Pricing'} description={zh ? '了解团队协作、企业私有化与行业一体机的方案报价方式。' : 'Discuss team, private deployment and industry appliance pricing.'} page="pricing"><Page locale={locale}/></Layout>
+<Layout locale={locale} title={zh ? '价格方案' : 'Pricing'} description={zh ? '比较社区版、订阅版与企业版的价格、能力和服务，订阅版 ¥50,000/年起。' : 'Compare Community, Subscription and Enterprise editions. Subscription starts at CNY 50,000 per year.'} page="pricing"><Page locale={locale}/></Layout>
