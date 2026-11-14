@@ -20,15 +20,12 @@ import '../styles/hero-space.css';
 import '../styles/site-scale.css';
 import '../styles/navigation.css';
 import SiteHeader from '../components/navigation/SiteHeader.astro';
-import Brand from '../components/Brand.astro';
-import Icon from '../components/Icon.astro';
-import { site, pathFor, appFor, ui } from '../lib/site';
-import { industries } from '../data/industries';
+import SiteFooter from '../components/navigation/SiteFooter.astro';
+import { site, pathFor } from '../lib/site';
 import type { Locale } from '../data/types';
 interface Props { locale: Locale; title: string; description: string; page?: string; noindex?: boolean; }
 const { locale, title, description, page = '', noindex = false } = Astro.props;
 const zh = locale === 'zh';
-const t = ui[locale];
 const canonical = new URL(pathFor(locale, page), site.origin).href;
 ---
 <!doctype html>
@@ -60,15 +57,7 @@ const canonical = new URL(pathFor(locale, page), site.origin).href;
     <a class="skip-link" href="#main">{zh ? '跳转到正文' : 'Skip to content'}</a>
     <SiteHeader locale={locale} page={page}/>
     <main id="main"><slot/></main>
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-brand"><a href={pathFor(locale)}><Brand locale={locale}/></a><p>{zh ? 'TeGo 数字员工协作平台' : 'TeGo digital workforce collaboration platform.'}</p><a class="text-link" href={`mailto:${site.email}`}>{site.email}<Icon name="external" size={12}/></a></div>
-        <div><h2>{zh ? '产品与平台' : 'Platform'}</h2><a href={pathFor(locale,'product')}>{zh ? '产品特性' : 'Product'}</a><a href={pathFor(locale,'ecosystem')}>{zh ? '开放生态' : 'Ecosystem'}</a><a href={pathFor(locale,'enterprise')}>{zh ? '部署方式' : 'Deployment'}</a><a href={appFor(locale)}>{zh ? 'Web 工作空间' : 'Web workspace'}</a></div>
-        <div><h2>{zh ? '解决方案' : 'Solutions'}</h2>{industries[locale].map(industry=><a href={pathFor(locale,`solutions/${industry.slug}`)}>{industry.name}</a>)}</div>
-        <div><h2>{zh ? '资源与支持' : 'Resources'}</h2><a href={site.docs}>{t.docs}</a><a href={pathFor(locale,'download')}>{t.download}</a><a href={site.blog}>{t.blog}</a><a href={pathFor(locale,'faq')}>{t.faq}</a><a href={pathFor(locale,'contact')}>{t.contact}</a></div>
-      </div>
-      <div class="container footer-bottom"><span>{zh ? '© 2026 深圳市扎马未来科技有限公司' : '© 2026 Shenzhen Zhama Future Technology Co., Ltd.'}</span><a href="https://beian.miit.gov.cn/" rel="external">粤ICP备2025426259号-1</a><div class="footer-legal"><a href={pathFor(locale,'privacy')}>{t.privacy}</a><a href={pathFor(locale,'terms')}>{t.terms}</a></div></div>
-    </footer>
+    <SiteFooter locale={locale}/>
 
   </body>
 </html>

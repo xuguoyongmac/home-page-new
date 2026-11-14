@@ -6,101 +6,184 @@ interface PricingPlan {
 }
 export const pricingPlans: Record<Locale, PricingPlan[]> = {
   zh: [
-    { id: 'community', icon: 'network', name: '社区版', audience: '免费使用', description: '体验数字员工与 AI 协作的核心能力。', price: '¥0', unit: '免费', includes: '基础能力', items: ['数字员工与工作会话', '基础任务编排', '社区 MCP 工具', '工作空间与文件管理', '社区技术支持'], action: '获取社区版' },
-    { id: 'subscription', icon: 'shield', name: '订阅版', audience: '私有化部署 · 年度订阅', description: '面向企业团队，按年订阅并部署在自有环境。', price: '¥50,000', unit: '/ 年起', includes: '包含社区版能力，以及', items: ['多 Agent 专业协作与任务分工', '并行任务执行与进度管理', '工作记忆与经验复用', '企业角色与资源权限管理', '私有化环境部署', '一对一客户支持与代维服务'], action: '咨询订阅版' },
-    { id: 'enterprise', icon: 'cpu', name: '企业版', audience: '私有化部署 · 企业定制', description: '面向组织集成、品牌定制与专属交付需求。', price: '定制报价', unit: '按企业需求', includes: '包含订阅版能力，以及', items: ['企业协作渠道集成服务', 'LDAP / OIDC 身份源集成', '审计与可观测配置', '自主品牌形象定制', '部署与 POC 支持服务'], action: '获取企业报价' },
+    {
+      id: 'community', icon: 'network', name: '社区版', audience: '免费使用',
+      description: '体验数字员工与 AI 协作的核心能力。', price: '¥0', unit: '免费', includes: '基础能力',
+      items: [
+        '数字员工与任务执行',
+        '技能、插件与 MCP 工具',
+        '项目协作与多端办公',
+        '模型接入与配置',
+        '社区交流与文档',
+      ],
+      action: '获取社区版',
+    },
+    {
+      id: 'subscription', icon: 'shield', name: '订阅版', audience: '私有化部署 · 年度订阅',
+      description: '面向企业团队，按年订阅并部署在自有环境。', price: '¥50,000', unit: '/ 年起', includes: '包含社区版能力，以及',
+      items: [
+        '多 Agent 协作与定时任务',
+        '工作记忆与企业知识库',
+        '技能开发与企业治理',
+        '系统集成与私有化部署',
+        '技术支持与版本维护',
+      ],
+      action: '咨询订阅版',
+    },
+    {
+      id: 'enterprise', icon: 'cpu', name: '企业版', audience: '私有化部署 · 企业定制',
+      description: '面向组织集成、品牌定制与专属交付需求。', price: '定制报价', unit: '按企业需求', includes: '包含订阅版能力，以及',
+      items: [
+        'FDE 场景落地与技能开发',
+        '业务系统与 IM 集成服务',
+        '品牌定制与信创适配',
+        'POC 验证与部署交付',
+        '运维支持与团队培训',
+      ],
+      action: '获取企业报价',
+    },
   ],
   en: [
-    { id: 'community', icon: 'network', name: 'Community', audience: 'FREE', description: 'Explore core digital employee and AI collaboration capabilities.', price: '¥0', unit: 'Free', includes: 'Core capabilities', items: ['Digital employees and conversations', 'Basic task orchestration', 'Community MCP tools', 'Workspaces and file management', 'Community support'], action: 'Get Community' },
-    { id: 'subscription', icon: 'shield', name: 'Subscription', audience: 'PRIVATE DEPLOYMENT · ANNUAL', description: 'An annual subscription deployed in your organization’s environment.', price: '¥50,000', unit: '/ year, starting at', includes: 'Everything in Community, plus', items: ['Multi-Agent collaboration and delegation', 'Parallel tasks and progress tracking', 'Work memory and experience reuse', 'Enterprise roles and resource permissions', 'Private environment deployment', 'Dedicated support and managed operations'], action: 'Discuss Subscription' },
-    { id: 'enterprise', icon: 'cpu', name: 'Enterprise', audience: 'PRIVATE DEPLOYMENT · CUSTOM', description: 'For enterprise integrations, branding and dedicated delivery.', price: 'Custom quote', unit: 'Tailored to your organization', includes: 'Everything in Subscription, plus', items: ['Enterprise channel integration services', 'LDAP / OIDC identity integration', 'Audit and observability configuration', 'Custom branding', 'Deployment and POC support'], action: 'Get an enterprise quote' },
+    {
+      id: 'community', icon: 'network', name: 'Community', audience: 'FREE',
+      description: 'Explore core digital employee and AI collaboration capabilities.', price: '¥0', unit: 'Free', includes: 'Core capabilities',
+      items: [
+        'Digital employees and task execution',
+        'Skills, plugins and MCP tools',
+        'Projects and cross-device work',
+        'Model connections and configuration',
+        'Community discussion and docs',
+      ],
+      action: 'Get Community',
+    },
+    {
+      id: 'subscription', icon: 'shield', name: 'Subscription', audience: 'PRIVATE DEPLOYMENT · ANNUAL',
+      description: 'An annual subscription deployed in your organization’s environment.', price: '¥50,000', unit: '/ year, starting at', includes: 'Everything in Community, plus',
+      items: [
+        'Multi-Agent teamwork and scheduled tasks',
+        'Work memory and company knowledge',
+        'Skill development and governance',
+        'System integration and private deployment',
+        'Technical support and maintenance',
+      ],
+      action: 'Discuss Subscription',
+    },
+    {
+      id: 'enterprise', icon: 'cpu', name: 'Enterprise', audience: 'PRIVATE DEPLOYMENT · CUSTOM',
+      description: 'For enterprise integrations, branding and dedicated delivery.', price: 'Custom quote', unit: 'Tailored to your organization', includes: 'Everything in Subscription, plus',
+      items: [
+        'FDE delivery and skill development',
+        'Business system and IM integration',
+        'Custom branding and domestic IT adaptation',
+        'POC validation and deployment',
+        'Operations support and team training',
+      ],
+      action: 'Get an enterprise quote',
+    },
   ],
 };
 
 interface CapabilityGroup {
-  id: string; icon: string; title: string; path: string;
-  rows: { name: string; capability: string; boundary: string }[];
+  id: string; icon: string; title: string;
+  rows: { name: string; capability: string }[];
 }
 export const capabilityGroups: Record<Locale, CapabilityGroup[]> = {
   zh: [
-    { id: 'employees', icon: 'network', title: '数字员工与岗位能力', path: 'product/digital-employees', rows: [
-      { name: '岗位配置与招募', capability: '从数字员工模板招募，配置职责、模型、知识、技能与插件。', boundary: '模板资产与已运行的数字员工分别维护。' },
-      { name: '专业分工', capability: '主 Agent 委派专业子 Agent，跟进任务进度并汇总结果。', boundary: '按数字员工的 Agent 配置与委派权限使用。' },
-      { name: '技能复用', capability: '临时选用技能，或将常用技能安装到指定数字员工的 Agent。', boundary: '外部账号、工具与执行环境需要单独授权。' },
+    { id: "employees", icon: "network", title: "数字员工", rows: [
+      { name: "员工招募与配置", capability: "从岗位模板招募数字员工，维护职责、Agent、模型、知识与技能配置，分别管理模板和在岗员工。" },
+      { name: "工作会话", capability: "通过文字、语音和附件交办工作，在同一话题续改成果，并记录会议、转写逐字稿和整理纪要。" },
+      { name: "任务执行与定时调度", capability: "通过计划与多 Agent 分工推进任务，为数字员工配置定时任务，跟踪执行进度、运行记录和交付结果。" },
+      { name: "工作记忆与自学习", capability: "按使用者隔离维护个人档案、长期记忆与工作日记，延续工作上下文；按组织策略开展工作复盘与自学习，将经验沉淀为可复用技能。" },
     ] },
-    { id: 'collaboration', icon: 'folder', title: '团队协作与成果交付', path: 'product/collaboration', rows: [
-      { name: '共享项目', capability: '集中目标、成员与文件，围绕同一份资料开展工作。', boundary: '项目资料按成员角色访问。' },
-      { name: '人工参与', capability: '通过问询、审批和接手事项，引入同事判断并续办任务。', boundary: '按事项权限与实际处理状态推进。' },
-      { name: '办公成果与版本', capability: '预览、编辑办公成果，保留草稿、项目版本与冲突副本。', boundary: 'Word、演示支持 Web 与桌面编辑；表格 Web 只读、桌面编辑。' },
+    { id: "knowledge", icon: "book", title: "知识库", rows: [
+      { name: "资料上传与管理", capability: "按知识库与文件夹整理企业资料，支持文件批量上传、同名替换与重新处理，查看原文件、历史版本和处理状态。" },
+      { name: "解析分片与索引", capability: "解析和清洗文档，按配置对内容分片并建立检索索引，支持分段查看、维护与启停。" },
+      { name: "召回与检索", capability: "支持关键词、语义和混合检索，可配置全文与向量权重、召回数量及阈值，并通过检索测试核对结果。" },
+      { name: "原文引用与问答", capability: "数字员工可检索指定知识库，在回答中保留来源引用，定位命中片段与原文上下文。" },
+      { name: "权限与共享", capability: "管理个人与共享知识库，按成员、部门和库内角色授权；数字员工按调用人权限检索，项目资料限定在对应项目与成员范围。" },
     ] },
-    { id: 'knowledge', icon: 'book', title: '企业知识与工作记忆', path: 'product/knowledge', rows: [
-      { name: '资料检索与引用', capability: '导入企业文档，检索原文片段，在回答中引用资料。', boundary: '按知识库授权，文档继承所属知识库的访问范围。' },
-      { name: '项目资料检索', capability: '在项目内查找相关文件内容，为当前工作补充依据。', boundary: '限定本项目；需要知识引擎和向量模型，不进入全局检索。' },
-      { name: '持续工作上下文', capability: '在话题中续改工作，通过记忆保留可延续的信息。', boundary: '话题、记忆与知识库分别维护。' },
+    { id: "skills", icon: "layers", title: "技能与插件", rows: [
+      { name: "技能与插件复用", capability: "将岗位方法、业务规则和业务能力整理为技能或插件，选用、安装并分配给数字员工，在团队内复用。" },
+      { name: "技能治理", capability: "管理技能版本、共享范围与安装，跟踪复用和运行质量，处理隔离、复审及个人技能向团队和组织的晋升。" },
+      { name: "开发工具", capability: "通过对话开发技能、数字员工和业务扩展，完成校验、预览与打包，并发布技能或插件。" },
     ] },
-    { id: 'connections', icon: 'plug', title: '业务连接与周期工作', path: 'product/integrations', rows: [
-      { name: '业务系统集成', capability: '通过业务插件、MCP 与授权工具连接系统；通过 OpenAPI 调用平台服务。', boundary: '每条连接分别配置接口、身份和权限。' },
-      { name: '周期任务', capability: '安排定时工作，查看运行记录并接收结果。', boundary: '执行看板属于扩展能力，按安装与配置启用。' },
-      { name: '消息与设备入口', capability: '接入企业微信、钉钉、飞书；通过授权设备执行操作。', boundary: '外部渠道需要身份绑定，设备操作受系统权限控制。' },
+    { id: "collaboration", icon: "folder", title: "项目协作", rows: [
+      { name: "项目与 IM 会话", capability: "共享项目目标、成员与资料，在 IM 和项目会话中协同数字员工，通过问询、审批与接手衔接人工判断。" },
+      { name: "办公成果", capability: "生成、预览和修改办公文件。Word 与 PowerPoint 支持 Web 和桌面编辑；Excel 支持 Web 只读预览与桌面编辑。" },
+      { name: "文件与版本", capability: "集中管理文件、批注和修改，保留草稿与项目版本，处理并发冲突，并恢复、定稿和导出成果。" },
     ] },
-    { id: 'governance', icon: 'shield', title: '企业管理与执行审计', path: 'product/governance', rows: [
-      { name: '组织与资源授权', capability: '管理租户、组织、角色及数字员工和知识的可用范围。', boundary: '可见范围、使用权限与管理权限分别控制。' },
-      { name: '业务委托与人工确认', capability: '按发起人的授权执行工作，在需要时引入确认或接手。', boundary: '授权可撤销，实际执行仍受工具和资源权限约束。' },
-      { name: '审计与用量', capability: '关联任务过程、工具调用和成果来源，查看模型用量。', boundary: '审计摘要、正文、导出与策略管理分别授权。' },
+    { id: "connections", icon: "plug", title: "系统集成", rows: [
+      { name: "MCP 服务连接", capability: "接入 MCP 服务，将业务工具提供给数字员工，在对应身份与业务授权下查询资料、调用工具并执行企业系统操作。" },
+      { name: "RESTful API 连接", capability: "连接企业已有的 RESTful API，配置接口认证与请求参数，让数字员工在接口权限范围内查询业务信息、办理业务并衔接工作流程。" },
+      { name: "数据库连接", capability: "连接企业数据库，在数据库账号与授权范围内查询、汇总和分析业务数据，为经营问答、报告生成与任务执行提供数据依据。" },
+      { name: "OpenAPI", capability: "外部系统通过同步、异步或流式接口调用数字员工，并使用知识、文件与待处理事项等平台服务，将员工能力接入现有业务流程。" },
     ] },
-    { id: 'deployment', icon: 'monitor', title: '部署与使用入口', path: 'enterprise', rows: [
-      { name: '多端工作空间', capability: '通过 Web、桌面与移动端处理任务、会话与资料。', boundary: '各端编辑、设备接入和通知能力不同。' },
-      { name: '私有化与本地模型', capability: '使用 Compose 或 Kubernetes 部署，接入兼容的模型服务。', boundary: '联网搜索、云模型和外部系统按企业网络策略使用。' },
-      { name: '国产终端交付', capability: '提供银河麒麟桌面专项安装与构建通道。', boundary: '当前重点为 ARM64，具体软硬件组合按交付方案确认。' },
+    { id: "governance", icon: "shield", title: "企业治理", rows: [
+      { name: "组织身份与权限", capability: "管理租户、组织成员、角色及资源权限，对接 LDAP / OIDC 身份源，分别控制数字员工、知识库、技能与项目的可见范围和使用权限。" },
+      { name: "业务授权与安全策略", capability: "通过用户身份与业务委托控制数字员工的执行范围，支持撤销授权、运行限制、人工确认与安全护栏，按工具和业务系统权限执行操作。" },
+      { name: "审核管理", capability: "按组织规则审核数字员工创建与开放、员工模板发布、技能提案、安装与版本变更、插件发布及资源可见范围与授权变更，保留提交快照、审核决定与处理记录。" },
+      { name: "安全审计", capability: "关联任务执行、工具与模型调用、配置变更、人工操作及成果记录，管理风险告警、证据溯源与审计留存，支持审计职责分离和按权限查阅。" },
+      { name: "用量管理", capability: "按时间与数字员工查看模型使用和相关消耗，核对用量汇总与调用明细，跟踪团队的使用情况。" },
+      { name: "品牌与客户端管理", capability: "维护企业名称、标识与品牌外观，按客户端版本、发布通道、系统平台和架构管理安装包发布与更新。" },
+    ] },
+    { id: "clients", icon: "message", title: "多端与 IM 接入", rows: [
+      { name: "Web、桌面与移动端", capability: "支持 Web、Windows / macOS / Linux 桌面端与 iOS / Android 移动端，在不同设备开展会话和协作；桌面节点可连接已授权的浏览器及本机设备。" },
+      { name: "企业 IM 接入", capability: "接入飞书、企业微信、钉钉，配置企业应用通道与使用者身份绑定，让数字员工在私聊和群聊中收发消息、承接工作。" },
+      { name: "微信与 QQ 接入", capability: "通过微信扫码连接及 QQ 消息通道接入数字员工，绑定平台身份，按渠道规则处理个人消息与群聊中的工作。" },
+    ] },
+    { id: "deployment", icon: "cpu", title: "大模型与私有化", rows: [
+      { name: "大模型服务", capability: "通过 OpenAI 兼容 API 接入 DeepSeek、MiniMax 等主流模型服务，统一配置模型提供方、主模型、回退模型与专项能力路由。" },
+      { name: "私有化部署", capability: "支持 SaaS 使用与 Compose / Kubernetes 私有化部署，可将平台与资料部署于企业环境，并接入自建 vLLM / Qwen 本地模型服务。" },
+      { name: "信创与麒麟适配", capability: "支持银河麒麟 ARM64 桌面终端，提供专项构建与离线安装包，衔接企业内网和本地模型部署。" },
     ] },
   ],
   en: [
-    { id: 'employees', icon: 'network', title: 'Digital employees and role capabilities', path: 'product/digital-employees', rows: [
-      { name: 'Role setup and recruitment', capability: 'Recruit from templates and configure responsibilities, models, knowledge, skills and plugins.', boundary: 'Templates and running employees are maintained separately.' },
-      { name: 'Specialist delegation', capability: 'A main Agent delegates to specialists, tracks progress and collects results.', boundary: 'Depends on the configured Agents and delegation permissions.' },
-      { name: 'Reusable skills', capability: 'Select a skill for a request or install it on an employee’s Agent.', boundary: 'External accounts, tools and runtime access require authorization.' },
+    { id: "employees", icon: "network", title: "Digital employees", rows: [
+      { name: "Recruitment and configuration", capability: "Recruit employees from role templates, maintain responsibilities, Agents, models, knowledge and skills, and manage templates separately from running employees." },
+      { name: "Work conversations", capability: "Assign work through text, voice and attachments, continue revisions in the same topic, and record, transcribe and summarize meetings." },
+      { name: "Execution and scheduled tasks", capability: "Use planning and specialist Agents to carry out work, configure scheduled tasks for digital employees, and track progress, run history and deliverables." },
+      { name: "Memory and self-learning", capability: "Keep profiles, long-term memory and work logs isolated by user. Review work and learn from experience under organization policies, turning reusable methods into skills." },
     ] },
-    { id: 'collaboration', icon: 'folder', title: 'Team collaboration and deliverables', path: 'product/collaboration', rows: [
-      { name: 'Shared projects', capability: 'Keep goals, members and files together around the same work.', boundary: 'Project access follows member roles.' },
-      { name: 'Human participation', capability: 'Ask colleagues, request approval or hand off work, then continue the task.', boundary: 'Actions follow item permissions and processing state.' },
-      { name: 'Office files and versions', capability: 'Preview and edit deliverables, preserving drafts, project versions and conflict copies.', boundary: 'Word and slides: web and desktop editing. Spreadsheets: web preview, desktop editing.' },
+    { id: "knowledge", icon: "book", title: "Knowledge base", rows: [
+      { name: "File upload and management", capability: "Organize company materials by library and folder, upload files in batches, replace and reprocess files, and view source files, version history and processing status." },
+      { name: "Parsing, chunking and indexing", capability: "Parse and clean documents, split content into configured chunks, build search indexes, and view, maintain, enable or disable chunks." },
+      { name: "Search and retrieval", capability: "Support keyword, semantic and hybrid retrieval, configure text and vector weights, candidate counts and thresholds, and verify results with retrieval tests." },
+      { name: "Source citations and answers", capability: "Digital employees search selected knowledge bases, cite sources in answers, and locate matched passages and their original context." },
+      { name: "Access and sharing", capability: "Manage personal and shared libraries, with access by member, department and library role. Employee retrieval follows the caller’s permissions; project files stay within their project and membership scope." },
     ] },
-    { id: 'knowledge', icon: 'book', title: 'Company knowledge and memory', path: 'product/knowledge', rows: [
-      { name: 'Retrieval and references', capability: 'Import documents, retrieve relevant passages and cite sources in answers.', boundary: 'Access is granted by knowledge base and inherited by its documents.' },
-      { name: 'Project retrieval', capability: 'Find relevant project file content to support the current task.', boundary: 'Project-only; requires a knowledge engine and embedding model. Excluded from global retrieval.' },
-      { name: 'Continuing context', capability: 'Revise work in the same topic and retain useful information in memory.', boundary: 'Topics, memory and knowledge bases are maintained separately.' },
+    { id: "skills", icon: "layers", title: "Skills and plugins", rows: [
+      { name: "Reusable skills and plugins", capability: "Package role methods, business rules and capabilities as skills or plugins. Select, install and assign them to digital employees for reuse across the team." },
+      { name: "Skill governance", capability: "Manage skill versions, sharing and installation, track reuse and execution quality, quarantine and re-review skills, and promote personal skills to team and organization scope." },
+      { name: "Development tools", capability: "Develop skills, digital employees and business extensions through conversation; validate, preview and package them, and publish skills or plugins." },
     ] },
-    { id: 'connections', icon: 'plug', title: 'Business connections and recurring work', path: 'product/integrations', rows: [
-      { name: 'Business integration', capability: 'Connect plugins, MCP and authorized tools; call platform services through OpenAPI.', boundary: 'Configure each interface, identity and permission separately.' },
-      { name: 'Recurring tasks', capability: 'Schedule work, inspect run records and receive results.', boundary: 'The execution board is an extension requiring installation and setup.' },
-      { name: 'Messaging and devices', capability: 'Connect WeCom, DingTalk and Feishu; operate authorized devices.', boundary: 'Channels require identity binding. Device actions follow system permissions.' },
+    { id: "collaboration", icon: "folder", title: "Project collaboration", rows: [
+      { name: "Projects and IM conversations", capability: "Share project goals, members and materials, collaborate with digital employees through IM and project conversations, and involve people through questions, approvals and handoffs." },
+      { name: "Office deliverables", capability: "Generate, preview and revise office files. Word and PowerPoint support web and desktop editing; Excel supports read-only web previews and desktop editing." },
+      { name: "Files and versions", capability: "Manage files, comments and revisions; retain drafts and project versions, resolve concurrent conflicts, and restore, finalize and export deliverables." },
     ] },
-    { id: 'governance', icon: 'shield', title: 'Enterprise management and audit', path: 'product/governance', rows: [
-      { name: 'Organizations and access', capability: 'Manage tenants, organizations, roles, employee access and knowledge scope.', boundary: 'Visibility, use and management permissions are separate.' },
-      { name: 'Delegation and confirmation', capability: 'Work within the requester’s authorization, with confirmation or handoff when needed.', boundary: 'Delegation is revocable. Tool and resource permissions still apply.' },
-      { name: 'Audit and usage', capability: 'Link task records, tool calls and deliverable sources; inspect model usage.', boundary: 'Audit summaries, content, exports and policy management have separate permissions.' },
+    { id: "connections", icon: "plug", title: "System integration", rows: [
+      { name: "MCP service connections", capability: "Connect MCP services and make their business tools available to digital employees, who retrieve information, call tools and perform enterprise system operations within the relevant identity and business permissions." },
+      { name: "RESTful API connections", capability: "Connect existing enterprise RESTful APIs, configure authentication and request parameters, and let employees retrieve business information, perform operations and connect workflows within API permissions." },
+      { name: "Database connections", capability: "Connect enterprise databases to query, aggregate and analyze business data within database account permissions, supporting business questions, reporting and task execution." },
+      { name: "OpenAPI", capability: "External systems call digital employees synchronously, asynchronously or through streaming, and use platform services for knowledge, files and attention items within existing business workflows." },
     ] },
-    { id: 'deployment', icon: 'monitor', title: 'Deployment and client access', path: 'enterprise', rows: [
-      { name: 'Web, desktop and mobile', capability: 'Access tasks, conversations and materials across supported clients.', boundary: 'Editing, device access and notifications vary by client.' },
-      { name: 'Private deployment and models', capability: 'Deploy with Compose or Kubernetes and connect compatible model services.', boundary: 'Search, cloud models and external services follow enterprise network policies.' },
-      { name: 'Kylin desktop delivery', capability: 'Dedicated installation and build channels for Kylin desktop.', boundary: 'ARM64 is the current focus. Confirm the specific delivery configuration.' },
+    { id: "governance", icon: "shield", title: "Enterprise governance", rows: [
+      { name: "Identity and permissions", capability: "Manage tenants, organization members, roles and resource permissions. Connect LDAP / OIDC identity providers and control visibility and access to employees, knowledge bases, skills and projects." },
+      { name: "Authorization and safety policies", capability: "Control employee actions through user identity and business delegation. Revoke access, set execution limits, require human confirmation and configure safety guardrails within tool and system permissions." },
+      { name: "Review management", capability: "Apply organization rules to employee creation and access, template releases, skill proposals, installations and version changes, plugin releases, and resource visibility and permission changes. Retain submission snapshots, decisions and processing records." },
+      { name: "Security audit", capability: "Link tasks, tool and model calls, configuration changes, human actions and deliverables. Manage alerts, evidence and retention, with separation of audit duties and permission-based access." },
+      { name: "Usage management", capability: "Review model usage and related consumption by time and digital employee, reconcile summaries with individual calls, and track usage across the team." },
+      { name: "Branding and client management", capability: "Maintain company names, logos and branding. Manage installer releases and updates by client version, release channel, operating system and architecture." },
     ] },
-  ],
-};
-
-export const pricingFaqs: Record<Locale, { question: string; answer: string }[]> = {
-  zh: [
-    { question: '订阅版起价与最终报价有什么区别？', answer: '订阅版公开起价为 ¥50,000/年。最终报价结合部署规模、启用模块、系统对接和服务范围确定；企业定制需求单独报价。' },
-    { question: '报价需要提供哪些信息？', answer: '提供要完成的岗位工作、预计成员与数字员工规模、资料类型、部署环境和需要连接的业务系统。团队据此确认模型、计算资源、实施及服务范围。' },
-    { question: '模型调用与算力如何计入方案？', answer: '模型选择、预计用量与计算资源分别评估。使用云端模型、自有模型服务或本地算力，对应的费用与资源责任在报价中明确。' },
-    { question: '功能清单是否代表所有版本默认包含？', answer: '功能清单说明平台能力与使用条件。各版本的启用模块、插件、知识配置、接口对接和服务内容，需要在具体报价与交付清单中确定。' },
-    { question: '可以从一个岗位场景开始吗？', answer: '可以先选择明确的输入资料、执行动作、交付成果与人工复核点，确定首个岗位场景，再评估扩展到更多数字员工和团队的配置。' },
-  ],
-  en: [
-    { question: 'How does the starting price relate to the final quote?', answer: 'Subscription starts at CNY 50,000 per year. The final quote reflects deployment scale, enabled modules, integrations and service scope. Enterprise customization is quoted separately.' },
-    { question: 'What information is needed for a quote?', answer: 'Share the role workflow, expected team and employee scale, material types, deployment environment and business systems. These define model, compute, implementation and service scope.' },
-    { question: 'How are models and compute scoped?', answer: 'Model selection, expected usage and compute are assessed separately. The quote identifies costs and responsibilities for cloud models, your model service or local compute.' },
-    { question: 'Is every listed capability included in every plan?', answer: 'The list describes platform capabilities and their conditions. Enabled modules, plugins, knowledge setup, integrations and services are defined in the quote and delivery scope.' },
-    { question: 'Can we start with one role workflow?', answer: 'Start with defined inputs, actions, deliverables and human review points. Scope the first workflow, then assess configurations for more employees and teams.' },
+    { id: "clients", icon: "message", title: "Clients and IM access", rows: [
+      { name: "Web, desktop and mobile", capability: "Work on the web, Windows, macOS and Linux desktops, and iOS and Android mobile devices. Use desktop nodes to connect authorized browsers and local devices." },
+      { name: "Enterprise IM access", capability: "Connect Feishu, WeCom and DingTalk, configure enterprise app channels and link user identities, so employees can exchange messages and receive work in direct and group chats." },
+      { name: "WeChat and QQ access", capability: "Connect employees through WeChat QR sign-in and QQ channels, link platform identities, and handle work in direct and group messages under channel policies." },
+    ] },
+    { id: "deployment", icon: "cpu", title: "Models and private deployment", rows: [
+      { name: "Model services", capability: "Connect mainstream services such as DeepSeek and MiniMax through OpenAI-compatible APIs. Configure providers, primary and fallback models, and routing for specialized capabilities." },
+      { name: "Private deployment", capability: "Use SaaS or private Compose and Kubernetes deployments. Host the platform and files in the enterprise environment and connect self-hosted vLLM and Qwen model services." },
+      { name: "Domestic IT and Kylin", capability: "Support Kylin ARM64 desktops with dedicated builds and offline installers, alongside enterprise network and local model deployments." },
+    ] },
   ],
 };
