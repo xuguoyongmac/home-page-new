@@ -1,4 +1,6 @@
 import type { Locale } from '../data/types';
+import workspaceFlow from '../assets/anywhere/workspace-flow_V1.14.svg?raw';
+import workspaceLabels from '../assets/anywhere/workspace-labels_V1.17.svg?raw';
 
 export function renderAnywhereTopology(locale: Locale = 'zh') {
  const zh = locale === 'zh';
@@ -6,15 +8,20 @@ export function renderAnywhereTopology(locale: Locale = 'zh') {
   ? '通过 PC、Web、平板、移动端与常用 IM 入口交办任务，数字员工依次接收任务、理解规划、协同执行并输出结果，交付经营看板、客户跟进、业务办理与方案报告。'
   : 'Delegate through desktop, tablet, mobile and messaging channels. TeGo connects knowledge, skills and systems with Agent execution, orchestration and access audit to deliver business dashboards, customer follow-up plans, business processing results and proposals.';
  if (zh) {
-  const animation = '/images/anywhere/platform-flow_V1.1.webp';
-  const poster = '/images/anywhere/platform-flow-poster_V1.1.webp';
-  const image = (className: string, alt: string) => `<img class="${className}" data-topology-gif data-animated-src="${animation}" data-static-src="${poster}" src="${poster}" width="4344" height="1448" alt="${alt}" loading="lazy" decoding="async"/>`;
-  return `<div class="anywhere-topology anywhere-topology--luminous" data-topology-motion="paused" data-topology-locale="${locale}">
-   ${image('anywhere-scene-desktop', overview)}
+  const poster = '/images/anywhere/anywhere-workspace-poster_V1.17.webp';
+  const mobilePoster = '/images/anywhere/anywhere-workspace-mobile_V1.17.webp';
+  let sceneId = 0;
+  const scene = (className: string, alt: string, image = poster) => {
+   const suffix = `${locale}-${++sceneId}`;
+   const flow = workspaceFlow.replace(/(id="|url\(#)([a-zA-Z][\w-]*)/g, (_, prefix, id) => `${prefix}${id}-${suffix}`);
+   return `<div class="workspace-scene ${className}"><img src="${image}" width="1948" height="760" alt="${alt}" loading="lazy" decoding="async"/>${flow}${workspaceLabels}</div>`;
+  };
+  return `<div class="anywhere-topology anywhere-topology--workspace" data-topology-motion="paused" data-topology-locale="${locale}">
+   ${scene('anywhere-scene-desktop', '通过 PC、Web、平板、移动端与常用 IM 交办任务，数字员工结合企业知识库、技能和系统连接协同处理，交付方案报告、经营看板、办理回执与客户跟进成果。')}
    <div class="anywhere-scene-mobile">
-    <div class="anywhere-motion-crop anywhere-motion-crop--inputs">${image('', '任务入口：PC、Web、平板、移动端，以及微信、QQ、企业微信、钉钉、飞书与 OA。')}</div>
-    <div class="anywhere-motion-crop anywhere-motion-crop--platform">${image('', 'TeGo 数字员工协同平台：连接企业知识库、技能与业务系统，数字员工依次接收任务、理解规划、协同执行并输出结果，由 Agent 协同调度与权限审计提供支持。')}</div>
-    <div class="anywhere-motion-crop anywhere-motion-crop--outputs">${image('', '成果交付：经营看板、客户跟进、业务办理与方案报告。')}</div>
+    <div class="anywhere-motion-crop anywhere-motion-crop--inputs">${scene('', '任务入口：PC、Web、平板、移动端，以及微信、QQ、企业微信、钉钉、飞书与 OA。', mobilePoster)}</div>
+    <div class="anywhere-motion-crop anywhere-motion-crop--platform">${scene('', '数字员工协同：结合企业知识库、技能和系统连接，完成资料整理、方案文书与项目协作。', mobilePoster)}</div>
+    <div class="anywhere-motion-crop anywhere-motion-crop--outputs">${scene('', '成果交付：方案报告、经营看板、办理回执与客户跟进，展示不同业务领域的交付形态。', mobilePoster)}</div>
    </div>
   </div>`;
  }

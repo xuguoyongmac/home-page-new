@@ -1,0 +1,41 @@
+---
+import type { Locale } from '../data/types';
+import HeroStarfield from './HeroStarfield.astro';
+import HeroWorkspace from './HeroWorkspace.astro';
+import HeroTaskDemo from './HeroTaskDemo.astro';
+import HeroOutcomes from './HeroOutcomes.astro';
+import Icon from './Icon.astro';
+import { bannerCopy } from '../features/home/banner-data';
+import { pathFor } from '../lib/site';
+import '../styles/hero-carousel.css';
+interface Props { locale: Locale; }
+const {locale}=Astro.props;
+const zh=locale==='zh';
+const slides=bannerCopy(locale);
+const links=[['contact','#solutions'],['product/multi-agent','#work-scenarios'],['contact','contact']];
+const href=(value:string)=>value.startsWith('#')?value:pathFor(locale,value);
+---
+<section class="sl-hero hero-carousel" data-hero-carousel data-hero-motion="running" role="region" aria-roledescription={zh?'轮播':'carousel'} aria-label={zh?'TeGo 产品与应用':'TeGo product and applications'}>
+  <HeroStarfield/>
+  <div class="hero-slides" data-hero-slides aria-live="off">
+    {slides.map((slide,index)=><div id={`hero-slide-${index}`} class:list={['hero-slide',{'is-active':index===0}]} data-hero-slide data-duration={slide.duration} data-active={String(index===0)} role="group" aria-roledescription={zh?'幻灯片':'slide'} aria-label={slide.label} aria-hidden={index!==0} inert={index!==0}>
+      <div class="container hero-center">
+        <div class="hero-message">
+          {index===0?<h1 id="home-title" class:list={{'hero-title-zh':zh}}><span>{slide.title[0]}</span><br/><span>{slide.title[1]}</span></h1>:<h2 class="hero-slide-title">{slide.title[0]}<br/>{slide.title[1]}</h2>}
+          <p class="sl-hero-description">{slide.description}</p>
+          <div class="sl-actions"><a class="button" href={href(links[index][0])}>{slide.primary}</a><a class="button button-white" href={href(links[index][1])}>{slide.secondary}</a></div>
+        </div>
+        {index===0?<HeroWorkspace locale={locale}/>:index===1?<HeroTaskDemo locale={locale}/>:<HeroOutcomes locale={locale}/>}
+      </div>
+    </div>)}
+  </div>
+  <div class="container hero-carousel-controls" aria-label={zh?'轮播控制':'Carousel controls'}>
+    <div class="hero-slide-selectors">{slides.map((slide,index)=><button type="button" data-slide-to={index} aria-controls={`hero-slide-${index}`} aria-current={index===0?'true':undefined} style={`--slide-duration:${slide.duration}ms`}><span>{slide.label}</span><i aria-hidden="true"></i></button>)}</div>
+    <div class="hero-transport"><button type="button" data-carousel-prev aria-label={zh?'上一屏':'Previous slide'}><span class="hero-prev-icon"><Icon name="arrow" size={16}/></span></button><button type="button" data-carousel-toggle aria-label={zh?'暂停轮播':'Pause carousel'} data-pause-label={zh?'暂停轮播':'Pause carousel'} data-play-label={zh?'播放轮播':'Play carousel'} aria-pressed="false"><svg class="carousel-pause" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM10 3h3v10h-3z" fill="currentColor"/></svg><svg class="carousel-play" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 3 8 5-8 5z" fill="currentColor"/></svg></button><button type="button" data-carousel-next aria-label={zh?'下一屏':'Next slide'}><Icon name="arrow" size={16}/></button></div>
+  </div>
+  <p class="sr-only" data-carousel-announcement aria-live="polite" aria-atomic="true"></p>
+</section>
+<script>
+ import { initializeHeroCarousels } from '../features/home/hero-carousel';
+ initializeHeroCarousels();
+</script>

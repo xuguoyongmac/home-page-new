@@ -45,7 +45,7 @@ const employees=zh?[
  document.querySelectorAll<HTMLElement>('[data-hero-workspace]').forEach(workspace=>{
   const hero=workspace.closest<HTMLElement>('[data-hero-motion]');
   const motionButton=workspace.querySelector<HTMLButtonElement>('[data-hero-motion-toggle]');
-  if(hero && motionButton){
+  if(hero && motionButton && !hero.hasAttribute('data-hero-carousel')){
    const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
    let paused=false;
    let inView=true;

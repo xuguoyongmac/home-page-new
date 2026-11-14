@@ -50,6 +50,7 @@ const metricValues=[
  document.querySelectorAll<HTMLElement>('.business-dashboard').forEach(dashboard=>{
   const scene=dashboard.closest<HTMLElement>('[data-hero-motion]');
   const panel=dashboard.closest<HTMLElement>('[role="tabpanel"]');
+  const slide=dashboard.closest<HTMLElement>('[data-hero-slide]');
   const chart=dashboard.querySelector<SVGElement>('.chart-revenue');
   const lines=[...dashboard.querySelectorAll<HTMLElement>('[data-insight-copy]')].map(copy=>({
    text:Array.from(copy.dataset.insightCopy || ''),
@@ -60,7 +61,7 @@ const metricValues=[
   let timer:ReturnType<typeof setTimeout>|undefined;
   const update=()=>{
    clearTimeout(timer);
-   const reduced=scene.dataset.heroMotion==='reduced';
+   const reduced=scene.dataset.heroMotion==='reduced' || slide?.dataset.complete==='true';
    const animation=chart.getAnimations()[0];
    const phase=Number(animation?.currentTime ?? 0)%14000;
    let start=560;
@@ -75,7 +76,7 @@ const metricValues=[
     if(count<line.text.length)next=Math.min(next,start+(count+1)*step);
     start+=line.text.length*step+220;
    });
-   if(!reduced && scene.dataset.heroMotion==='running' && scene.dataset.motionSuspended!=='true' && !panel?.hidden){
+   if(!reduced && scene.dataset.heroMotion==='running' && scene.dataset.motionSuspended!=='true' && !panel?.hidden && slide?.dataset.active!=='false'){
     timer=setTimeout(update,Math.max(16,next-phase));
    }
   };
