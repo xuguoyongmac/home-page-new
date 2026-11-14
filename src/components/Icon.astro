@@ -2,6 +2,9 @@
 interface Props { name?: string; size?: number; class?: string; }
 const { name = 'arrow', size = 24, class: className } = Astro.props;
 const paths: Record<string, string> = {
+  compass: 'M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0ZM16.2 7.8l-2.8 5.6-5.6 2.8 2.8-5.6 5.6-2.8Z',
+  wrench: 'M14.7 6.3a5.5 5.5 0 0 0-7 7L3.4 17.6a2.1 2.1 0 0 0 3 3l4.3-4.3a5.5 5.5 0 0 0 7-7l-3.5 3.5-3-3 3.5-3.5Z',
+  target: 'M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0ZM18 12a6 6 0 1 1-12 0 6 6 0 0 1 12 0ZM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0',
   search: 'M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',
   arrow: 'M5 12h14M13 6l6 6-6 6',
   external: 'M14 3h7v7M21 3l-9 9M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5',
