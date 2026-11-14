@@ -6,4 +6,4 @@ export function getStaticPaths() { return locales.map(locale => ({ params: { loc
 const { locale } = Astro.props;
 const zh = locale === 'zh';
 ---
-<Layout locale={locale} title={zh ? '资源下载' : 'Downloads'} description={zh ? '下载 TeGo 客户端与 Tego Studio，查找服务器部署包、服务镜像和历史版本。' : 'Download TeGo clients and Tego Studio, and find server bundles, images and previous releases.'} page="download"><Page locale={locale}/></Layout>
+<Layout locale={locale} title={zh ? '资源下载' : 'Downloads'} description={zh ? '下载 TeGo OS 桌面端、移动端与 Tego Studio。' : 'Download TeGo OS Desktop, Mobile and Tego Studio.'} page="download"><Page locale={locale}/></Layout>

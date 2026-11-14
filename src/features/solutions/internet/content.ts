@@ -8,10 +8,10 @@ export default {
     "zh": {
       "slug": "internet",
       "icon": "globe",
-      "name": "互联网解决方案",
-      "tag": "互联网解决方案",
-      "title": "把研究、客户跟进与周期报告接起来",
-      "description": "围绕市场资料、客户沟通与项目交付，让人与数字员工在共享资料中持续协作。",
+      "name": "互联网与泛行业解决方案",
+      "tag": "互联网与泛行业",
+      "title": "把团队的精力，用在产品与增长",
+      "description": "围绕产品投入、增长决策、客户推进和团队积累，减少资料准备与反复交接对业务精力的消耗。",
       "scope": "方案使用平台通用能力；CRM 随插件安装授权启用，外部系统与投递渠道按具体连接配置。",
       "image": "collaborative-review",
       "tasks": [
@@ -38,10 +38,10 @@ export default {
     "en": {
       "slug": "internet",
       "icon": "globe",
-      "name": "Internet",
-      "tag": "Internet",
-      "title": "Connect research, customer work and reporting",
-      "description": "Collaborate with digital employees on market research, customer communications and project deliverables.",
+      "name": "Internet & cross-industry",
+      "tag": "Internet & cross-industry",
+      "title": "Put your team’s energy into product and growth",
+      "description": "Focus product investment, ground growth decisions, keep customer opportunities moving and retain team experience.",
       "scope": "Uses general platform capabilities. CRM requires its installed and authorized plugin; systems and delivery channels depend on configured connections.",
       "image": "collaborative-review",
       "tasks": [

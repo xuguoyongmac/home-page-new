@@ -1,0 +1,12 @@
+{
+  "nodes":[
+    {"key":"knowledge","icon":"book","role":"知识管理助理","roleEn":"Knowledge assistant","skills":["知识检索","制度问答","经验沉淀"],"skillsEn":["Knowledge search","Policy Q&A","Knowledge capture"]},
+    {"key":"proposal","icon":"file","role":"方案策划顾问","roleEn":"Proposal consultant","skills":["需求梳理","方案编写","汇报制作"],"skillsEn":["Requirements analysis","Proposal writing","Presentations"]},
+    {"key":"business","icon":"chart","role":"经营分析师","roleEn":"Business analyst","skills":["数据分析","趋势研判","经营简报"],"skillsEn":["Data analysis","Trend analysis","Business reporting"]},
+    {"key":"customer","icon":"message","role":"客户服务顾问","roleEn":"Customer consultant","skills":["需求分析","客户跟进","沟通准备"],"skillsEn":["Needs analysis","Customer follow-up","Communication planning"]},
+    {"key":"research","icon":"search","role":"行业研究员","roleEn":"Industry researcher","skills":["信息检索","资料研读","研究综述"],"skillsEn":["Information search","Source analysis","Research reviews"]},
+    {"key":"project","icon":"folder","role":"项目协作专员","roleEn":"Project coordinator","skills":["任务拆解","进度跟踪","会议纪要"],"skillsEn":["Task planning","Progress tracking","Meeting minutes"]},
+    {"key":"risk","icon":"shield","role":"合规风控专员","roleEn":"Compliance specialist","skills":["条款审查","风险识别","制度比对"],"skillsEn":["Clause review","Risk identification","Policy comparison"]},
+    {"key":"admin","icon":"landmark","role":"综合行政专员","roleEn":"Administration specialist","skills":["会务安排","事务协调","台账整理"],"skillsEn":["Meeting coordination","Office coordination","Records management"]}
+  ]
+}
