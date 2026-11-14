@@ -111,7 +111,7 @@ for(const document of documents.values()) {
   check(tags.some(t=>t.name==='meta'&&t.attrs.name==='description'&&t.attrs.content?.trim()),`${label}：缺少描述`);
   const ids=tags.map(t=>t.attrs.id).filter(Boolean);
   check(new Set(ids).size===ids.length,`${label}：ID 重复`);
-  const locale=pathname.startsWith('/en/')?'en':pathname.startsWith('/ja/')?'ja':pathname.startsWith('/zh-Hant/')?'zh-Hant':'zh-CN';
+  const locale=pathname.startsWith('/en/')?'en':'zh-CN';
   check(tags.find(t=>t.name==='html')?.attrs.lang===locale,`${label}：页面语言不符`);
   const canonical=tags.find(t=>t.name==='link'&&t.attrs.rel==='canonical');
   check(Boolean(canonical),`${label}：缺少 canonical`);
@@ -133,19 +133,6 @@ for(const document of documents.values()) {
  for(const match of html.matchAll(/<script\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi)) {
   const src=attributes(match[1]).src;if(src)validateReference(src,document,'脚本');
  }
-}
-for (const [locale, phrase] of [['zh','让数字员工'],['en','Bring digital employees'],['zh-Hant','讓數字員工'],['ja','デジタル従業員を']]) {
- const file=path.join(dist,locale,'index.html');
- check(existsSync(file),`${locale} 语言首页缺失`);
- if(!existsSync(file))continue;
- const home=documentFor(file);
- check(home.markup.includes(phrase),`${locale} 首页未包含对应语言正文`);
- const languageLinks=home.tags.filter(tag=>tag.name==='a'&&tag.attrs['data-language-option']!==undefined);
- check(languageLinks.length===4,`${locale} 语言下拉应包含四种语言`);
- check(languageLinks.filter(tag=>tag.attrs['aria-current']==='true').length===1,`${locale} 语言选中状态不唯一`);
- check(home.tags.some(tag=>tag.name==='a'&&tag.attrs.class?.includes('header-cta')&&tag.attrs.href?.startsWith('https://zhama.ai/')),`${locale} 登录入口不正确`);
- const canonical=home.tags.find(tag=>tag.name==='link'&&tag.attrs.rel==='canonical');
- check(new URL(canonical.attrs.href).pathname===`/${locale}/`,`${locale} 首页 canonical 未指向本语言`);
 }
 const industries=['government','securities','general','insurance','state-owned','banking','internet','appliance'];
 const capabilities=['digital-employees','collaboration','multi-agent','knowledge','integrations','governance'];

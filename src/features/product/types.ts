@@ -3,6 +3,7 @@ export interface CapabilityCopy {
   name: string;
   title: string;
   description: string;
+  navigationDescription?: string;
   features: FeatureItem[];
   related: { path: string; label: string }[];
 }

@@ -1,65 +1,26 @@
 import type { CapabilityModule } from '../types';
+import landing from './landing';
 
 export default {
-  "slug": "integrations",
-  "order": 2,
-  "icon": "plug",
-  "copy": {
-    "zh": {
-      "name": "系统连接",
-      "title": "把知识处理，接到实际业务动作",
-      "description": "通过插件、MCP 与 API，无缝对接业务系统与外部工具。",
-      "features": [
-        {
-          "icon": "plug",
-          "title": "接入业务系统",
-          "body": "使用 MCP、OpenAPI 和已配置的工具连接业务系统。"
-        },
-        {
-          "icon": "plug",
-          "title": "扩展业务入口",
-          "body": "通过业务插件承接客户经营、招投标等具体业务对象。"
-        },
-        {
-          "icon": "plug",
-          "title": "明确执行授权",
-          "body": "系统接口与设备执行按实际安装、连接和权限使用。"
-        }
-      ],
-      "related": [
-        {
-          "path": "ecosystem",
-          "label": "了解开放生态"
-        }
-      ]
+  slug: "integrations",
+  order: 2,
+  icon: "plug",
+  copy: {
+    zh: {
+      name: "业务系统连通",
+      title: landing.zh.hero.lines.join("，"),
+      description: landing.zh.hero.summary,
+      navigationDescription: "连接业务插件、MCP 工具与开放接口。",
+      features: landing.zh.features,
+      related: [{"path": "ecosystem", "label": "了解开放生态"}],
     },
-    "en": {
-      "name": "System connections",
-      "title": "Connect thinking to business actions",
-      "description": "Connect business systems and external tools through plugins, MCP and APIs.",
-      "features": [
-        {
-          "icon": "plug",
-          "title": "Connect systems",
-          "body": "Use MCP, OpenAPI and configured tools to connect business systems."
-        },
-        {
-          "icon": "plug",
-          "title": "Extend business workflows",
-          "body": "Use plugins to work with customers, bids and other business objects."
-        },
-        {
-          "icon": "plug",
-          "title": "Authorize execution",
-          "body": "System and device actions depend on installed integrations and permissions."
-        }
-      ],
-      "related": [
-        {
-          "path": "ecosystem",
-          "label": "Explore the platform"
-        }
-      ]
-    }
-  }
+    en: {
+      name: "Business System Integration",
+      title: landing.en.hero.lines.join(" "),
+      description: landing.en.hero.summary,
+      navigationDescription: "Connect business plugins, MCP tools and open APIs.",
+      features: landing.en.features,
+      related: [{"path": "ecosystem", "label": "Explore the platform"}],
+    },
+  },
 } satisfies CapabilityModule;

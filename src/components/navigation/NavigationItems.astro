@@ -9,7 +9,7 @@ interface Props { locale: Locale; page: string; prefix: string; }
 const { locale, page, prefix } = Astro.props;
 const zh = locale === 'zh';
 const groups = [
-  { id: 'product', label: zh ? '产品能力' : 'Product', title: zh ? '产品能力' : 'Capabilities', entries: capabilities.map(entry => ({ label: entry.copy[locale].name, description: entry.copy[locale].description, icon: entry.icon, path: `product/${entry.slug}` })) },
+  { id: 'product', label: zh ? '产品能力' : 'Product', title: zh ? '产品能力' : 'Capabilities', entries: capabilities.map(entry => ({ label: entry.copy[locale].name, description: entry.copy[locale].navigationDescription || entry.copy[locale].description, icon: entry.icon, path: `product/${entry.slug}` })) },
   { id: 'solutions', label: zh ? '解决方案' : 'Solutions', title: zh ? '行业解决方案' : 'Industry solutions', entries: solutionModules.filter(entry => entry.category === 'industry').map(entry => ({ label: entry.navigation?.[locale].name || entry.copy[locale].name, description: entry.navigation?.[locale].description, icon: entry.navigation?.[locale].icon || entry.copy[locale].icon, path: `solutions/${entry.slug}` })) },
 ];
 const directLinks = [

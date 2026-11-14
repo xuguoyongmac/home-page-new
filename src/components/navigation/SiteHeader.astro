@@ -121,7 +121,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
     header.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
       const destination = new URL(languageLink.href);
       if (destination.pathname.split('/').slice(2).join('/') === location.pathname.split('/').slice(2).join('/')) destination.hash = location.hash;
-      if (location.pathname.endsWith('/releases/') && destination.pathname.endsWith('/releases/')) {
+      if (location.pathname.endsWith('/releases/')) {
         const version = new URLSearchParams(location.search).get('version'); if (version) destination.searchParams.set('version', version);
       }
       languageLink.href = destination.pathname + destination.search + destination.hash;

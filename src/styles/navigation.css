@@ -48,7 +48,7 @@
 .tego-header .tego-nav-label{display:grid;gap:5px;min-width:0}
 .tego-header .tego-nav-label small{display:block;font-size:12px;font-weight:400;line-height:1.7;color:#bfd0e8;white-space:nowrap}
 .tego-header .tego-nav-product .tego-nav-item{padding-block:12px}
-html:is([lang='en'],[lang='ja']) .tego-header .tego-nav-label small{white-space:normal}
+html[lang='en'] .tego-header .tego-nav-label small{white-space:normal}
 @media(max-width:1100px){
  .tego-header .tego-nav-product .tego-nav-grid{grid-template-columns:1fr}
  .tego-header .tego-nav-product .tego-nav-item{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px 10px}
