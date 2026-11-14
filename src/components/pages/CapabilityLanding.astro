@@ -1,0 +1,102 @@
+---
+import Icon from '../Icon.astro';
+import CapabilityConcept from './CapabilityConcept.astro';
+import CapabilityWorkMap from './CapabilityWorkMap.astro';
+import RoleConceptArt from './RoleConceptArt.astro';
+import type { Locale } from '../../data/types';
+import type { CapabilityModule } from '../../features/product/types';
+import type { LandingCopy } from '../../features/product/landing-types';
+import { capabilities } from '../../features/product';
+import { pathFor, site, appFor } from '../../lib/site';
+import '../../styles/capability-landing.css';
+
+interface Props { locale: Locale; capability: CapabilityModule; copy: LandingCopy; }
+const { locale, capability, copy } = Astro.props;
+const zh = locale === 'zh';
+const name = capability.copy[locale].name;
+const resource = capability.copy[locale].related.find(item => item.path !== 'product');
+const related = copy.related.map(slug => capabilities.find(item => item.slug === slug)).filter((item): item is CapabilityModule => Boolean(item));
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: zh ? '首页' : 'Home', item: new URL(pathFor(locale), site.origin).href },
+    { '@type': 'ListItem', position: 2, name: zh ? '产品能力' : 'Product', item: new URL(pathFor(locale, 'product'), site.origin).href },
+    { '@type': 'ListItem', position: 3, name, item: new URL(pathFor(locale, `product/${capability.slug}`), site.origin).href },
+  ],
+};
+---
+<div class="capability-landing" data-capability={capability.slug}>
+  <section class="capability-hero" aria-labelledby="capability-title">
+    <div class="container capability-hero-inner">
+      <nav class="capability-breadcrumb" aria-label={zh ? '面包屑' : 'Breadcrumb'}>
+        <a href={pathFor(locale)}>{zh ? '首页' : 'Home'}</a><span aria-hidden="true">/</span>
+        <a href={pathFor(locale, 'product')}>{zh ? '产品能力' : 'Product'}</a><span aria-hidden="true">/</span>
+        <span aria-current="page">{name}</span>
+      </nav>
+      <div class:list={['capability-hero-grid', { 'capability-hero-grid--illustrated': capability.slug === 'digital-employees' }]}>
+        <div class="capability-hero-copy">
+          <h1 id="capability-title">{copy.hero.lines.map((line, index) => <span class:list={{ 'capability-title-accent': index === copy.hero.lines.length - 1 }}>{line}</span>)}</h1>
+          <p>{copy.hero.summary}</p>
+          <div class="capability-actions">
+            <a class="capability-button" href="#capability-concept">{zh ? '探索核心能力' : 'Explore capabilities'}<Icon name="arrow" size={18}/></a>
+            <a class="capability-inline-link" href="#capability-scenarios">{zh ? '查看业务场景' : 'See it in practice'}<Icon name="arrow" size={16}/></a>
+          </div>
+        </div>
+        {capability.slug === 'digital-employees' ? <RoleConceptArt locale={locale}/> : <CapabilityWorkMap slug={capability.slug} locale={locale}/>}
+      </div>
+    </div>
+  </section>
+
+  <section class="capability-pain" aria-labelledby="capability-pain-title">
+    <div class="container capability-pain-grid">
+      <h2 id="capability-pain-title">{copy.pain.title}</h2>
+      <ul>{copy.pain.items.map(item => <li><span class="capability-pain-mark" aria-hidden="true"><Icon name="arrow" size={17}/></span><p>{item}</p></li>)}</ul>
+    </div>
+  </section>
+
+  <section class="capability-concept" id="capability-concept" aria-labelledby="capability-concept-title">
+    <div class:list={['container', 'capability-concept-grid', { 'capability-concept-grid--role': capability.slug === 'digital-employees' }]}>
+      <div class="capability-concept-copy"><h2 id="capability-concept-title">{copy.concept.title}</h2><p>{copy.concept.body}</p></div>
+      {capability.slug !== 'digital-employees' && <div class="capability-concept-art"><CapabilityConcept slug={capability.slug} labels={copy.concept.labels} title={copy.concept.title}/></div>}
+    </div>
+  </section>
+
+  <section class="capability-section capability-features" aria-labelledby="capability-features-title">
+    <div class="container">
+      <h2 class="capability-section-title" id="capability-features-title">{zh ? '核心能力' : 'Core capabilities'}</h2>
+      <div class="capability-feature-grid">{copy.features.map(feature => <article class="capability-feature-card">
+        <Icon name={feature.icon} size={30}/><h3>{feature.title}</h3><p>{feature.body}</p>
+      </article>)}</div>
+    </div>
+  </section>
+
+  <section class="capability-section capability-scenarios" id="capability-scenarios" aria-labelledby="capability-scenarios-title">
+    <div class="container">
+      <h2 class="capability-section-title" id="capability-scenarios-title">{zh ? '业务场景' : 'Business scenarios'}</h2>
+      <div class="capability-scenario-grid">{copy.scenarios.map((scenario, index) => <article class="capability-scenario-card">
+        <div class="capability-scenario-heading"><span class="capability-scenario-icon"><Icon name={index === 0 ? copy.features[0].icon : copy.features[1].icon} size={25}/></span><h3>{scenario.title}</h3></div>
+        <p>{scenario.body}</p>
+        <ol class="capability-scenario-flow" aria-label={zh ? '工作流程' : 'Workflow'}>{scenario.flow.map((step, stepIndex) => <li><span>{step}</span>{stepIndex < scenario.flow.length - 1 && <Icon name="arrow" size={16}/>}</li>)}</ol>
+      </article>)}</div>
+    </div>
+  </section>
+
+  <section class="capability-section capability-benefits" aria-labelledby="capability-benefits-title">
+    <div class="container capability-benefits-layout">
+      <h2 class="capability-section-title" id="capability-benefits-title">{zh ? '让能力成为团队的日常' : 'Make capability part of everyday work'}</h2>
+      <div class="capability-benefit-grid">{copy.benefits.map(benefit => <article><Icon name="check" size={21}/><div><h3>{benefit.title}</h3><p>{benefit.body}</p></div></article>)}</div>
+    </div>
+  </section>
+
+  <section class="capability-section capability-related" aria-labelledby="capability-related-title">
+    <div class="container">
+      <h2 class="capability-section-title" id="capability-related-title">{zh ? '连接更多产品能力' : 'Connect more capabilities'}</h2>
+      <div class="capability-related-grid">{related.map(item => <a class="capability-related-link" href={pathFor(locale, `product/${item.slug}`)}><span class="capability-related-icon"><Icon name={item.icon} size={27}/></span><h3>{item.copy[locale].name}</h3><Icon name="arrow" size={21}/></a>)}</div>
+    </div>
+  </section>
+
+  <section class="capability-closing" aria-labelledby="capability-closing-title">
+    <div class="container capability-closing-inner"><h2 id="capability-closing-title">{copy.closing}</h2><div class="capability-actions"><a class="capability-button" href={appFor(locale)}>{zh ? '开始使用' : 'Get started'}<Icon name="arrow" size={18}/></a><a class="capability-inline-link" href={resource ? pathFor(locale, resource.path) : site.docs} rel={resource ? undefined : 'external'}>{resource ? resource.label : zh ? '阅读产品文档' : 'Read the docs'}<Icon name={resource ? 'arrow' : 'external'} size={15}/></a></div></div>
+  </section>
+</div>
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)}/>

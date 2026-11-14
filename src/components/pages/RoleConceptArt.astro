@@ -1,0 +1,11 @@
+---
+import type { Locale } from '../../data/types';
+import { roleConceptArtwork } from '../../features/product/digital-employees/artwork';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const artwork = roleConceptArtwork[locale];
+---
+<picture class="role-concept-visual">
+  <source media="(max-width: 760px)" srcset={artwork.mobile} width={artwork.mobileWidth} height={artwork.mobileHeight}/>
+  <img src={artwork.desktop} width={artwork.width} height={artwork.height} alt={artwork.alt} loading="eager" fetchpriority="high" decoding="async"/>
+</picture>

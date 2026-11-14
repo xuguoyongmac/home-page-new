@@ -8,24 +8,53 @@ interface Props { locale: Locale; home?: boolean; }
 const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
 const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : industries[locale];
-const defaultSlug = 'general';
+const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
 ---
-<div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer>
+<div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer style={`--industry-tab-count: ${visibleIndustries.length}`}>
   <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
     {visibleIndustries.map((industry) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={industry.slug === defaultSlug} aria-controls={`panel-${industry.slug}`} tabindex={industry.slug === defaultSlug ? 0 : -1}><Icon name={industry.icon} size={18}/>{home && zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
   </div>
   {visibleIndustries.map((industry) => <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
-    <div class="solution-image"><img src={`/images/saaslauncher/${industry.image}_V1.2.webp`} alt="" width="1672" height="941" loading="lazy" decoding="async"/><span>{industry.tag}</span>{home && <div class="industry-deliverables"><strong>{zh?'工作交付':'DELIVERABLES'}</strong>{homeIndustries[locale][industry.slug].outputs.map(output=><div><Icon name="file" size={19}/><span>{output}</span><Icon name="check" size={16}/></div>)}</div>}</div>
-    <div class="solution-copy"><p class="eyebrow">{industry.tag}</p><h3>{home ? homeIndustries[locale][industry.slug].title : industry.title}</h3>{home ? <><div class="industry-pain"><span>{zh?'业务难点':'THE CHALLENGE'}</span><p>{homeIndustries[locale][industry.slug].pain}</p></div><div class="industry-value"><span>{zh?'方案价值':'THE APPROACH'}</span><p>{homeIndustries[locale][industry.slug].value}</p></div></> : <><p>{industry.description}</p><ul class="task-chips">{industry.tasks.map(task=><li><Icon name="check" size={13}/>{task.title}</li>)}</ul></>}<a class="button button-small" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看解决方案' : 'Explore solution'}<Icon name="external" size={16}/></a></div>
+    {home ? <div class="industry-backdrop" aria-hidden="true"><img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/></div> : <div class="solution-image"><img src={`/images/saaslauncher/${industry.image}_V1.2.webp`} alt="" width="1672" height="941" loading="lazy" decoding="async"/><span>{industry.tag}</span></div>}
+    <div class="solution-copy"><p class="eyebrow">{industry.tag}</p><h3>{home ? homeIndustries[locale][industry.slug].title : industry.title}</h3>{home ? <><ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>{homeIndustries[locale][industry.slug].scenarios.map(scenario=><li>{scenario}</li>)}</ul><div class="industry-pain"><span>{zh?'业务难点':'THE CHALLENGE'}</span><p>{homeIndustries[locale][industry.slug].pain}</p></div><div class="industry-value"><span>{zh?'方案价值':'THE APPROACH'}</span><p>{homeIndustries[locale][industry.slug].value}</p></div></> : <><p>{industry.description}</p><ul class="task-chips">{industry.tasks.map(task=><li><Icon name="check" size={13}/>{task.title}</li>)}</ul></>}<a class="button button-small" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看解决方案' : 'Explore solution'}</a></div>
+    {home && <div class="industry-scene-outputs"><strong>{zh?'工作交付':'DELIVERABLES'}</strong><ul>{homeIndustries[locale][industry.slug].outputs.map(output=><li><Icon name="file" size={17}/><span>{output}</span></li>)}</ul></div>}
   </div>)}
 </div>
 <script>
   document.querySelectorAll<HTMLElement>('[data-solution-explorer]').forEach(explorer=>{
     const tabs = [...explorer.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
     const panels = [...explorer.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
-    const select = (tab: HTMLButtonElement) => {
+    const tablist = explorer.querySelector<HTMLElement>('[role="tablist"]');
+    const animateHome = explorer.classList.contains('home-solutions');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeIndex = Math.max(0, tabs.findIndex(tab=>tab.getAttribute('aria-selected')==='true'));
+    let panelAnimation: Animation | undefined;
+    const positionHighlight = () => {
+      if (!animateHome || !tablist) return;
+      const tab = tabs[activeIndex];
+      tablist.style.setProperty('--industry-tab-left', `${tab.offsetLeft}px`);
+      tablist.style.setProperty('--industry-tab-width', `${tab.offsetWidth}px`);
+    };
+    if (animateHome && tablist) {
+      positionHighlight();
+      new ResizeObserver(positionHighlight).observe(tablist);
+    }
+    const select = (tab: HTMLButtonElement, direction?: number) => {
+      const nextIndex = tabs.indexOf(tab);
+      if (nextIndex === activeIndex) return;
+      const slideDirection = direction ?? Math.sign(nextIndex - activeIndex);
+      panelAnimation?.cancel();
+      activeIndex = nextIndex;
       tabs.forEach(item=>{item.setAttribute('aria-selected',String(item === tab));item.tabIndex=item === tab ? 0 : -1;});
       panels.forEach(panel=>{panel.hidden=panel.id!==tab.getAttribute('aria-controls');});
+      positionHighlight();
+      const panel = panels.find(item=>!item.hidden);
+      if (animateHome && panel && !reducedMotion.matches) {
+        panelAnimation = panel.animate([
+          { opacity: .35, transform: `translateX(${slideDirection * 28}px)` },
+          { opacity: 1, transform: 'translateX(0)' },
+        ], { duration: 320, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+      }
     };
     tabs.forEach((tab,index)=>{
       tab.addEventListener('click',()=>select(tab));
@@ -35,7 +64,7 @@ const defaultSlug = 'general';
         if(event.key==='ArrowLeft') next=(index-1+tabs.length)%tabs.length;
         if(event.key==='Home') next=0;
         if(event.key==='End') next=tabs.length-1;
-        if(next!==undefined){event.preventDefault();const target=tabs[next];select(target);target.focus();}
+        if(next!==undefined){event.preventDefault();const target=tabs[next];select(target,event.key==='ArrowRight'?1:event.key==='ArrowLeft'?-1:undefined);target.focus();}
       });
     });
   });

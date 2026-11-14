@@ -1,5 +1,6 @@
 ---
 import Icon from '../Icon.astro';
+import NavigationIcon from './NavigationIcon.astro';
 import { capabilities } from '../../features/product';
 import { solutionModules } from '../../features/solutions';
 import { pathFor, site } from '../../lib/site';
@@ -18,7 +19,7 @@ const solutionEntries = [
   },
 ];
 const groups = [
-  { id: 'product', label: zh ? '产品能力' : 'Product', title: zh ? '产品能力' : 'Capabilities', active: page.startsWith('product'), entries: capabilities.map(entry => ({ label: entry.copy[locale].name, description: entry.copy[locale].description, icon: entry.icon, path: `product/${entry.slug}` })) },
+  { id: 'product', label: zh ? '产品能力' : 'Product', title: zh ? '产品能力' : 'Capabilities', active: page.startsWith('product'), entries: capabilities.map(entry => ({ label: entry.copy[locale].name, description: entry.copy[locale].navigationDescription || entry.copy[locale].description, icon: entry.icon, path: `product/${entry.slug}` })) },
   { id: 'solutions', label: zh ? '解决方案' : 'Solutions', title: zh ? '解决方案' : 'Solutions', active: page.startsWith('solutions'), entries: solutionEntries },
 ];
 const directLinks = [
@@ -26,14 +27,16 @@ const directLinks = [
   { href: site.docs, label: zh ? '文档中心' : 'Docs', active: false, external: true },
   { href: pathFor(locale,'download'), label: zh ? '资源下载' : 'Downloads', active: page === 'download' || page === 'releases', external: false },
   { href: site.blog, label: zh ? '博客' : 'Blog', active: page.startsWith('blog'), external: true },
+  { href: pathFor(locale,'about'), label: zh ? '关于我们' : 'About us', active: page === 'about', external: false },
 ];
 ---
 {groups.map(group => <div class="tego-nav-group" data-nav-group>
   <button type="button" class:list={['tego-nav-trigger', {'is-current': group.active}]} aria-expanded="false" aria-controls={`${prefix}-${group.id}`} data-nav-disclosure>{group.label}<Icon name="chevron" size={13}/></button>
   <div class:list={['tego-nav-panel', {'tego-nav-solutions': group.id === 'solutions', 'tego-nav-product': group.id === 'product'}]} id={`${prefix}-${group.id}`} hidden>
+    <div class="tego-nav-highlight" aria-hidden="true" data-nav-highlight></div>
     <p class="tego-nav-panel-title">{group.title}</p>
     <div class="tego-nav-panel-body">
-      <ul class="tego-nav-grid">{group.entries.map(entry => <li><a class="tego-nav-item" href={pathFor(locale,entry.path)} aria-current={page === entry.path ? 'page' : undefined}><span class="tego-nav-icon"><Icon name={entry.icon} size={21}/></span><span class="tego-nav-label"><span>{entry.label}</span>{entry.description && <small>{entry.description}</small>}</span></a></li>)}</ul>
+      <ul class="tego-nav-grid">{group.entries.map(entry => <li><a class="tego-nav-item" href={pathFor(locale,entry.path)} aria-current={page === entry.path ? 'page' : undefined}><span class="tego-nav-icon"><NavigationIcon name={entry.icon}/></span><span class="tego-nav-label"><span>{entry.label}</span>{entry.description && <small>{entry.description}</small>}</span></a></li>)}</ul>
     </div>
   </div>
 </div>)}

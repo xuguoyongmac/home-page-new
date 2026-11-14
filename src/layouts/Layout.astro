@@ -19,17 +19,22 @@ import '../styles/hero-spectrum.css';
 import '../styles/hero-space.css';
 import '../styles/site-scale.css';
 import '../styles/navigation.css';
+import '../styles/industry-tabs.css';
 import SiteHeader from '../components/navigation/SiteHeader.astro';
 import SiteFooter from '../components/navigation/SiteFooter.astro';
 import { site, pathFor } from '../lib/site';
+import { languages, languagePathFor, websiteLanguageFor } from '../lib/languages';
 import type { Locale } from '../data/types';
-interface Props { locale: Locale; title: string; description: string; page?: string; noindex?: boolean; }
-const { locale, title, description, page = '', noindex = false } = Astro.props;
+interface Props { locale: Locale; title: string; description: string; page?: string; noindex?: boolean; documentTitle?: string; socialImage?: string; }
+const { locale, title, description, page = '', noindex = false, documentTitle, socialImage } = Astro.props;
+const resolvedTitle = documentTitle || `${title} · TeGo`;
 const zh = locale === 'zh';
-const canonical = new URL(pathFor(locale, page), site.origin).href;
+const language = websiteLanguageFor(Astro.params.locale || locale);
+const activeLanguage = languages.find(item => item.id === language)!;
+const canonical = new URL(languagePathFor(language, page), site.origin).href;
 ---
 <!doctype html>
-<html lang={zh ? 'zh-CN' : 'en'} data-theme="dark">
+<html lang={activeLanguage.tag} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -37,18 +42,19 @@ const canonical = new URL(pathFor(locale, page), site.origin).href;
     <meta name="theme-color" content="#060b12" />
     <meta name="color-scheme" content="dark" />
     {noindex && <meta name="robots" content="noindex, follow" />}
-    <title>{title} · TeGo</title>
+    <title>{resolvedTitle}</title>
     <link rel="icon" href="/images/zhama-symbol_V1.0.png" type="image/png" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="zh-CN" href={new URL(pathFor('zh', page), site.origin).href} />
     <link rel="alternate" hreflang="en" href={new URL(pathFor('en', page), site.origin).href} />
+    {page === '' && languages.filter(item => item.id === 'zh-Hant' || item.id === 'ja').map(item => <link rel="alternate" hreflang={item.tag} href={new URL(languagePathFor(item.id),site.origin).href}/>)}
     <link rel="alternate" hreflang="x-default" href={new URL(pathFor('zh', page), site.origin).href} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`${title} · TeGo`} />
+    <meta property="og:title" content={resolvedTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL('/images/saaslauncher/team-workspace_V1.2.webp', site.origin).href} />
-    <meta property="og:locale" content={zh ? 'zh_CN' : 'en_US'} />
+    <meta property="og:image" content={new URL(socialImage || '/images/saaslauncher/team-workspace_V1.2.webp', site.origin).href} />
+    <meta property="og:locale" content={language === 'zh-Hant' ? 'zh_TW' : language === 'ja' ? 'ja_JP' : zh ? 'zh_CN' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="alternate" type="application/rss+xml" title={zh ? 'TeGo 产品博客' : 'TeGo Blog'} href={`/${locale}/blog/rss.xml`} />
   </head>

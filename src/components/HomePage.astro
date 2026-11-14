@@ -1,39 +1,19 @@
 ---
 import type { Locale } from '../data/types';
-import Icon from './Icon.astro';
 import EnterpriseValueMatrix from './EnterpriseValueMatrix.astro';
-import HeroStarfield from './HeroStarfield.astro';
-import HeroWorkspace from './HeroWorkspace.astro';
+import HeroCarousel from './HeroCarousel.astro';
 import SolutionExplorer from './SolutionExplorer.astro';
 import WorkAnywhere from './WorkAnywhere.astro';
 import CallToAction from './CallToAction.astro';
-import { pathFor } from '../lib/site';
 interface Props { locale: Locale; }
 const {locale} = Astro.props;
 const zh = locale === 'zh';
+
 ---
 <div class="home-value-edition">
-<section class="sl-hero" aria-labelledby="home-title" data-hero-motion="running">
-  <HeroStarfield/>
-  <div class="container hero-center">
-    <div class="hero-message">
-    <h1 id="home-title">{zh ? '让数字员工，' : 'Bring digital employees'}<br/>{zh ? '成为团队的一员' : 'into your team.'}</h1>
-    <p class="sl-hero-description">{zh ? '连接企业知识与业务系统，' : 'Connect knowledge and business tools.'}<br/>{zh ? '与数字员工一起，把工作做成可交付的成果。' : 'Work together. Deliver work that can be reviewed.'}</p>
-    <div class="sl-actions"><a class="button" href={pathFor(locale,'contact')}>{zh ? '预约方案交流' : 'Discuss your workflow'}<Icon name="external" size={16}/></a><a class="button button-white" href="#solutions">{zh ? '探索行业方案' : 'Explore solutions'}<Icon name="arrow" size={16}/></a></div>
-    </div><HeroWorkspace locale={locale}/>
-
-  </div>
-</section>
+<HeroCarousel locale={locale}/>
 <WorkAnywhere locale={locale}/>
 <EnterpriseValueMatrix locale={locale}/>
-<section class="value-section outcomes-section" id="workflow" aria-labelledby="outcomes-title"><div class="container">
-  <div class="value-heading"><p class="eyebrow">{zh?'工作的价值，落在成果里':'FROM TASK TO OUTCOME'}</p><h2 id="outcomes-title">{zh?<>让工作向前推进，<span class="title-second">让成果真正落地</span></>:'Move the work forward. Bring outcomes into reach.'}</h2><p>{zh?'用企业的知识做事，围绕同一份成果协作，把做成的方法留给团队。':'Ground work in company knowledge, review together and retain the methods behind the result.'}</p></div>
-  <div class="outcomes-grid">
-    <article class="outcome outcome-knowledge"><div class="outcome-copy"><span>{zh?'有依据':'GROUNDED IN KNOWLEDGE'}</span><h3>{zh?'企业积累，不再停在文件里':'Put company knowledge to work'}</h3><p>{zh?'让制度、案例和项目资料进入具体任务。找到相关依据，也把引用带进成果。':'Bring policies, past work and project files into tasks, with references carried into the result.'}</p></div><div class="knowledge-sculpture" role="img" aria-label={zh?'企业知识连接工作任务的概念插图':'Concept illustration of knowledge connected to work'}><img src="/images/saaslauncher/knowledge-research_V1.2.webp" width="1536" height="1024" loading="lazy" alt=""/><div class="source-orbit"><span>{zh?'企业制度':'Policies'}</span><span>{zh?'项目资料':'Project files'}</span><span>{zh?'岗位方法':'Role methods'}</span></div><div class="source-result"><Icon name="book" size={22}/><div><strong>{zh?'带着企业的经验，开始工作':'Start with your company’s experience'}</strong><span>{zh?'授权知识 · 资料引用':'Authorized knowledge · Source references'}</span></div></div></div><a class="text-link" href={pathFor(locale,'product')+'#execution'}>{zh?'了解知识如何进入工作':'Explore knowledge in action'}<Icon name="arrow" size={17}/></a></article>
-    <article class="outcome outcome-delivery"><div class="outcome-copy"><span>{zh?'可交付':'READY FOR REVIEW'}</span><h3>{zh?'交付一份成果，接住下一步工作':'Deliver work your team can build on'}</h3><p>{zh?'文档、表格和演示文稿进入项目，供团队审阅、修改与定稿。':'Keep documents, spreadsheets and presentations in the project for review and revision.'}</p></div><div class="delivery-sculpture" role="img" aria-label={zh?'方案文档、分析表格与汇报材料的成果组合插图':'Illustration of documents, analysis and presentations'}><div class="delivery-sheet"><Icon name="file" size={24}/><strong>{zh?'业务建设方案':'Business proposal'}</strong><span>{zh?'业务场景 / 实施路径 / 交付计划':'Scope / Approach / Delivery'}</span><div class="sheet-lines"><i></i><i></i><i></i></div></div><div class="delivery-chart"><Icon name="chart" size={20}/><span>{zh?'经营分析':'Business analysis'}</span><div><i></i><i></i><i></i><i></i><i></i></div></div><span class="delivery-review"><Icon name="check" size={17}/>{zh?'审阅 · 修改 · 定稿':'Review · Revise · Finalize'}</span></div></article>
-    <article class="outcome outcome-method"><div class="outcome-copy"><span>{zh?'能延续':'BUILT TO CONTINUE'}</span><h3>{zh?'做成的方法，成为团队的下一次起点':'Keep the method behind the result'}</h3><p>{zh?'沉淀岗位技能与数字员工模板，让工作方法可以复用，随业务持续完善。':'Retain role skills and employee templates, then refine them as the work evolves.'}</p></div><div class="method-route" role="img" aria-label={zh?'从岗位方法到技能模板再到下一项工作的流程':'Flow from working methods through reusable assets to the next task'}><span><Icon name="book" size={21}/>{zh?'岗位方法':'Methods'}</span><Icon name="arrow" size={20}/><span><Icon name="layers" size={21}/>{zh?'技能与模板':'Skills & templates'}</span><Icon name="arrow" size={20}/><span><Icon name="network" size={21}/>{zh?'下一项工作':'Next task'}</span></div><a class="text-link" href={pathFor(locale,'ecosystem')+'#build'}>{zh?'探索能力建设':'Explore capability building'}<Icon name="arrow" size={17}/></a></article>
-  </div>
-</div></section>
 <section class="value-section industry-section" id="solutions" aria-labelledby="industry-title"><div class="container"><div class="value-heading"><p class="eyebrow">{zh?'行业解决方案':'INDUSTRY SOLUTIONS'}</p><h2 id="industry-title">{zh?<>深入行业现场，<span class="title-second">解决具体业务难题</span></>:'Industry context. Concrete business challenges.'}</h2><p>{zh?'从高频工作切入，把行业知识、岗位方法与交付要求放进一套协作方案。':'Connect industry knowledge, role methods and deliverables around the work your team does.'}</p></div><SolutionExplorer locale={locale} home/></div></section>
 <CallToAction locale={locale} home/>
 </div>

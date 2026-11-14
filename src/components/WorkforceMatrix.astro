@@ -1,0 +1,134 @@
+---
+import type { Locale } from '../data/types';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const domains = [
+  { zh: '知识管理', en: 'Knowledge' },
+  { zh: '方案文书', en: 'Documents' },
+  { zh: '经营分析', en: 'Business analysis' },
+  { zh: '客户经营', en: 'Customer operations' },
+  { zh: '招投标协作', en: 'Bidding' },
+  { zh: '会议协同', en: 'Meetings' },
+  { zh: '项目协作', en: 'Projects' },
+  { zh: '研究支持', en: 'Research' },
+];
+---
+<section class="workforce-matrix" id="work-scenarios" aria-labelledby="domain-title">
+  <div class="matrix-layout">
+    <div class="matrix-art">
+      <img
+        src={`/images/workforce/workforce-matrix-${locale}_V3.4.webp`}
+        width="3072" height="2048" loading="lazy" decoding="async"
+        alt={zh
+          ? '八大业务领域以平行堆叠的界面展开：知识管理、方案文书、经营分析、客户经营、招投标协作、会议协同、项目协作与研究支持。'
+          : 'Eight business domains in parallel, layered panels: knowledge management, proposals and writing, business analysis, customer operations, bidding collaboration, meeting collaboration, project collaboration and research support.'}
+      />
+    </div>
+    <div class="matrix-copy">
+      <h2 id="domain-title">{zh ? <><span>让数字员工，</span><span>融入业务作业体系</span></> : <><span>Bring digital employees</span><span>into your business workflows</span></>}</h2>
+      <p class="matrix-description">{zh ? '八大业务域，将智能能力沉淀为可复用的岗位能力矩阵，贯通全岗位业务流程' : 'Across eight business domains, turn intelligent capabilities into a reusable matrix of role capabilities and connect workflows across every role.'}</p>
+      <ul class="matrix-domains" aria-label={zh ? '数字员工业务领域' : 'Digital employee business areas'}>
+        {domains.map(domain => <li>{zh ? domain.zh : domain.en}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .workforce-matrix {
+    position: relative;
+    overflow: clip;
+    background: #060b12;
+    padding: 20px 0 28px;
+  }
+  .matrix-layout {
+    position: relative;
+    width: min(calc(100% - 48px), 1440px);
+    margin-inline: auto;
+    isolation: isolate;
+  }
+  .matrix-art { width: min(76%, 980px); }
+  .matrix-art img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    mask-image: linear-gradient(to bottom, transparent, #000 3%, #000 97%, transparent);
+  }
+  .matrix-copy {
+    position: absolute;
+    z-index: 1;
+    right: 4%;
+    top: 34%;
+    width: 34%;
+  }
+  .workforce-matrix .matrix-copy h2 {
+    margin: 0;
+    color: #edf5fc;
+    font-size: clamp(26px, 2.45vw, 38px);
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: -.7px;
+  }
+  .matrix-copy h2 span { display: block; }
+  .matrix-description {
+    margin: 18px 0 0;
+    max-width: 440px;
+    color: #a4b7ca;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.9;
+    text-wrap: pretty;
+  }
+  .matrix-domains {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 10px 8px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .matrix-domains li {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border: 1px solid #91b4ce4d;
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: inset 0 1px 1px #e2f2ff12, 0 7px 14px #0005;
+    color: #b7cbdc;
+    font-size: 12px;
+    line-height: 1.7;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px #0005;
+    cursor: default;
+  }
+  :global(html[lang^="en"]) .matrix-domains { grid-template-columns: repeat(2, max-content); }
+  @media (max-width: 1000px) {
+    .workforce-matrix { padding-block: 16px 24px; }
+    .matrix-layout { width: calc(100% - 32px); min-height: 480px; }
+    .matrix-art { width: 80%; }
+    .matrix-copy { right: 0; top: 18%; width: 38%; }
+    .workforce-matrix .matrix-copy h2 { font-size: 27px; }
+    .matrix-domains { gap: 8px 6px; margin-top: 18px; }
+    .matrix-domains li { font-size: 12px; padding-inline: 10px; }
+    .matrix-description { margin-top: 14px; font-size: 14px; line-height: 1.8; }
+  }
+  @media (max-width: 700px) {
+    .workforce-matrix { padding-block: 8px 32px; }
+    .matrix-layout { width: 100%; min-height: 0; }
+    .matrix-art { width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; scrollbar-color: #37536b transparent; }
+    .matrix-art img { width: 840px; max-width: none; margin-left: -28px; }
+    .matrix-copy { position: relative; right: auto; top: auto; width: auto; margin: -58px 24px 0 max(24px, 12%); text-align: right; }
+    .workforce-matrix .matrix-copy h2 { font-size: 28px; line-height: 1.5; }
+    .matrix-description { margin-left: auto; }
+    .matrix-domains { justify-content: end; grid-template-columns: repeat(2, max-content); gap: 10px 8px; margin-top: 22px; }
+    .matrix-domains li { font-size: 12px; line-height: 1.7; padding: 6px 12px; }
+    :global(html[lang^="en"]) .matrix-copy { margin-top: -52px; }
+    :global(html[lang^="en"]) .matrix-domains { gap: 10px 8px; }
+  }
+</style>

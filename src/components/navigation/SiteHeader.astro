@@ -2,21 +2,26 @@
 import Brand from '../Brand.astro';
 import Icon from '../Icon.astro';
 import NavigationItems from './NavigationItems.astro';
-import { pathFor, ui } from '../../lib/site';
+import { appFor, ui } from '../../lib/site';
+import { languages, languagePathFor, websiteLanguageFor } from '../../lib/languages';
 import type { Locale } from '../../data/types';
 interface Props { locale: Locale; page: string; }
 const { locale, page } = Astro.props;
 const zh = locale === 'zh';
 const t = ui[locale];
-const other = zh ? 'en' : 'zh';
+const language = websiteLanguageFor(Astro.params.locale || locale);
+const activeLanguage = languages.find(item => item.id === language)!;
 ---
 <header class="site-header tego-header" data-site-header>
   <div class="header-inner container">
-    <a class="brand-link" href={pathFor(locale)} aria-label={zh ? 'TeGo 数字员工协作平台首页' : 'TeGo home'}><Brand locale={locale}/></a>
+    <a class="brand-link" href={languagePathFor(language)} aria-label={zh ? 'TeGo 数字员工协作平台首页' : 'TeGo home'}><Brand locale={locale}/></a>
     <nav class="desktop-nav" aria-label={zh ? '主导航' : 'Main navigation'}><NavigationItems locale={locale} page={page} prefix="desktop"/></nav>
     <div class="header-tools">
-      <a class="language-link" href={pathFor(other,page)} lang={other} aria-label={zh ? 'Switch to English' : '切换至中文'}><Icon name="globe" size={14}/>{zh ? 'EN' : '中'}</a>
-      <a class="button button-small header-cta" href={pathFor(locale,'contact')}>{t.contact}<Icon name="external" size={13}/></a>
+      <div class="tego-language-group" data-nav-group>
+        <button type="button" class="language-link" aria-label={zh ? '选择语言' : 'Choose language'} aria-expanded="false" aria-controls="language-options" data-nav-disclosure><Icon name="globe" size={15}/><span>{activeLanguage.short}</span><Icon name="chevron" size={11}/></button>
+        <div id="language-options" class="tego-language-panel" hidden><ul>{languages.map(item => <li><a href={languagePathFor(item.id,page)} lang={item.tag} hreflang={item.tag} aria-current={language === item.id ? 'true' : undefined} data-language-option>{item.label}{language === item.id && <Icon name="check" size={15}/>}</a></li>)}</ul></div>
+      </div>
+      <a class="button button-small header-cta" href={appFor(locale)}>{zh ? '登录' : 'Log in'}</a>
       <button type="button" class="menu-toggle icon-button" aria-label={t.menu} data-open-label={t.menu} data-close-label={t.close} aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
     </div>
   </div>
@@ -33,10 +38,54 @@ const other = zh ? 'en' : 'zh';
     const toggles = [...header.querySelectorAll<HTMLButtonElement>('[data-nav-disclosure]')];
     const mobileToggle = header.querySelector<HTMLButtonElement>('.menu-toggle');
     const mobile = header.querySelector<HTMLElement>('#mobile-nav');
+    header.querySelectorAll<HTMLElement>('.tego-nav-panel').forEach(panel => {
+      const light = panel.querySelector<HTMLElement>('[data-nav-highlight]');
+      if (!light) return;
+      let selected: HTMLAnchorElement | undefined;
+      let positioned = false;
+      const placeLight = (item: HTMLAnchorElement) => {
+        if (panel.hidden) return;
+        const panelRect = panel.getBoundingClientRect();
+        const itemRect = item.getBoundingClientRect();
+        const scaleX = panel.offsetWidth / panelRect.width;
+        const scaleY = panel.offsetHeight / panelRect.height;
+        if (!positioned) light.dataset.ready = 'false';
+        light.style.transform = `translate3d(${(itemRect.left - panelRect.left) * scaleX - panel.clientLeft}px,${(itemRect.top - panelRect.top) * scaleY - panel.clientTop}px,0)`;
+        light.style.width = `${itemRect.width * scaleX}px`;
+        light.style.height = `${itemRect.height * scaleY}px`;
+        light.dataset.active = 'true';
+        selected?.classList.remove('is-pointed');
+        item.classList.add('is-pointed');
+        selected = item;
+        if (!positioned) requestAnimationFrame(() => { light.dataset.ready = 'true'; });
+        positioned = true;
+      };
+      const followItem = (event: Event) => {
+        const item = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a.tego-nav-item') : null;
+        if (item && item !== selected && panel.contains(item)) placeLight(item);
+      };
+      panel.addEventListener('pointerover', followItem);
+      panel.addEventListener('focusin', followItem);
+      panel.addEventListener('nav-open', () => {
+        const first = panel.querySelector<HTMLAnchorElement>('a[aria-current="page"]') || selected || panel.querySelector<HTMLAnchorElement>('a.tego-nav-item');
+        if (first) placeLight(first);
+      });
+      panel.addEventListener('nav-close', () => {
+        light.dataset.active = 'false';
+        light.dataset.ready = 'false';
+        selected?.classList.remove('is-pointed');
+        positioned = false;
+      });
+      new ResizeObserver(() => { if (selected && !panel.hidden) placeLight(selected); }).observe(panel);
+    });
     const setDisclosure = (button: HTMLButtonElement, open: boolean) => {
       button.setAttribute('aria-expanded', String(open));
       const panel = document.getElementById(button.getAttribute('aria-controls')!);
-      if (panel) panel.hidden = !open;
+      if (panel) {
+        panel.hidden = !open;
+        if (open) requestAnimationFrame(() => { if (!panel.hidden) panel.dispatchEvent(new Event('nav-open')); });
+        else panel.dispatchEvent(new Event('nav-close'));
+      }
       header.dataset.dropdownOpen = String(toggles.some(item => item.getAttribute('aria-expanded') === 'true'));
     };
     const closeDisclosures = () => toggles.forEach(button => setDisclosure(button, false));
@@ -69,13 +118,13 @@ const other = zh ? 'en' : 'zh';
     });
     header.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobile));
     window.matchMedia('(min-width: 1101px)').addEventListener('change', closeMobile);
-    const language = header.querySelector<HTMLAnchorElement>('.language-link');
-    if (language) {
-      const destination = new URL(language.href); destination.hash = location.hash;
+    header.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
+      const destination = new URL(languageLink.href);
+      if (destination.pathname.split('/').slice(2).join('/') === location.pathname.split('/').slice(2).join('/')) destination.hash = location.hash;
       if (location.pathname.endsWith('/releases/')) {
         const version = new URLSearchParams(location.search).get('version'); if (version) destination.searchParams.set('version', version);
       }
-      language.href = destination.pathname + destination.search + destination.hash;
-    }
+      languageLink.href = destination.pathname + destination.search + destination.hash;
+    });
   }
 </script>

@@ -1,0 +1,12 @@
+---
+import type { Locale } from '../data/types';
+interface Props { locale: Locale; }
+const {locale}=Astro.props;
+const zh=locale==='zh';
+---
+<div class="banner-execution-visual banner-visual">
+  <div class="execution-concept">
+    <img src={`/images/hero/execution-loop-${locale}_V1.3.webp`} width="1774" height="887" loading="eager" decoding="async" alt={zh?'任务执行闭环：一句话交办后，数字员工理解目标、拆解规划，结合企业知识、业务系统和岗位技能跨系统执行并校验成果，交付经营图表、分析简报和群组消息，持续接收反馈。':'A complete execution workflow: one request, understanding and planning, coordinated execution using company knowledge, systems and skills, result review, analytics and brief delivery to the team, and ongoing feedback.'}/>
+  </div>
+
+</div>
