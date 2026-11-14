@@ -111,7 +111,7 @@ for(const document of documents.values()) {
   check(tags.some(t=>t.name==='meta'&&t.attrs.name==='description'&&t.attrs.content?.trim()),`${label}：缺少描述`);
   const ids=tags.map(t=>t.attrs.id).filter(Boolean);
   check(new Set(ids).size===ids.length,`${label}：ID 重复`);
-  const locale=pathname.startsWith('/en/')?'en':'zh-CN';
+  const locale=({'en':'en','zh':'zh-CN','zh-Hant':'zh-Hant','ja':'ja'})[pathname.split('/')[1]] || 'zh-CN';
   check(tags.find(t=>t.name==='html')?.attrs.lang===locale,`${label}：页面语言不符`);
   const canonical=tags.find(t=>t.name==='link'&&t.attrs.rel==='canonical');
   check(Boolean(canonical),`${label}：缺少 canonical`);
