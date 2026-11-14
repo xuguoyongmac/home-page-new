@@ -17,6 +17,7 @@ const directLinks = [
   { href: site.docs, label: zh ? '文档中心' : 'Docs', active: false, external: true },
   { href: pathFor(locale,'download'), label: zh ? '资源下载' : 'Downloads', active: page === 'download' || page === 'releases', external: false },
   { href: site.blog, label: zh ? '博客' : 'Blog', active: page.startsWith('blog'), external: true },
+  { href: pathFor(locale,'about'), label: zh ? '关于我们' : 'About us', active: page === 'about', external: false },
 ];
 ---
 {groups.map(group => <div class="tego-nav-group" data-nav-group>
