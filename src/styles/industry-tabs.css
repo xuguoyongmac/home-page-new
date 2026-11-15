@@ -70,7 +70,7 @@
   position: relative;
   isolation: isolate;
   min-height: 0;
-  padding: 24px 32px;
+  padding: 28px 32px 30px;
   overflow: hidden;
   border: 0;
   border-radius: 0;
@@ -88,8 +88,8 @@
   align-items: center;
   gap: 24px;
   min-height: 0;
-  padding: 4px 0 16px;
-  margin: 0 0 8px;
+  padding: 4px 0 20px;
+  margin: 0 0 12px;
 }
 .home-solutions .industry-intro h3 {
   min-width: 0;
@@ -130,12 +130,12 @@
 .home-solutions .industry-panel-body {
   display: grid;
   grid-template-columns: minmax(0, .85fr) minmax(0, 1.65fr);
-  gap: 20px;
+  gap: 24px;
 }
 .home-solutions .industry-copy-block {
   min-width: 0;
   margin: 0;
-  padding: 16px 26px;
+  padding: 24px 26px;
   border: 1px solid #91b9d51f;
   border-radius: 14px;
 }
@@ -229,7 +229,7 @@
   --benefit-color: 104 196 255;
   position: relative;
   min-width: 0;
-  padding: 18px 22px;
+  padding: 24px;
   border: 1px solid rgb(var(--benefit-color) / .42);
   border-radius: 12px;
   background: radial-gradient(ellipse at 15% 0, rgb(var(--benefit-color) / .17), transparent 72%), linear-gradient(140deg, #1c3c57e8, #132d43d9);
@@ -240,8 +240,9 @@
 .home-solutions .industry-benefits li:nth-child(3) { --benefit-color: 160 182 255; }
 .home-solutions .industry-benefit-heading {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   margin-bottom: 10px;
 }
 .home-solutions .industry-benefit-icon {
@@ -291,24 +292,26 @@
 }
 
 @media (max-width: 1100px) {
-  .home-solutions.solution-explorer .solution-panel { padding: 20px 28px 24px; }
+  .home-solutions.solution-explorer .solution-panel { padding: 24px 28px 28px; }
   .home-solutions .industry-intro h3 { font-size: 28px; }
-  .home-solutions .industry-panel-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); gap: 20px 16px; }
-  .home-solutions .industry-copy-block { padding: 16px 22px; }
-  .home-solutions .industry-benefits li { padding: 18px 20px; }
-  .home-solutions .industry-benefit-heading { align-items: flex-start; gap: 10px; }
+  .home-solutions .industry-panel-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); gap: 24px 16px; }
+  .home-solutions .industry-copy-block { padding: 22px; }
+  .home-solutions .industry-benefits li { padding: 22px 20px; }
+  .home-solutions .industry-benefit-heading { gap: 12px; }
   .home-solutions .industry-benefit-icon { flex-basis: 32px; width: 32px; height: 32px; border-radius: 8px; }
   .home-solutions .industry-benefit-icon svg { width: 19px; height: 19px; }
 }
 
 @media (max-width: 800px) {
+  .home-solutions.solution-explorer .solution-panel { padding: 20px 28px 24px; }
   .home-solutions.solution-explorer .solution-tabs > button { font-size: 14px; gap: 8px; padding-inline: 8px; }
   .home-solutions .industry-panel-body { grid-template-columns: 1fr; gap: 14px; }
-  .home-solutions .industry-intro { padding-bottom: 16px; }
+  .home-solutions .industry-intro { padding-bottom: 16px; margin-bottom: 8px; }
   .home-solutions .industry-intro h3 { font-size: 27px; }
+  .home-solutions .industry-copy-block { padding: 16px 22px; }
   .home-solutions .industry-benefits { margin-top: 4px; }
   .home-solutions .industry-benefits ul { gap: 12px; }
-  .home-solutions .industry-benefit-heading { flex-direction: column; }
+  .home-solutions .industry-benefit-heading { gap: 10px; }
   .home-solutions .industry-benefits h5 { font-size: 15px; }
   .home-solutions .industry-benefits li { padding: 18px; }
 }

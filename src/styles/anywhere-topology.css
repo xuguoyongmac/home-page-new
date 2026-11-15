@@ -7,7 +7,7 @@
 .workspace-labels{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .workspace-planes{position:relative;aspect-ratio:1948/760}
 .workspace-planes>.anywhere-motion-crop{position:absolute;z-index:1;overflow:visible}
-.workspace-planes>.anywhere-motion-crop--inputs{left:.821355%;top:9.210526%;width:24.486653%;transform:perspective(900px) rotateY(-5deg);transform-origin:right center}
+.workspace-planes>.anywhere-motion-crop--inputs{left:.821355%;top:9.210526%;width:24.486653%;transform:none}
 .workspace-planes>.anywhere-motion-crop--platform{left:27.464066%;top:3.684211%;width:33.110883%;z-index:2}
 .workspace-planes>.anywhere-motion-crop--outputs{left:65.041068%;top:9.210526%;width:34.958932%;transform:none}
 .workspace-plane-base{position:absolute;inset:0;overflow:hidden}
