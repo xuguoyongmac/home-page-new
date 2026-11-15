@@ -1,6 +1,11 @@
 import type { Locale } from '../data/types';
-import workspaceFlow from '../assets/anywhere/workspace-flow_V1.14.svg?raw';
-import workspaceLabels from '../assets/anywhere/workspace-labels_V1.17.svg?raw';
+import workspaceInputs from '../assets/anywhere/workspace-inputs_V1.20.svg?raw';
+import workspacePlatform from '../assets/anywhere/workspace-platform_V1.18.svg?raw';
+import workspaceTransfer from '../assets/anywhere/workspace-transfer_V1.18.svg?raw';
+import workspaceLabels from '../assets/anywhere/workspace-labels_V1.19.svg?raw';
+import inputLabels from '../assets/anywhere/workspace-foreground-input_V1.19.svg?raw';
+import executionLabels from '../assets/anywhere/workspace-foreground-execution_V1.19.svg?raw';
+import resultLabels from '../assets/anywhere/workspace-foreground-result_V1.19.svg?raw';
 
 export function renderAnywhereTopology(locale: Locale = 'zh') {
  const zh = locale === 'zh';
@@ -8,20 +13,20 @@ export function renderAnywhereTopology(locale: Locale = 'zh') {
   ? '通过 PC、Web、平板、移动端与常用 IM 入口交办任务，数字员工依次接收任务、理解规划、协同执行并输出结果，交付经营看板、客户跟进、业务办理与方案报告。'
   : 'Delegate through desktop, tablet, mobile and messaging channels. TeGo connects knowledge, skills and systems with Agent execution, orchestration and access audit to deliver business dashboards, customer follow-up plans, business processing results and proposals.';
  if (zh) {
-  const poster = '/images/anywhere/anywhere-workspace-poster_V1.17.webp';
-  const mobilePoster = '/images/anywhere/anywhere-workspace-mobile_V1.17.webp';
+  const poster = '/images/anywhere/anywhere-workspace-floating_V1.19.webp';
   let sceneId = 0;
-  const scene = (className: string, alt: string, image = poster) => {
+  const scopedFlow = (flow: string, suffix: string) => flow.replace(/(id="|url\(#)([a-zA-Z][\w-]*)/g, (_, prefix, id) => `${prefix}${id}-${suffix}`);
+  const scene = (alt: string, flow = '') => {
    const suffix = `${locale}-${++sceneId}`;
-   const flow = workspaceFlow.replace(/(id="|url\(#)([a-zA-Z][\w-]*)/g, (_, prefix, id) => `${prefix}${id}-${suffix}`);
-   return `<div class="workspace-scene ${className}"><img src="${image}" width="1948" height="760" alt="${alt}" loading="lazy" decoding="async"/>${flow}${workspaceLabels}</div>`;
+   return `<div class="workspace-plane-base"><div class="workspace-scene"><img src="${poster}" width="1948" height="760" alt="${alt}" loading="lazy" decoding="async"/>${scopedFlow(flow, suffix)}${workspaceLabels}</div></div>`;
   };
+  const foreground = (name: string, width: number, height: number, labels: string) => `<span class="workspace-foreground workspace-foreground--${name}" aria-hidden="true"><img src="/images/anywhere/workspace-foreground-${name}_V1.19.webp" width="${width}" height="${height}" alt="" loading="lazy" decoding="async"/>${labels}</span>`;
   return `<div class="anywhere-topology anywhere-topology--workspace" data-topology-motion="paused" data-topology-locale="${locale}">
-   ${scene('anywhere-scene-desktop', '通过 PC、Web、平板、移动端与常用 IM 交办任务，数字员工结合企业知识库、技能和系统连接协同处理，交付方案报告、经营看板、办理回执与客户跟进成果。')}
-   <div class="anywhere-scene-mobile">
-    <div class="anywhere-motion-crop anywhere-motion-crop--inputs">${scene('', '任务入口：PC、Web、平板、移动端，以及微信、QQ、企业微信、钉钉、飞书与 OA。', mobilePoster)}</div>
-    <div class="anywhere-motion-crop anywhere-motion-crop--platform">${scene('', '数字员工协同：结合企业知识库、技能和系统连接，完成资料整理、方案文书与项目协作。', mobilePoster)}</div>
-    <div class="anywhere-motion-crop anywhere-motion-crop--outputs">${scene('', '成果交付：方案报告、经营看板、办理回执与客户跟进，展示不同业务领域的交付形态。', mobilePoster)}</div>
+   <div class="workspace-planes">
+    ${scopedFlow(workspaceTransfer, `${locale}-transfer`)}
+    <div class="anywhere-motion-crop anywhere-motion-crop--inputs">${scene('任务入口：PC、Web、平板、移动端，以及微信、QQ、企业微信、钉钉、飞书与 OA。', workspaceInputs)}${foreground('input', 396, 97, inputLabels)}</div>
+    <div class="anywhere-motion-crop anywhere-motion-crop--platform">${scene('数字员工协同：结合企业知识库、技能和系统连接，完成资料整理、方案文书与项目协作。', workspacePlatform)}${foreground('execution', 550, 83, executionLabels)}</div>
+    <div class="anywhere-motion-crop anywhere-motion-crop--outputs">${scene('成果交付：方案报告、经营看板、办理回执与客户跟进，展示不同业务领域的交付形态。')}${foreground('result', 281, 331, resultLabels)}</div>
    </div>
   </div>`;
  }

@@ -31,7 +31,7 @@ const groups = capabilityGroups[locale];
   <section class="support-section support-section-alt" id="capabilities" aria-labelledby="capabilities-title"><div class="container">
     <div class="support-section-heading"><h2 id="capabilities-title">{zh ? '产品功能' : 'Product capabilities'}</h2></div>
     <div class="capability-browser" data-capability-browser>
-      <nav class="capability-index" aria-label={zh ? '功能分类' : 'Capability categories'}>{groups.map((group, index) => <a href={`#capability-${group.id}`} data-capability-link={group.id} aria-current={index === 0 ? 'true' : undefined}><Icon name={group.icon} size={19}/><span>{group.title}</span><Icon name="arrow" size={14}/></a>)}</nav>
+      <nav class="capability-index" aria-label={zh ? '功能分类' : 'Capability categories'}>{groups.map((group, index) => <a href={`#capability-${group.id}`} data-capability-link={group.id} aria-current={index === 0 ? 'true' : undefined}><Icon name={group.icon} size={19}/><span>{group.title}</span></a>)}</nav>
       <div class="capability-content">{groups.map(group => <section class="capability-group" id={`capability-${group.id}`} data-capability-group={group.id} aria-labelledby={`capability-title-${group.id}`}>
         <h3 id={`capability-title-${group.id}`}>{group.title}</h3>
         <dl>{group.rows.map(row => <div class="capability-row"><dt>{row.name}</dt><dd>{row.capability}</dd></div>)}</dl>

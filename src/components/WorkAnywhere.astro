@@ -16,15 +16,13 @@ const zh = locale === 'zh';
  </div>
 </section>
 <script>
+ import { observeMotion } from '../lib/motion';
  const diagram = document.querySelector<HTMLElement>('.anywhere-topology');
  const flows = diagram?.querySelectorAll<SVGSVGElement>('.topology-links');
  const animatedImages = diagram?.querySelectorAll<HTMLImageElement>('[data-topology-gif]');
  if (diagram && (flows?.length || animatedImages?.length)) {
-  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const hero = document.querySelector<HTMLElement>('[data-hero-motion]');
-  let visible = false;
-  const sync = () => {
-   const paused = !visible || document.hidden || preference.matches || hero?.dataset.heroMotion === 'paused';
+  const sync = ({ running }: { running: boolean }) => {
+   const paused = !running;
    diagram.dataset.topologyMotion = paused ? 'paused' : 'running';
    flows?.forEach(flow => {
     if (paused || !flow.getClientRects().length) flow.pauseAnimations(); else flow.unpauseAnimations();
@@ -36,10 +34,7 @@ const zh = locale === 'zh';
    });
   };
   flows?.forEach(flow => flow.pauseAnimations());
-  new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }).observe(diagram);
-  document.addEventListener('visibilitychange', sync);
-  preference.addEventListener('change', sync);
-  window.addEventListener('resize', sync, { passive:true });
-  if (hero) new MutationObserver(sync).observe(hero, { attributes:true, attributeFilter:['data-hero-motion'] });
+  const playback = observeMotion(diagram, sync);
+  window.addEventListener('resize', () => playback.refresh(), { passive:true });
  }
 </script>

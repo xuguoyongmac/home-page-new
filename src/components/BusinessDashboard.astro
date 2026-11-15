@@ -61,7 +61,7 @@ const metricValues=[
   let timer:ReturnType<typeof setTimeout>|undefined;
   const update=()=>{
    clearTimeout(timer);
-   const reduced=scene.dataset.heroMotion==='reduced' || slide?.dataset.complete==='true';
+   const reduced=scene.dataset.heroMotion==='reduced';
    const animation=chart.getAnimations()[0];
    const phase=Number(animation?.currentTime ?? 0)%14000;
    let start=560;
@@ -83,7 +83,6 @@ const metricValues=[
   scene.addEventListener('hero-motion-change',update);
   chart.addEventListener('animationstart',update);
   chart.addEventListener('animationiteration',update);
-  window.addEventListener('pagehide',()=>clearTimeout(timer),{once:true});
   update();
  });
 </script>

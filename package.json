@@ -7,7 +7,8 @@
     "predev": "node scripts/clear-preview-port.mjs",
     "dev": "astro dev --host 127.0.0.1 --port 4350",
     "check": "astro check",
-    "build": "astro build && node scripts/prepare-publish.mjs",
+    "build": "astro build && node scripts/optimize-media.mjs && node scripts/prepare-publish.mjs",
+    "test": "node --test tests/*.test.mjs",
     "prepreview": "node scripts/clear-preview-port.mjs",
     "preview": "astro preview --host 127.0.0.1 --port 4350",
     "verify": "node scripts/verify-site.mjs"
@@ -22,7 +23,8 @@
     "astro": "7.4.10",
     "mermaid": "12.3.0",
     "opencc-js": "1.4.2",
-    "parse5": "8.1.1"
+    "parse5": "8.1.1",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",

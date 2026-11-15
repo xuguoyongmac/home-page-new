@@ -4,6 +4,7 @@ import { homeIndustries } from '../data/home-industries';
 import type { Locale } from '../data/types';
 import { pathFor } from '../lib/site';
 import Icon from './Icon.astro';
+import OutcomeExhibit from './pages/OutcomeExhibit.astro';
 interface Props { locale: Locale; home?: boolean; }
 const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
@@ -14,11 +15,52 @@ const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
   <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
     {visibleIndustries.map((industry) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={industry.slug === defaultSlug} aria-controls={`panel-${industry.slug}`} tabindex={industry.slug === defaultSlug ? 0 : -1}><Icon name={industry.icon} size={18}/>{home && zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
   </div>
-  {visibleIndustries.map((industry) => <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
-    {home ? <div class="industry-backdrop" aria-hidden="true"><img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/></div> : <div class="solution-image"><img src={`/images/saaslauncher/${industry.image}_V1.2.webp`} alt="" width="1672" height="941" loading="lazy" decoding="async"/><span>{industry.tag}</span></div>}
-    <div class="solution-copy"><p class="eyebrow">{industry.tag}</p><h3>{home ? homeIndustries[locale][industry.slug].title : industry.title}</h3>{home ? <><ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>{homeIndustries[locale][industry.slug].scenarios.map(scenario=><li>{scenario}</li>)}</ul><div class="industry-pain"><span>{zh?'业务难点':'THE CHALLENGE'}</span><p>{homeIndustries[locale][industry.slug].pain}</p></div><div class="industry-value"><span>{zh?'方案价值':'THE APPROACH'}</span><p>{homeIndustries[locale][industry.slug].value}</p></div></> : <><p>{industry.description}</p><ul class="task-chips">{industry.tasks.map(task=><li><Icon name="check" size={13}/>{task.title}</li>)}</ul></>}<a class="button button-small" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看解决方案' : 'Explore solution'}</a></div>
-    {home && <div class="industry-scene-outputs"><strong>{zh?'工作交付':'DELIVERABLES'}</strong><ul>{homeIndustries[locale][industry.slug].outputs.map(output=><li><Icon name="file" size={17}/><span>{output}</span></li>)}</ul></div>}
-  </div>)}
+  {visibleIndustries.map((industry) => (
+    <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
+      {home ? <>
+        <div class="industry-backdrop" aria-hidden="true">
+          <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
+        </div>
+        <div class="industry-intro">
+          <h3>{homeIndustries[locale][industry.slug].title}</h3>
+        </div>
+        <div class="industry-panel-body">
+          <div class="solution-copy">
+            <section class="industry-copy-block" aria-labelledby={`pain-title-${industry.slug}`}>
+              <h4 id={`pain-title-${industry.slug}`}>{zh ? '业务痛点' : 'Business challenges'}</h4>
+              <p class="industry-pain">{homeIndustries[locale][industry.slug].pain}</p>
+            </section>
+            <section class="industry-copy-block" aria-labelledby={`approach-title-${industry.slug}`}>
+              <h4 id={`approach-title-${industry.slug}`}>{zh ? '解决方案' : 'Our solution'}</h4>
+              <p class="industry-approach">{homeIndustries[locale][industry.slug].value}</p>
+              <ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>
+                {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
+              </ul>
+              <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
+            </section>
+          </div>
+          <section class="industry-benefits" aria-labelledby={`benefits-title-${industry.slug}`}>
+            <h4 id={`benefits-title-${industry.slug}`}>{zh ? '业务价值' : 'Business value'}</h4>
+            <ul>
+              {homeIndustries[locale][industry.slug].benefits.map(benefit => (
+                <li>
+                  <span class="industry-benefit-check"><Icon name="check" size={18}/></span>
+                  <div><h5>{benefit.title}</h5><p>{benefit.description}</p></div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      </> : <>
+        <div class="solution-outcome"><OutcomeExhibit locale={locale} compact exhibit={industry.story?.exhibit ?? {title:industry.name,request:industry.description,sources:industry.tasks.map(task=>task.title),columns:zh?['工作','业务动作','交付成果']:['Work','Action','Deliverable'],rows:industry.tasks.map(task=>[task.title,task.action,task.output]),deliverables:[]}}/></div>
+        <div class="solution-copy">
+          <h3>{industry.title}</h3><p>{industry.description}</p>
+          <ul class="task-chips">{industry.tasks.map(task => <li><Icon name="check" size={13}/>{task.title}</li>)}</ul>
+          <a class="button button-small" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看解决方案' : 'Explore solution'}</a>
+        </div>
+      </>}
+    </div>
+  ))}
 </div>
 <script>
   document.querySelectorAll<HTMLElement>('[data-solution-explorer]').forEach(explorer=>{

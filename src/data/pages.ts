@@ -26,7 +26,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           items: [
             { icon: 'book', title: '使用已授权的企业知识', body: '导入和检索企业资料，结合引用查阅依据。知识访问按知识库授权，项目资料检索限定在对应项目内。' },
             { icon: 'layers', title: '组织专业 Agent 分工', body: '数字员工的主 Agent 可向配置允许的专业子 Agent 委派任务，在工作界面查看进度并汇总结果。' },
-            { icon: 'plug', title: '连接工具与业务系统', body: '通过技能、业务插件、MCP 和授权工具执行工作；系统接口与设备能力按实际安装、连接和权限使用。' },
+            { icon: 'plug', title: '连接工具与业务系统', body: '通过业务插件、MCP、RESTful API 和数据库连接开展工作；系统接口与设备工具按实际连接和权限使用。' },
           ],
         },
         {
@@ -85,7 +85,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
     ecosystem: {
       eyebrow: '开放生态',
       title: '把团队的方法，变成可复用的能力',
-      description: '以技能、数字员工模板和业务插件沉淀岗位能力，通过 MCP、OpenAPI 和协作渠道连接现有系统。Tego Studio 承接能力开发与打包。',
+      description: '以技能、数字员工模板和业务插件沉淀岗位能力，通过 MCP、RESTful API 与数据库连接现有系统，以平台 OpenAPI 对外提供能力。Tego Studio 承接能力开发与打包。',
       sections: [
         {
           id: 'reuse',
@@ -105,7 +105,8 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           body: '数字员工通过受控工具访问外部能力，外部系统也可以调用平台服务。接口、身份与权限配置共同决定每条连接的实际执行范围。',
           items: [
             { icon: 'plug', title: 'MCP 工具接入', body: '将外部工具能力接入数字员工的工作流程，按工具连接、员工配置和授权范围执行操作。' },
-            { icon: 'terminal', title: 'OpenAPI 调用', body: '外部系统可通过同步、异步或流式方式调用数字员工，并使用知识、文件和待处理事项等平台服务。' },
+            { icon: 'network', title: 'RESTful API 与数据库', body: '通过企业接口查询信息、办理业务，或在数据库账号授权范围内查询、汇总和分析数据。接口认证与数据库权限分别配置。' },
+            { icon: 'terminal', title: '平台 OpenAPI', body: '外部系统可通过同步、异步或流式方式调用数字员工，并使用知识、文件和待处理事项等平台服务。' },
             { icon: 'monitor', title: '授权设备执行', body: '结合桌面设备节点、浏览器与文件工具开展工作。本机或外部设备能力按平台、节点状态和权限接入。' },
           ],
         },
@@ -133,7 +134,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           title: '明确谁能访问，谁能执行',
           body: '围绕组织、角色、数字员工和知识库管理访问范围。数字员工使用企业资料、调用工具或代办业务时，仍需要对应的身份与授权。',
           items: [
-            { icon: 'network', title: '组织与角色', body: '管理租户、组织与角色权限，并对接 LDAP 组织目录。数字员工可见范围与使用关系共同控制访问。' },
+            { icon: 'network', title: '组织与角色', body: '管理租户、组织与角色权限，对接 LDAP / OIDC 身份源。数字员工可见范围与使用关系共同控制访问。' },
             { icon: 'book', title: '知识库授权', body: '按知识库授权访问与引用，文档继承所属知识库的访问范围。项目资料索引按项目成员身份限定，不进入全局知识检索。' },
             { icon: 'key', title: '业务委托', body: '通过当前用户身份和业务委托控制执行。委托可以撤销，外部工具和业务系统连接需要配置各自的访问权限。' },
           ],
@@ -145,6 +146,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           body: '结合审计记录、用量分析和人工参与机制，管理数字员工的实际使用。权限、审计与成果版本分别记录对应的业务过程。',
           items: [
             { icon: 'shield', title: '审计与成果溯源', body: '管理执行审计留存与证据核验，结合内容标识和溯源码查看成果来源。审计记录用于核对实际过程。' },
+            { icon: 'check', title: '审核管理', body: '按组织规则审核数字员工创建与开放、模板与插件发布、技能变更和资源授权，保留提交快照与审核记录。' },
             { icon: 'chart', title: '用量管理', body: '查看模型使用与数字员工相关消耗，为团队使用和运营提供依据。费用与额度按实际服务方案和配置管理。' },
             { icon: 'message', title: '人工参与', body: '将问询、审批和接手送达相应同事，保留事项状态与回应。人工处理完成后，数字员工可据此续办工作。' },
           ],
@@ -188,7 +190,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           items: [
             { icon: 'book', title: 'Use authorized company knowledge', body: 'Import and search materials, and follow citations back to sources. Access is granted by knowledge base; project search stays within its project.' },
             { icon: 'layers', title: 'Coordinate specialist Agents', body: 'A digital employee’s main Agent can delegate work to configured specialist sub-Agents, display their progress and bring their results together.' },
-            { icon: 'plug', title: 'Connect tools and business systems', body: 'Use skills, business plugins, MCP and authorized tools to carry out work. Available operations depend on installed connections, devices and permissions.' },
+            { icon: 'plug', title: 'Connect tools and business systems', body: 'Work through business plugins, MCP, RESTful APIs and database connections. System interfaces and device tools follow their configured connections and permissions.' },
           ],
         },
         {
@@ -247,7 +249,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
     ecosystem: {
       eyebrow: 'Ecosystem',
       title: 'Make the team’s methods reusable',
-      description: 'Capture role capabilities in skills, digital employee templates and business plugins. Connect existing systems through MCP, OpenAPI and collaboration channels, and build capabilities in Tego Studio.',
+      description: 'Capture role capabilities in skills, digital employee templates and business plugins. Connect existing systems through MCP, RESTful APIs and databases, expose platform services through OpenAPI, and build capabilities in Tego Studio.',
       sections: [
         {
           id: 'reuse',
@@ -256,7 +258,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           body: 'Skills carry working methods, digital employee templates carry role configurations, and business plugins carry application capabilities. Combine them for the job while keeping their responsibilities distinct.',
           items: [
             { icon: 'book', title: 'Skills', body: 'Package working methods, business rules and required files as a capability an Agent can call. Skills support uploads and immutable version management.' },
-            { icon: 'network', title: 'digital employee templates', body: 'Capture role responsibilities and capability settings as static, reusable assets. Recruit a digital employee from a template and configure it for the work.' },
+            { icon: 'network', title: 'Digital employee templates', body: 'Capture role responsibilities and capability settings as static, reusable assets. Recruit a digital employee from a template and configure it for the work.' },
             { icon: 'layers', title: 'Business plugins', body: 'Extend business pages, system interfaces and role capabilities around specific records. Existing plugins include CRM, bidding and EHS.' },
           ],
         },
@@ -264,10 +266,11 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           id: 'integrations',
           eyebrow: 'System connections',
           title: 'Bring existing systems into the workflow',
-          body: 'digital employees use controlled tools to access external capabilities, while external systems can call platform services. Connection settings, identity and permissions define each integration’s scope.',
+          body: 'Digital employees use controlled tools to access external capabilities, while external systems can call platform services. Connection settings, identity and permissions define each integration’s scope.',
           items: [
             { icon: 'plug', title: 'MCP tools', body: 'Connect external tools to digital employee workflows. Operations follow the tool connection, employee configuration and authorization scope.' },
-            { icon: 'terminal', title: 'OpenAPI access', body: 'External systems can call digital employees synchronously, asynchronously or through streaming, and use platform services for knowledge, files and attention items.' },
+            { icon: 'network', title: 'RESTful APIs and databases', body: 'Read information and carry out work through enterprise APIs, or query, aggregate and analyze authorized database records. API authentication and database permissions are configured separately.' },
+            { icon: 'terminal', title: 'Platform OpenAPI', body: 'External systems can call digital employees synchronously, asynchronously or through streaming, and use platform services for knowledge, files and attention items.' },
             { icon: 'monitor', title: 'Authorized device operations', body: 'Work through desktop device nodes, browsers and file tools. Available operations depend on the client platform, node status and permissions.' },
           ],
         },
@@ -295,7 +298,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           title: 'Define access and execution rights',
           body: 'Manage access through organizations, roles, digital employees and knowledge bases. Reading company materials, calling tools and acting on business systems each require the appropriate identity and authorization.',
           items: [
-            { icon: 'network', title: 'Organizations and roles', body: 'Manage tenants, organizations and role permissions, and connect an LDAP directory. digital employee visibility and access relationships define who can use an employee.' },
+            { icon: 'network', title: 'Organizations and roles', body: 'Manage tenants, organizations and role permissions, and connect LDAP / OIDC identity providers. Digital employee visibility and access relationships define who can use an employee.' },
             { icon: 'book', title: 'Knowledge base authorization', body: 'Grant access and citation rights by knowledge base; documents inherit its scope. Project indexes follow project membership and stay outside global knowledge search.' },
             { icon: 'key', title: 'Business delegation', body: 'Control operations through the current user’s identity and business delegation. Delegations can be revoked; external tools and systems need their own access configuration.' },
           ],
@@ -307,6 +310,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           body: 'Use audit records, usage analysis and human participation to operate digital employees. Permissions, audit records and file versions capture their respective parts of the work.',
           items: [
             { icon: 'shield', title: 'Audit and provenance', body: 'Manage audit retention and evidence verification, and inspect output provenance through content identifiers and tracing codes. Records support review of the actual process.' },
+            { icon: 'check', title: 'Review management', body: 'Review employee creation and access, template and plugin publication, skill changes and resource authorization under organization rules. Retain submission snapshots and review decisions.' },
             { icon: 'chart', title: 'Usage management', body: 'Inspect model usage and digital employee consumption to support team operations. Charges and allowances follow the selected service plan and configuration.' },
             { icon: 'message', title: 'Human participation', body: 'Route questions, approvals and handoffs to the relevant colleague, keeping item states and responses. The digital employee can continue once a response is available.' },
           ],
@@ -338,7 +342,7 @@ export const faqs: Record<Locale, FaqItem[]> = {
     { question: '接入企业微信、钉钉或飞书需要什么？', answer: '需要完成对应渠道的连接配置与身份绑定，并按平台用户权限使用。外部协作渠道与 TeGo 内置工作会话是两类入口，分别配置。' },
     { question: '可以部署在企业内网并使用本地模型吗？', answer: '平台提供 Compose 与 Kubernetes 私有化部署工程，支持模型提供方配置和兼容接口，已有 vLLM 与 Qwen 本地模型离线节点安装工程。联网搜索、云模型和外部服务仍按企业网络策略使用。' },
     { question: '支持哪些国产终端交付？', answer: '已有银河麒麟桌面专项离线安装与构建通道，当前重点为 arm64。具体操作系统、CPU、模型、数据库、中间件和安装方式需要按交付组合核对。' },
-    { question: '已有业务系统可以怎样连接？', answer: '数字员工可通过业务插件、MCP 和授权工具使用外部能力；外部系统可通过 OpenAPI 调用数字员工与平台服务。每条连接需要完成接口、身份与权限配置。' },
+    { question: '已有业务系统可以怎样连接？', answer: '数字员工通过 MCP 接入工具，通过 RESTful API 查询信息、办理业务，通过数据库连接查询与分析授权数据，也可使用已安装的业务插件。外部系统通过平台 OpenAPI 调用数字员工与平台服务。各类连接分别配置认证与权限。' },
     { question: '能否从现成的行业或岗位能力开始？', answer: '可以从数字员工模板与岗位技能开始，也可以结合已有 CRM、招投标或 EHS 业务插件。实际可用范围取决于已安装的资产、知识资料、系统连接和授权配置。' },
   ],
   en: [
@@ -347,11 +351,11 @@ export const faqs: Record<Locale, FaqItem[]> = {
     { question: 'Can Word, PowerPoint and Excel be edited on every client?', answer: 'Word and PowerPoint editors are available on web and desktop. Excel editing is available on desktop, with read-only previews on web. Mobile capabilities depend on the supported client features.' },
     { question: 'How do the Tasks page and execution board differ?', answer: 'The current Tasks page manages scheduled tasks for the selected digital employee. The execution board with dependencies, retries, blocking states, human review and delivery evidence is an extension that requires installation and configuration.' },
     { question: 'Do project materials appear in global knowledge search?', answer: 'Project indexes serve only their own project, with access controlled by project membership. They do not enter global knowledge base search. Project search requires a configured knowledge engine and embedding model.' },
-    { question: 'How is company knowledge access granted?', answer: 'Access and citation rights are granted by knowledge base, and documents inherit the scope of their knowledge base. digital employees still need the relevant authorization to use the materials.' },
+    { question: 'How is company knowledge access granted?', answer: 'Access and citation rights are granted by knowledge base, and documents inherit the scope of their knowledge base. Digital employees still need the relevant authorization to use the materials.' },
     { question: 'What is needed to connect WeCom, DingTalk or Feishu?', answer: 'Configure the channel connection and identity binding, then use it within the platform user’s permissions. External collaboration channels and TeGo built-in work conversations are separate entry points with separate configuration.' },
     { question: 'Can the platform run privately with local models?', answer: 'Compose and Kubernetes private deployment projects are available. The platform supports configurable model providers and compatible interfaces, with an offline vLLM and Qwen model-node installer. Web search, cloud models and external services follow company network policies.' },
     { question: 'What Kylin desktop delivery options are available?', answer: 'Dedicated offline installation and build paths are available for Kylin desktop, currently focused on arm64. Verify the specific operating system, CPU, model, database, middleware and installation combination for delivery.' },
-    { question: 'How can existing business systems connect?', answer: 'digital employees can use external capabilities through business plugins, MCP and authorized tools. External systems can call digital employees and platform services through OpenAPI. Each integration requires interface, identity and permission configuration.' },
+    { question: 'How can existing business systems connect?', answer: 'Digital employees use MCP tools, RESTful APIs for business information and actions, database connections for authorized queries and analysis, and installed business plugins. External systems call digital employees and platform services through platform OpenAPI. Each connection has its own authentication and permissions.' },
     { question: 'Can a team start with existing role capabilities?', answer: 'Start with digital employee templates and role-specific skills, or combine existing CRM, bidding or EHS plugins. Availability depends on installed assets, knowledge, connected systems and authorization.' },
   ],
 };

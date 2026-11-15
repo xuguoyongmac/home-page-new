@@ -5,109 +5,85 @@
   --cap-muted: #a7b7d1;
   --cap-blue: #88c3ff;
   color: var(--cap-ink);
-  background: var(--cap-bg);
+  background: transparent;
   font-family: var(--font);
   overflow: clip;
 }
 .capability-landing .container { width: min(1280px, calc(100% - 96px)); }
-.capability-hero { background: radial-gradient(ellipse at 81% 58%, #0b204143, transparent 52%); }
+.capability-hero { background: transparent; }
 .capability-hero-inner { padding-top: 30px; padding-bottom: 66px; }
 .capability-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; color: #a0b1cc; font-size: 13px; line-height: 1.6; }
 .capability-breadcrumb a { transition: color .2s; }
 .capability-breadcrumb a:hover, .capability-breadcrumb [aria-current] { color: #e3edff; }
 .capability-breadcrumb > span:not([aria-current]) { color: #43536e; }
-.capability-hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 28px; min-height: 546px; }
+.capability-hero-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: 64px; min-height: 546px; }
 .capability-hero-copy { position: relative; z-index: 1; padding-block: 40px; }
-.capability-hero-copy h1 { font-size: clamp(38px, 3.75vw, 54px); font-weight: 620; letter-spacing: -.045em; line-height: 1.4; text-wrap: balance; }
+.capability-hero-copy h1 { font-size: clamp(34px, 3.2vw, 46px); font-weight: 620; letter-spacing: -.045em; line-height: 1.4; text-wrap: balance; }
 .capability-hero-copy h1 > span { display: block; }
 .capability-title-accent { color: var(--cap-blue); }
-.capability-hero-copy > p { max-width: 490px; margin-top: 27px; font-size: 17px; line-height: 1.95; color: #b4c3da; text-wrap: pretty; }
+.capability-hero-copy > p { max-width: 490px; margin-top: 27px; font-size: 16px; line-height: 1.95; color: #b4c3da; text-wrap: pretty; }
 .capability-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; margin-top: 34px; }
-.capability-button { display: inline-flex; justify-content: center; align-items: center; gap: 22px; min-height: 50px; padding: 0 23px; border-radius: 7px; background: #3779ed; color: #fff; font-size: 15px; font-weight: 600; transition: background .2s, transform .2s; }
-.capability-button:hover { background: #478cfc; transform: translateY(-2px); }
+.capability-button { display: inline-flex; justify-content: center; align-items: center; gap: 22px; min-height: 50px; padding: 0 23px; border-radius: 7px; background: #356cc2; color: #fff; font-size: 15px; font-weight: 600; transition: background .2s, transform .2s; }
+.capability-button:hover { background: #427bce; transform: translateY(-2px); }
 .capability-inline-link { display: inline-flex; align-items: center; gap: 11px; font-size: 14px; color: #d7e4f7; transition: color .2s; }
 .capability-inline-link:hover { color: #83c6ff; }
-.capability-inline-link svg { transition: transform .2s; }
-.capability-inline-link:hover svg { transform: translateX(3px); }
-.capability-pain { background: #0a1425; padding-block: 63px; }
+.capability-pain { padding-block: var(--section-space); }
 .capability-pain-grid { display: grid; grid-template-columns: .82fr 1.3fr; align-items: start; gap: 100px; }
 .capability-pain h2 { max-width: 350px; font-size: clamp(25px, 2.15vw, 32px); line-height: 1.6; font-weight: 550; letter-spacing: -.03em; }
 .capability-pain ul { display: grid; gap: 22px; }
 .capability-pain li { display: flex; align-items: flex-start; gap: 18px; }
-.capability-pain-mark { display: inline-grid; place-items: center; width: 26px; height: 28px; flex-shrink: 0; color: #6ebaff; }
 .capability-pain p { color: #b4c3da; font-size: 16px; line-height: 1.85; }
-.capability-concept { padding-block: 102px; background: #edf3fb; color: #162b49; scroll-margin-top: 85px; }
-.capability-concept-grid { display: grid; grid-template-columns: .9fr 1.2fr; gap: 64px; align-items: center; }
-.capability-concept h2 { max-width: 480px; font-size: clamp(29px, 2.6vw, 38px); font-weight: 600; letter-spacing: -.035em; line-height: 1.5; text-wrap: balance; }
-.capability-concept p { margin-top: 25px; max-width: 480px; font-size: 16px; color: #53667f; line-height: 2; text-wrap: pretty; }
-.capability-concept-art { min-width: 0; padding-block: 10px; }
-.capability-concept-diagram { display: block; width: 100%; height: auto; overflow: visible; color: #487fbc; }
-.capability-concept-diagram text { font-family: var(--font); text-anchor: middle; font-size: 15px; font-weight: 550; fill: #3a5578; }
-.capability-concept-diagram .concept-small-label { font-size: 13px; font-weight: 500; fill: #657e9f; }
-.capability-concept-diagram .concept-primary-label { fill: #214f87; font-weight: 650; }
-.concept-node { fill: #fff; stroke: #ccdbec; stroke-width: 1.5; }
-.concept-hub { fill: #e0edff; stroke: #9abce9; stroke-width: 1.5; }
-.concept-path { fill: none; stroke: #83a6cf; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.concept-module { fill: #b6d2f8; stroke: #8fb8ed; }
-.concept-symbol { stroke: #558bc8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-.concept-loop { stroke: #a2bfe2; stroke-width: 2; fill: #e6effa; }
-.concept-boundary { stroke: #a8c0df; fill: #e5edf8; stroke-width: 1.2; }
-.concept-boundary.inner { fill: #f3f7fd; stroke-dasharray: 4 6; }
-.concept-rail { stroke: #ccd9e9; fill: none; stroke-width: 5; stroke-linecap: round; }
-.concept-rail-progress { stroke: #6a9ee0; fill: none; stroke-width: 5; stroke-linecap: round; }
-.concept-indicator { fill: #4d91de; }
-.concept-audit-trail { fill: none; stroke: #6c9dcc; stroke-width: 1.6; stroke-dasharray: 2 5; }
-.capability-section { padding-block: 88px; }
+.capability-concept { padding-block: var(--section-space); color: #e1eaf5; scroll-margin-top: 85px; }
+.capability-concept h2 { font-size: clamp(27px, 2.5vw, 35px); font-weight: 550; letter-spacing: -.025em; line-height: 1.5; }
+.capability-concept p { margin-top: 22px; font-size: 16px; color: #a7b7cb; line-height: 1.95; }
+.capability-method { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.capability-method-steps { display: flex; flex-wrap: wrap; column-gap: 32px; row-gap: 18px; align-content: center; list-style: none; padding: 0; margin: 0; }
+.capability-method-steps li { color: #b8cee5; font-size: 18px; font-weight: 500; line-height: 1.8; }
+.capability-section { padding-block: var(--section-space); }
 .capability-section-title { font-size: clamp(28px, 2.5vw, 36px); font-weight: 570; line-height: 1.5; letter-spacing: -.035em; margin-bottom: 38px; }
-.capability-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.capability-feature-card { padding: 35px 32px 37px; background: linear-gradient(145deg, #10203b90, #0a1429); border: 1px solid #203452; border-radius: 12px; }
-.capability-feature-card > svg { color: #80b9f9; margin-bottom: 31px; }
-.capability-feature-card h3 { font-size: 22px; line-height: 1.5; font-weight: 550; }
-.capability-feature-card p { font-size: 15px; line-height: 1.9; color: var(--cap-muted); margin-top: 17px; }
-.capability-scenarios { padding-top: 18px; }
-.capability-scenario-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-.capability-scenario-card { display: flex; flex-direction: column; padding: 35px; border-radius: 12px; background: #0d192e; }
-.capability-scenario-heading { display: flex; gap: 17px; align-items: center; }
-.capability-scenario-icon { color: #89bfff; }
-.capability-scenario-card h3 { font-size: 23px; font-weight: 550; line-height: 1.5; }
-.capability-scenario-card > p { color: #adbed8; margin: 24px 0 32px; line-height: 1.95; font-size: 16px; }
-.capability-scenario-flow { list-style: none; margin: auto 0 0; padding: 21px 0 0; display: flex; gap: 12px; }
-.capability-scenario-flow li { display: flex; flex: 1; align-items: center; justify-content: space-between; gap: 9px; color: #bcd6f7; font-size: 13px; line-height: 1.7; }
-.capability-scenario-flow li:last-child { flex: .85; }
-.capability-scenario-flow svg { color: #557ea9; flex-shrink: 0; }
-.capability-benefits { background: #0a1425; }
+.capability-content-layout { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.5fr); column-gap: 100px; align-items: start; }
+.capability-content-layout > .capability-section-title { max-width: 310px; margin-bottom: 0; }
+.capability-feature-list, .capability-scenario-list { min-width: 0; }
+.capability-feature-row { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 36px; padding-block: 28px; }
+.capability-feature-row:first-child { padding-top: 3px; }
+.capability-feature-row:last-child { padding-bottom: 0; }
+.capability-feature-row + .capability-feature-row { border-top: 1px solid #adc8e51a; }
+.capability-feature-row h3 { font-size: 21px; line-height: 1.6; font-weight: 550; }
+.capability-feature-row p { font-size: var(--text-body, 16px); line-height: 1.9; color: var(--cap-muted); margin: 0; }
+.capability-scenario-row { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); column-gap: 36px; padding-block: 34px; }
+.capability-scenario-row:first-child { padding-top: 3px; }
+.capability-scenario-row:last-child { padding-bottom: 0; }
+.capability-scenario-row + .capability-scenario-row { border-top: 1px solid #adc8e51a; }
+.capability-scenario-row h3 { font-size: 21px; font-weight: 550; line-height: 1.6; }
+.capability-scenario-detail > p { color: #adbed8; margin: 0; line-height: 1.95; font-size: var(--text-body, 16px); }
+.capability-scenario-flow { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.capability-scenario-flow li { color: #bcd6f7; font-size: var(--text-control, 15px); line-height: 1.8; }
+.capability-benefits { background: transparent; }
 .capability-benefits-layout { display: grid; grid-template-columns: .8fr 1.3fr; gap: 100px; }
 .capability-benefits h2 { max-width: 330px; margin-bottom: 0; }
 .capability-benefit-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 38px; row-gap: 39px; }
-.capability-benefit-grid article { display: flex; align-items: flex-start; gap: 14px; }
-.capability-benefit-grid article > svg { color: #7abfff; flex-shrink: 0; margin-top: 5px; }
+.capability-benefit-grid article { min-width: 0; }
 .capability-benefit-grid h3 { font-size: 20px; line-height: 1.5; font-weight: 550; }
 .capability-benefit-grid p { margin-top: 12px; color: #a7b8d0; line-height: 1.9; font-size: 15px; }
-.capability-related { padding-bottom: 70px; }
-.capability-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.capability-related-grid:has(> :nth-child(2):last-child) { grid-template-columns: repeat(2, 1fr); }
-.capability-related-link { display: flex; align-items: center; gap: 19px; padding: 30px 25px; border: 1px solid #223550; border-radius: 10px; background: #0a1425; transition: transform .2s, border-color .2s, box-shadow .2s; }
-.capability-related-link:hover { transform: translateY(-3px); border-color: #5581b6; box-shadow: 0 10px 35px #3078ba16; }
-.capability-related-icon { color: #82b9fa; flex-shrink: 0; }
+.capability-related-links { display: flex; flex-wrap: wrap; gap: 22px 46px; align-items: baseline; }
+.capability-related-link { display: inline-block; padding-block: 7px; color: #c8d9f0; transition: color .2s; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 7px; }
+.capability-related-link:hover, .capability-related-link:focus-visible { color: #88c3ff; text-decoration-color: currentColor; }
 .capability-related-link h3 { font-size: 20px; font-weight: 550; line-height: 1.5; }
-.capability-related-link > svg { margin-left: auto; flex-shrink: 0; color: #a1c8f9; }
-.capability-closing { padding: 48px 0 100px; background: radial-gradient(ellipse at 50% 100%, #14305e44, transparent 65%); }
+.capability-closing { padding: var(--section-space) 0; background: radial-gradient(ellipse at 50% 100%, #14305e44, transparent 65%); }
 .capability-closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
 .capability-closing h2 { font-size: clamp(28px, 2.5vw, 36px); font-weight: 550; line-height: 1.5; max-width: 730px; letter-spacing: -.035em; }
 .capability-closing .capability-actions { margin-top: 0; flex-shrink: 0; }
 .capability-landing a:focus-visible { outline-color: #8dccff; }
-@media (min-width: 761px) { html[lang='en'] .capability-hero-copy h1 { font-size: clamp(34px, 3.5vw, 49px); letter-spacing: -.05em; line-height: 1.25; } }
+@media (min-width: 761px) { html[lang='en'] .capability-hero-copy h1 { font-size: clamp(32px, 3.1vw, 44px); letter-spacing: -.05em; line-height: 1.25; } }
 @media (max-width: 1100px) {
   .capability-landing .container { width: calc(100% - 64px); }
   .capability-hero-grid { gap: 16px; min-height: 500px; }
   .capability-hero-copy h1 { font-size: 38px; }
   .capability-hero-copy > p { font-size: 16px; }
   .capability-actions { gap: 19px; }
-  .capability-pain-grid, .capability-benefits-layout { gap: 50px; }
-  .capability-concept-grid { gap: 35px; grid-template-columns: .95fr 1.1fr; }
-  .capability-feature-card { padding: 29px 24px; }
-  .capability-scenario-card { padding: 28px; }
-  .capability-related-link { padding: 25px 19px; gap: 13px; }
+  .capability-pain-grid, .capability-benefits-layout, .capability-content-layout { gap: 50px; }
+  .capability-content-layout { grid-template-columns: minmax(180px, .7fr) minmax(0, 1.5fr); }
+  .capability-feature-row, .capability-scenario-row { grid-template-columns: 1fr; gap: 15px; }
   .capability-related-link h3 { font-size: 18px; }
   .capability-closing-inner { flex-direction: column; align-items: flex-start; gap: 30px; }
 }
@@ -123,42 +99,29 @@
   .capability-actions { margin-top: 27px; gap: 22px; }
   .capability-button { min-height: 47px; padding-inline: 19px; font-size: 14px; gap: 15px; }
   .capability-inline-link { font-size: 13px; gap: 7px; }
-  .capability-pain { padding-block: 45px; }
   .capability-pain-grid { grid-template-columns: 1fr; gap: 26px; }
   .capability-pain h2 { max-width: 100%; font-size: 25px; line-height: 1.55; }
   .capability-pain ul { gap: 19px; }
   .capability-pain li { gap: 12px; }
   .capability-pain p { font-size: 15px; }
-  .capability-concept { padding-block: 53px 35px; }
-  .capability-concept-grid { grid-template-columns: 1fr; gap: 22px; }
   .capability-concept h2 { font-size: 28px; max-width: 100%; }
   .capability-concept p { font-size: 15px; margin-top: 20px; max-width: 100%; }
-  .capability-concept-art { margin-inline: -8px; }
-  .capability-section { padding-block: 55px; }
   .capability-section-title { font-size: 27px; margin-bottom: 27px; }
-  .capability-feature-grid, .capability-scenario-grid { grid-template-columns: 1fr; gap: 16px; }
-  .capability-feature-card { padding: 29px 27px; }
-  .capability-feature-card > svg { margin-bottom: 21px; width: 27px; height: 27px; }
-  .capability-feature-card h3, .capability-scenario-card h3 { font-size: 21px; }
-  .capability-feature-card p { margin-top: 13px; }
-  .capability-scenarios { padding-top: 8px; }
-  .capability-scenario-card { padding: 28px 25px; }
-  .capability-scenario-heading { gap: 13px; }
-  .capability-scenario-card > p { font-size: 15px; margin-block: 20px; }
-  .capability-scenario-flow { padding-top: 13px; gap: 10px; }
-  .capability-scenario-flow li { font-size: 12px; gap: 5px; }
-  .capability-scenario-flow svg { width: 13px; }
+  .capability-content-layout { grid-template-columns: 1fr; gap: 30px; }
+  .capability-content-layout > .capability-section-title { max-width: 100%; }
+  .capability-feature-row, .capability-scenario-row { padding-block: 25px; gap: 13px; }
+  .capability-feature-row h3, .capability-scenario-row h3 { font-size: 21px; }
+  .capability-feature-row p { font-size: 16px; }
+  .capability-scenario-detail > p { font-size: 16px; }
+  .capability-scenario-flow { margin-top: 18px; gap: 8px 22px; }
+  .capability-scenario-flow li { font-size: 15px; }
   .capability-benefits-layout { grid-template-columns: 1fr; gap: 31px; }
   .capability-benefits h2 { max-width: 100%; }
   .capability-benefit-grid { gap: 27px 24px; }
-  .capability-benefit-grid article { gap: 10px; }
-  .capability-benefit-grid article > svg { width: 18px; margin-top: 3px; }
   .capability-benefit-grid h3 { font-size: 18px; }
   .capability-benefit-grid p { font-size: 14px; margin-top: 9px; }
-  .capability-related-grid, .capability-related-grid:has(> :nth-child(2):last-child) { grid-template-columns: 1fr; gap: 13px; }
-  .capability-related-link { padding: 25px; }
+  .capability-related-links { gap: 13px 30px; }
   .capability-related-link h3 { font-size: 19px; }
-  .capability-closing { padding: 4px 0 65px; }
   .capability-closing h2 { font-size: 28px; }
 }
 @media (max-width: 370px) {
@@ -171,159 +134,6 @@
   .capability-landing *, .capability-landing *::before, .capability-landing *::after { transition: none !important; }
 }
 
-/* Flat business diagrams: native text, explicit relationships and no raster illustration. */
-.capability-workmap {
-  --map-line: #416b96;
-  --map-panel: #0c182b;
-  --map-node-border: #355575;
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 440px;
-  justify-self: end;
-  color: #dce9fa;
-  font-size: 15px;
-}
-.workmap-node { position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; padding: 15px 13px; border: 1px solid var(--map-node-border); border-radius: 8px; background: var(--map-panel); text-align: center; min-width: 0; }
-.workmap-node strong { font-size: 17px; font-weight: 550; line-height: 1.55; overflow-wrap: normal; }
-.workmap-node > span { font-size: 14px; line-height: 1.6; color: #9db4d0; }
-.workmap-node-focus { border-color: #6795bd; background: #142e49; color: #edf6ff; }
-.workmap-node-focus > span { color: #b5cee8; }
-.workmap-lines { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--map-line); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.workmap-lines marker path { fill: none; stroke: #75a6d1; stroke-width: 1.5; }
-.workmap-lines .workmap-citation-line { stroke-dasharray: 4 6; stroke: #79a9c5; }
-.workmap-role-layout { height: 100%; display: grid; grid-template-columns: 1.14fr .4fr 1fr; align-items: center; padding-block: 28px; }
-.workmap-template-library { display: flex; flex-direction: column; border: 1px solid #355575; border-radius: 8px; min-width: 0; background: #0c182b; }
-.workmap-library-title { display: block; padding: 22px 18px; font-size: 18px; font-weight: 600; color: #d9eaff; }
-.workmap-template-row { display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 112px; margin: 0 18px; padding-block: 21px; border-top: 1px solid #263f5c; }
-.workmap-template-row strong { font-size: 17px; font-weight: 550; line-height: 1.6; }
-.workmap-template-row span { font-size: 13px; color: #9db4d0; line-height: 1.7; }
-.workmap-recruited { display: flex; flex-direction: column; justify-content: space-around; gap: 31px; padding-top: 44px; }
-.workmap-recruited .workmap-node { position: relative; min-height: 138px; padding: 19px 14px; }
-.workmap-recruited .workmap-workspace { color: #bdcfe3; padding-top: 7px; }
-.workmap-recruit-paths { height: 100%; display: grid; grid-template-rows: 1fr 1fr; padding-top: 76px; padding-bottom: 16px; }
-.workmap-recruit-paths > div { align-self: center; display: grid; place-items: center; gap: 2px; }
-.workmap-recruit-paths span { color: #98b5d3; font-size: 13px; }
-.capability-workmap i { font-style: normal; color: #7ca8cc; font-size: 29px; font-weight: 300; line-height: 1; }
-.workmap-task-goal { top: 4%; left: 24%; width: 52%; min-height: 18%; }
-.workmap-task-specialists { position: absolute; top: 41%; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.workmap-task-specialists .workmap-node { position: relative; min-height: 66px; }
-.workmap-task-result { top: 76%; left: 22%; width: 56%; min-height: 20%; }
-.workmap-task-label { position: absolute; top: 26%; left: 31%; width: 38%; background: #050b1a; text-align: center; color: #a7bfda; font-size: 14px; line-height: 1.7; }
-.workmap-integration-layout { display: grid; height: 100%; grid-template-columns: 1fr .67fr 1.13fr .76fr 1fr; align-items: center; }
-.workmap-integration-layout .workmap-node { position: relative; min-height: 91px; padding-inline: 10px; }
-.workmap-integration-layout .workmap-node strong { font-size: 16px; }
-.workmap-api-path { display: grid; justify-items: center; gap: 9px; text-align: center; padding: 10px 2px; }
-.workmap-api-path strong { font-size: 12px; font-weight: 550; color: #a9c9ea; }
-.workmap-api-path span { font-size: 12px; line-height: 1.65; color: #9db4d0; }
-.workmap-api-path > i { font-size: 27px; }
-.workmap-plugin-paths { display: grid; grid-template-rows: repeat(3, 1fr); height: 348px; padding: 0 4px; }
-.workmap-plugin-paths > div { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; text-align: center; }
-.workmap-plugin-paths span { font-size: 12px; line-height: 1.6; color: #9db4d0; }
-.workmap-integrated-systems { display: flex; flex-direction: column; gap: 25px; }
-.workmap-collab-top { top: 6%; left: 34%; width: 32%; min-height: 18%; }
-.workmap-collab-person { top: 41%; left: 0; width: 30%; min-height: 18%; }
-.workmap-collab-employee { top: 41%; right: 0; width: 30%; min-height: 18%; }
-.workmap-collab-bottom { top: 77%; left: 34%; width: 32%; min-height: 16%; }
-.workmap-collab-result { top: 40%; left: 32%; width: 36%; min-height: 22%; }
-.workmap-collab-result strong { font-size: 18px; }
-.workmap-collab-result > span { font-size: 13px; }
-.workmap-knowledge-output { top: 8%; left: 33%; width: 34%; min-height: 17%; }
-.workmap-knowledge-employee { top: 41%; left: 36%; width: 28%; min-height: 16%; }
-.workmap-knowledge-sources { position: absolute; top: 78%; left: 9%; width: 86%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.workmap-knowledge-sources .workmap-node { position: relative; min-height: 76px; }
-.workmap-knowledge-retrieve, .workmap-knowledge-draft, .workmap-knowledge-citation { position: absolute; color: #a6bfda; font-size: 13px; line-height: 1.7; background: #050b1a; text-align: center; padding: 2px 7px; }
-.workmap-knowledge-retrieve { top: 61%; left: 33%; width: 34%; }
-.workmap-knowledge-draft { top: 28%; left: 55%; }
-.workmap-knowledge-citation { top: 44%; left: 0; max-width: 20%; }
-.workmap-access-boundary { position: absolute; inset: 20% 5% 25%; border: 1px dashed #2c496b; border-radius: 50%; }
-.workmap-governance-identity { top: 8%; left: 39%; width: 26%; min-height: 17%; }
-.workmap-governance-permissions { top: 38%; left: 0; width: 32%; min-height: 18%; }
-.workmap-governance-employee { top: 39%; left: 39%; width: 22%; min-height: 17%; }
-.workmap-governance-delegation { top: 38%; left: 68%; width: 32%; min-height: 18%; }
-.workmap-governance-execution { top: 77%; left: 17%; width: 31%; min-height: 18%; }
-.workmap-governance-history { top: 77%; left: 70%; width: 30%; min-height: 18%; }
-@media (min-width: 761px) and (max-width: 1000px) {
-  .capability-hero-grid { grid-template-columns: 1fr 1fr; gap: 35px; }
-  .capability-workmap { height: 400px; }
-  .workmap-node { padding: 12px 8px; }
-  .workmap-node strong, .workmap-template-row strong { font-size: 14px; }
-  .workmap-node > span, .workmap-template-row span { font-size: 12px; }
-  .workmap-library-title { font-size: 15px; padding-inline: 12px; }
-  .workmap-template-row { margin-inline: 12px; }
-  .workmap-integration-layout .workmap-node strong { font-size: 13px; }
-  .workmap-api-path span, .workmap-plugin-paths span { font-size: 11px; }
-}
-@media (max-width: 760px) {
-  .capability-workmap { height: 380px; max-width: 540px; margin-top: 35px; margin-bottom: 14px; align-self: center; }
-  .workmap-node { padding: 13px 10px; gap: 6px; }
-  .workmap-node strong { font-size: 15px; }
-  .workmap-node > span { font-size: 13px; }
-  .workmap-role-layout { grid-template-columns: 1.1fr .35fr 1fr; padding: 0; }
-  .workmap-library-title { padding: 21px 14px; font-size: 16px; line-height: 1.5; }
-  .workmap-template-row { margin-inline: 14px; min-height: 113px; }
-  .workmap-template-row strong { font-size: 15px; }
-  .workmap-template-row span { font-size: 12px; }
-  .workmap-recruited { gap: 27px; padding-top: 48px; }
-  .workmap-recruited .workmap-node { min-height: 130px; padding: 15px 10px; }
-  .workmap-recruit-paths { padding-top: 79px; padding-bottom: 13px; }
-  .workmap-recruit-paths span { font-size: 12px; }
-  .workmap-task-specialists { gap: 10px; }
-  .workmap-task-specialists .workmap-node { min-height: 60px; padding-inline: 7px; }
-  .workmap-task-label { font-size: 13px; left: 25%; width: 50%; }
-  .workmap-task-goal, .workmap-task-result { gap: 4px; }
-  .workmap-collab-result strong { font-size: 15px; }
-  .workmap-collab-result > span { font-size: 12px; }
-  .workmap-collab-result { padding-inline: 8px; }
-  .workmap-knowledge-sources { gap: 9px; }
-  .workmap-knowledge-sources .workmap-node { min-height: 67px; padding-inline: 7px; }
-  .workmap-knowledge-retrieve, .workmap-knowledge-draft, .workmap-knowledge-citation { font-size: 12px; padding-inline: 4px; }
-  .workmap-governance-permissions strong, .workmap-governance-delegation strong, .workmap-governance-history strong { font-size: 14px; }
-  .workmap-governance-employee { left: calc(50% - 42px); width: 84px; }
-  .workmap-integrations { height: auto; min-height: 485px; }
-  .workmap-integration-layout { grid-template-columns: repeat(3, 1fr); row-gap: 12px; padding-block: 10px; }
-  .workmap-integration-layout .workmap-node { min-height: 65px; padding: 12px; }
-  .workmap-integration-layout .workmap-node strong { font-size: 15px; }
-  .workmap-business-system { grid-column: 1 / -1; justify-self: center; width: 58%; }
-  .workmap-api-path { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; width: 64%; justify-self: center; padding: 0; gap: 5px 20px; }
-  .workmap-api-path strong { grid-column: 1 / -1; font-size: 13px; }
-  .workmap-api-path span:first-of-type { grid-column: 1; grid-row: 2; font-size: 13px; }
-  .workmap-api-path span:last-of-type { grid-column: 2; grid-row: 2; font-size: 13px; }
-  .workmap-api-path i { transform: rotate(90deg); grid-row: 3; }
-  .workmap-integration-employee { grid-column: 1 / -1; justify-self: center; width: 58%; }
-  .workmap-plugin-paths { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; height: auto; gap: 12px; }
-  .workmap-plugin-paths > div { gap: 8px; }
-  .workmap-plugin-paths span { font-size: 12px; }
-  .workmap-plugin-paths i { transform: rotate(90deg); }
-  .workmap-integrated-systems { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-}
 
-/* The role page uses a complete generated concept illustration with a dedicated mobile composition. */
-.capability-hero-grid--illustrated { grid-template-columns: 1fr; gap: 25px; min-height: 0; }
-.capability-hero-grid--illustrated .capability-hero-copy { display: grid; grid-template-columns: 1.12fr 1fr; column-gap: 76px; row-gap: 21px; align-items: center; padding-block: 42px 10px; }
-.capability-hero-grid--illustrated .capability-hero-copy h1 { grid-column: 1; grid-row: 1 / 3; font-size: clamp(34px, 3.15vw, 46px); line-height: 1.45; }
-.capability-hero-grid--illustrated .capability-hero-copy > p { grid-column: 2; grid-row: 1; max-width: 520px; margin-top: 0; font-size: 16px; }
-.capability-hero-grid--illustrated .capability-actions { grid-column: 2; grid-row: 2; margin-top: 0; }
-.role-concept-visual { display: block; width: 100%; max-width: 1120px; margin: 0 auto; }
-.role-concept-visual img { display: block; width: 100%; height: auto; }
-.capability-concept-grid--role { display: block; }
-.capability-concept-grid--role .capability-concept-copy { display: grid; grid-template-columns: 1.12fr 1fr; gap: 76px; align-items: center; }
-.capability-concept-grid--role .capability-concept-copy > p { margin-top: 0; max-width: 540px; }
-html[lang='en'] .capability-hero-grid--illustrated .capability-hero-copy h1 { font-size: clamp(34px, 3.2vw, 46px); }
-@media (max-width: 1100px) and (min-width: 761px) {
-  .capability-hero-grid--illustrated { grid-template-columns: 1fr; }
-  .capability-hero-grid--illustrated .capability-hero-copy { column-gap: 42px; }
-  .capability-hero-grid--illustrated .capability-hero-copy h1 { font-size: 34px; }
-  .capability-hero-grid--illustrated .capability-actions { gap: 19px; }
-  .capability-concept-grid--role .capability-concept-copy { column-gap: 42px; }
-}
-@media (max-width: 760px) {
-  .capability-hero-grid--illustrated { gap: 28px; }
-  .capability-hero-grid--illustrated .capability-hero-copy { display: block; padding-block: 41px 0; }
-  .capability-hero-grid--illustrated .capability-hero-copy h1 { font-size: clamp(29px, 6.95vw, 43px); line-height: 1.55; }
-  .capability-hero-grid--illustrated .capability-hero-copy > p { margin-top: 21px; font-size: 15px; }
-  .capability-hero-grid--illustrated .capability-actions { margin-top: 27px; }
-  html[lang='en'] .capability-hero-grid--illustrated .capability-hero-copy h1 { font-size: clamp(32px, 7.7vw, 44px); line-height: 1.25; }
-  .role-concept-visual { max-width: 510px; }
-  .capability-concept-grid--role .capability-concept-copy { grid-template-columns: 1fr; gap: 20px; }
-}
+@media (max-width: 1100px) { .capability-method { gap: 35px; } }
+@media (max-width: 760px) { .capability-method { grid-template-columns: 1fr; gap: 27px; }.capability-method-steps { gap: 12px 27px; }.capability-method-steps li { font-size: 17px; } }

@@ -2,7 +2,6 @@
 import Icon from './Icon.astro';
 import { appFor, site } from '../lib/site';
 import type { Locale } from '../data/types';
-import PageHeroArt from './PageHeroArt.astro';
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
@@ -10,8 +9,7 @@ const zh = locale === 'zh';
 const contactApi = import.meta.env.PUBLIC_CONTACT_API_URL || '';
 const submitLabel = contactApi ? (zh ? '发送咨询' : 'Send enquiry') : (zh ? '撰写咨询邮件' : 'Compose enquiry email');
 const copy = zh ? {
-  eyebrow: 'CONTACT', title: '从一项具体工作，\n开始交流。',
-  description: '聊聊希望交给数字员工的工作，以及团队现有的资料、系统和部署要求。',
+  title: '从一项具体工作，\n开始交流。',
   heading: '一起找到合适的落地点',
   emailTitle: '商务咨询', emailBody: '产品体验、业务集成与企业部署',
   webTitle: '先体验工作空间', webBody: '在浏览器中开始与数字员工协作', webAction: '打开工作空间',
@@ -23,8 +21,7 @@ const copy = zh ? {
   fallback: '未打开邮件应用时，可复制草稿发送至 business@zhama.com。',
   noScript: '请直接发送邮件至 business@zhama.com，说明公司、关注方向和工作需求。',
 } : {
-  eyebrow: 'CONTACT', title: 'Start with the work\nyour team needs done.',
-  description: 'Tell us about the task, the systems your team uses, and your deployment requirements.',
+  title: 'Start with the work\nyour team needs done.',
   heading: 'Find the right place to start',
   emailTitle: 'Business enquiries', emailBody: 'Product access, integrations, and enterprise deployment',
   webTitle: 'Explore the workspace', webBody: 'Start working with digital employees in your browser', webAction: 'Open workspace',
@@ -38,11 +35,8 @@ const copy = zh ? {
 };
 ---
 <section class="page-hero inner-page-hero inner-support-hero">
-  <PageHeroArt variant="collaboration" compact/>
   <div class="container inner-hero-content"><div class="inner-hero-copy">
-    <p class="eyebrow">{copy.eyebrow}</p>
     <h1>{copy.title}</h1>
-    <p>{copy.description}</p>
   </div></div>
 </section>
 <section class="container contact-grid inner-contact" aria-label={zh ? '咨询方式' : 'Contact options'}>
@@ -50,15 +44,15 @@ const copy = zh ? {
     <h2>{copy.heading}</h2>
     <div class="contact-option">
       <Icon name="mail" size={24}/>
-      <div><strong>{copy.emailTitle}</strong><p>{copy.emailBody}</p><a class="text-link contact-link" href={`mailto:${site.email}`}>{site.email}<Icon name="external" size={15}/></a></div>
+      <div><strong>{copy.emailTitle}</strong><p>{copy.emailBody}</p><a class="text-link contact-link" href={`mailto:${site.email}`}>{site.email}</a></div>
     </div>
     <div class="contact-option">
       <Icon name="globe" size={24}/>
-      <div><strong>{copy.webTitle}</strong><p>{copy.webBody}</p><a class="text-link contact-link" href={appFor(locale)}>{copy.webAction}<Icon name="arrow" size={16}/></a></div>
+      <div><strong>{copy.webTitle}</strong><p>{copy.webBody}</p><a class="text-link contact-link" href={appFor(locale)}>{copy.webAction}</a></div>
     </div>
     <div class="contact-option">
       <Icon name="book" size={24}/>
-      <div><strong>{copy.docsTitle}</strong><p>{copy.docsBody}</p><a class="text-link contact-link" href={site.docs}>{copy.docsAction}<Icon name="arrow" size={16}/></a></div>
+      <div><strong>{copy.docsTitle}</strong><p>{copy.docsBody}</p><a class="text-link contact-link" href={site.docs}>{copy.docsAction}</a></div>
     </div>
   </div>
   <form class="contact-form" id="enquiry-form" data-locale={locale} data-recipient={site.email} data-contact-api={contactApi} action={`mailto:${site.email}`} method="post" enctype="text/plain">
@@ -69,11 +63,11 @@ const copy = zh ? {
     <div class="field"><label for="enquiry-interest">{copy.interest}</label><select id="enquiry-interest" name="interest" required>{copy.options.map(([value, label]) => <option value={value}>{label}</option>)}</select></div>
     <div class="field"><label for="enquiry-requirement">{copy.requirement}</label><textarea id="enquiry-requirement" name="requirement" rows="5" maxlength="4000" required></textarea></div>
     <p class="contact-privacy">{copy.privacy}</p>
-    <button class="button form-submit" type="submit">{submitLabel}<Icon name="mail" size={19}/></button>
+    <button class="button form-submit" type="submit">{submitLabel}</button>
     <div class="form-result" id="enquiry-draft" hidden>
       <div class="field"><label for="enquiry-draft-text">{copy.draft}</label><textarea id="enquiry-draft-text" rows="10" readonly spellcheck="false"></textarea></div>
       <p class="draft-fallback">{copy.fallback}</p>
-      <div class="draft-actions"><button class="button button-outline button-small" id="copy-enquiry" type="button">{copy.copy}</button><a class="text-link" id="open-enquiry" href={`mailto:${site.email}`}>{copy.open}<Icon name="external" size={14}/></a></div>
+      <div class="draft-actions"><button class="button button-outline button-small" id="copy-enquiry" type="button">{copy.copy}</button><a class="text-link" id="open-enquiry" href={`mailto:${site.email}`}>{copy.open}</a></div>
       <p id="enquiry-status" role="status" aria-live="polite"></p>
     </div>
     <noscript><p class="form-result">{copy.noScript}</p></noscript>

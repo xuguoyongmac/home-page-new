@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
+import { articleLinksPlugin } from './scripts/article-links.mjs';
 
 const legacy = {
   cloud: 'enterprise/#cloud',
@@ -24,18 +25,19 @@ export default defineConfig({
   markdown: { shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } }, processor: satteri({ hastPlugins: [{
     name: 'tego-article-headings',
     element: { filter: ['h1'], visit(node, context) { context.setField(node, 'tagName', 'h2'); } },
-  }] }) },
+  }, articleLinksPlugin] }) },
   i18n: {
     defaultLocale: 'zh',
-    locales: ['zh', 'en', 'zh-Hant', 'ja'],
+    locales: ['zh', 'en', 'zh-Hant'],
     routing: { prefixDefaultLocale: true },
   },
   integrations: [sitemap({
-    i18n: { defaultLocale: 'zh', locales: { zh: 'zh-CN', en: 'en', 'zh-Hant': 'zh-Hant', ja: 'ja' } },
-    filter: (page) => !page.includes('/404') && !Object.keys(legacy).some(slug => new URL(page).pathname.endsWith(`/${slug}/`)),
+    i18n: { defaultLocale: 'zh', locales: { zh: 'zh-CN', en: 'en', 'zh-Hant': 'zh-Hant' } },
+    filter: (page) => !page.includes('/404') && !new URL(page).pathname.startsWith('/ja/') && !Object.keys(legacy).some(slug => new URL(page).pathname.endsWith(`/${slug}/`)),
   })],
   redirects: {
     '/': '/zh/',
+    '/ja/': '/en/',
     ...Object.fromEntries(['zh', 'en'].flatMap(locale => Object.entries(legacy).map(([from, to]) => [`/${locale}/${from}/`, `/${locale}/${to}`]))),
   },
 });

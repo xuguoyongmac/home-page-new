@@ -20,10 +20,37 @@ export default {
       labels: ['企业知识', '项目资料', '工作上下文', '引用来源'],
     },
     features: [
-      { icon: 'book', title: '企业知识库接入', body: '导入制度、档案和历史方案，集中管理可检索的企业资料。' },
-      { icon: 'layers', title: '项目上下文记忆', body: '在项目空间保留资料和工作背景，供后续任务查阅与复用。' },
-      { icon: 'search', title: '引用溯源机制', body: '检索结果提供文档来源和引用链接，便于回看原文、核对依据。' },
-    ],
+      {
+            "icon": "book",
+            "title": "资料上传与管理",
+            "body": "按知识库和文件夹管理制度、档案与历史方案，支持批量上传、版本查看、同名替换和重新处理。"
+      },
+      {
+            "icon": "layers",
+            "title": "解析分片与索引",
+            "body": "按配置解析和清洗文档，建立内容分片与检索索引，维护片段的启停状态。"
+      },
+      {
+            "icon": "search",
+            "title": "关键词与语义检索",
+            "body": "组合关键词、语义或混合检索，配置召回权重与阈值，并通过检索测试核对结果。"
+      },
+      {
+            "icon": "file",
+            "title": "回答关联原文依据",
+            "body": "将命中的资料带入问答和文稿，通过引用定位原文片段与上下文。"
+      },
+      {
+            "icon": "folder",
+            "title": "项目资料与上下文",
+            "body": "在项目空间保留工作背景与成果，项目资料检索限定在对应项目和成员范围。"
+      },
+      {
+            "icon": "key",
+            "title": "知识权限与共享",
+            "body": "管理个人与共享知识库，按成员、部门和库内角色授权，数字员工按调用人权限检索。"
+      }
+],
     scenarios: [
       {
         title: '内部制度问答与方案撰写',
@@ -64,10 +91,37 @@ export default {
       labels: ['Knowledge', 'Project files', 'Work context', 'Sources'],
     },
     features: [
-      { icon: 'book', title: 'Private knowledge bases', body: 'Import policies, archives and past proposals into searchable libraries.' },
-      { icon: 'layers', title: 'Project context', body: 'Retain project materials and background for later work to reference and reuse.' },
-      { icon: 'search', title: 'Source traceability', body: 'Retrieved passages include document sources and links for review.' },
-    ],
+      {
+            "icon": "book",
+            "title": "Manage source materials",
+            "body": "Organize policies, archives and proposals by library and folder, with bulk upload, file versions, replacement and reprocessing."
+      },
+      {
+            "icon": "layers",
+            "title": "Parse, chunk and index",
+            "body": "Parse and clean documents, configure chunks and indexes, and manage active passages."
+      },
+      {
+            "icon": "search",
+            "title": "Keyword and semantic retrieval",
+            "body": "Use keyword, semantic or hybrid retrieval, configure weights and thresholds, and test the returned results."
+      },
+      {
+            "icon": "file",
+            "title": "Connect answers to sources",
+            "body": "Use retrieved passages in answers and drafts, with references to the original passage and surrounding context."
+      },
+      {
+            "icon": "folder",
+            "title": "Project files and context",
+            "body": "Retain project background and deliverables. Project retrieval stays within that project and its members."
+      },
+      {
+            "icon": "key",
+            "title": "Library access and sharing",
+            "body": "Manage personal and shared libraries by member, department and library role. Retrieval follows the caller’s permissions."
+      }
+],
     scenarios: [
       {
         title: 'Policy answers and business drafts',
