@@ -7,35 +7,35 @@ const zh = locale === 'zh';
 const domains = [
   {
     zh: '知识管理', en: 'Knowledge',
-    description: { zh: '归集制度与项目资料，检索依据并复用经验。', en: 'Find referenced answers in company documents and reuse project knowledge.' },
+    description: { zh: '归集资料、检索复用', en: 'Search and reuse' },
   },
   {
     zh: '方案文书', en: 'Documents',
-    description: { zh: '结合目标与企业资料，编制方案报告和汇报。', en: 'Develop proposals, reports and presentations from goals and company materials.' },
+    description: { zh: '方案编制、文书起草', en: 'Proposals & reports' },
   },
   {
     zh: '经营分析', en: 'Business analysis',
-    description: { zh: '汇总经营指标，拆解趋势与结构并形成行动。', en: 'Analyze business metrics, trends and structure to prepare action priorities.' },
+    description: { zh: '分析指标、洞察趋势', en: 'Metrics and trends' },
   },
   {
     zh: '客户经营', en: 'Customer operations',
-    description: { zh: '梳理客户背景与商机，接续沟通和跟进工作。', en: 'Connect client context, opportunities, conversations and next actions.' },
+    description: { zh: '梳理商机、持续跟进', en: 'Client follow-up' },
   },
   {
     zh: '招投标协作', en: 'Bidding',
-    description: { zh: '拆解招标要求，核对资质并协同编制响应。', en: 'Review bid requirements and qualifications, then prepare the response together.' },
+    description: { zh: '核对要求、协同编标', en: 'Review and draft' },
   },
   {
     zh: '会议协同', en: 'Meetings',
-    description: { zh: '提炼会议结论与行动项，形成纪要和跟进事项。', en: 'Turn meeting discussions into minutes, decisions and follow-up actions.' },
+    description: { zh: '提炼纪要、跟进行动', en: 'Minutes & actions' },
   },
   {
     zh: '项目协作', en: 'Projects',
-    description: { zh: '共用资料与会话，衔接审阅、交接和成果版本。', en: 'Share files and conversations; connect reviews, handoffs and deliverable versions.' },
+    description: { zh: '共享资料、协同交付', en: 'Share and deliver' },
   },
   {
     zh: '研究支持', en: 'Research',
-    description: { zh: '整理公告研报与行业资料，形成有依据的研究。', en: 'Develop sourced research from announcements, reports and industry materials.' },
+    description: { zh: '整理资料、支撑研究', en: 'Sourced research' },
   },
 ];
 ---
@@ -175,5 +175,8 @@ const domains = [
     .matrix-domains { gap: 20px 22px; margin-top: 24px; text-align: left; }
     :global(html[lang^="en"]) .matrix-copy { margin-top: -52px; }
     :global(html[lang^="en"]) .matrix-domains { gap: 20px 22px; }
+  }
+  @media (max-width: 380px) {
+    .matrix-copy { margin-left: 0; }
   }
 </style>
