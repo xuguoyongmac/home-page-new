@@ -1,5 +1,6 @@
 ---
 import Brand from '../Brand.astro';
+import Icon from '../Icon.astro';
 import { industries } from '../../data/industries';
 import { capabilities } from '../../features/product';
 import type { Locale } from '../../data/types';
@@ -31,11 +32,18 @@ const contactCodes = [
       <a href={pathFor(locale)}><Brand locale={locale}/></a>
       <p>{zh ? 'TeGo 数字员工协作平台' : 'TeGo digital workforce collaboration platform.'}</p>
       <div class="footer-contact-codes">
-        {contactCodes.map(code => (
+        {contactCodes.map((code, index) => (
           <figure class="footer-contact-code">
-            <div class="footer-qr-image">
+            <button
+              type="button"
+              class="footer-qr-image"
+              aria-label={zh ? `放大预览：${code.label}` : `Enlarge: ${code.label}`}
+              aria-haspopup="dialog"
+              aria-controls={`footer-qr-preview-${index}`}
+              data-qr-preview={`footer-qr-preview-${index}`}
+            >
               <img src={code.src} alt={code.alt} width={code.size} height={code.size} loading="lazy" decoding="async" />
-            </div>
+            </button>
             <figcaption>{code.label}</figcaption>
           </figure>
         ))}
@@ -47,7 +55,7 @@ const contactCodes = [
     </div>
     <div>
       <h2>{zh ? '解决方案' : 'Solutions'}</h2>
-      {industries[locale].filter(industry => industry.slug !== 'general').map(industry => <a href={pathFor(locale,`solutions/${industry.slug}`)}>{industry.name}</a>)}
+      {industries[locale].filter(industry => industry.slug !== 'general' && industry.slug !== 'internet').map(industry => <a href={pathFor(locale,`solutions/${industry.slug}`)}>{industry.name}</a>)}
       <a href={pathFor(locale, 'solutions/appliance')}>{zh ? '一体机解决方案' : 'AI appliance solution'}</a>
     </div>
     <div>
@@ -58,8 +66,16 @@ const contactCodes = [
     </div>
     <div class="footer-contact">
       <h2>{zh ? '联系我们' : 'Contact us'}</h2>
-      <address class="footer-contact-entry">{zh ? '地址：深圳市福田区福田中心区深南路4009号华融大厦' : 'Address: Huarong Building, No. 4009 Shennan Road, Futian Central Area, Futian District, Shenzhen'}</address>
-      <a class="footer-contact-entry footer-contact-email" href={`mailto:${site.email}`}><span>{zh ? '邮箱：' : 'Email: '}</span><span class="footer-email-value">{site.email}</span></a>
+      <div class="footer-contact-details" style={{ '--contact-label-width': zh ? '3em' : '4.5em' }}>
+        <address class="footer-contact-entry footer-contact-field">
+          <span class="footer-contact-label">{zh ? '地址：' : 'Address:'}</span>
+          <span class="footer-contact-value">{zh ? '深圳市福田区福田中心区深南路4009号华融大厦' : 'Huarong Building, No. 4009 Shennan Road, Futian Central Area, Futian District, Shenzhen'}</span>
+        </address>
+        <a class="footer-contact-entry footer-contact-field footer-contact-email" href={`mailto:${site.email}`}>
+          <span class="footer-contact-label">{zh ? '邮箱：' : 'Email:'}</span>
+          <span class="footer-contact-value">{site.email}</span>
+        </a>
+      </div>
       <a class="footer-contact-entry" href={pathFor(locale, 'about')}>{zh ? '关于我们' : 'About us'}</a>
     </div>
   </div>
@@ -69,11 +85,44 @@ const contactCodes = [
   </div>
 </footer>
 
+{contactCodes.map((code, index) => (
+  <dialog class="footer-qr-preview" id={`footer-qr-preview-${index}`} aria-labelledby={`footer-qr-title-${index}`}>
+    <div class="footer-qr-preview-header">
+      <h2 id={`footer-qr-title-${index}`}>{code.label}</h2>
+      <button type="button" class="footer-qr-close" aria-label={zh ? '关闭预览' : 'Close preview'} data-qr-close autofocus>
+        <Icon name="close" size={22}/>
+      </button>
+    </div>
+    <img src={code.src} alt={code.alt} width={code.size} height={code.size} loading="lazy" decoding="async" />
+  </dialog>
+))}
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-qr-preview]').forEach(trigger => {
+    const dialog = document.getElementById(trigger.dataset.qrPreview || '');
+    if (!(dialog instanceof HTMLDialogElement)) return;
+
+    trigger.addEventListener('click', () => dialog.showModal());
+    dialog.querySelector('[data-qr-close]')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) {
+        dialog.close();
+      }
+    });
+    dialog.addEventListener('close', () => trigger.focus({ preventScroll: true }));
+  });
+</script>
+
 <style>
   .site-footer .footer-grid {
-    grid-template-columns: minmax(220px, 1.35fr) minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, .9fr) minmax(190px, 1.15fr);
+    grid-template-columns: minmax(300px, 1.35fr) minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, .9fr) minmax(220px, 1.15fr);
     gap: 28px;
   }
+
+  .site-footer .footer-grid > div:not(.footer-brand) { text-align: center; }
+  .site-footer .footer-grid > div:not(.footer-brand) > a { justify-content: center; }
 
   .site-footer .footer-contact-entry {
     display: block;
@@ -85,8 +134,18 @@ const contactCodes = [
     line-height: 1.85;
   }
 
-  .footer-contact-email { white-space: normal; }
-  .footer-email-value { display: inline-block; white-space: nowrap; }
+  .footer-contact-details { width: min(100%, 260px); margin-inline: auto; }
+
+  .site-footer .footer-contact-field {
+    display: grid;
+    grid-template-columns: var(--contact-label-width) minmax(0, 1fr);
+    column-gap: 4px;
+    align-items: start;
+    text-align: left;
+  }
+
+  .footer-contact-label { white-space: nowrap; }
+  .footer-contact-value { min-width: 0; overflow-wrap: anywhere; }
 
   .site-footer .footer-contact-email:is(:hover, :focus-visible) { color: var(--accent); }
 
@@ -110,10 +169,31 @@ const contactCodes = [
   }
 
   .footer-qr-image {
+    display: block;
+    width: 100%;
     padding: 4px;
     background: #fff;
+    border: 0;
     border-radius: 6px;
     aspect-ratio: 1;
+    cursor: zoom-in;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .footer-qr-image:focus-visible {
+    outline: 2px solid #8acfff;
+    outline-offset: 4px;
+    transform: scale(1.08);
+    box-shadow: 0 0 24px #329aff66;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .footer-contact-code:hover .footer-qr-image {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 2px #8acfff, 0 0 24px #329aff66;
+    }
+
+    .footer-contact-code:hover figcaption { color: #e3f4ff; }
   }
 
   .footer-qr-image img {
@@ -128,6 +208,73 @@ const contactCodes = [
     color: var(--muted);
     font-size: 12px;
     line-height: 1.6;
+    transition: color .2s ease;
+  }
+
+  .footer-contact-code:focus-within figcaption { color: #e3f4ff; }
+
+  :global(html:has(.footer-qr-preview[open])) {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+  }
+
+  .footer-qr-preview {
+    width: min(440px, calc(100vw - 32px));
+    max-height: calc(100dvh - 32px);
+    margin: auto;
+    padding: 24px;
+    color: #eff8ff;
+    background: #0c1928;
+    border: 1px solid #9acbff38;
+    border-radius: 18px;
+    box-shadow: 0 24px 90px #0009;
+  }
+
+  .footer-qr-preview[open] { display: grid; gap: 20px; }
+
+  .footer-qr-preview::backdrop {
+    background: #010813d9;
+    backdrop-filter: blur(6px);
+  }
+
+  .footer-qr-preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .footer-qr-preview h2 { font-size: 20px; font-weight: 500; line-height: 1.5; }
+
+  .footer-qr-close {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    color: #bcd2e8;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+  }
+
+  .footer-qr-close:is(:hover, :focus-visible) { color: #fff; background: #8acfff1a; }
+  .footer-qr-close:focus-visible { outline: 2px solid #8acfff; outline-offset: 2px; }
+
+  .footer-qr-preview > img {
+    display: block;
+    width: min(100%, calc(100dvh - 180px));
+    height: auto;
+    aspect-ratio: 1;
+    margin-inline: auto;
+    padding: 12px;
+    background: #fff;
+    border-radius: 10px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-qr-image { transform: none !important; }
   }
 
   @media (max-width: 1100px) {
