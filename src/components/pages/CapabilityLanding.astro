@@ -1,5 +1,4 @@
 ---
-import Icon from '../Icon.astro';
 import CapabilityEvidence from './CapabilityEvidence.astro';
 import type { Locale } from '../../data/types';
 import type { CapabilityModule } from '../../features/product/types';
@@ -59,21 +58,22 @@ const breadcrumb = {
   </section>
 
   <section class="capability-section capability-features" aria-labelledby="capability-features-title">
-    <div class="container">
+    <div class="container capability-content-layout">
       <h2 class="capability-section-title" id="capability-features-title">{zh ? '核心能力' : 'Core capabilities'}</h2>
-      <div class="capability-feature-grid">{copy.features.map(feature => <article class="capability-feature-card">
-        <Icon name={feature.icon} size={30}/><h3>{feature.title}</h3><p>{feature.body}</p>
+      <div class="capability-feature-list">{copy.features.map(feature => <article class="capability-feature-row">
+        <h3>{feature.title}</h3><p>{feature.body}</p>
       </article>)}</div>
     </div>
   </section>
 
   <section class="capability-section capability-scenarios" id="capability-scenarios" aria-labelledby="capability-scenarios-title">
-    <div class="container">
+    <div class="container capability-content-layout">
       <h2 class="capability-section-title" id="capability-scenarios-title">{zh ? '业务场景' : 'Business scenarios'}</h2>
-      <div class="capability-scenario-grid">{copy.scenarios.map((scenario, index) => <article class="capability-scenario-card">
-        <div class="capability-scenario-heading"><span class="capability-scenario-icon"><Icon name={index === 0 ? copy.features[0].icon : copy.features[1].icon} size={25}/></span><h3>{scenario.title}</h3></div>
-        <p>{scenario.body}</p>
-        <ol class="capability-scenario-flow" aria-label={zh ? '工作流程' : 'Workflow'}>{scenario.flow.map((step, stepIndex) => <li><span>{step}</span>{stepIndex < scenario.flow.length - 1 && <Icon name="arrow" size={16}/>}</li>)}</ol>
+      <div class="capability-scenario-list">{copy.scenarios.map(scenario => <article class="capability-scenario-row">
+        <h3>{scenario.title}</h3>
+        <div class="capability-scenario-detail"><p>{scenario.body}</p>
+          <ol class="capability-scenario-flow" aria-label={zh ? '工作流程' : 'Workflow'}>{scenario.flow.map(step => <li>{step}</li>)}</ol>
+        </div>
       </article>)}</div>
     </div>
   </section>
@@ -81,14 +81,14 @@ const breadcrumb = {
   <section class="capability-section capability-benefits" aria-labelledby="capability-benefits-title">
     <div class="container capability-benefits-layout">
       <h2 class="capability-section-title" id="capability-benefits-title">{zh ? '让能力成为团队的日常' : 'Make capability part of everyday work'}</h2>
-      <div class="capability-benefit-grid">{copy.benefits.map(benefit => <article><Icon name="check" size={21}/><div><h3>{benefit.title}</h3><p>{benefit.body}</p></div></article>)}</div>
+      <div class="capability-benefit-grid">{copy.benefits.map(benefit => <article><h3>{benefit.title}</h3><p>{benefit.body}</p></article>)}</div>
     </div>
   </section>
 
   <section class="capability-section capability-related" aria-labelledby="capability-related-title">
-    <div class="container">
+    <div class="container capability-content-layout">
       <h2 class="capability-section-title" id="capability-related-title">{zh ? '连接更多产品能力' : 'Connect more capabilities'}</h2>
-      <div class="capability-related-grid">{related.map(item => <a class="capability-related-link" href={pathFor(locale, `product/${item.slug}`)}><span class="capability-related-icon"><Icon name={item.icon} size={27}/></span><h3>{item.copy[locale].name}</h3></a>)}</div>
+      <div class="capability-related-links">{related.map(item => <a class="capability-related-link" href={pathFor(locale, `product/${item.slug}`)}><h3>{item.copy[locale].name}</h3></a>)}</div>
     </div>
   </section>
 

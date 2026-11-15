@@ -16,7 +16,7 @@
 .capability-breadcrumb a { transition: color .2s; }
 .capability-breadcrumb a:hover, .capability-breadcrumb [aria-current] { color: #e3edff; }
 .capability-breadcrumb > span:not([aria-current]) { color: #43536e; }
-.capability-hero-grid { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 64px; min-height: 546px; }
+.capability-hero-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: 64px; min-height: 546px; }
 .capability-hero-copy { position: relative; z-index: 1; padding-block: 40px; }
 .capability-hero-copy h1 { font-size: clamp(34px, 3.2vw, 46px); font-weight: 620; letter-spacing: -.045em; line-height: 1.4; text-wrap: balance; }
 .capability-hero-copy h1 > span { display: block; }
@@ -37,40 +37,39 @@
 .capability-concept h2 { font-size: clamp(27px, 2.5vw, 35px); font-weight: 550; letter-spacing: -.025em; line-height: 1.5; }
 .capability-concept p { margin-top: 22px; font-size: 16px; color: #a7b7cb; line-height: 1.95; }
 .capability-method { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.capability-method-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; list-style: none; padding: 0; margin: 0; }
-.capability-method-steps li { padding: 21px 22px; border-radius: 9px; border: 1px solid #344b6366; color: #a6bed7; font-size: 15px; line-height: 1.8; background: #12243a66; }
+.capability-method-steps { display: flex; flex-wrap: wrap; column-gap: 32px; row-gap: 18px; align-content: center; list-style: none; padding: 0; margin: 0; }
+.capability-method-steps li { color: #b8cee5; font-size: 18px; font-weight: 500; line-height: 1.8; }
 .capability-section { padding-block: 88px; }
 .capability-section-title { font-size: clamp(28px, 2.5vw, 36px); font-weight: 570; line-height: 1.5; letter-spacing: -.035em; margin-bottom: 38px; }
-.capability-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.capability-feature-card { padding: 35px 32px 37px; background: linear-gradient(145deg, #10203b90, #0a1429); border: 1px solid #203452; border-radius: 12px; }
-.capability-feature-card > svg { color: #80b9f9; margin-bottom: 31px; }
-.capability-feature-card h3 { font-size: 22px; line-height: 1.5; font-weight: 550; }
-.capability-feature-card p { font-size: 15px; line-height: 1.9; color: var(--cap-muted); margin-top: 17px; }
+.capability-content-layout { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.5fr); column-gap: 100px; align-items: start; }
+.capability-content-layout > .capability-section-title { max-width: 310px; margin-bottom: 0; }
+.capability-feature-list, .capability-scenario-list { min-width: 0; }
+.capability-feature-row { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 36px; padding-block: 28px; }
+.capability-feature-row:first-child { padding-top: 3px; }
+.capability-feature-row:last-child { padding-bottom: 0; }
+.capability-feature-row + .capability-feature-row { border-top: 1px solid #adc8e51a; }
+.capability-feature-row h3 { font-size: 21px; line-height: 1.6; font-weight: 550; }
+.capability-feature-row p { font-size: var(--text-body, 16px); line-height: 1.9; color: var(--cap-muted); margin: 0; }
 .capability-scenarios { padding-top: 18px; }
-.capability-scenario-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-.capability-scenario-card { display: flex; flex-direction: column; padding: 35px; border-radius: 12px; background: #0d192e; }
-.capability-scenario-heading { display: flex; gap: 17px; align-items: center; }
-.capability-scenario-icon { color: #89bfff; }
-.capability-scenario-card h3 { font-size: 23px; font-weight: 550; line-height: 1.5; }
-.capability-scenario-card > p { color: #adbed8; margin: 24px 0 32px; line-height: 1.95; font-size: 16px; }
-.capability-scenario-flow { list-style: none; margin: auto 0 0; padding: 21px 0 0; display: flex; gap: 12px; }
-.capability-scenario-flow li { display: flex; flex: 1; align-items: center; justify-content: space-between; gap: 9px; color: #bcd6f7; font-size: 13px; line-height: 1.7; }
-.capability-scenario-flow li:last-child { flex: .85; }
-.capability-scenario-flow svg { color: #557ea9; flex-shrink: 0; }
+.capability-scenario-row { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); column-gap: 36px; padding-block: 34px; }
+.capability-scenario-row:first-child { padding-top: 3px; }
+.capability-scenario-row:last-child { padding-bottom: 0; }
+.capability-scenario-row + .capability-scenario-row { border-top: 1px solid #adc8e51a; }
+.capability-scenario-row h3 { font-size: 21px; font-weight: 550; line-height: 1.6; }
+.capability-scenario-detail > p { color: #adbed8; margin: 0; line-height: 1.95; font-size: var(--text-body, 16px); }
+.capability-scenario-flow { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.capability-scenario-flow li { color: #bcd6f7; font-size: var(--text-control, 15px); line-height: 1.8; }
 .capability-benefits { background: transparent; }
 .capability-benefits-layout { display: grid; grid-template-columns: .8fr 1.3fr; gap: 100px; }
 .capability-benefits h2 { max-width: 330px; margin-bottom: 0; }
 .capability-benefit-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 38px; row-gap: 39px; }
-.capability-benefit-grid article { display: flex; align-items: flex-start; gap: 14px; }
-.capability-benefit-grid article > svg { color: #7abfff; flex-shrink: 0; margin-top: 5px; }
+.capability-benefit-grid article { min-width: 0; }
 .capability-benefit-grid h3 { font-size: 20px; line-height: 1.5; font-weight: 550; }
 .capability-benefit-grid p { margin-top: 12px; color: #a7b8d0; line-height: 1.9; font-size: 15px; }
 .capability-related { padding-bottom: 70px; }
-.capability-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.capability-related-grid:has(> :nth-child(2):last-child) { grid-template-columns: repeat(2, 1fr); }
-.capability-related-link { display: flex; align-items: center; gap: 19px; padding: 30px 25px; border: 1px solid #223550; border-radius: 10px; background: #0a1425; transition: transform .2s, border-color .2s, box-shadow .2s; }
-.capability-related-link:hover { transform: translateY(-3px); border-color: #5581b6; box-shadow: 0 10px 35px #3078ba16; }
-.capability-related-icon { color: #82b9fa; flex-shrink: 0; }
+.capability-related-links { display: flex; flex-wrap: wrap; gap: 22px 46px; align-items: baseline; }
+.capability-related-link { display: inline-block; padding-block: 7px; color: #c8d9f0; transition: color .2s; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 7px; }
+.capability-related-link:hover, .capability-related-link:focus-visible { color: #88c3ff; text-decoration-color: currentColor; }
 .capability-related-link h3 { font-size: 20px; font-weight: 550; line-height: 1.5; }
 .capability-closing { padding: 48px 0 100px; background: radial-gradient(ellipse at 50% 100%, #14305e44, transparent 65%); }
 .capability-closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
@@ -84,10 +83,9 @@
   .capability-hero-copy h1 { font-size: 38px; }
   .capability-hero-copy > p { font-size: 16px; }
   .capability-actions { gap: 19px; }
-  .capability-pain-grid, .capability-benefits-layout { gap: 50px; }
-  .capability-feature-card { padding: 29px 24px; }
-  .capability-scenario-card { padding: 28px; }
-  .capability-related-link { padding: 25px 19px; gap: 13px; }
+  .capability-pain-grid, .capability-benefits-layout, .capability-content-layout { gap: 50px; }
+  .capability-content-layout { grid-template-columns: minmax(180px, .7fr) minmax(0, 1.5fr); }
+  .capability-feature-row, .capability-scenario-row { grid-template-columns: 1fr; gap: 15px; }
   .capability-related-link h3 { font-size: 18px; }
   .capability-closing-inner { flex-direction: column; align-items: flex-start; gap: 30px; }
 }
@@ -114,27 +112,21 @@
   .capability-concept p { font-size: 15px; margin-top: 20px; max-width: 100%; }
   .capability-section { padding-block: 55px; }
   .capability-section-title { font-size: 27px; margin-bottom: 27px; }
-  .capability-feature-grid, .capability-scenario-grid { grid-template-columns: 1fr; gap: 16px; }
-  .capability-feature-card { padding: 29px 27px; }
-  .capability-feature-card > svg { margin-bottom: 21px; width: 27px; height: 27px; }
-  .capability-feature-card h3, .capability-scenario-card h3 { font-size: 21px; }
-  .capability-feature-card p { margin-top: 13px; }
+  .capability-content-layout { grid-template-columns: 1fr; gap: 30px; }
+  .capability-content-layout > .capability-section-title { max-width: 100%; }
+  .capability-feature-row, .capability-scenario-row { padding-block: 25px; gap: 13px; }
+  .capability-feature-row h3, .capability-scenario-row h3 { font-size: 21px; }
+  .capability-feature-row p { font-size: 16px; }
   .capability-scenarios { padding-top: 8px; }
-  .capability-scenario-card { padding: 28px 25px; }
-  .capability-scenario-heading { gap: 13px; }
-  .capability-scenario-card > p { font-size: 15px; margin-block: 20px; }
-  .capability-scenario-flow { padding-top: 13px; gap: 10px; }
-  .capability-scenario-flow li { font-size: 12px; gap: 5px; }
-  .capability-scenario-flow svg { width: 13px; }
+  .capability-scenario-detail > p { font-size: 16px; }
+  .capability-scenario-flow { margin-top: 18px; gap: 8px 22px; }
+  .capability-scenario-flow li { font-size: 15px; }
   .capability-benefits-layout { grid-template-columns: 1fr; gap: 31px; }
   .capability-benefits h2 { max-width: 100%; }
   .capability-benefit-grid { gap: 27px 24px; }
-  .capability-benefit-grid article { gap: 10px; }
-  .capability-benefit-grid article > svg { width: 18px; margin-top: 3px; }
   .capability-benefit-grid h3 { font-size: 18px; }
   .capability-benefit-grid p { font-size: 14px; margin-top: 9px; }
-  .capability-related-grid, .capability-related-grid:has(> :nth-child(2):last-child) { grid-template-columns: 1fr; gap: 13px; }
-  .capability-related-link { padding: 25px; }
+  .capability-related-links { gap: 13px 30px; }
   .capability-related-link h3 { font-size: 19px; }
   .capability-closing { padding: 4px 0 65px; }
   .capability-closing h2 { font-size: 28px; }
@@ -151,4 +143,4 @@
 
 
 @media (max-width: 1100px) { .capability-method { gap: 35px; } }
-@media (max-width: 760px) { .capability-method { grid-template-columns: 1fr; gap: 27px; }.capability-method-steps { gap: 12px; }.capability-method-steps li { padding: 17px; font-size: 14px; } }
+@media (max-width: 760px) { .capability-method { grid-template-columns: 1fr; gap: 27px; }.capability-method-steps { gap: 12px 27px; }.capability-method-steps li { font-size: 17px; } }
