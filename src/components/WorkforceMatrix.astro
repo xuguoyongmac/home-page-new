@@ -70,7 +70,7 @@ const domains = [
     position: relative;
     overflow: clip;
     background: #060b12;
-    padding: 20px 0 28px;
+    padding: var(--section-space) 0;
   }
   .matrix-layout {
     position: relative;
@@ -148,7 +148,6 @@ const domains = [
   :global(html[lang^="en"]) .matrix-layout { min-height: 760px; }
   :global(html[lang^="en"]) .matrix-domains { gap: 16px 22px; }
   @media (max-width: 1000px) {
-    .workforce-matrix { padding-block: 16px 24px; }
     .matrix-layout { width: calc(100% - 32px); min-height: 0; }
     .matrix-art { width: 80%; }
     .matrix-copy { position: relative; right: auto; top: auto; width: min(70%, 600px); margin: -110px 0 0 auto; transform: none; }
@@ -158,7 +157,6 @@ const domains = [
     :global(html[lang^="en"]) .matrix-layout { min-height: 0; }
   }
   @media (max-width: 700px) {
-    .workforce-matrix { padding-block: 8px 32px; }
     .matrix-layout { width: 100%; }
     .matrix-art { width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; scrollbar-color: #37536b transparent; }
     .matrix-art img { width: 840px; max-width: none; margin-left: -28px; }

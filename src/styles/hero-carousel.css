@@ -1,6 +1,6 @@
 /* The first slide keeps the established hero composition. All slides reserve the
    same space, so rotating never moves the following section. */
-.home-value-edition .hero-carousel{position:relative}
+.home-value-edition .hero-carousel{position:relative;padding-bottom:var(--section-hero-tail)}
 .hero-slides{display:grid;isolation:isolate;overflow:clip;touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none}
 .hero-carousel[data-carousel-dragging='true'] .hero-slides{cursor:grabbing}
 .hero-slide{grid-area:1/1;min-width:0;visibility:hidden;pointer-events:none}
@@ -39,7 +39,6 @@
  .hero-carousel .sl-hero-description{max-width:650px}
  .banner-visual{width:100%;max-width:820px;margin:36px auto 0}
  .hero-carousel-controls{bottom:20px}
- .home-value-edition .hero-carousel{padding-bottom:96px}
 }
 @media(max-width:700px){
  .hero-slide .hero-center{gap:0}

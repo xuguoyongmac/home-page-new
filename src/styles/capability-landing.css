@@ -27,19 +27,19 @@
 .capability-button:hover { background: #427bce; transform: translateY(-2px); }
 .capability-inline-link { display: inline-flex; align-items: center; gap: 11px; font-size: 14px; color: #d7e4f7; transition: color .2s; }
 .capability-inline-link:hover { color: #83c6ff; }
-.capability-pain { padding-block: 55px; }
+.capability-pain { padding-block: var(--section-space); }
 .capability-pain-grid { display: grid; grid-template-columns: .82fr 1.3fr; align-items: start; gap: 100px; }
 .capability-pain h2 { max-width: 350px; font-size: clamp(25px, 2.15vw, 32px); line-height: 1.6; font-weight: 550; letter-spacing: -.03em; }
 .capability-pain ul { display: grid; gap: 22px; }
 .capability-pain li { display: flex; align-items: flex-start; gap: 18px; }
 .capability-pain p { color: #b4c3da; font-size: 16px; line-height: 1.85; }
-.capability-concept { padding-block: 76px; color: #e1eaf5; scroll-margin-top: 85px; }
+.capability-concept { padding-block: var(--section-space); color: #e1eaf5; scroll-margin-top: 85px; }
 .capability-concept h2 { font-size: clamp(27px, 2.5vw, 35px); font-weight: 550; letter-spacing: -.025em; line-height: 1.5; }
 .capability-concept p { margin-top: 22px; font-size: 16px; color: #a7b7cb; line-height: 1.95; }
 .capability-method { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .capability-method-steps { display: flex; flex-wrap: wrap; column-gap: 32px; row-gap: 18px; align-content: center; list-style: none; padding: 0; margin: 0; }
 .capability-method-steps li { color: #b8cee5; font-size: 18px; font-weight: 500; line-height: 1.8; }
-.capability-section { padding-block: 88px; }
+.capability-section { padding-block: var(--section-space); }
 .capability-section-title { font-size: clamp(28px, 2.5vw, 36px); font-weight: 570; line-height: 1.5; letter-spacing: -.035em; margin-bottom: 38px; }
 .capability-content-layout { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.5fr); column-gap: 100px; align-items: start; }
 .capability-content-layout > .capability-section-title { max-width: 310px; margin-bottom: 0; }
@@ -50,7 +50,6 @@
 .capability-feature-row + .capability-feature-row { border-top: 1px solid #adc8e51a; }
 .capability-feature-row h3 { font-size: 21px; line-height: 1.6; font-weight: 550; }
 .capability-feature-row p { font-size: var(--text-body, 16px); line-height: 1.9; color: var(--cap-muted); margin: 0; }
-.capability-scenarios { padding-top: 18px; }
 .capability-scenario-row { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); column-gap: 36px; padding-block: 34px; }
 .capability-scenario-row:first-child { padding-top: 3px; }
 .capability-scenario-row:last-child { padding-bottom: 0; }
@@ -66,12 +65,11 @@
 .capability-benefit-grid article { min-width: 0; }
 .capability-benefit-grid h3 { font-size: 20px; line-height: 1.5; font-weight: 550; }
 .capability-benefit-grid p { margin-top: 12px; color: #a7b8d0; line-height: 1.9; font-size: 15px; }
-.capability-related { padding-bottom: 70px; }
 .capability-related-links { display: flex; flex-wrap: wrap; gap: 22px 46px; align-items: baseline; }
 .capability-related-link { display: inline-block; padding-block: 7px; color: #c8d9f0; transition: color .2s; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 7px; }
 .capability-related-link:hover, .capability-related-link:focus-visible { color: #88c3ff; text-decoration-color: currentColor; }
 .capability-related-link h3 { font-size: 20px; font-weight: 550; line-height: 1.5; }
-.capability-closing { padding: 48px 0 100px; background: radial-gradient(ellipse at 50% 100%, #14305e44, transparent 65%); }
+.capability-closing { padding: var(--section-space) 0; background: radial-gradient(ellipse at 50% 100%, #14305e44, transparent 65%); }
 .capability-closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
 .capability-closing h2 { font-size: clamp(28px, 2.5vw, 36px); font-weight: 550; line-height: 1.5; max-width: 730px; letter-spacing: -.035em; }
 .capability-closing .capability-actions { margin-top: 0; flex-shrink: 0; }
@@ -101,23 +99,19 @@
   .capability-actions { margin-top: 27px; gap: 22px; }
   .capability-button { min-height: 47px; padding-inline: 19px; font-size: 14px; gap: 15px; }
   .capability-inline-link { font-size: 13px; gap: 7px; }
-  .capability-pain { padding-block: 45px; }
   .capability-pain-grid { grid-template-columns: 1fr; gap: 26px; }
   .capability-pain h2 { max-width: 100%; font-size: 25px; line-height: 1.55; }
   .capability-pain ul { gap: 19px; }
   .capability-pain li { gap: 12px; }
   .capability-pain p { font-size: 15px; }
-  .capability-concept { padding-block: 53px 35px; }
   .capability-concept h2 { font-size: 28px; max-width: 100%; }
   .capability-concept p { font-size: 15px; margin-top: 20px; max-width: 100%; }
-  .capability-section { padding-block: 55px; }
   .capability-section-title { font-size: 27px; margin-bottom: 27px; }
   .capability-content-layout { grid-template-columns: 1fr; gap: 30px; }
   .capability-content-layout > .capability-section-title { max-width: 100%; }
   .capability-feature-row, .capability-scenario-row { padding-block: 25px; gap: 13px; }
   .capability-feature-row h3, .capability-scenario-row h3 { font-size: 21px; }
   .capability-feature-row p { font-size: 16px; }
-  .capability-scenarios { padding-top: 8px; }
   .capability-scenario-detail > p { font-size: 16px; }
   .capability-scenario-flow { margin-top: 18px; gap: 8px 22px; }
   .capability-scenario-flow li { font-size: 15px; }
@@ -128,7 +122,6 @@
   .capability-benefit-grid p { font-size: 14px; margin-top: 9px; }
   .capability-related-links { gap: 13px 30px; }
   .capability-related-link h3 { font-size: 19px; }
-  .capability-closing { padding: 4px 0 65px; }
   .capability-closing h2 { font-size: 28px; }
 }
 @media (max-width: 370px) {
