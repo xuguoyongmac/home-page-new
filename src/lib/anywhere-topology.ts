@@ -1,5 +1,5 @@
 import type { Locale } from '../data/types';
-import workspaceInputs from '../assets/anywhere/workspace-input-scene_V1.25.svg?raw';
+import workspaceInputs from '../assets/anywhere/workspace-input-scene_V1.27.svg?raw';
 import workspacePlatform from '../assets/anywhere/workspace-platform_V1.25.svg?raw';
 import workspaceTransfer from '../assets/anywhere/workspace-transfer_V1.18.svg?raw';
 import workspaceLabels from '../assets/anywhere/workspace-labels_V1.19.svg?raw';
