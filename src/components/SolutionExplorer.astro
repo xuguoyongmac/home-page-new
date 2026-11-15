@@ -10,6 +10,13 @@ const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
 const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : industries[locale];
 const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
+const benefitIcons: Record<string, string[]> = {
+  banking: ['file', 'shield', 'chart'],
+  insurance: ['shield', 'search', 'message'],
+  securities: ['book', 'shield', 'chart'],
+  government: ['target', 'file', 'network'],
+  'state-owned': ['chart', 'file', 'clock'],
+};
 ---
 <div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer style={`--industry-tab-count: ${visibleIndustries.length}`}>
   <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
@@ -18,34 +25,35 @@ const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
   {visibleIndustries.map((industry) => (
     <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
       {home ? <>
-        <div class="industry-backdrop" aria-hidden="true">
-          <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
-        </div>
         <div class="industry-intro">
+          <div class="industry-backdrop" aria-hidden="true">
+            <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
+          </div>
           <h3>{homeIndustries[locale][industry.slug].title}</h3>
         </div>
         <div class="industry-panel-body">
-          <div class="solution-copy">
-            <section class="industry-copy-block" aria-labelledby={`pain-title-${industry.slug}`}>
-              <h4 id={`pain-title-${industry.slug}`}>{zh ? '业务痛点' : 'Business challenges'}</h4>
-              <p class="industry-pain">{homeIndustries[locale][industry.slug].pain}</p>
-            </section>
-            <section class="industry-copy-block" aria-labelledby={`approach-title-${industry.slug}`}>
-              <h4 id={`approach-title-${industry.slug}`}>{zh ? '解决方案' : 'Our solution'}</h4>
-              <p class="industry-approach">{homeIndustries[locale][industry.slug].value}</p>
-              <ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>
-                {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
-              </ul>
-              <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
-            </section>
-          </div>
+          <section class="industry-copy-block industry-challenge" aria-labelledby={`pain-title-${industry.slug}`}>
+            <h4 id={`pain-title-${industry.slug}`}><Icon name="search" size={20}/>{zh ? '业务痛点' : 'Business challenges'}</h4>
+            <p class="industry-pain">{homeIndustries[locale][industry.slug].pain}</p>
+          </section>
+          <section class="industry-copy-block industry-solution" aria-labelledby={`approach-title-${industry.slug}`}>
+            <h4 id={`approach-title-${industry.slug}`}><Icon name="network" size={20}/>{zh ? '解决方案' : 'Our solution'}</h4>
+            <p class="industry-approach">{homeIndustries[locale][industry.slug].value}</p>
+            <ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>
+              {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
+            </ul>
+            <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
+          </section>
           <section class="industry-benefits" aria-labelledby={`benefits-title-${industry.slug}`}>
             <h4 id={`benefits-title-${industry.slug}`}>{zh ? '业务价值' : 'Business value'}</h4>
             <ul>
-              {homeIndustries[locale][industry.slug].benefits.map(benefit => (
+              {homeIndustries[locale][industry.slug].benefits.map((benefit, index) => (
                 <li>
-                  <span class="industry-benefit-check"><Icon name="check" size={18}/></span>
-                  <div><h5>{benefit.title}</h5><p>{benefit.description}</p></div>
+                  <div class="industry-benefit-heading">
+                    <span class="industry-benefit-icon"><Icon name={benefitIcons[industry.slug]?.[index] || 'check'} size={22}/></span>
+                    <h5>{benefit.title}</h5>
+                  </div>
+                  <p>{benefit.description}</p>
                 </li>
               ))}
             </ul>
