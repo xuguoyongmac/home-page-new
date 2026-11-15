@@ -147,6 +147,13 @@ const domains = [
   }
   :global(html[lang^="en"]) .matrix-layout { min-height: 760px; }
   :global(html[lang^="en"]) .matrix-domains { gap: 16px 22px; }
+  @media (min-width: 1200px) {
+    .matrix-domains {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: calc(150% + 12px);
+      margin-left: calc(-50% - 12px);
+    }
+  }
   @media (max-width: 1000px) {
     .matrix-layout { width: calc(100% - 32px); min-height: 0; }
     .matrix-art { width: 80%; }
