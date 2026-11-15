@@ -25,11 +25,6 @@ const breadcrumb = {
 <div class="capability-landing" data-capability={capability.slug}>
   <section class="capability-hero" aria-labelledby="capability-title">
     <div class="container capability-hero-inner">
-      <nav class="capability-breadcrumb" aria-label={zh ? '面包屑' : 'Breadcrumb'}>
-        <a href={pathFor(locale)}>{zh ? '首页' : 'Home'}</a><span aria-hidden="true">/</span>
-        <a href={pathFor(locale, 'product')}>{zh ? '产品能力' : 'Product'}</a><span aria-hidden="true">/</span>
-        <span aria-current="page">{name}</span>
-      </nav>
       <div class="capability-hero-grid">
         <div class="capability-hero-copy">
           <h1 id="capability-title">{copy.hero.lines.map((line, index) => <span class:list={{ 'capability-title-accent': index === copy.hero.lines.length - 1 }}>{line}</span>)}</h1>

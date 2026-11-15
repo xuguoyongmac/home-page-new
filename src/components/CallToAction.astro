@@ -5,6 +5,9 @@ const {locale = 'zh', home = false} = Astro.props as {locale:Locale;home?:boolea
 const zh = locale === 'zh';
 ---
 <section class:list={["sl-closing",{"brand-closing":home}]}>
+  {home && <div class="closing-backdrop" aria-hidden="true">
+    <img src="/images/closing/office-skyline_V1.0.webp" alt="" width="2172" height="724" sizes="100vw" loading="lazy" decoding="async"/>
+  </div>}
   <div class="container">
     {home && <p class="eyebrow">TeGo {zh ? '数字员工协作平台' : 'DIGITAL WORKFORCE COLLABORATION'}</p>}
     <h2 class:list={{ 'home-closing-title': home }}>
@@ -23,6 +26,43 @@ const zh = locale === 'zh';
 </section>
 
 <style>
+  .brand-closing > .closing-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .closing-backdrop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+  }
+
+  .closing-backdrop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, var(--page-canvas) 0%, #060b121f 22%, #060b1214 70%, var(--page-canvas) 100%),
+      radial-gradient(ellipse at 50% 42%, #060b127a 0%, #060b1240 46%, #060b1214 78%);
+  }
+
+  .brand-closing > .container {
+    position: relative;
+  }
+
+  @media (max-width: 600px) {
+    .closing-backdrop img { object-position: 82% center; }
+    .closing-backdrop::after {
+      background:
+        linear-gradient(180deg, var(--page-canvas), #060b1233 24%, #060b124d 78%, var(--page-canvas)),
+        linear-gradient(#060b124d, #060b124d);
+    }
+  }
+
   @media (min-width: 1200px) {
     .home-closing-title {
       white-space: nowrap;

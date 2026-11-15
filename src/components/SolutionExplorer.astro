@@ -30,6 +30,7 @@ const benefitIcons: Record<string, string[]> = {
             <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
           </div>
           <h3>{homeIndustries[locale][industry.slug].title}</h3>
+          <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
         </div>
         <div class="industry-panel-body">
           <section class="industry-copy-block industry-challenge" aria-labelledby={`pain-title-${industry.slug}`}>
@@ -42,7 +43,6 @@ const benefitIcons: Record<string, string[]> = {
             <ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>
               {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
             </ul>
-            <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
           </section>
           <section class="industry-benefits" aria-labelledby={`benefits-title-${industry.slug}`}>
             <h4 id={`benefits-title-${industry.slug}`}>{zh ? '业务价值' : 'Business value'}</h4>
