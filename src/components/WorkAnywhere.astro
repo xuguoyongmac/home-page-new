@@ -21,10 +21,11 @@ const zh = locale === 'zh';
  const flows = diagram?.querySelectorAll<SVGSVGElement>('.topology-links');
  const animatedImages = diagram?.querySelectorAll<HTMLImageElement>('[data-topology-gif]');
  if (diagram && (flows?.length || animatedImages?.length)) {
-  const sync = ({ running }: { running: boolean }) => {
+  const sync = ({ running, reduced }: { running: boolean; reduced: boolean }) => {
    const paused = !running;
    diagram.dataset.topologyMotion = paused ? 'paused' : 'running';
    flows?.forEach(flow => {
+    if (flow.classList.contains('workspace-input-scene')) flow.classList.toggle('input-motion-active', !reduced);
     if (paused || !flow.getClientRects().length) flow.pauseAnimations(); else flow.unpauseAnimations();
    });
    animatedImages?.forEach(image => {
