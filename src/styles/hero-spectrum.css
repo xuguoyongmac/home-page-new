@@ -5,19 +5,16 @@
 .hero-team-composition .team-employees>button:nth-child(1) .team-employee-icon{color:#ffcb91;background:#e9a0521c}
 .hero-team-composition .team-employees>button:nth-child(2) .team-employee-icon{color:#b9f0ff;background:#3cc3ff24}
 .hero-team-composition .team-employees>button:nth-child(3) .team-employee-icon{color:#a5f2d9;background:#52d4a91c}
-.hero-team-composition .team-employees>button[aria-selected='true']{border-color:#8ce2ff;box-shadow:inset 0 0 0 1px #b8f1ff45,0 0 0 1px #3bbfff59,0 0 12px #27b8ff70,0 0 24px #1699ec36;color:#fff}
-.hero-team-composition .team-employees>button[aria-selected='true'] strong{font-weight:650;text-shadow:0 0 9px #9adfff40}
-.hero-team-composition .analytics-metrics>div{--metric-color:#84dcff;background:linear-gradient(125deg,#194d72,#143951);border-color:#5bc7ff52}
-.hero-team-composition .analytics-metrics>div:nth-child(2){--metric-color:#91efd5;background:linear-gradient(125deg,#1b514d,#173a3e);border-color:#62dbbc52}
-.hero-team-composition .analytics-metrics>div:nth-child(3){--metric-color:#d0bcff;background:linear-gradient(125deg,#403762,#292c4b);border-color:#b39aff59}
-.hero-team-composition .analytics-metrics>div:nth-child(4){--metric-color:#ffd29b;background:linear-gradient(125deg,#574430,#393445);border-color:#f5bf7d59}
+.hero-team-composition .team-employees>button[aria-selected='true'] .team-employee-icon{color:#205777;background:#3c749b14}
+.hero-team-composition .team-employees>button[aria-selected='true'] strong{font-weight:650;text-shadow:none}
+.hero-team-composition .analytics-metrics>div{--metric-color:#84dcff;background:linear-gradient(125deg,#1d3345,#142332);border-color:var(--workspace-edge)}
+.hero-team-composition .analytics-metrics>div:nth-child(2){--metric-color:#91efd5;background:linear-gradient(125deg,#20373b,#15262e);border-color:var(--workspace-edge)}
+.hero-team-composition .analytics-metrics>div:nth-child(3){--metric-color:#d0bcff;background:linear-gradient(125deg,#2b2e43,#1a2234);border-color:var(--workspace-edge)}
+.hero-team-composition .analytics-metrics>div:nth-child(4){--metric-color:#ffd29b;background:linear-gradient(125deg,#373339,#232536);border-color:var(--workspace-edge)}
 .hero-team-composition .analytics-metrics>div>span{color:#d4e6f4}
 .hero-team-composition .analytics-metrics>div>span svg{color:var(--metric-color)}
 .hero-team-composition .analytics-metrics em{color:var(--metric-color)}
 .hero-team-composition .analytics-metrics strong small{color:#c6d5e6}
-.hero-team-composition .revenue-panel{background:linear-gradient(140deg,#123c56,#102d46)}
-.hero-team-composition .mix-panel{background:linear-gradient(150deg,#263450,#172c45)}
-.hero-team-composition .orders-panel{background:linear-gradient(140deg,#173f49,#122d42)}
 .hero-team-composition .chart-dot{stroke:var(--data-subscription)}
 .hero-team-composition .order-bar,.hero-team-composition .order-bar:nth-of-type(2n){fill:#35c8b3}
 .hero-team-composition .order-bar.order-bar-current{fill:#8df1d2}
@@ -26,7 +23,7 @@
 .hero-team-composition .analytics-drivers>[data-category='channel']{--driver-color:var(--data-channel)}
 .hero-team-composition .analytics-drivers .driver-bar,.hero-team-composition .analytics-drivers .driver-bar.driver-negative{background:var(--driver-color)}
 .hero-team-composition .analytics-drivers strong,.hero-team-composition .analytics-drivers .driver-value-negative{color:var(--driver-color)}
-.hero-team-composition .analytics-insights{background:linear-gradient(110deg,#124e75,#173b58 65%,#19474e);border-color:#62b9e36b}
+.hero-team-composition .analytics-insights{background:linear-gradient(110deg,#263f53,#1a3044 65%,#1b3540);border-color:#bddceb3d}
 .hero-team-composition .analytics-insight-heading>span:first-child>svg{color:#8af0d2}
 .hero-team-composition .analytics-insight-heading>span:last-child>svg{color:#ffd29b}
 .hero-team-composition .analytics-insights p:nth-of-type(2)>strong{color:#8bedcf}
