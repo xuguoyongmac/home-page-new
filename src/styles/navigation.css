@@ -40,7 +40,7 @@
   position: absolute;
   top: calc(100% + 14px);
   left: -18px;
-  width: 620px;
+  width: 360px;
   max-width: calc(100vw - 64px);
   padding: 12px;
   isolation: isolate;
@@ -95,7 +95,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 4px 12px;
   list-style: none;
   margin: 0;
@@ -158,13 +158,28 @@
 .is-home .tego-header[data-dropdown-open='true']:not([data-scrolled='true']) { background: transparent; }
 
 @media (min-width: 1101px) {
-  .tego-header .tego-nav-group:has(:is(.tego-nav-product, .tego-nav-solutions)) { position: static; }
-  .tego-header :is(.tego-nav-product, .tego-nav-solutions) {
-    left: 50%;
-    top: calc(100% - 3px);
-    transform: translateX(-50%);
+  .tego-header .tego-nav-panel[data-art-ready] {
+    background-color: #0d1622;
+    background-image: linear-gradient(90deg, #111c2aef 0%, #111c2ad9 50%, #0d1622ba 100%), url('/images/navigation/menu-atmosphere_V1.0.webp');
+    background-position: center, right center;
+    background-size: 100% 100%, auto 100%;
+    background-repeat: no-repeat;
   }
-  .tego-header .tego-nav-solutions { width: 680px; }
+  .tego-header .tego-nav-resources[data-art-ready] {
+    background-image: linear-gradient(90deg, #111c2afc, #0d1622e8), url('/images/navigation/menu-atmosphere_V1.0.webp');
+    background-size: 100% 100%, auto 150%;
+  }
+  .tego-header .tego-nav-panel-body {
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #6c7d9459 transparent;
+  }
+  .tego-header .tego-nav-panel-body::-webkit-scrollbar { width: 6px; }
+  .tego-header .tego-nav-panel-body::-webkit-scrollbar-thumb { border-radius: 6px; background: #6c7d9459; }
+  .tego-header .tego-nav-panel-body::-webkit-scrollbar-track { background: transparent; }
   .tego-header .tego-nav-panel::after { display: block; }
   .tego-header :is(.tego-nav-panel, .tego-language-panel)::before {
     content: '';
@@ -201,6 +216,11 @@
     border-radius: 10px;
     background: #8ab6ff04;
     box-shadow: none;
+  }
+  .tego-header .tego-nav-panel-body {
+    max-height: none;
+    overflow: visible;
+    overscroll-behavior: auto;
   }
   .tego-header .tego-nav-grid { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .tego-header .tego-nav-item { min-height: 56px; padding: 10px 8px; gap: 10px; }

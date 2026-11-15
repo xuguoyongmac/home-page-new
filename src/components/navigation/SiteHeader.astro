@@ -60,8 +60,8 @@ const activeLanguage = languages.find(item => item.id === language)!;
       if (item) {
         const origin = body.getBoundingClientRect();
         const bounds = item.getBoundingClientRect();
-        body.style.setProperty('--nav-highlight-x', `${bounds.left - origin.left}px`);
-        body.style.setProperty('--nav-highlight-y', `${bounds.top - origin.top}px`);
+        body.style.setProperty('--nav-highlight-x', `${bounds.left - origin.left + body.scrollLeft}px`);
+        body.style.setProperty('--nav-highlight-y', `${bounds.top - origin.top + body.scrollTop}px`);
         body.style.setProperty('--nav-highlight-width', `${bounds.width}px`);
         body.style.setProperty('--nav-highlight-height', `${bounds.height}px`);
       }
@@ -81,6 +81,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
         panel.inert = !open;
         if (open) {
           panel.hidden = false;
+          if (desktopMode.matches) panel.dataset.artReady = '';
           positionPointer(button, panel);
           positionHighlight(panel, panel.querySelector<HTMLElement>('.tego-nav-item[aria-current="page"]'));
         }
@@ -196,7 +197,10 @@ const activeLanguage = languages.find(item => item.id === language)!;
     window.addEventListener('resize', () => {
       const button = toggles.find(item => item.getAttribute('aria-expanded') === 'true');
       const panel = button && document.getElementById(button.getAttribute('aria-controls')!);
-      if (button && panel) positionPointer(button, panel);
+      if (button && panel) {
+        positionPointer(button, panel);
+        positionHighlight(panel, panel.querySelector<HTMLElement>('.tego-nav-item:hover, .tego-nav-item:focus-visible') || panel.querySelector<HTMLElement>('.tego-nav-item[aria-current="page"]'));
+      }
     });
     header.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
       const destination = new URL(languageLink.href);
