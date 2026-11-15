@@ -122,19 +122,12 @@
 
 .home-solutions .industry-intro { margin-bottom: 30px; }
 .home-solutions .industry-intro h3 {
-  margin: 0 0 14px;
+  margin: 0;
   color: #edf5fc;
   font-size: 29px;
   font-weight: 600;
   line-height: 1.45;
   text-wrap: balance;
-}
-.home-solutions .industry-intro > p {
-  max-width: 920px;
-  margin: 0;
-  color: #9eb3c6;
-  font-size: 14px;
-  line-height: 1.8;
 }
 .home-solutions .industry-panel-body {
   display: grid;
@@ -145,6 +138,14 @@
   min-width: 0;
   padding: 0;
 }
+.home-solutions .industry-copy-block + .industry-copy-block { margin-top: 28px; }
+.home-solutions .industry-pain {
+  margin: 0;
+  color: #b0c3d4;
+  font-size: 15px;
+  line-height: 1.85;
+  text-wrap: pretty;
+}
 .home-solutions .solution-copy h4,
 .home-solutions .industry-benefits > h4 {
   margin: 0 0 17px;
@@ -153,7 +154,7 @@
   font-weight: 600;
   line-height: 1.5;
 }
-.home-solutions.solution-explorer .solution-copy > .industry-approach {
+.home-solutions.solution-explorer .industry-copy-block > .industry-approach {
   max-width: none;
   margin: 0;
   color: #e0edf7;
@@ -285,7 +286,7 @@
   .home-solutions .industry-backdrop img { width: 120%; height: 50%; right: -25%; bottom: -4%; opacity: .3; }
   .home-solutions .industry-backdrop::after { background: linear-gradient(180deg, var(--industry-surface) 35%, #10243aeb 62%, #10243a99); }
   .home-solutions .industry-benefits { padding-left: 0; border-left: 0; }
-  .home-solutions.solution-explorer .solution-copy > .industry-approach { font-size: 16px; }
+  .home-solutions.solution-explorer .industry-copy-block > .industry-approach { font-size: 16px; }
 }
 
 @media (max-width: 420px) {
