@@ -202,9 +202,13 @@
 }
 @media(prefers-reduced-motion:reduce){.duty-workspace *{animation:none!important;transition:none!important}}
 
-/* Open duty stage: identity behind the active work and its delivery receipt. */
+/* A thin workspace frame sits behind the active work and its delivery receipt. */
 .hero-visual-stage .banner-outcomes-visual[data-duty-visual] {
   transform: perspective(1600px) rotateY(-7deg);
+  border: 1px solid #93b6d344;
+  border-radius: 16px;
+  background: linear-gradient(125deg, #122437dc, #0b1624d6 60%, #112333d9);
+  box-shadow: inset 0 1px 0 #d3e8f70b, 0 12px 22px -10px #0009, 16px 32px 60px -24px #000b;
 }
 .banner-outcomes-visual[data-duty-visual] .duty-workspace {
   border: 0;
@@ -301,7 +305,7 @@
 .banner-outcomes-visual[data-duty-visual] .duty-delivery-file { color: #b9c5d9; }
 
 @media (max-width: 700px) {
-  .hero-visual-stage .banner-outcomes-visual[data-duty-visual] { transform: none; }
+  .hero-visual-stage .banner-outcomes-visual[data-duty-visual] { transform: none; border-radius: 12px; }
   .banner-outcomes-visual[data-duty-visual] .duty-window-heading { padding-inline: 15px; transform: none; }
   .banner-outcomes-visual[data-duty-visual] .duty-employee,
   .banner-outcomes-visual[data-duty-visual] .duty-dayline,

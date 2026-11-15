@@ -8,8 +8,8 @@
 body:not(.is-home) { font-size: var(--text-body); }
 .tego-header .tego-nav-trigger,
 .tego-header .tego-nav-direct { font-size: var(--text-body); }
-.tego-header .tego-nav-item { font-size: var(--text-body); }
-.tego-header .tego-nav-label small { font-size: 13px; }
+.tego-header .tego-nav-item { font-size: var(--text-control); }
+.tego-header .tego-nav-label small { font-size: 12px; }
 .tego-header .language-link,
 .tego-header .header-cta,
 .tego-language-panel a { font-size: var(--text-control); }

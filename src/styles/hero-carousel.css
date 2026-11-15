@@ -64,7 +64,7 @@
  .hero-slide-selectors>button>i{transition:none}
 }
 @media(min-width:1101px){
- .home-value-edition .hero-carousel .hero-center{height:595px;min-height:0}
+ .home-value-edition .hero-carousel .hero-center{height:536px;min-height:0;padding-top:76px}
  .hero-slide-execution .banner-execution-visual{width:100%}
 }
 @media(max-width:700px){
@@ -90,13 +90,14 @@
  .hero-visual-stage{grid-column:2;grid-row:1}
 }
 @media(min-width:701px) and (max-width:1100px){
- .home-value-edition .hero-carousel .hero-center{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:36px}
+ .home-value-edition .hero-carousel .hero-center{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:36px;padding-top:51px}
  .hero-carousel .hero-message{width:100%;max-width:760px}
  .hero-visual-stage{width:100%;max-width:820px;margin:0 auto;height:540px}
  .hero-visual-stage .team-content{zoom:.68}
  .hero-visual-stage>.banner-visual{margin:0}
 }
 @media(max-width:700px){
+ .home-value-edition .hero-carousel .hero-center{padding-top:44px}
  .home-value-edition .hero-carousel .hero-message{grid-template-rows:90px 92px 46px;gap:20px}
  .home-value-edition .hero-carousel .hero-message>.hero-banner-title{font-size:30px;letter-spacing:-.7px;line-height:1.5}
  .home-value-edition .hero-carousel .hero-message>.sl-actions{height:46px}
