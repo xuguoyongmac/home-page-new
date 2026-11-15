@@ -89,9 +89,9 @@
 .duty-process [data-complete='true'] i{background:#82b8a6;border-color:#82b8a6}
 .duty-process [data-current='true']{color:#9ac9df}
 .duty-process [data-current='true'] i{background:#9ac9df;border-color:#9ac9df;box-shadow:0 0 7px #75c3dc5e}
-.duty-delivery{display:flex;align-items:center;gap:6px;min-height:25px;border-top:1px solid #8bb5ce22;padding-top:8px;font-size:9px;color:#81bbaa;transition:opacity .3s}
+.duty-delivery{display:flex;align-items:center;gap:6px;min-height:25px;border-top:1px solid #8bb5ce22;padding-top:8px;font-size:9px;color:#81bbaa;opacity:0;visibility:hidden}
 .duty-delivery-file{margin-left:auto;color:#9db6c7;white-space:nowrap}
-[data-duty-delivered='false'] .duty-delivery{opacity:.35}
+[data-duty-delivered='true'][data-duty-step] .duty-delivery{opacity:1;visibility:visible;transition:opacity .3s}
 [data-duty-playback='running'] .duty-result{animation:duty-result-arrive .45s ease both}
 [data-duty-playback='paused'] *{animation-play-state:paused!important}
 @keyframes duty-result-arrive{from{opacity:.72;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
