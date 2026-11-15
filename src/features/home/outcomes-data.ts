@@ -1,6 +1,9 @@
 import type { Locale } from '../../data/types';
 
-export const DUTY_SCENE_DURATION = 5_200;
+export const DUTY_EXECUTION_DURATION = 8_400;
+export const DUTY_SCENE_DURATION = DUTY_EXECUTION_DURATION + 1_200;
+// Reveal ranges use timeline units independently of the playback duration.
+export const DUTY_REVEAL_UNITS = 2_400;
 export const DUTY_CYCLE_DURATION = DUTY_SCENE_DURATION * 4;
 
 export function dutyCopy(locale: Locale) {

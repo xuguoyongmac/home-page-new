@@ -101,6 +101,7 @@ export function initializeHeroCarousels() {
           }
         } else { taskVideo.pause(); taskVideo.dataset.playback = 'paused'; }
       }
+      hero.dataset.carouselTransitioning = String(slideAnimations.length > 0);
       hero.dispatchEvent(new Event('hero-motion-change'));
       if (!paused && !suspended && !preference.matches && !compactViewport.matches) {
         started = performance.now();
@@ -152,6 +153,7 @@ export function initializeHeroCarousels() {
           const queued = queuedSelection;
           queuedSelection = undefined;
           if (queued) select(queued.next, queued.manual);
+          else sync();
         };
         void Promise.all(slideAnimations.map(animation => animation.finished)).then(settle, settle);
       }
