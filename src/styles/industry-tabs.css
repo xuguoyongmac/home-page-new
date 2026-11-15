@@ -104,17 +104,20 @@
 .home-solutions .industry-backdrop {
   position: absolute;
   z-index: -1;
-  inset: -24px -32px -8px 42%;
+  right: 0;
+  bottom: 0;
+  width: 62%;
+  height: 220px;
   overflow: hidden;
   pointer-events: none;
-  mask-image: linear-gradient(90deg, transparent, #000 48%), linear-gradient(180deg, #000 60%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 48%), linear-gradient(180deg, transparent, #000 38%);
   mask-composite: intersect;
 }
 .home-solutions .industry-backdrop img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 42%;
+  object-position: 65% 65%;
   opacity: .6;
 }
 .home-solutions .industry-backdrop::after {
@@ -229,7 +232,7 @@
   padding: 18px 22px;
   border: 1px solid rgb(var(--benefit-color) / .42);
   border-radius: 12px;
-  background: radial-gradient(ellipse at 15% 0, rgb(var(--benefit-color) / .17), transparent 72%), linear-gradient(140deg, #1c3c57, #132d43);
+  background: radial-gradient(ellipse at 15% 0, rgb(var(--benefit-color) / .17), transparent 72%), linear-gradient(140deg, #1c3c57e8, #132d43d9);
   box-shadow: 0 14px 26px -10px #020c19b3, 0 4px 10px -3px #030b1466, 0 0 24px -8px rgb(var(--benefit-color) / .12), inset 0 1px 0 #d6efff1a;
   transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease;
 }
@@ -290,7 +293,6 @@
 @media (max-width: 1100px) {
   .home-solutions.solution-explorer .solution-panel { padding: 20px 28px 24px; }
   .home-solutions .industry-intro h3 { font-size: 28px; }
-  .home-solutions .industry-backdrop { inset: -20px -28px -8px 42%; }
   .home-solutions .industry-panel-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); gap: 20px 16px; }
   .home-solutions .industry-copy-block { padding: 16px 22px; }
   .home-solutions .industry-benefits li { padding: 18px 20px; }
@@ -330,7 +332,7 @@
   .home-solutions.solution-explorer .solution-panel { padding: 18px 18px 22px; }
   .home-solutions .industry-intro { grid-template-columns: 1fr; gap: 4px; padding: 4px 0 10px; margin-bottom: 6px; }
   .home-solutions .industry-intro h3 { font-size: 24px; line-height: 1.55; }
-  .home-solutions .industry-backdrop { inset: -18px -18px -4px 12%; opacity: .5; }
+  .home-solutions .industry-backdrop { width: 100%; height: 210px; opacity: .5; }
   .home-solutions .industry-copy-block { padding: 16px 21px; }
   .home-solutions .industry-copy-block h4,
   .home-solutions .industry-benefits > h4 { font-size: 16px; }
