@@ -63,10 +63,12 @@ const metricValues=[
    clearTimeout(timer);
    const reduced=scene.dataset.heroMotion==='reduced';
    const animation=chart.getAnimations()[0];
-   const phase=Number(animation?.currentTime ?? 0)%14000;
+   const cycle=Number(animation?.effect?.getComputedTiming().duration);
+   if(!reduced && (!Number.isFinite(cycle) || cycle<=0))return;
+   const phase=reduced?0:Number(animation?.currentTime ?? 0)%cycle;
    let start=560;
    const step=Math.min(34,3400/lines.reduce((total,line)=>total+line.text.length,0));
-   let next=14000;
+   let next=cycle;
    lines.forEach(line=>{
     const count=reduced?line.text.length:Math.max(0,Math.min(line.text.length,Math.floor((phase-start)/step)));
     const text=line.text.slice(0,count).join('');

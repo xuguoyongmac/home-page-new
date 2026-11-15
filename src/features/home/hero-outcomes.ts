@@ -1,5 +1,6 @@
 import { observeMotion, type MotionState } from '../../lib/motion';
-import { DutyPlayback, type DutyFrame } from './duty-playback';
+import { DutyPlayback, dutyFrame, type DutyFrame } from './duty-playback';
+import { createDutyRevealRenderer } from './duty-reveals';
 
 export function initializeDutyVisuals() {
   document.querySelectorAll<HTMLElement>('[data-duty-visual]').forEach(visual => {
@@ -8,6 +9,7 @@ export function initializeDutyVisuals() {
     const slide = visual.closest<HTMLElement>('[data-hero-slide]');
     const hero = visual.closest<HTMLElement>('[data-hero-carousel]');
     const panels = [...visual.querySelectorAll<HTMLElement>('[data-duty-result]')];
+    const renderReveals = createDutyRevealRenderer(panels);
     const assignments = [...visual.querySelectorAll<HTMLElement>('[data-duty-assignment]')];
     const currentTime = visual.querySelector<HTMLElement>('[data-duty-current-time]')!;
     const period = visual.querySelector<HTMLElement>('[data-duty-period]')!;
@@ -37,16 +39,19 @@ export function initializeDutyVisuals() {
           step.dataset.current = String(!frame.delivered && index === frame.step);
         });
       }
+      renderReveals(frame);
       const progress = Math.floor(frame.progress * 100);
       if (progress !== lastProgress) {
         lastProgress = progress;
         visual.style.setProperty('--duty-task-progress', String(frame.progress));
       }
     };
+    render(dutyFrame(0));
     const clock = new DutyPlayback(render, { now: () => performance.now(), request: callback => requestAnimationFrame(callback), cancel: id => cancelAnimationFrame(id) });
     const sync = () => {
       if (!state) return;
       const running = state.running && (!slide || slide.dataset.active === 'true')
+        && hero?.dataset.carouselTransitioning !== 'true'
         && hero?.dataset.heroMotion !== 'paused' && hero?.dataset.motionSuspended !== 'true';
       clock.setRunning(running);
       visual.dataset.dutyPlayback = state.reduced ? 'reduced' : running ? 'running' : 'paused';

@@ -12,7 +12,6 @@ const story = industry.story;
 <div class="solution-story">
   <section class="solution-story-hero" aria-labelledby="solution-title">
     <div class="container">
-      <nav class="solution-breadcrumb" aria-label={zh ? '面包屑' : 'Breadcrumb'}><a href={pathFor(locale, 'solutions')}>{zh ? '行业方案' : 'Solutions'}</a><span aria-hidden="true">/</span><span aria-current="page">{industry.name}</span></nav>
       <div class="solution-story-hero-grid">
         <div class="solution-story-copy"><h1 id="solution-title">{(story?.lines ?? [industry.title]).map(line => <span>{line}</span>)}</h1><p>{industry.description}</p><a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a></div>
         {story && <OutcomeExhibit exhibit={story.exhibit} locale={locale}/>}

@@ -1,11 +1,15 @@
-import { DUTY_SCENE_DURATION, DUTY_CYCLE_DURATION } from './outcomes-data.ts';
+import { DUTY_SCENE_DURATION, DUTY_EXECUTION_DURATION, DUTY_CYCLE_DURATION, DUTY_REVEAL_UNITS } from './outcomes-data.ts';
 
 export interface DutyFrame { scene: number; step: number; delivered: boolean; progress: number; }
 export function dutyFrame(elapsed: number): DutyFrame {
   const cycle = ((elapsed % DUTY_CYCLE_DURATION) + DUTY_CYCLE_DURATION) % DUTY_CYCLE_DURATION;
   const withinScene = cycle % DUTY_SCENE_DURATION;
-  return { scene: Math.floor(cycle / DUTY_SCENE_DURATION), step: Math.min(2, Math.floor(withinScene / 800)),
-    delivered: withinScene >= 2_400, progress: withinScene / DUTY_SCENE_DURATION };
+  return { scene: Math.floor(cycle / DUTY_SCENE_DURATION), step: Math.min(2, Math.floor(withinScene / (DUTY_EXECUTION_DURATION / 3))),
+    delivered: withinScene >= DUTY_EXECUTION_DURATION, progress: Math.min(1, withinScene / DUTY_EXECUTION_DURATION) };
+}
+
+export function dutyRevealProgress(taskProgress: number, start: number, end: number) {
+  return Math.max(0, Math.min(1, (taskProgress * DUTY_REVEAL_UNITS - start) / (end - start)));
 }
 interface FrameDriver { now: () => number; request: (callback: FrameRequestCallback) => number; cancel: (id: number) => void; }
 

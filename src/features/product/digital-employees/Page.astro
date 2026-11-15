@@ -1,9 +1,55 @@
 ---
-import CapabilityLanding from '../../../components/pages/CapabilityLanding.astro';
-import content from './content';
-import landing from './landing';
 import type { Locale } from '../../../data/types';
+import { appFor, pathFor, site } from '../../../lib/site';
+import introContent from './intro-content';
+import '../../../styles/digital-employees-intro.css';
+
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const copy = introContent[locale];
+const illustrationPath = (scene: 'hero' | 'recruit' | 'work' | 'continuity') =>
+  `/images/product/digital-employees/intro-${scene}-${locale}_V6.0.webp`;
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: locale === 'zh' ? '首页' : 'Home', item: new URL(pathFor(locale), site.origin).href },
+    { '@type': 'ListItem', position: 2, name: locale === 'zh' ? '产品能力' : 'Product', item: new URL(pathFor(locale, 'product'), site.origin).href },
+    { '@type': 'ListItem', position: 3, name: locale === 'zh' ? '数字员工' : 'Digital employees', item: new URL(pathFor(locale, 'product/digital-employees'), site.origin).href },
+  ],
+};
 ---
-<CapabilityLanding locale={locale} capability={content} copy={landing[locale]}/>
+<div class="digital-employee-intro" data-capability="digital-employees">
+  <section class="dei-hero" aria-labelledby="digital-employee-title">
+    <div class="dei-container dei-hero-grid">
+      <div class="dei-copy dei-hero-copy">
+        <h1 id="digital-employee-title">{copy.hero.title.map((line, index) => <span class:list={{ 'dei-accent': index === copy.hero.title.length - 1 }}>{line}</span>)}</h1>
+        <p>{copy.hero.body}</p>
+        <a class="dei-button" href={appFor(locale)}>{copy.hero.action}</a>
+      </div>
+      <figure class="dei-visual dei-hero-visual">
+        <img src={illustrationPath('hero')} alt={copy.hero.alt} width="1536" height="1024" sizes="(max-width: 760px) calc(100vw - 20px), (max-width: 1100px) 58vw, (max-width: 1456px) calc(70vw - 70px), 941px" loading="eager" fetchpriority="high" decoding="async"/>
+      </figure>
+    </div>
+  </section>
+
+  {copy.sections.map((section, index) => <section class:list={['dei-section', `dei-section-${section.id}`, { 'dei-section-reverse': index % 2 === 0 }]} aria-labelledby={`digital-employee-${section.id}`}>
+    <div class="dei-container dei-section-grid">
+      <div class="dei-copy dei-section-copy">
+        <h2 id={`digital-employee-${section.id}`}>{section.title.map(line => <span>{line}</span>)}</h2>
+        <p>{section.body}</p>
+      </div>
+      <figure class="dei-visual">
+        <img src={illustrationPath(section.id)} alt={section.alt} width="1536" height="1024" sizes="(max-width: 760px) calc(100vw - 20px), (max-width: 1100px) 56vw, (max-width: 1456px) 65vw, 960px" loading="lazy" decoding="async"/>
+      </figure>
+    </div>
+  </section>)}
+
+  <section class="dei-closing" aria-labelledby="digital-employee-closing">
+    <div class="dei-container dei-closing-inner">
+      <h2 id="digital-employee-closing">{copy.closing.title}</h2>
+      <a class="dei-button dei-button-outline" href={pathFor(locale, 'contact')}>{copy.closing.action}</a>
+    </div>
+  </section>
+</div>
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)}/>

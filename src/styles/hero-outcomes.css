@@ -40,6 +40,11 @@
 [data-duty-delivered='false'] .duty-result-state{color:#78adc8}
 [data-duty-delivered='false'] .duty-result-state>svg{visibility:hidden}
 .duty-artifact{min-height:0;flex:1}
+.banner-outcomes-visual [data-duty-reveal]{opacity:var(--duty-reveal-progress,0);clip-path:inset(0 calc((1 - var(--duty-reveal-progress,0))*100%) 0 0)}
+.banner-outcomes-visual [data-duty-visible='false']{visibility:hidden}
+.banner-outcomes-visual .duty-bars>[data-duty-reveal]{clip-path:none}
+.banner-outcomes-visual .duty-delivery[data-duty-reveal]{clip-path:none}
+.banner-outcomes-visual .duty-bars>[data-duty-reveal]>i{transform:scaleY(var(--duty-reveal-progress,0));transform-origin:center bottom}
 .duty-source-name{font-size:9px;color:#8098ad;margin-bottom:7px}
 .duty-metrics{display:flex;align-items:flex-start;gap:23px;margin:4px 0 12px}
 .duty-metrics>div{display:flex;flex-direction:column;gap:2px}
@@ -89,9 +94,8 @@
 .duty-process [data-complete='true'] i{background:#82b8a6;border-color:#82b8a6}
 .duty-process [data-current='true']{color:#9ac9df}
 .duty-process [data-current='true'] i{background:#9ac9df;border-color:#9ac9df;box-shadow:0 0 7px #75c3dc5e}
-.duty-delivery{display:flex;align-items:center;gap:6px;min-height:25px;border-top:1px solid #8bb5ce22;padding-top:8px;font-size:9px;color:#81bbaa;opacity:0;visibility:hidden}
+.duty-delivery{display:flex;align-items:center;gap:6px;min-height:25px;border-top:1px solid #8bb5ce22;padding-top:8px;font-size:9px;color:#81bbaa}
 .duty-delivery-file{margin-left:auto;color:#9db6c7;white-space:nowrap}
-[data-duty-delivered='true'][data-duty-step] .duty-delivery{opacity:1;visibility:visible;transition:opacity .3s}
 [data-duty-playback='running'] .duty-result{animation:duty-result-arrive .45s ease both}
 [data-duty-playback='paused'] *{animation-play-state:paused!important}
 @keyframes duty-result-arrive{from{opacity:.72;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
@@ -200,7 +204,7 @@
  .duty-delivery{font-size:10px;color:#99cfb6}
  .duty-delivery-file{color:#b8cfdd}
 }
-@media(prefers-reduced-motion:reduce){.duty-workspace *{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){.duty-workspace *{animation:none!important;transition:none!important}.banner-outcomes-visual [data-duty-reveal]{opacity:1;clip-path:none;visibility:visible}.banner-outcomes-visual .duty-bars>[data-duty-reveal]>i{transform:none}}
 
 /* A thin workspace frame sits behind the active work and its delivery receipt. */
 .hero-visual-stage .banner-outcomes-visual[data-duty-visual] {

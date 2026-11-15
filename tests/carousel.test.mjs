@@ -103,6 +103,18 @@ test('manual selection and hover pause rotation while content remains animated',
   assert.equal(env.slides[0].dataset.complete, undefined);
 });
 
+test('content playback is notified when the incoming slide has finished arriving', async () => {
+  const env = fixture();
+  const transitions = [];
+  env.hero.addEventListener('hero-motion-change', () => transitions.push(env.hero.dataset.carouselTransitioning));
+  env.click(env.selectors[2]);
+  assert.equal(env.hero.dataset.carouselTransitioning, 'true');
+  assert.equal(transitions.at(-1), 'true');
+  await env.finishTransition();
+  assert.equal(env.hero.dataset.carouselTransitioning, 'false');
+  assert.equal(transitions.at(-1), 'false');
+});
+
 test('pausing the first visual never pauses the second video; revisiting retains local intent', async () => {
   const env = fixture();
   env.click(env.workspace);
