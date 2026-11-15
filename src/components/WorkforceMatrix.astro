@@ -40,7 +40,7 @@ const domains = [
 ];
 ---
 <section class="workforce-matrix" id="work-scenarios" aria-labelledby="domain-title">
-  <div class="matrix-layout">
+  <div class="container matrix-layout">
     <div class="matrix-art">
       <img
         src={`/images/workforce/workforce-matrix-${locale}_V3.4.webp`}
@@ -75,9 +75,7 @@ const domains = [
   }
   .matrix-layout {
     position: relative;
-    width: min(calc(100% - 48px), 1440px);
     min-height: 640px;
-    margin-inline: auto;
     isolation: isolate;
   }
   .matrix-art { width: min(76%, 980px); }
@@ -99,7 +97,7 @@ const domains = [
   .matrix-copy {
     position: absolute;
     z-index: 1;
-    right: 4%;
+    right: 0;
     top: 50%;
     width: 34%;
     transform: translateY(-50%);
@@ -148,16 +146,19 @@ const domains = [
   }
   :global(html[lang^="en"]) .matrix-layout { min-height: 760px; }
   :global(html[lang^="en"]) .matrix-domains { gap: 16px 22px; }
+  @media (min-width: 1001px) {
+    .matrix-art { transform: translateX(-8%); }
+  }
   @media (min-width: 1200px) {
-    .matrix-copy { right: 8%; }
+    .matrix-copy { right: 8.5%; }
     .matrix-domains {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      width: calc(150% + 12px);
-      margin-left: calc(-25% - 6px);
+      width: 150%;
+      margin-left: -25%;
     }
   }
   @media (max-width: 1000px) {
-    .matrix-layout { width: calc(100% - 32px); min-height: 0; }
+    .matrix-layout { min-height: 0; }
     .matrix-art { width: 80%; }
     .matrix-copy { position: relative; right: auto; top: auto; width: min(70%, 600px); margin: -110px 0 0 auto; transform: none; }
     .workforce-matrix .matrix-copy h2 { font-size: 27px; }
@@ -166,10 +167,9 @@ const domains = [
     :global(html[lang^="en"]) .matrix-layout { min-height: 0; }
   }
   @media (max-width: 700px) {
-    .matrix-layout { width: 100%; }
     .matrix-art { width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; scrollbar-color: #37536b transparent; }
     .matrix-art img { width: 840px; max-width: none; margin-left: -28px; }
-    .matrix-copy { width: auto; margin: -58px 24px 0 max(24px, 12%); text-align: right; }
+    .matrix-copy { width: auto; margin: -58px 0 0 12%; text-align: right; }
     .workforce-matrix .matrix-copy h2 { font-size: 28px; line-height: 1.5; }
     .matrix-description { margin-left: auto; }
     .matrix-domains { gap: 20px 22px; margin-top: 24px; text-align: left; }

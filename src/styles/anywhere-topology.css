@@ -1,5 +1,4 @@
 .anywhere-topology{position:relative;isolation:isolate;width:100%;color:#fff}
-.anywhere-topology--workspace{width:min(1440px,calc(100vw - 48px));margin-inline:50%;transform:translateX(-50%)}
 .anywhere-scene-desktop{display:block;width:100%;height:auto;mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent)}
 .anywhere-topology--luminous .anywhere-scene-desktop{-webkit-mask-image:linear-gradient(to right,transparent,#000 1.5%,#000 98.5%,transparent),linear-gradient(to bottom,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(to right,transparent,#000 1.5%,#000 98.5%,transparent),linear-gradient(to bottom,transparent,#000 10%,#000 90%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
 .anywhere-scene-mobile{display:none}
@@ -32,7 +31,6 @@
 .anywhere-motion-crop--platform{aspect-ratio:817/530;--image-width:265.850673%;--image-height:136.603774%;--image-left:-80.293758%;--image-top:-15.471698%}
 .anywhere-motion-crop--outputs{aspect-ratio:530/485;--image-width:409.811321%;--image-height:149.278351%;--image-left:-307.169811%;--image-top:-20.618557%}
 @media(max-width:700px){
- .anywhere-topology--workspace{width:100%;margin-inline:0;transform:none}
  .anywhere-scene-desktop,.topology-links{display:none}
  .anywhere-scene-mobile{display:grid;gap:30px;max-width:430px;margin-inline:auto}
  .workspace-planes{display:grid;aspect-ratio:auto;gap:30px;max-width:430px;margin-inline:auto}
