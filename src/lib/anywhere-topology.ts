@@ -5,7 +5,7 @@ import workspaceTransfer from '../assets/anywhere/workspace-transfer_V1.18.svg?r
 import workspaceLabels from '../assets/anywhere/workspace-labels_V1.19.svg?raw';
 import inputLabels from '../assets/anywhere/workspace-foreground-input_V1.19.svg?raw';
 import executionLabels from '../assets/anywhere/workspace-foreground-execution_V1.19.svg?raw';
-import resultLabels from '../assets/anywhere/workspace-foreground-result_V1.19.svg?raw';
+import resultLabels from '../assets/anywhere/workspace-foreground-result_V1.21.svg?raw';
 
 export function renderAnywhereTopology(locale: Locale = 'zh') {
  const zh = locale === 'zh';

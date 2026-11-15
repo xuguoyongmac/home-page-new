@@ -17,7 +17,7 @@ const walkFiles = async directory => (await Promise.all((await readdir(directory
 
 export function imageSizes(classes) {
   if (classes.includes('matrix-art')) return '(max-width: 700px) 840px, (max-width: 1300px) 74vw, 980px';
-  if (classes.includes('workspace-scene')) return '(max-width: 700px) 1600px, (max-width: 1440px) 94vw, 1320px';
+  if (classes.includes('workspace-scene')) return '(max-width: 700px) 1600px, (max-width: 1500px) calc(100vw - 48px), 1440px';
   if (classes.includes('hero-visual-stage')) return '(max-width: 700px) 100vw, (max-width: 1100px) 90vw, 58vw';
   return '(max-width: 700px) 100vw, (max-width: 1300px) 94vw, 1200px';
 }
