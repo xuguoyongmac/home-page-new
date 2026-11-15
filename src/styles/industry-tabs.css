@@ -185,6 +185,23 @@
   border-radius: 50%;
   background: #7296b0;
 }
+.home-solutions .industry-details-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: #86c7ed;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: color .2s;
+}
+.home-solutions .industry-details-link:hover { color: #c2e7ff; }
+.home-solutions .industry-details-link:focus-visible {
+  outline: 2px solid #74ceff;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
 .home-solutions .industry-benefits {
   min-width: 0;
   padding-left: 32px;
@@ -233,7 +250,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .home-solutions.solution-explorer .solution-tabs::before,
-  .home-solutions.solution-explorer .solution-tabs > button { transition: none; }
+  .home-solutions.solution-explorer .solution-tabs > button,
+  .home-solutions .industry-details-link { transition: none; }
 }
 
 @media (max-width: 1000px) {

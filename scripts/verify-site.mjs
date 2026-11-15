@@ -142,7 +142,13 @@ const auditPublishedMarkup = (html, label, report) => {
       issues.push(`${locationFor(node)}：仍有 share-article 入口 ${describe(node)}`);
     }
     const icon = node.tagName === 'path' && prohibitedActionIcons.get(attrs.d);
-    if (icon && action && ![...carouselControlAttributes].some(attribute => attribute in attrsFor(action))) {
+    const actionAttrs = action ? attrsFor(action) : {};
+    // User approved the homepage industry “Learn more →” link on 2026-11-15.
+    const homeIndustryDetailsArrow = icon === 'arrow' && action?.tagName === 'a'
+      && /^(zh|en|zh-Hant)\/index\.html$/.test(label)
+      && (actionAttrs.class ?? '').split(/\s+/).includes('industry-details-link')
+      && /^\/(zh|en|zh-Hant)\/solutions\/(government|securities|banking|insurance|state-owned)\/$/.test(actionAttrs.href ?? '');
+    if (icon && action && !homeIndustryDetailsArrow && ![...carouselControlAttributes].some(attribute => attribute in actionAttrs)) {
       issues.push(`${locationFor(node)}：${describe(action)} 内仍有 ${icon} 装饰图标`);
     }
     if (['script', 'style'].includes(node.tagName)) return '';

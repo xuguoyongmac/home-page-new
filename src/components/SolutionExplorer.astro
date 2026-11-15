@@ -32,7 +32,7 @@ const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
             <ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>
               {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
             </ul>
-            <a class="button button-small" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看解决方案' : 'Explore solution'}</a>
+            <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
           </div>
           <section class="industry-benefits" aria-labelledby={`benefits-title-${industry.slug}`}>
             <h4 id={`benefits-title-${industry.slug}`}>{zh ? '业务价值' : 'Business value'}</h4>
