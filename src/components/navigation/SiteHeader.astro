@@ -38,15 +38,83 @@ const activeLanguage = languages.find(item => item.id === language)!;
     const toggles = [...header.querySelectorAll<HTMLButtonElement>('[data-nav-disclosure]')];
     const mobileToggle = header.querySelector<HTMLButtonElement>('.menu-toggle');
     const mobile = header.querySelector<HTMLElement>('#mobile-nav');
-    const setDisclosure = (button: HTMLButtonElement, open: boolean) => {
-      button.setAttribute('aria-expanded', String(open));
+    const desktopMode = window.matchMedia('(min-width: 1101px)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const hoverMode = window.matchMedia('(min-width: 1101px) and (hover: hover) and (pointer: fine)');
+    const panelAnimations = new Map<HTMLElement, Animation>();
+    let closeTimer: ReturnType<typeof setTimeout> | undefined;
+    let hoverOpenedButton: HTMLButtonElement | null = null;
+    const cancelClose = () => {
+      clearTimeout(closeTimer);
+      closeTimer = undefined;
+    };
+    const positionHighlight = (panel: HTMLElement, item: HTMLElement | null) => {
+      const body = panel.querySelector<HTMLElement>('.tego-nav-panel-body');
+      if (!body) return;
+      if (item) {
+        const origin = body.getBoundingClientRect();
+        const bounds = item.getBoundingClientRect();
+        body.style.setProperty('--nav-highlight-x', `${bounds.left - origin.left}px`);
+        body.style.setProperty('--nav-highlight-y', `${bounds.top - origin.top}px`);
+        body.style.setProperty('--nav-highlight-width', `${bounds.width}px`);
+        body.style.setProperty('--nav-highlight-height', `${bounds.height}px`);
+      }
+      body.style.setProperty('--nav-highlight-opacity', item ? '1' : '0');
+      body.dataset.highlightReady = '';
+    };
+    const setDisclosure = (button: HTMLButtonElement, open: boolean, animated = true) => {
       const panel = document.getElementById(button.getAttribute('aria-controls')!);
+      if (button.getAttribute('aria-expanded') === String(open) && (animated || panel?.hidden === !open)) return;
+      button.setAttribute('aria-expanded', String(open));
       if (panel) {
-        panel.hidden = !open;
+        const previous = panelAnimations.get(panel);
+        const current = previous ? getComputedStyle(panel) : null;
+        const start = { opacity: panel.hidden ? '0' : current?.opacity || '1', translate: panel.hidden ? '0 -6px' : current?.translate || '0 0' };
+        previous?.cancel();
+        panelAnimations.delete(panel);
+        panel.inert = !open;
+        if (open) {
+          panel.hidden = false;
+          positionHighlight(panel, panel.querySelector<HTMLElement>('.tego-nav-item[aria-current="page"]'));
+        }
+        if (animated && desktopMode.matches && !reducedMotion.matches && typeof panel.animate === 'function' && !panel.hidden) {
+          const animation = panel.animate([start, { opacity: open ? '1' : '0', translate: open ? '0 0' : '0 -4px' }], {
+            duration: open ? 160 : 100,
+            easing: 'cubic-bezier(.16, 1, .3, 1)',
+          });
+          panelAnimations.set(panel, animation);
+          animation.finished.then(() => {
+            if (panelAnimations.get(panel) !== animation) return;
+            panelAnimations.delete(panel);
+            if (!open) panel.hidden = true;
+          }, () => {
+            if (panelAnimations.get(panel) === animation) panelAnimations.delete(panel);
+          });
+        } else panel.hidden = !open;
       }
       header.dataset.dropdownOpen = String(toggles.some(item => item.getAttribute('aria-expanded') === 'true'));
     };
-    const closeDisclosures = () => toggles.forEach(button => setDisclosure(button, false));
+    const closeDisclosures = (animated = true) => {
+      cancelClose();
+      hoverOpenedButton = null;
+      toggles.forEach(button => setDisclosure(button, false, animated));
+    };
+    const openDisclosure = (button: HTMLButtonElement) => {
+      cancelClose();
+      toggles.forEach(item => {
+        if (item !== button) setDisclosure(item, false, false);
+      });
+      if (button.getAttribute('aria-expanded') !== 'true') setDisclosure(button, true);
+    };
+    const scheduleClose = () => {
+      cancelClose();
+      hoverOpenedButton = null;
+      closeTimer = setTimeout(() => {
+        const expanded = toggles.find(button => button.getAttribute('aria-expanded') === 'true');
+        const panel = expanded && document.getElementById(expanded.getAttribute('aria-controls')!);
+        if (!panel?.contains(document.activeElement)) closeDisclosures();
+      }, 120);
+    };
     const closeMobile = () => {
       mobileToggle?.setAttribute('aria-expanded', 'false');
       if (mobileToggle) mobileToggle.setAttribute('aria-label', mobileToggle.dataset.openLabel!);
@@ -54,10 +122,52 @@ const activeLanguage = languages.find(item => item.id === language)!;
       if (mobile) mobile.inert = true;
       closeDisclosures();
     };
-    toggles.forEach(button => button.addEventListener('click', () => {
-      const open = button.getAttribute('aria-expanded') !== 'true';
-      closeDisclosures(); setDisclosure(button, open);
-    }));
+    toggles.forEach(button => {
+      button.addEventListener('click', event => {
+        cancelClose();
+        const mouseClick = event.detail > 0 && hoverMode.matches && (!('pointerType' in event) || event.pointerType === 'mouse');
+        if (mouseClick && hoverOpenedButton === button) {
+          hoverOpenedButton = null;
+          return;
+        }
+        hoverOpenedButton = null;
+        if (button.getAttribute('aria-expanded') === 'true') closeDisclosures();
+        else openDisclosure(button);
+      });
+      if (button.closest('#mobile-nav')) return;
+      const panel = document.getElementById(button.getAttribute('aria-controls')!);
+      const canHover = (event: PointerEvent) => hoverMode.matches && event.pointerType === 'mouse';
+      button.addEventListener('pointerenter', event => {
+        if (!canHover(event)) return;
+        const wasOpen = button.getAttribute('aria-expanded') === 'true';
+        openDisclosure(button);
+        if (!wasOpen) hoverOpenedButton = button;
+      });
+      button.addEventListener('pointerleave', event => { if (canHover(event)) scheduleClose(); });
+      panel?.addEventListener('pointerenter', event => { if (canHover(event)) cancelClose(); });
+      panel?.addEventListener('pointerleave', event => { if (canHover(event)) scheduleClose(); });
+    });
+    header.querySelectorAll<HTMLAnchorElement>('.desktop-nav > .tego-nav-direct').forEach(link => {
+      link.addEventListener('pointerenter', event => {
+        if (hoverMode.matches && event.pointerType === 'mouse') closeDisclosures();
+      });
+    });
+    header.querySelectorAll<HTMLElement>('.tego-nav-panel').forEach(panel => {
+      const body = panel.querySelector<HTMLElement>('.tego-nav-panel-body');
+      if (!body) return;
+      const restoreHighlight = () => positionHighlight(panel, body.querySelector<HTMLElement>('.tego-nav-item:focus-visible') || body.querySelector<HTMLElement>('.tego-nav-item[aria-current="page"]'));
+      body.querySelectorAll<HTMLElement>('.tego-nav-item').forEach(item => {
+        item.addEventListener('pointerenter', event => {
+          if (hoverMode.matches && event.pointerType === 'mouse') positionHighlight(panel, item);
+        });
+        item.addEventListener('focus', () => positionHighlight(panel, item));
+      });
+      body.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') restoreHighlight(); });
+    });
+    hoverMode.addEventListener('change', () => { if (!hoverMode.matches) closeDisclosures(false); });
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches) panelAnimations.forEach(animation => animation.finish());
+    });
     mobileToggle?.addEventListener('click', () => {
       const open = mobileToggle.getAttribute('aria-expanded') !== 'true';
       closeDisclosures();
@@ -75,7 +185,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
       else if (mobileToggle?.getAttribute('aria-expanded') === 'true') { closeMobile(); mobileToggle.focus(); }
     });
     header.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobile));
-    window.matchMedia('(min-width: 1101px)').addEventListener('change', closeMobile);
+    desktopMode.addEventListener('change', () => { closeMobile(); closeDisclosures(false); });
     header.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
       const destination = new URL(languageLink.href);
       if (destination.pathname.split('/').slice(2).join('/') === location.pathname.split('/').slice(2).join('/')) destination.hash = location.hash;
