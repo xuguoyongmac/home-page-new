@@ -1,0 +1,93 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { parse } from 'parse5';
+import { prepareTraditionalPages, translateHtml, translateScript } from '../scripts/prepare-traditional.mjs';
+
+const nodesOf = html => {
+  const nodes = [];
+  const walk = node => { nodes.push(node); (node.childNodes || []).forEach(walk); };
+  walk(parse(html));
+  return nodes;
+};
+const attr = (node, name) => node.attrs?.find(item => item.name === name)?.value;
+
+test('traditional pages preserve language targets, anchors, API values and code while translating content and metadata', () => {
+  const source = `<!doctype html><html lang="zh-CN"><head>
+    <title>数字员工协作平台</title><meta name="description" content="连接知识与业务系统">
+    <link rel="canonical" href="https://www.zhama.com/zh/contact/">
+    <link rel="alternate" hreflang="zh-CN" href="https://www.zhama.com/zh/contact/">
+    <link rel="alternate" hreflang="zh-Hant" href="https://www.zhama.com/zh-Hant/contact/">
+    <meta property="og:url" content="https://www.zhama.com/zh/contact/"><meta property="og:locale" content="zh_CN">
+    <script type="application/ld+json">{"name":"数字员工","url":"https://www.zhama.com/zh/contact/"}</script>
+    </head><body><button class="language-link"><span>简体</span></button>
+    <a data-language-option hreflang="zh-CN" href="/zh/contact/" aria-current="true">简体中文<svg><path/></svg></a>
+    <a data-language-option hreflang="zh-Hant" href="/zh-Hant/contact/">繁體中文</a>
+    <h1 id="执行">数字员工协作平台</h1><a href="/zh/product/#执行">查看产品</a>
+    <a href="https://docs.zhama.com.cn/zh/guide/">产品文档</a><a href="https://www.zhama.com/zh/blog/">产品博客</a>
+    <input data-locale="zh" data-insight-copy="执行任务" placeholder="输入工作邮箱">
+    <pre><code>const 功能 = '执行';</code></pre><pre data-language="mermaid"><code>flowchart LR; A[执行]--&gt;B[结果]</code></pre>
+    <script type="module" src="/_astro/contact.js"></script></body></html>`;
+  const output = translateHtml(source, new Map([['/_astro/contact.js', '/_astro/contact.zh-Hant.js']]));
+  const nodes = nodesOf(output);
+  assert.equal(attr(nodes.find(node => node.tagName === 'html'), 'lang'), 'zh-Hant');
+  assert.match(output, /數字員工協作平臺/);
+  assert.match(output, /placeholder="輸入工作郵箱"/);
+  assert.match(output, /data-insight-copy="執行任務"/);
+  assert.match(output, /data-locale="zh"/);
+  assert.match(output, /const 功能 = '执行';/);
+  assert.match(output, /A\[執行\].*B\[結果\]/);
+  const simplified = nodes.find(node => attr(node, 'hreflang') === 'zh-CN' && node.tagName === 'a');
+  const traditional = nodes.find(node => attr(node, 'hreflang') === 'zh-Hant' && node.tagName === 'a');
+  assert.equal(attr(simplified, 'href'), '/zh/contact/');
+  assert.equal(attr(simplified, 'aria-current'), undefined);
+  assert.equal(attr(traditional, 'href'), '/zh-Hant/contact/');
+  assert.equal(attr(traditional, 'aria-current'), 'true');
+  assert.equal(traditional.childNodes.some(node => node.tagName === 'svg'), true);
+  assert.equal(attr(nodes.find(node => attr(node, 'rel') === 'canonical'), 'href'), 'https://www.zhama.com/zh-Hant/contact/');
+  assert.equal(attr(nodes.find(node => node.tagName === 'link' && attr(node, 'hreflang') === 'zh-CN'), 'href'), 'https://www.zhama.com/zh/contact/');
+  assert.equal(attr(nodes.find(node => node.tagName === 'input'), 'data-locale'), 'zh');
+  assert.equal(attr(nodes.find(node => node.tagName === 'h1'), 'id'), '执行');
+  assert.match(output, /\/zh-Hant\/product\/#%E6%89%A7%E8%A1%8C/);
+  assert.match(output, /https:\/\/docs\.zhama\.com\.cn\/zh\/guide\//);
+  assert.match(output, /https:\/\/www\.zhama\.com\/zh-Hant\/blog\//);
+  assert.match(output, /\/_astro\/contact\.zh-Hant\.js/);
+});
+
+test('runtime strings and template fragments translate without changing identifiers or regular expressions', () => {
+  const source = 'const 员工 = /员工/; const label = "\\u6267\\u884c"; const message = `任务${name}已执行${count}次`;';
+  const output = translateScript(source);
+  assert.match(output, /const 员工 = \/员工\//);
+  assert.match(output, /"執行"/);
+  assert.match(output, /`任務\$\{name\}已執行\$\{count\}次`/);
+});
+
+test('static publication mirrors all Chinese routes, localizes script dependencies and feeds, and includes corresponding sitemap routes', () => {
+  const dist = mkdtempSync(path.join(tmpdir(), 'tego-languages-'));
+  const write = (file, content) => { mkdirSync(path.dirname(path.join(dist, file)), { recursive: true }); writeFileSync(path.join(dist, file), content); };
+  try {
+    const source = '<!doctype html><html lang="zh-CN"><head><title>员工</title><link rel="canonical" href="https://www.zhama.com/zh/product/"></head><body><h1>数字员工</h1><script type="module" src="/_astro/page.js"></script></body></html>';
+    write('zh/product/index.html', source);
+    write('zh/blog/rss.xml', '<rss><channel><title>产品博客</title><language>zh-CN</language><link>https://www.zhama.com/zh/blog/</link></channel></rss>');
+    write('en/product/index.html', 'English page');
+    write('_astro/labels.js', 'export const label = "执行任务";');
+    write('_astro/page.js', 'import { label } from "./labels.js"; document.title = label;');
+    write('_astro/shared.js', 'export const sourceLocale = "zh";');
+    write('sitemap-0.xml', '<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://www.zhama.com/zh/product/</loc><xhtml:link rel="alternate" hreflang="zh-CN" href="https://www.zhama.com/zh/product/"/></url><url><loc>https://www.zhama.com/en/product/</loc></url></urlset>');
+    const result = prepareTraditionalPages(dist);
+    assert.deepEqual(result, { pages: 1, feeds: 1, scripts: 2, sitemapEntries: 1 });
+    assert.equal(readFileSync(path.join(dist, 'zh/product/index.html'), 'utf8'), source);
+    assert.equal(readFileSync(path.join(dist, 'en/product/index.html'), 'utf8'), 'English page');
+    assert.match(readFileSync(path.join(dist, 'zh-Hant/product/index.html'), 'utf8'), /數字員工/);
+    assert.match(readFileSync(path.join(dist, '_astro/page.zh-Hant.js'), 'utf8'), /\.\/labels\.zh-Hant\.js/);
+    assert.match(readFileSync(path.join(dist, '_astro/labels.zh-Hant.js'), 'utf8'), /執行任務/);
+    assert.match(readFileSync(path.join(dist, 'zh-Hant/blog/rss.xml'), 'utf8'), /產品博客.*<language>zh-Hant<\/language>.*\/zh-Hant\/blog\//);
+    const sitemap = readFileSync(path.join(dist, 'sitemap-0.xml'), 'utf8');
+    assert.match(sitemap, /<loc>https:\/\/www.zhama.com\/zh-Hant\/product\/<\/loc>/);
+    assert.equal((sitemap.match(/hreflang="zh-Hant"/g) || []).length, 3);
+    prepareTraditionalPages(dist);
+    assert.equal(readFileSync(path.join(dist, 'sitemap-0.xml'), 'utf8'), sitemap);
+  } finally { rmSync(dist, { recursive: true, force: true }); }
+});

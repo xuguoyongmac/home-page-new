@@ -1,0 +1,61 @@
+/* Reading text uses a shared scale; artwork and product visualizations keep theirs. */
+:root {
+  --text-body: 16px;
+  --text-control: 15px;
+  --text-secondary: 14px;
+}
+
+body:not(.is-home) { font-size: var(--text-body); }
+.tego-header .tego-nav-trigger,
+.tego-header .tego-nav-direct { font-size: var(--text-body); }
+.tego-header .tego-nav-item { font-size: var(--text-body); }
+.tego-header .tego-nav-label small { font-size: 13px; }
+.tego-header .language-link,
+.tego-header .header-cta,
+.tego-language-panel a { font-size: var(--text-control); }
+
+body:not(.is-home) #main :is(
+  .inner-hero-copy > p:not(.eyebrow),
+  .inner-detail-section .detail-intro > p,
+  .feature-card p,
+  .industry-task-card dd,
+  .industry-scope p,
+  .detail-intro > p,
+  .capability-concept-copy > p,
+  .capability-feature-card p,
+  .capability-scenario-card > p,
+  .capability-benefit-grid p,
+  .pricing-description,
+  .pricing-card li,
+  .capability-row dt,
+  .capability-row dd,
+  .station-description,
+  .station-feature p,
+  .station-specs dt,
+  .station-specs dd,
+  .support-section-heading p,
+  .support-context p,
+  .support-accordion details > p,
+  .resource-card p:not(.eyebrow),
+  .article-card p,
+  .prose
+) { font-size: var(--text-body); }
+
+body:not(.is-home) #main :is(
+  .button, .text-link, .capability-index > a,
+  .capability-inline-link, .installer-download,
+  .support-nav a, .support-filters button
+) { font-size: var(--text-control); }
+body:not(.is-home) #main :is(
+  .pricing-includes, .pricing-quote > span,
+  .pricing-card-icon > span, .installer-version,
+  .capability-scenario-flow li, .prose table
+) { font-size: var(--text-secondary); }
+
+@media (max-width: 1100px) {
+  .tego-header .mobile-nav :is(.tego-nav-trigger, .tego-nav-direct) { font-size: 17px; }
+}
+@media (max-width: 480px) {
+  .tego-header .language-link, .tego-header .header-cta { font-size: var(--text-secondary); }
+  .tego-header .tego-nav-label small { font-size: 12px; white-space: normal; }
+}

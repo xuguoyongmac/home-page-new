@@ -4,7 +4,7 @@ export default {
   zh: {
     hero: {
       lines: ['全链路可信管控', '智能作业可授权、可追溯'],
-      summary: '对齐组织身份与业务委托规则，管理数字员工的访问范围，通过执行记录追溯工作过程与成果。',
+      summary: '对齐组织身份与业务委托规则，管理数字员工的访问范围与发布审核，通过执行记录追溯工作过程与成果。',
     },
     pain: {
       title: '业务交给数字员工，边界也要交代清楚',
@@ -20,8 +20,9 @@ export default {
       labels: ['组织身份', '访问权限', '业务委托', '审计记录'],
     },
     features: [
-      { icon: 'network', title: '组织身份对齐', body: '结合组织角色管理访问，按人员、角色与团队配置资源权限。' },
+      { icon: 'network', title: '组织身份对齐', body: '对接 LDAP / OIDC 身份源，结合组织角色管理人员与资源权限。' },
       { icon: 'key', title: '业务委托授权', body: '明确授权数字员工处理插件工作，按需启用，并可随时撤销。' },
+      { icon: 'check', title: '审核管理', body: '按组织规则审核数字员工创建与开放、数字员工模板与插件发布、技能变更及资源授权，保留提交快照与审核决定。' },
       { icon: 'shield', title: '执行过程审计', body: '按任务查看执行步骤、工具调用与成果记录，追溯管理变更。' },
     ],
     scenarios: [
@@ -48,7 +49,7 @@ export default {
   en: {
     hero: {
       lines: ['Trusted control across work', 'Authorized actions, traceable results'],
-      summary: 'Align identity and business delegation, control what digital employees can access, and use execution records to trace work and deliverables.',
+      summary: 'Align identity and business delegation, control employee access and publication reviews, and trace work and deliverables through execution records.',
     },
     pain: {
       title: 'Delegate the work. Define the boundaries.',
@@ -64,8 +65,9 @@ export default {
       labels: ['Identity', 'Access', 'Delegation', 'Audit trail'],
     },
     features: [
-      { icon: 'network', title: 'Identity alignment', body: 'Manage access by organizational role and grant resource permissions to people, roles and teams.' },
+      { icon: 'network', title: 'Identity alignment', body: 'Connect LDAP / OIDC identity providers and manage people and resource access through organizational roles.' },
       { icon: 'key', title: 'Business delegation', body: 'Explicitly authorize plugin work, enable it as needed and revoke it at any time.' },
+      { icon: 'check', title: 'Review management', body: 'Review digital employee creation and access, template and plugin publication, skill changes and resource authorization. Retain submission snapshots and decisions.' },
       { icon: 'shield', title: 'Execution audit', body: 'Review task steps, tool calls and deliverable records alongside governance changes.' },
     ],
     scenarios: [

@@ -7,7 +7,7 @@ export default {
       summary: '把岗位职责与专业能力封装成可复用模板，按业务需要补充团队劳动力，承接标准化工作。',
     },
     pain: {
-      title: '业务高峰来临，专业人力如何补位？',
+      title: '把岗位经验沉淀为稳定的执行能力',
       items: [
         '专业岗位招聘、培训周期长，阶段性工作缺少稳定的执行人力。',
         '同类工作反复开展，优秀岗位经验难以沉淀和复制。',
@@ -23,6 +23,8 @@ export default {
       { icon: 'layers', title: '岗位能力编排', body: '将职责、技能和工作区文件封装为模板，复用成熟工作方法。' },
       { icon: 'key', title: '授权与委托机制', body: '分别配置员工使用范围、知识授权和插件业务委托。' },
       { icon: 'network', title: '按需招募上岗', body: '从模板创建独立数字员工，完成配置与审批后投入工作。' },
+      { icon: 'clock', title: '周期任务与持续工作', body: '配置数字员工的定时任务，查看运行记录与投递结果，承接周期性资料整理与报告工作。' },
+      { icon: 'book', title: '工作记忆与经验沉淀', body: '按使用者隔离维护个人档案、长期记忆与工作日记，按组织策略复盘工作，将经验沉淀为技能。' },
     ],
     scenarios: [
       { title: '标书助理岗位', body: '将标书编制要求沉淀为模板，承接资料归集、初稿撰写与资质自查，由业务专家终审。', flow: ['归集投标资料', '编制与自查', '业务专家终审'] },
@@ -43,7 +45,7 @@ export default {
       summary: 'Package role responsibilities and specialist capabilities into reusable templates. Recruit digital employees as business needs change.',
     },
     pain: {
-      title: 'When work peaks, how does your team keep up?',
+      title: 'Turn role experience into dependable execution',
       items: [
         'Hiring and training take time while specialist work keeps arriving.',
         'Teams repeat the same work without preserving their best methods.',
@@ -59,6 +61,8 @@ export default {
       { icon: 'layers', title: 'Configure role capabilities', body: 'Package responsibilities, skills and workspace files into a reusable template.' },
       { icon: 'key', title: 'Authorize and delegate', body: 'Manage employee access, knowledge permissions and plugin delegation separately.' },
       { icon: 'network', title: 'Recruit on demand', body: 'Create independent digital employees and complete the required setup and approval.' },
+      { icon: 'clock', title: 'Recurring work', body: 'Configure scheduled tasks and review run and delivery records for recurring preparation and reporting.' },
+      { icon: 'book', title: 'Work memory and reusable experience', body: 'Keep profiles, long-term memory and work diaries isolated by user. Reflect under organizational policy and preserve methods as skills.' },
     ],
     scenarios: [
       { title: 'Bid assistant', body: 'Reuse bid preparation requirements to collect materials, draft documents and check qualifications before a specialist reviews the result.', flow: ['Collect materials', 'Draft and check', 'Specialist review'] },

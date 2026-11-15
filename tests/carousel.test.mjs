@@ -13,7 +13,16 @@ class ElementStub extends EventTarget {
   inert = false;
   hidden = false;
   textContent = '';
-  classList = { toggle() {} };
+  classes = new Set();
+  animations = [];
+  classList = { toggle: (name, enabled) => enabled ? this.classes.add(name) : this.classes.delete(name) };
+  animate(frames, options) {
+    let finish, reject;
+    const animation = { frames, options, cancelled: false, finished: new Promise((resolve, fail) => { finish = resolve; reject = fail; }),
+      finish: () => finish(), cancel: () => { animation.cancelled = true; reject(new Error('Cancelled')); } };
+    this.animations.push(animation);
+    return animation;
+  }
   setAttribute(key, value) { this.attrs.set(key, value); }
   getAttribute(key) { return this.attrs.get(key) ?? null; }
   removeAttribute(key) { this.attrs.delete(key); }
@@ -50,7 +59,8 @@ function fixture({ pendingPlay = false, rejectPlays = 0 } = {}) {
   hero.querySelector = selector => elements[selector] || null;
   hero.querySelectorAll = selector => selector === '[data-hero-slide]' ? slides : selector === '[data-slide-to]' ? selectors : [];
   const document = new EventTarget(); document.querySelectorAll = () => [hero];
-  const window = new EventTarget(); window.matchMedia = () => Object.assign(new EventTarget(), { matches: false });
+  const preference = Object.assign(new EventTarget(), { matches: false });
+  const window = new EventTarget(); window.matchMedia = query => query.includes('prefers-reduced-motion') ? preference : Object.assign(new EventTarget(), { matches: false });
   let lifecycle;
   const timers = new Map(); let id = 0;
   const module = { exports: {} };
@@ -61,8 +71,20 @@ function fixture({ pendingPlay = false, rejectPlays = 0 } = {}) {
   setTimeout: callback => { timers.set(++id, callback); return id; }, clearTimeout: timer => timers.delete(timer) });
   module.exports.initializeHeroCarousels();
   const click = element => element.dispatchEvent(new Event('click'));
-  return { hero, toggle, workspace, selectors, slides, video, media, click, timers,
-    lifecycle, playCalls: () => playCalls, resolvePlay: () => resolvePlay(), hover: inside => {
+  const key = (element, value) => {
+    const event = new Event('keydown', { cancelable: true });
+    Object.defineProperty(event, 'key', { value });
+    element.dispatchEvent(event);
+  };
+  return { hero, toggle, workspace, selectors, slides, video, media, click, key, timers,
+    finishTransition: async () => {
+      slides.forEach(slide => slide.animations.at(-1)?.finish());
+      await new Promise(resolve => setImmediate(resolve));
+    },
+    lifecycle, reduceMotion: () => {
+      preference.matches = true;
+      lifecycle({ running: false, reduced: true, suspended: false, paused: false, enabled: true });
+    }, playCalls: () => playCalls, resolvePlay: () => resolvePlay(), hover: inside => {
       const event = new Event(inside ? 'pointerenter' : 'pointerleave');
       Object.defineProperty(event, 'pointerType', { value: 'mouse' }); hero.dispatchEvent(event);
     } };
@@ -90,6 +112,7 @@ test('pausing the first visual never pauses the second video; revisiting retains
   assert.equal(env.hero.dataset.heroMotion, 'running');
   assert.equal(env.video.paused, false);
   assert.equal(env.media.getAttribute('srcset'), '/images/task-800.webp 800w');
+  await env.finishTransition();
   env.click(env.selectors[0]);
   assert.equal(env.hero.dataset.heroMotion, 'paused');
   assert.equal(env.video.paused, true);
@@ -100,6 +123,7 @@ test('a delayed play promise cannot restart a video after leaving its slide', as
   const env = fixture({ pendingPlay: true });
   env.click(env.selectors[1]);
   env.click(env.selectors[2]);
+  await env.finishTransition();
   env.resolvePlay();
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(env.video.paused, true);
@@ -130,4 +154,71 @@ test('persistent video rejection settles on the poster without a retry loop', as
   assert.equal(env.playCalls(), 2);
   assert.equal(env.video.paused, true);
   assert.equal(env.video.dataset.playback, 'blocked');
+});
+
+test('slides travel one full page in the requested direction, including the last-to-first boundary', async () => {
+  const env = fixture();
+  env.click(env.selectors[2]);
+  env.slides[0].animations.at(-1).finish();
+  env.slides[2].animations.at(-1).finish();
+  await new Promise(resolve => setImmediate(resolve));
+  env.key(env.selectors[2], 'ArrowRight');
+  assert.equal(env.slides[0].dataset.active, 'true');
+  assert.deepEqual(Array.from(env.slides[0].animations.at(-1).frames, frame => frame.transform), ['translateX(100%)', 'translateX(0%)']);
+  assert.deepEqual(Array.from(env.slides[2].animations.at(-1).frames, frame => frame.transform), ['translateX(0%)', 'translateX(-100%)']);
+  assert.equal(env.slides[0].animations.at(-1).frames.some(frame => 'opacity' in frame), false);
+  env.key(env.selectors[0], 'ArrowLeft');
+  env.slides[0].animations.at(-1).finish();
+  env.slides[2].animations.at(-1).finish();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(env.slides[2].dataset.active, 'true');
+  assert.equal(env.slides[2].animations.at(-1).frames[0].transform, 'translateX(-100%)');
+});
+
+test('rapid selection finishes the current page before moving to the latest request without a geometry snap', async () => {
+  const env = fixture();
+  env.click(env.selectors[1]);
+  const incoming = env.slides[1].animations.at(-1);
+  env.click(env.selectors[2]);
+  env.click(env.selectors[0]);
+  env.click(env.selectors[2]);
+  assert.equal(incoming.cancelled, false);
+  assert.equal(env.slides[1].dataset.active, 'true');
+  assert.equal(env.slides[2].animations.length, 0);
+  env.slides[0].animations.at(-1).finish();
+  incoming.finish();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(env.slides[2].dataset.active, 'true');
+  env.slides[1].animations.at(-1).finish();
+  env.slides[2].animations.at(-1).finish();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(env.slides.map(slide => slide.dataset.active), ['false', 'false', 'true']);
+  assert.equal(env.slides.some(slide => slide.classes.has('is-leaving')), false);
+  assert.equal(env.slides[0].inert, true);
+  assert.equal(env.slides[2].inert, false);
+});
+
+test('enabling reduced motion settles a transition immediately and keeps later selections still', async () => {
+  const env = fixture();
+  env.click(env.selectors[1]);
+  const incoming = env.slides[1].animations.at(-1);
+  env.reduceMotion();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(incoming.cancelled, true);
+  assert.equal(env.slides.some(slide => slide.classes.has('is-leaving')), false);
+  assert.equal(env.slides[1].dataset.active, 'true');
+  env.click(env.selectors[2]);
+  assert.equal(env.slides[2].animations.length, 0);
+  assert.equal(env.timers.size, 0);
+});
+
+test('enabling reduced motion also applies the last queued selection without animating it', async () => {
+  const env = fixture();
+  env.click(env.selectors[1]);
+  env.click(env.selectors[2]);
+  env.reduceMotion();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(env.slides[2].dataset.active, 'true');
+  assert.equal(env.slides[2].animations.length, 0);
+  assert.equal(env.slides.some(slide => slide.classes.has('is-leaving')), false);
 });

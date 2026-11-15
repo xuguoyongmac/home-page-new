@@ -4,7 +4,7 @@ export default {
   zh: {
     hero: {
       lines: ['打通业务底座', '让智能能力直达业务流程'],
-      summary: '通过业务插件、MCP 工具与开放接口，将数字员工接入现有业务系统，让工作从内容生成走向业务执行。',
+      summary: '通过业务插件、MCP、RESTful API 与数据库连接，将数字员工接入现有业务系统，让工作从内容生成走向业务执行。',
     },
     pain: {
       title: '让智能产出接上真实业务',
@@ -16,14 +16,41 @@ export default {
     },
     concept: {
       title: '在现有业务底座上，延伸智能操作能力',
-      body: '业务插件承接业务页面、服务与员工工具，MCP 为数字员工连接外部能力；开放接口让业务系统提交任务、接收成果。接入与执行沿用实际身份和资源权限。',
-      labels: ['数字员工', '插件与 MCP', '业务系统', '开放接口'],
+      body: '业务插件承接业务页面与员工工具，MCP、RESTful API 和数据库连接分别接入工具、业务接口与数据；平台 OpenAPI 让外部系统提交任务、接收成果。各类连接分别配置身份与权限。',
+      labels: ['数字员工', '系统连接', '业务系统', '平台 OpenAPI'],
     },
     features: [
-      { icon: 'plug', title: '业务插件扩展', body: '连接 CRM、EHS 等业务模块，按身份与数据范围开展工作。' },
-      { icon: 'network', title: 'MCP 工具接入', body: '从工具目录添加或配置外部服务，完成相应认证后调用。' },
-      { icon: 'terminal', title: '开放接口集成', body: '业务系统提交任务与附件，通过查询或事件流接收成果。' },
-    ],
+      {
+            "icon": "plug",
+            "title": "业务插件扩展",
+            "body": "通过已安装、授权的 CRM、招投标与 EHS 等插件，围绕客户、项目和业务单据开展工作。"
+      },
+      {
+            "icon": "network",
+            "title": "MCP 工具接入",
+            "body": "配置外部 MCP 服务与认证，将专业工具接入数字员工的任务执行。"
+      },
+      {
+            "icon": "terminal",
+            "title": "RESTful API 连接",
+            "body": "配置企业接口的认证与请求参数，在接口权限范围内查询业务信息、办理业务并衔接流程。"
+      },
+      {
+            "icon": "chart",
+            "title": "数据库连接",
+            "body": "在数据库账号与授权范围内查询、汇总和分析业务数据，为经营问答与报告提供依据。"
+      },
+      {
+            "icon": "layers",
+            "title": "平台 OpenAPI",
+            "body": "由外部系统提交任务与附件，通过同步、异步或流式接口获取状态、结果和平台服务。"
+      },
+      {
+            "icon": "monitor",
+            "title": "授权设备与文件工具",
+            "body": "结合桌面设备节点、浏览器和文件工具执行工作，按节点状态、平台与权限接入。"
+      }
+],
     scenarios: [
       {
         title: 'CRM 客户跟进记录',
@@ -48,7 +75,7 @@ export default {
   en: {
     hero: {
       lines: ['Connect Your Business Stack', 'Bring Intelligence Into the Workflow'],
-      summary: 'Connect digital employees to existing business systems through plugins, MCP tools and open APIs, moving work from generated content to business actions.',
+      summary: 'Connect digital employees to existing systems through business plugins, MCP, RESTful APIs and databases, moving work from generated content to business actions.',
     },
     pain: {
       title: 'Connect Intelligent Output to Business Work',
@@ -60,14 +87,41 @@ export default {
     },
     concept: {
       title: 'Extend Intelligent Actions Across Your Existing Stack',
-      body: 'Business plugins provide pages, services and employee tools. MCP connects employees to external capabilities, while open APIs let business systems submit tasks and receive results. Actions follow the actual identity and resource permissions.',
-      labels: ['Digital Employee', 'Plugins & MCP', 'Business Systems', 'Open APIs'],
+      body: 'Business plugins provide pages and employee tools. MCP, RESTful APIs and database connections bring tools, business operations and data into the work. Platform OpenAPI lets external systems submit tasks and receive results. Each connection has its own identity and permissions.',
+      labels: ['Digital Employee', 'Connections', 'Business Systems', 'Platform OpenAPI'],
     },
     features: [
-      { icon: 'plug', title: 'Business Plugins', body: 'Work with CRM, EHS and other business modules within the permitted data scope.' },
-      { icon: 'network', title: 'MCP Tool Connections', body: 'Add services from the tool catalog or configure external tools with their required authentication.' },
-      { icon: 'terminal', title: 'Open API Integration', body: 'Submit tasks and attachments from business systems, then receive results by polling or event stream.' },
-    ],
+      {
+            "icon": "plug",
+            "title": "Business plugins",
+            "body": "Work with clients, projects and business records through installed, authorized CRM, bidding and EHS plugins."
+      },
+      {
+            "icon": "network",
+            "title": "MCP tools",
+            "body": "Configure external MCP services and authentication to bring specialist tools into task execution."
+      },
+      {
+            "icon": "terminal",
+            "title": "RESTful APIs",
+            "body": "Configure authentication and request parameters to read information and carry out work within API permissions."
+      },
+      {
+            "icon": "chart",
+            "title": "Database connections",
+            "body": "Query, aggregate and analyze data within the database account’s authorized scope for answers and reports."
+      },
+      {
+            "icon": "layers",
+            "title": "Platform OpenAPI",
+            "body": "External systems submit tasks and files and receive results through synchronous, asynchronous or streaming interfaces."
+      },
+      {
+            "icon": "monitor",
+            "title": "Authorized devices and files",
+            "body": "Use desktop nodes, browser and file tools according to node state, platform support and access permissions."
+      }
+],
     scenarios: [
       {
         title: 'CRM Follow-up Records',

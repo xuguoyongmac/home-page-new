@@ -1,9 +1,9 @@
 ---
 import type { Locale } from '../data/types';
 import SolutionExplorer from './SolutionExplorer.astro';
-import PageHeroArt from './PageHeroArt.astro';
+import CapabilityEvidence from './pages/CapabilityEvidence.astro';
+import '../styles/inner-overview.css';
 import CallToAction from './CallToAction.astro';
-import Icon from './Icon.astro';
 import { pathFor } from '../lib/site';
 interface Props {locale:Locale;}
 const {locale}=Astro.props;
@@ -20,7 +20,10 @@ const steps=zh?[
  ['Deliver the result','Review, edit and export, with project versions retained.'],
 ];
 ---
-<section class="page-hero"><PageHeroArt variant="collaboration"/><div class="container inner-hero-content"><div class="inner-hero-copy"><p class="eyebrow">{zh?'行业解决方案':'INDUSTRY SOLUTIONS'}</p><h1>{zh?'从具体业务，找到协作的起点':'Start with the work your team knows'}</h1><p>{zh?'以岗位工作为起点，明确输入资料、执行动作、人工判断与交付成果，再组合数字员工、企业知识和业务连接。':'Start with a role and define its sources, actions, human decisions and deliverables. Then combine digital employees, knowledge and business connections.'}</p><div class="hero-actions"><a class="button" href={pathFor(locale,'contact')}>{zh?'沟通业务场景':'Discuss your workflow'}<Icon name="external" size={14}/></a></div></div></div></section>
+<div class="inner-overview">
+<section class="overview-hero"><div class="container overview-hero-grid"><div class="overview-hero-copy"><h1>{zh?'把行业经验变成数字员工的工作能力':'Turn industry expertise into digital work'}</h1><p>{zh?'从行业真正关心的经营、服务与协作问题出发，把企业知识、岗位方法和业务系统接到具体工作，交付团队能够继续使用的成果。':'Start with the industry’s operating, service and collaboration needs. Connect company knowledge, specialist methods and systems to deliver work your team can use.'}</p><a class="button" href={pathFor(locale,'contact')}>{zh?'预约方案交流':'Discuss your solution'}</a></div><CapabilityEvidence slug="multi-agent" locale={locale}/></div></section>
 <section class="sl-section sl-solutions-page"><div class="container"><SolutionExplorer locale={locale}/></div></section>
-<section class="sl-section sl-alt"><div class="container"><div class="sl-heading"><p class="eyebrow">{zh?'落地方式':'GETTING STARTED'}</p><h2>{zh?'先明确工作与成果，再组合能力':'Define the result, then combine capabilities'}</h2></div><div class="workflow-strip">{steps.map(([title,body],index)=><article><span>{String(index+1).padStart(2,'0')}</span><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
+<section class="sl-section sl-alt"><div class="container"><div class="sl-heading"><h2>{zh?'先明确工作与成果，再组合能力':'Define the result, then combine capabilities'}</h2></div><div class="workflow-strip">{steps.map(([title,body],index)=><article><span>{String(index+1).padStart(2,'0')}</span><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
 <CallToAction locale={locale}/>
+
+</div>

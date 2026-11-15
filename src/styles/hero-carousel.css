@@ -1,13 +1,12 @@
 /* The first slide keeps the established hero composition. All slides reserve the
    same space, so rotating never moves the following section. */
 .home-value-edition .hero-carousel{position:relative}
-.hero-slides{display:grid;isolation:isolate;touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none}
+.hero-slides{display:grid;isolation:isolate;overflow:clip;touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none}
 .hero-carousel[data-carousel-dragging='true'] .hero-slides{cursor:grabbing}
-.hero-slide{grid-area:1/1;min-width:0;visibility:hidden;opacity:0;pointer-events:none;transform:translateX(38px);transition:opacity .65s ease,transform .8s cubic-bezier(.22,1,.36,1),visibility .65s}
-.hero-slide.is-active{visibility:visible;opacity:1;pointer-events:auto;z-index:1;transform:translateX(0)}
-.hero-slide.is-leaving{transform:translateX(-38px)}
-.hero-carousel[data-carousel-direction='previous'] .hero-slide:not(.is-active){transform:translateX(-38px)}
-.hero-carousel[data-carousel-direction='previous'] .hero-slide.is-leaving{transform:translateX(38px)}
+.hero-slide{grid-area:1/1;min-width:0;visibility:hidden;pointer-events:none}
+.hero-slide.is-active{visibility:visible;pointer-events:auto;z-index:1}
+.hero-slide.is-leaving{visibility:visible}
+.hero-slide:is(.is-active,.is-leaving){will-change:transform}
 .hero-slide[data-active='false'] *{animation-play-state:paused!important}
 .hero-carousel .hero-center{min-height:0}
 .hero-carousel .hero-message{min-width:0}
@@ -50,7 +49,6 @@
 
 }
 @media(prefers-reduced-motion:reduce){
- .hero-slide{transition:none}
  .hero-slide-selectors>button[aria-current]>i:after{animation:none;transform:scaleX(1)}
 }
 /* The third visual depicts continuous recurring work on one 24-hour timeline. */
@@ -65,9 +63,7 @@
 .execution-video{opacity:0}
 .execution-video[data-frame-ready='true']{opacity:1}
 @media(prefers-reduced-motion:reduce){
- .hero-slide{transform:none!important}
  .execution-video{visibility:hidden}
- .execution-video-poster{visibility:visible}
  .hero-slide-selectors>button>i{transition:none}
 }
 @media(min-width:1101px){
@@ -78,8 +74,6 @@
  .execution-concept{margin-inline:-9px;transform:none}
 }
 
-
-@media(max-width:700px){.hero-carousel .hero-slides{display:block}.hero-slide:not(.is-active){display:none}.hero-carousel .hero-slide.is-active{display:block}}
 
 /* A shared stage and copy grid keep all three slides on the same baselines. */
 .home-value-edition .hero-carousel .hero-message{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:120px 92px 48px;gap:24px;align-content:center;text-align:left}

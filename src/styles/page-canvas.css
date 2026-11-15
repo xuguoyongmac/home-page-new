@@ -23,7 +23,3 @@ body.is-home #main.page-canvas .hero-carousel {
     radial-gradient(ellipse at 85% 76%, #11467428, transparent 57%), var(--page-canvas);
 }
 .hero-starfield { mask-image: linear-gradient(#000 0%, #000 72%, transparent 100%); }
-body #main.page-canvas .about-hero-background::after {
-  background: linear-gradient(90deg, #060b12d9, #060b1290 38%, #060b1226),
-    linear-gradient(0deg, var(--page-canvas), transparent 30%);
-}

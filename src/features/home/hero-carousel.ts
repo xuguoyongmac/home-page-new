@@ -36,10 +36,19 @@ export function initializeHeroCarousels() {
     let gesture: { id: number; x: number; y: number; horizontal: boolean } | undefined;
     let suppressClickUntil = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
+    let slideAnimations: Animation[] = [];
+    let transitionRevision = 0;
+    let queuedSelection: { next: number; manual: boolean } | undefined;
     let started = 0;
     const duration = () => Number(slides[active].dataset.duration);
     let remaining = duration();
     const shouldPlayTask = () => taskSlide === slides[active] && motionState.running;
+    const cancelTransition = () => {
+      transitionRevision++;
+      slideAnimations.forEach(animation => animation.cancel());
+      slideAnimations = [];
+      slides.forEach(slide => slide.classList.toggle('is-leaving', false));
+    };
 
     const stopClock = () => {
       if (timer === undefined) return;
@@ -49,6 +58,12 @@ export function initializeHeroCarousels() {
     };
     const sync = () => {
       stopClock();
+      if (preference.matches && slideAnimations.length) {
+        cancelTransition();
+        const queued = queuedSelection;
+        queuedSelection = undefined;
+        if (queued) { select(queued.next, queued.manual); return; }
+      }
       const suspended = motionState.suspended;
       const paused = userPaused || hovered || Boolean(gesture);
       hero.dataset.heroMotion = preference.matches ? 'reduced' : active === 0 && workspacePaused ? 'paused' : 'running';
@@ -94,22 +109,52 @@ export function initializeHeroCarousels() {
     };
     const select = (next: number, manual: boolean) => {
       stopClock();
+      if (slideAnimations.length) {
+        queuedSelection = (next + slides.length) % slides.length === active ? undefined : { next, manual };
+        if (manual) userPaused = true;
+        sync();
+        return;
+      }
       const previous = active;
-      hero.dataset.carouselDirection = next < active ? 'previous' : 'next';
+      const direction = next < active ? -1 : 1;
       active = (next + slides.length) % slides.length;
+      cancelTransition();
+      const revision = transitionRevision;
       if (taskVideo && previous !== active) taskVideo.pause();
       if (manual) userPaused = true;
       slides.forEach((slide, index) => {
         const current = index === active;
         slide.dataset.active = String(current);
         slide.classList.toggle('is-active', current);
-        slide.classList.toggle('is-leaving', !current && index === previous);
+        slide.classList.toggle('is-leaving', !current && index === previous && !preference.matches);
         slide.setAttribute('aria-hidden', String(!current));
         slide.inert = !current;
         if (current) selectors[index].setAttribute('aria-current', 'true');
         else selectors[index].removeAttribute('aria-current');
       });
       hydrateSlide(slides[active]);
+      if (previous !== active && !preference.matches) {
+        const timing = { duration: 620, easing: 'cubic-bezier(.25,.7,.25,1)' };
+        slideAnimations = [
+          slides[active].animate([
+            { transform: `translateX(${direction * 100}%)` },
+            { transform: 'translateX(0%)' },
+          ], timing),
+          slides[previous].animate([
+            { transform: 'translateX(0%)' },
+            { transform: `translateX(${-direction * 100}%)` },
+          ], timing),
+        ];
+        const settle = () => {
+          if (revision !== transitionRevision) return;
+          slides[previous].classList.toggle('is-leaving', false);
+          slideAnimations = [];
+          const queued = queuedSelection;
+          queuedSelection = undefined;
+          if (queued) select(queued.next, queued.manual);
+        };
+        void Promise.all(slideAnimations.map(animation => animation.finished)).then(settle, settle);
+      }
       remaining = duration();
       if (manual) announcement.textContent = slides[active].getAttribute('aria-label') || '';
       sync();
@@ -126,11 +171,11 @@ export function initializeHeroCarousels() {
       button.addEventListener('keydown', event => {
         if (event.ctrlKey || event.metaKey || event.altKey) return;
         let next: number | undefined;
-        if (event.key === 'ArrowRight') next = (index + 1) % slides.length;
-        if (event.key === 'ArrowLeft') next = (index + slides.length - 1) % slides.length;
+        if (event.key === 'ArrowRight') next = index + 1;
+        if (event.key === 'ArrowLeft') next = index - 1;
         if (event.key === 'Home') next = 0;
         if (event.key === 'End') next = slides.length - 1;
-        if (next !== undefined) { event.preventDefault(); select(next, true); selectors[next].focus(); }
+        if (next !== undefined) { event.preventDefault(); select(next, true); selectors[active].focus(); }
       });
     });
     toggle.addEventListener('click', togglePlayback);

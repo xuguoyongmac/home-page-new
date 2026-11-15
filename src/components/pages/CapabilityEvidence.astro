@@ -1,0 +1,78 @@
+---
+import type { Locale } from '../../data/types';
+import '../../styles/capability-evidence.css';
+interface Props { slug: string; locale: Locale; }
+const { slug, locale } = Astro.props;
+const zh = locale === 'zh';
+const labels: Record<string, string> = zh ? {
+ 'digital-employees': '从岗位模板到独立数字员工的职责、技能与工作区',
+ 'multi-agent': '主 Agent 统筹专业子任务，汇总报告成果',
+ integrations: 'MCP、RESTful API、数据库与平台 OpenAPI 的不同连接方向',
+ collaboration: '项目资料、会话、人工确认与成果版本的接续',
+ knowledge: '知识回答与对应文件原文引用',
+ governance: '知识权限、项目角色、业务委托与执行记录',
+} : {
+ 'digital-employees': 'Role templates, specialist skills and an independent employee workspace',
+ 'multi-agent': 'A main Agent delegates specialist work and combines the deliverables',
+ integrations: 'Distinct MCP, REST API, database and platform OpenAPI connections',
+ collaboration: 'Shared project files, conversation, human review and result versions',
+ knowledge: 'A knowledge answer connected to original source passages',
+ governance: 'Knowledge access, project roles, business delegation and execution records',
+};
+---
+<figure class:list={['capability-evidence', `evidence-${slug}`]} aria-label={labels[slug]}>
+  {slug === 'digital-employees' && <>
+    <div class="evidence-context"><span>{zh ? '经营分析岗位模板' : 'Business analyst template'}</span><span>{zh ? '招募为独立数字员工' : 'Recruit an independent employee'}</span></div>
+    <div class="evidence-surface">
+      <header><span class="evidence-monogram" aria-hidden="true">T</span><div><h2>{zh ? '经营分析数字员工' : 'Business analyst'}</h2><p>{zh ? '独立工作区 · 独立会话' : 'Own workspace · Own conversations'}</p></div></header>
+      <dl class="evidence-role-config">
+        <div><dt>{zh ? '岗位职责' : 'Responsibilities'}</dt><dd>{zh ? '整理经营数据，分析变化，准备汇报与跟进材料。' : 'Organize business data, analyze changes and prepare briefs and follow-ups.'}</dd></div>
+        <div><dt>{zh ? '专业技能' : 'Skills'}</dt><dd class="evidence-tags">{(zh ? ['数据核对', '经营分析', '报告编制'] : ['Data review', 'Analysis', 'Reporting']).map(item => <span>{item}</span>)}</dd></div>
+        <div><dt>{zh ? '知识与工具' : 'Knowledge & tools'}</dt><dd>{zh ? '经营口径知识库 · 授权数据工具' : 'Metric definitions · Authorized data tools'}</dd></div>
+      </dl>
+      <div class="evidence-file"><span class="evidence-file-type">XLSX</span><div><strong>{zh ? '经营分析与重点事项.xlsx' : 'Business analysis and priorities.xlsx'}</strong><p>{zh ? '工作成果保留在当前项目' : 'Deliverables retained in the project'}</p></div></div>
+    </div>
+  </>}
+  {slug === 'multi-agent' && <>
+    <div class="evidence-context"><span>{zh ? '项目尽调报告' : 'Project due diligence report'}</span><span>{zh ? '同一个目标' : 'One shared goal'}</span></div>
+    <div class="evidence-surface">
+      <header><span class="evidence-monogram" aria-hidden="true">T</span><div><h2>{zh ? '主 Agent 统筹' : 'Main Agent coordination'}</h2><p>{zh ? '拆解目标，分派专业工作，汇总返回结果' : 'Plan the work, delegate and combine results'}</p></div></header>
+      <ol class="evidence-task-list">{(zh ? [['资料研究 Agent', '公告与项目资料', '整理引用索引'], ['数据分析 Agent', '财务与经营指标', '形成分析底稿'], ['风险梳理 Agent', '合同与业务要求', '汇总关注事项']] : [['Research Agent', 'Announcements and project files', 'Source index'], ['Analysis Agent', 'Financial and operating data', 'Analysis workbook'], ['Review Agent', 'Contracts and requirements', 'Review findings']]).map(([title, source, result]) => <li><span class="evidence-step-dot" aria-hidden="true"></span><div><strong>{title}</strong><span>{source}</span></div><em>{result}</em></li>)}</ol>
+      <div class="evidence-file"><span class="evidence-file-type">DOCX</span><div><strong>{zh ? '尽调报告与底稿' : 'Due diligence report and working papers'}</strong><p>{zh ? '返回主任务，继续汇总与复核' : 'Returned to the main task for review'}</p></div></div>
+    </div>
+  </>}
+  {slug === 'integrations' && <>
+    <div class="evidence-context"><span>{zh ? '数字员工执行任务' : 'Digital employee task'}</span><span>{zh ? '按连接授权调用' : 'Authorized connections'}</span></div>
+    <div class="evidence-surface">
+      <header><span class="evidence-monogram" aria-hidden="true">T</span><div><h2>{zh ? '接到企业业务中' : 'Connect to business work'}</h2><p>{zh ? '知识与工具参与同一项任务' : 'Bring knowledge and tools into the same task'}</p></div></header>
+      <div class="evidence-connections">{(zh ? [['MCP', '外部专业工具', '调用已配置的工具能力'], ['RESTful API', '企业业务接口', '按接口授权获取或提交业务信息'], ['数据库', '授权业务数据', '按连接范围读取分析所需数据']] : [['MCP', 'Specialist tools', 'Call configured tool capabilities'], ['RESTful API', 'Business interfaces', 'Read or submit within API authorization'], ['Database', 'Authorized data', 'Read task data within the connection scope']]).map(([type, title, body]) => <div><span>{type}</span><div><strong>{title}</strong><p>{body}</p></div></div>)}</div>
+      <div class="evidence-api"><strong>{zh ? '外部系统调用 TeGo' : 'External systems call TeGo'}</strong><span>OpenAPI</span><p>{zh ? '提交任务与附件，获取状态与成果' : 'Submit tasks and files; receive status and results'}</p></div>
+    </div>
+  </>}
+  {slug === 'collaboration' && <>
+    <div class="evidence-context"><span>{zh ? '行业方案项目' : 'Industry proposal project'}</span><span>{zh ? '资料 · 会话 · 事项 · 版本' : 'Files · Conversation · Items · Versions'}</span></div>
+    <div class="evidence-surface">
+      <header><span class="evidence-monogram" aria-hidden="true">T</span><div><h2>{zh ? '围绕同一份成果协作' : 'Work on the same deliverable'}</h2><p>{zh ? '成员按项目角色共用工作背景' : 'Share context through project roles'}</p></div></header>
+      <div class="evidence-conversation"><div><strong>{zh ? '业务负责人' : 'Project lead'}</strong><p>{zh ? '@方案数字员工 按项目资料补充业务场景，保留原有结构。' : '@Proposal employee Add business scenarios from the project files. Keep the agreed structure.'}</p></div><div><strong>{zh ? '方案数字员工' : 'Proposal employee'}</strong><p>{zh ? '场景与交付内容已补充。业务口径需要确认，已关联到本次工作事项。' : 'Scenarios and deliverables are updated. The business definitions are linked to a review item.'}</p></div></div>
+      <div class="evidence-handoff"><span>{zh ? '业务口径确认' : 'Review business definitions'}</span><em>{zh ? '待负责人确认' : 'Awaiting lead review'}</em></div>
+      <div class="evidence-file"><span class="evidence-file-type">DOCX</span><div><strong>{zh ? '行业方案_V1.1.docx' : 'Industry proposal_V1.1.docx'}</strong><p>{zh ? '文件修改与项目版本关联' : 'File changes connected to project versions'}</p></div></div>
+    </div>
+  </>}
+  {slug === 'knowledge' && <>
+    <div class="evidence-context"><span>{zh ? '企业系统可以怎样连接数字员工？' : 'How do enterprise systems connect?'}</span><span>{zh ? '检索授权知识' : 'Search authorized knowledge'}</span></div>
+    <div class="evidence-surface">
+      <header><span class="evidence-monogram" aria-hidden="true">T</span><div><h2>{zh ? '回答与依据放在一起' : 'Answers with their evidence'}</h2><p>{zh ? '企业知识检索 · 原文引用' : 'Enterprise retrieval · Original sources'}</p></div></header>
+      <div class="evidence-answer"><p>{zh ? '数字员工通过 MCP、RESTful API 与数据库连接使用外部能力；外部系统通过平台 OpenAPI 提交任务并接收成果。' : 'Digital employees use external capabilities through MCP, RESTful APIs and database connections. External systems submit tasks and receive results through the platform OpenAPI.'}</p><div class="evidence-source-ref">{zh ? '产品功能清单 · 系统集成' : 'Product capabilities · System integration'}</div></div>
+      <blockquote class="evidence-source-passage"><strong>{zh ? '原文与上下文' : 'Original passage and context'}</strong><p>{zh ? '外部系统通过同步、异步或流式接口调用数字员工，并使用知识、文件与待处理事项等平台服务。' : 'External systems call digital employees synchronously, asynchronously or through streaming, and use platform services for knowledge, files and attention items.'}</p></blockquote>
+      <ul class="evidence-library-list">{(zh ? ['企业知识库', '历史方案', '本项目资料'] : ['Company library', 'Past proposals', 'Project files']).map(item => <li>{item}</li>)}</ul>
+    </div>
+  </>}
+  {slug === 'governance' && <>
+    <div class="evidence-context"><span>{zh ? '一次业务委托' : 'A business delegation'}</span><span>{zh ? '授权与记录相互对应' : 'Permissions connected to records'}</span></div>
+    <div class="evidence-surface">
+      <header><span class="evidence-monogram" aria-hidden="true">T</span><div><h2>{zh ? '工作可委托，边界可管理' : 'Delegate work. Manage its scope.'}</h2><p>{zh ? '知识、项目、插件分别授权' : 'Separate knowledge, project and plugin access'}</p></div></header>
+      <dl class="evidence-permissions">{(zh ? [['企业知识', '按知识库分配访问与引用权限'], ['项目文件', '按项目成员与角色读写'], ['插件业务', '按明确授予的委托范围执行']] : [['Knowledge', 'Library access and citation rights'], ['Project files', 'Project membership and roles'], ['Plugin work', 'Explicit business delegation']]).map(([name, scope]) => <div><dt>{name}</dt><dd>{scope}</dd></div>)}</dl>
+      <div class="evidence-audit"><strong>{zh ? '执行记录' : 'Execution record'}</strong><ol>{(zh ? ['任务步骤', '工具调用', '工作成果'] : ['Task steps', 'Tool calls', 'Deliverables']).map(item => <li>{item}</li>)}</ol><p>{zh ? '结合授权与管理变更，回看工作过程' : 'Review the process alongside authorization and governance changes'}</p></div>
+    </div>
+  </>}
+</figure>
