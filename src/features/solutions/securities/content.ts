@@ -2,7 +2,7 @@ import type { SolutionModule } from '../types';
 
 export default {
   "slug": "securities",
-  "order": 0,
+  "order": 2,
   "category": "industry",
   "copy": {
     "zh": {

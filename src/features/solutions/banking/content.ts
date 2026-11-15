@@ -2,7 +2,7 @@ import type { SolutionModule } from '../types';
 
 export default {
   "slug": "banking",
-  "order": 2,
+  "order": 0,
   "category": "industry",
   "copy": {
     "zh": {
