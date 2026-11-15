@@ -104,9 +104,8 @@
 .tego-header :is(.navigation-icon-default, .navigation-icon-active) { transition: opacity .16s ease; }
 .tego-header .tego-nav-item:is(:hover, :focus-visible, [aria-current='page']) .navigation-icon-default { opacity: 0; }
 .tego-header .tego-nav-item:is(:hover, :focus-visible, [aria-current='page']) .navigation-icon-active { opacity: 1; }
-.tego-header .tego-nav-resources { width: 224px; }
+.tego-header .tego-nav-resources { width: 300px; }
 .tego-header .tego-nav-resources .tego-nav-grid { grid-template-columns: minmax(0, 1fr); }
-.tego-header .tego-nav-resources .tego-nav-item { min-height: 44px; align-items: center; padding-block: 9px; }
 
 .tego-header :is(a, button):focus-visible { outline: 2px solid #779ed2; outline-offset: 5px; }
 .tego-header .tego-nav-item:focus-visible { outline-offset: -2px; }
@@ -153,7 +152,6 @@
   }
   .tego-header .tego-nav-grid { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .tego-header .tego-nav-item { min-height: 56px; padding: 10px 8px; gap: 10px; }
-  .tego-header .tego-nav-resources .tego-nav-item { min-height: 44px; }
 }
 @media (max-width: 700px) {
   .tego-header .mobile-nav.is-open { max-height: calc(100dvh - 72px); }
