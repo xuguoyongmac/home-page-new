@@ -1,8 +1,61 @@
 ---
-import IndustryPage from '../../../components/pages/IndustryPage.astro';
-import content from './content';
+import { pathFor } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
+import EmployeeCarousel from './EmployeeCarousel.astro';
+import BankingWorkbench from './BankingWorkbench.astro';
+import ValueVisual from './ValueVisual.astro';
+import content from './content';
+import { bankingPresentation } from './page-content';
+import '../../../styles/banking-page.css';
+
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const zh = locale === 'zh';
+const industry = content.copy[locale];
+const presentation = bankingPresentation[locale];
+const story = industry.story;
 ---
-<IndustryPage locale={locale} industry={content.copy[locale]}/>
+<div class="banking-solution">
+  <section class="banking-hero" aria-labelledby="banking-title">
+    <img class="banking-banner-background" src="/images/solutions/banking/banking-landscape_V1.3.webp" alt="" width="1600" height="819" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
+    <div class="container">
+      <div class="banking-hero-grid">
+        <div class="banking-hero-copy">
+          <h1 id="banking-title" aria-label={industry.title}>{story.lines.map(line => <span>{line}</span>)}</h1>
+          <div class="banking-hero-summary">
+            <p>{industry.description}</p>
+            <a class="button banking-contact" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
+          </div>
+        </div>
+        <div class="banking-hero-product"><BankingWorkbench locale={locale} compact/></div>
+      </div>
+    </div>
+  </section>
+
+  {presentation.features.map((feature, index) => <section class:list={['banking-feature-section', {'banking-feature-reversed': index % 2 === 1}]} aria-labelledby={`banking-feature-${index}`}>
+    <div class="container banking-feature-grid">
+      <div class="banking-feature-copy">
+        <h2 id={`banking-feature-${index}`}>{feature.title.split('，').map((line, lineIndex, lines) => <span>{line}{lineIndex < lines.length - 1 ? '，' : ''}</span>)}</h2>
+        <dl class="banking-feature-details">
+          <div class="banking-feature-problem"><dt>{zh ? '业务痛点' : 'Challenge'}</dt><dd>{feature.problem}</dd></div>
+          <div class="banking-feature-body"><dt>{zh ? '方案' : 'Solution'}</dt><dd>{feature.body}</dd></div>
+        </dl>
+      </div>
+      <div class="banking-feature-visual"><ValueVisual index={index} locale={locale}/></div>
+    </div>
+  </section>)}
+
+  <section class="banking-section banking-scenarios" aria-labelledby="banking-scenarios-title">
+    <div class="container">
+      <h2 id="banking-scenarios-title">{presentation.headings.scenarios}</h2>
+    </div>
+    <EmployeeCarousel locale={locale} employees={presentation.employees}/>
+  </section>
+
+  <section class="banking-deployment" aria-labelledby="banking-deployment-title">
+    <div class="container banking-deployment-grid">
+      <h2 id="banking-deployment-title">{presentation.deployment.title}</h2>
+      <p>{presentation.deployment.body}</p>
+    </div>
+  </section>
+</div>
