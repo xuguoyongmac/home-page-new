@@ -53,8 +53,6 @@
 }
 /* The third visual depicts continuous recurring work on one 24-hour timeline. */
 .banner-outcomes-visual{min-height:0;padding:0;background:none;border:0;box-shadow:none}
-.banner-outcomes-visual .outcomes-art{position:relative;width:100%;height:100%;min-height:0;margin:0;overflow:hidden;border-radius:16px}
-.banner-outcomes-visual .outcomes-art img{display:block;width:100%;height:100%;object-fit:contain}
 
 .banner-execution-visual{align-self:center}
 .execution-concept{position:relative;isolation:isolate;transform-origin:center center;transform:perspective(1600px) rotateY(-10deg)}
@@ -87,7 +85,6 @@
 .hero-visual-stage .execution-concept{height:100%;overflow:clip;border-radius:16px}
 .hero-visual-stage .execution-video,.hero-visual-stage .execution-video-poster{position:absolute;left:-4.34783%;top:-7.07763%;width:108.69565%;height:114.15525%;aspect-ratio:auto;object-fit:fill}
 .hero-visual-stage .banner-outcomes-visual{display:flex;flex-direction:column;transform:perspective(1600px) rotateY(-10deg);transform-origin:center}
-.hero-visual-stage .banner-outcomes-visual .outcomes-art{flex:1;min-height:0;height:auto}
 @media(min-width:1101px){
  .home-value-edition .hero-carousel .hero-center{grid-template-columns:.81fr 1.35fr;grid-template-rows:1fr;column-gap:clamp(48px,5vw,80px);align-items:center}
  .hero-carousel .hero-message{grid-column:1;grid-row:1}

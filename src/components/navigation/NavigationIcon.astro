@@ -2,17 +2,10 @@
 import Icon from '../Icon.astro';
 interface Props { name: string; }
 const { name } = Astro.props;
-const colors: Record<string, string> = {
-  network: '#55d8ff', layers: '#b29aff', plug: '#64b4ff', folder: '#54e2cd', book: '#ffcb75',
-  shield: '#73e3b3', chart: '#62d9ff', bank: '#ffc77f', landmark: '#8abfff', buildings: '#bca0ff', globe: '#66e3db', cpu: '#79cfff',
-};
 ---
-<span class="navigation-icon" style={`--icon-light:${colors[name] || '#79cfff'}`} aria-hidden="true"><Icon name={name} size={23} class="nav-icon-bloom"/><Icon name={name} size={23} class="nav-icon-core"/></span>
+<span class="navigation-icon" aria-hidden="true"><Icon name={name} size={22}/></span>
 <style>
-.navigation-icon{display:grid;place-items:center;position:relative;width:36px;height:36px;border-radius:10px;color:var(--icon-light);background:linear-gradient(145deg,color-mix(in srgb,var(--icon-light) 23%,transparent),color-mix(in srgb,var(--icon-light) 6%,transparent));border:1px solid color-mix(in srgb,var(--icon-light) 38%,transparent);box-shadow:inset 0 0 12px color-mix(in srgb,var(--icon-light) 12%,transparent),0 0 13px color-mix(in srgb,var(--icon-light) 16%,transparent);transition:color .25s,box-shadow .3s,border-color .3s}
-.navigation-icon :global(svg){position:absolute;stroke-width:1.8}
-.navigation-icon :global(.nav-icon-bloom){filter:blur(2px);opacity:.8;stroke-width:2.4}
-.navigation-icon :global(.nav-icon-core){filter:drop-shadow(0 0 3px color-mix(in srgb,var(--icon-light) 65%,transparent))}
-:global(.is-pointed) .navigation-icon{color:#ecfaff;border-color:var(--icon-light);box-shadow:inset 0 0 15px color-mix(in srgb,var(--icon-light) 24%,transparent),0 0 22px color-mix(in srgb,var(--icon-light) 40%,transparent)}
-@media(max-width:1100px){.navigation-icon{width:30px;height:30px;border-radius:8px}.navigation-icon :global(svg){width:20px;height:20px}}
+.navigation-icon{display:grid;place-items:center;width:30px;height:30px;color:inherit}
+.navigation-icon :global(svg){stroke-width:1.7}
+@media(max-width:1100px){.navigation-icon{width:28px;height:28px}.navigation-icon :global(svg){width:20px;height:20px}}
 </style>

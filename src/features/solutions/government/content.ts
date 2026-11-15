@@ -9,17 +9,33 @@ export default {
       "slug": "government",
       "icon": "book",
       "name": "政务解决方案",
-      "tag": "政务办公",
-      "title": "政策研判有依据，会议部署有闭环",
-      "description": "数字员工围绕政策检索、综合文稿、会议督办与材料初核开展工作，将分散资料整理为可审阅、可交接的政务工作成果。",
+      "tag": "政务服务与治理",
+      "title": "让政策落实到事，让政务服务形成闭环",
+      "description": "围绕政策执行、政务服务与基层治理，数字员工匹配政策条件、预审申报材料、研判群众诉求，将办理要求、责任分工和进展反馈接到同一项工作。",
       "tasks": [
         {
-          "title": "政策研判与综合文稿",
-          "problem": "同一主题涉及多份政策，整理依据与准备材料反复耗时。",
-          "input": "授权政策文件、历史文稿与写作要求",
-          "action": "按主题检索条款，对照适用范围和政策变化，结合既有材料组织文稿。",
-          "output": "政策对照、专题材料与文稿草稿",
-          "value": "让汇报结论和工作建议找到依据。"
+          "title": "政策执行与惠企匹配",
+          "problem": "政策条款多、适用条件细，服务对象不清楚能享受什么、需要准备什么。",
+          "input": "授权政策、申报条件、企业或事项资料与办理要求",
+          "action": "拆解政策适用条件与执行要求，对照对象资料定位符合项、待补项和需核实事项，组织办理与落实清单。",
+          "output": "政策适用对照、惠企匹配清单与执行事项表",
+          "value": "把政策要求接到具体对象和办理事项。"
+        },
+        {
+          "title": "办事导引与申报预审",
+          "problem": "办事指南、申报表与附件分散，材料缺项和信息差异造成反复补正。",
+          "input": "办事指南、材料清单、申报表与申请附件",
+          "action": "围绕办理目标检索受理要求，核对材料完整性、字段一致性与适用版本，整理补正事项并关联原文依据。",
+          "output": "办事材料清单、申报预审结果与补正清单",
+          "value": "让办事人员清楚下一步准备什么、补充什么。"
+        },
+        {
+          "title": "诉求研判与办理跟进",
+          "problem": "群众诉求跨事项、跨部门，人工分辨职责与整理反馈容易反复流转。",
+          "input": "授权诉求工单、部门职责目录、办理规则与反馈记录",
+          "action": "提取诉求类型、时间地点和关键问题，结合职责与规则整理分办建议和回复要点，通过项目事项衔接责任人员与办理反馈。",
+          "output": "诉求分类与分办建议、办理跟进表与回复材料",
+          "value": "让诉求找到承接岗位，让办理反馈接得回来。"
         },
         {
           "title": "会议材料与督办跟进",
@@ -30,82 +46,82 @@ export default {
           "value": "把会议部署接到后续推进。"
         },
         {
-          "title": "办事材料初核与制度问答",
-          "problem": "材料要求分散，工作人员需要同时查规则、查文件。",
-          "input": "办事指南、材料清单、申请附件与授权制度",
-          "action": "检索办理要求，对照提交材料整理缺项，答复关联原文依据。",
-          "output": "材料补正清单、带引用的业务答复",
-          "value": "让办理准备更清晰，减少反复查找。"
+          "title": "政策研判与综合文稿",
+          "problem": "同一主题涉及多份政策，整理依据与准备材料反复耗时。",
+          "input": "授权政策文件、历史文稿与写作要求",
+          "action": "按主题检索条款，对照适用范围和政策变化，结合既有材料组织文稿。",
+          "output": "政策对照、专题材料与文稿草稿",
+          "value": "让汇报结论和工作建议找到依据。"
         }
       ],
-      "scope": "基于平台通用能力组合建设。公文格式、资料范围、政务系统连接与发布权限按项目确定；正式文件由责任人员审定。",
+      "scope": "基于平台知识、技能、项目事项与授权连接组合建设。政务服务和工单系统接入、资料范围及业务规则按项目确定；正式审批、签发与对外答复遵循原有流程。",
       "image": "knowledge-research",
       "story": {
         "lines": [
-          "政策研判有依据",
-          "会议部署有闭环"
+          "让政策落实到事",
+          "让政务服务形成闭环"
         ],
         "priorities": [
           {
-            "title": "决策材料需要可靠依据",
-            "body": "专题汇报需要跨文件整理政策背景、现状与问题，形成可以审阅的材料。"
+            "title": "政策需要对准服务对象",
+            "body": "政策条款与企业、群众的具体条件脱节，服务人员需要判断适用范围并明确办理路径。"
           },
           {
-            "title": "会议部署需要持续跟进",
-            "body": "决议、责任分工和进展反馈分散，难以直接形成完整的督办材料。"
+            "title": "申报需要减少材料往返",
+            "body": "缺件、字段差异和版本不一致影响受理准备，预审结果需要具体到材料与问题。"
           },
           {
-            "title": "服务准备需要明确规则",
-            "body": "政策与材料清单更新后，工作人员仍需要快速找到适用依据。"
+            "title": "群众诉求需要有人接续",
+            "body": "跨部门诉求需要准确整理职责、分办建议与反馈，避免问题在流转中失去后续。"
           }
         ],
         "exhibit": {
-          "title": "会议部署与督办事项表",
-          "request": "从会议记录与附件中整理决议，衔接责任分工和进展材料。",
+          "title": "政务服务与治理办理清单",
+          "request": "对照政策和办理规则，整理服务对象的材料要求、诉求去向与跟进事项。",
           "sources": [
-            "会议记录",
-            "议题附件",
-            "进展反馈"
+            "政策与办事指南",
+            "申报资料与诉求工单",
+            "职责目录与办理反馈"
           ],
           "columns": [
-            "工作事项",
-            "关联材料",
-            "下一步工作"
+            "业务事项",
+            "核对重点",
+            "办理成果"
           ],
           "rows": [
             [
-              "决议整理",
-              "讨论结论与附件",
-              "形成纪要"
+              "政策落实",
+              "适用条件与对象资料",
+              "政策匹配与办理清单"
             ],
             [
-              "责任分工",
-              "牵头与协同安排",
-              "整理事项表"
+              "申报预审",
+              "材料缺项与字段差异",
+              "补正清单"
             ],
             [
-              "进展跟进",
-              "反馈与完成材料",
-              "汇总进展简报"
+              "诉求办理",
+              "职责归属与反馈进展",
+              "分办建议与跟进事项"
             ]
           ],
           "deliverables": [
-            "会议纪要 · DOCX",
-            "督办事项表 · XLSX"
+            "办理与补正清单 · XLSX",
+            "诉求办理与督办事项表 · XLSX"
           ]
         },
         "foundation": [
           {
-            "title": "使用授权政务资料",
-            "body": "归集政策、办事指南、历史文稿和会议材料；检索保留原文出处。"
+            "title": "政策、事项与历史记录形成依据",
+            "body": "归集授权政策、办事指南、对象资料、历史工单与会议材料，检索与核对保留原文出处。"
           },
           {
-            "title": "对齐公文与办理规范",
-            "body": "按项目配置公文格式、材料清单和工作方法，连接所需政务系统与协作入口。"
+            "title": "业务规则与办理系统共同衔接",
+            "body": "将适用条件、材料清单和职责分工沉淀为技能，按项目对接政务服务与工单系统，衔接项目事项和协作入口。"
           },
           {
-            "title": "成果交给责任人员",
-            "body": "材料初核、文稿和督办整理衔接人工审阅，正式文件及办理结论由责任人员审定。"
+            "title": "责任人员确认并接续工作",
+            "body": "政策匹配、材料预审和分办建议交给责任人员确认；正式审批、签发与对外答复遵循原有流程。"
           }
         ]
       }
@@ -114,17 +130,33 @@ export default {
       "slug": "government",
       "icon": "book",
       "name": "Government",
-      "tag": "Public sector",
-      "title": "Ground policy research. Follow through on decisions",
-      "description": "Digital employees support policy research, briefing preparation, meeting follow-ups and document pre-checks with reviewable, transferable work products.",
+      "tag": "Public services and governance",
+      "title": "Put policies into action. See service requests through",
+      "description": "Digital employees compare policy conditions, pre-check applications and analyze service requests, connecting requirements, responsibilities and progress across policy delivery, public services and local governance.",
       "tasks": [
         {
-          "title": "Policy research and drafting",
-          "problem": "A policy topic spans many documents and repeated preparation.",
-          "input": "Authorized policies, past briefs and drafting requirements",
-          "action": "Compare provisions, scope and changes; organize referenced material into a brief.",
-          "output": "Policy comparison, topical brief and document draft",
-          "value": "Give decisions and recommendations an evidence base."
+          "title": "Policy delivery and business support",
+          "problem": "Detailed eligibility conditions make it difficult to know which policies apply and what to prepare.",
+          "input": "Authorized policies, eligibility conditions, organization or case records and service requirements",
+          "action": "Break down eligibility and delivery requirements, compare case records, and organize matching conditions, missing information and questions for review.",
+          "output": "Policy comparison, business-support matching list and action workbook",
+          "value": "Connect policy requirements to specific applicants and actions."
+        },
+        {
+          "title": "Service guidance and application pre-checks",
+          "problem": "Separate guides, forms and attachments create repeated requests for corrections.",
+          "input": "Service guides, document checklists, application forms and attachments",
+          "action": "Find the relevant requirements, compare completeness, fields and document versions, and prepare corrections linked to original provisions.",
+          "output": "Application checklist, pre-check findings and correction list",
+          "value": "Make the next preparation and correction clear."
+        },
+        {
+          "title": "Service request analysis and follow-up",
+          "problem": "Requests span responsibilities and departments, creating repeated routing and feedback work.",
+          "input": "Authorized request records, department responsibilities, handling rules and progress updates",
+          "action": "Extract request types, dates, locations and issues; prepare routing suggestions and response points, then connect responsible staff and updates through project work items.",
+          "output": "Request classification, routing suggestions, follow-up workbook and response materials",
+          "value": "Connect each request to the team and updates that carry it forward."
         },
         {
           "title": "Meetings and action follow-up",
@@ -135,82 +167,82 @@ export default {
           "value": "Connect meeting decisions to follow-up work."
         },
         {
-          "title": "Document pre-check and policy answers",
-          "problem": "Staff must search both rules and submitted files.",
-          "input": "Service guides, checklists, application files and authorized policies",
-          "action": "Find requirements, compare submitted documents and attach the relevant source provisions.",
-          "output": "Missing-document list and referenced answers",
-          "value": "Make service preparation clearer."
+          "title": "Policy research and drafting",
+          "problem": "A policy topic spans many documents and repeated preparation.",
+          "input": "Authorized policies, past briefs and drafting requirements",
+          "action": "Compare provisions, scope and changes; organize referenced material into a brief.",
+          "output": "Policy comparison, topical brief and document draft",
+          "value": "Give decisions and recommendations an evidence base."
         }
       ],
-      "scope": "A solution assembled from general platform capabilities. Public-sector connections and document approval require project-specific implementation.",
+      "scope": "Assembled from knowledge, skills, project work items and authorized connections. Public-service and request-system integrations and business rules are configured for each project; formal decisions and external responses follow the established process.",
       "image": "knowledge-research",
       "story": {
         "lines": [
-          "Ground policy research",
-          "Follow through on decisions"
+          "Put policies into action",
+          "See service requests through"
         ],
         "priorities": [
           {
-            "title": "Prepare decision materials",
-            "body": "Briefings combine policy context, current conditions and problems across documents."
+            "title": "Match policies to the people they serve",
+            "body": "Teams need to connect policy conditions to each organization or applicant and identify the relevant service path."
           },
           {
-            "title": "Connect decisions to follow-up",
-            "body": "Responsibilities and progress updates need to remain linked to the original decision."
+            "title": "Reduce application back-and-forth",
+            "body": "Pre-check findings must identify missing files, inconsistent fields and outdated documents."
           },
           {
-            "title": "Find applicable requirements",
-            "body": "Staff need the current policy and material requirements for each service task."
+            "title": "Carry requests across responsibilities",
+            "body": "Cross-department requests need clear routing suggestions, owners and progress updates."
           }
         ],
         "exhibit": {
-          "title": "Meeting decisions and action workbook",
-          "request": "Organize decisions, responsibilities and progress material from meeting records.",
+          "title": "Public service and case follow-up workbook",
+          "request": "Compare policies and handling rules to organize application requirements, request routing and follow-up actions.",
           "sources": [
-            "Meeting records",
-            "Agenda attachments",
-            "Progress updates"
+            "Policies and service guides",
+            "Applications and service requests",
+            "Responsibilities and progress"
           ],
           "columns": [
             "Work",
-            "Evidence",
-            "Next step"
+            "Review focus",
+            "Deliverable"
           ],
           "rows": [
             [
-              "Decisions",
-              "Conclusions and attachments",
-              "Prepare minutes"
+              "Policy delivery",
+              "Conditions and applicant records",
+              "Policy match and action list"
             ],
             [
-              "Responsibilities",
-              "Lead and supporting teams",
-              "Organize actions"
+              "Application pre-check",
+              "Missing files and differences",
+              "Correction list"
             ],
             [
-              "Progress",
-              "Updates and completion files",
-              "Prepare progress brief"
+              "Service requests",
+              "Responsibilities and progress",
+              "Routing and follow-up actions"
             ]
           ],
           "deliverables": [
-            "Meeting minutes · DOCX",
-            "Action workbook · XLSX"
+            "Application and correction list · XLSX",
+            "Request and action workbook · XLSX"
           ]
         },
         "foundation": [
           {
-            "title": "Use authorized sources",
-            "body": "Collect policy, service guides, historical documents and meeting material with original references."
+            "title": "Connect policies, cases and records",
+            "body": "Use authorized policies, guides, case records, past requests and meeting materials with original references."
           },
           {
-            "title": "Configure work standards",
-            "body": "Set document formats, checklists and methods; connect the required systems and collaboration channels."
+            "title": "Connect rules to handling systems",
+            "body": "Configure skills for conditions, checklists and responsibilities. Integrate service and request systems for the project and connect work items and collaboration channels."
           },
           {
-            "title": "Involve responsible officials",
-            "body": "Bring pre-check findings, drafts and follow-ups to review. Responsible staff approve formal documents and service decisions."
+            "title": "Keep responsible staff in the work",
+            "body": "Staff confirm policy matches, pre-check findings and routing suggestions. Formal decisions, issued documents and external responses follow established procedures."
           }
         ]
       }
@@ -219,12 +251,12 @@ export default {
   "navigation": {
     "zh": {
       "name": "数字政务",
-      "description": "综合文稿、会议协同、政务办理",
+      "description": "政策落实、政务服务、诉求办理",
       "icon": "landmark"
     },
     "en": {
       "name": "Digital government",
-      "description": "Documents, meetings and public services",
+      "description": "Policy delivery, public services and request handling",
       "icon": "landmark"
     }
   }

@@ -38,53 +38,11 @@ const activeLanguage = languages.find(item => item.id === language)!;
     const toggles = [...header.querySelectorAll<HTMLButtonElement>('[data-nav-disclosure]')];
     const mobileToggle = header.querySelector<HTMLButtonElement>('.menu-toggle');
     const mobile = header.querySelector<HTMLElement>('#mobile-nav');
-    header.querySelectorAll<HTMLElement>('.tego-nav-panel').forEach(panel => {
-      const light = panel.querySelector<HTMLElement>('[data-nav-highlight]');
-      if (!light) return;
-      let selected: HTMLAnchorElement | undefined;
-      let positioned = false;
-      const placeLight = (item: HTMLAnchorElement) => {
-        if (panel.hidden) return;
-        const panelRect = panel.getBoundingClientRect();
-        const itemRect = item.getBoundingClientRect();
-        const scaleX = panel.offsetWidth / panelRect.width;
-        const scaleY = panel.offsetHeight / panelRect.height;
-        if (!positioned) light.dataset.ready = 'false';
-        light.style.transform = `translate3d(${(itemRect.left - panelRect.left) * scaleX - panel.clientLeft}px,${(itemRect.top - panelRect.top) * scaleY - panel.clientTop}px,0)`;
-        light.style.width = `${itemRect.width * scaleX}px`;
-        light.style.height = `${itemRect.height * scaleY}px`;
-        light.dataset.active = 'true';
-        selected?.classList.remove('is-pointed');
-        item.classList.add('is-pointed');
-        selected = item;
-        if (!positioned) requestAnimationFrame(() => { light.dataset.ready = 'true'; });
-        positioned = true;
-      };
-      const followItem = (event: Event) => {
-        const item = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a.tego-nav-item') : null;
-        if (item && item !== selected && panel.contains(item)) placeLight(item);
-      };
-      panel.addEventListener('pointerover', followItem);
-      panel.addEventListener('focusin', followItem);
-      panel.addEventListener('nav-open', () => {
-        const first = panel.querySelector<HTMLAnchorElement>('a[aria-current="page"]') || selected || panel.querySelector<HTMLAnchorElement>('a.tego-nav-item');
-        if (first) placeLight(first);
-      });
-      panel.addEventListener('nav-close', () => {
-        light.dataset.active = 'false';
-        light.dataset.ready = 'false';
-        selected?.classList.remove('is-pointed');
-        positioned = false;
-      });
-      new ResizeObserver(() => { if (selected && !panel.hidden) placeLight(selected); }).observe(panel);
-    });
     const setDisclosure = (button: HTMLButtonElement, open: boolean) => {
       button.setAttribute('aria-expanded', String(open));
       const panel = document.getElementById(button.getAttribute('aria-controls')!);
       if (panel) {
         panel.hidden = !open;
-        if (open) requestAnimationFrame(() => { if (!panel.hidden) panel.dispatchEvent(new Event('nav-open')); });
-        else panel.dispatchEvent(new Event('nav-close'));
       }
       header.dataset.dropdownOpen = String(toggles.some(item => item.getAttribute('aria-expanded') === 'true'));
     };

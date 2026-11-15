@@ -10,102 +10,110 @@ export default {
       "icon": "chart",
       "name": "券商解决方案",
       "tag": "证券业务",
-      "title": "把研究与经营数据，变成业务行动",
-      "description": "连接研究资料、经营数据与客户服务记录，让数字员工完成信息归集、分析和材料编制，把管理关注点落实到客户跟进与团队行动。",
+      "title": "贯通投研、合规风控与客户经营",
+      "description": "从研究洞察、风险识别到客户服务，让数字员工连接研究资料、业务规则与授权数据，完成专业分析、交叉核对与行动准备，让成果真正接到业务。",
       "tasks": [
         {
+          "title": "投研分析与主题研究",
+          "problem": "公告、研报与会议资料持续增长，资料准备挤占深度研究。",
+          "input": "研报、公告、会议记录、研究目标与授权金融数据",
+          "action": "提炼事件、关键指标与核心观点，围绕主题比较公司和行业，组织图表、研究论证与引用依据。",
+          "output": "主题研究报告、研究底稿、指标图表与来源索引",
+          "value": "把研究时间用在形成观点，而非重复找资料。"
+        },
+        {
+          "title": "合规审阅与风险跟踪",
+          "problem": "规则、业务材料与风险信息分散，问题难以定位到具体依据。",
+          "input": "监管规则、内部制度、业务文件与授权风险信息",
+          "action": "检索适用条款，对照表述、数据和业务要求；归集主体与事件线索，定位需复核的问题并持续跟踪。",
+          "output": "合规问题定位、条款对照、风险跟踪简报",
+          "value": "让风险线索可见，让审阅与处置有依据。"
+        },
+        {
+          "title": "客户经营与服务准备",
+          "problem": "资产、产品和沟通背景各在一处，客户服务容易停留在统一推送。",
+          "input": "客户持仓、交易、产品信息与服务记录",
+          "action": "结合客群和客户变化梳理服务优先级，关联适用研究与产品资料，准备客户画像、沟通重点和跟进事项。",
+          "output": "重点客户画像、服务行动表与沟通材料",
+          "value": "把数据变化转成有针对性的客户服务。"
+        },
+        {
           "title": "财富经营分析",
-          "problem": "看得到指标变化，却难以把变化落实到营业部与客户。",
-          "input": "客户资产、交易、产品持仓和赎回明细",
-          "action": "按统一口径分析趋势与结构，定位重点营业部、客群和产品，整理客户经理跟进事项。",
-          "output": "经营分析简报、客户跟进表",
+          "problem": "看得到指标波动，却难以落实到营业部、客群与产品行动。",
+          "input": "客户资产、交易、产品持仓与赎回明细",
+          "action": "按统一口径分析趋势和结构，定位重点营业部、客群与产品，组织经营判断依据及后续行动。",
+          "output": "经营分析汇报、分支经营重点与跟进表",
           "value": "让管理层看清变化，让一线接到行动。"
-        },
-        {
-          "title": "投研资料与主题研究",
-          "problem": "公告、研报与数据分散，专业人员反复做资料准备。",
-          "input": "研报、公告、研究目标与授权金融数据",
-          "action": "速读资料，抽取事件、指标和观点；按研究框架组织主题分析，保留来源与统计口径。",
-          "output": "研究底稿、主题报告、引用索引",
-          "value": "把精力留给观点与判断。"
-        },
-        {
-          "title": "业务材料复核",
-          "problem": "同一事项涉及多份文件，条款与数据差异容易遗漏。",
-          "input": "产品材料、业务制度与审阅要求",
-          "action": "检索适用条款，对照材料中的表述和数据，定位差异并交由业务人员复核。",
-          "output": "条款对照表、问题定位与修改建议",
-          "value": "让审核有依据，修改有落点。"
         }
       ],
-      "scope": "可围绕研究与经营分析配置岗位技能。数据许可、系统接入和交付范围在项目中确定；投资判断、适当性和对客内容由业务人员复核。",
+      "scope": "围绕投研、合规风控与客户经营配置知识、技能和授权连接。数据许可、系统操作与交付范围按项目确定；投资判断、适当性及合规处置由专业人员确认。",
       "image": "knowledge-research",
       "story": {
         "lines": [
-          "把研究与经营数据",
-          "变成业务行动"
+          "贯通投研与合规风控",
+          "让客户经营更主动"
         ],
         "priorities": [
           {
-            "title": "经营变化要能解释",
-            "body": "资产、交易和产品数据各自成表，管理者还需要知道变化发生在哪里、下一步跟进什么。"
+            "title": "投研要形成可用洞察",
+            "body": "海量公告、研报和会议观点，需要进入研究框架，形成带指标、图表与来源依据的专业成果。"
           },
           {
-            "title": "投研准备要有依据",
-            "body": "材料数量持续增长，研究人员需要可引用、可继续分析的底稿，而非孤立摘要。"
+            "title": "风险要定位到业务问题",
+            "body": "规则检索只是起点，条款、材料与事件线索需要交叉核对，明确问题在哪里、依据是什么。"
           },
           {
-            "title": "专业成果要接到业务",
-            "body": "报告形成后，客户经理和业务团队仍需要明确的服务重点与行动材料。"
+            "title": "客户经营要落到行动",
+            "body": "管理层要看清营业部和客群变化，一线要知道优先服务谁、准备什么、接着做什么。"
           }
         ],
         "exhibit": {
-          "title": "财富经营行动简报",
-          "request": "分析客户资产与产品赎回变化，整理营业部跟进重点。",
+          "title": "证券业务协同工作包",
+          "request": "围绕研究、风险与客户服务，整理专业依据，形成可接续的业务行动。",
           "sources": [
-            "客户资产明细",
-            "产品持仓与赎回",
-            "客户服务记录"
+            "研究资料与授权数据",
+            "监管规则与业务制度",
+            "客户持仓与服务记录"
           ],
           "columns": [
-            "分析对象",
-            "核对重点",
-            "后续行动"
+            "业务方向",
+            "处理重点",
+            "交付成果"
           ],
           "rows": [
             [
-              "营业部",
-              "资产变化与结构",
-              "定位重点客群"
+              "投研分析",
+              "事件、指标与观点比较",
+              "专题研究与依据"
             ],
             [
-              "客户",
-              "持仓与赎回变化",
-              "准备跟进清单"
+              "合规风控",
+              "规则对照与风险线索",
+              "问题定位与跟踪"
             ],
             [
-              "产品",
-              "赎回集中与到期",
-              "补充服务材料"
+              "客户经营",
+              "客群变化与服务重点",
+              "客户行动与跟进"
             ]
           ],
           "deliverables": [
-            "经营简报 · PPT",
-            "客户跟进表 · XLSX"
+            "研究与经营汇报 · PPT",
+            "合规与客户行动表 · XLSX"
           ]
         },
         "foundation": [
           {
-            "title": "数据接到同一口径",
-            "body": "通过授权接口、数据库或文件归集经营与研究资料，按业务确认的指标口径组织分析。"
+            "title": "连接研究与业务上下文",
+            "body": "按授权归集研究资料、业务规则和经营数据，保留指标口径与引用来源，让分析建立在同一份依据上。"
           },
           {
-            "title": "岗位方法可以复用",
-            "body": "将经营分析、研究框架与材料复核方法沉淀为技能，结合知识引用和专业 Agent 分工开展工作。"
+            "title": "复用专业岗位方法",
+            "body": "将主题研究、条款核对、风险跟踪和客户分析沉淀为技能，由专业 Agent 分工处理并汇总成果。"
           },
           {
-            "title": "成果进入协作流程",
-            "body": "在项目中审阅图表、底稿与客户材料；投资判断、适当性与对客内容由业务人员确认。"
+            "title": "成果接续业务协作",
+            "body": "在项目中审阅图表、底稿与行动表；结合已连接的业务系统跟进工作，由专业人员确认对客内容和业务判断。"
           }
         ]
       }
@@ -115,102 +123,110 @@ export default {
       "icon": "chart",
       "name": "Securities",
       "tag": "Financial services",
-      "title": "Turn research and business data into action",
-      "description": "Connect research, business data and service records. Digital employees collect, analyze and prepare the materials managers and client teams need to act.",
+      "title": "Connect research, compliance, risk and client operations",
+      "description": "Bring research, business rules and authorized data together. Digital employees analyze information, cross-check evidence and prepare the work research, risk and client teams need to act.",
       "tasks": [
         {
-          "title": "Wealth business analysis",
-          "problem": "Metric changes do not yet identify the branches or clients to follow up.",
-          "input": "Client assets, transactions, holdings and redemptions",
-          "action": "Analyze trends and structure with agreed definitions, identify priority branches and client groups, and prepare follow-ups.",
-          "output": "Management brief and client follow-up workbook",
-          "value": "Connect management insight to frontline action."
-        },
-        {
           "title": "Research and thematic analysis",
-          "problem": "Analysts repeatedly collect material scattered across reports, announcements and datasets.",
-          "input": "Research reports, announcements, research goals and licensed data",
-          "action": "Extract events, indicators and viewpoints; build thematic working papers with sources and metric definitions.",
-          "output": "Research working papers, thematic report and source index",
-          "value": "Give analysts more room for judgment."
+          "problem": "Growing volumes of reports, announcements and meetings crowd out deeper research.",
+          "input": "Reports, announcements, meeting records, research goals and licensed data",
+          "action": "Extract events, indicators and viewpoints; compare companies and sectors, and develop charts, analysis and supporting sources.",
+          "output": "Thematic report, working papers, charts and source index",
+          "value": "Spend research time developing a view."
         },
         {
-          "title": "Business material review",
-          "problem": "Related documents can contain inconsistent wording or figures.",
-          "input": "Product materials, company policies and review requirements",
-          "action": "Find relevant provisions, compare statements and figures, and bring discrepancies to the responsible reviewer.",
-          "output": "Provision comparison and revision findings",
-          "value": "Make each finding actionable."
+          "title": "Compliance review and risk tracking",
+          "problem": "Rules, business documents and risk information are difficult to review together.",
+          "input": "Regulatory rules, internal policies, business documents and authorized risk information",
+          "action": "Find applicable provisions, compare statements and figures, organize entity and event signals, and track issues requiring review.",
+          "output": "Located compliance findings, provision comparisons and risk brief",
+          "value": "Connect each finding to its evidence and next action."
+        },
+        {
+          "title": "Client operations and service preparation",
+          "problem": "Holdings, products and conversation history sit apart, limiting targeted service.",
+          "input": "Client holdings, transactions, product information and service records",
+          "action": "Identify service priorities from client and segment changes; connect relevant research and product material, and prepare the next conversation.",
+          "output": "Priority client profiles, service actions and communication materials",
+          "value": "Turn business changes into targeted client service."
+        },
+        {
+          "title": "Wealth business analysis",
+          "problem": "Metric changes do not yet identify the branches, segments or products that need action.",
+          "input": "Client assets, transactions, holdings and redemptions",
+          "action": "Analyze trends and structure with agreed definitions, identify priority branches and client groups, and organize evidence and follow-ups.",
+          "output": "Management report, branch priorities and follow-up workbook",
+          "value": "Connect management insight to frontline action."
         }
       ],
-      "scope": "Configure role skills for research and business analysis. Data licensing, integrations and delivery scope are agreed for each project; business professionals review investment-related content.",
+      "scope": "Configure knowledge, skills and authorized connections for research, compliance, risk and client operations. Data licensing and system actions follow the project scope; professionals retain investment, suitability and compliance decisions.",
       "image": "knowledge-research",
       "story": {
         "lines": [
-          "Turn research and data",
-          "into business action"
+          "Connect research, compliance and risk",
+          "Make client service proactive"
         ],
         "priorities": [
           {
-            "title": "Explain business changes",
-            "body": "Managers need to know where assets and product activity changed, and which follow-ups matter."
+            "title": "Develop useful research insight",
+            "body": "Reports, announcements and meeting views need a research framework, indicators, charts and traceable evidence."
           },
           {
-            "title": "Ground research preparation",
-            "body": "Analysts need working papers they can cite and build on, rather than disconnected summaries."
+            "title": "Locate the business issue",
+            "body": "Review rules, documents and event signals together to show what needs attention and why."
           },
           {
-            "title": "Connect insight to client work",
-            "body": "Client teams need service priorities and useful preparation materials after the report is written."
+            "title": "Carry client priorities into action",
+            "body": "Managers need branch and segment priorities. Client teams need to know whom to serve, what to prepare and what comes next."
           }
         ],
         "exhibit": {
-          "title": "Wealth business action brief",
-          "request": "Analyze asset and redemption changes and organize branch follow-ups.",
+          "title": "Securities operations work package",
+          "request": "Organize evidence and next actions across research, risk and client service.",
           "sources": [
-            "Client asset records",
-            "Holdings and redemptions",
-            "Service records"
+            "Research and licensed data",
+            "Regulatory and internal rules",
+            "Holdings and service history"
           ],
           "columns": [
-            "Focus",
-            "Review",
-            "Action"
+            "Business area",
+            "Processing focus",
+            "Deliverable"
           ],
           "rows": [
             [
-              "Branch",
-              "Asset mix and change",
-              "Prioritize client groups"
+              "Research",
+              "Events, indicators and views",
+              "Thematic findings and evidence"
             ],
             [
-              "Client",
-              "Holdings and redemptions",
-              "Prepare follow-ups"
+              "Compliance and risk",
+              "Rule comparison and signals",
+              "Review findings and tracking"
             ],
             [
-              "Product",
-              "Redemptions and maturity",
-              "Prepare service materials"
+              "Client operations",
+              "Segment changes and priorities",
+              "Service actions and follow-ups"
             ]
           ],
           "deliverables": [
-            "Management brief · PPT",
-            "Client follow-ups · XLSX"
+            "Research and management report · PPT",
+            "Review and client actions · XLSX"
           ]
         },
         "foundation": [
           {
-            "title": "Align data definitions",
-            "body": "Use authorized APIs, databases or files and the metric definitions agreed with the business."
+            "title": "Connect the working context",
+            "body": "Bring authorized research, business rules and data together with metric definitions and cited sources."
           },
           {
             "title": "Reuse specialist methods",
-            "body": "Combine analysis skills, research frameworks, cited knowledge and specialist Agent work."
+            "body": "Capture research, rule review, risk tracking and client analysis in skills; divide work across specialist Agents."
           },
           {
-            "title": "Continue in the project",
-            "body": "Review charts, working papers and service materials. Business professionals retain investment, suitability and client-facing decisions."
+            "title": "Continue into business work",
+            "body": "Review charts, working papers and actions in the project, and follow up through connected systems. Professionals confirm client-facing content and decisions."
           }
         ]
       }
@@ -219,12 +235,12 @@ export default {
   "navigation": {
     "zh": {
       "name": "证券",
-      "description": "财富经营、投研支持、业务复核",
+      "description": "投研分析、合规风控、客户经营",
       "icon": "chart"
     },
     "en": {
       "name": "Securities",
-      "description": "Wealth analysis, research and material review",
+      "description": "Research, compliance, risk and client operations",
       "icon": "chart"
     }
   }
