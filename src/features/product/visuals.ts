@@ -19,15 +19,21 @@ const mobileVisual = (slug: string): CapabilityVisual['mobile'] => ({
 
 export const capabilityVisuals: Record<string, CapabilityVisual> = {
   'digital-employees': {
-    mobile: mobileVisual('digital-employees'),
+    mobile: {
+      src: {
+        zh: '/images/product/digital-employees/intro-hero-zh_V6.0.webp',
+        en: '/images/product/digital-employees/intro-hero-en_V6.0.webp',
+      },
+      width: 1536, height: 1024,
+    },
     src: {
-      zh: '/images/product/digital-employees/capability-visual-zh_V1.1.webp',
-      en: '/images/product/digital-employees/capability-visual-en_V1.1.webp',
+      zh: '/images/product/digital-employees/intro-hero-zh_V6.0.webp',
+      en: '/images/product/digital-employees/intro-hero-en_V6.0.webp',
     },
     width: 1536, height: 1024,
     alt: {
-      zh: '岗位数字员工的概念视觉：专业角色结合技能、知识和独立工作区，完成经营复核、分析与汇报成果。',
-      en: 'Digital employee concept: a specialist uses skills, knowledge and an independent workspace to complete business review and reporting work.',
+      zh: '数字员工业务工作台，汇集岗位职责、专业技能、企业知识、任务执行与交付成果。',
+      en: 'A digital employee workspace brings together responsibilities, specialist skills, company knowledge, task execution and deliverables.',
     },
   },
   'multi-agent': {
