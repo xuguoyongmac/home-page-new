@@ -241,9 +241,10 @@
 .home-solutions .industry-benefit-heading {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 10px;
+  text-align: center;
 }
 .home-solutions .industry-benefit-icon {
   display: grid;
@@ -340,7 +341,7 @@
   .home-solutions .industry-copy-block h4,
   .home-solutions .industry-benefits > h4 { font-size: 16px; }
   .home-solutions .industry-benefits ul { grid-template-columns: 1fr; }
-  .home-solutions .industry-benefit-heading { flex-direction: row; align-items: center; gap: 12px; margin-bottom: 9px; }
+  .home-solutions .industry-benefit-heading { gap: 10px; margin-bottom: 9px; }
   .home-solutions .industry-benefits li { padding: 18px 21px; }
   .home-solutions .industry-benefits h5 { font-size: 16px; }
   .home-solutions .industry-benefits li p { font-size: 14px; }

@@ -11,11 +11,11 @@ const zh = locale === 'zh';
 const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : industries[locale];
 const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
 const benefitIcons: Record<string, string[]> = {
-  banking: ['file', 'shield', 'chart'],
-  insurance: ['shield', 'search', 'message'],
-  securities: ['book', 'shield', 'chart'],
-  government: ['target', 'file', 'network'],
-  'state-owned': ['chart', 'file', 'clock'],
+  banking: ['file-search', 'shield', 'users'],
+  insurance: ['shield', 'clipboard-check', 'message'],
+  securities: ['book', 'shield', 'users'],
+  government: ['user-check', 'file-check', 'workflow'],
+  'state-owned': ['chart', 'file-check', 'clock'],
 };
 ---
 <div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer style={`--industry-tab-count: ${visibleIndustries.length}`}>
