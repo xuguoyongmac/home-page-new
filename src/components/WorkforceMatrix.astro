@@ -88,6 +88,13 @@ const domains = [
     object-fit: contain;
     mask-image: linear-gradient(to bottom, transparent, #000 3%, #000 97%, transparent);
   }
+  @media (hover: hover) and (pointer: fine) {
+    .matrix-art img { transition: filter 240ms ease-out; }
+    .matrix-art:hover img { filter: brightness(1.12); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .matrix-art img { transition: none; }
+  }
   .matrix-copy {
     position: absolute;
     z-index: 1;
