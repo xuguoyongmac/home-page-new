@@ -7,13 +7,19 @@ type ApplianceFeature = {
   description: string;
 };
 
+type ApplianceScenario = ApplianceFeature & {
+  id: 'private-network' | 'governance' | 'local-model' | 'scale-out';
+  headline: string;
+  points: string[];
+};
+
 export interface AppliancePage {
   name: string;
   headline: string;
   description: string;
   action: string;
   highlights: { value: string; label: string }[];
-  scenarios: ApplianceFeature[];
+  scenarios: ApplianceScenario[];
   specs: { name: string; value: string }[];
   delivery: ApplianceFeature[];
   titles: {
@@ -35,10 +41,30 @@ export const appliancePage: Record<Locale, AppliancePage> = {
       { value: '2 TB', label: 'M.2 NVMe SSD 本地存储' },
     ],
     scenarios: [
-      { icon: 'key', title: '高数据安全要求', description: '在企业内网部署本地模型与存储，处理客户资料、内部文档等敏感业务数据。' },
-      { icon: 'shield', title: '高安全与强监管', description: '面向金融、政务等业务，按组织要求配置访问权限、执行授权与操作审计。' },
-      { icon: 'cpu', title: '缺少本地大模型', description: '为尚未部署本地大模型的企业，一体提供算力设备、模型服务与 TeGo OS。' },
-      { icon: 'network', title: '并发需求持续增长', description: '支持多台一体机并联，随业务负载增加设备，持续扩展算力与并发处理能力。' },
+      {
+        id: 'private-network', icon: 'key', title: '高数据安全要求',
+        headline: '敏感资料处理，留在企业内网',
+        description: '面向客户资料、内部文档等敏感业务数据，在企业内网部署本地模型与存储。将资料处理所需的模型服务与运行环境放在企业内部，让数字员工围绕内部业务材料开展工作。',
+        points: ['客户资料与内部文档处理', '本地模型与存储一体部署', '按企业内网环境组织交付'],
+      },
+      {
+        id: 'governance', icon: 'shield', title: '高安全与强监管',
+        headline: '让业务执行，衔接组织管控',
+        description: '面向金融、政务等对访问与执行有明确要求的业务，将数字员工纳入组织管理。围绕人员访问、执行授权与操作审计配置平台，让业务开展与组织管控相衔接。',
+        points: ['访问权限按组织要求配置', '执行授权明确操作范围', '操作审计保留过程记录'],
+      },
+      {
+        id: 'local-model', icon: 'cpu', title: '缺少本地大模型',
+        headline: '从算力到应用，一体准备就绪',
+        description: '尚未建设本地大模型环境，也可以从业务应用开始。算力设备、预部署本地模型、推理服务与 TeGo OS 一体交付，完成系统配置、场景验证和管理员移交，衔接后续使用与运维。',
+        points: ['GB10 算力与本地存储', '预部署模型与推理服务', '预装平台、配置与售后支持'],
+      },
+      {
+        id: 'scale-out', icon: 'network', title: '并发需求持续增长',
+        headline: '业务逐步增长，算力随需扩展',
+        description: '业务从少量任务逐步走向更多人员与并行处理，算力也需要随负载增长。支持多台一体机并联部署，通过增加设备扩展算力与并发处理能力，结合实际业务负载安排后续扩容。',
+        points: ['多台一体机并联部署', '随业务负载增加设备', '扩展算力与并发处理能力'],
+      },
     ],
     specs: [
       { name: '算力芯片', value: 'NVIDIA GB10 Grace Blackwell，20 核 Arm CPU' },
@@ -89,10 +115,30 @@ export const appliancePage: Record<Locale, AppliancePage> = {
       { value: '2 TB', label: 'M.2 NVMe SSD local storage' },
     ],
     scenarios: [
-      { icon: 'key', title: 'Sensitive business data', description: 'Deploy models and storage within the enterprise network to process customer records and internal documents.' },
-      { icon: 'shield', title: 'Security and regulatory requirements', description: 'Configure access, execution authorization and audit records for finance, government and other regulated work.' },
-      { icon: 'cpu', title: 'No local model infrastructure', description: 'Bring compute hardware, local model services and TeGo OS together for organizations without local models.' },
-      { icon: 'network', title: 'Growing concurrent demand', description: 'Connect multiple appliances and add devices as workloads grow to expand compute and concurrent processing capacity.' },
+      {
+        id: 'private-network', icon: 'key', title: 'Sensitive business data',
+        headline: 'Keep sensitive work within your network',
+        description: 'Deploy local models and storage within the enterprise network to process customer records, internal documents and other sensitive business materials. Bring the model services and runtime into your own environment so digital employees can work with internal business content.',
+        points: ['Customer records and internal documents', 'Local models and storage deployed together', 'Delivery aligned with your internal network'],
+      },
+      {
+        id: 'governance', icon: 'shield', title: 'Security and regulatory requirements',
+        headline: 'Connect business execution with organizational control',
+        description: 'Bring digital employees into your organization’s management practices for finance, government and other work with defined access and execution requirements. Configure user access, execution authorization and audit records around the way your organization operates.',
+        points: ['Access configured for your organization', 'Authorization defines the scope of execution', 'Audit records retain the operation history'],
+      },
+      {
+        id: 'local-model', icon: 'cpu', title: 'No local model infrastructure',
+        headline: 'Compute, models and applications, ready together',
+        description: 'Start with business applications even without an existing local model environment. Compute hardware, predeployed models, inference services and TeGo OS arrive together, with system setup, scenario validation and administrator handover to support ongoing use and operations.',
+        points: ['GB10 compute and local storage', 'Predeployed models and inference services', 'Platform installation, setup and support'],
+      },
+      {
+        id: 'scale-out', icon: 'network', title: 'Growing concurrent demand',
+        headline: 'Expand compute as your business grows',
+        description: 'As adoption moves from a few tasks to more people and parallel workloads, compute needs grow too. Connect multiple appliances and add devices to expand compute and concurrent processing capacity, planning each expansion around actual business demand.',
+        points: ['Multiple appliances deployed together', 'Add devices as workloads grow', 'Expand compute and concurrent processing'],
+      },
     ],
     specs: [
       { name: 'Compute chip', value: 'NVIDIA GB10 Grace Blackwell, 20-core Arm CPU' },
