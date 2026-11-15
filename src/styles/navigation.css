@@ -5,6 +5,7 @@
   --nav-description: #909cac;
   --nav-icon: #8591a3;
   --nav-highlight: #76a4de;
+  --nav-panel-border: #8aa9d55c;
 }
 
 .tego-header .desktop-nav { gap: 24px; align-items: center; }
@@ -44,12 +45,28 @@
   padding: 12px;
   isolation: isolate;
   background: linear-gradient(135deg, #111c2a, #0d1622);
-  border: 1px solid #a8b8ce24;
+  border: 1px solid var(--nav-panel-border);
   border-radius: 14px;
-  box-shadow: 0 22px 60px -16px #000b, 0 5px 16px #0004;
+  box-shadow: 0 22px 60px -16px #000b, 0 5px 16px #0004, 0 0 24px -12px #729ed733;
   color: var(--nav-title);
 }
 .tego-header .tego-nav-panel[hidden] { display: none !important; }
+.tego-header :is(.tego-nav-panel, .tego-language-panel)::after {
+  content: '';
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: -6px;
+  left: var(--nav-pointer-x, 50%);
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid var(--nav-panel-border);
+  border-left: 1px solid var(--nav-panel-border);
+  background: var(--nav-pointer-surface, #111c2a);
+  transform: translateX(-50%) rotate(45deg);
+  pointer-events: none;
+}
+.tego-header .tego-language-panel::after { display: block; }
 .tego-nav-panel[inert],
 .tego-language-panel[inert] { pointer-events: none; }
 .tego-header .tego-nav-panel-body {
@@ -148,6 +165,7 @@
     transform: translateX(-50%);
   }
   .tego-header .tego-nav-solutions { width: 680px; }
+  .tego-header .tego-nav-panel::after { display: block; }
   .tego-header :is(.tego-nav-panel, .tego-language-panel)::before {
     content: '';
     position: absolute;
@@ -209,12 +227,13 @@
 .tego-header .language-link > svg:last-child { color: #758194; transition: transform .16s ease; }
 .tego-header .language-link[aria-expanded='true'] > svg:last-child { transform: rotate(180deg); }
 .tego-language-panel {
+  --nav-pointer-surface: #0f1927;
   position: absolute;
   top: calc(100% + 14px);
   right: 0;
   width: 152px;
   padding: 6px;
-  border: 1px solid #a8b8ce24;
+  border: 1px solid var(--nav-panel-border);
   border-radius: 12px;
   background: #0f1927;
   box-shadow: 0 18px 44px -12px #000a;

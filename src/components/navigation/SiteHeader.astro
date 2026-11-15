@@ -48,6 +48,12 @@ const activeLanguage = languages.find(item => item.id === language)!;
       clearTimeout(closeTimer);
       closeTimer = undefined;
     };
+    const positionPointer = (button: HTMLButtonElement, panel: HTMLElement) => {
+      const trigger = button.getBoundingClientRect();
+      const bounds = panel.getBoundingClientRect();
+      const center = trigger.left + trigger.width / 2 - bounds.left - panel.clientLeft;
+      panel.style.setProperty('--nav-pointer-x', `${Math.max(18, Math.min(center, panel.clientWidth - 18))}px`);
+    };
     const positionHighlight = (panel: HTMLElement, item: HTMLElement | null) => {
       const body = panel.querySelector<HTMLElement>('.tego-nav-panel-body');
       if (!body) return;
@@ -75,6 +81,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
         panel.inert = !open;
         if (open) {
           panel.hidden = false;
+          positionPointer(button, panel);
           positionHighlight(panel, panel.querySelector<HTMLElement>('.tego-nav-item[aria-current="page"]'));
         }
         if (animated && desktopMode.matches && !reducedMotion.matches && typeof panel.animate === 'function' && !panel.hidden) {
@@ -186,6 +193,11 @@ const activeLanguage = languages.find(item => item.id === language)!;
     });
     header.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobile));
     desktopMode.addEventListener('change', () => { closeMobile(); closeDisclosures(false); });
+    window.addEventListener('resize', () => {
+      const button = toggles.find(item => item.getAttribute('aria-expanded') === 'true');
+      const panel = button && document.getElementById(button.getAttribute('aria-controls')!);
+      if (button && panel) positionPointer(button, panel);
+    });
     header.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
       const destination = new URL(languageLink.href);
       if (destination.pathname.split('/').slice(2).join('/') === location.pathname.split('/').slice(2).join('/')) destination.hash = location.hash;

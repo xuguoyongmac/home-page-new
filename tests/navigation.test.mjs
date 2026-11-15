@@ -22,6 +22,10 @@ class ElementStub extends EventTarget {
   inert = false;
   writes = [];
   animations = [];
+  clientLeft = 1;
+  clientWidth = 618;
+  style = { setProperty() {} };
+  getBoundingClientRect() { return { left: 0, top: 0, width: 620, height: 220 }; }
   classList = {
     add: name => this.classes.add(name),
     remove: name => this.classes.delete(name),
