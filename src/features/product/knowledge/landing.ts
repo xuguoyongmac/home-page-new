@@ -3,144 +3,80 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['以企业私有知识为底座', '业务决策有据可依'],
-      summary: '沉淀组织文档、项目资料与工作记忆，让数字员工结合授权知识开展工作，引用来源可查。',
+      lines: ['把企业知识用进工作', '让业务成果有据可查'],
+      summary: '让制度、档案与项目经验进入数字员工的工作过程。从检索资料到起草方案，结合授权知识形成回答与文稿，沿着引用回看原文依据。',
     },
     pain: {
-      title: '企业的经验，不该散落在各处',
+      title: '资料不断积累，工作不必反复从头开始',
       items: [
-        '通用模型不了解内部制度与历史方案，业务回答缺少企业自己的依据。',
-        '资料散落在网盘、电脑和聊天记录，找到可用信息需要反复查找。',
-        '项目背景和工作成果分散，每次启动任务都要重新整理材料。',
+        '制度在文档里、经验在项目里，业务人员需要的依据却常常找不齐。',
+        '同一问题反复查资料、问同事，已有方案难以直接用于下一项工作。',
+        '文稿有结论却没有出处，复核时仍要重新翻找材料。',
       ],
     },
     concept: {
-      title: '企业私有知识驱动的原生智能底座',
-      body: '将制度、档案与历史方案纳入企业知识库，在项目空间积累资料和工作背景。数字员工按授权范围检索知识，将相关依据带入问答与写作，并通过引用链接回看来源。',
-      labels: ['企业知识', '项目资料', '工作上下文', '引用来源'],
+      title: '从企业资料到工作依据，让知识贯穿任务过程',
+      body: '按知识库和文件夹归集资料，经解析、分片与索引后用于检索。数字员工在授权范围内查找相关内容，结合项目背景回答问题、编制材料，并通过引用保留原文线索。',
+      labels: ['归集资料', '检索知识', '引用撰写', '原文复核'],
     },
     features: [
-      {
-            "icon": "book",
-            "title": "资料上传与管理",
-            "body": "按知识库和文件夹管理制度、档案与历史方案，支持批量上传、版本查看、同名替换和重新处理。"
-      },
-      {
-            "icon": "layers",
-            "title": "解析分片与索引",
-            "body": "按配置解析和清洗文档，建立内容分片与检索索引，维护片段的启停状态。"
-      },
-      {
-            "icon": "search",
-            "title": "关键词与语义检索",
-            "body": "组合关键词、语义或混合检索，配置召回权重与阈值，并通过检索测试核对结果。"
-      },
-      {
-            "icon": "file",
-            "title": "回答关联原文依据",
-            "body": "将命中的资料带入问答和文稿，通过引用定位原文片段与上下文。"
-      },
-      {
-            "icon": "folder",
-            "title": "项目资料与上下文",
-            "body": "在项目空间保留工作背景与成果，项目资料检索限定在对应项目和成员范围。"
-      },
-      {
-            "icon": "key",
-            "title": "知识权限与共享",
-            "body": "管理个人与共享知识库，按成员、部门和库内角色授权，数字员工按调用人权限检索。"
-      }
-],
+      { icon: 'book', title: '把制度与经验归入同一知识体系', body: '按知识库和文件夹管理制度、档案与历史方案，支持批量上传、版本查看、同名替换和重新处理。' },
+      { icon: 'layers', title: '让文档内容成为可检索的片段', body: '按配置解析和清洗文档，建立内容分片与检索索引，维护片段启停状态，让更新后的资料继续服务业务。' },
+      { icon: 'search', title: '围绕业务问题调好检索结果', body: '组合关键词、语义或混合检索，配置召回权重与阈值，通过检索测试查看命中内容并核对结果。' },
+      { icon: 'file', title: '把原文依据带进回答与文稿', body: '将命中的资料用于问答和写作，通过引用定位原文片段与上下文，让业务复核沿着依据展开。' },
+      { icon: 'folder', title: '在项目中延续背景与成果', body: '在项目空间保留工作背景、资料和成果。项目资料检索限定在对应项目和成员范围，为下一轮工作接续上下文。' },
+      { icon: 'key', title: '按访问范围使用企业知识', body: '管理个人与共享知识库，按成员、部门和库内角色授权，数字员工按调用人权限检索。' },
+    ],
     scenarios: [
-      {
-        title: '内部制度问答与方案撰写',
-        body: '结合已授权的投标管理办法、合规制度和业务规范回答问题、起草材料，业务人员通过引用回看依据。',
-        flow: ['检索制度', '引用撰写', '原文复核'],
-      },
-      {
-        title: '历史项目经验复用',
-        body: '查找同类项目的历史方案与交付材料，将可用资料带入新项目，结合当前目标继续完善。',
-        flow: ['查找方案', '复用材料', '迭代成果'],
-      },
+      { title: '制度答复有出处，方案编制有依据', body: '检索适用制度与业务规范，整理答复或方案正文，并关联原文片段。业务人员从引用回看依据，核对办理要求与材料内容。', flow: ['匹配适用制度', '带依据形成文稿', '回看原文复核'] },
+      { title: '把做过的项目变成下一次工作的起点', body: '查找同类项目的历史方案与交付资料，在新项目内延续可用材料与背景，结合当前目标继续完善成果。', flow: ['查找同类项目', '带入资料与背景', '完善当前成果'] },
     ],
     benefits: [
-      { title: '工作有依据', body: '把企业制度和业务资料带入回答与成果。' },
-      { title: '经验可复用', body: '让沉淀的知识服务同事与数字员工。' },
-      { title: '减少重复沟通', body: '在同一项目内延续资料和工作背景。' },
-      { title: '来源可核验', body: '通过引用回看原文，方便业务复核。' },
+      { title: '答复有企业依据', body: '制度、规范与业务资料进入实际工作。' },
+      { title: '经验接续使用', body: '历史方案与项目成果成为下一项工作的材料。' },
+      { title: '复核直达原文', body: '从引用定位片段与上下文，便于核对结论。' },
+      { title: '知识使用有边界', body: '按知识授权与项目范围提供相关资料。' },
     ],
-    closing: '让数字员工基于企业自有知识开展工作',
+    closing: '让企业积累的知识，成为今天能用的工作能力',
     related: ['collaboration', 'governance'],
   },
   en: {
     hero: {
-      lines: ['Built on enterprise knowledge', 'Grounded in your business'],
-      summary: 'Bring documents, project materials and work context together so digital employees can use authorized knowledge and link back to its sources.',
+      lines: ['Put enterprise knowledge to work', 'Keep the evidence in reach'],
+      summary: 'Bring policies, archives and project experience into digital employees’ work. Retrieve authorized knowledge for answers and drafts, then follow citations back to the original material.',
     },
     pain: {
-      title: 'Put scattered experience within reach',
+      title: 'Build on what the company already knows',
       items: [
-        'General models lack your internal policies and past proposals, leaving business answers without company context.',
-        'Files spread across drives, computers and conversations make useful information hard to find.',
-        'Scattered project background and deliverables mean gathering the same materials for each new task.',
+        'Policies live in documents and experience lives in projects, while the evidence a colleague needs remains scattered.',
+        'Repeated searches and questions keep past proposals from becoming a practical starting point.',
+        'A conclusion without its sources sends reviewers back through the same files.',
       ],
     },
     concept: {
-      title: 'Intelligence grounded in private enterprise knowledge',
-      body: 'Organize policies, archives and past proposals in enterprise knowledge bases. Keep materials and work context in project spaces. Digital employees search within authorized boundaries, use relevant evidence in answers and drafts, and provide links back to sources.',
-      labels: ['Knowledge', 'Project files', 'Work context', 'Sources'],
+      title: 'Carry enterprise evidence through the task',
+      body: 'Organize materials by library and folder, then parse, chunk and index them for retrieval. Digital employees find authorized content, combine it with project context, and retain references when preparing answers and documents.',
+      labels: ['Organize sources', 'Retrieve knowledge', 'Draft with evidence', 'Review originals'],
     },
     features: [
-      {
-            "icon": "book",
-            "title": "Manage source materials",
-            "body": "Organize policies, archives and proposals by library and folder, with bulk upload, file versions, replacement and reprocessing."
-      },
-      {
-            "icon": "layers",
-            "title": "Parse, chunk and index",
-            "body": "Parse and clean documents, configure chunks and indexes, and manage active passages."
-      },
-      {
-            "icon": "search",
-            "title": "Keyword and semantic retrieval",
-            "body": "Use keyword, semantic or hybrid retrieval, configure weights and thresholds, and test the returned results."
-      },
-      {
-            "icon": "file",
-            "title": "Connect answers to sources",
-            "body": "Use retrieved passages in answers and drafts, with references to the original passage and surrounding context."
-      },
-      {
-            "icon": "folder",
-            "title": "Project files and context",
-            "body": "Retain project background and deliverables. Project retrieval stays within that project and its members."
-      },
-      {
-            "icon": "key",
-            "title": "Library access and sharing",
-            "body": "Manage personal and shared libraries by member, department and library role. Retrieval follows the caller’s permissions."
-      }
-],
+      { icon: 'book', title: 'Organize policies and experience together', body: 'Manage policies, archives and past proposals by library and folder, with bulk upload, file versions, replacement and reprocessing.' },
+      { icon: 'layers', title: 'Turn documents into searchable passages', body: 'Parse and clean documents, build chunks and indexes, and manage active passages as source materials change.' },
+      { icon: 'search', title: 'Tune retrieval around business questions', body: 'Use keyword, semantic or hybrid retrieval. Configure weights and thresholds, then test queries to review the returned passages.' },
+      { icon: 'file', title: 'Keep evidence with answers and drafts', body: 'Use retrieved material in answers and documents. References lead to the original passage and surrounding context for review.' },
+      { icon: 'folder', title: 'Carry project context forward', body: 'Retain project background, files and deliverables. Project retrieval stays within the relevant project and its members.' },
+      { icon: 'key', title: 'Use knowledge within authorized boundaries', body: 'Manage personal and shared libraries by member, department and library role. Digital employees retrieve according to the caller’s permissions.' },
+    ],
     scenarios: [
-      {
-        title: 'Policy answers and business drafts',
-        body: 'Use authorized bidding policies, compliance rules and business standards to answer questions and prepare drafts. Follow citations to review the supporting material.',
-        flow: ['Find policies', 'Draft with sources', 'Review evidence'],
-      },
-      {
-        title: 'Reuse past project experience',
-        body: 'Find proposals and deliverables from similar projects, bring relevant materials into the new project and adapt them to the current objective.',
-        flow: ['Find past work', 'Reuse materials', 'Refine results'],
-      },
+      { title: 'Policy answers and proposals with evidence', body: 'Find applicable policies and business standards, prepare an answer or proposal, and attach the relevant passages. Reviewers follow references to check the requirements and supporting material.', flow: ['Find applicable policies', 'Draft with evidence', 'Review original passages'] },
+      { title: 'Make past projects a useful starting point', body: 'Find proposals and deliverables from similar projects. Bring useful materials and context into the new project, then adapt the work to its current objective.', flow: ['Find similar projects', 'Carry materials forward', 'Refine the deliverable'] },
     ],
     benefits: [
-      { title: 'Grounded work', body: 'Bring company policies and materials into answers and deliverables.' },
-      { title: 'Reusable experience', body: 'Make accumulated knowledge available to colleagues and digital employees.' },
-      { title: 'Less repetition', body: 'Carry materials and background forward within the same project.' },
-      { title: 'Verifiable sources', body: 'Follow references to the original material for business review.' },
+      { title: 'Company-grounded answers', body: 'Put internal policies, standards and business material into the work.' },
+      { title: 'Reusable experience', body: 'Use previous proposals and deliverables as working material.' },
+      { title: 'Sources within reach', body: 'Follow references to passages and context when checking a conclusion.' },
+      { title: 'Defined knowledge access', body: 'Provide material within library permissions and project boundaries.' },
     ],
-    closing: 'Put your enterprise knowledge to work',
+    closing: 'Turn accumulated knowledge into working capability',
     related: ['collaboration', 'governance'],
   },
 } satisfies LandingTranslations;

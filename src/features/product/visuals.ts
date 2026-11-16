@@ -1,5 +1,4 @@
 import type { Locale } from '../../data/types';
-
 interface CapabilityVisual {
   src: Record<Locale, string>;
   mobile: { src: Record<Locale, string>; width: number; height: number };
@@ -7,93 +6,19 @@ interface CapabilityVisual {
   height: number;
   alt: Record<Locale, string>;
 }
-
-const mobileVisual = (slug: string): CapabilityVisual['mobile'] => ({
-  src: {
-    zh: `/images/product/${slug}/capability-visual-zh${slug === 'integrations' ? '_V1.1' : '-mobile_V1.0'}.webp`,
-    en: `/images/product/${slug}/capability-visual-en${slug === 'integrations' ? '_V1.1' : '-mobile_V1.0'}.webp`,
-  },
-  width: 1024,
-  height: 1024,
-});
-
-export const capabilityVisuals: Record<string, CapabilityVisual> = {
-  'digital-employees': {
-    mobile: {
-      src: {
-        zh: '/images/product/digital-employees/intro-hero-zh_V6.0.webp',
-        en: '/images/product/digital-employees/intro-hero-en_V6.0.webp',
-      },
-      width: 1536, height: 1024,
-    },
-    src: {
-      zh: '/images/product/digital-employees/intro-hero-zh_V6.0.webp',
-      en: '/images/product/digital-employees/intro-hero-en_V6.0.webp',
-    },
-    width: 1536, height: 1024,
-    alt: {
-      zh: '数字员工业务工作台，汇集岗位职责、专业技能、企业知识、任务执行与交付成果。',
-      en: 'A digital employee workspace brings together responsibilities, specialist skills, company knowledge, task execution and deliverables.',
-    },
-  },
-  'multi-agent': {
-    mobile: mobileVisual('multi-agent'),
-    src: {
-      zh: '/images/product/multi-agent/capability-visual-zh_V1.1.webp',
-      en: '/images/product/multi-agent/capability-visual-en_V1.1.webp',
-    },
-    width: 1536, height: 1024,
-    alt: {
-      zh: '多 Agent 协同的概念视觉：主任务分为研究、分析和复核，专业结果返回同一个主任务统一汇总。',
-      en: 'Multi-Agent concept: research, analysis and review return their specialist findings to one coordinated task.',
-    },
-  },
-  integrations: {
-    mobile: mobileVisual('integrations'),
-    src: {
-      zh: '/images/product/integrations/capability-visual-zh_V1.1.webp',
-      en: '/images/product/integrations/capability-visual-en_V1.1.webp',
-    },
-    width: 1024, height: 1024,
-    alt: {
-      zh: '系统连接的概念视觉：数字员工通过授权工具、业务接口与项目数据，整理沟通纪要并更新客户跟进记录。',
-      en: 'Integration concept: authorized tools, business APIs and project data help a digital employee prepare actions and update a customer follow-up record.',
-    },
-  },
-  collaboration: {
-    mobile: mobileVisual('collaboration'),
-    src: {
-      zh: '/images/product/collaboration/capability-visual-zh_V1.1.webp',
-      en: '/images/product/collaboration/capability-visual-en_V1.1.webp',
-    },
-    width: 1536, height: 1024,
-    alt: {
-      zh: '人机协作的概念视觉：项目资料、修改意见和人工确认围绕同一份方案，数字员工接续处理并提交新版本。',
-      en: 'Collaboration concept: project files, feedback and human review connect to the same proposal and its next revision.',
-    },
-  },
-  knowledge: {
-    mobile: mobileVisual('knowledge'),
-    src: {
-      zh: '/images/product/knowledge/capability-visual-zh_V1.1.webp',
-      en: '/images/product/knowledge/capability-visual-en_V1.1.webp',
-    },
-    width: 1536, height: 1024,
-    alt: {
-      zh: '企业知识的概念视觉：项目资料与制度原文中的高亮片段，通过引用与工作回答对应。',
-      en: 'Knowledge concept: selected passages from project materials and policies connect directly to citations in an answer.',
-    },
-  },
-  governance: {
-    mobile: mobileVisual('governance'),
-    src: {
-      zh: '/images/product/governance/capability-visual-zh_V1.1.webp',
-      en: '/images/product/governance/capability-visual-en_V1.1.webp',
-    },
-    width: 1536, height: 1024,
-    alt: {
-      zh: '可信治理的概念视觉：组织身份、知识与项目范围、业务委托和执行记录对应到同一项工作成果。',
-      en: 'Governance concept: identity, knowledge and project scope, delegation and execution records connect to the same work result.',
-    },
-  },
+const descriptions: Record<string, Record<Locale, string>> = {
+  'digital-employees': {zh:'数字员工团队的二维工作界面，岗位职责、任务执行与方案文档在同一工作台呈现。',en:'A two-dimensional digital employee workspace connects role responsibilities, task execution and a finished proposal.'},
+  'multi-agent': {zh:'尽调任务按资料检索、数据提取和风险梳理分工，返回结果汇总为报告与差异清单。',en:'Specialist research, data extraction and risk checks return to one due diligence report and difference checklist.'},
+  integrations: {zh:'授权连接接入客户资料，数字员工整理交流纪要并更新客户跟进记录。',en:'Authorized connections provide customer context, prepare meeting notes and update the follow-up record.'},
+  collaboration: {zh:'项目工作台把资料目录、方案正文、修改意见和成果版本放在同一上下文。',en:'A project workspace connects source files, the proposal, review comments and document versions.'},
+  knowledge: {zh:'企业知识检索界面将采购材料要求与制度原文、引用来源并列展示。',en:'An enterprise knowledge workspace connects a procurement answer to original policy passages and citations.'},
+  governance: {zh:'权限与审计界面区分员工使用、知识、项目与业务委托，并展示审核和任务执行记录。',en:'An access and audit console separates employee, knowledge, project and delegation scope with review and execution records.'},
 };
+export const capabilityVisuals: Record<string, CapabilityVisual> = Object.fromEntries(
+  Object.entries(descriptions).map(([slug, alt]) => {
+    const version = ['integrations', 'governance'].includes(slug) ? 'V2.1' : 'V2.0';
+    const englishVersion = slug === 'governance' ? 'V2.2' : version;
+    const src = {zh:`/images/product/${slug}/experience-hero-zh_${version}.webp`,en:`/images/product/${slug}/experience-hero-en_${englishVersion}.webp`};
+    return [slug, {src, mobile:{src,width:1536,height:1024},width:1536,height:1024,alt}];
+  }),
+);
