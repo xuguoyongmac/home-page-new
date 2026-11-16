@@ -58,7 +58,10 @@
 .execution-video,.execution-video-poster{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:contain}
 .execution-video{position:absolute;inset:0}
 .execution-video{opacity:0}
-.execution-video[data-frame-ready='true']{opacity:1}
+.execution-video[data-frame-ready='true']:not([data-playback='blocked']){opacity:1}
+@media(prefers-reduced-motion:no-preference){
+ .execution-concept:has(.execution-video[data-frame-ready='true']:not([data-playback='blocked'])) .execution-video-poster{visibility:hidden}
+}
 @media(prefers-reduced-motion:reduce){
  .execution-video{visibility:hidden}
  .hero-slide-selectors>button>i{transition:none}
