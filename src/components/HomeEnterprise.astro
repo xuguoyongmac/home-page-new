@@ -1,0 +1,117 @@
+---
+import type { Locale } from '../data/types';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const labels = [
+  { id: 'input', kind: 'heading', label: zh ? '员工交办任务' : 'Assign a task', compact: zh ? '员工交办' : 'Task', x: 13.6, y: 39.2 },
+  { id: 'identity', kind: 'identity', label: zh ? '身份校验' : 'Identity check', compact: zh ? '身份校验' : 'Identity', x: 29, y: 45 },
+  { id: 'data', kind: 'resource', label: zh ? '企业资料' : 'Data', compact: zh ? '资料' : 'Data', x: 38.6, y: 44.2 },
+  { id: 'system', kind: 'resource', label: zh ? '业务系统' : 'Systems', compact: zh ? '系统' : 'Apps', x: 50.2, y: 44.2 },
+  { id: 'model', kind: 'resource', label: zh ? '本地模型' : 'Local model', compact: zh ? '模型' : 'Model', x: 61.5, y: 44.2 },
+  { id: 'access', kind: 'access', label: zh ? '按权限访问企业资源' : 'Access authorized resources', compact: zh ? '按授权访问' : 'Authorized access', x: 50.1, y: 55.6 },
+  { id: 'review', kind: 'review', label: zh ? '发布审核' : 'Review', compact: zh ? '审核' : 'Review', x: 69.1, y: 29.8 },
+  { id: 'platform', kind: 'platform', label: zh ? 'TeGo OS 平台' : 'TeGo OS', compact: zh ? 'TeGo OS 平台' : 'TeGo OS', x: 50.1, y: 64.5 },
+  { id: 'output', kind: 'heading', label: zh ? '交付业务成果' : 'Delivered result', compact: zh ? '交付成果' : 'Result', x: 86.7, y: 39.2 },
+  { id: 'file', kind: 'filename', label: zh ? '建设方案.pdf' : 'Project plan.pdf', compact: zh ? '建设方案.pdf' : 'Project plan.pdf', x: 86.7, y: 70.5 },
+  { id: 'records', kind: 'records', label: zh ? '任务与工具执行记录' : 'Task and tool records', compact: zh ? '执行记录' : 'Execution records', x: 50.1, y: 84 },
+];
+---
+
+<section class="home-enterprise" id="enterprise-control" aria-labelledby="enterprise-control-title">
+  <div class="container enterprise-layout">
+    <div class="enterprise-copy">
+      <h2 id="enterprise-control-title">{zh
+        ? <><span>按企业边界部署</span><span>按组织规则运行</span></>
+        : <><span>Deploy on your terms.</span><span>Operate with control.</span></>}
+      </h2>
+      <div class="enterprise-topics">
+        <div>
+          <h3>{zh ? '私有化部署' : 'Private deployment'}</h3>
+          <p>{zh
+            ? '平台与资料部署在企业环境，按需接入本地模型，支持 Compose 与 Kubernetes。'
+            : 'Deploy the platform and data in your environment with Compose or Kubernetes, and connect local models.'}
+          </p>
+        </div>
+        <div>
+          <h3>{zh ? '企业治理' : 'Enterprise governance'}</h3>
+          <p>{zh
+            ? '对齐组织身份，分别管理资源权限与业务委托，保留审核决定和执行记录。'
+            : 'Align organizational identities, manage resource access and work delegation separately, and retain review decisions and execution records.'}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <figure class="enterprise-environment">
+      <div class="enterprise-art">
+      <img
+        src="/images/enterprise/home-enterprise-concept_V3.2.webp"
+        width="1536" height="1024" loading="lazy" decoding="async"
+        sizes="(max-width: 800px) 100vw, (max-width: 1100px) 58vw, 760px"
+        alt={zh
+          ? '员工交办整理资料、生成方案的任务，经身份校验进入企业私有环境；TeGo OS 按权限访问企业资料、业务系统与本地模型，交付建设方案文件，下层保留任务与工具执行记录。发布审核单独管理资源发布。'
+          : 'An employee assigns a task. After identity verification, TeGo OS accesses authorized enterprise data, business systems and local models in a private environment, delivers a project plan and retains task and tool records. Publication review is a separate control.'}
+      />
+      <ul class="enterprise-diagram-labels" role="list" aria-label={zh ? '私有部署与企业治理' : 'Private deployment and governance'}>
+        {labels.map(item => <li class={`diagram-label diagram-label--${item.kind}`} data-label={item.id} style={`--label-x:${item.x}%;--label-y:${item.y}%`}>
+          <span class="label-full">{item.label}</span><span class="label-compact">{item.compact}</span>
+        </li>)}
+      </ul>
+      <p class="enterprise-task-request">
+        <span class="label-full">{zh ? <>整理项目资料<br/>生成建设方案</> : <>Use project data<br/>to prepare a plan</>}</span>
+        <span class="label-compact">{zh ? '生成方案' : 'Prepare a plan'}</span>
+      </p>
+      </div>
+      <figcaption>
+        <strong>{zh ? '企业私有环境' : 'Your private environment'}</strong>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .home-enterprise{position:relative;padding:var(--section-space) 0;background:#060b12;overflow:clip}
+  .enterprise-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.45fr);align-items:center;gap:72px}
+  .enterprise-copy h2{margin:0;color:#edf5fc;font-size:clamp(28px,2.55vw,38px);font-weight:500;line-height:1.5;letter-spacing:-.7px}
+  .enterprise-copy h2>span{display:block}
+  .enterprise-topics{display:grid;gap:28px;margin-top:34px;max-width:370px}
+  .enterprise-topics h3{margin:0;color:#d9e9f6;font-size:17px;font-weight:500;line-height:1.6}
+  .enterprise-topics p{margin:9px 0 0;color:#a4b7ca;font-size:15px;line-height:1.9;text-wrap:pretty}
+  .enterprise-environment{position:relative;isolation:isolate;min-width:0;margin:0}
+  .enterprise-art{position:relative}
+  .enterprise-environment img{display:block;width:100%;height:auto}
+  .enterprise-environment figcaption{position:absolute;top:13.5%;left:50%;transform:translate(-50%,-50%);margin:0;line-height:1.4;text-align:center;white-space:nowrap}
+  .enterprise-environment figcaption strong{display:block;color:#d8edf9;font-size:15px;font-weight:500}
+  .enterprise-diagram-labels{list-style:none;padding:0;margin:0}
+  .diagram-label{position:absolute;left:var(--label-x);top:var(--label-y);transform:translate(-50%,-50%);color:#d7edf9;font-size:11px;font-weight:500;line-height:1.3;white-space:nowrap;text-shadow:0 1px 4px #02101fe6}
+  .diagram-label--heading{color:#dbe5ed;font-size:13px}
+  .diagram-label--identity{padding:2px 4px;border-radius:3px;background:#0c1b28e0;color:#aec5bf}
+  .diagram-label--access{color:#c0d0dc;font-size:12px}
+  .diagram-label--review{color:#c9bca2}
+  .diagram-label--platform{color:#f4fbff;font-size:15px;letter-spacing:.3px}
+  .diagram-label--records{color:#b6cfdf;font-size:12px}
+  .enterprise-task-request{position:absolute;left:13.6%;top:57.3%;width:14%;transform:translate(-50%,-50%);margin:0;color:#d0dee9;font-size:11px;font-weight:400;line-height:1.7;text-align:center;text-shadow:0 1px 4px #02101f}
+  .label-compact{display:none}
+  @media(max-width:1100px){
+    .enterprise-layout{gap:36px;grid-template-columns:minmax(0,.8fr) minmax(0,1.35fr)}
+    .enterprise-copy h2{font-size:30px}
+  }
+  @media(max-width:800px){
+    .enterprise-layout{grid-template-columns:minmax(0,1fr);gap:34px}
+    .enterprise-copy h2{font-size:30px}
+    .enterprise-topics{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;max-width:none;margin-top:25px}
+    .enterprise-environment{width:min(100%,700px);justify-self:center}
+  }
+  @media(max-width:480px){
+    .enterprise-copy h2{font-size:28px}.enterprise-topics{grid-template-columns:minmax(0,1fr);gap:22px}
+    .enterprise-topics p{margin-top:7px}
+    .enterprise-environment figcaption strong{font-size:11px}
+    .diagram-label{font-size:9px}
+    .diagram-label--heading,.diagram-label--platform{font-size:10px}
+    .diagram-label--identity{padding:1px 2px}
+    .enterprise-task-request{font-size:9px;line-height:1.3}
+    .label-full{display:none}.label-compact{display:inline}
+  }
+</style>
