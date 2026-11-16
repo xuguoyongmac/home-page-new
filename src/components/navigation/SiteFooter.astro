@@ -55,7 +55,7 @@ const contactCodes = [
     </div>
     <div>
       <h2>{zh ? '解决方案' : 'Solutions'}</h2>
-      {industries[locale].filter(industry => industry.slug !== 'general' && industry.slug !== 'internet').map(industry => <a href={pathFor(locale,`solutions/${industry.slug}`)}>{industry.name}</a>)}
+      {industries[locale].filter(industry => industry.slug !== 'general').map(industry => <a href={pathFor(locale,`solutions/${industry.slug}`)}>{industry.name}</a>)}
       <a href={pathFor(locale, 'solutions/appliance')}>{zh ? '一体机解决方案' : 'AI appliance solution'}</a>
     </div>
     <div>

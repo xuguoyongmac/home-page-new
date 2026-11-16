@@ -191,25 +191,17 @@
   font-size: 12px;
   line-height: 1.5;
 }
+/* CTA theme belongs to action-buttons.css; keep only local layout and sizing. */
 .home-solutions .industry-details-link {
-  display: inline-flex;
-  align-items: center;
   justify-self: end;
   gap: 10px;
   min-height: 44px;
   padding: 0 14px;
-  border: 1px solid #82d5ff42;
-  border-radius: 8px;
-  background: #0a2035cc;
   white-space: nowrap;
-  color: #82d5ff;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-  transition: color .2s, border-color .2s, background .2s;
 }
-.home-solutions .industry-details-link:hover { color: #d3f1ff; border-color: #82d5ff8c; background: #174768e6; }
-.home-solutions .industry-details-link:focus-visible { outline: 2px solid #74ceff; outline-offset: 4px; }
 
 .home-solutions .industry-benefits { grid-column: 1 / -1; min-width: 0; }
 .home-solutions .industry-benefits > h4 {
@@ -288,7 +280,6 @@
 @media (prefers-reduced-motion: reduce) {
   .home-solutions.solution-explorer .solution-tabs::before,
   .home-solutions.solution-explorer .solution-tabs > button,
-  .home-solutions .industry-details-link,
   .home-solutions .industry-benefits li { transition: none; }
 }
 

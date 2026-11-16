@@ -153,7 +153,7 @@
 .tego-header .tego-nav-resources { width: 280px; }
 .tego-header .tego-nav-resources .tego-nav-grid { grid-template-columns: minmax(0, 1fr); }
 
-.tego-header :is(a, button):focus-visible { outline: 2px solid #779ed2; outline-offset: 5px; }
+.tego-header :is(a, button):not(:where(.button, .capability-button, .dei-button)):focus-visible { outline: 2px solid #779ed2; outline-offset: 5px; }
 .tego-header .tego-nav-item:focus-visible { outline-offset: -2px; }
 .is-home .tego-header[data-dropdown-open='true']:not([data-scrolled='true']) { background: transparent; }
 

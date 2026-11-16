@@ -2,11 +2,11 @@
 :root { --page-canvas: var(--page-bg, #060b12); }
 html, body { background: var(--page-canvas); }
 body #main.page-canvas,
-body #main.page-canvas > :is(div, article),
+body #main.page-canvas > :is(div, article):not(.industry-solution-securities, .government-page, .soe-solution),
 body #main.page-canvas .value-depth { background: transparent; }
 
 body #main.page-canvas > :is(section, header),
-body #main.page-canvas > :is(div, article) > :is(section, header):not(.hero-carousel),
+body #main.page-canvas > :is(div, article):not(.industry-solution-securities, .government-page, .soe-solution) > :is(section, header):not(.hero-carousel),
 body #main.page-canvas .value-depth > section,
 body #main.page-canvas .support-shell > div > :is(section, header) {
   background: transparent;

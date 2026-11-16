@@ -9,9 +9,9 @@
 .product-experience h1{font-size:clamp(35px,3.45vw,47px);line-height:1.48;letter-spacing:-1.25px}
 .pe-hero h1>span{display:block}.pe-hero .pe-accent{color:var(--pe-accent)}
 .pe-hero-description>p{margin-top:23px;max-width:515px}
-.pe-button{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:11px 23px;border:1px solid #497bb7;border-radius:7px;background:#3169aa;color:#fff;font-size:15px;line-height:1.5;font-weight:500;transition:background .18s ease,border-color .18s ease}
-.pe-button:hover{background:#3b78bd;border-color:#72a4d7}
-.pe-button:focus-visible,.pe-resource:focus-visible,.pe-related a:focus-visible{outline:2px solid #a9d2ff;outline-offset:5px}
+/* .pe-button is a layout hook; all CTA themes and states live in action-buttons.css. */
+.pe-button{min-height:45px;padding:11px 23px;font-size:15px;line-height:1.5;font-weight:500}
+.pe-resource:focus-visible,.pe-related a:focus-visible{outline:2px solid #a9d2ff;outline-offset:5px}
 .pe-hero .pe-button{margin-top:29px}
 .pe-hero-art{min-width:0;width:calc(100% + 28px);margin:0 -28px 0 0}
 .pe-hero-art img{display:block;width:100%;height:auto;border-radius:11px}
@@ -97,4 +97,3 @@
  .pe-outcomes{gap:25px 22px;margin-top:35px}.pe-outcomes h3{font-size:17px}
  .pe-related{padding-block:20px}.pe-closing-actions{gap:22px}
 }
-@media(prefers-reduced-motion:reduce){.pe-button{transition:none}}

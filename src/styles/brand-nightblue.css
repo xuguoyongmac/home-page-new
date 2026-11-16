@@ -1,11 +1,11 @@
 :root{--page-bg:#060b12;--home-light:#f8fbff;--home-copy:#adb9c7;--home-soft:#94a4b5;--craft-muted:#a9b8c8;--brand-blue:#126fca;--brand-cyan:#28b8ff;--brand-light:#a7dcff;--purple:#126fca;--purple-light:#91d5ff;--ui-purple:#86cfff;--accent:#126fca;--accent-hover:#1676cc}
 body,.home-value-edition{background:#060b12;color:#f4f7fb}.site-header{background:#060e18ed}
 .desktop-nav>a,.nav-solutions>a{color:#b5bec8}.desktop-nav>a:hover,.nav-solutions>a:hover{color:#fff}
-.button,.home-value-edition .button{background:var(--accent);border-color:var(--accent);color:#fff!important;box-shadow:0 7px 22px #020a1426}
-.button:hover,.home-value-edition .button:hover{background:var(--accent-hover);border-color:var(--accent-hover);box-shadow:0 9px 26px #020a1433;color:#fff!important}
-.button.header-cta{background:var(--brand-blue);border-color:var(--brand-blue);color:#fff!important;box-shadow:none}.button.header-cta:hover{background:var(--accent-hover);border-color:var(--accent-hover);color:#fff!important}
-.home-value-edition .sl-actions .button.button-white,.button.button-white{background:#080e1766!important;border-color:#b9cbd2a6;color:#f4f8fc!important;box-shadow:none}
-.home-value-edition .sl-actions .button.button-white:hover,.button.button-white:hover{background:#0b253a!important;border-color:#e4f3ff;color:#fff!important}
+
+
+
+
+
 .home-value-edition .sl-hero{background:radial-gradient(ellipse at 61% 9%,#003656b3,transparent 57%),radial-gradient(ellipse at 82% 52%,#00497559,transparent 53%),#060b12}
 .home-value-edition .sl-hero:before{display:none}.home-value-edition .sl-hero h1{color:#fff}.home-value-edition .sl-hero-description{color:#acb7c5!important}
 .home-value-edition .hero-badge{color:#d4dee8;border-color:#b9cbd236;background:#07152255}.home-value-edition .hero-badge>span{color:#a6ddff;border-color:#129eff59;background:#008bdb1a}.home-value-edition .hero-badge>svg{color:#66b9ea}

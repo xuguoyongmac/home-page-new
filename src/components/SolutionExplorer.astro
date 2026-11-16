@@ -30,7 +30,7 @@ const benefitIcons: Record<string, string[]> = {
         </div>
         <div class="industry-intro">
           <h3>{homeIndustries[locale][industry.slug].title}</h3>
-          <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
+          <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
         </div>
         <div class="industry-panel-body">
           <section class="industry-copy-block industry-challenge" aria-labelledby={`pain-title-${industry.slug}`}>

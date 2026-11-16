@@ -209,10 +209,11 @@ for(const document of documents.values()) {
   const src=attributes(match[1]).src;if(src)validateReference(src,document,'脚本');
  }
 }
-const industries=['government','securities','general','insurance','state-owned','banking','internet','appliance'];
+const industries=['government','securities','general','insurance','state-owned','banking','appliance'];
 const capabilities=['digital-employees','collaboration','multi-agent','knowledge','integrations','governance'];
 const routes=['','product','solutions','ecosystem','enterprise','resources','download','releases','faq','contact','privacy','terms','blog'];
 for(const locale of ['zh','en','zh-Hant']){
+ check(!existsSync(path.join(dist,locale,'solutions/internet/index.html')),`${locale} 互联网方案页面未移除`);
  for(const route of [...routes,...industries.map(i=>`solutions/${i}`), 'pricing', ...capabilities.map(i=>`product/${i}`)])check(existsSync(path.join(dist,locale,route,'index.html')),`${locale}/${route} 页面缺失`);
  const home=documentFor(path.join(dist,locale,'index.html'));
  for(const id of ['desktop-product','desktop-solutions','mobile-product','mobile-solutions'])check(home.ids.has(id),`${locale} 缺少导航分组 ${id}`);

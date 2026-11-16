@@ -25,7 +25,7 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
     <div class="field"><label for="release-manifest">{zh ? '产品' : 'Product'}</label><select id="release-manifest" aria-controls="release-items">{defaultFiles.map(file => <option value={file.path}>{manifestLabel(file)}</option>)}</select></div>
   </div>
   <p class="release-notice" id="release-version-notice" hidden></p>
-  <div class="release-status-row"><p id="release-status" role="status" aria-live="polite">{zh ? '正在读取所选版本的安装包。' : 'Retrieving packages for the selected release.'}</p><button id="release-retry" class="filter-button" type="button" hidden>{zh ? '重试' : 'Retry'}</button></div>
+  <div class="release-status-row"><p id="release-status" role="status" aria-live="polite">{zh ? '正在读取所选版本的安装包。' : 'Retrieving packages for the selected release.'}</p><button id="release-retry" class="button button-outline button-small" type="button" hidden>{zh ? '重试' : 'Retry'}</button></div>
   <div class="release-items" id="release-items" aria-busy="true"></div>
   <noscript><p class="release-notice">{zh ? '请启用 JavaScript 查看历史版本。' : 'Enable JavaScript to view client releases.'}</p></noscript>
 </section>
@@ -39,7 +39,7 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
 .release-notice{font-size:14px;color:#a9c6dd;line-height:1.8;margin-top:18px}
 .release-status-row{display:flex;align-items:center;gap:18px;min-height:65px;margin:17px 0}
 .release-status-row p{font-size:14px;color:#a9bfd3;line-height:1.8}
-.release-status-row button{background:#133650;color:#d6eeff;border:1px solid #4c7c9d;border-radius:30px;padding:7px 18px;cursor:pointer}
+.release-status-row button{padding:7px 18px}
 .release-items{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .release-items :global(.download-card){min-width:0;display:flex;flex-direction:column;padding:22px;background:#0d1c2c;border:1px solid #94bdd324;border-radius:16px}
 .release-items :global(.release-card-heading){display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -47,8 +47,8 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
 .release-items :global(.download-version){display:block;font-size:13px;color:#aac5dc;margin:0 0 9px;padding:0;background:none;white-space:nowrap}
 .release-items :global(.release-card-heading>.download-version){margin:0}
 .release-items :global(.release-client-variant){margin-top:20px}
-.release-items :global(.release-download){display:flex;align-items:center;justify-content:center;padding:11px 13px;min-height:46px;border:1px solid #4d9fd34d;background:#0a2b43;border-radius:9px;color:#bce6ff;font-size:14px;font-weight:500;text-align:center}
-.release-items :global(.release-download:hover),.release-items :global(.release-download:focus-visible){background:#104666;border-color:#5abcf8;color:#fff}
+/* Dynamic download links use the same CTA theme; only layout and size stay here. */
+.release-items :global(.release-download){width:100%;margin-top:0;justify-content:center;padding:11px 13px;min-height:46px;font-size:14px}
 @media(max-width:1100px){.release-items{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.release-hero{padding:32px 0 26px}.release-controls{grid-template-columns:1fr;gap:20px}.release-items{grid-template-columns:1fr}.release-history{padding-bottom:55px}.release-items :global(.download-card){padding:24px}.release-status-row{align-items:flex-start;flex-direction:column;gap:10px;padding-block:10px}}
 </style>
@@ -100,7 +100,8 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
       return element;
     };
     const link = (label: string, href: string) => {
-      const element = make('a', label, 'release-download');
+      // Keep the shared button class when rendering links after a version change.
+      const element = make('a', label, 'button release-download');
       element.href = href;
       return element;
     };
