@@ -9,8 +9,8 @@ export const site = {
   blog: 'https://www.zhama.com/zh/blog',
   iosAppStore: {
     url: 'https://apps.apple.com/cn/app/id6744411300',
-    version: 'v5.5.0',
-    releasedAt: '2026-11-05T19:11:23Z',
+    version: 'v5.15.0',
+    releasedAt: '2026-11-14T20:35:08Z',
   },
   email: 'business@zhama.com',
 };

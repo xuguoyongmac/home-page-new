@@ -53,7 +53,7 @@ const filters = zh ? [['all', '全部'], ['desktop', '桌面端'], ['mobile', '�
           <div class="installer-card-heading"><h3>{platformIcons[group.platform] ? <img class="installer-platform-icon" src={`/images/platforms/${platformIcons[group.platform]}_V1.0.svg`} width="28" height="28" alt="" aria-hidden="true"/> : <Icon class="installer-platform-icon" name="monitor" size={28}/>}<span>{platforms[group.platform]}</span></h3>{sharedVersion && <span class="installer-version">{files[0].version}</span>}</div>
           <div class="installer-variants">{files.map(file => <div class="installer-variant">
             {!sharedVersion && <p class="installer-version">{file.version}</p>}
-            <a class="installer-download" href={file.url} aria-label={`${products[file.product]} ${platforms[file.platform]} ${downloadLabel(file)} ${file.version}`}>{downloadLabel(file)}</a>
+            <a class="button installer-download" href={file.url} aria-label={`${products[file.product]} ${platforms[file.platform]} ${downloadLabel(file)} ${file.version}`}>{downloadLabel(file)}</a>
           </div>)}</div>
         </article>;
       })}</div>
@@ -77,8 +77,8 @@ const filters = zh ? [['all', '全部'], ['desktop', '桌面端'], ['mobile', '�
   .installer-variants{display:grid;gap:14px;margin-top:24px}
   .installer-version{font-size:13px;color:#aac5dc;margin:0 0 9px;white-space:nowrap}
   .installer-card-heading>.installer-version{margin:0}
-  .installer-download{display:flex;align-items:center;justify-content:center;padding:11px 13px;min-height:46px;border:1px solid #4d9fd34d;background:#0a2b43;border-radius:9px;color:#bce6ff;font-size:14px;font-weight:500;text-align:center}
-  .installer-download:hover,.installer-download:focus-visible{background:#104666;border-color:#5abcf8;color:#fff}
+  /* Shared CTA theme: action-buttons.css. Architecture labels and links stay direct. */
+  .installer-download{width:100%;padding:11px 13px;min-height:46px;font-size:14px}
   @media(max-width:1100px){.installer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.installer-card{padding:25px}}
   @media(max-width:600px){.download-hero{padding:32px 0 26px}.installer-grid{grid-template-columns:1fr}.installer-section{padding-bottom:44px}.installer-tabs{gap:27px}.installer-tabs button{font-size:15px}.installer-products{gap:32px}.installer-card{padding:25px}}
 </style>

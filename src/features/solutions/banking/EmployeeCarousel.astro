@@ -7,9 +7,10 @@ import '../../../styles/banking-employee-carousel.css';
 interface Props {
   locale: Locale;
   employees: BankingEmployee[];
+  teamLabel?: string;
 }
 
-const { locale, employees } = Astro.props;
+const { locale, employees, teamLabel } = Astro.props;
 const zh = locale === 'zh';
 const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 116', '117, 174, 205', '148, 185, 163'];
 ---
@@ -19,7 +20,7 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
   data-locale={locale}
   role="region"
   aria-roledescription={zh ? '轮播' : 'carousel'}
-  aria-label={zh ? '银行数字员工团队' : 'Banking digital employee team'}
+  aria-label={teamLabel ?? (zh ? '银行数字员工团队' : 'Banking digital employee team')}
 >
   <div class="banking-employees-stage" data-employee-stage>
     {employees.map((employee, index) => <article

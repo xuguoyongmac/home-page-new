@@ -76,26 +76,8 @@
   min-height: 49px;
   margin-top: 32px;
   padding: 0 25px;
-  border: 1px solid #397dbf;
-  border-radius: 7px;
-  background: #2868ae;
-  color: #f7fbff;
   font-size: 15px;
-  font-weight: 550;
   line-height: 1.5;
-  transition: background-color .2s, border-color .2s, box-shadow .2s;
-}
-
-.dei-button:hover,
-.dei-button:focus-visible {
-  background: #337cbd;
-  border-color: #81c6ff;
-  box-shadow: 0 0 25px #1673c024;
-}
-
-.dei-button:focus-visible {
-  outline: 2px solid #a8d9ff;
-  outline-offset: 5px;
 }
 
 .dei-visual {
@@ -169,8 +151,6 @@
 .dei-button-outline {
   flex-shrink: 0;
   margin-top: 0;
-  background: transparent;
-  border-color: #6c8eae80;
 }
 
 html[lang='en'] .dei-hero-copy h1 {
