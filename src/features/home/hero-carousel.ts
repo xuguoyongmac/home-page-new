@@ -1,15 +1,12 @@
 import { observeMotion, type MotionState } from '../../lib/motion';
 
 function hydrateSlide(slide: HTMLElement) {
-  const video = slide.querySelector<HTMLVideoElement>('video');
-  const needsVideoLoad = Boolean(video?.querySelector('source[data-hero-src]'));
   slide.querySelectorAll<HTMLImageElement | HTMLSourceElement>('[data-hero-src]').forEach(media => {
     if (media.dataset.heroSrcset) media.setAttribute('srcset', media.dataset.heroSrcset);
     media.setAttribute('src', media.dataset.heroSrc!);
     if (media.tagName === 'IMG') media.setAttribute('loading', 'eager');
     delete media.dataset.heroSrc;
   });
-  if (video && needsVideoLoad) video.load();
 }
 
 export function initializeHeroCarousels() {
@@ -24,15 +21,11 @@ export function initializeHeroCarousels() {
     const slideRegion = hero.querySelector<HTMLElement>('[data-hero-slides]')!;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const compactViewport = window.matchMedia('(max-width: 700px)');
-    const taskVideo = hero.querySelector<HTMLVideoElement>('[data-hero-task-video]');
-    const taskSlide = taskVideo?.closest<HTMLElement>('[data-hero-slide]');
     let workspacePaused = false;
     let active = 0;
     let userPaused = false;
     let hovered = false;
     let motionState: MotionState = { running: false, reduced: preference.matches, suspended: true, paused: false, enabled: true };
-    let playPending = false;
-    let interruptedRetries = 0;
     let gesture: { id: number; x: number; y: number; horizontal: boolean } | undefined;
     let suppressClickUntil = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -42,7 +35,6 @@ export function initializeHeroCarousels() {
     let started = 0;
     const duration = () => Number(slides[active].dataset.duration);
     let remaining = duration();
-    const shouldPlayTask = () => taskSlide === slides[active] && motionState.running;
     const cancelTransition = () => {
       transitionRevision++;
       slideAnimations.forEach(animation => animation.cancel());
@@ -80,27 +72,6 @@ export function initializeHeroCarousels() {
         workspaceToggle.title = label;
       }
       slideRegion.setAttribute('aria-live', paused || preference.matches ? 'polite' : 'off');
-      if (taskVideo) {
-        if (shouldPlayTask()) {
-          if (taskVideo.paused && !playPending) {
-            hydrateSlide(slides[active]);
-            playPending = true;
-            let retryInterrupted = false;
-            void taskVideo.play().then(() => {
-              interruptedRetries = 0;
-              if (!shouldPlayTask()) taskVideo.pause();
-              else taskVideo.dataset.playback = 'playing';
-            }).catch((error: unknown) => {
-              retryInterrupted = error instanceof Error && error.name === 'AbortError' && interruptedRetries < 1;
-              if (retryInterrupted) interruptedRetries++;
-              taskVideo.dataset.playback = shouldPlayTask() ? 'blocked' : 'paused';
-            }).finally(() => {
-              playPending = false;
-              if (retryInterrupted && shouldPlayTask()) sync();
-            });
-          }
-        } else { taskVideo.pause(); taskVideo.dataset.playback = 'paused'; }
-      }
       hero.dataset.carouselTransitioning = String(slideAnimations.length > 0);
       hero.dispatchEvent(new Event('hero-motion-change'));
       if (!paused && !suspended && !preference.matches && !compactViewport.matches) {
@@ -121,7 +92,6 @@ export function initializeHeroCarousels() {
       active = (next + slides.length) % slides.length;
       cancelTransition();
       const revision = transitionRevision;
-      if (taskVideo && previous !== active) taskVideo.pause();
       if (manual) userPaused = true;
       slides.forEach((slide, index) => {
         const current = index === active;
@@ -237,12 +207,6 @@ export function initializeHeroCarousels() {
       if ((event.target as HTMLElement).matches(':focus-visible')) { userPaused = true; sync(); }
     });
     compactViewport.addEventListener('change', sync);
-    taskVideo?.addEventListener('loadeddata', () => { taskVideo.dataset.frameReady = 'true'; });
-    taskVideo?.addEventListener('playing', () => {
-      if (!shouldPlayTask()) taskVideo.pause();
-      else { taskVideo.dataset.frameReady = 'true'; taskVideo.dataset.playback = 'playing'; }
-    });
-    taskVideo?.addEventListener('error', () => { taskVideo.dataset.frameReady = 'false'; taskVideo.dataset.playback = 'error'; });
     observeMotion(hero, state => { motionState = state; sync(); });
   });
 }

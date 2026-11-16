@@ -64,6 +64,26 @@ test('runtime strings and template fragments translate without changing identifi
   assert.match(output, /`任務\$\{name\}已執行\$\{count\}次`/);
 });
 
+for (const type of ['application/json', 'application/ld+json']) {
+  test(`traditional publication keeps embedded HTML inert inside ${type}`, () => {
+    const embedded = '<!doctype html><html><body><h1 id="home-title">执行任务</h1><script>const label="任务完成";</script></body></html>';
+    const value = type === 'application/json' ? embedded : { description: embedded };
+    const encoded = JSON.stringify(value).replaceAll('<', '\\u003c');
+    const source = `<!doctype html><html lang="zh"><head><title>数字员工</title></head><body><h1 id="home-title">数字员工</h1><script type="${type}" data-artwork>${encoded}</script></body></html>`;
+    const output = translateHtml(source);
+    const nodes = nodesOf(output);
+    assert.equal(nodes.filter(node => node.tagName === 'h1').length, 1);
+    assert.equal(nodes.filter(node => attr(node, 'id') === 'home-title').length, 1);
+    const script = nodes.find(node => node.tagName === 'script' && attr(node, 'data-artwork') !== undefined);
+    const content = script.childNodes.map(node => node.value || '').join('');
+    assert.equal(content.includes('<'), false);
+    const decoded = JSON.parse(content);
+    const document = type === 'application/json' ? decoded : decoded.description;
+    assert.match(document, /<h1 id="home-title">執行任務<\/h1>/);
+    assert.match(document, /<script>const label="任務完成";<\/script>/);
+  });
+}
+
 test('static publication mirrors all Chinese routes, localizes script dependencies and feeds, and includes corresponding sitemap routes', () => {
   const dist = mkdtempSync(path.join(tmpdir(), 'tego-languages-'));
   const write = (file, content) => { mkdirSync(path.dirname(path.join(dist, file)), { recursive: true }); writeFileSync(path.join(dist, file), content); };

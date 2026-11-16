@@ -89,9 +89,13 @@
   --chart-sage: var(--data-subscription);
   --chart-gold: var(--data-delivery);
   --chart-slate: var(--data-channel);
+  --category-subscription: #36d8f4;
+  --category-delivery: #9895ff;
+  --category-channel: #ff9b87;
 }
 
 .is-home .hero-team-composition .analytics-metrics > div {
+  --metric-color: #36d8f4;
   background: linear-gradient(115deg, #00448c2b, #020c2514);
 }
 .is-home .hero-team-composition .analytics-metrics > div:first-child {
@@ -103,18 +107,21 @@
   box-shadow: inset 0 0 0 1px #00000021, 0 0 16px -9px #20cfff59, 0 6px 10px -6px #000c;
 }
 .is-home .hero-team-composition .analytics-metrics > div:nth-child(2) {
-  background: linear-gradient(115deg, #005d6b26, #020d1f14);
+  --metric-color: #9895ff;
+  background: linear-gradient(115deg, #6052c923, #040b2014);
 }
 .is-home .hero-team-composition .analytics-metrics > div:nth-child(3) {
+  --metric-color: #c5d4e6;
   background: linear-gradient(115deg, #173fc71f, #04091c0d);
 }
 .is-home .hero-team-composition .analytics-metrics > div:nth-child(4) {
-  background: linear-gradient(115deg, #3b3c761f, #0b0c1e0d);
+  --metric-color: #4ce6c3;
+  background: linear-gradient(115deg, #157e7123, #030f1810);
 }
-.is-home .hero-team-composition .analytics-metrics > div:first-child strong { color: #b6f4ff; text-shadow: none; }
-.is-home .hero-team-composition .analytics-metrics > div:nth-child(2) strong { color: #a9f5e3; }
-.is-home .hero-team-composition .analytics-metrics > div:nth-child(3) strong { color: #e7eaff; }
-.is-home .hero-team-composition .analytics-metrics > div:nth-child(4) strong { color: #f6df9b; }
+.is-home .hero-team-composition .analytics-metrics > div:first-child strong { color: #81e8ff; text-shadow: none; }
+.is-home .hero-team-composition .analytics-metrics > div:nth-child(2) strong { color: #b9b0ff; }
+.is-home .hero-team-composition .analytics-metrics > div:nth-child(3) strong { color: #e7edf7; }
+.is-home .hero-team-composition .analytics-metrics > div:nth-child(4) strong { color: #8cebd3; }
 .is-home .hero-team-composition :is(.analytics-metrics > div > span, .analytics-metrics strong small) {
   color: var(--workspace-muted);
 }
@@ -148,9 +155,12 @@
   background: radial-gradient(ellipse at 59% 54%, #007bff1a, transparent 74%), var(--workspace-surface);
 }
 .is-home .hero-team-composition .donut-track { stroke: #23d5ff17; }
-.is-home .hero-team-composition .donut-0 { stroke: var(--data-subscription); filter: drop-shadow(0 0 2.5px #00bfff8c); }
-.is-home .hero-team-composition .donut-1 { stroke: var(--data-delivery); }
-.is-home .hero-team-composition .donut-2 { stroke: var(--data-channel); }
+.is-home .hero-team-composition .donut-0 { stroke: var(--category-subscription); filter: drop-shadow(0 0 2.5px #00bfff8c); }
+.is-home .hero-team-composition .donut-1 { stroke: var(--category-delivery); filter: drop-shadow(0 0 2px #9895ff40); }
+.is-home .hero-team-composition .donut-2 { stroke: var(--category-channel); filter: drop-shadow(0 0 2px #ff9b8740); }
+.is-home .hero-team-composition .mix-0 { background: var(--category-subscription); }
+.is-home .hero-team-composition .mix-1 { background: var(--category-delivery); }
+.is-home .hero-team-composition .mix-2 { background: var(--category-channel); }
 .is-home .hero-team-composition .analytics-panel .donut-value { fill: var(--workspace-ink); }
 .is-home .hero-team-composition .order-bar,
 .is-home .hero-team-composition .order-bar:nth-of-type(2n) { fill: #0399ee; }
@@ -160,14 +170,15 @@
 }
 .is-home .hero-team-composition .driver-track { background: #68b8f512; }
 .is-home .hero-team-composition .analytics-drivers > div:nth-child(1) .driver-bar {
-  background: linear-gradient(90deg, #006bff, var(--data-subscription));
+  background: linear-gradient(90deg, #047ebc, var(--category-subscription));
 }
 .is-home .hero-team-composition .analytics-drivers > div:nth-child(2) .driver-bar {
-  background: linear-gradient(90deg, #239c9d, var(--data-delivery));
+  background: linear-gradient(90deg, #5b50b5, var(--category-delivery));
 }
 .is-home .hero-team-composition .analytics-drivers > div:nth-child(3) .driver-bar {
-  background: linear-gradient(90deg, #9b8a55, var(--data-channel));
+  background: linear-gradient(90deg, #b16169, var(--category-channel));
 }
+.is-home .hero-team-composition .analytics-drivers .driver-value-negative { color: var(--category-channel); }
 
 .is-home .hero-team-composition .analytics-insights {
   background: radial-gradient(ellipse at 3% 0%, #00c8ff21, transparent 54%),
