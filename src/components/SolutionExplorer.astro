@@ -11,11 +11,11 @@ const zh = locale === 'zh';
 const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : industries[locale];
 const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
 const benefitIcons: Record<string, string[]> = {
-  banking: ['file', 'shield', 'chart'],
-  insurance: ['shield', 'search', 'message'],
-  securities: ['book', 'shield', 'chart'],
-  government: ['target', 'file', 'network'],
-  'state-owned': ['chart', 'file', 'clock'],
+  banking: ['file-search', 'shield', 'users'],
+  insurance: ['shield', 'clipboard-check', 'message'],
+  securities: ['book', 'shield', 'users'],
+  government: ['user-check', 'file-check', 'workflow'],
+  'state-owned': ['chart', 'file-check', 'clock'],
 };
 ---
 <div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer style={`--industry-tab-count: ${visibleIndustries.length}`}>
@@ -25,12 +25,12 @@ const benefitIcons: Record<string, string[]> = {
   {visibleIndustries.map((industry) => (
     <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
       {home ? <>
+        <div class="industry-backdrop" aria-hidden="true">
+          <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
+        </div>
         <div class="industry-intro">
-          <div class="industry-backdrop" aria-hidden="true">
-            <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
-          </div>
           <h3>{homeIndustries[locale][industry.slug].title}</h3>
-          <a class="industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
+          <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
         </div>
         <div class="industry-panel-body">
           <section class="industry-copy-block industry-challenge" aria-labelledby={`pain-title-${industry.slug}`}>

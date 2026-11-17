@@ -53,3 +53,17 @@
  .team-files>div{padding-block:6px}.team-capabilities{margin-top:8px;padding-block:5px}
 }
 @media(prefers-reduced-motion:reduce){.team-employees>button{transition:none}}
+/* Keep alternate role deliverables inside the shared desktop banner stage. */
+@media(min-width:1101px){
+ .is-home .hero-team-composition .team-process{padding:7px 10px 6px}
+ .is-home .hero-team-composition .team-process ol{margin:7px 0 5px}
+ .is-home .hero-team-composition .team-process li{min-height:31px}
+ .is-home .hero-team-composition .team-process li:not(:last-child):after{height:9px}
+ .is-home .hero-team-composition .team-source{padding-top:5px}
+ .is-home .hero-team-composition .team-document{padding:6px 8px}
+ .is-home .hero-team-composition .team-document>.team-region-heading{margin:0 1px 4px}
+ .is-home .hero-team-composition .team-document-paper{padding:7px 12px;min-height:0}
+ .is-home .hero-team-composition .team-document-paper h3{margin:4px 0 5px}
+ .is-home .hero-team-composition .team-document-sections{gap:4px}
+ .is-home .hero-team-composition .team-results{margin-top:9px}
+}

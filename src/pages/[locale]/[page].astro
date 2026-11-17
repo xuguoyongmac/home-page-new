@@ -38,7 +38,7 @@ const otherMeta = {
     terms: {title:legalContent.en.terms.title,description:'Terms governing the use of the TeGo OS website and services.'},
   },
 };
-const meta = page === 'solutions' ? (locale === 'zh' ? {title:'行业解决方案',description:'探索证券、银行、保险、政务、央国企、互联网与通用办公的数字员工工作方案，明确输入资料、执行动作、交付成果与实施范围。'} : {title:'Industry solutions',description:'Explore digital employee workflows for securities, banking, insurance, government, state-owned enterprises, internet and general business.'}) : detail || otherMeta[locale][page as keyof typeof otherMeta.zh];
+const meta = page === 'solutions' ? (locale === 'zh' ? {title:'行业解决方案',description:'探索证券、银行、保险、政务、央国企与通用办公的数字员工工作方案，明确输入资料、执行动作、交付成果与实施范围。'} : {title:'Industry solutions',description:'Explore digital employee workflows for securities, banking, insurance, government, state-owned enterprises and general business.'}) : detail || otherMeta[locale][page as keyof typeof otherMeta.zh];
 ---
 <Layout locale={locale} title={meta.title} description={meta.description} page={page}>
   {page === 'solutions' && <SolutionsPage locale={locale}/>}

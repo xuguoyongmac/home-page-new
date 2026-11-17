@@ -6,7 +6,15 @@ import { parse, serialize } from 'parse5';
 import sharp from 'sharp';
 
 const widths = [480, 800, 1200, 1600, 2000, 2400];
-const attr = (node, name) => node.attrs?.find(item => item.name === name)?.value;
+const fullWidthBackgroundClasses = new Set([
+  'banking-banner-background',
+  'soe-industrial-site',
+  'government-civic-landscape',
+  'about-hero-background',
+]);
+const isFullWidthBackground = classes => classes.split(/\s+/).some(name => fullWidthBackgroundClasses.has(name));
+const attr = (node, name) => node?.attrs?.find(item => item.name === name)?.value;
+const ancestorClasses = ancestors => ancestors.map(parent => attr(parent, 'class') || '').join(' ');
 function setAttr(node, name, value) {
   const existing = node.attrs.find(item => item.name === name);
   if (existing) existing.value = value;
@@ -16,8 +24,9 @@ const walkFiles = async directory => (await Promise.all((await readdir(directory
   .map(entry => entry.isDirectory() ? walkFiles(path.join(directory, entry.name)) : path.join(directory, entry.name)))).flat();
 
 export function imageSizes(classes) {
+  if (isFullWidthBackground(classes)) return '100vw';
   if (classes.includes('matrix-art')) return '(max-width: 700px) 840px, (max-width: 1300px) 74vw, 980px';
-  if (classes.includes('workspace-scene')) return '(max-width: 700px) 1600px, (max-width: 1440px) 94vw, 1320px';
+  if (classes.includes('workspace-scene')) return '(max-width: 700px) 1600px, (max-width: 1500px) calc(100vw - 48px), 1440px';
   if (classes.includes('hero-visual-stage')) return '(max-width: 700px) 100vw, (max-width: 1100px) 90vw, 58vw';
   return '(max-width: 700px) 100vw, (max-width: 1300px) 94vw, 1200px';
 }
@@ -28,21 +37,24 @@ export async function optimizeMedia(dist, cacheDirectory) {
   await mkdir(outputDirectory, { recursive: true });
   await mkdir(cacheDirectory, { recursive: true });
   const converted = new Map();
+  const sourceBytes = new Map();
   let originalBytes = 0;
   let largestVariantBytes = 0;
   let responsiveImages = 0;
 
-  const variantsFor = source => {
+  const variantsFor = (source, fullWidthBackground = false) => {
     if (!source?.startsWith('/') || !/\.(png|jpe?g|webp)$/i.test(source) || source.startsWith('/_astro/')) return undefined;
-    if (converted.has(source)) return converted.get(source);
+    const conversionKey = `${source}:${fullWidthBackground ? 'full-width' : 'standard'}`;
+    if (converted.has(conversionKey)) return converted.get(conversionKey);
     const pending = (async () => {
       const input = path.resolve(dist, '.' + source);
       if (!input.startsWith(dist + path.sep)) throw new Error(`图片路径越界：${source}`);
       const buffer = await readFile(input);
       const metadata = await sharp(buffer).metadata();
       if (!metadata.width || metadata.width < 600 || metadata.pages > 1 || buffer.length < 24000) return undefined;
-      const maxWidth = Math.min(metadata.width, 2400);
-      const candidates = [...new Set([...widths.filter(width => width < maxWidth), maxWidth])];
+      const maxWidth = Math.min(metadata.width, fullWidthBackground ? 3840 : 2400);
+      const candidateWidths = fullWidthBackground ? [...widths, 3200, 3840] : widths;
+      const candidates = [...new Set([...candidateWidths.filter(width => width < maxWidth), maxWidth])];
       const hash = createHash('sha256').update(buffer).update('webp-quality88-effort4-v1').digest('hex').slice(0, 16);
       const variants = [];
       for (const width of candidates) {
@@ -66,11 +78,14 @@ export async function optimizeMedia(dist, cacheDirectory) {
         variants.push({ width, url: `/_media/${filename}`, bytes: size });
       }
       if (!variants.length) return undefined;
-      originalBytes += buffer.length;
-      largestVariantBytes += variants.at(-1).bytes;
+      const previousBytes = sourceBytes.get(source);
+      if (previousBytes === undefined) originalBytes += buffer.length;
+      const largestBytes = Math.max(previousBytes || 0, variants.at(-1).bytes);
+      largestVariantBytes += largestBytes - (previousBytes || 0);
+      sourceBytes.set(source, largestBytes);
       return variants.map(item => `${item.url} ${item.width}w`).join(', ');
     })();
-    converted.set(source, pending);
+    converted.set(conversionKey, pending);
     return pending;
   };
 
@@ -80,12 +95,14 @@ export async function optimizeMedia(dist, cacheDirectory) {
     let changed = false;
     const walk = async (node, ancestors = []) => {
       if (node.tagName === 'img') {
-        const classes = ancestors.map(parent => attr(parent, 'class') || '').join(' ');
+        const classes = ancestorClasses(ancestors);
+        const backgroundClasses = `${classes} ${attr(node, 'class') || ''}`;
+        const fullWidthBackground = isFullWidthBackground(backgroundClasses);
         const deferred = attr(node, 'data-hero-src');
-        const srcset = await variantsFor(deferred || attr(node, 'src'));
+        const srcset = await variantsFor(deferred || attr(node, 'src'), fullWidthBackground);
         if (srcset && !attr(node, 'srcset')) {
           setAttr(node, deferred ? 'data-hero-srcset' : 'srcset', srcset);
-          setAttr(node, 'sizes', attr(node, 'sizes') || imageSizes(classes));
+          setAttr(node, 'sizes', attr(node, 'sizes') || imageSizes(fullWidthBackground ? backgroundClasses : classes));
           responsiveImages++;
           changed = true;
         }
@@ -98,11 +115,14 @@ export async function optimizeMedia(dist, cacheDirectory) {
       }
       if (node.tagName === 'source' && node.parentNode?.tagName === 'picture') {
         const source = attr(node, 'srcset');
-        const srcset = source && !/[\s,]/.test(source) ? await variantsFor(source) : undefined;
+        const pictureImage = node.parentNode.childNodes?.find(child => child.tagName === 'img');
+        const classes = ancestorClasses(ancestors);
+        const backgroundClasses = `${classes} ${attr(node, 'class') || ''} ${attr(pictureImage, 'class') || ''}`;
+        const fullWidthBackground = isFullWidthBackground(backgroundClasses);
+        const srcset = source && !/[\s,]/.test(source) ? await variantsFor(source, fullWidthBackground) : undefined;
         if (srcset) {
-          const classes = ancestors.map(parent => attr(parent, 'class') || '').join(' ');
           setAttr(node, 'srcset', srcset);
-          setAttr(node, 'sizes', attr(node, 'sizes') || imageSizes(classes));
+          setAttr(node, 'sizes', attr(node, 'sizes') || imageSizes(fullWidthBackground ? backgroundClasses : classes));
           node.attrs = node.attrs.filter(item => item.name !== 'type');
           changed = true;
         }

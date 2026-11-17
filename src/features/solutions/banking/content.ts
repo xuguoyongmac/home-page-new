@@ -10,79 +10,60 @@ export default {
       "icon": "book",
       "name": "银行解决方案",
       "tag": "银行业务",
-      "title": "信贷审查更深入，风险与客户经营更主动",
-      "description": "从信贷尽调、合规审阅到贷后监测与客户经营，数字员工连接业务资料、制度知识和经营数据，形成有依据的分析、核查与跟进行动。",
-      "scope": "基于平台通用能力组合建设；银行系统接入、数据授权及业务规则按项目确定，授信审批与对客结论由有权人员作出。",
+      "title": "让信贷审查有据，让贷后风险及时跟进",
+      "description": "数字员工贯通信贷尽调、合规审阅、贷后核查与客户分析，汇总企业和财务资料、归并预警线索，把审查重点与服务行动交到一线。",
+      "scope": "在授权资料与行内作业标准下开展归集、比对和初核，风险研判、授信审批与对客结论由行内有权人员确认。",
       "image": "collaborative-review",
       "tasks": [
         {
           "title": "信贷尽调与审查准备",
-          "problem": "企业信息、财报和流水分散，重复录入与跨文件核验挤占客户经理的研判时间。",
-          "input": "申请材料、财务报表、合同与行内检查清单",
-          "action": "归集企业经营、财务与合同资料，按行内清单核对关键字段，分析指标变化与差异，按章节形成尽调底稿和审查重点。",
+          "input": "申请材料、财务报表、合同、行内审查清单",
+          "action": "归集经营、财务与合同资料，按行内清单核对字段和指标差异，形成底稿与审查重点。",
           "output": "尽调报告初稿、财务核查底稿、授信审查要点",
-          "value": "把案头整理接到信贷研判，让审查有据可查。"
+          "value": "少做重复核对，聚焦风险研判。"
         },
         {
           "title": "贷后风险监测与核查",
-          "problem": "舆情、财务变化和业务预警散在不同入口，重复信号多，难以迅速锁定核查重点。",
-          "input": "已接入的风险预警、企业公开信息、财务资料与贷后检查要求",
-          "action": "归并同一客户的风险线索，关联历史经营与授信资料，整理变化依据、影响范围和核查事项，按任务计划交付责任岗位。",
-          "output": "客户风险摘要、预警分析与贷后核查清单",
-          "value": "把分散信号变成可追踪的风险核查工作。"
+          "input": "已接入的风险预警、企业公开信息、财务资料、贷后检查要求",
+          "action": "归并客户风险线索，关联经营与授信资料，整理变化依据、影响范围和待核查事项。",
+          "output": "客户风险摘要、预警分析报告、贷后核查清单",
+          "value": "预警归并到客户，核查明确到岗位。"
         },
         {
           "title": "合规审阅与制度执行",
-          "problem": "制度版本持续更新，业务材料逐份核对，适用条款与问题位置需要反复查找。",
-          "input": "现行制度、监管文件、合同与业务材料、行内审阅规则",
-          "action": "检索适用条款，对照材料和业务要求，定位差异、缺项与对应原文，整理复核重点和整改事项。",
-          "output": "条款对照、合规审阅底稿与整改事项",
-          "value": "让合规要求进入日常作业，问题与依据一起交接。"
+          "input": "现行监管及行内制度、业务合同材料、内部审阅规则",
+          "action": "对照适用制度定位材料差异与缺项，保留问题位置和条款原文，整理复核与整改事项。",
+          "output": "条款对照材料、合规审阅底稿、整改事项清单",
+          "value": "问题带上条款，复核有据可查。"
         },
         {
           "title": "网点经营与客户分析",
-          "problem": "报表只能看到存贷款变化，客户需求、客群流失与产品机会还要另行拼接。",
-          "input": "存贷款、客户、产品、渠道报表与授权服务记录",
-          "action": "按网点、客群和产品拆解经营变化，关联历史服务背景，定位重点客户和待跟进事项。",
+          "input": "存贷款、客户、产品及渠道报表，授权客户服务记录",
+          "action": "按网点、客群和产品分析经营波动，关联服务记录，明确重点客户与跟进事项。",
           "output": "网点经营简报、客户服务准备材料、客户经理跟进表",
-          "value": "让经营结论落实到具体客户与服务行动。"
+          "value": "从经营变化找到客户跟进重点。"
         },
         {
           "title": "一线制度支持",
-          "problem": "产品、流程和制度持续更新，一线需要快速找到适用依据。",
-          "input": "授权制度、产品手册与操作规范",
-          "action": "围绕具体问题检索条款，给出出处和原文，整理业务沟通所需材料。",
-          "output": "带依据的业务答复、条款对照",
-          "value": "让一线按同一套依据开展服务。"
+          "input": "授权制度、产品手册、业务操作规范",
+          "action": "检索业务问题适用的制度条款，保留出处和原文，整理产品、流程与办理要求。",
+          "output": "带条款出处的业务答复、条款对照材料",
+          "value": "一线答复有出处，业务执行有依据。"
         },
         {
           "title": "经营会议与跟进",
-          "problem": "会议结论与业务附件脱节，后续推进需要再次整理。",
-          "input": "会议记录、经营材料与工作附件",
-          "action": "整理决议、责任分工与跟进事项，在项目中衔接审阅和后续工作。",
-          "output": "会议纪要、行动清单与项目材料",
-          "value": "让会议形成可以接续的工作。"
+          "input": "会议记录、经营材料、业务附件",
+          "action": "梳理会议决议、责任分工与待办，关联项目材料，衔接后续审阅、核查与跟进。",
+          "output": "结构化会议纪要、任务行动清单、配套项目材料",
+          "value": "会议决议落实到责任人与行动。"
         }
       ],
       "story": {
         "lines": [
-          "信贷审查更深入",
-          "风险与客户经营更主动"
+          "让信贷审查有据",
+          "让贷后风险及时跟进"
         ],
-        "priorities": [
-          {
-            "title": "尽调精力耗在录入与核对",
-            "body": "客户经理要跨企业信息、财报和流水重建业务全貌，重复整理挤占了深入调查与客户沟通的时间。"
-          },
-          {
-            "title": "风险信号分散，核查跟进脱节",
-            "body": "同一客户的财务异动、舆情与业务预警分散出现，风险人员需要归并证据、判断重点并追踪处置。"
-          },
-          {
-            "title": "经营数据尚未变成客户行动",
-            "body": "网点看得到指标波动，却还要关联客群、产品与服务记录，才能明确跟进对象和沟通重点。"
-          }
-        ],
+        "priorities": [],
         "exhibit": {
           "title": "从授信尽调到贷后核查",
           "request": "归集企业资料，整理信贷审查要点，并持续跟踪后续风险线索。",
@@ -120,16 +101,16 @@ export default {
         },
         "foundation": [
           {
-            "title": "连接授权资料",
-            "body": "归集申请文件、行内制度与经营报表，系统接入和数据范围按项目配置。"
+            "title": "信贷审查聚焦关键判断",
+            "body": "TeGo 通过知识库检索授权制度并保留原文引用，调用审查技能核对财务口径与合同条款，形成带依据的审查底稿。人员复核问题与结论，授信审批由有权人员确认。"
           },
           {
-            "title": "配置行内作业标准",
-            "body": "将材料清单、字段规则和报告格式沉淀为技能；知识答复提供可回看的条款出处。"
+            "title": "贷后风险跟进更有重点",
+            "body": "TeGo 通过授权系统连接接入预警与业务资料，以定时任务归并客户风险线索。多个数字员工协同补充核查依据、整理风险摘要与核查清单，再交接对应业务岗位跟进。"
           },
           {
-            "title": "衔接有权岗位",
-            "body": "初核问题交给客户经理与审查人员，授信审批和对客结论由有权人员作出。"
+            "title": "经营重点直达客户一线",
+            "body": "TeGo 连接授权经营数据，在工作会话中交办分析，由多个数字员工协同关联网点、客群、产品与服务记录。成果进入客户经理项目会话，沟通准备材料与跟进事项持续接续。"
           }
         ]
       }
@@ -139,79 +120,60 @@ export default {
       "icon": "book",
       "name": "Banking",
       "tag": "Banking",
-      "title": "Deeper credit reviews. Proactive risk and client management.",
-      "description": "Connect due diligence, compliance review, post-loan monitoring and client management. Digital employees bring business records, policies and operating data into source-backed analysis and follow-up.",
-      "scope": "Built from general platform capabilities. System access, data authorization and business rules are scoped per project. Authorized personnel retain credit and client-facing decisions.",
+      "title": "Evidence-backed credit review. Timely post-loan follow-up.",
+      "description": "Digital employees connect credit due diligence, compliance review, post-loan checks and client analysis. They bring together company and financial records, group risk signals, and put review priorities and service actions into frontline teams’ hands.",
+      "scope": "Prepare, compare and check authorized records against internal standards. Authorized bank staff retain risk judgment, credit approval and client-facing decisions.",
       "image": "collaborative-review",
       "tasks": [
         {
           "title": "Credit due diligence and review",
-          "problem": "Scattered company records, financial statements and transactions leave relationship managers repeating data entry and cross-file checks.",
-          "input": "Application files, financial statements, contracts and internal checklists",
-          "action": "Collect operating, financial and contract records, check key fields against internal requirements, analyze changes and discrepancies, and draft due diligence sections and review priorities.",
+          "input": "Application files, financial statements, contracts and internal review checklists",
+          "action": "Collect operating, financial and contract records. Check fields and indicator changes against internal requirements to prepare workbooks and review priorities.",
           "output": "Due diligence draft, financial review workbook and credit review priorities",
-          "value": "Connect preparation to credit judgment, with evidence reviewers can inspect."
+          "value": "Less repeated checking. More focus on credit judgment."
         },
         {
           "title": "Post-loan risk monitoring",
-          "problem": "News, financial changes and business alerts arrive through separate channels. Repeated signals make review priorities hard to identify.",
           "input": "Connected risk alerts, public company information, financial records and post-loan check requirements",
-          "action": "Group risk signals by client, connect operating and credit history, summarize evidence and impact, and deliver scheduled checks to the responsible teams.",
+          "action": "Group client risk signals, connect operating and credit records, and organize evidence, potential impact and follow-up checks.",
           "output": "Client risk brief, alert analysis and post-loan checklist",
-          "value": "Turn scattered signals into risk reviews teams can track."
+          "value": "Risk signals grouped by client. Checks assigned to the right team."
         },
         {
           "title": "Compliance review and policy execution",
-          "problem": "Changing policies and repeated file reviews make applicable provisions and issue locations difficult to track.",
-          "input": "Current policies, regulatory documents, contracts, business files and internal review rules",
-          "action": "Retrieve applicable provisions, compare business materials with requirements, locate discrepancies and missing items, and prepare review and remediation priorities.",
-          "output": "Provision comparisons, compliance review workbook and remediation actions",
-          "value": "Carry compliance requirements, findings and evidence into everyday work."
+          "input": "Current regulatory and internal policies, contracts, business files and review rules",
+          "action": "Check files against applicable policies, locate discrepancies and missing items, and retain source provisions for review and remediation.",
+          "output": "Provision comparisons, compliance review workbook and remediation list",
+          "value": "Findings paired with policy text for traceable review."
         },
         {
           "title": "Branch and client analysis",
-          "problem": "Deposit and lending reports show changes, but client needs, attrition and product opportunities still need separate investigation.",
-          "input": "Branch, client, product and channel reports, plus authorized service history",
-          "action": "Analyze changes by branch, segment and product, connect service history, and identify priority clients and follow-up work.",
-          "output": "Branch brief, client service preparation and relationship-manager follow-up list",
-          "value": "Turn business findings into specific client service actions."
+          "input": "Deposit, lending, client, product and channel reports, plus authorized service records",
+          "action": "Analyze changes by branch, segment and product. Connect service history to identify priority clients and follow-up work.",
+          "output": "Branch brief, client service materials and relationship-manager follow-up list",
+          "value": "Turn business changes into client follow-up priorities."
         },
         {
           "title": "Frontline policy support",
-          "problem": "Changing products and procedures make applicable guidance hard to find.",
           "input": "Authorized policies, product manuals and operating standards",
-          "action": "Retrieve relevant provisions and prepare source-backed service materials.",
-          "output": "Referenced answers and provision comparisons",
-          "value": "Give frontline staff a shared basis for work."
+          "action": "Retrieve applicable provisions with source references and text for questions about products, procedures and processing requirements.",
+          "output": "Referenced business answers and provision comparisons",
+          "value": "Policy-backed answers for consistent frontline work."
         },
         {
-          "title": "Meetings and follow-ups",
-          "problem": "Decisions and attachments become disconnected after meetings.",
-          "input": "Meeting records, reports and attachments",
-          "action": "Organize decisions, responsibilities and follow-ups in the project.",
-          "output": "Minutes, action list and project materials",
-          "value": "Keep decisions connected to ongoing work."
+          "title": "Business meetings and follow-ups",
+          "input": "Meeting records, operating reports and business attachments",
+          "action": "Organize decisions, owners and actions. Connect project materials to subsequent reviews, checks and follow-ups.",
+          "output": "Structured minutes, action list and supporting project materials",
+          "value": "Turn meeting decisions into clear owners and actions."
         }
       ],
       "story": {
         "lines": [
-          "Deeper credit reviews",
-          "Proactive risk and client management"
+          "Evidence-backed credit review",
+          "Timely post-loan follow-up"
         ],
-        "priorities": [
-          {
-            "title": "Due diligence time goes into file preparation",
-            "body": "Relationship managers reconstruct the business from company records, financial statements and transactions, leaving less time for investigation and client conversations."
-          },
-          {
-            "title": "Risk signals arrive separately",
-            "body": "Teams need to connect financial changes, news and business alerts with the same client, prioritize evidence and follow the next action."
-          },
-          {
-            "title": "Operating data needs a client action",
-            "body": "Branch managers see changing metrics, then need segment, product and service context to identify whom to contact and what to discuss."
-          }
-        ],
+        "priorities": [],
         "exhibit": {
           "title": "From due diligence to post-loan review",
           "request": "Collect company records, prepare credit review priorities and track subsequent risk signals.",
@@ -249,16 +211,16 @@ export default {
         },
         "foundation": [
           {
-            "title": "Connect authorized materials",
-            "body": "Collect application files, policies and reports. Scope integrations and data access for the project."
+            "title": "Focus credit review on the judgments that matter",
+            "body": "TeGo retrieves authorized policies from the knowledge base with original-text citations. Review skills compare financial definitions and contract terms to prepare evidence-backed workbooks. Staff review findings and conclusions; authorized personnel retain credit approval."
           },
           {
-            "title": "Configure internal standards",
-            "body": "Package checklists, field rules and report formats as skills, with policy references available for review."
+            "title": "Give post-loan follow-up a clearer focus",
+            "body": "TeGo uses authorized system connections to access alerts and business records, with scheduled tasks grouping client risk signals. Digital employees collaborate to gather evidence and prepare risk briefs and checklists, then hand follow-up work to the responsible bank teams."
           },
           {
-            "title": "Involve authorized staff",
-            "body": "Relationship managers and reviewers handle findings. Authorized personnel retain credit approval and client-facing decisions."
+            "title": "Bring business priorities to the client frontline",
+            "body": "TeGo connects authorized operating data and accepts analysis assignments in work conversations. Digital employees collaborate across branch, segment, product and service records. Results join the relationship manager’s project conversation, keeping client briefing materials and follow-up actions connected."
           }
         ]
       }

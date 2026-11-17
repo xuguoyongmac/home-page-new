@@ -7,40 +7,40 @@ const zh = locale === 'zh';
 const domains = [
   {
     zh: '知识管理', en: 'Knowledge',
-    description: { zh: '归集制度与项目资料，检索依据并复用经验。', en: 'Find referenced answers in company documents and reuse project knowledge.' },
+    description: { zh: '归集资料、检索复用', en: 'Search and reuse' },
   },
   {
     zh: '方案文书', en: 'Documents',
-    description: { zh: '结合目标与企业资料，编制方案报告和汇报。', en: 'Develop proposals, reports and presentations from goals and company materials.' },
+    description: { zh: '方案编制、文书起草', en: 'Proposals & reports' },
   },
   {
     zh: '经营分析', en: 'Business analysis',
-    description: { zh: '汇总经营指标，拆解趋势与结构并形成行动。', en: 'Analyze business metrics, trends and structure to prepare action priorities.' },
+    description: { zh: '分析指标、洞察趋势', en: 'Metrics and trends' },
   },
   {
     zh: '客户经营', en: 'Customer operations',
-    description: { zh: '梳理客户背景与商机，接续沟通和跟进工作。', en: 'Connect client context, opportunities, conversations and next actions.' },
+    description: { zh: '梳理商机、持续跟进', en: 'Client follow-up' },
   },
   {
     zh: '招投标协作', en: 'Bidding',
-    description: { zh: '拆解招标要求，核对资质并协同编制响应。', en: 'Review bid requirements and qualifications, then prepare the response together.' },
+    description: { zh: '核对要求、协同编标', en: 'Review and draft' },
   },
   {
     zh: '会议协同', en: 'Meetings',
-    description: { zh: '提炼会议结论与行动项，形成纪要和跟进事项。', en: 'Turn meeting discussions into minutes, decisions and follow-up actions.' },
+    description: { zh: '提炼纪要、跟进行动', en: 'Minutes & actions' },
   },
   {
     zh: '项目协作', en: 'Projects',
-    description: { zh: '共用资料与会话，衔接审阅、交接和成果版本。', en: 'Share files and conversations; connect reviews, handoffs and deliverable versions.' },
+    description: { zh: '共享资料、协同交付', en: 'Share and deliver' },
   },
   {
     zh: '研究支持', en: 'Research',
-    description: { zh: '整理公告研报与行业资料，形成有依据的研究。', en: 'Develop sourced research from announcements, reports and industry materials.' },
+    description: { zh: '整理资料、支撑研究', en: 'Sourced research' },
   },
 ];
 ---
 <section class="workforce-matrix" id="work-scenarios" aria-labelledby="domain-title">
-  <div class="matrix-layout">
+  <div class="container matrix-layout">
     <div class="matrix-art">
       <img
         src={`/images/workforce/workforce-matrix-${locale}_V3.4.webp`}
@@ -51,8 +51,8 @@ const domains = [
       />
     </div>
     <div class="matrix-copy">
-      <h2 id="domain-title">{zh ? <><span>让数字员工，</span><span>融入业务作业体系</span></> : <><span>Bring digital employees</span><span>into your business workflows</span></>}</h2>
-      <p class="matrix-description">{zh ? '八大业务域，将智能能力沉淀为可复用的岗位能力矩阵，贯通全岗位业务流程' : 'Across eight business domains, turn intelligent capabilities into a reusable matrix of role capabilities and connect workflows across every role.'}</p>
+      <h2 id="domain-title">{zh ? <><span>以数字员工</span><span>重构企业运营体系</span></> : <><span>Bring digital employees</span><span>into your business workflows</span></>}</h2>
+      <p class="matrix-description">{zh ? '八大业务域能力封装，沉淀可复用智能能力矩阵，端到端贯通全岗位流程' : 'Across eight business domains, turn intelligent capabilities into a reusable matrix of role capabilities and connect workflows across every role.'}</p>
       <ul class="matrix-domains" aria-label={zh ? '数字员工业务领域' : 'Digital employee business areas'}>
         {domains.map(domain => (
           <li>
@@ -75,9 +75,7 @@ const domains = [
   }
   .matrix-layout {
     position: relative;
-    width: min(calc(100% - 48px), 1440px);
     min-height: 640px;
-    margin-inline: auto;
     isolation: isolate;
   }
   .matrix-art { width: min(76%, 980px); }
@@ -99,7 +97,7 @@ const domains = [
   .matrix-copy {
     position: absolute;
     z-index: 1;
-    right: 4%;
+    right: 0;
     top: 50%;
     width: 34%;
     transform: translateY(-50%);
@@ -148,16 +146,20 @@ const domains = [
   }
   :global(html[lang^="en"]) .matrix-layout { min-height: 760px; }
   :global(html[lang^="en"]) .matrix-domains { gap: 16px 22px; }
+  @media (min-width: 1001px) {
+    .matrix-art { transform: translateX(-8%); }
+  }
   @media (min-width: 1200px) {
-    .matrix-copy { right: 8%; }
+    .matrix-copy { right: 8.5%; }
     .matrix-domains {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      width: calc(150% + 12px);
-      margin-left: calc(-25% - 6px);
+      grid-template-columns: repeat(3, max-content);
+      column-gap: 28px;
+      width: max-content;
+      margin-left: 0;
     }
   }
   @media (max-width: 1000px) {
-    .matrix-layout { width: calc(100% - 32px); min-height: 0; }
+    .matrix-layout { min-height: 0; }
     .matrix-art { width: 80%; }
     .matrix-copy { position: relative; right: auto; top: auto; width: min(70%, 600px); margin: -110px 0 0 auto; transform: none; }
     .workforce-matrix .matrix-copy h2 { font-size: 27px; }
@@ -166,14 +168,16 @@ const domains = [
     :global(html[lang^="en"]) .matrix-layout { min-height: 0; }
   }
   @media (max-width: 700px) {
-    .matrix-layout { width: 100%; }
     .matrix-art { width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; scrollbar-color: #37536b transparent; }
     .matrix-art img { width: 840px; max-width: none; margin-left: -28px; }
-    .matrix-copy { width: auto; margin: -58px 24px 0 max(24px, 12%); text-align: right; }
+    .matrix-copy { width: auto; margin: -58px 0 0 12%; text-align: right; }
     .workforce-matrix .matrix-copy h2 { font-size: 28px; line-height: 1.5; }
     .matrix-description { margin-left: auto; }
     .matrix-domains { gap: 20px 22px; margin-top: 24px; text-align: left; }
     :global(html[lang^="en"]) .matrix-copy { margin-top: -52px; }
     :global(html[lang^="en"]) .matrix-domains { gap: 20px 22px; }
+  }
+  @media (max-width: 380px) {
+    .matrix-copy { margin-left: 0; }
   }
 </style>

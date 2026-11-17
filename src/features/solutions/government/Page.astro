@@ -1,8 +1,152 @@
 ---
-import IndustryPage from '../../../components/pages/IndustryPage.astro';
-import content from './content';
 import type { Locale } from '../../../data/types';
+import { pathFor } from '../../../lib/site';
+import EmployeeCarousel from '../banking/EmployeeCarousel.astro';
+import SolutionVisual from './SolutionVisual.astro';
+import { governmentPresentation } from './page-content';
+
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const zh = locale === 'zh';
+const copy = governmentPresentation[locale];
 ---
-<IndustryPage locale={locale} industry={content.copy[locale]}/>
+
+<div class:list={['government-page', { 'government-page-en': !zh }]} data-industry-solution="government">
+  <section class="government-hero" aria-labelledby="government-title">
+    <img class="government-civic-landscape" src={copy.hero.background} alt="" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
+    <div class="container government-hero-content">
+      <div class="government-hero-copy">
+        <h1 id="government-title" aria-label={copy.home.title}>{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
+        <p>{copy.home.value}</p>
+        <a class="button government-primary" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
+      </div>
+      <div class="government-hero-dossier"><SolutionVisual locale={locale} index={-1}/></div>
+    </div>
+  </section>
+
+  <section class="government-casework" aria-labelledby="government-application-title">
+    <img class="government-section-scene government-casework-scene" src={copy.hero.background} alt="" width="1600" height="900" loading="lazy" decoding="async" aria-hidden="true"/>
+    <div class="container">
+      <header class="government-section-heading">
+        <h2 id="government-application-title">{copy.features[1].title}</h2>
+        <p>{copy.features[1].body}</p>
+      </header>
+      <SolutionVisual locale={locale} index={1}/>
+    </div>
+  </section>
+
+  <section class="government-policy" aria-labelledby="government-policy-title">
+    <div class="container">
+      <header class="government-section-heading government-policy-heading">
+        <h2 id="government-policy-title">{copy.features[0].title}</h2>
+        <p>{copy.features[0].body}</p>
+      </header>
+      <SolutionVisual locale={locale} index={0}/>
+    </div>
+  </section>
+
+  <section class="government-requests" aria-labelledby="government-request-title">
+    <img class="government-section-scene government-request-scene" src={copy.hero.background} alt="" width="1600" height="900" loading="lazy" decoding="async" aria-hidden="true"/>
+    <div class="container">
+      <header class="government-section-heading government-request-heading">
+        <h2 id="government-request-title">{copy.features[2].title}</h2>
+        <p>{copy.features[2].body}</p>
+      </header>
+      <SolutionVisual locale={locale} index={2}/>
+    </div>
+  </section>
+
+  <section class="government-team" aria-labelledby="government-team-title">
+    <div class="container"><h2 id="government-team-title">{copy.teamTitle}</h2></div>
+    <EmployeeCarousel locale={locale} employees={copy.employees} teamLabel={copy.teamTitle}/>
+  </section>
+
+  <section class="government-deployment" aria-labelledby="government-deployment-title">
+    <div class="container">
+      <h2 id="government-deployment-title">{copy.deployment.title}</h2>
+      <p>{copy.deployment.body}</p>
+    </div>
+  </section>
+</div>
+
+<style>
+  .government-page { color: #edf4ee; background: #102d2c; overflow: clip; }
+  .government-page *, .government-page *::before, .government-page *::after { box-sizing: border-box; }
+  .government-page .container { width: min(1240px, calc(100% - 96px)); }
+  .government-hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: 660px; padding-block: 95px 115px; background: #2b4440; }
+  .government-civic-landscape { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 54%; }
+  .government-hero::before { position: absolute; z-index: -1; inset: 0; content: ''; background: linear-gradient(90deg, #0c2929e0 0%, #163531b3 29%, #25433c45 60%, #3850450d 100%), linear-gradient(0deg, #dce5de 0%, #dce5de3d 13%, #dce5de00 28%); }
+  .government-hero-content { position: relative; padding-block: 10px; }
+  .government-hero-copy { max-width: calc(100% - 330px); }
+  .government-hero-dossier { position: absolute; right: 11%; bottom: -118px; width: 300px; }
+  .government-hero h1 { max-width: 720px; margin: 0; color: #f0f5f4; font-size: clamp(44px, 4.25vw, 64px); font-weight: 550; letter-spacing: -.04em; line-height: 1.42; text-shadow: 0 6px 30px #0003; }
+  .government-hero h1 > span { display: block; }
+  .government-hero h1 > span:last-child { color: #c7e5e4; }
+  .government-hero p { max-width: 530px; margin: 24px 0 30px; color: #c9d8da; font-size: 17px; line-height: 1.95; text-wrap: pretty; }
+  .government-primary { min-height: 47px; padding-inline: 24px; }
+  .government-section-heading h2, .government-team h2, .government-deployment h2 { margin: 0; color: #e7f0f1; font-size: clamp(32px, 3.15vw, 44px); font-weight: 550; line-height: 1.4; letter-spacing: -.035em; text-wrap: balance; }
+  .government-section-heading p { max-width: 790px; margin: 20px 0 0; color: #a5bbc2; font-size: 16px; line-height: 1.95; text-wrap: pretty; }
+  .government-casework, .government-requests { position: relative; isolation: isolate; }
+  .government-casework > .container, .government-requests > .container { position: relative; }
+  .government-section-scene { position: absolute; z-index: -2; width: 100%; height: 100%; object-fit: cover; pointer-events: none; filter: saturate(.4); }
+  .government-casework { padding: 78px 0 90px; background: #dce5de; }
+  .government-casework-scene { top: 0; right: 0; width: 78%; object-position: 80% 58%; opacity: .23; mask-image: linear-gradient(90deg, transparent, #000 48%); }
+  .government-casework::before { position: absolute; z-index: -1; inset: 0; content: ''; background: linear-gradient(180deg, #dce5de00 8%, #dce5de9c 43%, #d4dfd7 100%); }
+  .government-casework .government-section-heading h2, .government-requests .government-section-heading h2 { color: #284d45; }
+  .government-casework .government-section-heading p, .government-requests .government-section-heading p { color: #5b7369; }
+  .government-casework .government-section-heading { max-width: 870px; margin-bottom: 42px; }
+  .government-policy { padding: 85px 0 95px; background: linear-gradient(112deg, #153c36, #102e2d 68%, #102a2a); }
+  .government-policy .government-section-heading h2 { color: #e1ece4; }
+  .government-policy .government-section-heading p { color: #a7c2b6; }
+  .government-policy-heading { max-width: 870px; margin: 0 auto 43px; text-align: center; }
+  .government-policy-heading p { margin-inline: auto; }
+  .government-requests { padding: 88px 0 86px; background: #d2dfd6; }
+  .government-request-scene { top: 0; left: 0; width: 62%; object-position: 18% 45%; opacity: .17; mask-image: linear-gradient(90deg, #000, transparent 95%); }
+  .government-requests::before { position: absolute; z-index: -1; inset: 0; content: ''; background: linear-gradient(180deg, #d2dfd680, #d2dfd600 35%, #d2dfd6 95%); }
+  .government-request-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; margin-bottom: 42px; }
+  .government-request-heading h2 { max-width: 570px; }
+  .government-request-heading p { margin: 3px 0 0; }
+  .government-team { padding: 65px 0 42px; background: linear-gradient(180deg, #173c37, #102c2b); }
+  .government-team h2 { margin-bottom: 20px; font-size: clamp(30px, 2.8vw, 39px); }
+  .government-deployment { padding: 42px 0 52px; background: #102c2b; }
+  .government-deployment > .container { display: grid; grid-template-columns: .95fr 1.05fr; gap: 65px; align-items: center; }
+  .government-deployment h2 { font-size: clamp(25px, 2.15vw, 31px); }
+  .government-deployment p { margin: 0; color: #a8bdc5; font-size: 15px; line-height: 1.95; text-wrap: pretty; }
+  .government-page-en .government-hero h1 { max-width: 740px; font-size: clamp(42px, 4.25vw, 62px); line-height: 1.22; }
+  .government-page-en .government-hero p { max-width: 580px; }
+  .government-page-en .government-section-heading h2 { font-size: clamp(32px, 3.1vw, 43px); }
+  @media (max-width: 1050px) {
+    .government-page .container { width: calc(100% - 64px); }
+    .government-hero { min-height: 620px; padding-block: 80px 105px; }
+    .government-hero h1 { font-size: 50px; }
+    .government-hero p { max-width: 490px; }
+    .government-hero-dossier { right: 6%; width: 280px; }
+    .government-request-heading { gap: 35px; }
+  }
+  @media (max-width: 900px) {
+    .government-hero-copy { max-width: 100%; }
+    .government-hero-dossier { position: relative; right: auto; bottom: auto; width: min(330px, 100%); margin: 32px 0 0 auto; }
+  }
+  @media (max-width: 760px) {
+    .government-page .container { width: calc(100% - 40px); }
+    .government-hero { min-height: 590px; padding-block: 65px 90px; align-items: start; }
+    .government-civic-landscape { object-position: 62% center; }
+    .government-hero::before { background: linear-gradient(90deg, #0c2929e0, #163531b8 55%, #25433c80), linear-gradient(0deg, #dce5de 0%, #dce5de12 25%); }
+    .government-hero h1 { font-size: clamp(36px, 7.5vw, 50px); line-height: 1.45; }
+    .government-hero p { max-width: 510px; margin-top: 23px; font-size: 16px; }
+    .government-casework, .government-policy, .government-requests { padding-block: 52px 58px; }
+    .government-casework-scene { width: 100%; opacity: .17; }
+    .government-request-scene { width: 100%; opacity: .12; }
+    .government-section-heading h2, .government-team h2 { font-size: clamp(29px, 6.6vw, 37px); }
+    .government-section-heading p { margin-top: 18px; font-size: 15px; line-height: 1.9; }
+    .government-casework .government-section-heading, .government-policy-heading { margin-bottom: 30px; }
+    .government-policy-heading { text-align: left; }
+    .government-request-heading { grid-template-columns: 1fr; gap: 0; margin-bottom: 30px; }
+    .government-request-heading p { margin-top: 18px; }
+    .government-team { padding-block: 45px 30px; }
+    .government-deployment { padding-block: 35px 40px; }
+    .government-deployment > .container { grid-template-columns: 1fr; gap: 19px; }
+    .government-page-en .government-hero h1 { font-size: clamp(36px, 7.5vw, 47px); }
+    .government-page-en .government-section-heading h2 { font-size: clamp(29px, 6.6vw, 36px); }
+  }
+</style>
