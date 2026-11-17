@@ -1,0 +1,243 @@
+---
+import type { Locale } from '../data/types';
+import Icon from './Icon.astro';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const deployment = [
+  { icon: 'buildings', text: zh ? '企业环境' : 'Your infrastructure' },
+  { icon: 'cpu', text: zh ? '本地模型' : 'Local models' },
+  { icon: 'layers', text: zh ? '容器化部署' : 'Container deployment' },
+];
+const governance = [
+  { icon: 'users', text: zh ? '组织身份' : 'Organization identity' },
+  { icon: 'key-round', text: zh ? '资源与委托' : 'Access & delegation' },
+  { icon: 'file-check', text: zh ? '审核与记录' : 'Reviews & records' },
+];
+---
+
+<section class="home-enterprise" id="enterprise-control" aria-labelledby="enterprise-control-title">
+  <div class="container">
+    <header class="enterprise-heading">
+      <h2 id="enterprise-control-title">{zh
+        ? <><span>按企业边界部署，</span><span>按组织规则运行</span></>
+        : <><span>Deploy on your terms.</span><span>Operate with control.</span></>}
+      </h2>
+      <p class="enterprise-intro">{zh
+        ? '数据与模型不出企业边界，支持私有化部署与本地模型接入。权限与组织架构对齐，操作全程留痕、可追溯审计。让 AI 在企业既有安全框架内规范运行。'
+        : 'Keep data and models within your enterprise boundary, with private deployment and local model integration. Align permissions with your organization and retain traceable audit records throughout operations. Run AI within your existing security framework.'}
+      </p>
+    </header>
+
+    <div class="enterprise-layout">
+      <figure class="enterprise-environment">
+        <img
+          src={zh ? '/images/enterprise/home-enterprise-network-zh_V11.2.svg' : '/images/enterprise/home-enterprise-network-en_V11.2.svg'}
+          width="760" height="600" loading="lazy" decoding="async"
+          sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1180px) 50vw, 600px"
+          alt={zh
+            ? '企业知识库、Compose 或 Kubernetes 部署的 TeGo 平台与 vLLM、Qwen 本地模型服务连接同一企业内网，业务系统通过 MCP、RESTful API 或数据库接入，并纳入组织身份权限和审核审计。'
+            : 'Enterprise knowledge, the TeGo platform deployed with Compose or Kubernetes, and local vLLM and Qwen model services connect through the enterprise network, alongside business systems using MCP, RESTful APIs or databases, with organizational identity, access, review and audit.'}
+        />
+      </figure>
+
+      <div class="enterprise-topics">
+        <article class="enterprise-topic">
+          <h3>{zh ? '私有化部署' : 'Private deployment'}</h3>
+          <p>{zh
+            ? '平台与资料部署在企业环境，按需接入本地模型，支持 Compose 与 Kubernetes。'
+            : 'Deploy the platform and data in your environment with Compose or Kubernetes, and connect local models.'}
+          </p>
+          <ul class="enterprise-capabilities">
+            {deployment.map(item => <li><Icon name={item.icon} size={22} /><span>{item.text}</span></li>)}
+          </ul>
+        </article>
+
+        <article class="enterprise-topic">
+          <h3>{zh ? '企业治理' : 'Enterprise governance'}</h3>
+          <p>{zh
+            ? '对齐组织身份，分别管理资源权限与业务委托，保留审核决定和执行记录。'
+            : 'Align organizational identities, manage resource access and work delegation separately, and retain review decisions and execution records.'}
+          </p>
+          <ul class="enterprise-capabilities">
+            {governance.map(item => <li><Icon name={item.icon} size={22} /><span>{item.text}</span></li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-enterprise {
+    position: relative;
+    padding-block: clamp(48px, 5vw, 76px);
+    overflow: clip;
+  }
+  :global(body #main.page-canvas) .home-enterprise {
+    background: transparent;
+  }
+  .enterprise-heading {
+    max-width: 1120px;
+    margin-inline: auto;
+  }
+  .enterprise-heading h2 {
+    margin: 0;
+    color: #edf3fb;
+    font-size: clamp(28px, 2.5vw, 38px);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -.8px;
+    text-wrap: balance;
+  }
+  .enterprise-heading h2 > span {
+    display: inline-block;
+  }
+  .enterprise-heading h2 > span + span {
+    margin-left: .2em;
+  }
+  .enterprise-intro {
+    max-width: 880px;
+    margin: 16px 0 0;
+    color: #a6b5c8;
+    font-size: 14px;
+    line-height: 1.9;
+    text-wrap: pretty;
+  }
+  .enterprise-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.17fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 44px;
+    max-width: 1180px;
+    margin: 38px auto 0;
+  }
+  .enterprise-environment {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+  }
+  .enterprise-environment img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 19 / 15;
+    object-fit: contain;
+  }
+  .enterprise-topics {
+    display: grid;
+    gap: 46px;
+    min-width: 0;
+    padding-block: 12px;
+  }
+  .enterprise-topic {
+    min-width: 0;
+  }
+  .enterprise-topic h3 {
+    margin: 0;
+    color: #e8eff8;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -.35px;
+  }
+  .enterprise-topic p {
+    margin: 12px 0 0;
+    color: #a6b5c8;
+    font-size: 14px;
+    line-height: 1.85;
+    text-wrap: pretty;
+  }
+  .enterprise-capabilities {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    list-style: none;
+    margin: 21px 0 0;
+    padding: 0;
+  }
+  .enterprise-capabilities li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    color: #b8c8dd;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .enterprise-capabilities li > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .enterprise-capabilities :global(svg) {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: #8cabe0;
+  }
+  @media (max-width: 1100px) {
+    .enterprise-layout {
+      gap: 32px;
+    }
+    .enterprise-topics {
+      gap: 34px;
+    }
+    .enterprise-capabilities {
+      gap: 8px;
+    }
+    .enterprise-capabilities li {
+      gap: 7px;
+      font-size: 11px;
+    }
+    .enterprise-capabilities :global(svg) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media (max-width: 760px) {
+    .enterprise-heading h2 > span {
+      display: block;
+    }
+    .enterprise-heading h2 > span + span {
+      margin-left: 0;
+    }
+    .enterprise-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 26px;
+    }
+    .enterprise-environment {
+      max-width: 600px;
+      margin-inline: auto;
+    }
+    .enterprise-topics {
+      gap: 34px;
+      padding-block: 0;
+    }
+    .enterprise-topic h3 {
+      font-size: 21px;
+    }
+    .enterprise-topic p {
+      margin-top: 10px;
+    }
+    .enterprise-capabilities {
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .enterprise-capabilities li {
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 420px) {
+    .enterprise-capabilities li {
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11px;
+    }
+    .enterprise-capabilities :global(svg) {
+      width: 19px;
+      height: 19px;
+    }
+  }
+</style>

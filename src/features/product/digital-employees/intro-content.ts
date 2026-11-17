@@ -3,87 +3,134 @@ import type { Locale } from '../../../data/types';
 interface IntroductionSection {
   id: 'recruit' | 'work' | 'continuity';
   title: string[];
-  body: string;
+  summary: string;
+  body: string[];
   alt: string;
 }
 
 interface IntroductionCopy {
-  hero: {
-    title: string[];
-    body: string;
-    action: string;
-    alt: string;
-  };
+  hero: { title: string[]; body: string; action: string; alt: string };
   sections: IntroductionSection[];
-  closing: {
-    title: string;
-    action: string;
-  };
+  closing: { title: string; summary: string; body: string; action: string };
 }
 
 export default {
-  zh: {
-    hero: {
-      title: ['数字员工，', '让岗位能力成为', '团队生产力'],
-      body: '数字员工是能够承接岗位工作的数字劳动力。带着明确职责、专业技能与工作资料加入团队，从理解任务到执行工作，交付可继续使用的成果。',
-      action: '开始使用',
-      alt: '数字员工业务工作台，汇集岗位职责、专业技能、企业知识、任务执行与交付成果。',
+  "zh": {
+    "hero": {
+      "title": [
+        "数字员工，",
+        "让岗位能力成为",
+        "团队生产力"
+      ],
+      "body": "数字员工是可承接完整岗位工作的数字劳动力。具备明确岗位职责、专业技能与专属工作资料，理解业务任务、自主执行作业，输出可复用、可二次加工的业务成果。",
+      "action": "开始使用",
+      "alt": "六项岗位能力汇聚到简洁的数字员工岗位图标，由数字员工向下交付业务成果。蓝紫色全景成果驾驶舱展示成果图谱、交付指标、经营分析、收入成本、利润趋势及成果文件。"
     },
-    sections: [
+    "sections": [
       {
-        id: 'recruit',
-        title: ['从成熟岗位出发，', '招募你的数字员工'],
-        body: '将岗位职责、技能和工作区文件沉淀为模板，按需招募独立运行的数字员工。完成配置与所需审批后投入工作，分别配置员工使用范围、知识访问和插件业务委托。',
-        alt: '岗位模板与数字员工配置面板，展示职责、技能、工作文件和业务授权。',
+        "id": "recruit",
+        "title": [
+          "从成熟岗位出发，",
+          "招募你的数字员工"
+        ],
+        "summary": "把岗位能力固化成模板，按需扩充数字岗位人力",
+        "body": [
+          "将岗位职责、专业技能和业务文件沉淀为模板，按需招募独立运行的数字员工。",
+          "完成配置与权限审批后投入业务，独立设置每位员工的使用范围、知识访问权限和业务插件授权。"
+        ],
+        "alt": "综合行政岗位模板经独立配置与审批，成为具备文档解析和事项督办技能的数字员工，承接会议纪要整理工作。"
       },
       {
-        id: 'work',
-        title: ['把任务交出去，', '把工作成果带回来'],
-        body: '围绕具体业务交办工作，让数字员工整理材料、撰写初稿、完成检查。标书助理完成编制与自查，交给业务专家终审；合规预审对照制度形成意见，由业务人员复核。',
-        alt: '标书编制与合规预审业务面板，展示工作任务、文档成果、专家终审与业务复核状态。',
+        "id": "work",
+        "title": [
+          "把任务交出去，",
+          "把工作成果带回来"
+        ],
+        "summary": "交办前置作业，保留人的最终决策权",
+        "body": [
+          "把材料整理、初稿撰写和自查校验交给数字员工。",
+          "标书助理完成编制与自查，由业务专家终审；合规预审对照制度形成初步意见，由业务人员复核确认。"
+        ],
+        "alt": "综合行政数字员工根据会议纪要、行动项台账与流转规则，形成包含具体事项和责任岗位的行动清单，待业务负责人确认后写入任务系统。"
       },
       {
-        id: 'continuity',
-        title: ['持续工作，', '让经验成为下一次的能力'],
-        body: '让数字员工按计划执行周期任务，查看运行记录与投递结果。个人档案、长期记忆和工作日记按使用者隔离，在组织策略下复盘工作，将成熟方法沉淀为技能。',
-        alt: '持续工作业务面板，展示周期任务、运行与投递记录、个人工作记忆和可复用技能。',
-      },
+        "id": "continuity",
+        "title": [
+          "持续运转，",
+          "沉淀经验迭代岗位能力"
+        ],
+        "summary": "支持周期作业，把工作经验沉淀为团队可复用技能",
+        "body": [
+          "按计划执行周期任务，追溯运行记录与交付结果。",
+          "个人档案、长期记忆和工作日记按使用者隔离；在组织策略下复盘作业，将成熟方法沉淀为岗位技能。"
+        ],
+        "alt": "综合行政数字员工每周督办会议行动项，展示验收资料、接口清单与复盘会议的进展，并应用沉淀的行动项完整性检查技能。"
+      }
     ],
-    closing: {
-      title: '搭建属于企业自己的数字岗位团队',
-      action: '预约产品演示',
-    },
+    "closing": {
+      "title": "搭建属于企业自己的数字岗位团队",
+      "summary": "扩充团队作业能力，让员工聚焦高价值工作",
+      "body": "基于岗位模板批量组建企业专属数字员工团队，补充案头、预审和整理类作业力量，让员工把时间投入研判、沟通与决策。",
+      "action": "预约产品演示"
+    }
   },
-  en: {
-    hero: {
-      title: ['Digital employees.', 'Role expertise.', 'Team productivity.'],
-      body: 'Digital employees take on role-based work with clear responsibilities, specialist skills and work materials. Bring them into your team to understand tasks, carry out work and deliver usable results.',
-      action: 'Get started',
-      alt: 'A digital employee workspace brings together responsibilities, specialist skills, company knowledge, task execution and deliverables.',
+  "en": {
+    "hero": {
+      "title": [
+        "Digital employees.",
+        "Role expertise.",
+        "Team productivity."
+      ],
+      "body": "Digital employees take on role-based work with clear responsibilities, specialist skills and dedicated work materials. They understand business tasks, carry out work and deliver results your team can reuse and refine.",
+      "action": "Get started",
+      "alt": "Six role capabilities converge on a simple digital employee role icon, which delivers business results to the blue-violet panoramic cockpit below. The cockpit shows a results map, delivery gauge, business KPIs, revenue and costs, profit trends and delivered files."
     },
-    sections: [
+    "sections": [
       {
-        id: 'recruit',
-        title: ['Start with role expertise.', 'Recruit your digital team.'],
-        body: 'Capture responsibilities, skills and workspace files in a role template. Recruit an independent digital employee, complete setup and any required approval, then configure employee access, knowledge permissions and plugin delegation separately.',
-        alt: 'Role templates and digital employee setup panels show responsibilities, skills, workspace files and business authorizations.',
+        "id": "recruit",
+        "title": [
+          "Start with role expertise.",
+          "Recruit your digital team."
+        ],
+        "summary": "Turn proven role expertise into templates and add digital capacity on demand.",
+        "body": [
+          "Capture responsibilities, skills and work files in role templates. Recruit an independently running employee and complete setup and required approvals.",
+          "Separately control who can use each employee, which knowledge it can access and which business actions its plugins may perform."
+        ],
+        "alt": "An administration role template becomes an independently configured and approved digital employee with document parsing and action follow-up skills."
       },
       {
-        id: 'work',
-        title: ['Hand over the task.', 'Bring back the deliverable.'],
-        body: 'Delegate concrete work: organize materials, prepare drafts and complete checks. A bid assistant drafts and checks the bid for final specialist review. Compliance pre-review checks against policies and sends findings to the responsible colleague for review.',
-        alt: 'Bid preparation and compliance pre-review panels show tasks, document deliverables, final specialist review and business review status.',
+        "id": "work",
+        "title": [
+          "Hand over the task.",
+          "Bring back the deliverable."
+        ],
+        "summary": "Delegate preparation work while your team keeps final decision authority.",
+        "body": [
+          "Digital employees organize materials, draft documents and run checks.",
+          "A bid assistant prepares and checks a bid for final specialist review. Compliance pre-review checks against policy and submits findings for human confirmation."
+        ],
+        "alt": "An administration digital employee turns meeting minutes, the action register and routing rules into an action list with responsible roles, awaiting business owner approval before task creation."
       },
       {
-        id: 'continuity',
-        title: ['Keep work moving.', 'Make experience reusable.'],
-        body: 'Schedule recurring work and review run and delivery records. Profiles, long-term memory and work diaries remain isolated by user. Under organizational policy, employees reflect on work and preserve proven methods as skills.',
-        alt: 'A continuous work panel shows recurring tasks, run and delivery records, personal work memory and reusable skills.',
-      },
+        "id": "continuity",
+        "title": [
+          "Keep work moving.",
+          "Make experience reusable."
+        ],
+        "summary": "Keep recurring work moving and turn experience into reusable team skills.",
+        "body": [
+          "Schedule recurring tasks and trace their runs and deliveries.",
+          "Profiles, long-term memory and work diaries remain isolated by user. Under organizational policy, review completed work and preserve proven methods as role skills."
+        ],
+        "alt": "An administration digital employee follows up weekly on acceptance documents, the interface checklist and the review meeting, applying a reusable action completeness check."
+      }
     ],
-    closing: {
-      title: 'Build a digital team around your business roles',
-      action: 'Book a product demo',
-    },
-  },
+    "closing": {
+      "title": "Build a digital team around your business roles",
+      "summary": "Expand your team’s capacity and free people for higher-value work.",
+      "body": "Build your enterprise’s digital team from role templates to handle preparation, preliminary checks and organization. Give colleagues more time for analysis, communication and decisions.",
+      "action": "Book a product demo"
+    }
+  }
 } satisfies Record<Locale, IntroductionCopy>;

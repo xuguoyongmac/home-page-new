@@ -21,19 +21,19 @@ export const capabilityVisuals: Record<string, CapabilityVisual> = {
   'digital-employees': {
     mobile: {
       src: {
-        zh: '/images/product/digital-employees/intro-hero-zh_V6.0.webp',
-        en: '/images/product/digital-employees/intro-hero-en_V6.0.webp',
+        zh: '/images/product/digital-employees/intro-hero-zh_V18.4.webp',
+        en: '/images/product/digital-employees/intro-hero-en_V18.4.webp',
       },
       width: 1536, height: 1024,
     },
     src: {
-      zh: '/images/product/digital-employees/intro-hero-zh_V6.0.webp',
-      en: '/images/product/digital-employees/intro-hero-en_V6.0.webp',
+      zh: '/images/product/digital-employees/intro-hero-zh_V18.4.webp',
+      en: '/images/product/digital-employees/intro-hero-en_V18.4.webp',
     },
     width: 1536, height: 1024,
     alt: {
-      zh: '数字员工业务工作台，汇集岗位职责、专业技能、企业知识、任务执行与交付成果。',
-      en: 'A digital employee workspace brings together responsibilities, specialist skills, company knowledge, task execution and deliverables.',
+      zh: '六项岗位能力连接蓝青色全景成果驾驶舱，中央成果图谱与交付环形指标连接经营分析、项目报告、会议纪要、方案文档、制度核查和知识整理，两侧展示经营指标、收入成本、交付状态、利润趋势及成果文件。',
+      en: 'Six role capabilities connect to a blue panoramic results cockpit with a central results map and delivery gauge. Surrounding modules show business KPIs, revenue and costs, delivery status, profit trends and delivered files.',
     },
   },
   'multi-agent': {

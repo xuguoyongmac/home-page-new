@@ -7,8 +7,9 @@ import '../../../styles/digital-employees-intro.css';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const copy = introContent[locale];
-const illustrationPath = (scene: 'hero' | 'recruit' | 'work' | 'continuity') =>
-  `/images/product/digital-employees/intro-${scene}-${locale}_V6.0.webp`;
+const illustrationVersions = { hero: 'V18.4', recruit: 'V7.0', work: 'V7.1', continuity: 'V7.2' } as const;
+const illustrationPath = (scene: keyof typeof illustrationVersions) =>
+  `/images/product/digital-employees/intro-${scene}-${locale}_${illustrationVersions[scene]}.webp`;
 const breadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -28,7 +29,7 @@ const breadcrumb = {
         <a class="dei-button" href={appFor(locale)}>{copy.hero.action}</a>
       </div>
       <figure class="dei-visual dei-hero-visual">
-        <img src={illustrationPath('hero')} alt={copy.hero.alt} width="1536" height="1024" sizes="(max-width: 760px) calc(100vw - 20px), (max-width: 1100px) 58vw, (max-width: 1456px) calc(70vw - 70px), 941px" loading="eager" fetchpriority="high" decoding="async"/>
+        <img src={illustrationPath('hero')} alt={copy.hero.alt} width="1536" height="1024" sizes="(max-width: 760px) calc(100vw - 20px), (max-width: 1100px) 58vw, (max-width: 1456px) calc(63vw - 60px), 855px" loading="eager" fetchpriority="high" decoding="async"/>
       </figure>
     </div>
   </section>
@@ -37,7 +38,8 @@ const breadcrumb = {
     <div class="dei-container dei-section-grid">
       <div class="dei-copy dei-section-copy">
         <h2 id={`digital-employee-${section.id}`}>{section.title.map(line => <span>{line}</span>)}</h2>
-        <p>{section.body}</p>
+        <p class="dei-value">{section.summary}</p>
+        <div class="dei-description">{section.body.map(paragraph => <p>{paragraph}</p>)}</div>
       </div>
       <figure class="dei-visual">
         <img src={illustrationPath(section.id)} alt={section.alt} width="1536" height="1024" sizes="(max-width: 760px) calc(100vw - 20px), (max-width: 1100px) 56vw, (max-width: 1456px) 65vw, 960px" loading="lazy" decoding="async"/>
@@ -47,7 +49,11 @@ const breadcrumb = {
 
   <section class="dei-closing" aria-labelledby="digital-employee-closing">
     <div class="dei-container dei-closing-inner">
-      <h2 id="digital-employee-closing">{copy.closing.title}</h2>
+      <div class="dei-closing-copy">
+        <h2 id="digital-employee-closing">{copy.closing.title}</h2>
+        <p class="dei-value">{copy.closing.summary}</p>
+        <p class="dei-closing-description">{copy.closing.body}</p>
+      </div>
       <a class="dei-button dei-button-outline" href={pathFor(locale, 'contact')}>{copy.closing.action}</a>
     </div>
   </section>
