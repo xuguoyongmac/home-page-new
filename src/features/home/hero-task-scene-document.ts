@@ -1,6 +1,6 @@
 import type { Locale } from '../../data/types';
-import chineseSource from '../../../artwork/hero-task-execution_V1.8/zh/compositions/task-session.html?raw';
-import englishSource from '../../../artwork/hero-task-execution_V1.8/en/compositions/task-session.html?raw';
+import chineseSource from '../../../artwork/hero-task-execution_V1.9/zh/compositions/task-session.html?raw';
+import englishSource from '../../../artwork/hero-task-execution_V1.9/en/compositions/task-session.html?raw';
 import gsapUrl from '../../../artwork/hero-task-execution_V1.5/zh/lib/gsap.min.js?url';
 import runtime from './hero-task-scene-runtime.js?raw';
 
