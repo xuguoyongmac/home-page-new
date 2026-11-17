@@ -2,7 +2,6 @@
 import { pathFor } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import EmployeeCarousel from './EmployeeCarousel.astro';
-import BankingHeroVisual from './BankingHeroVisual.astro';
 import ValueVisual from './ValueVisual.astro';
 import content from './content';
 import { bankingPresentation } from './page-content';
@@ -14,6 +13,10 @@ const zh = locale === 'zh';
 const industry = content.copy[locale];
 const presentation = bankingPresentation[locale];
 const story = industry.story;
+const heroIllustration = `/images/solutions/banking/banking-planar-concept-${locale}_V1.2.webp`;
+const heroAlt = zh
+  ? 'TeGo 数字员工基于企业资料执行信贷尽调、授信审查、贷后核查与客户跟进，交付审查报告与跟进清单。'
+  : 'TeGo digital employees use company records for due diligence, credit review, post-loan checks and client follow-up, delivering review reports and follow-up actions.';
 ---
 <div class="banking-solution">
   <section class="banking-hero" aria-labelledby="banking-title">
@@ -27,7 +30,7 @@ const story = industry.story;
             <a class="button banking-contact" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
           </div>
         </div>
-        <div class="banking-hero-product"><BankingHeroVisual locale={locale}/></div>
+        <figure class="banking-hero-product banking-hero-concept"><img src={heroIllustration} alt={heroAlt} width="1536" height="1024" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1080px) calc(100vw - 64px), 700px" loading="eager" decoding="async" fetchpriority="high"/></figure>
       </div>
     </div>
   </section>

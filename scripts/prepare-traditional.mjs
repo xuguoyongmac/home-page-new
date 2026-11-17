@@ -18,6 +18,7 @@ const visit = (node, callback) => {
   if (node.content) visit(node.content, callback);
 };
 const escapeTemplate = value => value.replaceAll('\\', '\\\\').replaceAll('`', '\\`').replaceAll('${', '\\${');
+const inlineJson = value => JSON.stringify(value).replaceAll('<', '\\u003c');
 
 // Rewrite decoded literals only: source code, identifiers and regular expressions retain their meaning.
 export function translateScript(source, transformReference = value => value) {
@@ -135,9 +136,9 @@ export function translateHtml(source, scripts = new Map()) {
     }
     if (node.tagName === 'script') {
       for (const child of node.childNodes || []) if (child.nodeName === '#text') {
-        if (attr(node, 'type') === 'application/ld+json') child.value = JSON.stringify(translateJson(JSON.parse(child.value)));
+        if (attr(node, 'type') === 'application/ld+json') child.value = inlineJson(translateJson(JSON.parse(child.value)));
         else if (!attr(node, 'type') || attr(node, 'type') === 'module' || attr(node, 'type') === 'text/javascript') child.value = translateScript(child.value, value => scripts.get(value) || value);
-        else if (attr(node, 'type') === 'application/json') child.value = JSON.stringify(translateJson(JSON.parse(child.value)));
+        else if (attr(node, 'type') === 'application/json') child.value = inlineJson(translateJson(JSON.parse(child.value)));
       }
       return;
     }

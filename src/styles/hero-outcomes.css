@@ -204,7 +204,7 @@
  .duty-delivery{font-size:10px;color:#99cfb6}
  .duty-delivery-file{color:#b8cfdd}
 }
-@media(prefers-reduced-motion:reduce){.duty-workspace *{animation:none!important;transition:none!important}.banner-outcomes-visual [data-duty-reveal]{opacity:1;clip-path:none;visibility:visible}.banner-outcomes-visual .duty-bars>[data-duty-reveal]>i{transform:none}}
+@media(prefers-reduced-motion:reduce){.duty-workspace *{animation:none!important;transition:none!important}.banner-outcomes-visual [data-duty-reveal]{opacity:1;clip-path:none;visibility:inherit}.banner-outcomes-visual .duty-bars>[data-duty-reveal]>i{transform:none}}
 
 /* A thin workspace frame sits behind the active work and its delivery receipt. */
 .hero-visual-stage .banner-outcomes-visual[data-duty-visual] {
