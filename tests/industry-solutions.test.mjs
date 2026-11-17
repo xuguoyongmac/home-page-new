@@ -76,7 +76,11 @@ for (const [slug, exportName, order] of industries) {
     assert.equal(metadata.order, order);
     for (const locale of ['zh', 'en']) {
       const copy = presentation[locale];
-      assert.equal(homeIndustries[locale][slug], copy.home, 'Homepage must use the detail content source');
+      const homepage = homeIndustries[locale][slug];
+      assert.equal(homepage.scenarios, copy.home.scenarios, 'Homepage scenarios must use the detail content source');
+      assert.equal(homepage.benefits.length, copy.home.benefits.length);
+      assert.ok(homepage.title.trim().length > 0 && homepage.pain.trim().length > 0 && homepage.value.trim().length > 0);
+      assert.ok(homepage.benefits.every(benefit => benefit.title.trim().length > 0 && benefit.description.trim().length > 0));
       assert.equal(metadata.copy[locale].title, copy.home.title);
       assert.equal(metadata.copy[locale].description, copy.home.value);
       assert.equal(copy.features.length, copy.home.benefits.length);
