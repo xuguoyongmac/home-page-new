@@ -19,12 +19,7 @@ const zh = locale === 'zh';
 <section class="value-section industry-section" id="solutions" aria-labelledby="industry-title">
   <div class="container">
     <div class="value-heading">
-      <h2 id="industry-title">{zh
-        ? <>全行业赋能，<br/><span class="title-second">打造看得见的数字员工方案</span></>
-        : <>Empower every industry<br/><span class="title-second">with tangible digital employee solutions</span></>}</h2>
-      <p>{zh
-        ? '覆盖政务、金融、央国企等核心场景；连接行业知识与业务数据，让数字员工完成分析、核对、编制和跟进，把结论直达业务一线。'
-        : 'Across government, finance, state-owned enterprises and more, connect industry knowledge with business data. Digital employees analyze, check, prepare and follow up, delivering findings directly to frontline teams.'}</p>
+      <h2 id="industry-title">{zh ? '行业解决方案' : 'Industry solutions'}</h2>
     </div>
     <SolutionExplorer locale={locale} home/>
   </div>
