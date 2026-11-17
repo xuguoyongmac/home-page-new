@@ -7,7 +7,7 @@ import '../../../styles/digital-employees-intro.css';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const copy = introContent[locale];
-const illustrationVersions = { hero: 'V13.1', recruit: 'V7.0', work: 'V7.1', continuity: 'V7.2' } as const;
+const illustrationVersions = { hero: 'V18.4', recruit: 'V7.0', work: 'V7.1', continuity: 'V7.2' } as const;
 const illustrationPath = (scene: keyof typeof illustrationVersions) =>
   `/images/product/digital-employees/intro-${scene}-${locale}_${illustrationVersions[scene]}.webp`;
 const breadcrumb = {

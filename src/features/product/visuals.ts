@@ -8,8 +8,8 @@ interface CapabilityVisual {
 }
 const descriptions: Record<string, Record<Locale, string>> = {
   'digital-employees': {
-    zh: 'TeGo 数字员工工牌位于曲面业务工作台中央，上方连接岗位定义、知识与记忆、技能与插件、任务协同、系统与工具连接、权限与审计，工作台展示经营分析、执行计划、业务看板和文档成果。',
-    en: 'A TeGo digital employee badge sits at the center of a curved workspace, connected to role definition, knowledge and memory, skills and plugins, task collaboration, systems and tools, and permissions and audit. The workspace shows business analysis, execution plans, a business board and work documents.',
+    zh: '六项岗位能力汇聚到简洁的数字员工岗位图标，由数字员工向下交付业务成果。蓝紫色全景成果驾驶舱展示成果图谱、交付指标、经营分析、收入成本、利润趋势及成果文件。',
+    en: 'Six role capabilities converge on a simple digital employee role icon, which delivers business results to the blue-violet panoramic cockpit below. The cockpit shows a results map, delivery gauge, business KPIs, revenue and costs, profit trends and delivered files.',
   },
   'multi-agent': {zh:'尽调任务按资料检索、数据提取和风险梳理分工，返回结果汇总为报告与差异清单。',en:'Specialist research, data extraction and risk checks return to one due diligence report and difference checklist.'},
   integrations: {zh:'授权连接接入客户资料，数字员工整理交流纪要并更新客户跟进记录。',en:'Authorized connections provide customer context, prepare meeting notes and update the follow-up record.'},
@@ -22,7 +22,7 @@ export const capabilityVisuals: Record<string, CapabilityVisual> = Object.fromEn
     const version = ['integrations', 'governance'].includes(slug) ? 'V2.1' : 'V2.0';
     const englishVersion = slug === 'governance' ? 'V2.2' : version;
     const src = slug === 'digital-employees'
-      ? {zh:'/images/product/digital-employees/intro-hero-zh_V13.1.webp',en:'/images/product/digital-employees/intro-hero-en_V13.1.webp'}
+      ? {zh:'/images/product/digital-employees/intro-hero-zh_V18.4.webp',en:'/images/product/digital-employees/intro-hero-en_V18.4.webp'}
       : {zh:`/images/product/${slug}/experience-hero-zh_${version}.webp`,en:`/images/product/${slug}/experience-hero-en_${englishVersion}.webp`};
     return [slug, {src, mobile:{src,width:1536,height:1024},width:1536,height:1024,alt}];
   }),

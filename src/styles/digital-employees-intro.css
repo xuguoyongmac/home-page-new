@@ -15,6 +15,13 @@
   padding-block: 66px 42px;
 }
 
+body #main.page-canvas .digital-employee-intro > .dei-hero {
+  background:
+    radial-gradient(ellipse 43% 68% at 77% 39%, #5c3b9647, transparent 78%),
+    radial-gradient(ellipse 48% 48% at 66% 71%, #16467a40, transparent 80%),
+    radial-gradient(ellipse 76% 85% at 50% 12%, #1a1c3b33, transparent 86%);
+}
+
 .dei-hero-grid,
 .dei-section-grid {
   display: grid;

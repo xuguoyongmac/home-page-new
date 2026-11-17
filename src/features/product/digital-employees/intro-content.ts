@@ -30,7 +30,7 @@ export default {
       title: ['数字员工，', '让岗位能力成为', '团队生产力'],
       body: '数字员工是可承接完整岗位工作的数字劳动力。具备明确岗位职责、专业技能与专属工作资料，理解业务任务、自主执行作业，输出可复用、可二次加工的业务成果。',
       action: '开始使用',
-      alt: 'TeGo 数字员工工牌位于曲面业务工作台中央，上方连接岗位定义、知识与记忆、技能与插件、任务协同、系统与工具连接、权限与审计，工作台展示经营分析、执行计划、业务看板和文档成果。',
+      alt: '六项岗位能力汇聚到简洁的数字员工岗位图标，由数字员工向下交付业务成果。蓝紫色全景成果驾驶舱展示成果图谱、交付指标、经营分析、收入成本、利润趋势及成果文件。',
     },
     sections: [
       {
@@ -76,7 +76,7 @@ export default {
       title: ['Digital employees.', 'Role expertise.', 'Team productivity.'],
       body: 'Digital employees take on role-based work with clear responsibilities, specialist skills and dedicated work materials. They understand business tasks, carry out work and deliver results your team can reuse and refine.',
       action: 'Get started',
-      alt: 'A TeGo digital employee badge sits at the center of a curved workspace, connected to role definition, knowledge and memory, skills and plugins, task collaboration, systems and tools, and permissions and audit. The workspace shows business analysis, execution plans, a business board and work documents.',
+      alt: 'Six role capabilities converge on a simple digital employee role icon, which delivers business results to the blue-violet panoramic cockpit below. The cockpit shows a results map, delivery gauge, business KPIs, revenue and costs, profit trends and delivered files.',
     },
     sections: [
       {
