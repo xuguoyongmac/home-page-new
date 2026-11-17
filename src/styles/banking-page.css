@@ -16,7 +16,7 @@
 .banking-hero-copy h1 span:last-child { color: #a8d7ff; }
 .banking-hero-summary > p { max-width: 465px; margin: 23px 0 28px; color: #c1d0df; font-size: var(--text-body, 16px); line-height: 1.95; text-wrap: pretty; }
 .banking-contact { min-height: 46px; }
-.banking-hero-product { position: relative; min-width: 0; width: 100%; margin-left: 0; filter: drop-shadow(0 28px 32px #00000045); }
+.banking-hero-product { position: relative; min-width: 0; width: 100%; margin-left: 0; }
 .banking-feature-section { position: relative; padding: 68px 0; background: #080f19; }
 .banking-feature-section:nth-of-type(3) { background: radial-gradient(ellipse at 82% 50%, #17364820, transparent 70%), #0a121d; }
 .banking-feature-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: center; gap: 64px; }

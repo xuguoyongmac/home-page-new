@@ -2,7 +2,7 @@
 import { pathFor } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import EmployeeCarousel from './EmployeeCarousel.astro';
-import BankingWorkbench from './BankingWorkbench.astro';
+import BankingHeroVisual from './BankingHeroVisual.astro';
 import ValueVisual from './ValueVisual.astro';
 import content from './content';
 import { bankingPresentation } from './page-content';
@@ -27,7 +27,7 @@ const story = industry.story;
             <a class="button banking-contact" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
           </div>
         </div>
-        <div class="banking-hero-product"><BankingWorkbench locale={locale} compact/></div>
+        <div class="banking-hero-product"><BankingHeroVisual locale={locale}/></div>
       </div>
     </div>
   </section>
