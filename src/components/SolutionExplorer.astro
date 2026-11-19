@@ -10,54 +10,50 @@ const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
 const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : industries[locale];
 const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
-const benefitIcons: Record<string, string[]> = {
-  banking: ['file-search', 'shield', 'users'],
-  insurance: ['shield', 'clipboard-check', 'message'],
-  securities: ['book', 'shield', 'users'],
-  government: ['user-check', 'file-check', 'workflow'],
-  'state-owned': ['chart', 'file-check', 'clock'],
-};
 ---
-<div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer style={`--industry-tab-count: ${visibleIndustries.length}`}>
+<div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer>
   <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
-    {visibleIndustries.map((industry) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={industry.slug === defaultSlug} aria-controls={`panel-${industry.slug}`} tabindex={industry.slug === defaultSlug ? 0 : -1}><Icon name={industry.icon} size={18}/>{home && zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
+    {visibleIndustries.map((industry) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={industry.slug === defaultSlug} aria-controls={`panel-${industry.slug}`} tabindex={industry.slug === defaultSlug ? 0 : -1}>{!home && <Icon name={industry.icon} size={18}/>}{home && zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
   </div>
   {visibleIndustries.map((industry) => (
     <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
       {home ? <>
-        <div class="industry-backdrop" aria-hidden="true">
+        <div class="industry-stage">
           <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
-        </div>
-        <div class="industry-intro">
-          <h3>{homeIndustries[locale][industry.slug].title}</h3>
-          <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '了解更多' : 'Learn more'}<Icon name="arrow" size={17}/></a>
-        </div>
-        <div class="industry-panel-body">
-          <section class="industry-copy-block industry-challenge" aria-labelledby={`pain-title-${industry.slug}`}>
-            <h4 id={`pain-title-${industry.slug}`}><Icon name="search" size={20}/>{zh ? '业务痛点' : 'Business challenges'}</h4>
-            <p class="industry-pain">{homeIndustries[locale][industry.slug].pain}</p>
-          </section>
-          <section class="industry-copy-block industry-solution" aria-labelledby={`approach-title-${industry.slug}`}>
-            <h4 id={`approach-title-${industry.slug}`}><Icon name="network" size={20}/>{zh ? '解决方案' : 'Our solution'}</h4>
-            <p class="industry-approach">{homeIndustries[locale][industry.slug].value}</p>
-            <ul class="industry-scenario-tags" aria-label={zh ? '应用场景' : 'Use cases'}>
-              {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
-            </ul>
-          </section>
-          <section class="industry-benefits" aria-labelledby={`benefits-title-${industry.slug}`}>
-            <h4 id={`benefits-title-${industry.slug}`}>{zh ? '业务价值' : 'Business value'}</h4>
-            <ul>
-              {homeIndustries[locale][industry.slug].benefits.map((benefit, index) => (
-                <li>
-                  <div class="industry-benefit-heading">
-                    <span class="industry-benefit-icon"><Icon name={benefitIcons[industry.slug]?.[index] || 'check'} size={22}/></span>
+          <div class="industry-stage-content">
+            <div class="industry-masthead-copy">
+              <div class="industry-heading-row">
+                <h3>{homeIndustries[locale][industry.slug].title}</h3>
+                <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>
+              </div>
+              <ul class="industry-scenarios" aria-label={zh ? '应用场景' : 'Use cases'}>
+                {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
+              </ul>
+            </div>
+            <div class="industry-body">
+              <div class="industry-overview">
+                <div class="industry-summary">
+                  <section class="industry-context" aria-labelledby={`context-title-${industry.slug}`}>
+                    <h4 id={`context-title-${industry.slug}`}><Icon name="search" size={18}/><span>{zh ? '业务现状' : 'Current work'}</span></h4>
+                    <p>{homeIndustries[locale][industry.slug].pain}</p>
+                  </section>
+                  <section class="industry-work" aria-labelledby={`work-title-${industry.slug}`}>
+                    <h4 id={`work-title-${industry.slug}`}><Icon name="workflow" size={18}/><span>{zh ? '数字员工的工作' : 'Work for digital employees'}</span></h4>
+                    <p>{homeIndustries[locale][industry.slug].value}</p>
+                  </section>
+                </div>
+              </div>
+              <section class="industry-results" aria-labelledby={`results-title-${industry.slug}`}>
+                <h4 id={`results-title-${industry.slug}`}><Icon name="chart" size={18}/><span>{zh ? '方案价值' : 'Solution value'}</span></h4>
+                <ul>
+                  {homeIndustries[locale][industry.slug].benefits.map(benefit => <li>
                     <h5>{benefit.title}</h5>
-                  </div>
-                  <p>{benefit.description}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
+                    <p>{benefit.description}</p>
+                  </li>)}
+                </ul>
+              </section>
+            </div>
+          </div>
         </div>
       </> : <>
         <div class="solution-outcome"><OutcomeExhibit locale={locale} compact exhibit={industry.story?.exhibit ?? {title:industry.name,request:industry.description,sources:industry.tasks.map(task=>task.title),columns:zh?['工作','业务动作','交付成果']:['Work','Action','Deliverable'],rows:industry.tasks.map(task=>[task.title,task.action,task.output]),deliverables:[]}}/></div>
@@ -74,21 +70,10 @@ const benefitIcons: Record<string, string[]> = {
   document.querySelectorAll<HTMLElement>('[data-solution-explorer]').forEach(explorer=>{
     const tabs = [...explorer.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
     const panels = [...explorer.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
-    const tablist = explorer.querySelector<HTMLElement>('[role="tablist"]');
     const animateHome = explorer.classList.contains('home-solutions');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let activeIndex = Math.max(0, tabs.findIndex(tab=>tab.getAttribute('aria-selected')==='true'));
     let panelAnimation: Animation | undefined;
-    const positionHighlight = () => {
-      if (!animateHome || !tablist) return;
-      const tab = tabs[activeIndex];
-      tablist.style.setProperty('--industry-tab-left', `${tab.offsetLeft}px`);
-      tablist.style.setProperty('--industry-tab-width', `${tab.offsetWidth}px`);
-    };
-    if (animateHome && tablist) {
-      positionHighlight();
-      new ResizeObserver(positionHighlight).observe(tablist);
-    }
     const select = (tab: HTMLButtonElement, direction?: number) => {
       const nextIndex = tabs.indexOf(tab);
       if (nextIndex === activeIndex) return;
@@ -97,13 +82,13 @@ const benefitIcons: Record<string, string[]> = {
       activeIndex = nextIndex;
       tabs.forEach(item=>{item.setAttribute('aria-selected',String(item === tab));item.tabIndex=item === tab ? 0 : -1;});
       panels.forEach(panel=>{panel.hidden=panel.id!==tab.getAttribute('aria-controls');});
-      positionHighlight();
+      tab.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
       const panel = panels.find(item=>!item.hidden);
       if (animateHome && panel && !reducedMotion.matches) {
         panelAnimation = panel.animate([
-          { opacity: .35, transform: `translateX(${slideDirection * 28}px)` },
+          { opacity: .55, transform: `translateX(${slideDirection * 10}px)` },
           { opacity: 1, transform: 'translateX(0)' },
-        ], { duration: 320, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+        ], { duration: 180, easing: 'ease-out' });
       }
     };
     tabs.forEach((tab,index)=>{

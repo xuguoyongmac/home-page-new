@@ -12,7 +12,7 @@ const deployment = [
 ];
 const governance = [
   { icon: 'users', text: zh ? '组织身份' : 'Organization identity' },
-  { icon: 'key', text: zh ? '资源与委托' : 'Access & delegation' },
+  { icon: 'key-round', text: zh ? '资源与委托' : 'Access & delegation' },
   { icon: 'file-check', text: zh ? '审核与记录' : 'Reviews & records' },
 ];
 ---
@@ -25,50 +25,44 @@ const governance = [
         : <><span>Deploy on your terms.</span><span>Operate with control.</span></>}
       </h2>
       <p class="enterprise-intro">{zh
-        ? '数据与模型不出企业边界，支持私有化部署与本地模型接入。权限与组织架构对齐，操作全程留痕、可追溯审计。让 AI 在企业既有安全框架内规范运行。'
-        : 'Keep data and models within your enterprise boundary, with private deployment and local model integration. Align permissions with your organization and retain traceable audit records throughout operations. Run AI within your existing security framework.'}
+        ? '私有化部署，数据不出域，全程可审计'
+        : 'Private deployment. Data stays within your boundary. Every action is auditable.'}
       </p>
     </header>
 
     <div class="enterprise-layout">
-      <svg class="enterprise-connectors" viewBox="0 0 1000 540" preserveAspectRatio="none" fill="none" aria-hidden="true">
-        <defs><linearGradient id="enterprise-link-light" x1="335" y1="0" x2="462" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#43bcec" stop-opacity=".9"/><stop offset=".65" stop-color="#73e1ff"/><stop offset="1" stop-color="#d6f7ff"/></linearGradient></defs>
-        <path d="M335 211C391 211 406 148 462 148" />
-        <path d="M335 327C379 327 391 397 435 397" />
-      </svg>
-      <div class="enterprise-visual">
       <figure class="enterprise-environment">
-        <div class="enterprise-art">
-        <img src={zh ? '/images/enterprise/home-enterprise-integrated-zh_V5.2.webp' : '/images/enterprise/home-enterprise-integrated-en_V5.2.webp'}
-          width="1254" height="1254" loading="lazy" decoding="async"
-          sizes="(max-width: 480px) 300px, (max-width: 800px) 380px, 430px"
+        <img
+          src={zh ? '/images/enterprise/home-enterprise-network-zh_V12.7.svg' : '/images/enterprise/home-enterprise-network-en_V12.7.svg'}
+          width="760" height="410" loading="lazy" decoding="async"
+          sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1180px) 50vw, 600px"
           alt={zh
-            ? '盾形企业私有环境包围部署基础设施、本地模型、组织身份权限和执行记录，悬浮承载层与环绕边界表现私有部署和企业治理。'
-            : 'A shield encloses private infrastructure, local models, identity and access controls, and execution records. Layered platforms and surrounding boundaries represent private deployment and enterprise governance.'}
+            ? '企业知识库、Compose 或 Kubernetes 部署的 TeGo 平台与 vLLM、Qwen 本地模型服务连接同一企业内网，业务系统通过 MCP、RESTful API 或数据库接入，并纳入组织身份权限和审核审计。'
+            : 'Enterprise knowledge, the TeGo platform deployed with Compose or Kubernetes, and local vLLM and Qwen model services connect through the enterprise network, alongside business systems using MCP, RESTful APIs or databases, with organizational identity, access, review and audit.'}
         />
-        </div>
-        <figcaption class="sr-only">{zh ? '企业私有环境' : 'Your private environment'}</figcaption>
+        <figcaption>{zh ? '企业内网 · 私有化部署' : 'Enterprise network · Private deployment'}</figcaption>
       </figure>
-      </div>
+
       <div class="enterprise-topics">
-        <article class="enterprise-topic enterprise-topic--deployment">
+        <article class="enterprise-topic">
           <h3>{zh ? '私有化部署' : 'Private deployment'}</h3>
           <p>{zh
             ? '平台与资料部署在企业环境，按需接入本地模型，支持 Compose 与 Kubernetes。'
             : 'Deploy the platform and data in your environment with Compose or Kubernetes, and connect local models.'}
           </p>
           <ul class="enterprise-capabilities">
-            {deployment.map(item => <li><span class="enterprise-capability-icon"><Icon name={item.icon} size={28} /></span><span>{item.text}</span></li>)}
+            {deployment.map(item => <li><Icon name={item.icon} size={22} /><span>{item.text}</span></li>)}
           </ul>
         </article>
-        <article class="enterprise-topic enterprise-topic--governance">
+
+        <article class="enterprise-topic">
           <h3>{zh ? '企业治理' : 'Enterprise governance'}</h3>
           <p>{zh
             ? '对齐组织身份，分别管理资源权限与业务委托，保留审核决定和执行记录。'
             : 'Align organizational identities, manage resource access and work delegation separately, and retain review decisions and execution records.'}
           </p>
           <ul class="enterprise-capabilities">
-            {governance.map(item => <li><span class="enterprise-capability-icon"><Icon name={item.icon} size={28} /></span><span>{item.text}</span></li>)}
+            {governance.map(item => <li><Icon name={item.icon} size={22} /><span>{item.text}</span></li>)}
           </ul>
         </article>
       </div>
@@ -77,59 +71,203 @@ const governance = [
 </section>
 
 <style>
-  .home-enterprise{position:relative;padding:clamp(48px,5vw,72px) 0;background:#060b12;overflow:clip}
-  .enterprise-heading{position:relative;z-index:1;max-width:1120px;margin-inline:auto}
-  .enterprise-heading h2{margin:0;color:#edf5fc;font-size:clamp(28px,2.5vw,38px);font-weight:500;line-height:1.5;letter-spacing:-.8px;text-wrap:balance}
-  .enterprise-heading h2>span{display:inline-block}
-  .enterprise-heading h2>span+span{margin-left:.2em}
-  .enterprise-intro{max-width:820px;margin:16px 0 0;color:#aabed3;font-size:14px;line-height:1.9;text-wrap:pretty}
-  .enterprise-layout{position:relative;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:42px;align-items:center;max-width:1120px;margin:24px auto 0;isolation:isolate}
-  .enterprise-connectors{position:absolute;inset:0;width:100%;height:100%;z-index:-1;overflow:visible;pointer-events:none}
-  .enterprise-connectors path{stroke:url(#enterprise-link-light);stroke-width:1.35;stroke-linecap:round;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 3px #46cbff88)}
-  .enterprise-visual{min-width:0;width:min(100%,430px);justify-self:center}
-  .enterprise-environment{position:relative;min-width:0;width:100%;margin:0}
-  .enterprise-art{position:relative;min-width:0}
-  .enterprise-environment img{display:block;width:100%;height:auto}
-  .enterprise-topics{position:relative;display:flex;flex-direction:column;padding:24px 0 22px;isolation:isolate}
-  .enterprise-topics::before{content:'';position:absolute;inset:20px -12px 0 25px;z-index:-2;background:radial-gradient(ellipse at 65% 20%,#166be238,transparent 62%),radial-gradient(ellipse at 22% 77%,#188b9a24,transparent 60%);filter:blur(24px);pointer-events:none}
-  .enterprise-topics::after{content:'';position:absolute;inset:18px 3px 6px 50px;z-index:-1;border:1px solid #75a5c119;border-radius:18px;background:linear-gradient(135deg,#0d1c2d99,#070d1680);box-shadow:0 22px 40px -22px #000c;pointer-events:none}
-  .enterprise-topic{position:relative;min-width:0;border:1px solid #8bbde135;border-radius:16px;box-shadow:inset 0 1px 1px #c9e8ff08,5px 7px 0 -1px #0b1a2a,5px 7px 0 #90c3e020,10px 14px 0 -1px #08111c,10px 14px 0 #789fb414,-10px 24px 36px -18px #000e,0 34px 60px -28px #000e}
-  .enterprise-topic--deployment{z-index:1;width:calc(100% - 30px);margin-left:30px;padding:22px 24px 42px;border-color:#83b6df3d;background:radial-gradient(ellipse at 65% 60%,#1742a32b,transparent 72%),linear-gradient(125deg,#0c1b30f5,#070e1bef)}
-  .enterprise-topic--governance{z-index:2;width:calc(100% - 34px);margin-top:-16px;margin-right:34px;padding:23px 26px;border-color:#9acbe14d;background:radial-gradient(ellipse at 3% 32%,#225b8052,transparent 70%),linear-gradient(125deg,#102b40fa,#0a1423fa);box-shadow:inset 0 1px 1px #d7f1ff0a,5px 7px 0 -1px #10253a,5px 7px 0 #a8cee32b,10px 14px 0 -1px #0a1726,10px 14px 0 #7dabc31c,-14px 25px 42px -17px #000f,0 38px 65px -24px #000e}
-  .enterprise-topic h3{margin:0;color:#e2effa;font-size:20px;line-height:1.5;font-weight:500;letter-spacing:-.3px}
-  .enterprise-topic p{margin:10px 0 0;color:#aabed3;font-size:14px;line-height:1.8;text-wrap:pretty}
-  .enterprise-capabilities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;list-style:none;margin:19px 0 0;padding:0}
-  .enterprise-capabilities li{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;padding:11px 8px;border:1px solid #8eb9d12d;border-radius:10px;color:#b7cddd;background:linear-gradient(145deg,#162f46f2,#0a1626f2);box-shadow:inset 0 1px 0 #d2edff08,0 2px 2px #0003,0 13px 19px -9px #000c;text-align:left;font-size:11px;line-height:1.5}
-  .enterprise-capabilities li>span:last-child{min-width:0;overflow-wrap:anywhere}
-  .enterprise-topic--deployment .enterprise-capabilities li:nth-child(2),.enterprise-topic--governance .enterprise-capabilities li:first-child{transform:translateY(-5px);border-color:#7dccff80;color:#e3f4ff;background:radial-gradient(ellipse at 12% 8%,#30b8ef32,transparent 80%),linear-gradient(110deg,#0865b8,#1b3279);box-shadow:inset 0 1px 0 #d5f0ff26,0 2px 3px #0005,0 17px 23px -9px #000e,0 0 24px -9px #1778e66b}
-  .enterprise-topic--governance .enterprise-capabilities li:first-child{border-color:#73dbc66b;background:radial-gradient(ellipse at 10% 5%,#2ac5b426,transparent 80%),linear-gradient(115deg,#124852,#102540);box-shadow:inset 0 1px 0 #c0fff21a,0 2px 3px #0005,0 17px 23px -9px #000e,0 0 22px -10px #20baa84d}
-  .enterprise-topic--deployment .enterprise-capabilities li:nth-child(2){--feature-ink:#9be9ff}
-  .enterprise-topic--deployment .enterprise-capabilities li:last-child,.enterprise-topic--governance .enterprise-capabilities li:last-child{--feature-ink:#b6a5f2}
-  .enterprise-topic--governance .enterprise-capabilities li:first-child{--feature-ink:#91e6d1}
-  .enterprise-capability-icon{display:grid;place-items:center;flex-shrink:0;width:30px;height:32px;color:var(--feature-ink,#a3d7f0)}
-  .enterprise-capability-icon :global(svg){width:24px;height:24px;filter:drop-shadow(0 0 4px #50b6ed30)}
-  @media(max-width:1100px){
-    .enterprise-layout{gap:30px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
-    .enterprise-topic--deployment{padding:22px 18px 40px;margin-left:22px;width:calc(100% - 22px)}
-    .enterprise-topic--governance{padding:23px 20px;margin-right:24px;width:calc(100% - 24px)}
-    .enterprise-capabilities{gap:7px}.enterprise-capabilities li{padding:10px 6px;gap:5px}
-    .enterprise-connectors{display:none}
+  .home-enterprise {
+    position: relative;
+    padding-block: clamp(48px, 5vw, 76px);
+    overflow: clip;
   }
-  @media(max-width:800px){
-    .enterprise-layout{grid-template-columns:minmax(0,1fr);gap:8px;margin-top:28px}
-    .enterprise-heading h2>span{display:block}.enterprise-heading h2>span+span{margin-left:0}
-    .enterprise-visual{width:min(100%,380px)}
-    .enterprise-connectors{display:none}
-    .enterprise-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:10px 10px 16px 0}
-    .enterprise-topics::after{display:none}
-    .enterprise-topic{width:100%;margin:0;padding:22px 20px}
-    .enterprise-capabilities{gap:8px}.enterprise-capabilities li{flex-direction:column;gap:7px;font-size:11px;text-align:center}
+  :global(body #main.page-canvas) .home-enterprise {
+    background: transparent;
   }
-  @media(max-width:600px){
-    .enterprise-topics{grid-template-columns:minmax(0,1fr);gap:18px}
-    .enterprise-heading h2{font-size:28px;letter-spacing:-.6px}
-    .enterprise-intro{margin-top:14px}
-    .enterprise-topic{padding:22px}.enterprise-capabilities li{font-size:11px}
+  .enterprise-heading {
+    max-width: 1120px;
+    margin-inline: auto;
   }
-  @media(max-width:480px){.enterprise-visual{width:min(100%,300px)}}
+  .enterprise-heading h2 {
+    margin: 0;
+    color: #edf3fb;
+    font-size: clamp(28px, 2.5vw, 38px);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -.8px;
+    text-wrap: balance;
+  }
+  .enterprise-heading h2 > span {
+    display: inline-block;
+  }
+  .enterprise-heading h2 > span + span {
+    margin-left: .2em;
+  }
+  .enterprise-intro {
+    max-width: 880px;
+    margin: 16px 0 0;
+    color: #a6b5c8;
+    font-size: 14px;
+    line-height: 1.9;
+    text-wrap: pretty;
+  }
+  .enterprise-layout {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1.17fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 44px;
+    max-width: 1180px;
+    margin: 38px auto 0;
+  }
+  .enterprise-layout::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: -12% -7%;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 48% 46% at 43% 50%,
+      rgb(39 81 131 / .17) 0%,
+      rgb(27 58 95 / .11) 42%,
+      rgb(17 34 56 / .04) 72%,
+      transparent 100%
+    );
+  }
+  .enterprise-environment {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+  }
+  .enterprise-environment img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 76 / 41;
+    object-fit: contain;
+  }
+  .enterprise-environment figcaption {
+    margin-top: 8px;
+    color: #73879e;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .enterprise-topics {
+    display: grid;
+    gap: 46px;
+    min-width: 0;
+    padding-block: 12px;
+  }
+  .enterprise-topic {
+    min-width: 0;
+  }
+  .enterprise-topic h3 {
+    margin: 0;
+    color: #e8eff8;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -.35px;
+  }
+  .enterprise-topic p {
+    margin: 12px 0 0;
+    color: #a6b5c8;
+    font-size: 14px;
+    line-height: 1.85;
+    text-wrap: pretty;
+  }
+  .enterprise-capabilities {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    list-style: none;
+    margin: 21px 0 0;
+    padding: 0;
+  }
+  .enterprise-capabilities li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    color: #b8c8dd;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .enterprise-capabilities li > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .enterprise-capabilities :global(svg) {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: #8cabe0;
+  }
+  @media (max-width: 1100px) {
+    .enterprise-layout {
+      gap: 32px;
+    }
+    .enterprise-topics {
+      gap: 34px;
+    }
+    .enterprise-capabilities {
+      gap: 8px;
+    }
+    .enterprise-capabilities li {
+      gap: 7px;
+      font-size: 11px;
+    }
+    .enterprise-capabilities :global(svg) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media (max-width: 760px) {
+    .enterprise-heading h2 > span {
+      display: block;
+    }
+    .enterprise-heading h2 > span + span {
+      margin-left: 0;
+    }
+    .enterprise-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 26px;
+    }
+    .enterprise-layout::before {
+      inset: -3% -12%;
+      background-size: 100% 68%;
+      background-position: center 10%;
+      background-repeat: no-repeat;
+    }
+    .enterprise-environment {
+      max-width: 600px;
+      margin-inline: auto;
+    }
+    .enterprise-topics {
+      gap: 34px;
+      padding-block: 0;
+    }
+    .enterprise-topic h3 {
+      font-size: 21px;
+    }
+    .enterprise-topic p {
+      margin-top: 10px;
+    }
+    .enterprise-capabilities {
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .enterprise-capabilities li {
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 420px) {
+    .enterprise-capabilities li {
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 11px;
+    }
+    .enterprise-capabilities :global(svg) {
+      width: 19px;
+      height: 19px;
+    }
+  }
 </style>
