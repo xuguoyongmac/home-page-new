@@ -18,35 +18,43 @@ const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
   {visibleIndustries.map((industry) => (
     <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
       {home ? <>
-        <div class="industry-atmosphere" aria-hidden="true">
+        <div class="industry-stage">
           <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
-        </div>
-        <div class="industry-overview">
-          <div class="industry-summary">
-            <h3>{homeIndustries[locale][industry.slug].title}</h3>
-            <section class="industry-context" aria-labelledby={`context-title-${industry.slug}`}>
-              <h4 id={`context-title-${industry.slug}`}>{zh ? '业务现状' : 'Current work'}</h4>
-              <p>{homeIndustries[locale][industry.slug].pain}</p>
-            </section>
-            <section class="industry-work" aria-labelledby={`work-title-${industry.slug}`}>
-              <h4 id={`work-title-${industry.slug}`}>{zh ? '数字员工的工作' : 'Work for digital employees'}</h4>
-              <p>{homeIndustries[locale][industry.slug].value}</p>
-            </section>
-            <ul class="industry-scenarios" aria-label={zh ? '应用场景' : 'Use cases'}>
-              {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
-            </ul>
-            <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>
+          <div class="industry-stage-content">
+            <div class="industry-masthead-copy">
+              <div class="industry-heading-row">
+                <h3>{homeIndustries[locale][industry.slug].title}</h3>
+                <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>
+              </div>
+              <ul class="industry-scenarios" aria-label={zh ? '应用场景' : 'Use cases'}>
+                {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
+              </ul>
+            </div>
+            <div class="industry-body">
+              <div class="industry-overview">
+                <div class="industry-summary">
+                  <section class="industry-context" aria-labelledby={`context-title-${industry.slug}`}>
+                    <h4 id={`context-title-${industry.slug}`}><Icon name="search" size={18}/><span>{zh ? '业务现状' : 'Current work'}</span></h4>
+                    <p>{homeIndustries[locale][industry.slug].pain}</p>
+                  </section>
+                  <section class="industry-work" aria-labelledby={`work-title-${industry.slug}`}>
+                    <h4 id={`work-title-${industry.slug}`}><Icon name="workflow" size={18}/><span>{zh ? '数字员工的工作' : 'Work for digital employees'}</span></h4>
+                    <p>{homeIndustries[locale][industry.slug].value}</p>
+                  </section>
+                </div>
+              </div>
+              <section class="industry-results" aria-labelledby={`results-title-${industry.slug}`}>
+                <h4 id={`results-title-${industry.slug}`}><Icon name="chart" size={18}/><span>{zh ? '方案价值' : 'Solution value'}</span></h4>
+                <ul>
+                  {homeIndustries[locale][industry.slug].benefits.map(benefit => <li>
+                    <h5>{benefit.title}</h5>
+                    <p>{benefit.description}</p>
+                  </li>)}
+                </ul>
+              </section>
+            </div>
           </div>
         </div>
-        <section class="industry-results" aria-labelledby={`results-title-${industry.slug}`}>
-          <h4 id={`results-title-${industry.slug}`}>{zh ? '方案价值' : 'Solution value'}</h4>
-          <ul>
-            {homeIndustries[locale][industry.slug].benefits.map(benefit => <li>
-              <h5>{benefit.title}</h5>
-              <p>{benefit.description}</p>
-            </li>)}
-          </ul>
-        </section>
       </> : <>
         <div class="solution-outcome"><OutcomeExhibit locale={locale} compact exhibit={industry.story?.exhibit ?? {title:industry.name,request:industry.description,sources:industry.tasks.map(task=>task.title),columns:zh?['工作','业务动作','交付成果']:['Work','Action','Deliverable'],rows:industry.tasks.map(task=>[task.title,task.action,task.output]),deliverables:[]}}/></div>
         <div class="solution-copy">
