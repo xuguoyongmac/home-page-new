@@ -4,65 +4,80 @@ import { homeIndustries } from '../data/home-industries';
 import type { Locale } from '../data/types';
 import { pathFor } from '../lib/site';
 import Icon from './Icon.astro';
-import OutcomeExhibit from './pages/OutcomeExhibit.astro';
 interface Props { locale: Locale; home?: boolean; }
 const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
-const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : industries[locale];
+const visibleIndustries = home ? homeIndustrySlugs.map(slug => industries[locale].find(item => item.slug === slug)!) : [...industries[locale]].sort((a, b) => a.slug === 'general' ? -1 : b.slug === 'general' ? 1 : 0);
 const defaultSlug = home ? homeIndustrySlugs[0] : 'general';
+const PanelTitle = home ? 'h3' : 'h2';
+const GroupTitle = home ? 'h4' : 'h3';
+const BenefitTitle = home ? 'h5' : 'h4';
+const industryIcons: Record<string, string> = {
+  banking: 'bank', insurance: 'shield', securities: 'chart', trust: 'layers', government: 'landmark', 'state-owned': 'buildings', general: 'users',
+};
+const industryImages: Record<string, string> = {
+  banking: '/images/industries/banking-architecture_V1.1.webp',
+  insurance: '/images/industries/insurance-architecture_V1.1.webp',
+  securities: '/images/industries/securities-architecture_V1.1.webp',
+  trust: '/images/industries/trust-architecture_V1.0.webp',
+  government: '/images/industries/government-architecture_V1.1.webp',
+  'state-owned': '/images/industries/state-owned-architecture_V1.3.webp',
+  general: '/images/solutions/general/general-hero_V2.0.webp',
+};
+const resultIcons: Record<string, string[]> = {
+  banking: ['file-check', 'file-search', 'users'],
+  insurance: ['clipboard-check', 'file-search', 'workflow'],
+  securities: ['book', 'file-check', 'chart'],
+  trust: ['file-search', 'clipboard-check', 'file-check'],
+  government: ['file-search', 'folder', 'workflow'],
+  'state-owned': ['chart', 'clipboard-check', 'workflow'],
+};
 ---
-<div class:list={["solution-explorer", {"home-solutions":home}]} data-solution-explorer>
-  <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
-    {visibleIndustries.map((industry) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={industry.slug === defaultSlug} aria-controls={`panel-${industry.slug}`} tabindex={industry.slug === defaultSlug ? 0 : -1}>{!home && <Icon name={industry.icon} size={18}/>}{home && zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
+<div class:list={["solution-explorer", "home-solutions", {"solution-overview-explorer":!home}]} data-solution-explorer>
+  <div class="industry-navigation">
+    {home && <h2 id="industry-title">{zh ? '行业解决方案' : 'Industry solutions'}</h2>}
+    <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
+      {visibleIndustries.map((industry) => <button type="button" role="tab" id={`tab-${industry.slug}`} aria-selected={industry.slug === defaultSlug} aria-controls={`panel-${industry.slug}`} tabindex={industry.slug === defaultSlug ? 0 : -1}><Icon name={home ? industryIcons[industry.slug] : industry.icon} size={home ? 20 : 18}/>{zh ? industry.name.replace("解决方案","") : industry.name}</button>)}
+    </div>
   </div>
   {visibleIndustries.map((industry) => (
     <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
-      {home ? <>
-        <div class="industry-stage">
-          <img src={`/images/industries/${industry.slug}-background_V1.0.webp`} alt="" width="1536" height="1024" loading="lazy" decoding="async"/>
-          <div class="industry-stage-content">
-            <div class="industry-masthead-copy">
-              <div class="industry-heading-row">
-                <h3>{homeIndustries[locale][industry.slug].title}</h3>
-                <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>
-              </div>
+      <>
+        <div class="industry-scene-column">
+          <div class="industry-scene">
+            <img src={industryImages[industry.slug]} alt="" width="1200" height="800" loading="lazy" decoding="async"/>
+            <div class="industry-scene-content">
+              <PanelTitle>{homeIndustries[locale][industry.slug].title}</PanelTitle>
               <ul class="industry-scenarios" aria-label={zh ? '应用场景' : 'Use cases'}>
                 {homeIndustries[locale][industry.slug].scenarios.map(scenario => <li>{scenario}</li>)}
               </ul>
             </div>
-            <div class="industry-body">
-              <div class="industry-overview">
-                <div class="industry-summary">
-                  <section class="industry-context" aria-labelledby={`context-title-${industry.slug}`}>
-                    <h4 id={`context-title-${industry.slug}`}><Icon name="search" size={18}/><span>{zh ? '业务现状' : 'Current work'}</span></h4>
-                    <p>{homeIndustries[locale][industry.slug].pain}</p>
-                  </section>
-                  <section class="industry-work" aria-labelledby={`work-title-${industry.slug}`}>
-                    <h4 id={`work-title-${industry.slug}`}><Icon name="workflow" size={18}/><span>{zh ? '数字员工的工作' : 'Work for digital employees'}</span></h4>
-                    <p>{homeIndustries[locale][industry.slug].value}</p>
-                  </section>
-                </div>
-              </div>
-              <section class="industry-results" aria-labelledby={`results-title-${industry.slug}`}>
-                <h4 id={`results-title-${industry.slug}`}><Icon name="chart" size={18}/><span>{zh ? '方案价值' : 'Solution value'}</span></h4>
-                <ul>
-                  {homeIndustries[locale][industry.slug].benefits.map(benefit => <li>
-                    <h5>{benefit.title}</h5>
-                    <p>{benefit.description}</p>
-                  </li>)}
-                </ul>
-              </section>
-            </div>
           </div>
+          <section class="industry-context" aria-labelledby={`context-title-${industry.slug}`}>
+            <GroupTitle id={`context-title-${industry.slug}`}>{zh ? '业务现状' : 'Current work'}</GroupTitle>
+            <p>{homeIndustries[locale][industry.slug].pain}</p>
+          </section>
         </div>
-      </> : <>
-        <div class="solution-outcome"><OutcomeExhibit locale={locale} compact exhibit={industry.story?.exhibit ?? {title:industry.name,request:industry.description,sources:industry.tasks.map(task=>task.title),columns:zh?['工作','业务动作','交付成果']:['Work','Action','Deliverable'],rows:industry.tasks.map(task=>[task.title,task.action,task.output]),deliverables:[]}}/></div>
-        <div class="solution-copy">
-          <h3>{industry.title}</h3><p>{industry.description}</p>
-          <ul class="task-chips">{industry.tasks.map(task => <li><Icon name="check" size={13}/>{task.title}</li>)}</ul>
-          <a class="button button-small" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看解决方案' : 'Explore solution'}</a>
+        <div class="industry-delivery">
+          <section class="industry-work" aria-labelledby={`work-title-${industry.slug}`}>
+            <GroupTitle id={`work-title-${industry.slug}`}>{zh ? '数字员工的工作' : 'Work for digital employees'}</GroupTitle>
+            <p>{homeIndustries[locale][industry.slug].value}</p>
+          </section>
+          <section class="industry-results" aria-labelledby={`results-title-${industry.slug}`}>
+            <GroupTitle id={`results-title-${industry.slug}`}>{zh ? '方案价值' : 'Solution value'}</GroupTitle>
+            <ul>
+              {homeIndustries[locale][industry.slug].benefits.map((benefit, index) => <li>
+                <span class="industry-result-icon"><Icon name={resultIcons[industry.slug]?.[index] ?? ['users', 'book', 'chart'][index]} size={24}/></span>
+                <div>
+                  <BenefitTitle>{benefit.title}</BenefitTitle>
+                  <p>{benefit.description}</p>
+                </div>
+              </li>)}
+            </ul>
+          </section>
+          <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>
         </div>
-      </>}
+      </>
     </div>
   ))}
 </div>

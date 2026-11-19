@@ -8,6 +8,8 @@ import sharp from 'sharp';
 const widths = [480, 800, 1200, 1600, 2000, 2400];
 const fullWidthBackgroundClasses = new Set([
   'banking-banner-background',
+  'industry-value-landscape',
+  'solutions-overview-landscape',
   'soe-industrial-site',
   'government-civic-landscape',
   'about-hero-background',

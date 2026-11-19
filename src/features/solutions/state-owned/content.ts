@@ -7,7 +7,7 @@ export default createIndustryModule({
   icon: 'buildings',
   names: { zh: '央国企解决方案', en: 'State-owned enterprises' },
   navigation: {
-    zh: { name: '央国企', description: '预算经营、采购投标、合同履约与现场整改', icon: 'buildings' },
-    en: { name: 'State-owned enterprises', description: 'Budgets, procurement, contracts and site remediation', icon: 'buildings' },
+    zh: { name: '央国企', description: '穿透经营管控，贯通项目履约与监督整改', icon: 'buildings' },
+    en: { name: 'State-owned enterprises', description: 'Group oversight, project delivery and accountable improvement', icon: 'buildings' },
   },
 }, stateOwnedPresentation);

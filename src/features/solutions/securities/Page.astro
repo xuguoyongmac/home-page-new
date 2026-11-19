@@ -1,10 +1,8 @@
 ---
 import type { Locale } from '../../../data/types';
 import IndustrySolutionPage from '../shared/IndustrySolutionPage.astro';
-import SolutionVisual from './SolutionVisual.astro';
 import { securitiesPresentation } from './page-content';
-import '../../../styles/securities-landscape.css';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 ---
-<IndustrySolutionPage locale={locale} slug="securities" Visual={SolutionVisual} presentation={securitiesPresentation[locale]} backgroundSize={{ width: 3344, height: 1882 }}/>
+<IndustrySolutionPage locale={locale} slug="securities" presentation={securitiesPresentation[locale]}/>

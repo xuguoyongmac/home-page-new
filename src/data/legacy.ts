@@ -20,7 +20,7 @@ export const legalContent = {
       "sections": {
         "introduction": {
           "title": "适用范围与服务提供者",
-          "content": "深圳市扎马未来科技有限公司（以下简称“我们”）提供 Zhama 官网、TeGo 数字分身工作空间及 ZhaMa（扎马AI）公版移动应用。本政策说明这些服务如何访问、收集、使用、存储、提供和删除个人信息。",
+          "content": "深圳市扎马星辰科技有限公司（以下简称“我们”）提供 Zhama 官网、TeGo 数字员工协作平台及 ZhaMa（扎马AI）公版移动应用。本政策说明这些服务如何访问、收集、使用、存储、提供和删除个人信息。",
           "content2": "使用不同服务器、数字分身、模型或扩展服务时，实际处理方和处理地点可能不同。企业私有部署及第三方自建服务器由相应部署方管理；请同时查看其隐私说明。我们仅在提供您使用的功能、保障服务安全或履行法定义务所需的范围内处理数据。"
         },
         "collection": {
@@ -174,7 +174,7 @@ export const legalContent = {
           "content": "如需咨询隐私、行使数据权利或发起账号注销，请联系：",
           "items": [
             "邮箱：contact@zhama.com",
-            "服务提供者：深圳市扎马未来科技有限公司"
+            "服务提供者：深圳市扎马星辰科技有限公司"
           ],
           "response": "我们会在30天内回复您的请求，核验身份后告知处理情况。请勿通过邮件发送密码或验证码。"
         }
@@ -186,12 +186,12 @@ export const legalContent = {
       "sections": {
         "acceptance": {
           "title": "接受条款",
-          "content": "欢迎使用TeGo OS平台。通过访问和使用我们的服务，您表示同意受本服务条款的约束。如果您不同意这些条款，请不要使用我们的服务。",
+          "content": "欢迎使用TeGo 数字员工协作平台。通过访问和使用我们的服务，您表示同意受本服务条款的约束。如果您不同意这些条款，请不要使用我们的服务。",
           "content2": "我们保留随时修改这些条款的权利。您继续使用服务将被视为接受修改后的条款。"
         },
         "service": {
           "title": "服务描述",
-          "content": "TeGo OS是一个企业级多智能体自主协作平台，提供以下服务：",
+          "content": "TeGo 数字员工协作平台是一个企业级多智能体自主协作平台，提供以下服务：",
           "items": [
             "多智能体协同调度与管理",
             "LAMP智能协作框架",
@@ -273,7 +273,7 @@ export const legalContent = {
       "sections": {
         "introduction": {
           "title": "Scope and service provider",
-          "content": "Shenzhen Zhama Future Technology Co., Ltd. (\"we\") provides the Zhama website, the TeGo digital avatar workspace, and the public ZhaMa mobile app (also named 扎马AI). This policy explains how these services access, collect, use, store, disclose and delete personal information.",
+          "content": "Shenzhen Zhama Xingchen Technology Co., Ltd. (\"we\") provides the Zhama website, the TeGo digital employee collaboration platform, and the public ZhaMa mobile app (also named 扎马AI). This policy explains how these services access, collect, use, store, disclose and delete personal information.",
           "content2": "The processor and processing location can vary with the server, digital avatar, model or extension you choose. Enterprise private deployments and third-party self-hosted servers are managed by their operators; please also review their privacy notices. We process data as needed to provide the features you use, secure the service or meet legal obligations."
         },
         "collection": {
@@ -427,7 +427,7 @@ export const legalContent = {
           "content": "For privacy questions, data-rights requests or account deletion, contact:",
           "items": [
             "Email: contact@zhama.com",
-            "Service provider: Shenzhen Zhama Future Technology Co., Ltd."
+            "Service provider: Shenzhen Zhama Xingchen Technology Co., Ltd."
           ],
           "response": "We will respond within 30 days and explain processing after verifying identity. Do not email passwords or verification codes."
         }
@@ -439,12 +439,12 @@ export const legalContent = {
       "sections": {
         "acceptance": {
           "title": "Acceptance of Terms",
-          "content": "Welcome to the Tego OS platform. By accessing or using our services, you agree to these Terms of Service. If you do not agree, please do not use the services.",
+          "content": "Welcome to the TeGo digital employee collaboration platform. By accessing or using our services, you agree to these Terms of Service. If you do not agree, please do not use the services.",
           "content2": "We may update these terms from time to time. Your continued use of the services means you accept the updated terms."
         },
         "service": {
           "title": "Service Description",
-          "content": "Tego OS is an enterprise AI workforce platform that provides:",
+          "content": "The TeGo digital employee collaboration platform is an enterprise AI workforce platform that provides:",
           "items": [
             "Multi-agent orchestration and management",
             "LAMP-based agent collaboration",
