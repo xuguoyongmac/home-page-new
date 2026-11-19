@@ -25,21 +25,22 @@ const governance = [
         : <><span>Deploy on your terms.</span><span>Operate with control.</span></>}
       </h2>
       <p class="enterprise-intro">{zh
-        ? '数据与模型不出企业边界，支持私有化部署与本地模型接入。权限与组织架构对齐，操作全程留痕、可追溯审计。让 AI 在企业既有安全框架内规范运行。'
-        : 'Keep data and models within your enterprise boundary, with private deployment and local model integration. Align permissions with your organization and retain traceable audit records throughout operations. Run AI within your existing security framework.'}
+        ? '私有化部署，数据不出域，全程可审计'
+        : 'Private deployment. Data stays within your boundary. Every action is auditable.'}
       </p>
     </header>
 
     <div class="enterprise-layout">
       <figure class="enterprise-environment">
         <img
-          src={zh ? '/images/enterprise/home-enterprise-network-zh_V11.2.svg' : '/images/enterprise/home-enterprise-network-en_V11.2.svg'}
-          width="760" height="600" loading="lazy" decoding="async"
+          src={zh ? '/images/enterprise/home-enterprise-network-zh_V12.7.svg' : '/images/enterprise/home-enterprise-network-en_V12.7.svg'}
+          width="760" height="410" loading="lazy" decoding="async"
           sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1180px) 50vw, 600px"
           alt={zh
             ? '企业知识库、Compose 或 Kubernetes 部署的 TeGo 平台与 vLLM、Qwen 本地模型服务连接同一企业内网，业务系统通过 MCP、RESTful API 或数据库接入，并纳入组织身份权限和审核审计。'
             : 'Enterprise knowledge, the TeGo platform deployed with Compose or Kubernetes, and local vLLM and Qwen model services connect through the enterprise network, alongside business systems using MCP, RESTful APIs or databases, with organizational identity, access, review and audit.'}
         />
+        <figcaption>{zh ? '企业内网 · 私有化部署' : 'Enterprise network · Private deployment'}</figcaption>
       </figure>
 
       <div class="enterprise-topics">
@@ -106,12 +107,28 @@ const governance = [
     text-wrap: pretty;
   }
   .enterprise-layout {
+    position: relative;
+    isolation: isolate;
     display: grid;
     grid-template-columns: minmax(0, 1.17fr) minmax(0, 1fr);
     align-items: center;
     gap: 44px;
     max-width: 1180px;
     margin: 38px auto 0;
+  }
+  .enterprise-layout::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: -12% -7%;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 48% 46% at 43% 50%,
+      rgb(39 81 131 / .17) 0%,
+      rgb(27 58 95 / .11) 42%,
+      rgb(17 34 56 / .04) 72%,
+      transparent 100%
+    );
   }
   .enterprise-environment {
     min-width: 0;
@@ -122,8 +139,15 @@ const governance = [
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 19 / 15;
+    aspect-ratio: 76 / 41;
     object-fit: contain;
+  }
+  .enterprise-environment figcaption {
+    margin-top: 8px;
+    color: #73879e;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
   }
   .enterprise-topics {
     display: grid;
@@ -206,6 +230,12 @@ const governance = [
       grid-template-columns: minmax(0, 1fr);
       gap: 28px;
       margin-top: 26px;
+    }
+    .enterprise-layout::before {
+      inset: -3% -12%;
+      background-size: 100% 68%;
+      background-position: center 10%;
+      background-repeat: no-repeat;
     }
     .enterprise-environment {
       max-width: 600px;

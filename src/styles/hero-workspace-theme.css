@@ -66,20 +66,18 @@
 .is-home .hero-team-composition .team-employees small { color: var(--workspace-muted); }
 .is-home .hero-team-composition .team-employees > button[aria-selected='true'] {
   color: #f3fcff;
-  background: radial-gradient(ellipse at 12% 0%, #00deff38, transparent 66%),
-    linear-gradient(115deg, #006bd9ed, #062d78c7);
+  background: #14528f;
   transform: translateY(-4px);
-  --edge-paint: radial-gradient(ellipse 58% 145% at 13% 0%, #e1f7ffb3 0%, #85d3ff59 35%, transparent 76%);
+  --edge-paint: #85c7ff66;
   border-color: #a4dcff66;
-  box-shadow: inset 0 0 0 1px #00000028, 0 0 17px -5px #008cff99,
-    0 7px 16px -7px #004dff8c, 0 7px 10px -7px #000e;
+  box-shadow: inset 0 0 0 1px #00000028, 0 7px 10px -7px #000e;
 }
 
 .is-home .hero-team-composition .team-employees > button[aria-selected='true'] small { color: #b9e5ff; }
 .is-home .hero-team-composition .team-employees > button[aria-selected='true'] .team-employee-icon {
   color: #c1f7ff;
   background: #00bfff1f;
-  filter: drop-shadow(0 0 2px #4dd9ff8c);
+  filter: none;
 }
 .is-home .hero-team-composition .team-employees > button:focus-visible {
   outline-color: #85e6ff;
@@ -140,7 +138,7 @@
 .is-home .hero-team-composition .chart-revenue {
   stroke: #21dfff;
   stroke-width: 2.4;
-  filter: drop-shadow(0 0 .7px #91f1ff99) drop-shadow(0 0 4px #00c3ffc2) drop-shadow(0 0 9px #006bff66);
+  filter: none;
 }
 .is-home .hero-team-composition .chart-profit { stroke: var(--data-delivery); stroke-width: 1.2; }
 .is-home .hero-team-composition .analytics-trend stop { stop-color: var(--data-subscription); }
@@ -149,7 +147,7 @@
 .is-home .hero-team-composition .chart-dot:last-of-type {
   fill: #e2fcff;
   stroke: #87efff;
-  filter: drop-shadow(0 0 2px #b4f7ff) drop-shadow(0 0 7px #00bfffe0);
+  filter: none;
 }
 .is-home .hero-team-composition .revenue-panel {
   background: radial-gradient(ellipse at 59% 54%, #007bff1a, transparent 74%), var(--workspace-surface);

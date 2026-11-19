@@ -11,7 +11,7 @@
 .sl-hero[data-hero-motion] .chart-profit{animation:tego-profit-reveal var(--dashboard-cycle-duration) ease-in-out infinite}
 .sl-hero[data-hero-motion] .analytics-trend polygon{animation:tego-area-reveal var(--dashboard-cycle-duration) ease-in-out infinite}
 .sl-hero[data-hero-motion] .chart-dot{animation:tego-dot-reveal var(--dashboard-cycle-duration) ease-in-out infinite}
-.sl-hero[data-hero-motion] .chart-dot:last-of-type{filter:drop-shadow(0 0 2.5px #4bc5ff);animation:tego-trend-endpoint var(--dashboard-cycle-duration) ease-in-out infinite}
+.sl-hero[data-hero-motion] .chart-dot:last-of-type{animation:tego-trend-endpoint var(--dashboard-cycle-duration) ease-in-out infinite}
 .sl-hero[data-hero-motion] .order-bar{transform-box:fill-box;transform-origin:center bottom;animation:tego-orders-reveal var(--dashboard-cycle-duration) ease-in-out infinite}
 .sl-hero[data-hero-motion] .driver-bar{transform-origin:left center;animation:tego-driver-reveal var(--dashboard-cycle-duration) ease-in-out infinite}
 .sl-hero[data-hero-motion='paused'] :is(.hero-star,[data-hero-workspace] *),.sl-hero[data-motion-suspended='true'] *{animation-play-state:paused!important}
