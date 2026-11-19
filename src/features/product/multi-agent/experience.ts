@@ -7,11 +7,11 @@ export default {
     sections: [
       {
         id: 'plan', kind: 'execution',
-        title: '先把目标分清楚，再让专业 Agent 各司其职',
-        body: '主 Agent 围绕目标与工作规则安排专业子任务，将资料检索、数据提取和风险梳理分别组织起来，让每项工作都有明确的方向与返回内容。',
+        title: '目标分清楚，专业 Agent 各司其职',
+        body: '主 Agent 围绕目标与工作规则安排专业子任务，把资料检索、数据提取和风险梳理分别组织起来，每项工作都有明确的方向与返回内容。',
         points: [
-          { title: '目标与工作要求统一', body: '在主任务中交代业务目标和所需材料，专业工作围绕同一目标展开。' },
-          { title: '按配置调用专业子 Agent', body: '将适合独立推进的事项分别分派，减少一项任务承载全部工作的混杂。' },
+          { title: '一次交办，统一目标与要求', body: '在主任务中交代业务目标和所需材料，让检索、提取、分析与核对围绕同一目标展开。' },
+          { title: '按配置调用专业子 Agent', body: '把适合独立推进的事项分别分派，减少一项任务承载全部工作的混杂。' },
         ],
         visual: {
           title: '项目尽调材料编制', context: '主任务 · 专业分工', tabs: ['任务目标', '专业子任务', '返回成果'],
@@ -32,8 +32,8 @@ export default {
         title: '多项专业工作同时推进，进度与结果集中掌握',
         body: '可独立处理的事项交给专业子 Agent 分工推进。任务界面保留运行、完成与错误状态，返回结果与子任务对应，便于查看进展和定位需要介入的环节。',
         points: [
-          { title: '独立事项分工推进', body: '资料检索、信息提取与风险梳理分别开展，共同服务主任务。' },
-          { title: '状态与返回结果对应', body: '从主任务查看各子任务状态及其返回内容，继续整理与审阅。' },
+          { title: '独立事项并行推进', body: '适合并行的子任务分别执行，减少相互等待。' },
+          { title: '状态与返回结果对应', body: '在主任务查看子任务进展、异常与返回内容，减少反复询问与分散跟进。' },
         ],
         visual: {
           title: '专业执行记录', context: '项目尽调 · 子任务返回', tabs: ['执行进度', '返回结果', '异常状态'],
@@ -51,10 +51,10 @@ export default {
       },
       {
         id: 'delivery', kind: 'document',
-        title: '把分项发现合成完整材料，让业务接着审、接着用',
+        title: '分项发现合成完整材料，业务接着审、接着用',
         body: '专业子 Agent 返回结果后，主任务继续归集资料、整理结论和组织报告。分项成果与风险清单一起保留，业务人员可以沿着材料继续复核和修改。',
         points: [
-          { title: '分项结果统一归集', body: '将资料、数据与风险分析放回同一任务，减少人工在不同交接中拼凑成果。' },
+          { title: '分项结果统一归集', body: '资料、数据与风险分析放回同一任务，减少人工接力与分散拼凑。' },
           { title: '完整成果衔接业务复核', body: '把报告材料与需要判断的事项一并交付，专业结论由业务人员继续审阅。' },
         ],
         visual: {
@@ -82,8 +82,8 @@ export default {
         title: 'Define the goal and give each specialist a clear responsibility',
         body: 'The main Agent organizes specialist subtasks around the goal and working rules. Separate research, extraction and risk analysis, with a clear direction and expected return for each workstream.',
         points: [
-          { title: 'Keep the goal and requirements together', body: 'Set the business objective and material requirements in the main task so specialist work follows the same goal.' },
-          { title: 'Call configured specialist Agents', body: 'Delegate work that can proceed independently, keeping every responsibility clear.' },
+          { title: 'One request, shared requirements', body: 'Set the objective and required materials in the main task so research, extraction, analysis and checking follow one goal.' },
+          { title: 'Call configured specialist Agents', body: 'Delegate independent work to the appropriate specialists instead of mixing every responsibility in one task.' },
         ],
         visual: {
           title: 'Prepare due diligence materials', context: 'Main task · Specialist responsibilities', tabs: ['Task goal', 'Specialist tasks', 'Returned results'],
@@ -104,8 +104,8 @@ export default {
         title: 'Keep specialist work moving and see progress in one place',
         body: 'Delegate independent work to specialist Agents. Task views retain running, completed and error states, with each returned result connected to its subtask, making progress and intervention points easier to locate.',
         points: [
-          { title: 'Let independent work progress separately', body: 'Research, extraction and risk analysis each move forward while serving the main task.' },
-          { title: 'Connect execution states with results', body: 'Review each subtask and its returned content in the main task before continuing preparation and review.' },
+          { title: 'Run independent work in parallel', body: 'Eligible subtasks execute separately to reduce unnecessary waiting.' },
+          { title: 'Connect execution states with results', body: 'See progress, issues and returned content in the main task, reducing repeated checks across separate workstreams.' },
         ],
         visual: {
           title: 'Specialist execution records', context: 'Due diligence · Returned subtasks', tabs: ['Execution', 'Returned results', 'Error states'],
@@ -126,7 +126,7 @@ export default {
         title: 'Assemble specialist findings into materials the business can review',
         body: 'When specialist Agents return, the main task continues collecting sources, organizing findings and preparing the report. Keep subtask outputs and review items together so colleagues can continue checking and editing.',
         points: [
-          { title: 'Collect specialist results together', body: 'Bring sources, data and analysis into one task, reducing manual assembly across separate handoffs.' },
+          { title: 'Collect specialist results together', body: 'Bring sources, data and risk analysis into one task, reducing manual assembly across separate handoffs.' },
           { title: 'Connect delivery with business review', body: 'Return report materials together with items requiring judgment for the responsible colleague to review.' },
         ],
         visual: {

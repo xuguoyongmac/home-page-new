@@ -1,9 +1,88 @@
 ---
-import CapabilityLanding from '../../../components/pages/CapabilityLanding.astro';
-import content from './content';
+import { pathFor, site } from '../../../lib/site';
+import EmployeeMarketArt from './EmployeeMarketArt.astro';
+import EmployeeBannerBackdrop from './EmployeeBannerBackdrop.astro';
+import EmployeeFeatureArt from './EmployeeFeatureArt.astro';
+import Icon from '../../../components/Icon.astro';
+import experience from './experience';
 import landing from './landing';
 import type { Locale } from '../../../data/types';
+import '../../../styles/digital-employee-reading.css';
+
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const zh = locale === 'zh';
+const copy = landing[locale];
+const scenes = experience[locale];
+const product = 'product/digital-employees';
+const compositionParts = zh ? [
+  { icon: 'user-check', title: '岗位职责', body: '明确员工身份、工作规则与协作边界。' },
+  { icon: 'cpu', title: 'Agent 与专业技能', body: 'Agent 承担执行、调用技能，按岗位需要编排协作。' },
+  { icon: 'book', title: '企业知识与业务系统', body: '知识按授权检索，插件与业务系统按配置和授权接入。' },
+  { icon: 'folder', title: '工作区与工作记忆', body: '保存文件、会话与业务成果，工作记忆按使用者隔离。' },
+] : [
+  { icon: 'user-check', title: 'Role responsibilities', body: 'Define the employee’s identity, work rules, and collaboration boundaries.' },
+  { icon: 'cpu', title: 'Agent and specialist skills', body: 'Agents execute work, call skills, and collaborate as the role requires.' },
+  { icon: 'book', title: 'Knowledge and business systems', body: 'Search knowledge within permissions. Connect plugins and systems with configuration and authorization.' },
+  { icon: 'folder', title: 'Workspace and work memory', body: 'Keep files, conversations, and deliverables, with work memory isolated by user.' },
+];
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: zh ? '首页' : 'Home', item: new URL(pathFor(locale), site.origin).href },
+    { '@type': 'ListItem', position: 2, name: zh ? '产品能力' : 'Product', item: new URL(pathFor(locale, 'product'), site.origin).href },
+    { '@type': 'ListItem', position: 3, name: copy.hero.lines[0], item: new URL(pathFor(locale, product), site.origin).href },
+  ],
+};
 ---
-<CapabilityLanding locale={locale} capability={content} copy={landing[locale]}/>
+<div class="employee-page" data-capability="digital-employees">
+  <div class="employee-hero-banner">
+    <EmployeeBannerBackdrop locale={locale}/>
+  <section class="employee-hero employee-wrap" aria-labelledby="capability-title">
+    <div class="employee-hero-intro">
+      <h1 id="capability-title">{copy.hero.lines[0]}</h1>
+      <div class="employee-hero-copy">
+        <p>{copy.hero.summary}</p>
+        <a class="button employee-action" href={pathFor(locale, 'contact')}>{zh ? '预约产品演示' : 'Book a product demo'}</a>
+      </div>
+    </div>
+    <figure class="employee-hero-art">
+      <EmployeeMarketArt locale={locale}/>
+    </figure>
+  </section>
+  </div>
+
+  <div class="employee-work employee-wrap">
+    {scenes.sections.map(({ id, title, subtitle, body }) => {
+      return (
+        <section id={`capability-${id}`} class:list={['employee-story', `employee-story-${id}`]} aria-labelledby={`capability-${id}-title`}>
+          <div class="employee-story-text">
+            <h2 id={`capability-${id}-title`}>{zh ? title.split('，').map((phrase, index, phrases) => <span class="employee-title-phrase">{phrase}{index < phrases.length - 1 ? '，' : ''}</span>) : title}</h2>
+            {id === 'work' ? <p class="employee-composition-description">{body}</p> : <><p class="employee-story-subtitle">{subtitle}</p><p class="employee-story-body">{body}</p></>}
+          </div>
+          {id === 'work' && <dl class="employee-composition-parts">
+            {compositionParts.map(part => <div><dt><Icon name={part.icon} size={18}/><span>{part.title}</span></dt><dd>{part.body}</dd></div>)}
+          </dl>}
+          <figure class="employee-story-art">
+            <EmployeeFeatureArt locale={locale} scene={id}/>
+          </figure>
+        </section>
+      );
+    })}
+  </div>
+
+  <section id="capability-management" class="employee-management employee-wrap" aria-labelledby="capability-features-title">
+    <div class="employee-management-intro">
+      <h2 id="capability-features-title">{zh ? '五项管理，支撑长期运行' : 'Five areas of management for ongoing operations'}</h2>
+      <p class="employee-story-subtitle">{zh ? '模板分发、招募审批、权限委托、定时任务与记忆复盘，逐层可配置、可追溯' : 'Manage template distribution, recruitment, delegation, schedules, and memory review with configuration and traceable records.'}</p>
+      <p class="employee-story-body">{zh ? '五项管理都在同一层完成：从模板中维护职责、技能与工作区文件并分发，从模板创建实例并完成审批，分别界定使用范围、知识访问与代办范围，配置周期性任务并查看运行记录，按组织策略复盘并沉淀为技能。' : 'Maintain and distribute responsibilities, skills, and workspace files in templates. Create independent employees and complete recruitment approval. Set access and delegation scopes, schedule recurring work, inspect run records, and review work under organizational policy to develop reusable skills.'}</p>
+    </div>
+    <div class="employee-management-band">
+      <span class="employee-management-label">{zh ? '运行管理面' : 'Operations management'}</span>
+      <dl class="employee-capabilities">
+      {copy.features.map(feature => <div><dt><span class="employee-management-icon"><Icon name={feature.icon} size={21}/></span>{feature.title}</dt><dd>{feature.body}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+</div>
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)}/>

@@ -26,6 +26,9 @@ export default {
       { icon: 'file', title: '把原文依据带进回答与文稿', body: '将命中的资料用于问答和写作，通过引用定位原文片段与上下文，让业务复核沿着依据展开。' },
       { icon: 'folder', title: '在项目中延续背景与成果', body: '在项目空间保留工作背景、资料和成果。项目资料检索限定在对应项目和成员范围，为下一轮工作接续上下文。' },
       { icon: 'key', title: '按访问范围使用企业知识', body: '管理个人与共享知识库，按成员、部门和库内角色授权，数字员工按调用人权限检索。' },
+      {"icon": "workflow", "title": "入库任务可跟踪，失败可续办", "body": "上传后查看解析、分段与索引任务，按配置使用 OCR 与图片处理；失败保留原因与尝试记录，支持重试、重新处理及原文件替换。"},
+      {"icon": "wrench", "title": "知识内容随业务持续维护", "body": "查看原文件、阅读段落与检索切片，修改、增加、删除或停用不适用的段落；内容模型、嵌入模型与检索参数分别配置。"},
+      {"icon": "layers", "title": "知识、项目与记忆各司其职", "body": "企业知识服务长期维护与跨任务复用；项目索引只服务当前项目和成员；工作记忆延续员工与使用者的上下文，三者不自动合并访问范围。"},
     ],
     scenarios: [
       { title: '制度答复有出处，方案编制有依据', body: '检索适用制度与业务规范，整理答复或方案正文，并关联原文片段。业务人员从引用回看依据，核对办理要求与材料内容。', flow: ['匹配适用制度', '带依据形成文稿', '回看原文复核'] },
@@ -65,6 +68,9 @@ export default {
       { icon: 'file', title: 'Keep evidence with answers and drafts', body: 'Use retrieved material in answers and documents. References lead to the original passage and surrounding context for review.' },
       { icon: 'folder', title: 'Carry project context forward', body: 'Retain project background, files and deliverables. Project retrieval stays within the relevant project and its members.' },
       { icon: 'key', title: 'Use knowledge within authorized boundaries', body: 'Manage personal and shared libraries by member, department and library role. Digital employees retrieve according to the caller’s permissions.' },
+      {"icon": "workflow", "title": "Track ingestion and recover failed processing", "body": "Follow parsing, chunking and indexing jobs after upload, with OCR and image handling as configured. Failed jobs retain reasons and attempts for retry, reprocessing or source-file replacement."},
+      {"icon": "wrench", "title": "Maintain knowledge as business content changes", "body": "Review source files, reading passages and retrieval chunks. Edit, add, remove or disable unsuitable passages. Configure content models, embedding models and retrieval settings separately."},
+      {"icon": "layers", "title": "Give knowledge, project content and memory distinct roles", "body": "Enterprise knowledge supports maintained sources and reuse across tasks. Project indexing serves that project and its members. Work memory continues employee-user context; their access scopes do not merge automatically."},
     ],
     scenarios: [
       { title: 'Policy answers and proposals with evidence', body: 'Find applicable policies and business standards, prepare an answer or proposal, and attach the relevant passages. Reviewers follow references to check the requirements and supporting material.', flow: ['Find applicable policies', 'Draft with evidence', 'Review original passages'] },

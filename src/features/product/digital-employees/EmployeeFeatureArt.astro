@@ -1,0 +1,192 @@
+---
+import type { Locale } from '../../../data/types';
+import EmployeeWorkspaceArt from './EmployeeWorkspaceArt.astro';
+import Icon from '../../../components/Icon.astro';
+interface Props { locale: Locale; scene: 'work' | 'recruit' | 'continuity'; }
+const { locale, scene } = Astro.props;
+const zh = locale === 'zh';
+const labels = {
+  responsibilities: zh ? '岗位职责' : 'Responsibilities',
+  skills: zh ? '专业技能' : 'Skills',
+  workspace: zh ? '工作区' : 'Workspace',
+  knowledge: zh ? '企业知识' : 'Knowledge',
+  tools: zh ? '业务工具' : 'Business tools',
+  memory: zh ? '工作记忆' : 'Work memory',
+};
+const descriptions = {
+  work: zh ? '数字员工组成示意图：财务核算专员由岗位职责、Agent 执行、专业技能与工作区共同组成。职责文件展开身份、行为、工作与工具规则；主 Agent 可按需要与核算、复核等子 Agent 协作。工作区保存文件、会话与业务成果，工作记忆按使用者隔离，企业知识、插件与业务系统按配置与授权接入。' : 'A digital employee consists of role responsibilities, Agent execution, specialist skills and a workspace. Role files define identity, conduct, collaboration and tool rules. A main Agent can work with accounting and review subagents as needed. The workspace holds files, conversations and deliverables; work memory is isolated by user. Knowledge, plugins and systems connect with authorization.',
+  recruit: zh ? '合同履约协作数字员工模板通过招募，供华南投标组和华北投标组分别创建独立运行的数字员工，权限按使用者与项目配置。' : 'A contract fulfillment template is recruited into independent digital employees for the South China and North China bid teams, with permissions configured per user and project.',
+  continuity: zh ? '会话交办与定时任务汇入要求与资料：整理本月核算材料并列出对账差异。Agent 按岗位规则执行，交付核算结果表和差异复核清单，异常由财务人员复核，工作记忆接续下一轮。' : 'Conversation and scheduled tasks provide monthly close requirements and materials. Agents follow role rules and deliver calculations and a difference checklist for finance staff to review. Work memory carries context into the next round.',
+};
+const teamNames = zh ? ['华南投标组', '华北投标组'] : ['South China bid team', 'North China bid team'];
+const outputs = zh ? ['核算结果表.xlsx', '差异复核清单.docx'] : ['Calculations.xlsx', 'Review checklist.docx'];
+---
+<div class:list={['employee-feature-art', `feature-art-${scene}`]} role="img" aria-label={descriptions[scene]}>
+  {scene === 'work' && <EmployeeWorkspaceArt locale={locale}/>}
+  {scene === 'recruit' && <div class="recruit-diagram" aria-hidden="true">
+    <svg class="diagram-wires" viewBox="0 0 600 400" preserveAspectRatio="none">
+      <path d="M234 200H290V104H348M290 200V288H348"/>
+      <circle class="wire-terminal" cx="348" cy="104" r="3"/>
+      <circle class="wire-terminal" cx="348" cy="288" r="3"/>
+    </svg>
+    <div class="recruit-panel template-panel">
+      <span class="diagram-overline">{zh ? '数字员工模板' : 'Digital employee template'}</span>
+      <span class="template-symbol"><Icon name="layers" size={23}/></span>
+      <strong class="template-name">{zh ? '合同履约协作' : 'Contract fulfillment'}</strong>
+      <dl class="template-parts">
+        <div><dt>{labels.responsibilities}</dt><dd>{zh ? '身份与规则' : 'Identity and rules'}</dd></div>
+        <div><dt>{zh ? 'Agent 配置' : 'Agent configuration'}</dt><dd>{zh ? '执行设置' : 'Execution settings'}</dd></div>
+        <div><dt>{labels.skills}</dt><dd>{zh ? '处理方法' : 'Work methods'}</dd></div>
+        <div><dt>{zh ? '工作文件' : 'Work files'}</dt><dd>{zh ? '模板与资料' : 'Files and materials'}</dd></div>
+      </dl>
+      <div class="template-files"><Icon name="file" size={12}/><span>AGENTS.md</span><Icon name="folder" size={12}/><span>{zh ? '工作文件' : 'Work files'}</span></div>
+      <span class="recruit-action">{zh ? '招募' : 'Recruit'}</span>
+    </div>
+    {teamNames.map((name, index) => <div class:list={['recruit-panel', 'instance-panel', `instance-${index}`]}>
+      <div class="instance-heading"><span class="instance-symbol"><Icon name="users" size={18}/></span><strong>{name}</strong></div>
+      <span class="instance-caption">{zh ? '数字员工 · 独立运行' : 'Digital employee · Independent'}</span>
+      <div class="instance-parts"><span><Icon name="cpu" size={12}/>Agent</span><span><Icon name="layers" size={12}/>{zh ? '技能' : 'Skills'}</span><span><Icon name="folder" size={12}/>{labels.workspace}</span></div>
+    </div>)}
+    <span class="recruit-permissions">{zh ? '权限按使用者与项目配置' : 'Permissions set per user and project'}</span>
+  </div>}
+  {scene === 'continuity' && <div class="execution-diagram" aria-hidden="true">
+    <div class="execution-sources">
+      <span><Icon name="message" size={16}/>{zh ? '会话交办' : 'Conversation'}</span>
+      <span><Icon name="clock" size={16}/>{zh ? '定时任务' : 'Scheduled task'}</span>
+    </div>
+    <div class="execution-stage execution-input">
+      <div class="execution-heading"><Icon name="folder" size={17}/><strong>{zh ? '要求与资料' : 'Requirements'}</strong></div>
+      <p class="execution-request">{zh ? '整理本月核算材料，列出对账差异。' : 'Prepare monthly close materials and identify account differences.'}</p>
+      <span class="execution-file"><Icon name="file" size={13}/>{zh ? '核算口径.md' : 'Close policies.md'}</span>
+      <span class="execution-file"><Icon name="chart" size={13}/>{zh ? '对账明细.xlsx' : 'Reconciliation.xlsx'}</span>
+    </div>
+    <div class="execution-stage execution-agent">
+      <div class="execution-heading"><Icon name="cpu" size={17}/><strong>Agent</strong></div>
+      <p>{zh ? '按岗位规则执行' : 'Follow role rules'}</p>
+      <div class="execution-methods"><span>{zh ? '归集资料' : 'Collect materials'}</span><span>{zh ? '调用技能' : 'Use skills'}</span><span>{zh ? '整理差异' : 'Identify differences'}</span></div>
+    </div>
+    <div class="execution-stage execution-delivery">
+      <div class="execution-heading"><Icon name="file-check" size={17}/><strong>{zh ? '交付与审阅' : 'Deliver and review'}</strong></div>
+      <div class="execution-results">{outputs.map((file, index) => <span><Icon name={index === 0 ? 'chart' : 'clipboard-check'} size={16}/>{file}</span>)}</div>
+      <p>{zh ? '异常交由财务人员复核' : 'Finance staff review exceptions'}</p>
+    </div>
+    <div class="execution-stage execution-next">
+      <div class="execution-heading"><Icon name="book" size={17}/><strong>{zh ? '接续下一轮' : 'Next round'}</strong></div>
+      <p>{zh ? '承接上一步结论' : 'Carry conclusions forward'}</p>
+      <div class="execution-memory"><span>{zh ? '已确认核算口径' : 'Confirmed accounting rules'}</span><span>{zh ? '待复核差异事项' : 'Differences for review'}</span></div>
+    </div>
+    <div class="execution-loop"><span>{labels.memory}</span><Icon name="arrow" size={13}/></div>
+  </div>}
+</div>
+
+<style>
+  .employee-feature-art { --diagram-line: #789fbb; --diagram-dim: #94aab6; --diagram-ink: #dce7ed; width: 100%; min-width: 0; color: var(--diagram-ink); }
+  .employee-feature-art strong { font-weight: 550; }
+  .diagram-wires { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--diagram-line); stroke-width: 1; }
+  .diagram-wires :is(path, circle) { vector-effect: non-scaling-stroke; }
+  .wire-terminal { fill: #8ab4cc; stroke: none; }
+  .recruit-diagram { position: relative; height: 400px; margin-bottom: 44px; }
+  .recruit-panel { box-sizing: border-box; position: absolute; padding: 18px; }
+  .template-panel { left: 0; top: 50%; width: 39%; transform: translateY(-50%); background: linear-gradient(135deg,#1b3047,#102033); border:1px solid #97bbdc29; border-radius:3px; box-shadow:0 0 17px #0003,0 8px 21px -8px #000a; }
+  .diagram-overline { display: block; font-size:14px; line-height: 1.5; color: var(--diagram-dim); }
+  .template-symbol { display: grid; place-items: center; margin-top: 16px; width: 30px; height: 30px; color: #79b7ef; }
+  .template-name { display: block; margin-top: 11px; font-size:18px; line-height: 1.5; }
+  .template-parts { margin: 18px 0 0; display: grid; gap: 10px; font-size:13px; line-height: 1.5; }
+  .template-parts > div { display: flex; justify-content: space-between; gap: 7px; }
+  .template-parts dt { color: #bfd0d9; }
+  .template-parts dd { color: var(--diagram-dim); margin: 0; }
+  .template-files { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 16px; padding-top: 11px; border-top: 1px solid #b5cde617; font-size:12px; color: #a3bdd2; }
+  .template-files :global(svg) { flex-shrink: 0; color: #93b7e4; }
+  .template-files :global(svg):nth-of-type(2) { margin-left: 5px; color: #c8ad85; }
+  .recruit-action { position: absolute; left: calc(100% + 15px); top: 43%; white-space: nowrap; font-size:14px; color: #b4cce0; }
+  .instance-panel { right: 0; width: 42%; min-height: 138px; padding-left:24px; border-left:2px solid #4386ba; }
+  .instance-0 { top: 35px; }
+  .instance-1 { top: 219px; border-left-color:#6c83b5; }
+  .instance-heading { display: flex; align-items: center; gap: 8px; }
+  .instance-symbol { display: grid; place-items: center; flex-shrink: 0; width: 30px; height: 30px; color: #8ac7d4; }
+  .instance-1 .instance-symbol { color: #a0afe3; }
+  .instance-heading strong { font-size:17px; line-height: 1.5; color:#e2edf8; }
+  .instance-caption { display: block; margin-top: 9px; font-size:13px; line-height: 1.5; color: var(--diagram-dim); }
+  .instance-parts { display: flex; flex-wrap: wrap; gap: 9px 12px; margin-top: 16px; font-size:13px; color: #bfd0d9; }
+  .instance-parts > span { display: inline-flex; flex-direction:column; align-items: flex-start; gap: 6px; }
+  .instance-parts :global(svg) { flex-shrink: 0; color: #91b9cd; }
+  .recruit-permissions { position: absolute; left: 58%; right: 0; top: calc(100% + 6px); text-align: center; font-size:13px; line-height: 1.5; color: var(--diagram-dim); }
+  .execution-diagram { display: grid; grid-template-columns: minmax(95px,.65fr) minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr); gap: 26px; align-items: stretch; position: relative; padding-block: 12px 60px; }
+  .execution-sources { align-self: center; display: grid; gap: 18px; position: relative; }
+  .execution-sources > span { display: flex; align-items: center; gap: 7px; font-size:15px; color: #b3cada; }
+  .execution-sources :global(svg) { flex-shrink: 0; color: #87b8eb; }
+  .execution-sources > span:last-child :global(svg) { color: #cbb586; }
+  .execution-sources::after { content: ''; position: absolute; right: -16px; top: 9px; bottom: 9px; width: 10px; border: 1px solid #82a6c180; border-left: 0; border-radius: 0 3px 3px 0; }
+  .execution-stage { --stage-accent: #96bdf0; position: relative; min-width: 0; padding: 17px 8px; }
+  .execution-stage:not(.execution-next)::after { content: ''; position: absolute; top: 50%; left: calc(100% + 6px); width: 14px; height: 1px; background: #82a6c1b3; }
+  .execution-stage:not(.execution-next)::before { content: ''; position: absolute; top: calc(50% - 3px); left: calc(100% + 14px); width: 6px; height: 6px; border-right: 1px solid #a6c8e4; border-top: 1px solid #a6c8e4; transform: rotate(45deg); }
+  .execution-heading { display: flex; align-items: center; gap: 7px; font-size:16px; line-height: 1.5; }
+  .execution-heading :global(svg) { color: var(--stage-accent); flex-shrink: 0; }
+  .employee-feature-art .execution-stage p { margin: 12px 0 0; font-size:14px; line-height: 1.75; color: #a9bdce; }
+  .employee-feature-art .execution-stage .execution-request { margin-bottom: 14px; color: #c0d0dd; }
+  .execution-file { display: flex; gap: 6px; align-items: center; margin-top: 7px; font-size:13px; color: #a4b9ce; overflow-wrap: anywhere; }
+  .execution-file :global(svg) { flex-shrink: 0; color: #a6bce2; }
+  .execution-agent { padding:17px 14px; background:linear-gradient(135deg,#173c5b,#10273d); border-radius:4px; box-shadow:0 0 0 1px #74add72b,0 0 17px #0003,0 6px 18px -7px #0009; }
+  .execution-methods { display: grid; gap: 6px; margin-top: 14px; }
+  .execution-methods > span { padding: 4px 7px; background: #93baff0b; border-radius: 3px; color: #b8cde1; font-size:13px; }
+  .execution-delivery { --stage-accent: #8ac8b6; }
+  .execution-results { display: grid; gap: 8px; margin-top: 16px; }
+  .execution-results > span { display: flex; align-items: center; gap: 7px; padding: 9px 7px; border-radius: 2px; background: #142638; color: #c5dfd4; box-shadow:0 2px 8px #0003; font-size:13px; overflow-wrap: anywhere; }
+  .execution-results :global(svg) { flex-shrink: 0; color: #97c8b6; }
+  .execution-results > span:last-child :global(svg) { color: #aabde6; }
+  .execution-next { --stage-accent: #b7abe1; }
+  .execution-memory { display: grid; gap: 8px; margin-top: 18px; font-size:13px; color: #aeb7cd; }
+  .execution-memory > span { padding-left: 9px; border-left: 2px solid #b7abe143; }
+  .execution-loop { position: absolute; left: 48%; right: 27%; bottom: 22px; height: 23px; border: 1px dashed #84a0bc8c; border-top: 0; border-radius: 0 0 5px 5px; text-align: center; }
+  .execution-loop > span { position: relative; top: 14px; padding-inline: 9px; background: #080e15; font-size:13px; color: #a7bfd2; }
+  .execution-loop > :global(svg) { position: absolute; left: -7px; top: -5px; transform: rotate(-90deg); color: #9dbbd5; }
+  @media (max-width: 980px) and (min-width: 721px) {
+    .execution-diagram { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; }
+    .execution-sources { grid-column: 1 / -1; display: flex; gap: 22px; }
+    .execution-sources::after { display: none; }
+    .execution-stage { padding-inline: 11px; }
+    .execution-loop { left: 38%; right: 38%; }
+    .execution-stage:not(.execution-next)::after { width: 10px; left: calc(100% + 4px); }
+    .execution-stage:not(.execution-next)::before { left: calc(100% + 9px); }
+  }
+  @media (max-width: 720px) {
+    .recruit-diagram { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 44px 12px; height: auto; margin-bottom: 0; }
+    .diagram-wires { display: none; }
+    .recruit-panel { position: relative; padding: 14px 12px; }
+    .template-panel { grid-column: 1 / -1; width: 100%; top: auto; transform: none; }
+    .template-symbol { position: absolute; right: 14px; top: 14px; width: 34px; height: 34px; margin: 0; }
+    .template-panel .diagram-overline, .template-panel .template-name { padding-right: 44px; }
+    .template-panel::after { content: ''; position: absolute; left: 50%; top: 100%; height: 22px; border-left: 1px solid #789fbb; }
+    .instance-panel { top: auto; right: auto; width: 100%; }
+    .instance-panel::before { content: ''; position: absolute; left: 50%; top: -23px; height: 22px; border-left: 1px solid #789fbb; }
+    .instance-0::before { width: calc(100% + 13px); border-top: 1px solid #789fbb; }
+    .recruit-permissions { position: static; grid-column: 1 / -1; margin-top: -25px; }
+
+    .diagram-overline { font-size:12px; }
+    .template-name { font-size:16px; margin-top: 9px; }
+    .template-parts { grid-template-columns: repeat(2,minmax(0,1fr)); font-size:13px; gap: 12px; margin-top: 18px; }
+    .template-parts > div { flex-direction: column; gap: 2px; }
+    .template-files { font-size:11px; gap: 3px; }
+    .template-files :global(svg):nth-of-type(2) { margin-left: 0; }
+    .instance-panel { min-height: 142px; }
+    .instance-heading { gap: 6px; flex-wrap: wrap; }
+    .instance-heading strong { font-size:15px; }
+    .instance-symbol { width: 26px; height: 26px; }
+    .instance-caption, .instance-parts, .recruit-permissions { font-size:12px; }
+    .recruit-action { left: 50%; top: calc(100% + 4px); z-index: 1; padding-inline: 5px; transform: translateX(-50%); background: #080e15; font-size:13px; }
+    .execution-diagram { grid-template-columns: minmax(0,1fr); gap: 22px; padding: 0 24px 0 0; }
+    .execution-sources { display: flex; gap: 20px; padding-block: 4px; }
+    .execution-sources::after { display: none; }
+    .execution-stage { padding: 15px; }
+    .execution-stage:not(.execution-next)::after { top: calc(100% + 4px); left: 50%; width: 1px; height: 12px; }
+    .execution-stage:not(.execution-next)::before { top: calc(100% + 9px); left: calc(50% - 3px); transform: rotate(135deg); }
+    .execution-methods { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    .execution-methods > span { text-align: center; }
+    .execution-results { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .execution-results > span { font-size:12px; gap: 5px; }
+    .execution-memory { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .execution-loop { left: auto; right: 9px; top: 35%; bottom: 24%; width: 12px; height: auto; border: 1px dashed #84a0bc8c; border-left: 0; border-radius: 0 5px 5px 0; }
+    .execution-loop > span { position: absolute; top: 50%; left: 0; padding: 7px 0; writing-mode: vertical-rl; transform: translateY(-50%); }
+    .execution-loop > :global(svg) { left: -5px; top: -6px; transform: rotate(180deg); }
+  }
+</style>

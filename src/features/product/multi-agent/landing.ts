@@ -4,7 +4,7 @@ export default {
   zh: {
     hero: {
       lines: ['把复杂工作分下去', '把专业成果合起来'],
-      summary: '面对尽调编制、投标复核等跨专业任务，主 Agent 拆解目标、调用专业子 Agent 分工执行，将进度、异常与结果集中到同一主任务。',
+      summary: '主 Agent 拆解任务目标，按配置调用专业子 Agent 分工执行。可独立处理的任务并行推进，执行状态与结果回传主任务，由主 Agent 汇总输出。',
     },
     pain: {
       title: '任务越复杂，越需要清楚的分工与交接',
@@ -23,10 +23,12 @@ export default {
       { icon: 'network', title: '业务目标拆成专业工作', body: '围绕任务目标与工作规则组织分工，将资料检索、信息提取和风险梳理等工作交给相应子任务。' },
       { icon: 'layers', title: '专业子 Agent 分工推进', body: '按配置调用专业子 Agent，分别处理可独立推进的事项，让多项专业工作共同服务同一目标。' },
       { icon: 'chart', title: '进度、异常与成果集中查看', body: '查看子任务运行、完成和错误状态，归集返回结果，在主任务中继续整理材料与审阅结论。' },
+      {"icon": "shield", "title": "专业委派有边界", "body": "通过允许的目标范围、独立子任务上下文、协作层级、并发和超时配置组织委派，子任务进度与结果回传主运行。"},
+      {"icon": "workflow", "title": "执行依赖与复核有承接", "body": "安装并配置执行看板扩展后，跟踪任务依赖、阻塞、失败重试与人工复核，关联完成凭据，让专业工作按条件衔接。"},
     ],
     scenarios: [
-      { title: '尽调材料从多头准备到集中成稿', body: '将资料检索、数据提取和风险梳理分派给专业子 Agent，分别返回来源材料、关键数据与风险要点，再汇总为报告材料供业务人员复核。', flow: ['尽调目标与资料', '检索、提取与风险梳理', '报告材料与复核要点'] },
-      { title: '投标文件从逐项核对到风险汇总', body: '围绕资质、商务条款与技术响应分别组织专业核对，汇集各项检查结果，整理成可继续修改的风险与修订清单。', flow: ['招标要求与投标文件', '资质、商务与技术核对', '风险与修订清单'] },
+      { title: '尽调报告编制', body: '资料检索、数据提取与风险梳理分工开展，归集来源材料、财务要点和风险发现，形成尽调报告材料与复核清单。', flow: ['尽调目标与资料', '检索、提取与风险梳理', '报告材料与复核清单'] },
+      { title: '投标文件复核', body: '围绕资质、商务条款与技术响应分别核对，汇集各专业检查结果，形成风险与修订清单，衔接投标文件修改。', flow: ['招标要求与投标文件', '资质、商务与技术核对', '风险与修订清单'] },
     ],
     benefits: [
       { title: '一次交办统筹多项工作', body: '在同一主任务内组织专业分工，减少分散跟进。' },
@@ -39,8 +41,8 @@ export default {
   },
   en: {
     hero: {
-      lines: ['Delegate complex work', 'Bring specialist results together'],
-      summary: 'For cross-specialty work such as due diligence and bid review, a main Agent breaks down the goal, calls specialist Agents, and brings progress, errors and results into one task.',
+      lines: ['Delegate complex work.', 'Bring results together.'],
+      summary: 'The main Agent breaks down the goal and calls configured specialist Agents. Independent tasks run in parallel, with execution states and results returned to the main task for the main Agent to assemble the output.',
     },
     pain: {
       title: 'Complex work needs clear responsibilities and handoffs',
@@ -59,10 +61,12 @@ export default {
       { icon: 'network', title: 'Turn goals into specialist work', body: 'Organize responsibilities around the goal and working rules, assigning work such as source research, data extraction and risk analysis to subtasks.' },
       { icon: 'layers', title: 'Let specialist Agents work together', body: 'Call configured specialist Agents for work that can proceed independently, bringing separate workstreams toward the same goal.' },
       { icon: 'chart', title: 'See progress, errors and results together', body: 'Review running, completed and error states, collect returned results, and continue organizing materials and reviewing findings in the main task.' },
+      {"icon": "shield", "title": "Keep specialist delegation within bounds", "body": "Configure allowed targets, isolated subtask context, depth, concurrency and timeouts. Return subtask progress and results to the parent run."},
+      {"icon": "workflow", "title": "Connect dependencies and review", "body": "With the execution board extension installed and configured, track dependencies, blocked work, retries and human review, with completion evidence for each handoff."},
     ],
     scenarios: [
-      { title: 'From separate due diligence workstreams to one report', body: 'Delegate research, data extraction and risk analysis. Bring source materials, key figures and risk findings together into report materials for business review.', flow: ['Due diligence goal and sources', 'Research, extraction and analysis', 'Report materials and review priorities'] },
-      { title: 'From individual bid checks to a combined risk list', body: 'Coordinate qualification, commercial and technical checks. Collect the findings in a risk and revision list that supports the next round of editing.', flow: ['Requirements and bid documents', 'Qualification, commercial and technical checks', 'Risk and revision list'] },
+      { title: 'Due diligence reporting', body: 'Coordinate research, data extraction and risk analysis. Collect source materials, financial highlights and risk findings in report materials and a review checklist.', flow: ['Due diligence goal and sources', 'Research, extraction and analysis', 'Report materials and review checklist'] },
+      { title: 'Bid document review', body: 'Assign qualification, commercial and technical checks to specialists. Combine their findings in a risk and revision list for the next round of editing.', flow: ['Requirements and bid documents', 'Qualification, commercial and technical checks', 'Risk and revision list'] },
     ],
     benefits: [
       { title: 'Coordinate several workstreams from one request', body: 'Organize specialist tasks in one place and reduce scattered follow-up.' },

@@ -26,6 +26,9 @@ export default {
       { icon: 'chart', title: '业务数据形成分析', body: '通过数据库连接，在账号授权范围内查询、汇总和分析数据，形成经营问答与报告所需的依据。' },
       { icon: 'layers', title: '现有系统发起任务', body: '通过平台 OpenAPI 提交任务与附件，以同步、异步或流式方式获取状态、结果和平台服务。' },
       { icon: 'monitor', title: '设备与文件协同处理', body: '结合授权桌面设备节点、浏览器和文件工具执行工作，按节点状态、平台支持与访问权限接入。' },
+      {"icon": "wrench", "title": "岗位方法与业务扩展分别复用", "body": "Skill 以 SKILL.md、脚本、模板和资料封装工作方法；业务插件承载页面、服务、业务数据和权限目录，按版本安装、升级与授权。"},
+      {"icon": "terminal", "title": "用 Tego Studio 建设可分发能力", "body": "开发 Skill、数字员工、业务插件、MCP 与网页应用，衔接校验、打包、预览及平台发布，让业务能力形成可维护资产。"},
+      {"icon": "key", "title": "连接身份与业务委托分别控制", "body": "MCP 连接身份、接口凭据、数据库账号与插件业务委托各自管理。平台 OpenAPI 绑定执行用户、作用域和有效期，支持撤销与轮换。"},
     ],
     scenarios: [
       { title: '客户沟通接续到 CRM 跟进', body: '整理通话与会议内容，将跟进事项记入对应客户或商机时间线，让后续服务从完整记录继续。', flow: ['归集沟通内容', '整理跟进事项', '写入客户时间线'] },
@@ -65,6 +68,9 @@ export default {
       { icon: 'chart', title: 'Turn business data into analysis', body: 'Query, aggregate and analyze data within the database account’s permissions to support business answers and reports.' },
       { icon: 'layers', title: 'Start tasks from existing systems', body: 'Submit tasks and files through Platform OpenAPI. Receive status, results and platform services through synchronous, asynchronous or streaming interfaces.' },
       { icon: 'monitor', title: 'Work with devices and files', body: 'Use authorized desktop nodes, browser and file tools according to node state, platform support and access permissions.' },
+      {"icon": "wrench", "title": "Reuse working methods and business extensions", "body": "Skills package methods in SKILL.md with scripts, templates and resources. Business plugins provide pages, services, business data and permission catalogs, with versioned installation and authorization."},
+      {"icon": "terminal", "title": "Build distributable capabilities in Tego Studio", "body": "Develop skills, digital employees, business plugins, MCP services and web apps with validation, packaging, previews and platform publication."},
+      {"icon": "key", "title": "Manage connection identity and work delegation separately", "body": "Manage MCP identities, API credentials, database accounts and plugin delegation independently. Platform OpenAPI binds the execution user, scopes and expiry, with revocation and rotation."},
     ],
     scenarios: [
       { title: 'Carry customer conversations into CRM', body: 'Organize calls and meetings, then record follow-up items on the customer or deal timeline so the next service action starts with the full context.', flow: ['Collect conversations', 'Prepare follow-up items', 'Update the customer timeline'] },

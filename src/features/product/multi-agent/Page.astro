@@ -1,9 +1,66 @@
 ---
-import CapabilityLanding from '../../../components/pages/CapabilityLanding.astro';
-import content from './content';
+import Diagram from './Diagram.astro';
 import landing from './landing';
+import experience from './experience';
+import content from './content';
+import Icon from '../../../components/Icon.astro';
+import { appFor, pathFor, site } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
+import '../../../styles/multi-agent-product.css';
+
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const zh = locale === 'zh';
+const copy = landing[locale];
+const stories = experience[locale].sections;
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: zh ? '首页' : 'Home', item: new URL(pathFor(locale), site.origin).href },
+    { '@type': 'ListItem', position: 2, name: zh ? '产品能力' : 'Product', item: new URL(pathFor(locale, 'product'), site.origin).href },
+    { '@type': 'ListItem', position: 3, name: content.copy[locale].name, item: new URL(pathFor(locale, 'product/multi-agent'), site.origin).href },
+  ],
+};
 ---
-<CapabilityLanding locale={locale} capability={content} copy={landing[locale]}/>
+<div class="orchestration-page" data-capability="multi-agent">
+  <section class="ma-hero ma-wrap" aria-labelledby="capability-title">
+    <div class="ma-hero-copy">
+      <h1 id="capability-title">{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
+      <p>{copy.hero.summary}</p>
+      <div class="ma-hero-actions">
+        <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约产品演示' : 'Book a product demo'}</a>
+        <a class="ma-text-link" href={appFor(locale)}>{zh ? '开始使用' : 'Get started'}</a>
+      </div>
+    </div>
+    <Diagram locale={locale} scene="overview"/>
+  </section>
+
+  <div class="ma-features ma-wrap">
+    {stories.map((story, index) => <section id={`capability-${story.id}`} class:list={['ma-feature', `ma-feature-${story.id}`]} aria-labelledby={`capability-${story.id}-title`}>
+      <div class="ma-feature-copy">
+        <h2 id={`capability-${story.id}-title`}>{zh ? story.title.split('，').map(line => <span>{line}</span>) : story.title}</h2>
+        <p>{story.body}</p>
+        <dl class="ma-feature-details">{story.points.map(point => <div><dt>{point.title}</dt><dd>{point.body}</dd></div>)}</dl>
+      </div>
+      <Diagram locale={locale} scene={index === 0 ? 'assignment' : index === 1 ? 'execution' : 'delivery'}/>
+    </section>)}
+  </div>
+
+  <section class="ma-operations ma-wrap" aria-labelledby="ma-operations-title">
+    <h2 id="ma-operations-title">{zh ? '从专业分工，到受控执行' : 'From specialist work to controlled execution'}</h2>
+    <div class="ma-operation-grid">{copy.features.map(feature => <article><Icon name={feature.icon} size={23}/><h3>{feature.title}</h3><p>{feature.body}</p></article>)}</div>
+  </section>
+
+  <section class="ma-applications ma-wrap" id="capability-scenarios" aria-labelledby="capability-scenarios-title">
+    <h2 id="capability-scenarios-title">{zh ? '让专业协同进入业务工作' : 'Specialist coordination for business work'}</h2>
+    <div class="ma-application-grid">
+      {copy.scenarios.map((scenario, index) => <article class="ma-application">
+        <div class="ma-application-title"><Icon name={index === 0 ? 'file-search' : 'clipboard-check'} size={25}/><h3>{scenario.title}</h3></div>
+        <p>{scenario.body}</p>
+        <dl class="ma-application-flow">{scenario.flow.map((step, stepIndex) => <div><dt>{(zh ? ['任务输入', '专业分工', '交付成果'] : ['Input', 'Specialist work', 'Deliverable'])[stepIndex]}</dt><dd>{step}</dd></div>)}</dl>
+      </article>)}
+    </div>
+    <a class="ma-text-link ma-documentation" href={site.docs} rel="external">{zh ? '产品文档' : 'Product documentation'}</a>
+  </section>
+</div>
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumb)}/>

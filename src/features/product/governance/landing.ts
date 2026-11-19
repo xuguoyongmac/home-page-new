@@ -25,6 +25,10 @@ export default {
       { icon: 'key', title: '专项工作按需委托，完成后可撤销', body: '明确授权数字员工处理插件工作，读取委托人可见的业务记录。按需启用或撤销委托，并保留授权变更记录。' },
       { icon: 'check', title: '从创建到发布，组织审核有记录', body: '按组织规则审核数字员工创建与开放、数字员工模板与插件发布、技能变更及资源授权，保留提交快照与审核决定。' },
       { icon: 'shield', title: '从任务步骤追到工具与成果', body: '按任务查看执行步骤、工具调用和成果记录，结合管理变更还原工作过程，支持业务复核与问题排查。' },
+      {"icon": "file-search", "title": "来源、回执与证据形成关联", "body": "执行回执关联输入、动作、结果与成果，输出片段可关联知识、文件或业务来源；通过内容标识、溯源码和摘要核验回看依据与记录变化。"},
+      {"icon": "clipboard-check", "title": "风险事项纳入审计处置", "body": "按授权配置风险规则、查看告警和质量发现，归集任务与证据到案件，分派处理并形成报告；审计访问、脱敏、外发与法律保全按策略管理。"},
+      {"icon": "chart", "title": "模型用量与运行状态可掌握", "body": "按用户、数字员工、模型和时间查看用量汇总、趋势与明细，结合平台健康、运行实例与资源状态支持持续运营。"},
+      {"icon": "buildings", "title": "部署与模型纳入企业边界", "body": "支持 Compose 与 Kubernetes 私有化部署，配置本地模型与 OpenAI 兼容模型服务；内网访问、外部连接及银河麒麟桌面交付按具体环境组合实施。"},
     ],
     scenarios: [
       { title: '敏感材料按范围使用', body: '为尽调文档设置知识权限，在对应项目内管理参与成员与项目角色。数字员工按授权范围检索资料，项目文件按委托人当前角色访问。', flow: ['确认身份与角色', '配置资源范围', '按范围使用资料'] },
@@ -63,6 +67,10 @@ export default {
       { icon: 'key', title: 'Grant delegation for the work, then withdraw it', body: 'Explicitly authorize plugin work using business records visible to the delegating person. Enable or revoke delegation as needed and retain authorization changes.' },
       { icon: 'check', title: 'Retain organizational decisions from creation to publication', body: 'Review digital employee creation and access, template and plugin publication, skill changes and resource authorization. Keep submission snapshots and decisions.' },
       { icon: 'shield', title: 'Follow tasks through tools and deliverables', body: 'Review task steps, tool calls and deliverable records alongside governance changes to reconstruct the work for business review and investigation.' },
+      {"icon": "file-search", "title": "Connect provenance, receipts and evidence", "body": "Execution receipts connect inputs, actions, results and files. Link output passages to knowledge, documents or business sources. Use content identifiers, provenance codes and digest checks to inspect evidence and changes."},
+      {"icon": "clipboard-check", "title": "Bring risk findings into audit handling", "body": "Configure risk rules and review alerts and quality findings within authorization. Gather tasks and evidence into cases, assign handling and produce reports. Policies govern audit access, redaction, export and legal holds."},
+      {"icon": "chart", "title": "Understand usage and operational status", "body": "Review usage summaries, trends and details by user, employee, model and time, alongside platform health, runtime instances and resources."},
+      {"icon": "buildings", "title": "Keep deployment and models within enterprise boundaries", "body": "Deploy privately with Compose or Kubernetes. Configure local models and OpenAI-compatible model services. Internal access, external connections and Kylin desktop delivery follow the selected environment."},
     ],
     scenarios: [
       { title: 'Use sensitive material within its access boundaries', body: 'Set knowledge permissions for due diligence documents and manage project members and roles. Digital employees retrieve authorized knowledge; project file access follows the delegating person’s current role.', flow: ['Identify the person and role', 'Define resource access', 'Use authorized material'] },
