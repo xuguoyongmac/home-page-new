@@ -37,7 +37,7 @@ export const bankingPresentation: IndustrySolutionPresentation = {
         "让本行经验支撑全行"
       ],
       "background": "/images/industries/banking-architecture_V1.1.webp",
-      "illustration": "/images/solutions/banking/banking-team-value-zh_V9.0.webp"
+      "illustration": "/images/solutions/banking/banking-team-value-zh_V9.3.webp"
     },
     "sources": [
       "企业经营与财务资料",
@@ -249,7 +249,7 @@ export const bankingPresentation: IndustrySolutionPresentation = {
         "Bring bank expertise to every branch"
       ],
       "background": "/images/industries/banking-architecture_V1.1.webp",
-      "illustration": "/images/solutions/banking/banking-team-value-en_V9.1.webp"
+      "illustration": "/images/solutions/banking/banking-team-value-en_V9.3.webp"
     },
     "sources": [
       "Business and financial information",

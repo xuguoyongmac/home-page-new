@@ -35,7 +35,7 @@ export const trustPresentation: IndustrySolutionPresentation = {
         "把客户事项接成持续服务"
       ],
       "background": "/images/industries/trust-architecture_V1.0.webp",
-      "illustration": "/images/solutions/trust/trust-team-value-zh_V9.2.webp"
+      "illustration": "/images/solutions/trust/trust-team-value-zh_V9.3.webp"
     },
     "sources": [
       "项目档案与信托契约",
@@ -247,7 +247,7 @@ export const trustPresentation: IndustrySolutionPresentation = {
         "Keep client matters connected through service"
       ],
       "background": "/images/industries/trust-architecture_V1.0.webp",
-      "illustration": "/images/solutions/trust/trust-team-value-en_V9.2.webp"
+      "illustration": "/images/solutions/trust/trust-team-value-en_V9.3.webp"
     },
     "sources": [
       "Project records and trust agreements",

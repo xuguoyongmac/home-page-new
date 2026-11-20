@@ -35,7 +35,7 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
         "让执业依据贯穿业务全程"
       ],
       "background": "/images/industries/securities-architecture_V1.1.webp",
-      "illustration": "/images/solutions/securities/securities-team-value-zh_V9.1.webp"
+      "illustration": "/images/solutions/securities/securities-team-value-zh_V9.3.webp"
     },
     "sources": [
       "企业资料与产业信息",
@@ -247,7 +247,7 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
         "Keep evidence connected throughout the business"
       ],
       "background": "/images/industries/securities-architecture_V1.1.webp",
-      "illustration": "/images/solutions/securities/securities-team-value-en_V9.1.webp"
+      "illustration": "/images/solutions/securities/securities-team-value-en_V9.3.webp"
     },
     "sources": [
       "Company and industry information",

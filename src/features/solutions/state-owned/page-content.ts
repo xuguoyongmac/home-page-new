@@ -35,7 +35,7 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
         "让集团管控落在实处"
       ],
       "background": "/images/industries/state-owned-architecture_V1.3.webp",
-      "illustration": "/images/solutions/state-owned/state-owned-team-value-zh_V9.1.webp"
+      "illustration": "/images/solutions/state-owned/state-owned-team-value-zh_V9.3.webp"
     },
     "sources": [
       "采购合同与集团制度",
@@ -247,7 +247,7 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
         "Make group oversight count"
       ],
       "background": "/images/industries/state-owned-architecture_V1.3.webp",
-      "illustration": "/images/solutions/state-owned/state-owned-team-value-en_V9.1.webp"
+      "illustration": "/images/solutions/state-owned/state-owned-team-value-en_V9.3.webp"
     },
     "sources": [
       "Procurement contracts and group policies",

@@ -35,7 +35,7 @@ export const governmentPresentation: IndustrySolutionPresentation = {
         "让政务履职更有实效"
       ],
       "background": "/images/industries/government-architecture_V1.1.webp",
-      "illustration": "/images/solutions/government/government-team-value-zh_V9.1.webp"
+      "illustration": "/images/solutions/government/government-team-value-zh_V9.3.webp"
     },
     "sources": [
       "办事指南与适用情形",
@@ -247,7 +247,7 @@ export const governmentPresentation: IndustrySolutionPresentation = {
         "More effective public service"
       ],
       "background": "/images/industries/government-architecture_V1.1.webp",
-      "illustration": "/images/solutions/government/government-team-value-en_V9.1.webp"
+      "illustration": "/images/solutions/government/government-team-value-en_V9.3.webp"
     },
     "sources": [
       "Service guides and applicable circumstances",
