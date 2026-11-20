@@ -11,12 +11,12 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
 <div class:list={['recruitment-art', { 'recruitment-art-en': !zh }]} aria-hidden="true">
   <div class="role-template">
     <div class="template-heading"><Icon name="layers" size={15}/><span>{zh ? '数字员工模板' : 'Employee template'}</span></div>
-    <div class="template-person"><img src={portrait} alt="" width="56" height="56" loading="lazy"/><div><strong>{zh ? '标书专员' : 'Bid specialist'}</strong><span>{zh ? '招投标业务' : 'Bidding operations'}</span></div></div>
+    <div class="template-person"><img src={portrait} alt="" width="48" height="48" loading="lazy"/><strong>{zh ? '标书专员' : 'Bid specialist'}</strong></div>
     <div class="template-content">
-      <div class="template-group"><span class="group-label"><Icon name="clipboard-check" size={14}/>{zh ? '岗位职责' : 'Responsibilities'}</span><p>{zh ? '梳理招标要求 · 编制响应文件' : 'Analyze tender requirements and draft responses'}</p></div>
-      <div class="template-group"><span class="group-label"><Icon name="cpu" size={14}/>{zh ? 'Agent 配置' : 'Agent configuration'}</span><p>{zh ? '主 Agent · 专业分工' : 'Main Agent · Specialist delegation'}</p></div>
-      <div class="template-group"><span class="group-label"><Icon name="layers" size={14}/>{zh ? '专业技能' : 'Specialist skills'}</span><div class="skill-list">{skills.map(skill => <span>{skill}</span>)}</div></div>
-      <div class="template-group"><span class="group-label"><Icon name="folder" size={14}/>{zh ? '工作文件' : 'Work files'}</span><span class="template-document"><Icon name="file" size={16}/>{zh ? '投标响应规范.md' : 'Bid response guide.md'}</span></div>
+      <span class="template-part"><Icon name="clipboard-check" size={14}/>{zh ? '岗位职责' : 'Responsibilities'}</span>
+      <span class="template-part"><Icon name="cpu" size={14}/>{zh ? 'Agent 配置' : 'Agent configuration'}</span>
+      <span class="template-part"><Icon name="layers" size={14}/>{zh ? '专业技能' : 'Specialist skills'}</span>
+      <span class="template-part"><Icon name="folder" size={14}/>{zh ? '工作文件' : 'Work files'}</span>
     </div>
   </div>
   <div class="recruit-transfer">
@@ -26,69 +26,64 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
   <div class="recruited-employees">
     {projects.map((project, index) => <div class:list={['employee-instance', `employee-instance-${index}`]}>
 
-      <div class="instance-team"><Icon name="folder" size={13}/><span>{project}</span><span class="instance-workspace"><Icon name="folder" size={12}/>{zh ? '独立工作区' : 'Own workspace'}</span></div>
-      <div class="instance-person"><img src={portrait} alt="" width="38" height="38" loading="lazy"/><div><strong>{zh ? '标书专员' : 'Bid specialist'}</strong><div class="instance-skills">{skills.map(skill => <span><Icon name="check" size={11}/>{skill}</span>)}</div></div></div>
+      <div class="instance-team"><Icon name="folder" size={13}/><span>{project}</span></div>
+      <div class="instance-person"><img src={portrait} alt="" width="38" height="38" loading="lazy"/><div><strong>{zh ? '标书专员' : 'Bid specialist'}</strong><span class="instance-workspace">{zh ? '独立工作区' : 'Own workspace'}</span></div></div>
+      <div class="instance-skills">{skills.map(skill => <span><Icon name="check" size={11}/>{skill}</span>)}</div>
     </div>)}
   </div>
 </div>
 <style>
-  .recruitment-art { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,.9fr) 120px minmax(0,1.1fr); align-items:center; width:100%; max-width:700px; margin-inline:auto; padding:24px 5px 30px; box-sizing:border-box; color:#e1eaf5; font-size:13px; line-height:1.5; }
+  .recruitment-art { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,.56fr) 86px minmax(0,1fr); align-items:center; width:100%; max-width:740px; margin-inline:auto; padding:24px 2px 30px; box-sizing:border-box; color:#e1eaf5; font-size:13px; line-height:1.5; }
   .recruitment-art::before { content:''; position:absolute; z-index:-1; inset:3% -7%; background:radial-gradient(ellipse at 54% 46%,#398fd43b 0%,#23639726 36%,transparent 72%); filter:blur(25px); pointer-events:none; }
   .role-template { background:linear-gradient(145deg,#1b2e45,#111d2e 70%); border:1px solid #93b6df3b; border-radius:10px; box-shadow:0 16px 32px -12px #000b,0 2px 10px #0005; overflow:hidden; }
-  .template-heading { display:flex; align-items:center; gap:7px; padding:13px 15px; color:#a7c5e6; background:#95bded06; border-bottom:1px solid #a5c9f019; }
-  .template-person { display:flex; align-items:center; gap:11px; padding:20px 15px 18px; }
-  .template-person img { width:48px; height:48px; object-fit:cover; border-radius:9px; box-shadow:0 4px 12px #0005; flex-shrink:0; }
+  .template-heading { display:flex; align-items:center; gap:7px; padding:12px 14px; color:#a7c5e6; background:#95bded06; border-bottom:1px solid #a5c9f019; white-space:nowrap; font-size:12px; }
+  .template-person { display:flex; align-items:center; gap:10px; padding:19px 14px 17px; }
+  .template-person img { width:40px; height:40px; object-fit:cover; border-radius:7px; box-shadow:0 4px 12px #0005; flex-shrink:0; }
   .template-person strong,.instance-person strong { display:block; font-size:16px; font-weight:550; line-height:1.5; }
-  .template-person div>span,.instance-person div>span { display:block; font-size:11px; color:#93a9c0; margin-top:3px; }
-  .template-content { padding:0 15px 19px; display:grid; gap:15px; }
-  .group-label { display:flex; gap:6px; align-items:center; color:#8da8c5; font-size:11px; }
-  .group-label :global(svg) { color:#92b9e6; }
-  .template-group p { margin:6px 0 0; color:#c6d5e6; font-size:12px; line-height:1.7; }
-  .skill-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:7px; }
-  .skill-list>span { padding:3px 7px; color:#afc9eb; font-size:11px; background:#86aff512; border-radius:3px; }
-  .template-document { display:flex; align-items:center; gap:7px; margin-top:8px; padding:9px 8px; background:#09131e99; border:1px solid #8cafd316; border-radius:4px; color:#c5d4e3; font-size:11px; }
-  .template-document :global(svg) { color:#b8acde; flex-shrink:0; }
-  .recruit-transfer { position:relative; height:350px; display:grid; place-items:center; color:#b6cde8; font-size:12px; }
-  .recruit-transfer>span { position:absolute; left:50%; top:calc(50% - 61px); transform:translateX(-50%); white-space:nowrap; }
+  .template-content { padding:0 14px 18px; display:grid; gap:11px; }
+  .template-part { display:flex; gap:9px; align-items:center; color:#bed0e4; font-size:12px; }
+  .template-part :global(svg) { flex-shrink:0; color:#92b9e6; }
+  .recruit-transfer { position:relative; height:246px; display:grid; place-items:center; color:#b6cde8; font-size:12px; }
+  .recruit-transfer>span { position:absolute; left:50%; top:calc(50% - 49px); transform:translateX(-50%); white-space:nowrap; }
   .recruit-transfer>svg { width:100%; height:100%; display:block; }
-  .recruited-employees { display:grid; gap:14px; }
-  .employee-instance { position:relative; background:linear-gradient(125deg,#20364c,#132434 75%); border:1px solid #93bad63b; border-radius:7px; padding:11px 12px; box-shadow:0 9px 19px -7px #0009,0 1px 7px #0004; }
+  .recruited-employees { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  .employee-instance { position:relative; min-width:0; background:linear-gradient(125deg,#20364c,#132434 75%); border:1px solid #93bad63b; border-radius:7px; padding:12px 11px; box-shadow:0 9px 19px -7px #0009,0 1px 7px #0004; }
   .employee-instance:nth-child(even) { background:linear-gradient(125deg,#26334a,#172032 75%); border-color:#9facdb30; }
-  .instance-team { display:flex; align-items:center; gap:5px; color:#a7bed6; font-size:10px; }
+  .instance-team { display:flex; align-items:center; gap:5px; color:#a7bed6; font-size:11px; }
   .instance-team>:global(svg) { flex-shrink:0; }
-  .instance-workspace { margin-left:auto; display:flex; align-items:center; gap:4px; color:#8ca6bd; font-size:9px; }
-  .instance-person { display:flex; align-items:center; gap:9px; margin-top:9px; }
+  .instance-workspace { display:block; margin-top:2px; color:#8ca6bd; font-size:10px; }
+  .instance-person { display:flex; align-items:center; gap:8px; margin-top:12px; }
   .instance-person img { width:32px; height:32px; flex-shrink:0; object-fit:cover; border-radius:6px; box-shadow:0 3px 9px #0005; }
   .instance-person strong { font-size:14px; }
-  .instance-skills { display:flex; flex-wrap:wrap; gap:4px 9px; margin-top:3px; color:#b7cce0; font-size:10px; }
+  .instance-skills { display:flex; flex-wrap:wrap; gap:4px 9px; margin-top:11px; color:#b7cce0; font-size:10px; }
   .instance-skills>span { display:flex; align-items:center; gap:3px; }
   .instance-skills :global(svg) { color:#8bbeb7; }
+  .recruitment-art-en .template-heading { font-size:11px; }
   .recruitment-art-en .template-person { gap:8px; padding-inline:12px; }
   .recruitment-art-en .template-person strong { font-size:14px; }
-  .recruitment-art-en .instance-person strong { font-size:13px; }
-  .recruitment-art-en .instance-team { flex-wrap:wrap; gap:4px; }
-  .recruitment-art-en .instance-workspace { font-size:9px; }
+  .recruitment-art-en .template-person img { width:32px; height:32px; }
+  .recruitment-art-en .template-part { font-size:11px; gap:7px; }
+  .recruitment-art-en .instance-person strong { font-size:12px; }
+  .recruitment-art-en .instance-person img { width:28px; height:28px; }
+  .recruitment-art-en .instance-team { align-items:flex-start; min-height:33px; }
+  .recruitment-art-en .instance-team :global(svg) { margin-top:2px; }
+  .recruitment-art-en .instance-skills { gap:4px 8px; }
   @media(max-width:1200px) { .recruitment-art::before { inset:3% 0; } }
   @media(max-width:600px) {
     .recruitment-art { grid-template-columns:minmax(0,1fr); max-width:390px; padding:12px 2px 24px; }
-    .template-person { padding-block:16px; }
-    .template-content { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 14px; }
-    .template-person img { width:44px; height:44px; }
-    .template-group p { font-size:12px; }
-    .template-document { font-size:10px; padding-inline:5px; }
-    .template-document :global(svg) { width:13px; }
-    .recruit-transfer { height:132px; padding:0; }
+    .role-template { max-width:300px; width:100%; margin-inline:auto; }
+    .template-person { padding-block:14px; }
+    .template-content { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 14px; }
+    .recruit-transfer { height:100px; padding:0; }
     .recruit-transfer>span { left:auto; right:16px; top:50%; transform:translateY(-50%); }
-    .recruit-transfer>svg { position:absolute; width:120px; height:300px; left:50%; top:50%; transform:translate(-50%,-50%) rotate(90deg); }
-    .recruited-employees { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .recruit-transfer>svg { position:absolute; width:90px; height:280px; left:50%; top:50%; transform:translate(-50%,-50%) rotate(90deg); }
+    .recruited-employees { gap:12px; }
     .employee-instance { padding:11px 9px; }
-    .instance-team { flex-wrap:wrap; font-size:10px; }
-    .instance-workspace { width:100%; margin-left:18px; }
-    .instance-person { gap:6px; align-items:flex-start; }
+    .instance-team { font-size:10px; }
+    .instance-person { gap:7px; }
     .instance-person strong { font-size:14px; }
     .instance-person img { width:26px; height:26px; }
-    .instance-skills { display:grid; font-size:10px; }
-    .recruitment-art-en .instance-person { flex-wrap:nowrap; }
+    .instance-skills { gap:4px 8px; }
     .recruitment-art-en .instance-person strong { font-size:12px; }
   }
 </style>
