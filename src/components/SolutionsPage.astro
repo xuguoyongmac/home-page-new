@@ -1,29 +1,38 @@
 ---
 import type { Locale } from '../data/types';
 import SolutionExplorer from './SolutionExplorer.astro';
-import CapabilityEvidence from './pages/CapabilityEvidence.astro';
-import '../styles/inner-overview.css';
 import CallToAction from './CallToAction.astro';
 import { pathFor } from '../lib/site';
-interface Props {locale:Locale;}
-const {locale}=Astro.props;
-const zh=locale==='zh';
-const steps=zh?[
- ['选择岗位工作','明确希望处理的资料、任务与成果，从一个具体工作开始。'],
- ['组合平台能力','配置知识、技能与插件，连接获得授权的系统和设备。'],
- ['衔接人工判断','约定需要问询、审批与接手的环节，核对内容与业务依据。'],
- ['形成项目成果','在项目中审阅、修改和定稿，保留文件版本并导出成果。'],
-]:[
- ['Choose a task','Define the sources, work and deliverables for a specific role.'],
- ['Configure capabilities','Connect authorized knowledge, skills, plugins and systems.'],
- ['Involve people','Define questions, approvals and review points.'],
- ['Deliver the result','Review, edit and export, with project versions retained.'],
+import '../styles/industry-tabs.css';
+import '../styles/solutions-overview.css';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const pillars = zh ? [
+  ['面向经营', '从客户经营、风险管理到项目履约，让数字员工参与影响业务结果的关键工作。'],
+  ['深入岗位', '将行业知识、岗位方法与企业系统组合起来，把专业经验转成团队可复用的工作能力。'],
+  ['融入组织', '沿用企业权限、审批与协作规则，让业务成果在既有组织体系中流转、复核和交付。'],
+] : [
+  ['Business priorities', 'Put digital employees to work on client relationships, risk management and project delivery.'],
+  ['Professional capability', 'Combine industry knowledge, specialist methods and enterprise systems into repeatable work.'],
+  ['Organizational fit', 'Deliver work through your established permissions, approvals and collaboration practices.'],
 ];
 ---
-<div class="inner-overview">
-<section class="overview-hero"><div class="container overview-hero-grid"><div class="overview-hero-copy"><h1>{zh?'把行业经验变成数字员工的工作能力':'Turn industry expertise into digital work'}</h1><p>{zh?'从行业真正关心的经营、服务与协作问题出发，把企业知识、岗位方法和业务系统接到具体工作，交付团队能够继续使用的成果。':'Start with the industry’s operating, service and collaboration needs. Connect company knowledge, specialist methods and systems to deliver work your team can use.'}</p><a class="button" href={pathFor(locale,'contact')}>{zh?'预约方案交流':'Discuss your solution'}</a></div><CapabilityEvidence slug="multi-agent" locale={locale}/></div></section>
-<section class="sl-section sl-solutions-page"><div class="container"><SolutionExplorer locale={locale}/></div></section>
-<section class="sl-section sl-alt"><div class="container"><div class="sl-heading"><h2>{zh?'先明确工作与成果，再组合能力':'Define the result, then combine capabilities'}</h2></div><div class="workflow-strip">{steps.map(([title,body],index)=><article><span>{String(index+1).padStart(2,'0')}</span><h3>{title}</h3><p>{body}</p></article>)}</div></div></section>
-<CallToAction locale={locale}/>
-
+<div class="solutions-overview">
+  <section class="solutions-overview-hero" aria-labelledby="solutions-title">
+    <img class="solutions-overview-landscape" src="/images/solutions/general/general-hero_V2.0.webp" alt="" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
+    <div class="container">
+      <h1 id="solutions-title">{zh ? <>把行业经验<br/>转化为企业生产力</> : <>Industry expertise.<br/>Enterprise productivity.</>}</h1>
+      <p>{zh ? '面向银行、保险、证券、政务、央国企、信托与企业通用场景，让数字员工融入核心业务链，连接专业作业、客户服务与经营管理。' : 'Digital employees for banking, insurance, securities, government, state-owned enterprises, trust services and general business—connected to the work that moves your organization forward.'}</p>
+      <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
+    </div>
+  </section>
+  <section class="solutions-overview-industries"><div class="container"><SolutionExplorer locale={locale}/></div></section>
+  <section class="solutions-overview-principles" aria-labelledby="solutions-value-title">
+    <div class="container">
+      <h2 id="solutions-value-title">{zh ? '让数字员工进入业务，而不止停留在对话' : 'Digital employees that participate in your business'}</h2>
+      <div class="solutions-value-columns">{pillars.map(([title, body]) => <article><h3>{title}</h3><p>{body}</p></article>)}</div>
+    </div>
+  </section>
+  <CallToAction locale={locale}/>
 </div>

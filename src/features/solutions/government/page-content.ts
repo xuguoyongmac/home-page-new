@@ -2,381 +2,425 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 
 export const governmentPresentation: IndustrySolutionPresentation = {
   "zh": {
-    "sources": [
-      "惠企政策与企业事实",
-      "一件事指南与办理材料",
-      "12345工单与职责目录"
-    ],
-    "outputs": [
-      "政策匹配工作单",
-      "申报材料卷宗与补正清单",
-      "主协办建议与办理记录"
-    ],
     "home": {
-      "title": "让政策找企业，让办事少折返",
-      "pain": "政策适用条件难对应企业事实，跨部门办事材料反复核对，热线诉求从分办到反馈缺少连续的办理依据。",
-      "value": "TeGo 数字员工把政策适用、办事材料和诉求责任整理成可核验的办件卷宗，让窗口、热线与承办岗位接续工作。",
+      "title": "让政策找企更精准，让政务服务更协同",
+      "pain": "惠企政策多、适用条件细，企业难以找到真正匹配的服务；跨部门事项、热线诉求与机关事务又分散流转，基层重复沟通、反复准备。",
+      "value": "以数字岗位连接政策知识、事项规则和部门协作，支撑政策找企、高效办成一件事、12345诉求办理与机关日常工作，让服务接续更顺畅，把工作人员的时间还给业务。",
       "scenarios": [
         "政策找企",
-        "申报准备",
-        "一件事材料",
-        "窗口预审",
-        "诉求分办",
-        "办理督办"
+        "一件事协同",
+        "12345诉求",
+        "基层文书",
+        "采购管理",
+        "督查督办"
       ],
       "benefits": [
         {
-          "title": "政策找企有依据",
-          "description": "逐项对应政策条件与企业事实，随申报准备交接适用依据和待核实项。"
+          "title": "惠企服务更精准",
+          "description": "关联政策条件与企业经营特点，形成适配服务建议，衔接申报准备与政策更新。"
         },
         {
-          "title": "一件事材料少折返",
-          "description": "共用信息、专项附件和材料差异汇入同一份卷宗，集中核对、接续补正。"
+          "title": "跨部门办理更连贯",
+          "description": "围绕一件事和热线诉求组织材料、职责与进度，减少重复问询和跨环节信息断点。"
         },
         {
-          "title": "诉求分办有承接",
-          "description": "诉求事实接上主协办建议，岗位确认后持续保留办理反馈、争议和答复依据。"
+          "title": "基层协作更省力",
+          "description": "复用权威知识与办文方法，接续公文、采购和督办工作，让日常成果能够持续使用。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让政策找企业",
-        "让办事少折返"
+        "让政策服务更精准",
+        "让政务协作更高效"
       ],
-      "background": "/images/solutions/government/government-civic-landscape_V1.0.webp"
+      "background": "/images/industries/government-architecture_V1.1.webp"
     },
+    "sources": [
+      "政策法规与惠企事项",
+      "办事指南与权责目录",
+      "12345诉求与办理记录",
+      "公文、采购与督办资料"
+    ],
+    "outputs": [
+      "企业政策服务方案",
+      "一件事办理协作包",
+      "诉求治理分析报告",
+      "机关文书与督办成果"
+    ],
     "features": [
       {
-        "title": "政策找企业，依据随结果交接",
-        "problem": "政策条件与企业事实逐项对应。",
-        "body": "TeGo 拆解政策的适用主体、支持事项与申报条件，对照企业登记、经营和项目资料，将政策依据、已对应事实和待核实项放进同一份工作单，供服务人员核验并接续申报。"
+        "title": "让政策找企从广泛发布走向精准服务",
+        "problem": "惠企政策分散在不同部门，适用条件与企业经营特点难以对应，服务人员反复查找和解释。",
+        "body": "将权威政策、申报指南与企业经营信息组织到同一服务任务，提取行业、规模、资质和申报条件，形成政策适配建议与服务方案。随政策变化更新知识，接续申报准备与沟通反馈，让惠企服务从等企业来问转向主动服务。",
+        "outcomes": [
+          "企业政策适配",
+          "申报准备方案",
+          "政策更新跟踪"
+        ]
       },
       {
-        "title": "一件事，一份接得住的材料卷宗",
-        "problem": "共用信息、专项附件与补正事项集中核对。",
-        "body": "TeGo 对照各部门指南，识别共用信息与专项附件，核对字段、缺项和版本差异，整理成一份材料卷宗与集中补正清单，让窗口人员接续受理。"
+        "title": "让高效办成一件事贯通跨部门服务",
+        "problem": "一个办事情形涉及多部门规则与材料，窗口重复询问、企业反复补充，环节之间难以接续。",
+        "body": "围绕高效办成一件事，关联办理情形、事项指南、共用信息与部门职责，组织材料准备、缺项问询和进度交接。通过授权接口衔接已有办理系统，让窗口和承办岗位共享任务背景，减少重复准备与跨部门解释。",
+        "outcomes": [
+          "一件事协同准备",
+          "共用信息复用",
+          "办理进度接续"
+        ]
       },
       {
-        "title": "诉求分办之后，办理依据持续接续",
-        "problem": "受理事实、岗位责任与办理反馈保留在同一条办理记录。",
-        "body": "TeGo 从工单提取事实、地点和诉求事项，依据职责目录提出主办与协办建议；经岗位确认后，持续整理办理反馈、争议事项和答复依据，形成可追溯的办理记录。"
+        "title": "让12345诉求转化为协同治理线索",
+        "problem": "热线诉求量大、表述多样，责任判定与历史情况分散，分办督办和共性问题分析相互脱节。",
+        "body": "从12345诉求中提炼事项、地点与服务要求，关联权责目录和历史办理，形成主协办建议与答复准备。持续汇集办理反馈、重复诉求和热点变化，支撑工单质检与专题分析，让单件办理与城市治理洞察相互连接。",
+        "outcomes": [
+          "诉求分办建议",
+          "办理质检成果",
+          "热点诉求分析"
+        ]
+      },
+      {
+        "title": "把机关日常作业转化为基层减负实效",
+        "problem": "公文、会议、采购和督办依赖大量资料准备，多次改稿与跨科室汇总挤占工作人员时间。",
+        "body": "将公文规范、采购制度与机关经验沉淀为岗位知识和技能，承担文稿起草、采购条款分析、会议纪要和专项汇报。通过项目关联任务、反馈和文件版本，按计划跟进重点事项，让分散的日常作业形成可接续的协作成果。",
+        "outcomes": [
+          "机关文稿编制",
+          "采购分析成果",
+          "重点任务督办"
+        ]
       }
     ],
-    "teamTitle": "政务数字员工团队",
+    "teamTitle": "面向政务服务与机关协作的数字员工团队",
     "employees": [
       {
-        "role": "政策匹配数字员工",
-        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
-        "skills": [
-          "条件拆解",
-          "事实对应",
-          "核实分流"
-        ],
-        "process": [
-          "拆解主体资格与支持事项",
-          "逐项对应企业和项目事实",
-          "区分缺失证明与待核实项"
-        ],
-        "outputs": [
-          "政策条件对照",
-          "企业事实映射",
-          "申报准备清单"
-        ],
-        "value": "让每项申报条件有事实承接"
-      },
-      {
-        "role": "办事导引数字员工",
-        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
-        "skills": [
-          "事项识别",
-          "部门要求",
-          "材料复用"
-        ],
-        "process": [
-          "识别一件事涉及的办理事项",
-          "对齐牵头与协同部门要求",
-          "列明共用信息与专项附件"
-        ],
-        "outputs": [
-          "跨部门办理要求",
-          "共用材料清单"
-        ],
-        "value": "让一件事准备要求相互衔接"
-      },
-      {
-        "role": "申报预审数字员工",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "附件核对",
-          "字段一致",
-          "集中补正"
-        ],
-        "process": [
-          "核对部门材料与附件版本",
-          "检查共用字段和事项差异",
-          "汇总缺项冲突与补正责任"
-        ],
-        "outputs": [
-          "跨部门材料包",
-          "集中补正清单",
-          "待确认差异"
-        ],
-        "value": "让补正问题一次看清"
-      },
-      {
-        "role": "诉求研判数字员工",
+        "role": "政策服务数字员工",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
-          "事实提取",
-          "职责对应",
-          "分派建议"
+          "政策匹配",
+          "条件解析",
+          "申报策划"
         ],
         "process": [
-          "提取诉求事实地点和事项",
-          "比对职责目录与办理范围",
-          "列出分派建议和争议事项"
+          "关联企业经营特点与权威政策",
+          "组织适用条件与服务建议",
+          "跟进政策变化和申报准备"
         ],
         "outputs": [
-          "诉求要素表",
-          "职责对应与分派建议",
-          "待协调事项"
+          "政策服务方案",
+          "申报准备材料"
         ],
-        "value": "让诉求分派有事实和职责依据"
+        "value": "让企业更容易找到适合自己的政策服务"
+      },
+      {
+        "role": "事项协同数字员工",
+        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "skills": [
+          "情形识别",
+          "材料组织",
+          "办理接续"
+        ],
+        "process": [
+          "梳理一件事涉及的事项要求",
+          "组织共用信息与专属材料",
+          "衔接窗口反馈和承办进度"
+        ],
+        "outputs": [
+          "一件事协作包",
+          "办理交接记录"
+        ],
+        "value": "让跨部门服务围绕同一个办事目标展开"
+      },
+      {
+        "role": "诉求办理数字员工",
+        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "skills": [
+          "诉求归类",
+          "职责匹配",
+          "热点分析"
+        ],
+        "process": [
+          "提炼诉求要点和历史背景",
+          "关联职责形成主协办建议",
+          "汇集办理反馈和共性问题"
+        ],
+        "outputs": [
+          "诉求办理建议",
+          "热点分析报告"
+        ],
+        "value": "从单件诉求看到服务改进的共同方向"
+      },
+      {
+        "role": "机关文书数字员工",
+        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "skills": [
+          "公文起草",
+          "会议纪要",
+          "文稿协作"
+        ],
+        "process": [
+          "调用有效资料与机关文书规范",
+          "编制文稿并接续科室反馈",
+          "整理会议共识与后续任务"
+        ],
+        "outputs": [
+          "机关文稿",
+          "会议纪要与任务"
+        ],
+        "value": "把重复案头工作交给数字岗位，把精力留给履职"
+      },
+      {
+        "role": "采购管理数字员工",
+        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "skills": [
+          "条款分析",
+          "法规检索",
+          "采购协作"
+        ],
+        "process": [
+          "关联采购需求与适用制度",
+          "分析文件条款和评审要素",
+          "组织修订意见与采购工作资料"
+        ],
+        "outputs": [
+          "采购分析报告",
+          "文件修订建议"
+        ],
+        "value": "让采购业务从资料准备到专业讨论更有依据"
       },
       {
         "role": "督查督办数字员工",
-        "avatar": "/images/home/employee-avatar-project_V1.0.webp",
+        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
         "skills": [
-          "责任接续",
-          "反馈对照",
-          "卡点督办"
+          "任务归集",
+          "进度跟踪",
+          "综合汇报"
         ],
         "process": [
-          "承接已确认分派与责任岗位",
-          "对照办理反馈和答复依据",
-          "汇总待协调事项与复核要求"
+          "从重点文件梳理责任与目标",
+          "汇集部门反馈和待协调事项",
+          "编制专项汇报并接续后续工作"
         ],
         "outputs": [
-          "责任办理跟进表",
-          "督办清单",
-          "反馈复核要点"
+          "重点任务台账",
+          "专项工作报告"
         ],
-        "value": "让办理反馈接到责任与复核"
-      },
-      {
-        "role": "综合文稿数字员工",
-        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
-        "skills": [
-          "政策口径",
-          "办理依据",
-          "文稿审阅"
-        ],
-        "process": [
-          "对应适用政策和办理事实",
-          "组织事项进展与协调意见",
-          "形成带依据的待审文稿"
-        ],
-        "outputs": [
-          "办理答复草稿",
-          "专题办理报告",
-          "政策对照材料"
-        ],
-        "value": "让文稿事实与办理口径一致"
+        "value": "让部署、反馈和后续行动保持连续"
       }
     ],
     "deployment": {
-      "title": "接入现有政务环境，保留岗位权责",
-      "body": "支持内网私有化与本地模型，按事项、组织和资料权限接入现有系统。材料复用、主协办确认、受理审批与正式答复沿用现行业务授权和岗位流程。"
+      "title": "复用统筹资源，让专业能力进入日常履职",
+      "body": "支持在获准政务云或本地环境部署，衔接区域共用模型、权威知识与已有业务系统。按部门职责配置资料、工具与数字岗位使用范围，将知识更新、能力发布、任务记录和运行审计纳入日常管理，让专业方法可维护、服务经验可复用。"
     }
   },
   "en": {
-    "sources": [
-      "Business policies and company facts",
-      "Integrated service guides and records",
-      "12345 requests and duty directories"
-    ],
-    "outputs": [
-      "Policy matching worksheet",
-      "Application case file and correction list",
-      "Lead and partner routing proposals and handling record"
-    ],
     "home": {
-      "title": "Bring policy to businesses. Make applications easier to complete.",
-      "pain": "Policy conditions are hard to match to company facts, cross-department documents need repeated checks, and hotline requests lose continuity between routing and feedback.",
-      "value": "TeGo digital employees organize policy eligibility, application records and request responsibilities into reviewable case files, connecting service windows, hotlines and accountable teams.",
+      "title": "Match businesses with relevant policies. Connect public services.",
+      "pain": "Businesses struggle to find policies that fit their circumstances. Cross-agency applications, service requests and internal work pass through disconnected records, creating repeated questions and preparation.",
+      "value": "Connect policy knowledge, service rules and agency collaboration through digital roles. Support policy matching, integrated services, 12345 request handling and daily administration, giving staff more time for public service.",
       "scenarios": [
         "Policy matching",
-        "Application preparation",
-        "Integrated service records",
-        "Window pre-checks",
-        "Request routing",
-        "Handling follow-up"
+        "Integrated services",
+        "12345 requests",
+        "Official documents",
+        "Public procurement",
+        "Priority follow-up"
       ],
       "benefits": [
         {
-          "title": "Ground policy matching in evidence",
-          "description": "Match policy conditions to company facts, handing over applicable provisions and verification needs with application preparation."
+          "title": "More relevant business support",
+          "description": "Relate eligibility to business circumstances, prepare relevant support options and carry changes into application preparation."
         },
         {
-          "title": "Reduce application back-and-forth",
-          "description": "Bring shared records, specialist attachments and discrepancies into one case file for coordinated checks and corrections."
+          "title": "Connected service delivery",
+          "description": "Keep documents, responsibilities and progress together across integrated applications and service requests."
         },
         {
-          "title": "Keep request handling connected",
-          "description": "Link request facts to proposed lead and partner teams, then retain confirmed routing, feedback, disputes and response evidence."
+          "title": "Less repetitive administration",
+          "description": "Reuse authoritative knowledge and working methods across official writing, procurement and priority follow-up."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Bring policy to businesses",
-        "Make applications easier"
+        "More relevant public services",
+        "More connected agency work"
       ],
-      "background": "/images/solutions/government/government-civic-landscape_V1.0.webp"
+      "background": "/images/industries/government-architecture_V1.1.webp"
     },
+    "sources": [
+      "Policies and business support programs",
+      "Service guides and agency responsibilities",
+      "12345 requests and handling records",
+      "Official documents, procurement and priority work"
+    ],
+    "outputs": [
+      "Business support service plan",
+      "Integrated service collaboration package",
+      "Service request analysis",
+      "Administrative documents and follow-up"
+    ],
     "features": [
       {
-        "title": "Keep policy evidence with every match",
-        "problem": "Connect policy conditions to the relevant company facts.",
-        "body": "TeGo identifies eligible applicants, supported activities and application requirements. It compares registration, operating and project records, keeping policy provisions, supported facts and verification needs in one worksheet for staff review and application preparation."
+        "title": "Turn published policies into relevant business support",
+        "problem": "Policies sit across agencies, while eligibility is hard to connect with each business. Service teams repeatedly search and explain the same requirements.",
+        "body": "Bring authoritative policies, application guides and business information into one service task. Identify relevant sectors, qualifications and eligibility, then prepare support recommendations and a service plan. Policy updates feed into knowledge and application preparation, helping teams move from answering questions to offering relevant support.",
+        "outcomes": [
+          "Policy fit analysis",
+          "Application preparation",
+          "Policy change tracking"
+        ]
       },
       {
-        "title": "One service. One case file to carry forward.",
-        "problem": "Check shared records, specialist attachments and corrections together.",
-        "body": "TeGo compares departmental guides, identifies shared records and specialist attachments, and checks fields, missing documents and version differences. One application case file and consolidated correction list carry the work forward to service-window staff."
+        "title": "Connect agencies around one integrated service",
+        "problem": "A single application can involve several agencies and document rules. Repeated questions and missing context interrupt handovers.",
+        "body": "Organize service circumstances, official guides, shared information and agency responsibilities around an integrated application. Prepare documents, request missing information and carry progress forward. Authorized connections to existing service systems keep front-desk and handling teams working from the same context.",
+        "outcomes": [
+          "Integrated preparation",
+          "Shared information reuse",
+          "Connected handovers"
+        ]
       },
       {
-        "title": "Keep the handling record connected after routing",
-        "problem": "Retain request facts, accountable teams and handling feedback in one record.",
-        "body": "TeGo extracts facts, locations and requested actions, then proposes lead and partner teams against the duty directory. After staff confirmation, it continues organizing handling feedback, responsibility disputes and response evidence into a traceable record."
+        "title": "Connect 12345 requests with wider service improvement",
+        "problem": "High request volumes, varied wording and fragmented history make routing difficult and separate individual handling from analysis of recurring issues.",
+        "body": "Extract the issue, location and service need from each 12345 request. Relate agency responsibilities and past handling to prepare routing suggestions and response material. Bring together feedback, repeat requests and emerging topics for quality review and analysis, connecting individual cases with a broader view of public needs.",
+        "outcomes": [
+          "Routing recommendations",
+          "Handling quality review",
+          "Recurring-issue analysis"
+        ]
+      },
+      {
+        "title": "Reduce repetitive work across daily administration",
+        "problem": "Official writing, meetings, procurement and priority reporting require repeated preparation, revision and cross-team consolidation.",
+        "body": "Build official writing standards, procurement rules and administrative experience into digital roles. Prepare drafts, analyze procurement clauses, capture meeting actions and assemble priority reports. Projects keep tasks, feedback and document versions connected, while scheduled follow-up helps teams carry work forward.",
+        "outcomes": [
+          "Official documents",
+          "Procurement analysis",
+          "Priority task follow-up"
+        ]
       }
     ],
-    "teamTitle": "Your government digital employee team",
+    "teamTitle": "Digital roles for public services and agency collaboration",
     "employees": [
       {
-        "role": "Policy Matching Digital Employee",
-        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
-        "skills": [
-          "Eligibility mapping",
-          "Evidence alignment",
-          "Verification routing"
-        ],
-        "process": [
-          "Identify applicant and activity conditions",
-          "Map company and project facts to each condition",
-          "Separate missing evidence and verification needs"
-        ],
-        "outputs": [
-          "Policy condition map",
-          "Company evidence alignment",
-          "Application checklist"
-        ],
-        "value": "Ground each condition in company evidence"
-      },
-      {
-        "role": "Service Guidance Digital Employee",
-        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
-        "skills": [
-          "Service scope",
-          "Department requirements",
-          "Record reuse"
-        ],
-        "process": [
-          "Identify the services within one application",
-          "Align lead and partner department requirements",
-          "Separate shared records and service-specific attachments"
-        ],
-        "outputs": [
-          "Cross-department requirements",
-          "Shared document list"
-        ],
-        "value": "Connect preparation across departments"
-      },
-      {
-        "role": "Application Check Digital Employee",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "Attachment checks",
-          "Field consistency",
-          "Coordinated corrections"
-        ],
-        "process": [
-          "Check departmental documents and versions",
-          "Compare shared fields and service-specific differences",
-          "Consolidate gaps, conflicts and correction owners"
-        ],
-        "outputs": [
-          "Cross-department package",
-          "Consolidated correction list",
-          "Differences for confirmation"
-        ],
-        "value": "Make correction needs visible together"
-      },
-      {
-        "role": "Request Analysis Digital Employee",
+        "role": "Policy Services Digital Employee",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
-          "Fact extraction",
-          "Duty mapping",
-          "Routing recommendations"
+          "Policy matching",
+          "Eligibility analysis",
+          "Application planning"
         ],
         "process": [
-          "Extract facts, locations and required actions",
-          "Compare the duty directory and handling scope",
-          "Identify routing proposals and responsibility disputes"
+          "Relate business circumstances to official policies",
+          "Prepare relevant support options and requirements",
+          "Track policy updates and application preparation"
         ],
         "outputs": [
-          "Request fact sheet",
-          "Duty and routing map",
-          "Coordination list"
+          "Business support plan",
+          "Application preparation package"
         ],
-        "value": "Ground routing in facts and departmental duties"
+        "value": "Help businesses find public support that fits their needs"
       },
       {
-        "role": "Service Follow-up Digital Employee",
-        "avatar": "/images/home/employee-avatar-project_V1.0.webp",
+        "role": "Integrated Services Digital Employee",
+        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
         "skills": [
-          "Owner continuity",
-          "Feedback checks",
-          "Blocker follow-up"
+          "Case understanding",
+          "Document preparation",
+          "Service handovers"
         ],
         "process": [
-          "Continue from confirmed routing and owners",
-          "Compare handling feedback and response evidence",
-          "Prepare coordination and review priorities"
+          "Organize requirements across an integrated service",
+          "Connect shared information and specific documents",
+          "Carry front-desk feedback and handling progress forward"
         ],
         "outputs": [
-          "Accountable handling register",
-          "Follow-up checklist",
-          "Feedback review items"
+          "Service collaboration package",
+          "Handling handover record"
         ],
-        "value": "Connect handling feedback to accountable review"
+        "value": "Keep agencies working toward the same service goal"
       },
       {
-        "role": "Public Sector Drafting Digital Employee",
+        "role": "Request Handling Digital Employee",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
         "skills": [
-          "Policy alignment",
-          "Handling evidence",
-          "Document review"
+          "Request classification",
+          "Responsibility matching",
+          "Topic analysis"
         ],
         "process": [
-          "Connect relevant policies and case facts",
-          "Organize progress and coordination decisions",
-          "Prepare evidence-linked drafts for review"
+          "Extract request details and relevant history",
+          "Prepare lead and supporting-agency suggestions",
+          "Connect handling feedback with recurring issues"
         ],
         "outputs": [
-          "Response drafts",
-          "Service handling reports",
-          "Policy comparisons"
+          "Handling recommendations",
+          "Service topic report"
         ],
-        "value": "Keep drafts aligned with facts and handling decisions"
+        "value": "Turn individual requests into opportunities to improve service"
+      },
+      {
+        "role": "Official Writing Digital Employee",
+        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "skills": [
+          "Official drafting",
+          "Meeting records",
+          "Document collaboration"
+        ],
+        "process": [
+          "Use current sources and official writing standards",
+          "Prepare drafts and incorporate agency feedback",
+          "Capture decisions and follow-up work"
+        ],
+        "outputs": [
+          "Official documents",
+          "Meeting records and actions"
+        ],
+        "value": "Give staff more time for the substance of public service"
+      },
+      {
+        "role": "Procurement Digital Employee",
+        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "skills": [
+          "Clause analysis",
+          "Regulation research",
+          "Procurement coordination"
+        ],
+        "process": [
+          "Connect procurement needs and applicable rules",
+          "Analyze document clauses and evaluation factors",
+          "Organize revisions and supporting work"
+        ],
+        "outputs": [
+          "Procurement analysis",
+          "Document revision recommendations"
+        ],
+        "value": "Ground procurement preparation and discussion in relevant evidence"
+      },
+      {
+        "role": "Priority Follow-up Digital Employee",
+        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "skills": [
+          "Task organization",
+          "Progress follow-up",
+          "Management reporting"
+        ],
+        "process": [
+          "Extract responsibilities and objectives from priority work",
+          "Collect agency feedback and coordination needs",
+          "Prepare reports and carry actions forward"
+        ],
+        "outputs": [
+          "Priority task record",
+          "Work progress report"
+        ],
+        "value": "Keep assignments, feedback and follow-up connected"
       }
     ],
     "deployment": {
-      "title": "Work within existing government systems and responsibilities",
-      "body": "Use private deployment and local models with access configured by service, organization and records. Existing authorization and accountable teams retain record reuse, lead and partner confirmation, acceptance, approval and formal responses."
+      "title": "Reuse shared resources in everyday public service",
+      "body": "Deploy in an approved government cloud or local environment and connect shared models, authoritative knowledge and existing systems. Configure access around agency responsibilities, with knowledge updates, capability releases, task records and operational audit supporting methods that teams can maintain and reuse."
     }
   }
 };

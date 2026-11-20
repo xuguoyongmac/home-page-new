@@ -147,7 +147,7 @@ const auditPublishedMarkup = (html, label, report) => {
     const homeIndustryDetailsArrow = icon === 'arrow' && action?.tagName === 'a'
       && /^(zh|en|zh-Hant)\/index\.html$/.test(label)
       && (actionAttrs.class ?? '').split(/\s+/).includes('industry-details-link')
-      && /^\/(zh|en|zh-Hant)\/solutions\/(government|securities|banking|insurance|state-owned)\/$/.test(actionAttrs.href ?? '');
+      && /^\/(zh|en|zh-Hant)\/solutions\/(government|securities|banking|insurance|state-owned|trust)\/$/.test(actionAttrs.href ?? '');
     if (icon && action && !homeIndustryDetailsArrow && ![...carouselControlAttributes].some(attribute => attribute in actionAttrs)) {
       issues.push(`${locationFor(node)}：${describe(action)} 内仍有 ${icon} 装饰图标`);
     }
@@ -209,7 +209,7 @@ for(const document of documents.values()) {
   const src=attributes(match[1]).src;if(src)validateReference(src,document,'脚本');
  }
 }
-const industries=['government','securities','general','insurance','state-owned','banking','appliance'];
+const industries=['government','securities','general','insurance','state-owned','banking','trust','appliance'];
 const capabilities=['digital-employees','collaboration','multi-agent','knowledge','integrations','governance'];
 const routes=['','product','solutions','ecosystem','enterprise','resources','download','releases','faq','contact','privacy','terms','blog'];
 for(const locale of ['zh','en','zh-Hant']){
@@ -221,12 +221,12 @@ for(const locale of ['zh','en','zh-Hant']){
  check(home.tags.some(t=>t.name==='a'&&t.attrs.href===`/${locale}/blog/`),`${locale} 博客链接没有保持当前语言`);
  for(const slug of capabilities)check(home.tags.some(t=>t.name==='a'&&t.attrs.href===`/${locale}/product/${slug}/`),`${locale} 能力菜单缺失 ${slug}`);
 
- check(home.tags.filter(t=>t.attrs.role==='tab'&&t.attrs.id?.startsWith('tab-')).length===5,`${locale} 首页应保留五类行业方案`);
+ check(home.tags.filter(t=>t.attrs.role==='tab'&&t.attrs.id?.startsWith('tab-')).length===6,`${locale} 首页应保留六类行业方案`);
  check(home.tags.filter(t=>t.attrs.role==='tabpanel'&&t.attrs.id?.startsWith('panel-')&&t.attrs.hidden===undefined).length===1,`${locale} 首页行业页签初始选中不唯一`);
  const visible=decodeEntities(home.markup.replace(/<[^>]+>/g,' '));
  check(!/example\.com|TODO|FIXME|仅供演示|占位数据|100%|零风险/.test(visible),`${locale} 首页存在未完成或绝对化文案`);
 }
-const baseline=JSON.parse(readFileSync(path.join(root,'docs/content-baseline_V1.0.json'),'utf8'));
+const baseline=JSON.parse(readFileSync(path.join(root,'docs/content-baseline_V1.1.json'),'utf8'));
 const digest=text=>createHash('sha256').update(text).digest('hex');
 const normalizedBody=text=>text.split('---').slice(2).join('---').trim().replaceAll('/blog-assets/images/','/images/').replaceAll('https://www.zhama.com/','https://zhama.com/');
 for(const post of baseline.articles){

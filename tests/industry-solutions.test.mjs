@@ -26,10 +26,13 @@ function loadData(relativePath) {
 
 const { homeIndustries } = loadData('src/data/home-industries.ts');
 const industries = [
+  ['banking', 'bankingPresentation', 0],
   ['insurance', 'insurancePresentation', 1],
   ['securities', 'securitiesPresentation', 2],
   ['government', 'governmentPresentation', 3],
   ['state-owned', 'stateOwnedPresentation', 4],
+  ['trust', 'trustPresentation', 5],
+  ['general', 'generalPresentation', 6],
 ];
 
 test('solution discovery retains the supported industries, general business and appliance routes', () => {
@@ -37,9 +40,9 @@ test('solution discovery retains the supported industries, general business and 
   const entries = readdirSync(directory, { withFileTypes: true })
     .filter(entry => entry.isDirectory() && existsSync(path.join(directory, entry.name, 'content.ts')))
     .map(entry => loadData(`src/features/solutions/${entry.name}/content.ts`).default);
-  assert.deepEqual(entries.map(entry => entry.slug).sort(), ['appliance', 'banking', 'general', 'government', 'insurance', 'securities', 'state-owned']);
+  assert.deepEqual(entries.map(entry => entry.slug).sort(), ['appliance', 'banking', 'general', 'government', 'insurance', 'securities', 'state-owned', 'trust']);
   for (const locale of ['zh', 'en']) {
-    assert.deepEqual(Object.keys(homeIndustries[locale]).sort(), ['banking', 'government', 'insurance', 'securities', 'state-owned']);
+    assert.deepEqual(Object.keys(homeIndustries[locale]).sort(), ['banking', 'general', 'government', 'insurance', 'securities', 'state-owned', 'trust']);
     for (const entry of entries) {
       assert.equal(entry.copy[locale].slug, entry.slug);
       assert.ok(existsSync(path.join(directory, entry.slug, 'Page.astro')));
@@ -47,25 +50,26 @@ test('solution discovery retains the supported industries, general business and 
   }
 });
 
-test('industry routes retain distinct business visuals and the redesigned pages use independent composition', () => {
-  const structures = new Set();
+test('seven solution pages share the value-led composition and industry-specific artwork', () => {
   const sharedPage = readFileSync(path.join(root, 'src/features/solutions/shared/IndustrySolutionPage.astro'), 'utf8');
-  assert.doesNotMatch(sharedPage, /IndustryWorkbench|IndustryValueVisual/);
+  assert.doesNotMatch(sharedPage, /IndustryWorkbench|IndustryValueVisual|SolutionVisual/);
+  assert.match(sharedPage, /\/images\/solutions\/\$\{slug\}\/\$\{slug\}-value-\$\{index \+ 1\}_V2\.0\.webp/);
   for (const [slug] of industries) {
     const route = readFileSync(path.join(root, `src/features/solutions/${slug}/Page.astro`), 'utf8');
-    assert.match(route, /import SolutionVisual from '\.\/SolutionVisual\.astro'/);
-    if (['government', 'state-owned'].includes(slug)) {
-      assert.doesNotMatch(route, /IndustrySolutionPage/, `${slug} must retain its independent page composition`);
-      assert.match(route, /<section\b/);
-    } else {
-      assert.match(route, /Visual=\{SolutionVisual\}/);
-    }
-    const visual = readFileSync(path.join(root, `src/features/solutions/${slug}/SolutionVisual.astro`), 'utf8');
-    assert.doesNotMatch(visual, /IndustryWorkbench|IndustryValueVisual/);
-    const markup = visual.split('---')[2].split('<style>')[0];
-    structures.add([...markup.matchAll(/<\/?([A-Za-z][A-Za-z0-9-]*)\b/g)].map(match => match[1]).join('/'));
+    assert.match(route, /import IndustrySolutionPage from '\.\.\/shared\/IndustrySolutionPage\.astro'/);
+    assert.match(route, new RegExp(`slug="${slug}"`));
+    assert.doesNotMatch(route, /SolutionVisual|IndustryPage|Visual=\{/);
   }
-  assert.equal(structures.size, industries.length, 'Industry diagrams must have independent business structures');
+});
+
+test('general business remains discoverable without adding a seventh homepage or navigation tab', () => {
+  const source = readFileSync(path.join(root, 'src/data/industries.ts'), 'utf8');
+  const homepageSlugs = source.match(/export const homeIndustrySlugs = (\[[^\]]+\])/);
+  assert.ok(homepageSlugs, 'Homepage industry tabs need an explicit discovery order');
+  const slugs = JSON.parse(homepageSlugs[1].replaceAll("'", '"'));
+  assert.deepEqual(slugs, ['banking', 'insurance', 'securities', 'government', 'state-owned', 'trust']);
+  const general = loadData('src/features/solutions/general/content.ts').default;
+  assert.equal(general.category, 'general');
 });
 
 for (const [slug, exportName, order] of industries) {
@@ -77,34 +81,52 @@ for (const [slug, exportName, order] of industries) {
     for (const locale of ['zh', 'en']) {
       const copy = presentation[locale];
       const homepage = homeIndustries[locale][slug];
+      assert.equal(homepage, copy.home, 'Homepage and overview must use the same complete presentation source');
       assert.equal(homepage.scenarios, copy.home.scenarios, 'Homepage scenarios must use the detail content source');
-      assert.equal(homepage.benefits.length, copy.home.benefits.length);
+      assert.equal(homepage.scenarios.length, 6);
+      assert.equal(homepage.benefits.length, 3);
       assert.ok(homepage.title.trim().length > 0 && homepage.pain.trim().length > 0 && homepage.value.trim().length > 0);
       assert.ok(homepage.benefits.every(benefit => benefit.title.trim().length > 0 && benefit.description.trim().length > 0));
       assert.equal(metadata.copy[locale].title, copy.home.title);
       assert.equal(metadata.copy[locale].description, copy.home.value);
-      assert.equal(copy.features.length, copy.home.benefits.length);
-      assert.equal(copy.features.length, 3);
-      assert.equal(copy.outputs.length, copy.features.length);
-      assert.ok(copy.sources.length >= 3);
+      assert.equal(copy.features.length, 4);
+      assert.equal(copy.outputs.length, 4);
+      assert.equal(copy.sources.length, 4);
+      assert.equal(copy.hero.lines.length, 2);
+      for (const feature of copy.features) {
+        assert.ok(feature.title.trim() && feature.problem.trim() && feature.body.trim());
+        assert.equal(feature.outcomes.length, 3, `${slug} needs three business outcomes for each feature`);
+        assert.ok(feature.outcomes.every(outcome => outcome.trim().length > 0));
+      }
       assert.equal('workbench' in copy, false);
       assert.equal('visual' in copy, false);
       assert.equal(metadata.copy[locale].tasks.length, copy.employees.length);
     }
   });
 
-  test(`${slug}: both languages provide complete employees and valid visual assets`, () => {
+  test(`${slug}: both languages provide complete employee roles`, () => {
     for (const locale of ['zh', 'en']) {
       const copy = presentation[locale];
       assert.equal(copy.employees.length, 6);
       assert.equal(new Set(copy.employees.map(employee => employee.role)).size, copy.employees.length);
       for (const employee of copy.employees) {
-        for (const field of ['skills', 'process', 'outputs']) {
-          assert.ok(employee[field].length >= 2, `${employee.role} needs ${field}`);
+        for (const [field, count] of [['skills', 3], ['process', 3], ['outputs', 2]]) {
+          assert.equal(employee[field].length, count, `${employee.role} needs ${count} ${field}`);
           assert.ok(employee[field].every(item => item.trim().length > 0));
         }
+        assert.ok(employee.value.trim().length > 0);
       }
-      const assets = [copy.hero.background, ...copy.employees.map(employee => employee.avatar)];
+    }
+  });
+
+  test(`${slug}: both languages reference complete hero, role and business-value artwork`, () => {
+    for (const locale of ['zh', 'en']) {
+      const copy = presentation[locale];
+      const assets = [
+        copy.hero.background,
+        ...copy.employees.map(employee => employee.avatar),
+        ...Array.from({ length: 4 }, (_, index) => copy.features[index].image ?? `/images/solutions/${slug}/${slug}-value-${index + 1}_V2.0.webp`),
+      ];
       for (const asset of assets) {
         assert.ok(asset.startsWith('/images/'));
         assert.ok(existsSync(path.join(root, 'public', asset)), `Missing asset: ${asset}`);

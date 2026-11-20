@@ -2,58 +2,48 @@
 import { pathFor } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import type { IndustrySolutionCopy } from './types';
-import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import EmployeeCarousel from '../banking/EmployeeCarousel.astro';
-import '../../../styles/banking-page.css';
-import '../../../styles/industry-solutions.css';
+import Icon from '../../../components/Icon.astro';
+import '../../../styles/industry-value-page.css';
 
-interface Props { locale: Locale; slug: string; presentation: IndustrySolutionCopy; Visual: AstroComponentFactory; backgroundSize?: { width: number; height: number }; }
-const { locale, slug, presentation, Visual, backgroundSize = { width: 1600, height: 800 } } = Astro.props;
+interface Props { locale: Locale; slug: string; presentation: IndustrySolutionCopy; }
+const { locale, slug, presentation: copy } = Astro.props;
 const zh = locale === 'zh';
 ---
-<div class:list={['banking-solution', 'industry-solution', `industry-solution-${slug}`]} data-industry-solution={slug}>
-  <section class="banking-hero" aria-labelledby={`${slug}-title`}>
-    <img class="banking-banner-background" src={presentation.hero.background} alt="" width={backgroundSize.width} height={backgroundSize.height} sizes={`(max-width: 1080px) ${zh ? 2400 : 2800}px, 100vw`} loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
-    <div class="container banking-hero-grid">
-      <div class="banking-hero-copy">
-        <h1 id={`${slug}-title`} aria-label={presentation.home.title}>{presentation.hero.lines.map(line => <span>{line}</span>)}</h1>
-        <div class="banking-hero-summary">
-          <p>{presentation.home.value}</p>
-          <a class="button banking-contact" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
-        </div>
-      </div>
-      <div class="banking-hero-product industry-hero-overview"><Visual locale={locale} index={-1}/></div>
+<div class="industry-value-page" data-industry-solution={slug}>
+  <section class="industry-value-hero" aria-labelledby={`${slug}-title`}>
+    <img class="industry-value-landscape" src={copy.hero.background} alt="" width="1600" height="1067" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
+    <div class="container industry-value-hero-content">
+      <h1 id={`${slug}-title`}>{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
+      <p>{copy.home.value}</p>
+      <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
+      <ul class="industry-value-scenarios" aria-label={zh ? '业务场景' : 'Business scenarios'}>{copy.home.scenarios.map(item => <li>{item}</li>)}</ul>
     </div>
   </section>
 
-  {presentation.features.map((feature, index) => <section class:list={['banking-feature-section', {'banking-feature-reversed': index % 2 === 1}]} aria-labelledby={`${slug}-feature-${index}`}>
-    <div class="container banking-feature-grid">
-      <div class="banking-feature-copy">
-        <h2 id={`${slug}-feature-${index}`}>{feature.title.split('，').map((line, lineIndex, lines) => <span>{line}{lineIndex < lines.length - 1 ? '，' : ''}</span>)}</h2>
-        <dl class="banking-feature-details">
-          <div class="banking-feature-problem"><dt>{zh ? '业务痛点' : 'Challenge'}</dt><dd>{feature.problem}</dd></div>
-          <div class="banking-feature-body"><dt>{zh ? '方案' : 'Solution'}</dt><dd>{feature.body}</dd></div>
-        </dl>
+  {copy.features.map((feature, index) => <section class:list={['industry-value-section', { 'industry-value-reversed': index % 2 === 1 }]} aria-labelledby={`${slug}-feature-${index}`}>
+    <div class="container industry-value-grid">
+      <div class="industry-value-copy">
+        <h2 id={`${slug}-feature-${index}`}>{feature.title}</h2>
+        <p class="industry-value-problem">{feature.problem}</p>
+        <p class="industry-value-body">{feature.body}</p>
+        {feature.outcomes?.length && <ul class="industry-value-outcomes">{feature.outcomes.map(outcome => <li><Icon name="check" size={16}/><span>{outcome}</span></li>)}</ul>}
       </div>
-      <div class="banking-feature-visual"><Visual locale={locale} index={index}/></div>
+      <figure class="industry-value-image">
+        <img src={feature.image ?? `/images/solutions/${slug}/${slug}-value-${index + 1}_V2.0.webp`} alt={feature.title} width="1200" height="800" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1200px) 52vw, 650px" loading="lazy" decoding="async"/>
+      </figure>
     </div>
   </section>)}
 
-  <section class="banking-section banking-scenarios" aria-labelledby={`${slug}-team-title`}>
-    <div class="container"><h2 id={`${slug}-team-title`}>{presentation.teamTitle}</h2></div>
-    <EmployeeCarousel locale={locale} employees={presentation.employees} teamLabel={presentation.teamTitle}/>
+  <section class="industry-value-team" aria-labelledby={`${slug}-team-title`}>
+    <div class="container"><h2 id={`${slug}-team-title`}>{copy.teamTitle}</h2></div>
+    <EmployeeCarousel locale={locale} employees={copy.employees} teamLabel={copy.teamTitle}/>
   </section>
 
-  <section class="banking-deployment" aria-labelledby={`${slug}-deployment-title`}>
-    <div class="container banking-deployment-grid">
-      <h2 id={`${slug}-deployment-title`}>{presentation.deployment.title}</h2>
-      <p>{presentation.deployment.body}</p>
+  <section class="industry-value-deployment" aria-labelledby={`${slug}-deployment-title`}>
+    <div class="container industry-value-deployment-grid">
+      <h2 id={`${slug}-deployment-title`}>{copy.deployment.title}</h2>
+      <p>{copy.deployment.body}</p>
     </div>
   </section>
 </div>
-
-<style>
-  @media (max-width: 600px) {
-    .industry-solution .banking-banner-background { object-position: 12% center; }
-  }
-</style>

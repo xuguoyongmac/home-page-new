@@ -23,22 +23,22 @@ const otherMeta = {
     resources: {title:'资源中心',description:'TeGo 产品文档、部署资料、客户端、博客与开发资源。'},
     faq: {title:'常见问题',description:'了解 TeGo 的数字员工、团队协作、知识授权、办公成果与企业部署。'},
     contact: {title:'预约产品交流',description:'围绕团队工作、业务系统集成或私有化部署，与 TeGo 团队交流。'},
-    download: {title:'下载中心',description:'下载 TeGo OS 桌面端、移动端与 Tego Studio 的各平台客户端。'},
+    download: {title:'下载中心',description:'下载 TeGo 数字员工协作平台桌面端、移动端与开发工具。'},
     releases: {title:'历史版本',description:'查找 TeGo OS 桌面端、移动端与 Tego Studio 的历史版本客户端安装包。'},
-    privacy: {title:legalContent.zh.privacy.title,description:'TeGo OS 个人信息与数据处理、访问和删除政策。'},
-    terms: {title:legalContent.zh.terms.title,description:'TeGo OS 官网与产品服务使用协议。'},
+    privacy: {title:legalContent.zh.privacy.title,description:'TeGo 数字员工协作平台个人信息与数据处理、访问和删除政策。'},
+    terms: {title:legalContent.zh.terms.title,description:'TeGo 数字员工协作平台官网与产品服务使用协议。'},
   },
   en: {
     resources: {title:'Resources',description:'Find TeGo documentation, deployment guides, clients, product updates, and developer resources.'},
     faq: {title:'Frequently asked questions',description:'Learn about digital employees, shared projects, knowledge permissions, editable deliverables, and deployment.'},
     contact: {title:'Talk to the TeGo team',description:'Discuss team workflows, business integrations, and private deployment with the TeGo team.'},
-    download: {title:'Downloads',description:'Download TeGo OS desktop and mobile clients and Tego Studio for your platform.'},
+    download: {title:'Downloads',description:'Download desktop and mobile clients and development tools for the TeGo digital employee collaboration platform.'},
     releases: {title:'Release history',description:'Find previous releases of TeGo OS desktop and mobile clients and Tego Studio.'},
-    privacy: {title:legalContent.en.privacy.title,description:'How TeGo OS handles personal information, data access, and deletion.'},
-    terms: {title:legalContent.en.terms.title,description:'Terms governing the use of the TeGo OS website and services.'},
+    privacy: {title:legalContent.en.privacy.title,description:'How the TeGo digital employee collaboration platform handles personal information, data access, and deletion.'},
+    terms: {title:legalContent.en.terms.title,description:'Terms governing the use of the TeGo digital employee collaboration platform website and services.'},
   },
 };
-const meta = page === 'solutions' ? (locale === 'zh' ? {title:'行业解决方案',description:'探索证券、银行、保险、政务、央国企与通用办公的数字员工工作方案，明确输入资料、执行动作、交付成果与实施范围。'} : {title:'Industry solutions',description:'Explore digital employee workflows for securities, banking, insurance, government, state-owned enterprises and general business.'}) : detail || otherMeta[locale][page as keyof typeof otherMeta.zh];
+const meta = page === 'solutions' ? (locale === 'zh' ? {title:'行业解决方案',description:'面向银行、保险、证券、政务、央国企、信托与企业通用场景，让岗位能力融入业务链，推动客户经营、专业作业与组织协作。'} : {title:'Industry solutions',description:'Connect digital employees to the business priorities of banking, insurance, securities, government, state-owned enterprises, trust services and general business.'}) : detail || otherMeta[locale][page as keyof typeof otherMeta.zh];
 ---
 <Layout locale={locale} title={meta.title} description={meta.description} page={page}>
   {page === 'solutions' && <SolutionsPage locale={locale}/>}

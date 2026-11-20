@@ -13,7 +13,7 @@
 }
 
 .is-home .hero-visual-stage .banner-outcomes-visual[data-duty-visual] {
-  border-color: #8abce042;
+  border-color: #8eb4d380;
   background: radial-gradient(ellipse at 38% 0%, #008cff0b, transparent 52%),
     linear-gradient(135deg, #0209151c, #02050b08);
   box-shadow: inset 0 0 0 1px #00000030, 0 9px 18px -12px #000d,
@@ -68,7 +68,7 @@
 .is-home .banner-outcomes-visual[data-duty-visual] .duty-assignments time { color: var(--duty-dim); }
 .is-home .banner-outcomes-visual[data-duty-visual] .duty-assignments > li[data-current='true'] {
   color: var(--duty-ink);
-  border-color: #a4dcff66;
+  border-color: #a4c8e6a6;
   background: #14528f;
   box-shadow: inset 0 1px 0 #d9f5ff17, 0 3px 6px #02050a66,
     0 13px 24px #02050a75;
@@ -84,7 +84,7 @@
 }
 
 .is-home .banner-outcomes-visual[data-duty-visual] .duty-results::before {
-  border-color: #91d2ff47;
+  border-color: #87adce8c;
   background: radial-gradient(ellipse at 20% 0%, #008cff0b, transparent 58%),
     linear-gradient(128deg, #06346b52, #020a1c38 58%, #04133a3d);
   box-shadow: inset 1px 1px 0 #d9f5ff12, 0 3px 6px #02050a66,
@@ -184,35 +184,12 @@
 }
 .is-home .banner-outcomes-visual[data-duty-visual] .duty-delivery {
   color: var(--duty-green);
-  border-color: #a4dcff59;
+  border-color: #8eb4d399;
   background: #103153;
   box-shadow: inset 0 1px 0 #d9f5ff17, 0 3px 5px #02050a7a,
     0 13px 24px #02050a85;
 }
 .is-home .banner-outcomes-visual[data-duty-visual] .duty-delivery-file { color: #b9d5ef; }
-
-/* Keep a native full contour even when composite masks are unavailable. */
-@supports (mask-composite: exclude) or (-webkit-mask-composite: xor) {
-  .is-home .hero-visual-stage .banner-outcomes-visual[data-duty-visual]::after,
-  .is-home .banner-outcomes-visual[data-duty-visual] .duty-assignments > li[data-current='true']::after,
-  .is-home .banner-outcomes-visual[data-duty-visual] .duty-delivery::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    padding: 1.25px;
-    border-radius: inherit;
-    background: radial-gradient(ellipse 38% 100% at 13% 0%, #d9f5ff80, transparent 80%);
-    pointer-events: none;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-  }
-  .is-home .banner-outcomes-visual[data-duty-visual] .duty-assignments > li[data-current='true']::after,
-  .is-home .banner-outcomes-visual[data-duty-visual] .duty-delivery::after {
-    background: #85c7ff66;
-  }
-}
 
 @media (max-width: 700px) {
   .is-home .banner-outcomes-visual[data-duty-visual] .duty-assignments > li[data-current='true'] {

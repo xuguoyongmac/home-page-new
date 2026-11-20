@@ -2,385 +2,425 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 
 export const stateOwnedPresentation: IndustrySolutionPresentation = {
   "zh": {
-    "sources": [
-      "集团经营计划、预算与单位项目执行记录",
-      "采购需求、评审文件与投标证明",
-      "合同清单、到货记录、变更与成本资料",
-      "现场整改要求、责任时限和反馈证据"
-    ],
-    "outputs": [
-      "预算执行剖面与经营协调事项",
-      "采购审查清单与投标响应矩阵",
-      "合同履约台账与责任交接包"
-    ],
     "home": {
-      "title": "经营目标落实到项目，合同履约接续到责任",
-      "pain": "集团经营计划到了单位、项目和合同就变成不同台账；采购要求与响应证据反复核对，履约变更、成本差异和现场整改难接到同一责任链。",
-      "value": "TeGo 数字员工沿预算、招采、合同履约与整改接续作业，把经营偏差穿透到单位项目，将采购审查与投标响应分别对应依据，再把现场反馈组织成可复核的责任交接。",
+      "title": "把集团经营目标，接续到每个单位与项目",
+      "pain": "集团预算、司库资金与项目执行分属不同系统和单位，经营变化难以穿透；采购履约、现场风险和监督整改跨条线推进，管理要求难落到同一责任链。",
+      "value": "围绕穿透式监管与集团经营管理，以数字岗位连接预算资金、采购履约、工程现场和监督整改，让总部掌握变化、条线接续工作、基层复用方法。",
       "scenarios": [
-        "集团经营",
-        "招采审查",
-        "投标响应",
-        "合同履约",
-        "项目成本",
-        "现场整改"
+        "穿透式监管",
+        "预算经营",
+        "司库资金",
+        "采购招投标",
+        "项目履约",
+        "EHS与审计"
       ],
       "benefits": [
         {
-          "title": "经营目标落到单位和项目",
-          "description": "对照预算与执行记录，将回款、投入和项目节点差异关联到合同、变化原因与协调责任。"
+          "title": "经营管控看得更深",
+          "description": "关联集团、板块与项目的经营和资金信息，把指标偏差接到原因、影响与协调行动。"
         },
         {
-          "title": "采购与投标各有完整依据",
-          "description": "采购方核对需求、文件与评审要素；投标方逐项组织条款响应和证明，分别交到有权岗位。"
+          "title": "价值链协作接得更稳",
+          "description": "从采购招投标到合同、项目和现场，串联目标、节点与交付，减少条线间的信息断点。"
         },
         {
-          "title": "履约与整改接续责任交接",
-          "description": "把设备交付、变更成本和隐患反馈组织进履约台账，交接依据、责任、时限与复核事项。"
+          "title": "责任与方法持续落地",
+          "description": "以监督整改贯通责任反馈，以岗位知识和技能复用集团方法，保留单位差异与授权边界。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "经营目标落实到项目",
-        "合同履约接续到责任"
+        "让集团管控穿透业务",
+        "让经营责任接续到一线"
       ],
-      "background": "/images/solutions/state-owned/state-owned-industrial-aerial_V1.1.webp"
+      "background": "/images/industries/state-owned-architecture_V1.3.webp"
     },
+    "sources": [
+      "集团战略、经营预算与司库资料",
+      "采购招投标与供应链记录",
+      "工程合同、项目进度与EHS资料",
+      "制度标准、监督审计与整改反馈"
+    ],
+    "outputs": [
+      "集团经营与资金分析",
+      "采购履约协作成果",
+      "项目执行与EHS报告",
+      "监督整改责任报告"
+    ],
     "features": [
       {
-        "title": "让经营计划，穿透到项目执行",
-        "problem": "单位、项目与合同口径不一，经营差异难对应到现场原因和协调责任。",
-        "body": "TeGo 沿集团指标口径对照预算与执行记录，拆解单位回款、项目投入和履约节点差异，关联合同与变更依据。经营分析数字员工整理偏差原因、责任岗位和协调事项，形成经营会议可接续的督办清单。"
+        "title": "让集团经营与司库资金形成穿透视野",
+        "problem": "总部、板块与所属企业各有经营和资金口径，预算偏差、项目投入与回款变化难在同一视野分析。",
+        "body": "连接获准的经营、预算与司库资料，按集团、板块、单位和项目关联收入、成本、资金与资产信息。数字员工组织偏差分析、资金专题和经营报告，将变化接到业务背景与协调事项，为穿透式监管和资源配置提供持续的工作支撑。",
+        "outcomes": [
+          "预算经营分析",
+          "司库资金专题",
+          "集团经营专题"
+        ]
       },
       {
-        "title": "采购与投标，沿两条责任链推进",
-        "problem": "采购方控制采购需求与评审文件，投标方承担响应与承诺，资料不能混用、责任不能混同。",
-        "body": "采购方用 TeGo 核对需求、采购文件和评审要素；投标方逐项对应资格、技术商务条款、响应位置与证明材料。技能与插件衔接文档核对，分别交付采购审查清单和投标响应矩阵，专业人员确认意见与承诺。"
+        "title": "让采购招投标衔接合同与供应链履约",
+        "problem": "采购需求、投标响应与合同执行分属不同团队，前端约定难接到交付节点，供应变化影响协同。",
+        "body": "围绕采购方审查与投标方响应分别组织专业任务，连接需求、评审要求、证明与交易文件。合同形成后延续条款、交付节点、变更和供应履约信息，生成采购分析、响应方案与履约成果，让价值链协作贯穿签约前后。",
+        "outcomes": [
+          "采购与投标方案",
+          "合同履约分析",
+          "供应协同成果"
+        ]
       },
       {
-        "title": "把合同、现场与整改，接成一份交接",
-        "problem": "设备到货、工程变更与整改反馈分散，成本和工期影响难追到下一责任岗位。",
-        "body": "履约数字员工对照合同清单、里程碑与现场记录，识别交付、变更和成本差异；整改数字员工核对措施、时限与反馈证据。TeGo 将待办和成果版本组织成责任交接包，由项目与安全岗位复核，验收和销号沿用专业流程。"
+        "title": "让项目履约与EHS管理接续到现场",
+        "problem": "工程进度、成本变更与现场安环信息散落在多份记录，管理层难以把项目偏差与现场问题关联。",
+        "body": "以项目目标关联合同节点、进度反馈、成本变化与现场记录，按职责整理工程协作和EHS事项。数字员工持续归集偏差、隐患与整改反馈，形成履约分析、现场专题和协调任务，让项目团队掌握执行变化、推动问题接续处理。",
+        "outcomes": [
+          "项目履约报告",
+          "成本变更分析",
+          "EHS协同成果"
+        ]
+      },
+      {
+        "title": "让监督审计与整改形成责任闭环",
+        "problem": "监督发现、整改措施与单位反馈分散管理，重复报送负担较重，问题成因与后续改进难以沉淀。",
+        "body": "将监督发现与责任单位、整改要求和反馈材料关联，按问题归集过程、证据与后续事项，支持审计复查和专项汇报。把反复出现的问题转为制度与岗位方法的更新依据，让整改工作既能追溯责任，也能服务后续经营改进。",
+        "outcomes": [
+          "监督问题分析",
+          "整改进展报告",
+          "制度改进依据"
+        ]
       }
     ],
-    "teamTitle": "央国企数字员工团队",
+    "teamTitle": "服务总部、板块与基层的数字员工团队",
     "employees": [
       {
-        "role": "集团经营数字员工",
-        "avatar": "/images/home/employee-avatar-business_V1.0.webp",
-        "skills": [
-          "预算执行",
-          "差异归因",
-          "责任督办"
-        ],
-        "process": [
-          "按集团口径对照单位项目执行",
-          "对应收入回款和投入差异",
-          "接续责任岗位与协调事项"
-        ],
-        "outputs": [
-          "预算执行剖面",
-          "单位项目偏差清单",
-          "经营协调事项"
-        ],
-        "value": "让集团差异找到单位项目责任"
-      },
-      {
-        "role": "招采审查数字员工",
-        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
-        "skills": [
-          "采购标准",
-          "评审要素",
-          "文件审查"
-        ],
-        "process": [
-          "对照采购标准与文件范本",
-          "核对采购文件和评审要素",
-          "标出审查问题与条款依据"
-        ],
-        "outputs": [
-          "采购文件审查清单",
-          "评审要素对照",
-          "待核实事项"
-        ],
-        "value": "让采购方审查对应标准与评审要素"
-      },
-      {
-        "role": "投标响应数字员工",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "条款映射",
-          "响应覆盖",
-          "一致性复核"
-        ],
-        "process": [
-          "对应每项招采要求与响应位置",
-          "关联资质技术和商务证明",
-          "核查漏答与前后口径冲突"
-        ],
-        "outputs": [
-          "需求响应矩阵",
-          "响应文件草稿",
-          "缺项完善清单"
-        ],
-        "value": "让每项要求都有响应和证明"
-      },
-      {
-        "role": "合同履约数字员工",
-        "avatar": "/images/home/employee-avatar-project_V1.0.webp",
-        "skills": [
-          "里程碑核对",
-          "变更接续",
-          "责任跟进"
-        ],
-        "process": [
-          "核对设备交付和合同里程碑",
-          "关联工程变更成本和工期影响",
-          "组织责任交接与待复核事项"
-        ],
-        "outputs": [
-          "合同履约台账",
-          "变更影响对照",
-          "责任交接包"
-        ],
-        "value": "让合同要求接到现场责任"
-      },
-      {
-        "role": "成本分析数字员工",
+        "role": "经营分析数字员工",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
-          "目标实际对照",
-          "合同关联",
-          "差异定位"
+          "预算分析",
+          "指标归因",
+          "经营报告"
         ],
         "process": [
-          "核对目标成本与执行口径",
-          "关联实际记录合同和变更",
-          "定位差异原因与待核实依据"
+          "归集集团与所属单位经营资料",
+          "关联目标偏差和业务变化",
+          "组织经营分析与协调事项"
         ],
         "outputs": [
-          "目标实际成本对照",
-          "成本差异依据",
-          "项目核实清单"
+          "预算经营报告",
+          "经营协调专题"
         ],
-        "value": "让成本变化追到合同和项目"
+        "value": "把经营指标的变化讲清楚、接到业务行动"
       },
       {
-        "role": "现场整改数字员工",
-        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "role": "司库资金数字员工",
+        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
         "skills": [
-          "整改要求",
-          "证据核对",
-          "复核接续"
+          "资金分析",
+          "回款跟踪",
+          "资产研判"
         ],
         "process": [
-          "核对现场要求责任与整改时限",
-          "关联措施反馈和证明材料",
-          "交接补正与专业复查事项"
+          "关联预算投入与资金记录",
+          "分析回款节点和资金变化",
+          "编制资金专题及管理材料"
         ],
         "outputs": [
-          "现场整改台账",
-          "整改证据对照",
-          "复查交接事项"
+          "资金分析报告",
+          "回款跟进专题"
         ],
-        "value": "让整改证据接到责任与复核"
+        "value": "让资金视野与项目经营保持联系"
+      },
+      {
+        "role": "招采协作数字员工",
+        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "skills": [
+          "采购分析",
+          "投标响应",
+          "供应协同"
+        ],
+        "process": [
+          "区分采购审查与投标响应任务",
+          "组织要求、方案与证明资料",
+          "接续供应与合同履约信息"
+        ],
+        "outputs": [
+          "采购分析成果",
+          "投标响应方案"
+        ],
+        "value": "把专业方法贯穿采购招投标与供应协作"
+      },
+      {
+        "role": "项目履约数字员工",
+        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "skills": [
+          "节点跟进",
+          "成本分析",
+          "变更管理"
+        ],
+        "process": [
+          "关联合同目标与项目节点",
+          "分析进度成本和变更影响",
+          "汇集责任反馈与项目协调"
+        ],
+        "outputs": [
+          "履约分析报告",
+          "项目协调材料"
+        ],
+        "value": "让项目偏差及时进入团队协作"
+      },
+      {
+        "role": "EHS协作数字员工",
+        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "skills": [
+          "隐患归集",
+          "安环分析",
+          "整改跟踪"
+        ],
+        "process": [
+          "关联现场记录与适用安环要求",
+          "整理隐患影响和整改任务",
+          "接续反馈与专项管理报告"
+        ],
+        "outputs": [
+          "现场安环专题",
+          "整改跟进报告"
+        ],
+        "value": "把现场信息接到安全环保日常管理"
+      },
+      {
+        "role": "监督审计数字员工",
+        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "skills": [
+          "问题分析",
+          "证据关联",
+          "整改协作"
+        ],
+        "process": [
+          "关联问题来源与责任单位",
+          "归集整改措施和实际反馈",
+          "组织复查准备与制度改进依据"
+        ],
+        "outputs": [
+          "监督整改报告",
+          "问题证据底稿"
+        ],
+        "value": "让监督成果转化为可接续的经营改进"
       }
     ],
     "deployment": {
-      "title": "按集团、单位与项目，保留作业边界",
-      "body": "支持内网私有化、本地模型与信创适配，按组织和项目授权连接资料、知识库与业务系统；技能承接标准作业，保留任务记录与成果版本，经营协调、评审定标、履约验收和整改销号由有权岗位确认。"
+      "title": "集团统筹共用能力，所属企业按职责使用",
+      "body": "支持集团机房或专有云部署，衔接已有模型、知识和业务系统。将共用制度、岗位模板与专业方法沉淀为可复用资产，分别配置单位资料、工具身份与使用范围；通过版本发布、任务记录和审计诊断，让规模化应用与集团治理共同推进。"
     }
   },
   "en": {
-    "sources": [
-      "Group operating plans, budgets and unit/project execution",
-      "Procurement requirements, evaluation files and bid proof",
-      "Contract schedules, receipt records, changes and costs",
-      "Site action requirements, owners, deadlines and evidence"
-    ],
-    "outputs": [
-      "Budget execution cross-section and coordination actions",
-      "Procurement checklist and bid response matrix",
-      "Contract delivery register and accountability handover"
-    ],
     "home": {
-      "title": "Put operating targets into projects. Carry contracts through to accountable delivery.",
-      "pain": "Group plans fragment into separate unit, project and contract registers. Procurement requirements and bid evidence need repeated checks, while changes, cost differences and site actions lose their accountable handover.",
-      "value": "TeGo digital employees connect budgets, procurement, contract delivery and site remediation. Trace operating differences to units and projects, keep buyer reviews separate from bidder responses, and organize field records into accountable handovers.",
+      "title": "Connect group objectives with every business and project",
+      "pain": "Budgets, treasury and project execution sit across systems and subsidiaries. Procurement, delivery, site risks and remediation cross functions, making it difficult to maintain a connected view of performance and responsibility.",
+      "value": "Digital roles connect group planning, treasury, procurement, project execution and audit remediation. Give headquarters a deeper view of changes, connect functions around delivery and help operating teams reuse established methods.",
       "scenarios": [
-        "Group operations",
-        "Procurement review",
-        "Bid responses",
-        "Contract delivery",
-        "Project costs",
-        "Site remediation"
+        "Group oversight",
+        "Budget performance",
+        "Treasury",
+        "Procurement & bids",
+        "Project delivery",
+        "EHS & audit"
       ],
       "benefits": [
         {
-          "title": "Connect operating targets to units and projects",
-          "description": "Compare budgets with execution, tracing collections, spending and milestone differences to contracts, causes and accountable coordination."
+          "title": "A deeper view of performance",
+          "description": "Connect group, business-unit and project information, linking variances to causes, implications and coordinated action."
         },
         {
-          "title": "Give buyers and bidders complete, separate evidence",
-          "description": "Buyers check requirements, files and evaluation criteria. Bidders organize provision responses and proof for their own authorized teams."
+          "title": "Continuity across the value chain",
+          "description": "Carry objectives, milestones and deliverables from procurement through contracts, projects and site work."
         },
         {
-          "title": "Carry delivery and remediation through accountable handovers",
-          "description": "Bring equipment deliveries, change costs and site evidence into a register covering owners, deadlines and review actions."
+          "title": "Accountability and reusable methods",
+          "description": "Connect remediation with responsible teams and reuse group methods while retaining local rules and access boundaries."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Put targets into projects",
-        "Carry contracts through delivery"
+        "See deeper into group performance",
+        "Carry responsibility to operations"
       ],
-      "background": "/images/solutions/state-owned/state-owned-industrial-aerial_V1.1.webp"
+      "background": "/images/industries/state-owned-architecture_V1.3.webp"
     },
+    "sources": [
+      "Group strategy, budgets and treasury records",
+      "Procurement, bidding and supply-chain records",
+      "Project contracts, progress and EHS information",
+      "Policies, audit findings and remediation feedback"
+    ],
+    "outputs": [
+      "Group performance and treasury analysis",
+      "Procurement and delivery work",
+      "Project execution and EHS report",
+      "Audit remediation report"
+    ],
     "features": [
       {
-        "title": "Trace operating plans through project execution",
-        "problem": "Different unit, project and contract definitions obscure site causes and coordination ownership.",
-        "body": "TeGo compares budgets and execution using group indicator definitions, separating collections, project spending and milestone differences. The operations digital employee links contracts and changes, then organizes causes, owners and actions into a follow-up list for management review."
+        "title": "Bring group performance and treasury into one view",
+        "problem": "Headquarters and subsidiaries use different performance and funding definitions. Budget variances, project spending and collections are difficult to analyze together.",
+        "body": "Connect authorized operating, budget and treasury records across the group, business units and projects. Digital employees organize revenue, cost, cash and asset information into variance analysis, treasury topics and management reports. Changes remain linked to business context and coordination needs, supporting deeper oversight and resource decisions.",
+        "outcomes": [
+          "Budget performance analysis",
+          "Treasury analysis",
+          "Group operating reviews"
+        ]
       },
       {
-        "title": "Keep procurement and bidding on separate responsibility tracks",
-        "problem": "Buyers control procurement requirements and evaluation files. Bidders own their responses and commitments. Their records and responsibilities remain separate.",
-        "body": "Buyers use TeGo to check requirements, procurement files and evaluation elements. Bidders map qualification, technical and commercial provisions to response locations and proof. Skills and plugins support document checks, producing separate procurement checklists and bid response matrices for specialist confirmation."
+        "title": "Carry procurement and bids through to delivery",
+        "problem": "Requirements, bid responses and contract execution belong to different teams. Early commitments are hard to carry into delivery milestones and supplier coordination.",
+        "body": "Organize buyer-side procurement review and supplier-side bid responses as distinct professional tasks. Connect requirements, evaluation criteria, evidence and transaction documents, then carry contract terms, milestones, changes and supplier performance forward. Prepare procurement analysis, bid proposals and delivery work across the contracting lifecycle.",
+        "outcomes": [
+          "Procurement and bid proposals",
+          "Contract delivery analysis",
+          "Supplier coordination"
+        ]
       },
       {
-        "title": "Connect contracts, field records and remediation in one handover",
-        "problem": "Equipment deliveries, changes and site feedback are scattered, making cost and schedule impacts hard to pass to the next accountable team.",
-        "body": "Delivery digital employees compare contract schedules, milestones and field records to locate delivery, change and cost differences. Remediation digital employees check measures, deadlines and evidence. TeGo organizes actions and versioned deliverables into a handover pack; project and safety teams retain acceptance and closure."
+        "title": "Connect project execution with site and EHS work",
+        "problem": "Progress, cost changes and site safety records sit in separate documents, making project variances difficult to relate to conditions on the ground.",
+        "body": "Connect contract milestones, progress updates, cost movements and site records around project objectives. Digital employees organize delivery and EHS work by responsibility, tracking variances, hazards and remediation feedback. Prepare project analysis, site reports and coordination tasks so teams can respond to execution changes.",
+        "outcomes": [
+          "Project delivery report",
+          "Cost change analysis",
+          "EHS coordination"
+        ]
+      },
+      {
+        "title": "Turn audit remediation into accountable improvement",
+        "problem": "Findings, corrective measures and subsidiary feedback are managed separately. Repeated reporting adds work while recurring causes are hard to retain.",
+        "body": "Connect each finding with its responsible unit, required action and supporting feedback. Organize progress, evidence and follow-up work for audit reviews and management reporting. Recurring issues inform policy and role-method updates, helping remediation support both accountability and ongoing operational improvement.",
+        "outcomes": [
+          "Audit issue analysis",
+          "Remediation progress report",
+          "Policy improvement evidence"
+        ]
       }
     ],
-    "teamTitle": "Your SOE digital employee team",
+    "teamTitle": "Digital roles for headquarters and operating teams",
     "employees": [
       {
-        "role": "Group Operations Digital Employee",
-        "avatar": "/images/home/employee-avatar-business_V1.0.webp",
-        "skills": [
-          "Budget execution",
-          "Difference attribution",
-          "Accountable follow-up"
-        ],
-        "process": [
-          "Compare unit and project execution by group definitions",
-          "Map revenue, collection and spending differences",
-          "Connect accountable teams and coordination actions"
-        ],
-        "outputs": [
-          "Budget execution cross-section",
-          "Unit and project differences",
-          "Operating coordination actions"
-        ],
-        "value": "Trace group differences to accountable units and projects"
-      },
-      {
-        "role": "Procurement Review Digital Employee",
-        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
-        "skills": [
-          "Procurement standards",
-          "Evaluation elements",
-          "File review"
-        ],
-        "process": [
-          "Compare procurement standards and templates",
-          "Check procurement files and evaluation elements",
-          "Identify review issues and supporting provisions"
-        ],
-        "outputs": [
-          "Procurement file checklist",
-          "Evaluation element comparison",
-          "Verification items"
-        ],
-        "value": "Ground buyer-side reviews in standards and evaluation elements"
-      },
-      {
-        "role": "Bid Response Digital Employee",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "Provision mapping",
-          "Response coverage",
-          "Consistency review"
-        ],
-        "process": [
-          "Map each requirement to its response location",
-          "Link credentials, technical and commercial evidence",
-          "Check unanswered items and inconsistent commitments"
-        ],
-        "outputs": [
-          "Requirement response matrix",
-          "Response document draft",
-          "Completion checklist"
-        ],
-        "value": "Give each requirement a response and supporting proof"
-      },
-      {
-        "role": "Contract Delivery Digital Employee",
-        "avatar": "/images/home/employee-avatar-project_V1.0.webp",
-        "skills": [
-          "Milestone checks",
-          "Change continuity",
-          "Accountable action"
-        ],
-        "process": [
-          "Check equipment deliveries and contract milestones",
-          "Connect changes with cost and schedule impacts",
-          "Organize accountable handovers and review actions"
-        ],
-        "outputs": [
-          "Contract delivery register",
-          "Change impact comparison",
-          "Accountability handover pack"
-        ],
-        "value": "Connect contract requirements with field accountability"
-      },
-      {
-        "role": "Cost Analysis Digital Employee",
+        "role": "Performance Analysis Digital Employee",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
-          "Target and actual costs",
-          "Contract evidence",
-          "Difference tracing"
+          "Budget analysis",
+          "Variance analysis",
+          "Management reporting"
         ],
         "process": [
-          "Align target costs and execution definitions",
-          "Link actual records, contracts and changes",
-          "Locate causes and evidence for verification"
+          "Collect group and subsidiary operating records",
+          "Relate target variances to business changes",
+          "Prepare performance analysis and coordination topics"
         ],
         "outputs": [
-          "Target and actual cost comparison",
-          "Cost difference evidence",
-          "Project verification list"
+          "Budget performance report",
+          "Management coordination brief"
         ],
-        "value": "Trace cost changes to contracts and projects"
+        "value": "Connect changing indicators with business action"
       },
       {
-        "role": "Site Remediation Digital Employee",
-        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "role": "Treasury Digital Employee",
+        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
         "skills": [
-          "Action requirements",
-          "Evidence checks",
-          "Review continuity"
+          "Treasury analysis",
+          "Collections follow-up",
+          "Asset analysis"
         ],
         "process": [
-          "Compare site requirements, owners and deadlines",
-          "Link measures, feedback and supporting evidence",
-          "Hand over corrections and specialist review actions"
+          "Connect budget spending with cash records",
+          "Analyze collection milestones and funding changes",
+          "Prepare treasury topics and management material"
         ],
         "outputs": [
-          "Site remediation register",
-          "Evidence comparison",
-          "Review handover actions"
+          "Treasury report",
+          "Collections follow-up brief"
         ],
-        "value": "Connect remediation evidence to accountable review"
+        "value": "Keep funding visibility connected with project performance"
+      },
+      {
+        "role": "Procurement Digital Employee",
+        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "skills": [
+          "Procurement analysis",
+          "Bid responses",
+          "Supplier coordination"
+        ],
+        "process": [
+          "Separate buyer review from bid-response work",
+          "Organize requirements, proposals and supporting records",
+          "Carry supplier and contract information forward"
+        ],
+        "outputs": [
+          "Procurement analysis",
+          "Bid response proposal"
+        ],
+        "value": "Reuse professional methods across procurement and supply"
+      },
+      {
+        "role": "Project Delivery Digital Employee",
+        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "skills": [
+          "Milestone tracking",
+          "Cost analysis",
+          "Change management"
+        ],
+        "process": [
+          "Connect contractual objectives and project milestones",
+          "Analyze progress, cost and change implications",
+          "Bring together team feedback and coordination needs"
+        ],
+        "outputs": [
+          "Delivery analysis",
+          "Project coordination material"
+        ],
+        "value": "Bring delivery variances into team action"
+      },
+      {
+        "role": "EHS Digital Employee",
+        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "skills": [
+          "Hazard organization",
+          "EHS analysis",
+          "Remediation follow-up"
+        ],
+        "process": [
+          "Connect site records and applicable EHS requirements",
+          "Organize hazard implications and corrective work",
+          "Carry feedback into management reports"
+        ],
+        "outputs": [
+          "Site EHS report",
+          "Remediation progress report"
+        ],
+        "value": "Connect site information with daily EHS management"
+      },
+      {
+        "role": "Audit Coordination Digital Employee",
+        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "skills": [
+          "Issue analysis",
+          "Evidence mapping",
+          "Remediation coordination"
+        ],
+        "process": [
+          "Connect findings with responsible units",
+          "Organize corrective measures and feedback",
+          "Prepare review work and policy improvement evidence"
+        ],
+        "outputs": [
+          "Audit remediation report",
+          "Issue evidence workbook"
+        ],
+        "value": "Turn oversight findings into continued operating improvement"
       }
     ],
     "deployment": {
-      "title": "Preserve boundaries by group, unit and project",
-      "body": "Private deployment, local models and domestic IT compatibility support organization and project permissions across records, knowledge and business systems. Skills support standard work, with task records and deliverable versions retained. Authorized roles keep operating decisions, awards, acceptance and remediation closure."
+      "title": "Share group capabilities with role-based local use",
+      "body": "Deploy in group infrastructure or a private cloud and connect existing models, knowledge and business systems. Reuse common policies, role templates and professional methods while configuring subsidiary records, tool identities and access separately. Release management, task records and audit diagnostics support expansion within group governance."
     }
   }
 };

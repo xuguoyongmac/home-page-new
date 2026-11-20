@@ -8,7 +8,6 @@ import HomeEnterprise from './HomeEnterprise.astro';
 import CallToAction from './CallToAction.astro';
 interface Props { locale: Locale; }
 const {locale} = Astro.props;
-const zh = locale === 'zh';
 
 ---
 <div class="home-value-edition">
@@ -18,9 +17,6 @@ const zh = locale === 'zh';
 <WorkforceMatrix locale={locale}/>
 <section class="value-section industry-section" id="solutions" aria-labelledby="industry-title">
   <div class="container">
-    <div class="value-heading">
-      <h2 id="industry-title">{zh ? '行业解决方案' : 'Industry solutions'}</h2>
-    </div>
     <SolutionExplorer locale={locale} home/>
   </div>
 </section>
