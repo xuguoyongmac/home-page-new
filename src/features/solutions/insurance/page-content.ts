@@ -35,7 +35,7 @@ export const insurancePresentation: IndustrySolutionPresentation = {
         "让客户少些反复解释"
       ],
       "background": "/images/industries/insurance-architecture_V1.1.webp",
-      "illustration": "/images/solutions/insurance/insurance-team-value-zh_V9.3.webp"
+      "illustration": "/images/solutions/insurance/insurance-team-value-zh_V9.5.webp"
     },
     "sources": [
       "投保告知与健康资料",
@@ -247,7 +247,7 @@ export const insurancePresentation: IndustrySolutionPresentation = {
         "Ask policyholders to repeat less context"
       ],
       "background": "/images/industries/insurance-architecture_V1.1.webp",
-      "illustration": "/images/solutions/insurance/insurance-team-value-en_V9.3.webp"
+      "illustration": "/images/solutions/insurance/insurance-team-value-en_V9.7.webp"
     },
     "sources": [
       "Disclosures and health information",

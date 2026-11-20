@@ -35,7 +35,7 @@ export const generalPresentation: IndustrySolutionPresentation = {
         "把精力用在关键业务"
       ],
       "background": "/images/solutions/general/general-hero_V2.0.webp",
-      "illustration": "/images/solutions/general/general-team-value-zh_V9.3.webp"
+      "illustration": "/images/solutions/general/general-team-value-zh_V9.5.webp"
     },
     "sources": [
       "合作合同与业务约定",
@@ -247,7 +247,7 @@ export const generalPresentation: IndustrySolutionPresentation = {
         "Focus on the business that matters"
       ],
       "background": "/images/solutions/general/general-hero_V2.0.webp",
-      "illustration": "/images/solutions/general/general-team-value-en_V9.3.webp"
+      "illustration": "/images/solutions/general/general-team-value-en_V9.5.webp"
     },
     "sources": [
       "Business agreements and commitments",
