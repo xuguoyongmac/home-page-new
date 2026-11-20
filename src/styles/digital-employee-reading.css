@@ -71,16 +71,21 @@
 .employee-story-continuity .employee-story-art { margin-top: 30px; }
 .employee-management { padding-block: 48px 88px; }
 .employee-management-intro { max-width: 1000px; margin-bottom: 30px; }
-.employee-management-summary > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 36px; padding-block: 21px; border-bottom: 1px solid #a6c5e01a; }
-.employee-management-summary > div:last-child { border-bottom: 0; padding-bottom: 0; }
-.employee-management-summary dt { color: #dce8f3; font-size: 19px; font-weight: 550; line-height: 1.7; }
-.employee-management-summary dd { color: #b1c0d0; font-size: 16px; line-height: 1.9; text-wrap: pretty; }
+.employee-management-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.employee-management-visual { min-width: 0; }
+.employee-management-summary { display: grid; gap: 23px; }
+.employee-management-summary dt { display: flex; align-items: center; gap: 9px; color: #dce8f3; font-size: 18px; font-weight: 550; line-height: 1.6; }
+.employee-management-summary dt svg { flex-shrink: 0; color: #97bedc; }
+.employee-management-summary dd { margin: 7px 0 0 27px; color: #b1c0d0; font-size: 15px; line-height: 1.85; text-wrap: pretty; }
 
 @media (max-width: 1200px) {
   .employee-story-recruit { grid-template-columns: minmax(0, 1fr); }
   .employee-story-recruit .employee-story-text, .employee-story-recruit .employee-story-art { grid-column: auto; grid-row: auto; }
 }
 @media (max-width: 1100px) {
+  .employee-management-layout { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .employee-management-visual { width: 100%; max-width: 700px; justify-self: center; }
+  .employee-management-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 36px; }
   .employee-hero { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .employee-hero-intro { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 26px; align-items: center; }
   .employee-hero-copy p { margin-top: 0; max-width: 48ch; }
@@ -118,9 +123,7 @@
   .employee-story-continuity .employee-story-art { margin-top: 28px; }
   .employee-management { padding-block: 28px 50px; }
   .employee-management-intro { margin-bottom: 20px; }
-  .employee-management-summary > div { grid-template-columns: minmax(0,1fr); gap: 8px; padding-block: 20px; }
-  .employee-management-summary dt { font-size: 19px; }
-  .employee-management-summary dd { font-size: 16px; line-height: 1.85; }
+  .employee-management-summary { grid-template-columns: minmax(0,1fr); gap: 24px; }
 }
 
 @media (max-width: 480px) {
