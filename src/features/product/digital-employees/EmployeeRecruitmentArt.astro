@@ -5,12 +5,11 @@ interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
 const portrait = '/images/product/digital-employees/employee-portrait-public-service_V1.1.webp';
-const projects = zh ? ['客户管理系统投标', '办公协同平台投标', '数据治理平台投标', '客服中心建设投标'] : ['CRM system bid', 'Office platform bid', 'Data governance bid', 'Contact center bid'];
 const employees = [
-  { name: zh ? '林知夏' : 'Lin Zhixia', portrait: 'hr' },
-  { name: zh ? '陈亦航' : 'Chen Yihang', portrait: 'public-service' },
-  { name: zh ? '许嘉宁' : 'Xu Jianing', portrait: 'teaching' },
-  { name: zh ? '周予安' : 'Zhou Yu’an', portrait: 'claims' },
+  { industry: zh ? '金融行业' : 'Finance', project: zh ? '客户管理系统投标' : 'CRM system bid', portrait: 'hr' },
+  { industry: zh ? '政务行业' : 'Government', project: zh ? '政务协同平台投标' : 'Government platform bid', portrait: 'public-service' },
+  { industry: zh ? '教育行业' : 'Education', project: zh ? '校园数据平台投标' : 'Campus data platform bid', portrait: 'teaching' },
+  { industry: zh ? '工程行业' : 'Engineering', project: zh ? '园区建设工程投标' : 'Business park construction bid', portrait: 'claims' },
 ];
 const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid writing'];
 ---
@@ -32,8 +31,8 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
   <div class="recruited-employees">
     {employees.map((employee, index) => <div class:list={['employee-instance', `employee-instance-${index}`]}>
 
-      <div class="instance-team"><Icon name="folder" size={13}/><span>{projects[index]}</span></div>
-      <div class="instance-person"><img src={`/images/product/digital-employees/employee-portrait-${employee.portrait}_V1.1.webp`} alt="" width="38" height="38" loading="lazy"/><div><strong>{employee.name}</strong><span class="instance-workspace">{zh ? '标书专员 · 独立工作区' : 'Bid specialist · Own workspace'}</span></div></div>
+      <div class="instance-team"><Icon name="folder" size={13}/><span>{employee.project}</span></div>
+      <div class="instance-person"><img src={`/images/product/digital-employees/employee-portrait-${employee.portrait}_V1.1.webp`} alt="" width="38" height="38" loading="lazy"/><div><strong><span>{employee.industry}</span>{!zh && ' '}<span>{zh ? '标书助理' : 'bid assistant'}</span></strong><span class="instance-workspace">{zh ? '独立工作区' : 'Own workspace'}</span></div></div>
       <div class="instance-skills">{skills.map(skill => <span><Icon name="check" size={11}/>{skill}</span>)}</div>
     </div>)}
   </div>
@@ -59,8 +58,10 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
   .instance-team>:global(svg) { flex-shrink:0; }
   .instance-workspace { display:block; margin-top:2px; color:#8ca6bd; font-size:10px; }
   .instance-person { display:flex; align-items:center; gap:8px; margin-top:12px; }
+  .instance-person>div { min-width:0; }
   .instance-person img { width:32px; height:32px; flex-shrink:0; object-fit:cover; border-radius:6px; box-shadow:0 3px 9px #0005; }
   .instance-person strong { font-size:14px; }
+  .instance-person strong>span { display:inline-block; }
   .instance-skills { display:flex; flex-wrap:wrap; gap:4px 9px; margin-top:11px; color:#b7cce0; font-size:10px; }
   .instance-skills>span { display:flex; align-items:center; gap:3px; }
   .instance-skills :global(svg) { color:#8bbeb7; }
