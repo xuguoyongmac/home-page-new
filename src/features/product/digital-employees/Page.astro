@@ -3,6 +3,7 @@ import { pathFor, site } from '../../../lib/site';
 import EmployeeMarketArt from './EmployeeMarketArt.astro';
 import EmployeeBannerBackdrop from './EmployeeBannerBackdrop.astro';
 import EmployeeFeatureArt from './EmployeeFeatureArt.astro';
+import EmployeeManagementArt from './EmployeeManagementArt.astro';
 import Icon from '../../../components/Icon.astro';
 import experience from './experience';
 import landing from './landing';
@@ -73,16 +74,10 @@ const breadcrumb = {
 
   <section id="capability-management" class="employee-management employee-wrap" aria-labelledby="capability-features-title">
     <div class="employee-management-intro">
-      <h2 id="capability-features-title">{zh ? '五项管理，支撑长期运行' : 'Five areas of management for ongoing operations'}</h2>
-      <p class="employee-story-subtitle">{zh ? '模板分发、招募审批、权限委托、任务调度与记忆复盘，按需配置、可追溯' : 'Manage template distribution, recruitment, delegation, schedules, and memory review with configuration and traceable records.'}</p>
-      <p class="employee-story-body">{zh ? '在模板中维护职责、技能与工作区文件并分发，按业务需要招募数字员工并完成所需审批。分别配置员工使用、知识访问与业务委托，管理定时与主动任务、查看运行记录，按组织策略复盘并沉淀为技能。' : 'Maintain and distribute responsibilities, skills, and workspace files in templates. Recruit independent digital employees and complete any required approval. Set access and delegation scopes, configure scheduled and proactive work, inspect run records, and review work under organizational policy to develop reusable skills.'}</p>
+      <h2 id="capability-features-title">{zh ? '数字员工的配置与运行，统一管理' : 'Manage digital employee configuration and operations'}</h2>
+      <p class="employee-story-subtitle">{zh ? '维护岗位模板，按需招募员工，分别配置使用权限、业务委托、任务计划与工作记忆。' : 'Maintain role templates, recruit employees, and manage access, delegation, schedules, and work memory.'}</p>
     </div>
-    <div class="employee-management-band">
-      <span class="employee-management-label">{zh ? '运行管理面' : 'Operations management'}</span>
-      <dl class="employee-capabilities">
-      {copy.features.map(feature => <div><dt><span class="employee-management-icon"><Icon name={feature.icon} size={21}/></span>{feature.title}</dt><dd>{feature.body}</dd></div>)}
-      </dl>
-    </div>
+    <EmployeeManagementArt locale={locale}/>
   </section>
 </div>
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)}/>

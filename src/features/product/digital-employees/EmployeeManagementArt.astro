@@ -1,0 +1,215 @@
+---
+import type { Locale } from '../../../data/types';
+import Icon from '../../../components/Icon.astro';
+import landing from './landing';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const zh = locale === 'zh';
+const t = (cn: string, en: string) => zh ? cn : en;
+const portrait = '/images/product/digital-employees/employee-portrait-public-service_V1.1.webp';
+const tabs = [
+  { id: 'template', label: t('模板分发', 'Templates'), heading: t('将岗位方法沉淀为模板，分发复用', 'Maintain role methods in reusable templates') },
+  { id: 'recruit', label: t('招募审批', 'Recruitment'), heading: t('按需招募，按创建身份进入审批', 'Recruit as needed, with approval where required') },
+  { id: 'access', label: t('权限委托', 'Permissions'), heading: t('谁能用、能查什么、能代办什么，分别授权', 'Control employee access, knowledge, and delegated work separately') },
+  { id: 'schedule', label: t('任务调度', 'Schedules'), heading: t('配置重复性工作，分别跟踪执行与投递', 'Schedule recurring work and track execution and delivery') },
+  { id: 'memory', label: t('记忆复盘', 'Memory'), heading: t('工作记忆分人保存，成熟做法按策略沉淀', 'Keep each user’s context separate and review methods under policy') },
+];
+---
+<div class="management-art" data-employee-management>
+  <div class="management-tabs" role="tablist" aria-label={t('数字员工管理能力', 'Digital employee management capabilities')}>
+    {tabs.map((tab, i) => <button type="button" role="tab" id={`management-tab-${locale}-${tab.id}`} aria-controls={`management-panel-${locale}-${tab.id}`} aria-selected={i === 2 ? 'true' : 'false'} tabindex={i === 2 ? 0 : -1} data-management-tab={tab.id}><Icon name={landing[locale].features[i].icon} size={19}/><span>{tab.label}</span></button>)}
+  </div>
+  {tabs.map((tab, i) => <div class:list={['management-panel', `management-panel-${tab.id}`]} role="tabpanel" id={`management-panel-${locale}-${tab.id}`} aria-labelledby={`management-tab-${locale}-${tab.id}`} tabindex="0" data-management-panel={tab.id} hidden={i !== 2}>
+    <div class="management-explanation"><h3>{tab.heading}</h3><p>{landing[locale].features[i].body}</p></div>
+    <div class="management-example">
+      <div class="managed-object">
+        {tab.id === 'template' ? <span class="template-object-icon"><Icon name="layers" size={25}/></span> : <img src={portrait} width="48" height="48" alt="" loading="lazy"/>}
+        <div><span>{tab.id === 'template' ? t('数字员工模板', 'Digital employee template') : t('岗位数字员工', 'Digital employee')}</span><strong>{t('项目周报专员', 'Project reporting specialist')}</strong></div>
+        <span class="object-scope">{tab.id === 'template' ? t('岗位方法', 'Role methods') : t('项目管理组', 'Project management team')}</span>
+      </div>
+
+      {tab.id === 'template' && <div class="template-detail">
+        <div class="template-files"><div><Icon name="user-check" size={18}/><span>{t('岗位职责', 'Responsibilities')}</span><strong>{t('归集进展、风险与下周安排', 'Consolidate progress, risks, and next steps')}</strong></div><div><Icon name="cpu" size={18}/><span>{t('专业技能', 'Skills')}</span><strong>{t('进度汇总 · 周报编制', 'Progress summaries · Report drafting')}</strong></div><div><Icon name="folder" size={18}/><span>{t('工作文件', 'Work files')}</span><strong>{t('周报模板.docx', 'Weekly report template.docx')}</strong></div></div>
+        <div class="template-application"><span><Icon name="layers" size={19}/>{t('已发布模板', 'Published template')}</span><Icon name="arrow" size={25}/><span><Icon name="user-check" size={19}/>{t('招募时应用', 'Applied when recruited')}</span></div>
+        <div class="template-boundary"><Icon name="shield" size={16}/><span>{t('模板更新与运行员工分开管理，已有员工按需应用变更。', 'Manage template releases separately. Apply updates to existing employees explicitly.')}</span></div>
+      </div>}
+
+      {tab.id === 'recruit' && <div class="recruit-detail">
+        <dl class="recruit-fields"><div><dt>{t('来源模板', 'Source template')}</dt><dd>{t('项目周报专员', 'Project reporting specialist')}</dd></div><div><dt>{t('使用范围', 'Intended users')}</dt><dd>{t('项目管理组', 'Project management team')}</dd></div><div><dt>{t('创建内容', 'Created resources')}</dt><dd>{t('独立数字员工 · 工作区', 'Independent employee · Workspace')}</dd></div></dl>
+        <div class="creation-rules"><div><span><Icon name="users" size={18}/>{t('普通成员申请', 'Member application')}</span><Icon name="arrow" size={20}/><strong>{t('进入审批', 'Requires approval')}</strong></div><div><span><Icon name="shield" size={18}/>{t('管理员创建', 'Administrator creation')}</span><Icon name="arrow" size={20}/><strong>{t('可直接启用', 'Can be enabled directly')}</strong></div></div>
+      </div>}
+
+      {tab.id === 'access' && <div class="access-detail">
+        <div class="permission-row"><span class="permission-icon"><Icon name="users" size={22}/></span><div><span>{t('员工使用', 'Employee access')}</span><strong>{t('项目管理组', 'Project management team')}</strong></div><span class="permission-rule">{t('仅授权人员可使用', 'Only authorized users')}</span></div>
+        <div class="permission-row"><span class="permission-icon"><Icon name="book" size={22}/></span><div><span>{t('知识访问', 'Knowledge access')}</span><strong>{t('项目制度库', 'Project policy library')}</strong></div><span class="permission-rule">{t('按知识库权限检索', 'Search within library permissions')}</span></div>
+        <div class="permission-row"><span class="permission-icon"><Icon name="plug" size={22}/></span><div><span>{t('插件代办', 'Plugin delegation')}</span><strong>{t('业务插件 · 个人委托', 'Business plugin · Personal delegation')}</strong></div><span class="permission-rule">{t('限授权人可访问的记录', 'Limited to records the delegator can access')}</span></div>
+      </div>}
+
+      {tab.id === 'schedule' && <div class="schedule-detail">
+        <div class="schedule-plan"><div class="schedule-calendar"><Icon name="clock" size={21}/><strong>{t('每周五', 'Every Friday')}</strong><span>16:30</span></div><div class="schedule-task"><strong>{t('项目周报编制', 'Prepare the project weekly report')}</strong><span><Icon name="file" size={16}/>{t('最新项目进展.xlsx', 'Latest project progress.xlsx')}</span><span><Icon name="users" size={16}/>{t('投递给项目负责人', 'Deliver to the project owner')}</span></div></div>
+        <div class="run-tracking"><div><Icon name="cpu" size={19}/><span>{t('执行记录', 'Execution records')}</span><strong>{t('查看运行结果', 'Inspect run results')}</strong></div><div><Icon name="message" size={19}/><span>{t('投递记录', 'Delivery records')}</span><strong>{t('单独跟踪送达状态', 'Track delivery separately')}</strong></div></div>
+      </div>}
+
+      {tab.id === 'memory' && <div class="memory-detail">
+        <div class="memory-scopes"><div class="personal-memory"><span><Icon name="user-check" size={18}/>{t('当前使用者的工作记忆', 'Current user’s work memory')}</span><strong>{t('沿用测试环境口径', 'Use the agreed test-environment scope')}</strong><strong>{t('迁移窗口待确认', 'Migration window still pending')}</strong></div><div class="isolated-memory"><Icon name="shield" size={26}/><strong>{t('其他使用者', 'Other users')}</strong><span>{t('各自独立保存', 'Separate work memories')}</span></div></div>
+        <div class="memory-review"><span><Icon name="book" size={18}/>{t('工作复盘', 'Work review')}</span><Icon name="arrow" size={23}/><span><Icon name="cpu" size={18}/>{t('可复用的岗位技能', 'Reusable role skills')}</span></div>
+        <div class="memory-policy">{t('按组织与个人有效策略启用', 'Enabled under effective organization and personal policies')}</div>
+      </div>}
+    </div>
+  </div>)}
+</div>
+
+<script>
+  function initializeEmployeeManagement() {
+    document.querySelectorAll<HTMLElement>('[data-employee-management]').forEach(root => {
+      if (root.dataset.managementReady) return;
+      root.dataset.managementReady = 'true';
+      const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-management-tab]'));
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-management-panel]'));
+      function selectTab(selected: HTMLButtonElement) {
+        tabs.forEach(tab => { const active = tab === selected; tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; });
+        panels.forEach(panel => { panel.hidden = panel.dataset.managementPanel !== selected.dataset.managementTab; });
+      }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectTab(tab));
+        tab.addEventListener('keydown', event => {
+          const nextIndex = event.key === 'ArrowRight' ? (index + 1) % tabs.length : event.key === 'ArrowLeft' ? (index - 1 + tabs.length) % tabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : -1;
+          if (nextIndex < 0) return;
+          event.preventDefault();
+          selectTab(tabs[nextIndex]);
+          tabs[nextIndex].focus();
+        });
+      });
+    });
+  }
+  initializeEmployeeManagement();
+  document.addEventListener('astro:page-load', initializeEmployeeManagement);
+</script>
+
+<style>
+  .management-art { position:relative; isolation:isolate; color:#d9e6f1; }
+  .management-art::before { position:absolute; content:''; z-index:-1; inset:16% 0 0 20%; background:radial-gradient(ellipse at 60% 55%,#28619124,transparent 68%); filter:blur(25px); pointer-events:none; }
+  .management-art :global(svg) { flex-shrink:0; }
+  .management-tabs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-bottom:32px; }
+  .management-tabs button { display:flex; align-items:center; justify-content:center; gap:10px; min-width:0; min-height:56px; padding:12px 14px; border:1px solid transparent; border-radius:7px; background:transparent; color:#9dabbc; font:inherit; font-size:17px; cursor:pointer; transition:color .18s,background .18s,border-color .18s; }
+  .management-tabs button[aria-selected='true'] { color:#e8f3ff; border-color:#7cadd13b; background:linear-gradient(125deg,#21415d,#162b3f); box-shadow:0 7px 20px -7px #0009; }
+  .management-tabs button[aria-selected='true'] :global(svg) { color:#9acdf4; }
+  .management-tabs button:hover { color:#e8f3ff; background-color:#93bde00a; }
+  .management-tabs button:focus-visible,.management-panel:focus-visible { outline:2px solid #a5cdeb; outline-offset:5px; }
+  .management-panel { display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.45fr); gap:56px; align-items:center; min-height:340px; }
+  .management-panel[hidden] { display:none; }
+  .management-explanation h3 { max-width:17ch; font-size:25px; line-height:1.65; font-weight:550; color:#e0eaf4; text-wrap:pretty; }
+  .management-explanation p { max-width:36ch; margin-top:20px; font-size:16px; line-height:1.9; color:#a8bacd; text-wrap:pretty; }
+  .management-example { min-width:0; padding:26px 28px; border:1px solid #8faecc32; border-radius:10px; background:linear-gradient(130deg,#1a2d40ee,#11202f); box-shadow:0 22px 45px -20px #000e,0 5px 17px #0005; }
+  .managed-object { display:flex; align-items:center; gap:13px; margin-bottom:26px; }
+  .managed-object>img { width:48px; height:48px; object-fit:cover; border-radius:7px; box-shadow:0 5px 15px #0006; }
+  .managed-object>div { min-width:0; }
+  .managed-object>div>span { display:block; color:#93adc5; font-size:12px; margin-bottom:4px; }
+  .managed-object strong { display:block; font-size:18px; font-weight:550; line-height:1.5; }
+  .object-scope { margin-left:auto; color:#9bb3c7; font-size:12px; text-align:right; }
+  .template-object-icon { display:grid; place-items:center; width:48px; height:48px; flex-shrink:0; border-radius:7px; color:#a6c8ef; background:#8eacdb14; }
+  .permission-row { display:flex; align-items:center; gap:14px; padding:18px 0; border-top:1px solid #97b5cd1d; }
+  .permission-row:last-child { padding-bottom:0; }
+  .permission-icon { display:grid; place-items:center; width:38px; height:38px; flex-shrink:0; border-radius:7px; background:#8ab6e50e; color:#98bce1; }
+  .permission-row:nth-child(2) .permission-icon { color:#97c7c6; background:#6ca2a710; }
+  .permission-row:nth-child(3) .permission-icon { color:#b3add8; background:#9c8bcd10; }
+  .permission-row>div { min-width:0; }
+  .permission-row>div>span { display:block; margin-bottom:4px; font-size:12px; color:#91a9c0; }
+  .permission-row strong { font-size:15px; line-height:1.6; font-weight:500; }
+  .permission-rule { margin-left:auto; max-width:16ch; font-size:12px; line-height:1.8; color:#9cb4ca; text-align:right; }
+  .template-files { display:grid; gap:17px; }
+  .template-files>div { display:grid; grid-template-columns:18px 68px minmax(0,1fr); align-items:start; gap:10px; font-size:13px; line-height:1.7; }
+  .template-files :global(svg) { color:#9bbde1; margin-top:2px; }
+  .template-files>div>span { color:#94abc1; }
+  .template-files strong { font-size:14px; font-weight:500; }
+  .template-application { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:24px; padding:17px 0; border-block:1px solid #97b5cd1d; color:#9abbd9; }
+  .template-application>span { display:flex; align-items:center; gap:9px; font-size:14px; }
+  .template-boundary { display:flex; align-items:start; gap:8px; margin-top:17px; font-size:12px; color:#9db0c5; line-height:1.8; }
+  .template-boundary :global(svg) { margin-top:3px; }
+  .recruit-fields { display:grid; gap:15px; }
+  .recruit-fields>div { display:grid; grid-template-columns:80px minmax(0,1fr); gap:16px; font-size:14px; line-height:1.8; }
+  .recruit-fields dt { color:#92abc3; }
+  .recruit-fields dd { color:#d0dfec; }
+  .creation-rules { margin-top:23px; padding-top:16px; border-top:1px solid #97b5cd1d; display:grid; gap:15px; }
+  .creation-rules>div { display:grid; grid-template-columns:minmax(0,1fr) 20px minmax(0,.75fr); gap:14px; align-items:center; font-size:13px; color:#a4bed5; }
+  .creation-rules span { display:flex; align-items:center; gap:8px; }
+  .creation-rules strong { font-weight:500; color:#cfdeee; }
+  .schedule-plan { display:flex; gap:24px; align-items:center; }
+  .schedule-calendar { display:grid; justify-items:center; gap:8px; padding:16px; flex-shrink:0; border-radius:8px; background:#92b6df0b; color:#a9c9e8; }
+  .schedule-calendar strong { font-size:15px; font-weight:500; }
+  .schedule-calendar>span { font-size:22px; color:#dfedfa; letter-spacing:.02em; }
+  .schedule-task { min-width:0; display:grid; gap:13px; font-size:13px; color:#a2b8cd; }
+  .schedule-task>strong { color:#d8e8f4; font-size:17px; line-height:1.6; font-weight:500; }
+  .schedule-task>span { display:flex; align-items:start; gap:8px; line-height:1.7; }
+  .schedule-task>span :global(svg) { margin-top:3px; }
+  .run-tracking { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:25px; padding-top:20px; border-top:1px solid #97b5cd1d; gap:22px; }
+  .run-tracking>div { display:grid; grid-template-columns:20px minmax(0,1fr); gap:7px 9px; font-size:13px; color:#9eb8d1; }
+  .run-tracking strong { grid-column:2; font-size:13px; line-height:1.8; color:#c2d3e2; font-weight:400; }
+  .memory-scopes { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:20px; align-items:center; }
+  .personal-memory { padding:17px 16px; border-radius:7px; background:#87b9d90b; }
+  .personal-memory>span { display:flex; align-items:center; gap:7px; margin-bottom:14px; font-size:12px; line-height:1.7; color:#9fbfd6; }
+  .personal-memory strong { display:block; font-size:14px; line-height:1.8; font-weight:400; color:#d0e1ed; }
+  .personal-memory strong+strong { margin-top:7px; }
+  .isolated-memory { display:grid; gap:9px; justify-items:center; padding-left:20px; border-left:1px dashed #96b5ce46; text-align:center; color:#8faabe; }
+  .isolated-memory strong { font-size:14px; font-weight:400; }
+  .isolated-memory span { font-size:12px; line-height:1.8; }
+  .memory-review { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-top:24px; font-size:14px; color:#b6cce0; }
+  .memory-review>span { display:flex; align-items:center; gap:8px; }
+  .memory-policy { margin-top:14px; color:#8fa7bd; font-size:12px; text-align:right; line-height:1.8; }
+  @media(max-width:1050px) {
+    .management-panel { grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr); gap:30px; }
+    .management-example { padding:23px 20px; }
+    .management-explanation h3 { font-size:23px; }
+    .object-scope { display:none; }
+    .permission-row { gap:11px; }
+    .permission-rule { max-width:12ch; }
+  }
+  @media(max-width:800px) {
+    .management-tabs { gap:6px; margin-bottom:25px; }
+    .management-tabs button { flex-direction:column; gap:7px; padding:11px 5px; min-height:68px; font-size:14px; }
+    .management-panel { grid-template-columns:minmax(0,1fr); gap:26px; }
+    .management-explanation h3 { max-width:none; font-size:24px; }
+    .management-explanation p { max-width:none; margin-top:12px; }
+    .management-example { padding:25px; }
+    .permission-rule { max-width:20ch; }
+    .object-scope { display:block; }
+  }
+  @media(max-width:480px) {
+    .management-tabs { gap:3px; }
+    .management-tabs button { gap:8px; font-size:12px; padding:10px 2px; }
+    .management-tabs button :global(svg) { width:17px; height:17px; }
+    .management-explanation h3 { font-size:23px; }
+    .management-example { padding:20px 17px; }
+    .managed-object { gap:11px; margin-bottom:22px; }
+    .managed-object strong { font-size:17px; }
+    .object-scope { display:none; }
+    .permission-row { flex-wrap:wrap; gap:5px 11px; padding:15px 0; }
+    .permission-icon { width:32px; height:32px; }
+    .permission-rule { margin-left:43px; max-width:none; text-align:left; }
+    .template-files>div { grid-template-columns:18px minmax(0,1fr); gap:4px 8px; }
+    .template-files strong { grid-column:2; }
+    .template-application { gap:9px; }
+    .template-application>span { gap:6px; font-size:12px; }
+    .template-application>span :global(svg) { width:16px; }
+    .recruit-fields>div { grid-template-columns:62px minmax(0,1fr); gap:13px; font-size:13px; }
+    .creation-rules>div { gap:9px; font-size:12px; }
+    .creation-rules span { gap:5px; }
+    .schedule-plan { gap:17px; }
+    .schedule-calendar { padding:13px 11px; }
+    .schedule-calendar strong { font-size:13px; }
+    .schedule-task>strong { font-size:15px; }
+    .schedule-task { font-size:12px; gap:11px; }
+    .run-tracking { gap:13px; }
+    .run-tracking strong { font-size:12px; }
+    .memory-scopes { grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:12px; }
+    .personal-memory { padding:14px 12px; }
+    .personal-memory>span { align-items:start; }
+    .personal-memory>span :global(svg) { margin-top:2px; }
+    .personal-memory strong { font-size:13px; }
+    .isolated-memory { padding-left:12px; }
+    .memory-review { gap:10px; font-size:12px; }
+    .memory-review>span { gap:6px; }
+    .memory-review>span :global(svg) { width:16px; }
+    .memory-policy { text-align:left; }
+  }
+</style>

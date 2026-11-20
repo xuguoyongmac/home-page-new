@@ -70,20 +70,7 @@
 .employee-story-continuity .employee-story-text :is(.employee-story-subtitle, .employee-story-body) { max-width: 92ch; }
 .employee-story-continuity .employee-story-art { margin-top: 30px; }
 .employee-management { padding-block: 36px 80px; }
-.employee-management-intro { max-width: 930px; }
-.employee-management-band { margin-top: 38px; padding: 12px 0; }
-.employee-management-label { display: block; margin-bottom: 24px; font-size: 14px; color: #a6bfce; }
-.employee-capabilities { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.employee-capabilities > div { --management-accent: #9bbdf0; position: relative; padding: 0 20px; border-left: 1px solid #a6c5e017; }
-.employee-capabilities > div:first-child { padding-left: 0; border-left: 0; }
-.employee-capabilities > div:nth-child(2) { --management-accent: #91c7c7; }
-.employee-capabilities > div:nth-child(3) { --management-accent: #b4a6df; }
-.employee-capabilities > div:nth-child(4) { --management-accent: #cbb48e; }
-.employee-capabilities > div:nth-child(5) { --management-accent: #8fc3ab; }
-.employee-capabilities > div:last-child { padding-right: 0; }
-.employee-management-icon { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 16px; color: var(--management-accent); }
-.employee-capabilities dt { font-size: 18px; font-weight: 550; line-height: 1.5; }
-.employee-capabilities dd { margin-top: 14px; font-size: 16px; line-height: 1.85; color: #b8c5d3; }
+.employee-management-intro { max-width: 1000px; margin-bottom: 38px; }
 
 @media (max-width: 1200px) {
   .employee-story-recruit { grid-template-columns: minmax(0, 1fr); }
@@ -126,15 +113,7 @@
   .employee-story-recruit .employee-story-text, .employee-story-recruit .employee-story-art { grid-column: auto; grid-row: auto; }
   .employee-story-continuity .employee-story-art { margin-top: 28px; }
   .employee-management { padding-block: 28px 50px; }
-  .employee-management-band { margin-top: 28px; padding: 4px 0; }
-  .employee-management-label { margin-bottom: 18px; }
-  .employee-capabilities { display: block; border-top: 0; }
-  .employee-capabilities > div, .employee-capabilities > div:first-child { padding: 18px 0; border-left: 0; border-top: 1px solid #a6c5e017; }
-  .employee-capabilities > div:first-child { padding-top: 0; border-top: 0; }
-  .employee-capabilities > div:last-child { padding-bottom: 0; }
-  .employee-capabilities dt { display: flex; align-items: center; gap: 12px; }
-  .employee-management-icon { width: 32px; height: 32px; margin-bottom: 0; }
-  .employee-capabilities dd { font-size: 16px; margin-top: 8px; }
+  .employee-management-intro { margin-bottom: 28px; }
 }
 
 @media (max-width: 480px) {
