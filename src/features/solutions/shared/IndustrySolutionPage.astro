@@ -8,6 +8,7 @@ import '../../../styles/industry-value-page.css';
 interface Props { locale: Locale; slug: string; presentation: IndustrySolutionCopy; }
 const { locale, slug, presentation: copy } = Astro.props;
 const zh = locale === 'zh';
+const chapterLayouts = ['split', 'wide', 'reverse', 'split-final'];
 ---
 <div class="industry-value-page" data-industry-solution={slug}>
   <section class="industry-value-hero" aria-labelledby={`${slug}-title`}>
@@ -21,16 +22,31 @@ const zh = locale === 'zh';
   </section>
 
   <section class="industry-value-story" aria-label={zh ? '方案价值' : 'Business value'}>
-    <div class="container industry-value-story-grid">
-      <figure class="industry-value-artwork">
-        <SolutionArtwork src={copy.hero.illustration} alt={copy.home.title} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1216px) calc(100vw - 96px), 1120px"/>
-      </figure>
-      <div class="industry-value-propositions">
-        {copy.features.map((feature, index) => <article aria-labelledby={`${slug}-feature-${index}`}>
+    <div class="container industry-value-chapters">
+      {copy.features.map((feature, index) => <article
+        class={`industry-value-chapter industry-value-chapter--${chapterLayouts[index] || 'split'}`}
+        aria-labelledby={`${slug}-feature-${index}`}
+      >
+        <div class="industry-value-chapter-copy">
           <h2 id={`${slug}-feature-${index}`}>{feature.title}</h2>
-          <p>{feature.body}</p>
-        </article>)}
-      </div>
+          <div class="industry-value-chapter-detail">
+            <p>{feature.body}</p>
+            {feature.outcomes && feature.outcomes.length > 0 && <ul class="industry-value-outcomes" aria-label={zh ? '业务收益' : 'Business outcomes'}>
+              {feature.outcomes.map(outcome => <li>{outcome}</li>)}
+            </ul>}
+          </div>
+        </div>
+        <figure class="industry-value-chapter-artwork">
+          <SolutionArtwork
+            src={feature.image}
+            alt={feature.imageAlt}
+            height={feature.imageHeight}
+            sizes={index === 1
+              ? '(max-width: 760px) calc(100vw - 40px), (max-width: 1056px) calc(100vw - 96px), 960px'
+              : '(max-width: 760px) calc(100vw - 40px), (max-width: 1050px) calc(100vw - 64px), 720px'}
+          />
+        </figure>
+      </article>)}
     </div>
   </section>
 

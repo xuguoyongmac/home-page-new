@@ -3,39 +3,39 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const governmentPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让公众少些往返，让政务履职更有实效",
-      "pain": "材料要求因办理情形而变，采购条款疑点难以集中审看；专项反馈各有口径，新政策又未必及时进入后续工作，专业时间被反复准备消耗。",
-      "value": "TeGo 数字员工协作平台承接事项材料校核、采购条款分析、专项汇报与政策影响整理，让工作人员从重复解释和材料拼接，转向受理条件、条款适用与任务落实的实质判断。",
+      "title": "让政务服务更一致，让机关落实更有据",
+      "pain": "同一情形前后答复不一，采购疑点留到发布之后，专项反馈和政策更新又各有口径；工作做了很多，服务质量与落实成效仍难稳定。",
+      "value": "让同一办事情形获得一致答复，采购疑点更早接受审查，专项协调直接面对责任和障碍。数字员工把现行政策与具体事项连接起来，减少办事往返、文件返工和无效协调，把专业精力用于服务质量与实际落实。",
       "scenarios": [
         "事项材料",
-        "采购条款",
-        "专项任务",
-        "汇报协作",
-        "政策跟踪",
-        "方法维护"
+        "采购核查",
+        "专项落实",
+        "政策变更",
+        "依据接续",
+        "经验复用"
       ],
       "benefits": [
         {
-          "title": "办事准备少些反复",
-          "description": "把具体情形、有效指南与材料要求对应起来，让窗口集中核定关键条件，办事对象按清楚要求准备。"
+          "title": "服务口径更一致",
+          "description": "同一情形对应同一份有效依据，让窗口、答疑与经办围绕相同要求提供服务。"
         },
         {
-          "title": "专业审阅直达疑点",
-          "description": "将采购条款、适用依据与修订方向放在一起，让业务人员判断要求是否恰当，意见能够落到原文。"
+          "title": "专业审查更靠前",
+          "description": "采购疑点与依据在发布前进入复核，把注意力放在竞争条件与实质关联。"
         },
         {
-          "title": "协同落实看清关键问题",
-          "description": "将责任、反馈、政策变化与受影响事项对应，让牵头和维护人员聚焦推进障碍与业务调整。"
+          "title": "部署落实更有抓手",
+          "description": "正式要求、责任反馈和待解障碍保持对应，牵头部门直接组织协调。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让公众少些往返",
-        "让政务履职更有实效"
+        "让政务服务更一致",
+        "让机关落实更有据"
       ],
       "background": "/images/industries/government-architecture_V1.1.webp",
-      "illustration": "/images/solutions/government/government-team-value-zh_V9.5.webp"
+      "illustration": "/images/solutions/government/government-value-scene-1-zh_V11.0.webp"
     },
     "sources": [
       "办事指南与适用情形",
@@ -51,44 +51,56 @@ export const governmentPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "让材料要求对应每一种办事情形",
-        "problem": "同一办理情形下，指南版本与材料条件混用，窗口答复前后不一，办事对象补了材料仍要返工。",
-        "body": "同一办理情形下，指南版本与材料条件混用，窗口答复前后不一，办事对象补了材料仍要返工。TeGo 数字员工协作平台形成对应具体情形的材料表、依据和待确认问题，让窗口人员少做重复解释，集中核定关键条件与受理要求。",
+        "title": "同一办理情形，材料要求一次说清",
+        "problem": "同一情形得到不同材料要求，补交后仍被追加条件，办事对象反复往返。",
+        "body": "同一办理情形却得到不同材料要求，补交后还要重新解释，办事对象就在窗口间反复往返。数字员工将现行指南、情形条件与证照复用依据对应呈现，让工作人员清楚说明本次要求，复杂情形获得专业确认，服务口径前后一致。",
         "outcomes": [
-          "分清本次情形要求",
-          "核准材料复用条件",
-          "减少准备阶段往返"
-        ]
+          "同一情形对应有效依据",
+          "材料要求前后一致",
+          "复杂情形交给专业确认"
+        ],
+        "image": "/images/solutions/government/government-value-scene-1-zh_V11.0.webp",
+        "imageAlt": "同一办理情形，材料要求一次说清",
+        "imageHeight": 560
       },
       {
-        "title": "把采购条款疑点留在发布之前",
-        "problem": "品牌、资质、技术参数与评分要求分散在文件各处，形式完整却未必适用，专业审阅难以聚焦。",
-        "body": "特定品牌、无关资质与排他性参数混入采购文件，容易把公平性问题留到发布之后。数字员工交付条款疑点、法规对应和修订建议，让采购人员直接审看问题位置与适用依据，在专业复核中完善文件质量。",
+        "title": "采购条款疑点，在发布前看清",
+        "problem": "无关资质、排他性参数或失配评分项进入采购文件，问题留到质疑环节。",
+        "body": "采购文件形式齐全，仍可能存在无关资质、排他性参数或失配评分项。数字员工把疑点定位到具体条款并关联适用依据，让采购人员在发布前审阅条件与采购需求的实质关联，减少问题进入质疑环节后的被动处理。",
         "outcomes": [
-          "找准条款实质疑点",
-          "判断要求与标的关联",
-          "让修订有明确落点"
-        ]
+          "疑点定位到具体条款",
+          "审查聚焦实质关联",
+          "发布前完善文件质量"
+        ],
+        "image": "/images/solutions/government/government-value-scene-2-zh_V11.0.webp",
+        "imageAlt": "采购条款疑点，在发布前看清",
+        "imageHeight": 722
       },
       {
-        "title": "让专项任务从归集走向协同落实",
-        "problem": "多部门反馈各有口径，任务原文、责任归属与实际进展难以对应，归口人员忙于汇总而无暇协调。",
-        "body": "一项专项部署分解到多个部门，主责、目标与反馈材料容易各说各话。数字员工将原文要求、责任分工和实际反馈汇成任务台账与汇报稿，突出缺项和推进障碍，让牵头部门把精力放在协调问题、核实进展与推动落实。",
+        "title": "专项协调，直达责任与障碍",
+        "problem": "专项材料收齐却看不清目标进展，责任交叉和反馈口径差异拖慢协调。",
+        "body": "材料已经收齐，目标进展和责任障碍却未必清楚。数字员工把正式要求、单位反馈与待解问题放在同一事项背景下，让牵头部门看清谁来负责、问题卡在哪里、还缺什么支撑，协调会把时间用于推动实际落实。",
         "outcomes": [
-          "看清任务与主责",
-          "核实进展与材料缺项",
-          "集中协调推进障碍"
-        ]
+          "责任对应正式要求",
+          "进展带着事实反馈",
+          "协调聚焦实际障碍"
+        ],
+        "image": "/images/solutions/government/government-value-scene-3-zh_V11.0.webp",
+        "imageAlt": "专项协调，直达责任与障碍",
+        "imageHeight": 591
       },
       {
-        "title": "让政策变化及时落到业务方法",
-        "problem": "新政策已经发布，办事口径、知识与岗位方法却未同步，工作人员难以判断哪些事项需要调整。",
-        "body": "政策更新后，旧要求仍可能留在办事口径和岗位方法中，影响后续服务。数字员工持续核查指定官方来源，形成变化及影响清单、知识与方法修订稿，让维护人员聚焦真正受影响的事项，经确认后延续统一有效的业务要求。",
+        "title": "政策变化，进入现行服务口径",
+        "problem": "政策已经更新，材料清单和业务答复仍沿用旧版本，形成新的执行偏差。",
+        "body": "政策已更新，窗口清单和业务答复仍可能沿用旧版。数字员工对应变更条款与受影响事项，呈现材料清单、答复依据和岗位方法需要调整的范围，让责任部门有针对性地更新，日常服务跟上现行规则。",
         "outcomes": [
-          "辨明政策变化影响",
-          "找准需要维护的事项",
-          "让后续服务沿用有效依据"
-        ]
+          "变更影响范围清楚",
+          "岗位方法接上现行规则",
+          "服务依据保持有效"
+        ],
+        "image": "/images/solutions/government/government-value-scene-4-zh_V11.0.webp",
+        "imageAlt": "政策变化，进入现行服务口径",
+        "imageHeight": 800
       }
     ],
     "teamTitle": "面向政务服务与机关协作的数字员工团队",
@@ -209,45 +221,45 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "复用政务资源，守住部门职责",
-      "body": "在获准环境部署，连接已有知识、模型和业务服务，按部门、岗位与事项配置使用范围。让专业方法服务更多工作人员，同时保留资料归属、事项责任与人员复核，统一维护准入、审核和审计，支撑持续服务。"
+      "title": "共用政务资源，部门职责清楚",
+      "body": "复用获准政务云、模型与知识服务，按部门职责配置资料和工具授权。让成熟方法覆盖更多工作人员，同时保留有效依据、专业审核和运行记录，业务决定仍由有权岗位作出。"
     }
   },
   "en": {
     "home": {
-      "title": "Fewer unnecessary visits. More effective public service.",
-      "pain": "Document requirements vary by circumstance, procurement questions are difficult to review together, departmental reports use different terms, and policy updates do not always reach later work. Repeated preparation consumes specialist time.",
-      "value": "TeGo 数字员工协作平台 undertakes document requirement checks, procurement clause analysis, initiative reporting and policy impact assessment. Staff can move from repeated explanations and material compilation to substantive judgments about acceptance conditions, applicable clauses and delivery of public duties.",
+      "title": "Consistent public service. Better-grounded execution.",
+      "pain": "Conflicting document requirements, procurement issues found after publication and disconnected policy updates can undermine service quality despite substantial staff effort.",
+      "value": "Digital employees connect current policy with the circumstances of each matter. Staff can give consistent requirements, examine procurement concerns before publication and coordinate around clear responsibilities and obstacles, reducing repeat visits, document rework and unproductive meetings.",
       "scenarios": [
         "Service documents",
-        "Procurement clauses",
-        "Special initiatives",
-        "Report collaboration",
-        "Policy monitoring",
-        "Method maintenance"
+        "Procurement review",
+        "Priority initiatives",
+        "Policy changes",
+        "Evidence continuity",
+        "Reusable methods"
       ],
       "benefits": [
         {
-          "title": "Reduce repeated service preparation",
-          "description": "Match the actual circumstance to current guidance and required documents, helping staff confirm key conditions and applicants prepare with clear requirements."
+          "title": "Consistent service requirements",
+          "description": "Give front desks, case handlers and service teams the same current basis for the same circumstances."
         },
         {
-          "title": "Bring review straight to the issue",
-          "description": "Present procurement wording, its applicable basis and revision direction together so staff can judge suitability and act on precise passages."
+          "title": "Earlier professional scrutiny",
+          "description": "Bring clause concerns and applicable references into review before procurement documents are published."
         },
         {
-          "title": "Coordinate around the issues that matter",
-          "description": "Connect responsibilities, feedback and policy changes to affected work so coordinating departments and maintainers can focus on obstacles and necessary adjustments."
+          "title": "Actionable coordination",
+          "description": "Keep official requirements, responsibilities and reported obstacles connected so lead departments can act."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Fewer unnecessary visits",
-        "More effective public service"
+        "Consistent public service.",
+        "Better-grounded execution."
       ],
       "background": "/images/industries/government-architecture_V1.1.webp",
-      "illustration": "/images/solutions/government/government-team-value-en_V9.5.webp"
+      "illustration": "/images/solutions/government/government-value-scene-1-en_V11.0.webp"
     },
     "sources": [
       "Service guides and applicable circumstances",
@@ -263,44 +275,56 @@ export const governmentPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "Match document requirements to each service circumstance",
-        "problem": "For the same service circumstances, mixed guide versions and document conditions can produce conflicting advice, leaving applicants to redo their preparation even after submitting more material.",
-        "body": "For the same service circumstances, mixed guide versions and document conditions can produce conflicting advice, leaving applicants to redo their preparation even after submitting more material. TeGo 数字员工协作平台 prepares circumstance-specific document lists, supporting rules and open questions. Front-desk staff can spend less time repeating requirements and more time confirming the conditions that matter for acceptance.",
+        "title": "Give consistent requirements for the same circumstances.",
+        "problem": "Applicants receive conflicting requirements and return with more documents only to face new conditions.",
+        "body": "Conflicting requirements send applicants between service desks with repeated explanations and additional documents. Digital employees connect current guidance, case conditions and certificate-reuse rules. Staff can explain the requirements for this matter, refer complex circumstances for professional confirmation and maintain a consistent basis for service.",
         "outcomes": [
-          "Distinguish requirements for the case",
-          "Confirm when certificates can be reused",
-          "Reduce repeated preparation"
-        ]
+          "One current basis for the case",
+          "Consistent document requirements",
+          "Specialist attention on exceptions"
+        ],
+        "image": "/images/solutions/government/government-value-scene-1-en_V11.0.webp",
+        "imageAlt": "Give consistent requirements for the same circumstances.",
+        "imageHeight": 800
       },
       {
-        "title": "Resolve procurement clause questions before publication",
-        "problem": "Brand, qualification, technical and evaluation requirements are spread across the document. Formal completeness does not establish suitability, making specialist review hard to focus.",
-        "body": "Brand-specific terms, unrelated qualifications and exclusionary specifications can leave fairness concerns unresolved until publication. Digital employees prepare clause findings, applicable rules and revision suggestions. Procurement staff can examine the exact wording and its basis, then improve the document through professional review.",
+        "title": "Examine procurement concerns before publication",
+        "problem": "Unrelated qualifications, exclusionary specifications or unsuitable evaluation criteria enter published documents.",
+        "body": "A complete procurement document may still contain unrelated qualifications, exclusionary specifications or unsuitable evaluation criteria. Digital employees locate concerns in specific clauses and connect them with applicable references. Procurement staff can assess their relevance to the actual requirement before publication, reducing issues left for the challenge stage.",
         "outcomes": [
-          "Locate substantive clause concerns",
-          "Judge relevance to the purchase",
-          "Give revisions a clear target"
-        ]
+          "Locate the exact wording",
+          "Examine substantive relevance",
+          "Improve documents before release"
+        ],
+        "image": "/images/solutions/government/government-value-scene-2-en_V11.0.webp",
+        "imageAlt": "Examine procurement concerns before publication",
+        "imageHeight": 800
       },
       {
-        "title": "Turn cross-department reporting into coordinated delivery",
-        "problem": "Departments report in different terms, separating original requirements, ownership and actual progress. Coordinators spend time compiling material instead of addressing obstacles.",
-        "body": "A special initiative shared across departments can produce conflicting accounts of ownership, targets and progress. Digital employees bring source requirements, responsibilities and feedback into task records and draft reports, drawing out gaps and obstacles. Lead departments can focus on verifying progress, resolving issues and advancing the work.",
+        "title": "Focus coordination on responsibility and obstacles",
+        "problem": "Collected progress materials still leave responsibilities, facts and unresolved obstacles disconnected.",
+        "body": "A full set of submissions can still leave progress, responsibility and obstacles unclear. Digital employees connect official requirements, departmental feedback and unresolved issues within the same matter. Lead departments can see who owns the issue, where it is blocked and what support is missing, directing coordination toward delivery.",
         "outcomes": [
-          "Clarify tasks and responsible departments",
-          "Verify progress and missing support",
-          "Concentrate coordination on obstacles"
-        ]
+          "Responsibilities tied to requirements",
+          "Progress supported by facts",
+          "Coordination around real obstacles"
+        ],
+        "image": "/images/solutions/government/government-value-scene-3-en_V11.0.webp",
+        "imageAlt": "Focus coordination on responsibility and obstacles",
+        "imageHeight": 549
       },
       {
-        "title": "Carry policy changes into current working methods",
-        "problem": "New policies may be published while service guidance, knowledge and role methods remain unchanged, leaving staff uncertain about which work needs adjustment.",
-        "body": "Old requirements can remain in service guidance and working methods after a policy changes. Digital employees check designated official sources and prepare change assessments and draft updates to knowledge and methods. Maintainers can focus on the work actually affected and, after confirmation, keep subsequent service grounded in current requirements.",
+        "title": "Bring policy changes into current service requirements.",
+        "problem": "New policy is published while document lists and service answers continue to follow older rules.",
+        "body": "Policy may change while service lists and answers still rely on an earlier version. Digital employees relate changed clauses to affected matters, showing which document requirements, response references and professional methods need revision. Responsible teams can target their updates and bring current rules into daily service.",
         "outcomes": [
-          "Understand the impact of policy changes",
-          "Identify the work that needs updating",
-          "Use current rules in subsequent service"
-        ]
+          "Clear scope of impact",
+          "Methods reflect current rules",
+          "Current service references"
+        ],
+        "image": "/images/solutions/government/government-value-scene-4-en_V11.0.webp",
+        "imageAlt": "Bring policy changes into current service requirements.",
+        "imageHeight": 800
       }
     ],
     "teamTitle": "Digital roles for public services and agency collaboration",
@@ -421,8 +445,8 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Reuse public-sector resources with clear departmental responsibilities",
-      "body": "Deploy in an approved environment and connect existing knowledge, models and business services. Set access by department, role and service matter. Extend professional methods to more staff while retaining ownership of records, service responsibilities and human review, with managed admission, approval and audit to support continued operation."
+      "title": "Shared government resources. Clear departmental duties.",
+      "body": "Reuse authorized government-cloud, model and knowledge services, with document and tool access configured by departmental duties. Extend established methods to more staff while retaining current references, professional review and execution records. Authorized officers retain responsibility for business decisions."
     }
   }
 };

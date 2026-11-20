@@ -3,39 +3,39 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const insurancePresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "把专业精力留给复杂判断，让客户少些反复解释",
-      "pain": "告知资料、医疗单证与产品版本反复核对，疑难事项又需跨团队接续，专业人员与客户都在重复准备和解释中消耗时间。",
-      "value": "数字员工承接资料预检、责任依据整理与疑难服务准备，让核保、理赔和服务团队直达需要专业判断的问题。减少客户反复解释，把机构经验转为跨团队可用的服务能力。",
+      "title": "复杂个案看清风险，长期服务保持一致",
+      "pain": "健康告知与病历表述不一，理赔事实难与合同责任对应。长期保单跨越多个产品版本，同一事项在不同团队反复解释。",
+      "value": "让告知矛盾、理赔事实与适用条款成为清楚的专业依据，帮助核保核赔人员抓住复杂个案的关键问题。数字员工保留保单前情与已查事实，让专家研判接续、一线服务口径一致。",
       "scenarios": [
-        "核保预检",
-        "复杂个案",
+        "复杂核保",
         "理赔审核",
+        "责任核对",
         "保单服务",
-        "疑难协作",
-        "专业方法"
+        "医学核保",
+        "专家接续"
       ],
       "benefits": [
         {
-          "title": "复杂个案获得更多专业关注",
-          "description": "减少材料翻阅与重复核对，让核保、理赔人员把精力放在事实矛盾、责任边界和关键风险上。"
+          "title": "专业判断更扎实",
+          "description": "核保关注关键健康风险，理赔核实医疗事实和合同责任。"
         },
         {
-          "title": "长期服务接得住前情",
-          "description": "适用依据、个案背景与未决问题随事项接续，减少客户重复解释和专家重复追问。"
+          "title": "长期服务更连贯",
+          "description": "适用条款、已沟通事项与未决问题随保单接续。"
         },
         {
-          "title": "机构经验成为共同资产",
-          "description": "经确认的产品知识与专业方法进入日常作业，让不同团队持续获得机构专业积累的支撑。"
+          "title": "专家接续少些重复",
+          "description": "医学、财务与高额事项专家共用已查事实，带着同一背景接续判断。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "把专业精力留给复杂判断",
-        "让客户少些反复解释"
+        "复杂个案看清风险",
+        "长期服务保持一致"
       ],
       "background": "/images/industries/insurance-architecture_V1.1.webp",
-      "illustration": "/images/solutions/insurance/insurance-team-value-zh_V9.5.webp"
+      "illustration": "/images/solutions/insurance/insurance-value-scene-1-zh_V11.0.webp"
     },
     "sources": [
       "投保告知与健康资料",
@@ -51,44 +51,56 @@ export const insurancePresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "problem": "健康告知与病历表述不一，补充材料后仍有关键矛盾，复杂个案迟迟无法进入实质评估。",
+        "title": "复杂核保直达风险，问询少些反复",
+        "problem": "健康告知与病历不一致，补充材料已经收齐，影响风险判断的矛盾仍未被说清。",
+        "body": "补件齐备不等于健康风险已经说清。数字员工把告知、病史、检查结果与适用核保要求对应起来，呈现影响评估的缺项和矛盾。核保人员带着明确问题开展问询，把精力用在复杂风险评估和承保判断上。",
         "outcomes": [
-          "缺项与矛盾集中显现",
-          "核保问题带有依据",
-          "专家聚焦复杂评估"
+          "找准告知矛盾",
+          "问询直达风险",
+          "聚焦复杂评估"
         ],
-        "title": "把核保精力留给复杂个案与专业评估",
-        "body": "健康告知与病历表述不一，补充材料后仍有关键矛盾，复杂个案迟迟无法进入实质评估。数字员工交付预检底稿、补充问题与原文依据，让核保人员直达影响风险判断的缺项与矛盾，把精力留给复杂个案；问询及承保结论由有权人员确认。"
+        "image": "/images/solutions/insurance/insurance-value-scene-1-zh_V11.0.webp",
+        "imageAlt": "复杂核保直达风险，问询少些反复",
+        "imageHeight": 555
       },
       {
-        "problem": "病历中的医疗事实与适用责任条件没有对应，补件、问询反复进行，理赔争议仍未得到实质澄清。",
+        "title": "理赔事实对齐责任，争议解释有据",
+        "problem": "材料堆得越来越厚，病程、费用与合同条件仍未对应，客户补件多轮却迟迟得不到清楚解释。",
+        "body": "同一理赔案的病程、费用与合同条件没有对应，补件再多也难解释争议。数字员工将医疗事实、费用依据和适用条款相互关联，突出差异与责任边界，让核赔人员集中研判争议，并向客户说明需要核实的具体问题。",
         "outcomes": [
-          "同案事实完整对应",
-          "责任边界清楚可查",
-          "专业审核聚焦争议"
+          "同案事实对应",
+          "责任边界可查",
+          "争议解释清楚"
         ],
-        "title": "让理赔审核直达事实与责任争议",
-        "body": "病历中的医疗事实与适用责任条件没有对应，补件、问询反复进行，理赔争议仍未得到实质澄清。数字员工形成同案病程、费用与条款依据对照，让理赔人员直接核实事实矛盾和责任边界，减少底稿重编，把专业精力用于审慎核赔与客户解释，结论由人员复核。"
+        "image": "/images/solutions/insurance/insurance-value-scene-2-zh_V11.0.webp",
+        "imageAlt": "理赔事实对齐责任，争议解释有据",
+        "imageHeight": 721
       },
       {
-        "problem": "长期保单混用新旧产品条款，同一问题前后答复不一，客户反复追问适用依据。",
+        "title": "长期保单接续服务，适用条款清楚",
+        "problem": "新旧产品条款混用，服务团队切换后重复询问，同一问题前后答复不一，消耗客户信任。",
+        "body": "保单跨越多个产品版本，换人服务后容易混用条款、重复问询。数字员工保留本单适用版本、既有沟通与未决事项，让一线答复有明确依据，专家接手保留前情。客户少些反复解释，长期服务延续一致的专业口径。",
         "outcomes": [
-          "适用依据随单接续",
-          "个案背景清楚交接",
-          "减少反复说明事项"
+          "适用版本明确",
+          "交接保留前情",
+          "服务口径一致"
         ],
-        "title": "让长期保单服务少些往返与反复解释",
-        "body": "长期保单混用新旧产品条款，同一问题前后答复不一，客户反复追问适用依据。数字员工带着本单依据、办理准备材料和未决问题接续服务，让一线答复更贴合保单，专家接手即可看清个案背景；对客表达与正式办理仍由负责人员确认。"
+        "image": "/images/solutions/insurance/insurance-value-scene-3-zh_V11.0.webp",
+        "imageAlt": "长期保单接续服务，适用条款清楚",
+        "imageHeight": 321
       },
       {
-        "problem": "经验和资料版本不同让熟悉问题反复上交，专家支持成为服务瓶颈。",
+        "title": "疑难个案共用事实，专家研判接续",
+        "problem": "医学、财务与高额个案轮流请示，不同专家重复问背景，已经查明的事实与尚未解决的问题混在一起。",
+        "body": "医学、财务与高额事项需要不同专家接续评估，重复了解背景会挤占专业时间。数字员工区分同案已查事实、对应依据与未决问题，让每位专家沿着已有认识继续研判，把讨论集中到真正需要专业判断的疑点上。",
         "outcomes": [
-          "机构方法持续复用",
-          "不同团队共享积累",
-          "专家聚焦疑难判断"
+          "个案背景完整",
+          "已查依据共享",
+          "专家判断接续"
         ],
-        "title": "把机构专业方法变成服务团队的共同能力",
-        "body": "相同问题因人员经验和资料版本不同而反复求证，专家支持容易成为瓶颈。数字员工承载经确认的产品知识、核对方法与既有答复，形成可接续的服务材料，让不同团队共享机构专业积累，把专家时间留给真正的疑难判断。"
+        "image": "/images/solutions/insurance/insurance-value-scene-4-zh_V11.0.webp",
+        "imageAlt": "疑难个案共用事实，专家研判接续",
+        "imageHeight": 630
       }
     ],
     "teamTitle": "服务保险全流程的数字员工团队",
@@ -209,45 +221,45 @@ export const insurancePresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "把专业积累留在机构，把信任延续到长期服务",
-      "body": "减少重复准备对专业时间的占用，让个案背景与未决问题在服务接续中保持完整。把核保、理赔和保单服务中的成熟方法转为机构共同能力，让专家关注疑难，让一线有据答复，让客户获得连贯的服务体验。"
+      "title": "保险专业知识留在机构，服务责任清楚接续",
+      "body": "在机构私有环境中连接保单资料、条款版本与授权业务系统，按使用者和岗位管理访问范围。核保、核赔及对客表达保留人员确认，工作记录与审核审计支撑跨团队服务接续。"
     }
   },
   "en": {
     "home": {
-      "title": "More room for difficult judgments. Less repeated explanation for policyholders.",
-      "pain": "Health disclosures, medical documents and product versions require repeated checks. Complex matters pass between teams, consuming professional time and asking policyholders to repeat the same context.",
-      "value": "Digital employees take on document checks, coverage evidence and specialist handover preparation, bringing questions that need professional judgment into focus. Teams gain more room for difficult cases, policyholders repeat less context and institutional expertise becomes available across teams.",
+      "title": "Clearer risk in complex cases. Consistent policy service.",
+      "pain": "Disclosures and medical records conflict, while claim facts remain disconnected from policy responsibilities. Long-term policies span product versions and teams repeatedly revisit the same context.",
+      "value": "Digital employees connect disclosure conflicts, claim facts and applicable policy terms, giving specialists clearer evidence for complex cases. Teams share established facts across handovers and provide consistent service throughout the policy term.",
       "scenarios": [
-        "Underwriting preparation",
-        "Complex cases",
+        "Complex underwriting",
         "Claims review",
+        "Coverage evidence",
         "Policy servicing",
-        "Specialist handovers",
-        "Institutional expertise"
+        "Medical underwriting",
+        "Expert handovers"
       ],
       "benefits": [
         {
-          "title": "More expert attention for complex cases",
-          "description": "Reduce repeated document checks so underwriting and claims specialists can focus on conflicting facts, coverage boundaries and material risks."
+          "title": "Stronger professional judgment",
+          "description": "Focus underwriting on material health risks and claims review on medical facts and policy responsibility."
         },
         {
-          "title": "Service retains the case context",
-          "description": "Applicable references, case background and unresolved questions stay with the matter, reducing repeated explanations and specialist inquiries."
+          "title": "Continuity over the policy term",
+          "description": "Keep applicable clauses, prior communications and unresolved questions with the policy."
         },
         {
-          "title": "Institutional expertise becomes shared capability",
-          "description": "Confirmed product knowledge and professional methods support daily work across teams, making institutional experience more widely available."
+          "title": "Connected specialist support",
+          "description": "Medical, financial and high-value specialists share established facts and retain the same case context."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Keep expertise for difficult judgments",
-        "Ask policyholders to repeat less context"
+        "Clearer risk in complex cases",
+        "Consistent policy service"
       ],
       "background": "/images/industries/insurance-architecture_V1.1.webp",
-      "illustration": "/images/solutions/insurance/insurance-team-value-en_V9.7.webp"
+      "illustration": "/images/solutions/insurance/insurance-value-scene-1-en_V11.0.webp"
     },
     "sources": [
       "Disclosures and health information",
@@ -263,44 +275,56 @@ export const insurancePresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "problem": "Health disclosures and medical records can conflict, leaving material facts unresolved even after more documents arrive.",
+        "title": "Focus underwriting questions on material risk.",
+        "problem": "Health disclosures conflict with medical records. Further documents arrive, but the contradictions affecting risk assessment remain unclear.",
+        "body": "A complete document set does not resolve a health-risk question. Digital employees relate disclosures, medical history and examination results to applicable underwriting requirements, exposing material gaps and contradictions. Underwriters ask targeted questions and reserve their attention for complex assessment and underwriting decisions.",
         "outcomes": [
-          "Gaps and contradictions in view",
-          "Evidence behind underwriting questions",
-          "Expert focus on complex assessments"
+          "Identify disclosure conflicts",
+          "Target material risk questions",
+          "Focus on complex assessment"
         ],
-        "title": "Keep underwriting expertise focused on complex cases and risk assessment",
-        "body": "Health disclosures and medical records can conflict, leaving material facts unresolved even after more documents arrive. Digital employees prepare review papers, follow-up questions and source references, bringing gaps and contradictions directly to the underwriter’s attention. Specialists can focus on complex cases, while authorized personnel confirm inquiries and underwriting decisions."
+        "image": "/images/solutions/insurance/insurance-value-scene-1-en_V11.0.webp",
+        "imageAlt": "Focus underwriting questions on material risk.",
+        "imageHeight": 536
       },
       {
-        "problem": "Medical facts remain disconnected from the applicable coverage conditions, so repeated requests for documents can leave the real dispute unresolved.",
+        "title": "Connect claim facts with coverage evidence.",
+        "problem": "More documents accumulate while the medical history, expenses and policy conditions remain disconnected. Repeated requests do not resolve the customer’s questions.",
+        "body": "More documents do not explain a dispute when the medical history, expenses and policy conditions remain disconnected. Digital employees relate medical facts, expense evidence and applicable clauses, highlighting differences and coverage boundaries. Claims specialists can assess disputed matters and explain the specific questions that still require verification.",
         "outcomes": [
-          "Facts connected within the case",
-          "Clear references for coverage boundaries",
-          "Professional attention on disputed matters"
+          "Connect facts within the case",
+          "Make coverage references clear",
+          "Explain disputed matters"
         ],
-        "title": "Bring claims review straight to disputed facts and coverage",
-        "body": "Medical facts remain disconnected from the applicable coverage conditions, so repeated requests for documents can leave the real dispute unresolved. Digital employees prepare a coordinated view of the medical history, expenses and relevant clauses. Reviewers can concentrate on disputed facts and coverage boundaries, giving more attention to careful claims judgment and clear explanations to policyholders. Staff review the conclusions."
+        "image": "/images/solutions/insurance/insurance-value-scene-2-en_V11.0.webp",
+        "imageAlt": "Connect claim facts with coverage evidence.",
+        "imageHeight": 677
       },
       {
-        "problem": "Mixed versions of policy terms can produce inconsistent answers, leaving policyholders to ask repeatedly which conditions apply.",
+        "title": "Keep the right terms with long-term policy service.",
+        "problem": "Old and new product terms are mixed. Team changes lead to repeated questions and inconsistent answers that weaken customer trust.",
+        "body": "Long-term policies span product versions, creating room for inconsistent answers and repeated questions after a handover. Digital employees retain the applicable version, previous communications and unresolved matters. Service staff work from clear references, specialists receive the case history, and customers spend less time repeating it.",
         "outcomes": [
-          "Applicable references remain with the policy",
-          "Case context carries across handovers",
-          "Less repeated explanation"
+          "Identify the applicable version",
+          "Preserve handover context",
+          "Maintain consistent references"
         ],
-        "title": "Reduce repeated explanations throughout the policy relationship",
-        "body": "Mixed versions of policy terms can produce inconsistent answers, leaving policyholders to ask repeatedly which conditions apply. Digital employees keep the applicable policy references, preparation documents and unresolved questions together. Frontline teams can give answers that fit the policy, while specialists receive the case context without starting over. Responsible staff confirm customer communications and formal processing."
+        "image": "/images/solutions/insurance/insurance-value-scene-3-en_V11.0.webp",
+        "imageAlt": "Keep the right terms with long-term policy service.",
+        "imageHeight": 662
       },
       {
-        "problem": "Differences in experience and document versions send familiar questions back to specialists and create a service bottleneck.",
+        "title": "Give specialists a shared factual basis for complex cases.",
+        "problem": "Medical, financial and high-value cases pass between specialists. Each revisits the background while established facts and open questions become mixed.",
+        "body": "Medical, financial and high-value cases can require several specialists. Rebuilding the background at every handover consumes professional time. Digital employees distinguish established facts, supporting evidence and unresolved questions, allowing each specialist to continue the assessment and focus discussion on the issues that need judgment.",
         "outcomes": [
-          "Institutional methods remain reusable",
-          "Experience shared across teams",
-          "Specialists focus on difficult judgments"
+          "Complete case context",
+          "Shared reviewed evidence",
+          "Continuity in expert judgment"
         ],
-        "title": "Make institutional expertise a shared strength across service teams",
-        "body": "Differences in experience and document versions can send familiar questions back to specialists, creating a bottleneck. Digital employees apply confirmed product knowledge, review methods and established responses in service materials that teams can continue using. More colleagues benefit from institutional expertise, while specialists reserve their attention for questions that require deeper judgment."
+        "image": "/images/solutions/insurance/insurance-value-scene-4-en_V11.0.webp",
+        "imageAlt": "Give specialists a shared factual basis for complex cases.",
+        "imageHeight": 670
       }
     ],
     "teamTitle": "A digital employee team across insurance services",
@@ -421,8 +445,8 @@ export const insurancePresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Keep expertise in the institution. Sustain continuity for policyholders.",
-      "body": "Reduce the professional time consumed by repeated preparation and preserve case background and unresolved questions across handovers. Make established underwriting, claims and policy-service methods a shared institutional strength, so specialists focus on difficult judgments, frontline teams respond with evidence and policyholders receive a connected service experience."
+      "title": "Keep insurance expertise in the institution. Preserve service accountability.",
+      "body": "Connect policy documents, clause versions and authorized business systems in the institution’s private environment. Manage access by user and role. Staff confirm underwriting, claims and customer communications, while work records and audit trails support service across teams."
     }
   }
 };

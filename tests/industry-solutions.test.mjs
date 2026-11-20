@@ -50,12 +50,11 @@ test('solution discovery retains the supported industries, general business and 
   }
 });
 
-test('seven solution pages present one value illustration with four value propositions', () => {
+test('seven solution pages give each business value chapter its own illustration', () => {
   const sharedPage = readFileSync(path.join(root, 'src/features/solutions/shared/IndustrySolutionPage.astro'), 'utf8');
-  assert.match(sharedPage, /src=\{copy\.hero\.illustration\}/, 'The story must use the industry value illustration');
-  assert.equal([...sharedPage.matchAll(/<figure\b/g)].length, 1, 'The value story uses one illustration');
-  assert.match(sharedPage, /copy\.features\.map[\s\S]*?<article\b/, 'Each value proposition must remain an article');
-  assert.doesNotMatch(sharedPage, /feature\.problem|EmployeeCarousel|feature\.image/, 'The value story must not restore process details or a per-feature gallery');
+  assert.match(sharedPage, /copy\.features\.map[\s\S]*?<article\b[\s\S]*?<figure\b[\s\S]*?src=\{feature\.image\}/, 'Each complete chapter needs its own business illustration');
+  assert.match(sharedPage, /alt=\{feature\.imageAlt\}/, 'Each topic image must have its own accessible description');
+  assert.doesNotMatch(sharedPage, /src=\{copy\.hero\.illustration\}|feature\.problem|EmployeeCarousel/, 'Detail pages must not regress to one overview image followed by text or a process carousel');
   for (const [slug] of industries) {
     const route = readFileSync(path.join(root, `src/features/solutions/${slug}/Page.astro`), 'utf8');
     assert.match(route, /import IndustrySolutionPage from '\.\.\/shared\/IndustrySolutionPage\.astro'/);
@@ -73,7 +72,7 @@ test('homepage and overview use the same localized value illustration as each in
     for (const [slug, exportName] of industries) {
       const copy = loadData(`src/features/solutions/${slug}/page-content.ts`)[exportName][locale];
       assert.equal(imageFor(slug), copy.hero.illustration, `${locale}/${slug} discovery and detail must share the value illustration`);
-      assert.match(copy.hero.illustration, new RegExp(`^/images/solutions/${slug}/${slug}-team-value-${locale}_V9\\.[0-9]+\\.webp$`));
+      assert.equal(copy.hero.illustration, copy.features[0].image, 'Discovery introduces the first business value theme');
     }
   }
 });
@@ -112,7 +111,11 @@ for (const [slug, exportName, order] of industries) {
       for (const feature of copy.features) {
         assert.ok(feature.title.trim().length > 0, `${locale}/${slug} needs a value headline`);
         assert.ok(feature.body.trim().length > 0, `${locale}/${slug} needs a business benefit`);
+        assert.ok(feature.imageAlt.trim().length > 0, `${locale}/${slug} needs a business-specific image description`);
+        assert.ok(Number.isInteger(feature.imageHeight) && feature.imageHeight > 200 && feature.imageHeight <= 800, 'Artwork dimensions must preserve the complete business graphic without blank framing');
+        assert.equal(feature.outcomes.length, 3);
       }
+      assert.equal(new Set(copy.features.map(feature => feature.image)).size, 4, 'Four different business themes need four distinct images');
       assert.equal(metadata.copy[locale].tasks.length, copy.employees.length);
     }
   });
@@ -135,8 +138,9 @@ for (const [slug, exportName, order] of industries) {
   test(`${slug}: both languages reference an available value illustration and compatibility assets`, () => {
     for (const locale of ['zh', 'en']) {
       const copy = presentation[locale];
-      assert.match(copy.hero.illustration, new RegExp(`^/images/solutions/${slug}/${slug}-team-value-${locale}_V9\\.[0-9]+\\.webp$`));
-      const assets = [copy.hero.background, copy.hero.illustration, ...copy.employees.map(employee => employee.avatar)];
+      const scenes = copy.features.map(feature => feature.image);
+      for (const scene of scenes) assert.match(scene, new RegExp(`^/images/solutions/${slug}/${slug}-value-scene-[1-4]-${locale}_V[0-9]+\\.[0-9]+\\.webp$`));
+      const assets = [copy.hero.background, copy.hero.illustration, ...scenes, ...copy.employees.map(employee => employee.avatar)];
       for (const asset of assets) {
         assert.ok(asset.startsWith('/images/'));
         assert.ok(existsSync(path.join(root, 'public', asset)), `Missing asset: ${asset}`);

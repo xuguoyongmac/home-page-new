@@ -3,39 +3,39 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const stateOwnedPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让重大风险及时显现，让集团管控落在实处",
-      "pain": "采购审查耗在重复比对，整改回复难证明问题已解决，集团汇总又先忙着对口径；统一要求落到不同单位时，责任与实际情况容易失真。",
-      "value": "TeGo 数字员工协作平台承接采购合同核对、整改证据对应和经营资料分析，把疑点与依据交到专业岗位。集团能够从收材料、看状态，转向审查实质、证据充分性与经营变化的判断，成熟方法也能在单位间复用。",
+      "title": "让集团看清实情，把管控落到关键处",
+      "pain": "送审条款前后冲突，整改回复缺少实证，所属企业报表口径又难统一；集团掌握了大量材料，关键责任和经营变化仍可能被掩盖。",
+      "value": "让合同审阅看清重大责任，整改复查直达实证，经营研判区分口径差异与真实变化。数字员工把集团要求与所属企业的具体事实对应起来，减少追材料和重复核对，让采购、法务、审计与管理层聚焦关键问题。",
       "scenarios": [
-        "采购审查",
-        "合同核对",
+        "采购文书",
+        "合同核查",
         "整改复查",
-        "财务核对",
         "经营分析",
-        "集团协作"
+        "集团专项",
+        "单位协同"
       ],
       "benefits": [
         {
-          "title": "审查直达关键责任",
-          "description": "将制度、条款、金额和履约约定的差异对应原文，让采购与法务围绕适用条件与商业例外形成意见。"
+          "title": "重大责任更早识别",
+          "description": "项目条件、合同约定和有效制度对应起来，审阅直达关键条款与商业例外。"
         },
         {
-          "title": "监督从回复走向证据",
-          "description": "让每项整改措施接回原问题与实际佐证，监督人员能够区分形式反馈和需要继续核实的实质缺口。"
+          "title": "整改实效有据可审",
+          "description": "把回复、措施和实际佐证接回原问题，让监督岗位看清缺口和矛盾。"
         },
         {
-          "title": "管理从汇总走向研判",
-          "description": "让单位数据、口径与责任保持清楚，管理层直接讨论经营差异和共同障碍，共用方法又不抹平单位实际。"
+          "title": "集团讨论更贴近经营",
+          "description": "口径差异与单位事实清楚对应，管理层直接讨论业务原因和解决对策。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让重大风险及时显现",
-        "让集团管控落在实处"
+        "让集团看清实情",
+        "把管控落到关键处"
       ],
       "background": "/images/industries/state-owned-architecture_V1.3.webp",
-      "illustration": "/images/solutions/state-owned/state-owned-team-value-zh_V9.5.webp"
+      "illustration": "/images/solutions/state-owned/state-owned-value-scene-1-zh_V11.0.webp"
     },
     "sources": [
       "采购合同与集团制度",
@@ -51,44 +51,56 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "让采购合同审查直达实质差异",
-        "problem": "送审文件的资格条件、金额与履约节点和适用范本对不上，缺项与商业例外混在一起，采购与法务反复退回确认。",
-        "body": "送审文件的资格条件、金额与履约节点和适用范本对不上，缺项与商业例外混在一起，采购与法务反复退回确认。TeGo 数字员工协作平台交付条款差异、金额计算和履约约定核对底稿，让采购与法务聚焦适用条件、商业例外和重要责任。",
+        "title": "重大条款，提前进入专业审阅",
+        "problem": "送审版本中的付款条件、履约节点和违约责任相互冲突，重大风险被文件往返掩盖。",
+        "body": "付款条件、履约节点与违约责任散在多个送审版本中，重大分歧容易被文件往返掩盖。数字员工将项目条件、有效制度与合同范本对应呈现，让采购和法务直接审阅缺项、冲突与商业例外，把专业时间用在关键责任上。",
         "outcomes": [
-          "辨明适用条件差异",
-          "核实金额与履约责任",
-          "聚焦需要专业判断的例外"
-        ]
+          "关键责任提前显现",
+          "审阅依据对应原文",
+          "商业例外交给专业把关"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-1-zh_V11.0.webp",
+        "imageAlt": "重大条款，提前进入专业审阅",
+        "imageHeight": 698
       },
       {
-        "title": "让整改反馈经得起证据核对",
-        "problem": "收到回复、材料齐备与整改认定容易混为一谈，监督人员难以判断措施和佐证是否真正回应原问题。",
-        "body": "所属单位提交了整改回复，并不意味着原问题已有充分证据支撑。数字员工将问题、措施与附件逐一对应，交付缺项、不一致和原文依据，让监督审计人员聚焦证据有效性与遗留问题，清晰区分反馈、材料齐备与复查认定。",
+        "title": "整改复查，直达实证与缺口",
+        "problem": "回复和附件已经收齐，却没有实质回应原问题，台账进度掩盖证据缺口。",
+        "body": "回复齐备并不代表原问题已经解决。数字员工把审计发现、整改措施和实际佐证关联起来，突出证据缺口与前后矛盾，让监督审计人员直接追问措施是否落实、问题是否消除，整改进度回到实际效果，复查认定由专业人员把关。",
         "outcomes": [
-          "判断措施是否回应原问题",
-          "找出缺证与前后矛盾",
-          "让复查围绕实质展开"
-        ]
+          "每项措施回应原问题",
+          "证据缺口清楚显现",
+          "复查认定保持独立"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-2-zh_V11.0.webp",
+        "imageAlt": "整改复查，直达实证与缺口",
+        "imageHeight": 800
       },
       {
-        "title": "让集团经营讨论建立在同一口径",
-        "problem": "所属单位报表的期间、单位与定义不同，汇总后还要反复追数换算，经营会上难以直接讨论业务。",
-        "body": "所属单位报表的期间、单位和指标定义不一，经营讨论容易耗在基础数字核对。数字员工交付口径差异、计算附表与经营报告，将费用异常和单位差异对应到来源，让财务聚焦业务实质，管理层围绕经营变化开展研判。",
+        "title": "经营研判，看清口径背后的变化",
+        "problem": "上报期间、计量单位与指标定义不同，汇总数据不能直接解释经营变化。",
+        "body": "汇总表已经齐备，期间、单位与指标定义的差异却仍会掩盖真实变化。数字员工把收入、利润和现金流的口径、计算关系与差异说明对应起来，让集团会议少争数字来源，更多讨论业务成因、资源安排和经营对策。",
         "outcomes": [
-          "分清口径差异与业务变化",
-          "核实费用与单位异常",
-          "把经营讨论转向原因与应对"
-        ]
+          "口径差异单独看清",
+          "业务变化有据可追",
+          "经营讨论直达对策"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-3-zh_V11.0.webp",
+        "imageAlt": "经营研判，看清口径背后的变化",
+        "imageHeight": 655
       },
       {
-        "title": "让集团要求对应单位实际进展",
-        "problem": "统一要求和单位实际各有差异，简单汇总容易混淆责任、遗漏问题，成熟组织方法又被反复重做。",
-        "body": "集团专项要求落到不同单位，适用制度、责任归属与进展容易在汇总中失真。数字员工保留各单位事实和口径，形成问题清单、任务台账与汇报材料，让归口部门看清共同障碍与个别差异，把成熟方法复用到持续协作中。",
+        "title": "集团要求，落到各单位真实情况",
+        "problem": "统一反馈格式无法替代责任与事实对应，共性障碍在层层汇报中被冲淡。",
+        "body": "统一反馈格式无法替代对真实困难的判断。数字员工按同一集团专项，关联各单位反馈、正式要求与处理意见，让总部看清共性障碍和责任所在，也让所属企业的具体条件得到保留。跨级协调围绕实际问题，减少层层汇报中的信息损耗。",
         "outcomes": [
-          "保留单位责任与实际情况",
-          "辨明共同障碍与个别差异",
-          "让成熟方法持续复用"
-        ]
+          "总部看清共性障碍",
+          "单位保留实际差异",
+          "跨级协调有具体抓手"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-4-zh_V11.0.webp",
+        "imageAlt": "集团要求，落到各单位真实情况",
+        "imageHeight": 800
       }
     ],
     "teamTitle": "服务总部、板块与基层的数字员工团队",
@@ -209,45 +221,45 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "集团共用方法，单位保留边界",
-      "body": "可在集团自有资源或批准的专有云部署，复用已有模型与业务服务。集团共用成熟方法，各单位分别维护制度、资料、使用关系与交付要求，让专业能力规模化复用，同时保持责任归属、资料授权与审核审计清楚。"
+      "title": "共用集团方法，保留单位差异",
+      "body": "集团沉淀共用制度、核查方法和岗位模板，所属企业绑定本单位资料、合同范本与工具身份。在私有环境中管理授权、变更与运行记录，让专业方法可复用，让各单位的事实、责任和审阅判断保持清楚。"
     }
   },
   "en": {
     "home": {
-      "title": "See material risks sooner. Make group oversight count.",
-      "pain": "Procurement review repeats comparisons, corrective replies do not establish resolution, and consolidated reports require more reconciliation. Common requirements can also obscure individual subsidiaries’ responsibilities and circumstances.",
-      "value": "TeGo 数字员工协作平台 undertakes procurement and contract checks, remediation evidence comparison and operating analysis, bringing issues and their basis to specialist roles. The group can move from collecting documents and status updates to judging substantive obligations, evidence sufficiency and business change, while reusing proven methods across subsidiaries.",
+      "title": "See the facts across the group. Focus control where it matters.",
+      "pain": "Conflicting contract terms, remediation without adequate proof and inconsistent subsidiary reporting can obscure material responsibilities and business changes beneath a large volume of information.",
+      "value": "Digital employees connect group requirements with subsidiary facts. Procurement and legal teams examine material obligations, audit teams test remediation against evidence, and management separates reporting differences from real business changes, spending less time chasing documents and repeating checks.",
       "scenarios": [
-        "Procurement review",
-        "Contract checks",
+        "Procurement documents",
+        "Contract review",
         "Remediation review",
-        "Financial verification",
         "Operating analysis",
-        "Group collaboration"
+        "Group initiatives",
+        "Subsidiary coordination"
       ],
       "benefits": [
         {
-          "title": "Review the responsibilities that matter",
-          "description": "Connect policy, clause, amount and performance differences to their source wording so procurement and legal teams can judge applicability and commercial exceptions."
+          "title": "Earlier visibility of material obligations",
+          "description": "Relate project conditions, contract terms and current policies so review reaches substantive exceptions."
         },
         {
-          "title": "Move oversight from replies to evidence",
-          "description": "Tie corrective measures back to the original finding and actual support, distinguishing formal responses from substantive gaps that still need verification."
+          "title": "Evidence-led remediation review",
+          "description": "Connect responses and supporting records to the original finding, exposing gaps and contradictions."
         },
         {
-          "title": "Move management from compilation to judgment",
-          "description": "Keep subsidiary figures, definitions and accountability clear so management can discuss operating differences and shared obstacles without losing local context."
+          "title": "More substantive operating discussions",
+          "description": "Keep reporting differences and subsidiary facts clear so management can examine business causes and responses."
         }
       ]
     },
     "hero": {
       "lines": [
-        "See material risks sooner",
-        "Make group oversight count"
+        "See the facts across the group.",
+        "Focus control where it matters."
       ],
       "background": "/images/industries/state-owned-architecture_V1.3.webp",
-      "illustration": "/images/solutions/state-owned/state-owned-team-value-en_V9.5.webp"
+      "illustration": "/images/solutions/state-owned/state-owned-value-scene-1-en_V11.0.webp"
     },
     "sources": [
       "Procurement contracts and group policies",
@@ -263,44 +275,56 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "Focus procurement and contract review on material differences",
-        "problem": "Qualification requirements, amounts and performance milestones in submitted documents can differ from the applicable template. Missing terms and commercial exceptions become mixed together, sending the file repeatedly between procurement and legal teams for clarification.",
-        "body": "Qualification requirements, amounts and performance milestones in submitted documents can differ from the applicable template. Missing terms and commercial exceptions become mixed together, sending the file repeatedly between procurement and legal teams for clarification. TeGo 数字员工协作平台 prepares clause differences, amount calculations and checks of performance obligations. Procurement and legal teams can focus on applicability, commercial exceptions and significant responsibilities.",
+        "title": "Bring material terms into professional review earlier.",
+        "problem": "Payment terms, milestones and liabilities conflict across submitted versions, obscuring significant obligations.",
+        "body": "Payment terms, milestones and liabilities dispersed across submitted versions can hide material disagreements. Digital employees connect project conditions, current policies and applicable templates. Procurement and legal teams can review omissions, conflicts and commercial exceptions directly, reserving professional attention for significant obligations.",
         "outcomes": [
-          "Distinguish differences in applicability",
-          "Verify amounts and performance obligations",
-          "Focus specialist judgment on exceptions"
-        ]
+          "Earlier visibility of key obligations",
+          "References tied to the wording",
+          "Specialist review of exceptions"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-1-en_V11.0.webp",
+        "imageAlt": "Bring material terms into professional review earlier.",
+        "imageHeight": 800
       },
       {
-        "title": "Test corrective responses against the evidence",
-        "problem": "Receiving a reply, having complete materials and confirming remediation can be confused. Oversight staff need to know whether measures and evidence answer the original finding.",
-        "body": "A subsidiary’s response does not establish that the original finding has sufficient supporting evidence. Digital employees connect findings, measures and attachments, identifying gaps, inconsistencies and source passages. Oversight and audit teams can focus on evidence quality and unresolved issues while keeping response receipt, document completeness and review conclusions distinct.",
+        "title": "Review remediation through evidence and gaps",
+        "problem": "Responses and attachments arrive without demonstrating that the original finding has been addressed.",
+        "body": "A complete response does not establish that the original finding has been resolved. Digital employees connect audit findings, corrective measures and supporting evidence, exposing gaps and contradictions. Oversight teams can examine whether measures were implemented and issues addressed, with professional staff retaining the formal review conclusion.",
         "outcomes": [
-          "Judge whether measures address the finding",
-          "Find missing and contradictory evidence",
-          "Focus follow-up review on substance"
-        ]
+          "Measures answer the original finding",
+          "Evidence gaps remain visible",
+          "Independent review conclusions"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-2-en_V11.0.webp",
+        "imageAlt": "Review remediation through evidence and gaps",
+        "imageHeight": 800
       },
       {
-        "title": "Start group management discussions from comparable figures",
-        "problem": "Subsidiary reports use different periods, units and definitions. Consolidation is followed by more tracing and conversion before the group can discuss business performance.",
-        "body": "Different reporting periods, units and metric definitions can consume management discussions in basic reconciliation. Digital employees prepare definition differences, supporting calculations and operating reports, linking expense exceptions and subsidiary differences to their sources. Finance can examine business substance, while management evaluates the changes in performance.",
+        "title": "Separate reporting differences from real business change.",
+        "problem": "Different periods, units and metric definitions prevent consolidated figures from explaining business change.",
+        "body": "Complete consolidated reports can still conceal differences in periods, units and metric definitions. Digital employees connect the definitions, calculations and explanations behind revenue, profit and cash flow. Group meetings spend less time disputing sources and more time examining business causes, resource allocation and operating responses.",
         "outcomes": [
-          "Separate definition differences from business change",
-          "Examine expense and subsidiary exceptions",
-          "Discuss causes and responses"
-        ]
+          "Separate reporting differences",
+          "Trace business explanations",
+          "Discuss operating responses"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-3-en_V11.0.webp",
+        "imageAlt": "Separate reporting differences from real business change.",
+        "imageHeight": 800
       },
       {
-        "title": "Connect group requirements to each subsidiary’s actual progress",
-        "problem": "Common requirements meet different local conditions. Simple consolidation can blur responsibility and omit issues while established coordination methods are repeatedly rebuilt.",
-        "body": "When group initiatives reach different subsidiaries, applicable policies, ownership and progress can be distorted in consolidation. Digital employees preserve each unit’s facts and definitions in issue lists, task records and reports. Coordinating teams can distinguish shared obstacles from local differences and reuse established methods through continuing collaboration.",
+        "title": "Connect group requirements to subsidiary realities",
+        "problem": "Standard submission formats still leave responsibilities, facts and common obstacles disconnected.",
+        "body": "A standard format cannot establish the difficulties a subsidiary actually faces. Digital employees connect subsidiary feedback, formal requirements and handling decisions within each group initiative. Headquarters can see common obstacles and responsibility while retaining local conditions, giving cross-level coordination concrete issues to resolve.",
         "outcomes": [
-          "Preserve local facts and accountability",
-          "Distinguish shared obstacles from local issues",
-          "Reuse established methods over time"
-        ]
+          "Common obstacles visible to headquarters",
+          "Local context remains clear",
+          "Concrete cross-level coordination"
+        ],
+        "image": "/images/solutions/state-owned/state-owned-value-scene-4-en_V11.0.webp",
+        "imageAlt": "Connect group requirements to subsidiary realities",
+        "imageHeight": 800
       }
     ],
     "teamTitle": "Digital roles for headquarters and operating teams",
@@ -421,8 +445,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Share group methods. Preserve subsidiary boundaries.",
-      "body": "Deploy on group-owned resources or an approved private cloud, reusing existing models and business services. Share established methods across the group while each subsidiary maintains its policies, records, access relationships and delivery requirements. Scale professional support with clear accountability, authorization, approval and audit."
+      "title": "Shared group methods. Clear subsidiary context.",
+      "body": "Maintain common policies, review methods and role templates at group level, while subsidiaries connect their own materials, templates and tool identities. Manage authorization, change and execution records in a private environment so methods can be reused without obscuring local facts, responsibility or professional review."
     }
   }
 };

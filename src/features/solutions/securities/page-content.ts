@@ -3,39 +3,39 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const securitiesPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "把专业精力还给研究判断与执业质量",
-      "pain": "多源查数、跨版本复核和跨系统核对消耗专业时间，项目证据、交易差异与持续履职事项又需要多人长期接续。",
-      "value": "数字员工承担研究准备、专业核验与履职材料组织，把差异、依据和未决事项送到专业人员面前。让研究聚焦关键假设，投行聚焦核查充分性，交易与运营聚焦重要异常，机构方法持续进入团队作业。",
+      "title": "披露经得起追问，交易经得起核对",
+      "pain": "申报数据修了，引用还停在旧稿；问询写了多轮，核查证据仍未对应。交易约定与执行、结算记录之间的细微差异，也可能影响真实权利义务。",
+      "value": "让披露更新对应核查证据，问询回复经得起实质追问，交易确认与结算沿用有效约定。数字员工把重大差异和原始依据放到专业人员面前，支持投行质控、交易法务与运营团队判断真正影响业务的异常。",
       "scenarios": [
-        "研究准备",
-        "投行尽调",
-        "文件核验",
-        "问询复核",
-        "交易运营",
-        "债券履职"
+        "申报质控",
+        "问询回复",
+        "底稿证据",
+        "交易确认",
+        "执行核对",
+        "结算复核"
       ],
       "benefits": [
         {
-          "title": "研究时间回到关键假设",
-          "description": "带来源、同口径的研究准备支撑产业理解和风险解释，让观点更有依据。"
+          "title": "披露依据更扎实",
+          "description": "现行申报内容与底稿、附注、核查证据保持对应。"
         },
         {
-          "title": "执业复核回到重大事项",
-          "description": "勾稽差异、问询依据和文件版本保持对应，让项目组与质控聚焦核查充分性和披露质量。"
+          "title": "问询回复有支撑",
+          "description": "围绕实质问题组织证据与责任，减少反复追问仍说不清。"
         },
         {
-          "title": "运营关注回到业务异常",
-          "description": "成交、确认与结算差异形成明确核对事项，持续履职中的问题与依据保持接续。"
+          "title": "交易异常有焦点",
+          "description": "有效约定、成交与结算记录集中核对，差异交由专业人员确认。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "把专业精力还给关键判断",
-        "让执业依据贯穿业务全程"
+        "披露经得起追问",
+        "交易经得起核对"
       ],
       "background": "/images/industries/securities-architecture_V1.1.webp",
-      "illustration": "/images/solutions/securities/securities-team-value-zh_V9.5.webp"
+      "illustration": "/images/solutions/securities/securities-value-scene-1-zh_V11.0.webp"
     },
     "sources": [
       "企业资料与产业信息",
@@ -44,51 +44,63 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
       "存续期履职与专业规则"
     ],
     "outputs": [
-      "研究准备与关键假设依据",
-      "项目差异与重点复核事项",
-      "交易运营差异分析",
-      "存续期履职简报与证据记录"
+      "申报质控差异依据",
+      "问询回复核查材料",
+      "交易确认差异依据",
+      "执行结算异常明细"
     ],
     "features": [
       {
-        "problem": "关键观点缺少可回查出处，数据时点又与论证不符，研究人员难以回应对结论依据的专业追问。",
+        "title": "披露更新有证据，质控聚焦重大事项",
+        "problem": "申报数据已经修改，引用还在旧版；复核意见散在多个文件，重大问题可能未进入最终披露。",
+        "body": "数据已经修改，引用和复核意见却可能停留在旧稿。数字员工核对审计报表、附注与当前申报稿，呈现数值冲突、引用差异和未落实意见，让项目组与质控沿原始证据审阅重大事项，核查成果真正支撑当前披露。",
         "outcomes": [
-          "数据来源与时点对应",
-          "关键假设获得关注",
-          "观点依据清楚可查"
+          "跨版差异显现",
+          "证据对应披露",
+          "质控聚焦重大事项"
         ],
-        "title": "让研究精力回到产业与关键假设",
-        "body": "关键观点缺少可回查出处，数据时点又与论证不符，研究人员难以回应对结论依据的专业追问。数字员工形成带来源的数据包、变化明细与研究要点，让研究人员聚焦产业逻辑、关键假设与重要风险，向客户提供更有依据的观点，专业结论由研究团队复核。"
+        "image": "/images/solutions/securities/securities-value-scene-1-zh_V11.0.webp",
+        "imageAlt": "披露更新有证据，质控聚焦重大事项",
+        "imageHeight": 510
       },
       {
-        "problem": "申报数值已经修改，引用仍停在旧版；关键复核意见没有进入终稿，项目反复补核。",
+        "title": "问询回复有事实，专业追问有据可答",
+        "problem": "回复修改了多轮，合同、资金流水和核查记录仍未支撑关键解释；项目组、发行人与中介机构反复交接。",
+        "body": "回复改了多轮，关键解释仍可能缺少合同、资金流水或核查记录支撑。数字员工围绕实质问询对应事实、证据与未决问题，让项目组、发行人与中介机构围绕同一背景补齐核查，专业人员集中判断证据充分性和回复逻辑。",
         "outcomes": [
-          "重大差异有据核实",
-          "核查证据对应披露",
-          "专业复核聚焦实质"
+          "实质问题有回应",
+          "核查证据能对应",
+          "各方责任清楚"
         ],
-        "title": "让项目复核聚焦重大差异与证据",
-        "body": "申报数值已经修改，引用仍停在旧版；关键复核意见没有进入终稿，项目反复补核。数字员工交付勾稽差异、证据索引和问询回复准备稿，让项目组与质控把注意力放在核查充分性、重大差异和披露依据上，重要结论仍由有权人员复核。"
+        "image": "/images/solutions/securities/securities-value-scene-2-zh_V11.0.webp",
+        "imageAlt": "问询回复有事实，专业追问有据可答",
+        "imageHeight": 555
       },
       {
-        "problem": "不同交易与结算口径跨表核对，异常重点和未决事项容易被材料淹没。",
+        "title": "交易确认对齐约定，权利义务清楚",
+        "problem": "补充协议已调整支付或到期条件，交易确认书仍沿用旧约定，细微差异可能影响实际权利义务。",
+        "body": "补充协议改变了支付或到期条件，交易确认书却可能沿用旧约定。数字员工对照主协议、补充协议与确认书，呈现生效条件和权利义务的差异依据，让交易与法务直达关键分歧，正式确认建立在有效契约之上。",
         "outcomes": [
-          "业务差异集中可查",
-          "未决事项清楚交接",
-          "处置判断由有权岗位负责"
+          "识别有效约定",
+          "定位权责差异",
+          "支撑专业确认"
         ],
-        "title": "让交易与运营盯住真实业务偏差",
-        "body": "委托成交、场外确认与期货结算各有口径，跨表核对容易淹没异常重点。数字员工按对应业务规则形成成交核对、条款差异与交割准备材料，让交易、风控和运营人员集中处理真实偏差与未决事项，业务处置仍由有权岗位确认。"
+        "image": "/images/solutions/securities/securities-value-scene-3-zh_V11.0.webp",
+        "imageAlt": "交易确认对齐约定，权利义务清楚",
+        "imageHeight": 441
       },
       {
-        "problem": "债券事项和报告材料持续更新，逐轮找件容易造成履职问题和依据脱节。",
+        "title": "执行结算聚焦异常，差异有据可核",
+        "problem": "执行约束、委托成交和结算文件分别核对，口径时点不齐，真正影响业务的异常被淹没。",
+        "body": "委托成交、执行约束与结算记录分开核对，时点和口径差异容易淹没实质异常。数字员工把授权约束与相关记录对应起来，标出差异及其依据，让运营人员少些跨表复算，直接核实影响业务的异常，后续处理保留审阅背景。",
         "outcomes": [
-          "未决事项持续可见",
-          "重大事项保留依据",
-          "履职责任持续接续"
+          "约束记录对应",
+          "定位结算差异",
+          "异常有据核实"
         ],
-        "title": "让持续履职保持业务与证据连续",
-        "body": "债券条款节点、发行人变化和履职材料持续更新，团队容易在逐轮找件中丢失未决事项。数字员工形成履职台账、重大事项依据和报告准备稿，让受托管理团队持续关注偿债风险与责任落实，人员复核影响并按职责履行披露。"
+        "image": "/images/solutions/securities/securities-value-scene-4-zh_V11.0.webp",
+        "imageAlt": "执行结算聚焦异常，差异有据可核",
+        "imageHeight": 473
       }
     ],
     "teamTitle": "连接证券专业条线的数字员工团队",
@@ -209,45 +221,45 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "让专业人才的判断力成为机构竞争优势",
-      "body": "减少查数、复算和找件消耗，把专业注意力投入产业逻辑、重大披露、交易异常与持续履职。让机构方法与业务证据在团队中接续，形成更有依据的研究服务、更扎实的执业质量与更清楚的运营责任。"
+      "title": "业务证据按项目管理，执业责任由专业团队承担",
+      "body": "在机构私有环境中连接获准资料和业务系统，按部门、项目与岗位管理权限。申报、问询和交易材料保留版本与协作记录，关键结论经专业人员审阅，审核审计支撑责任追溯。"
     }
   },
   "en": {
     "home": {
-      "title": "Give professional time back to research judgment and engagement quality.",
-      "pain": "Searching data sources, checking document versions and reconciling systems consume professional time. Project evidence, trading exceptions and continuing obligations must also remain connected across teams.",
-      "value": "Digital employees take on research preparation, specialist checks and oversight documentation, bringing discrepancies, evidence and unresolved matters to professionals. Researchers focus on key assumptions, investment banking teams on verification quality, and trading and operations teams on material exceptions, with institutional methods carried into everyday work.",
+      "title": "Evidence-backed disclosures. Clearer trade review.",
+      "pain": "Filing figures change while references remain on an earlier draft. Inquiry responses still lack supporting verification evidence. Small differences between contractual terms, execution and settlement can affect actual rights and obligations.",
+      "value": "Digital employees connect current disclosures with verification evidence and effective agreements with trading records. Investment banking, legal and operations specialists can examine material differences, substantiate inquiry responses and focus on exceptions that affect rights and obligations.",
       "scenarios": [
-        "Research preparation",
-        "Investment banking due diligence",
-        "Document verification",
-        "Inquiry review",
-        "Trading operations",
-        "Bond trustee oversight"
+        "Filing quality review",
+        "Inquiry responses",
+        "Working-paper evidence",
+        "Trade confirmation",
+        "Execution checks",
+        "Settlement review"
       ],
       "benefits": [
         {
-          "title": "Research time returns to key assumptions",
-          "description": "Preparation with clear sources and consistent conventions supports industry understanding, risk explanations and better-supported views."
+          "title": "Stronger disclosure evidence",
+          "description": "Keep current filings aligned with working papers, notes and verification evidence."
         },
         {
-          "title": "Engagement reviews focus on material matters",
-          "description": "Reconciliation findings, inquiry evidence and document versions stay connected so project and quality teams can focus on verification and disclosure quality."
+          "title": "Substantive inquiry responses",
+          "description": "Organize evidence and responsibility around the question that needs an answer."
         },
         {
-          "title": "Operations focus on business exceptions",
-          "description": "Trade, confirmation and settlement discrepancies become clear review matters, while continuing obligations retain their evidence and unresolved questions."
+          "title": "Clearer trading exceptions",
+          "description": "Compare effective agreements, fills and settlement records for professional confirmation."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Give expertise back to critical judgment",
-        "Keep evidence connected throughout the business"
+        "Evidence-backed disclosures",
+        "Clearer trade review"
       ],
       "background": "/images/industries/securities-architecture_V1.1.webp",
-      "illustration": "/images/solutions/securities/securities-team-value-en_V9.6.webp"
+      "illustration": "/images/solutions/securities/securities-value-scene-1-en_V11.0.webp"
     },
     "sources": [
       "Company and industry information",
@@ -256,51 +268,63 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
       "Ongoing obligations and professional rules"
     ],
     "outputs": [
-      "Research preparation and evidence for key assumptions",
-      "Material project differences and review priorities",
-      "Trading and operating exception analysis",
-      "Ongoing oversight briefs and evidence records"
+      "Filing quality-review evidence",
+      "Inquiry response verification materials",
+      "Trade confirmation difference evidence",
+      "Execution and settlement exception details"
     ],
     "features": [
       {
-        "problem": "A key view without traceable sources or data from the relevant date is difficult to defend under professional scrutiny.",
+        "title": "Keep disclosure evidence current. Review material differences.",
+        "problem": "Filing figures change while citations remain on an older version. Review comments spread across documents, leaving material questions unresolved in the final disclosure.",
+        "body": "Figures may change while citations and review comments remain tied to an earlier draft. Digital employees compare audited statements, notes and the current filing, exposing conflicting figures, reference differences and open comments. Project and quality-control teams examine material matters against original evidence, so verification supports the current disclosure.",
         "outcomes": [
-          "Sources matched to analysis dates",
-          "Attention on critical assumptions",
-          "Clear evidence behind research views"
+          "Expose version differences",
+          "Match evidence to disclosure",
+          "Review material questions"
         ],
-        "title": "Bring research focus back to industry fundamentals and key assumptions",
-        "body": "A key view without traceable sources or data from the relevant date is difficult to defend under professional scrutiny. Digital employees prepare source-linked data packs, itemized changes and research briefs, helping analysts focus on industry fundamentals, key assumptions and material risks—and provide clients with better-supported views. The research team reviews the professional conclusions."
+        "image": "/images/solutions/securities/securities-value-scene-1-en_V11.0.webp",
+        "imageAlt": "Keep disclosure evidence current. Review material differences.",
+        "imageHeight": 559
       },
       {
-        "problem": "Figures change while citations remain on an older version. Unresolved review comments can reach the final draft and trigger another round of checks.",
+        "title": "Support substantive inquiry responses with verified facts.",
+        "problem": "The response has been revised repeatedly, but contracts, transaction records and verification work still do not support the key explanation. Responsibility passes between teams.",
+        "body": "Repeated revisions cannot replace contracts, payment records or verification work that support a key explanation. Digital employees connect the inquiry with relevant facts, evidence and unresolved questions. Project teams, issuers and intermediaries can address gaps from the same factual basis, while professionals assess the sufficiency of evidence and reasoning.",
         "outcomes": [
-          "Evidence for material discrepancies",
-          "Verification linked to disclosures",
-          "Substantive professional review"
+          "Address substantive questions",
+          "Connect verification evidence",
+          "Clarify parties’ responsibility"
         ],
-        "title": "Focus project reviews on material discrepancies and evidence",
-        "body": "Figures change while citations remain on an older version. Unresolved review comments can reach the final draft and trigger another round of checks. Digital employees prepare reconciliation findings, evidence indexes and draft responses to regulatory inquiries, helping project teams and quality reviewers focus on the adequacy of verification, material discrepancies and the evidence supporting disclosures. Authorized personnel review key conclusions."
+        "image": "/images/solutions/securities/securities-value-scene-2-en_V11.0.webp",
+        "imageAlt": "Support substantive inquiry responses with verified facts.",
+        "imageHeight": 709
       },
       {
-        "problem": "Different trading and settlement conventions create extensive cross-record checking that can obscure exceptions and unresolved matters.",
+        "title": "Align trade confirmations with effective terms.",
+        "problem": "An addendum changes payment or maturity terms, but the trade confirmation follows the earlier agreement. Small differences can affect actual rights and obligations.",
+        "body": "An addendum may change payment or maturity terms while a trade confirmation retains the earlier agreement. Digital employees compare master agreements, addenda and confirmations, identifying differences in effective conditions, rights and obligations. Trading and legal specialists can examine the material disagreement before authorized staff confirm the transaction.",
         "outcomes": [
-          "Business discrepancies clearly available",
-          "Unresolved matters handed over with context",
-          "Authorized staff retain business decisions"
+          "Identify effective terms",
+          "Locate rights-related differences",
+          "Support specialist confirmation"
         ],
-        "title": "Keep trading and operations focused on business exceptions",
-        "body": "Order and execution records, OTC confirmations and futures settlement records follow different conventions, making significant exceptions harder to identify through cross-record checks. Digital employees prepare trade reconciliations, analyses of contractual differences and delivery preparation documents under the relevant business rules. Trading, risk and operations teams can then concentrate on discrepancies and unresolved items, with business actions confirmed by authorized staff."
+        "image": "/images/solutions/securities/securities-value-scene-3-en_V11.0.webp",
+        "imageAlt": "Align trade confirmations with effective terms.",
+        "imageHeight": 443
       },
       {
-        "problem": "Changing bond matters and report materials can separate ongoing responsibilities from their supporting evidence.",
+        "title": "Focus execution and settlement review on substantive exceptions.",
+        "problem": "Execution constraints, orders, fills and settlement documents are checked separately. Different definitions and dates leave meaningful exceptions buried in the material.",
+        "body": "Separate checks of orders, fills, execution constraints and settlement records can bury substantive exceptions beneath date and definition differences. Digital employees connect authorized constraints with the relevant records and evidence. Operations staff spend less time repeating cross-file calculations and more time verifying exceptions, while follow-up retains the review context.",
         "outcomes": [
-          "Unresolved matters stay visible",
-          "Evidence retained for material developments",
-          "Continuity in oversight responsibility"
+          "Align constraints and records",
+          "Locate settlement differences",
+          "Verify exceptions with evidence"
         ],
-        "title": "Maintain continuity in bond trustee oversight and supporting evidence",
-        "body": "Bond covenant milestones, issuer developments and trustee documentation change continuously, making unresolved matters easy to lose across successive document reviews. Digital employees prepare trustee oversight registers, supporting evidence for material matters and draft reports, helping bond trustee teams maintain focus on repayment risks and the fulfillment of obligations. Responsible staff assess the implications and fulfill disclosure duties within their roles."
+        "image": "/images/solutions/securities/securities-value-scene-4-en_V11.0.webp",
+        "imageAlt": "Focus execution and settlement review on substantive exceptions.",
+        "imageHeight": 625
       }
     ],
     "teamTitle": "A digital employee team across securities business lines",
@@ -421,8 +445,8 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Make professional judgment an institutional advantage",
-      "body": "Reduce the time spent searching, recalculating and retrieving documents. Direct professional attention toward industry fundamentals, material disclosures, trading exceptions and continuing obligations. Keep institutional methods and business evidence connected across teams, supporting better-grounded research, stronger engagement quality and clearer operating responsibility."
+      "title": "Manage evidence by project. Retain professional accountability.",
+      "body": "Connect approved documents and business systems in the institution’s private environment, managing access by department, project and role. Preserve versions and collaboration records for filings, inquiries and trading materials, with professional review and audit support for key conclusions."
     }
   }
 };

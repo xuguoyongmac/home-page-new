@@ -33,3 +33,7 @@ export const homeIndustries = Object.fromEntries((['zh', 'en'] as Locale[]).map(
 export const industrySolutionImages = Object.fromEntries((['zh', 'en'] as Locale[]).map(locale => [locale,
   Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => [slug, presentation[locale].hero.illustration])),
 ])) as Record<Locale, Record<string, string>>;
+
+export const industrySolutionImageHeights = Object.fromEntries((['zh', 'en'] as Locale[]).map(locale => [locale,
+  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => [slug, presentation[locale].features[0].imageHeight])),
+])) as Record<Locale, Record<string, number>>;

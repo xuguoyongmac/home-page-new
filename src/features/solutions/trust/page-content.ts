@@ -3,39 +3,39 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const trustPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让受托履职从反复找件走向有据判断",
-      "pain": "项目档案、合同约定、外部尽调与投诉材料各自变化，运营与合规团队反复找件、摘录和交接，重要问题容易埋在材料之间。",
-      "value": "数字员工把档案缺项、合同参数差异、多源证据与跨渠道事项组织成可复核的专业准备，让受托团队把精力放在合同约定、重大风险和客户关切上。让责任和依据随事项持续接续，把机构经验留在长期服务里。",
+      "title": "合同约定落到管理，受托履职有据接续",
+      "pain": "项目材料长期跨人流转，底层资产与风险证据难以对应；补充协议改变了约定，核算口径仍沿用旧版。存续期越长，履职和客户事项越容易丢失前情。",
+      "value": "让合同变更跟上核算依据，底层资产对应风险证据，存续履职和客户事项带着完整背景接续。数字员工减少项目团队反复找依据、重建档案的消耗，把专业时间用在资产风险与受托责任上。",
       "scenarios": [
-        "项目档案",
-        "合同要素",
-        "核算参数",
-        "多源尽调",
-        "客户投诉",
-        "存续服务"
+        "项目尽调",
+        "底层资产",
+        "合同核对",
+        "核算依据",
+        "存续履职",
+        "客户事项"
       ],
       "benefits": [
         {
-          "title": "受托依据更加清楚",
-          "description": "材料完整性、有效条款与核算差异持续对应，让专业人员直接面对需要确认的问题。"
+          "title": "资产风险更清楚",
+          "description": "多源信息对应到同一主体、底层资产和具体风险疑点。"
         },
         {
-          "title": "风险判断回到实质",
-          "description": "查询底稿保留来源和时点，重大风险与补查事项有据可核，让合规精力从复制整理回到专业判断。"
+          "title": "约定执行有依据",
+          "description": "合同、补充协议和核算口径保持对应，差异交由专业人员判断。"
         },
         {
-          "title": "客户事项持续负责",
-          "description": "同一诉求跨渠道和月份保持关联，责任、时限与未决事项清楚交接，减少客户重复解释。"
+          "title": "受托履职不断档",
+          "description": "项目档案、未决事项和客户问题带着完整背景持续接续。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "把专业精力留给受托判断",
-        "把客户事项接成持续服务"
+        "合同约定落到管理",
+        "受托履职有据接续"
       ],
       "background": "/images/industries/trust-architecture_V1.0.webp",
-      "illustration": "/images/solutions/trust/trust-team-value-zh_V9.5.webp"
+      "illustration": "/images/solutions/trust/trust-value-scene-1-zh_V11.0.webp"
     },
     "sources": [
       "项目档案与信托契约",
@@ -44,51 +44,63 @@ export const trustPresentation: IndustrySolutionPresentation = {
       "跨渠道服务与客诉记录"
     ],
     "outputs": [
-      "项目档案匹配与缺项重点",
-      "合同约定与核算核对意见",
-      "多源尽调依据与关键疑点",
-      "持续客诉事项与责任承接记录"
+      "契约参数差异依据",
+      "项目存续档案与缺项",
+      "多源尽调风险依据",
+      "客户事项跟进记录"
     ],
     "features": [
       {
-        "problem": "项目关键材料缺失，催办多轮仍找不到依据，履职复核迟迟无法进入实质判断。",
+        "title": "合同变更对应核算，分配差异有据可审",
+        "problem": "补充协议已调整报酬或分配条件，核算仍沿用旧约定，结果反复退回确认。",
+        "body": "补充协议调整了报酬或分配条件，旧核算依据仍可能继续沿用。数字员工把有效合同、变更条款与当前核算资料对应起来，让业务与财务直接核实受影响的依据，减少退回确认和重复解释，核算及分配结论由有权人员审定。",
         "outcomes": [
-          "项目材料完整性可查",
-          "缺项与责任清楚对应",
-          "运营精力回到异常协调"
+          "变更条款明确",
+          "核算依据对应",
+          "差异协同确认"
         ],
-        "title": "让项目档案完整性贯穿信托存续期",
-        "body": "项目关键材料缺失，催办多轮仍找不到依据，履职复核迟迟无法进入实质判断。数字员工形成项目目录、应交实收对照与待补事项，让运营团队持续掌握材料完整性，把精力放在履职检查与异常协调，正式归档由档案岗位复核办理。"
+        "image": "/images/solutions/trust/trust-value-scene-1-zh_V11.0.webp",
+        "imageAlt": "合同变更对应核算，分配差异有据可审",
+        "imageHeight": 545
       },
       {
-        "problem": "补充协议已经变更费用或分配条件，核算口径仍沿用旧约定，差异反复退回专业确认。",
+        "title": "存续履职保留前情，项目交接接续责任",
+        "problem": "关键材料缺失、历次核查分散，催办多轮仍找不到依据，换人之后同一问题重新问起。",
+        "body": "存续期越长，关键证据和未决事项越容易散在历次交接中。数字员工持续关联项目档案、历史履职与本期变化，让受托管理人员看清已完成的核查、尚缺的证据和待跟进责任，交接延续既有工作，把时间留给履职实质。",
         "outcomes": [
-          "适用条款与条件清楚",
-          "核算差异有据确认",
-          "合同权益获得专业关注"
+          "关键材料归属清楚",
+          "历史履职接续",
+          "未决事项有跟进"
         ],
-        "title": "让合同约定准确进入核算专业判断",
-        "body": "补充协议已经变更费用或分配条件，核算口径仍沿用旧约定，差异反复退回专业确认。数字员工交付条款依据与参数差异，让核算人员直接确认约定、条件和例外，减少跨文件核对，把各方权益落实到清楚的合同依据，参数生效由有权人员审核。"
+        "image": "/images/solutions/trust/trust-value-scene-2-zh_V11.0.webp",
+        "imageAlt": "存续履职保留前情，项目交接接续责任",
+        "imageHeight": 558
       },
       {
-        "problem": "处罚、执行与异常查询分属不同来源，资料汇总之后仍需核实主体和证据。",
+        "title": "资产风险对应证据，尽调直达实质问题",
+        "problem": "处罚、执行和异常信息查到了，主体关系与资产证据却没有对应，材料齐全仍难回答项目风险在哪里。",
+        "body": "查到处罚、执行或异常信息，仍需辨明它与项目资产和交易主体的关系。数字员工关联授权主体资料、资产证据与风险记录，突出事实冲突和待核事项，让项目人员沿具体疑点审查底层资产与交易结构，判断风险实质。",
         "outcomes": [
-          "主体与来源保持对应",
-          "补查事项清楚可核",
-          "合规判断聚焦重大风险"
+          "主体关系清楚",
+          "资产证据对应",
+          "风险疑点可核"
         ],
-        "title": "让尽调判断建立在可核实的多源证据上",
-        "body": "处罚、执行与异常记录分布在不同来源，找齐结果仍难保证证据对应。数字员工形成带查询时点的底稿、证据目录和补查事项，让合规人员把精力放在主体一致性、记录含义和重大风险上，减少复制排版，专业结论由人员复核。"
+        "image": "/images/solutions/trust/trust-value-scene-3-zh_V11.0.webp",
+        "imageAlt": "资产风险对应证据，尽调直达实质问题",
+        "imageHeight": 665
       },
       {
-        "problem": "同一客诉跨渠道和月份反映，重复统计、背景断层和责任脱节同时发生。",
+        "title": "客户事项持续接续，沟通承诺有据可追",
+        "problem": "同一客诉跨渠道、跨月份反映，被分成多条记录，背景反复说明，承诺和责任难以接续。",
+        "body": "同一事项跨渠道、跨月份反映，客户反复说明，处理责任却容易断开。数字员工围绕同一事项关联历次沟通、合同依据与处理记录，让接手团队看清已答复内容、未决问题和沟通承诺，客户少些重复陈述，责任与跟进有据可追。",
         "outcomes": [
-          "跨渠道诉求保持关联",
-          "责任与时限清楚接续",
-          "客户事项聚焦实质解决"
+          "同一事项归并",
+          "保留沟通承诺",
+          "接续处理责任"
         ],
-        "title": "让跨渠道客诉成为持续负责的同一事项",
-        "body": "同一诉求跨渠道、跨月份反映，容易造成重复统计和责任脱节。数字员工形成关联去重台账、责任时限与处理依据，让团队持续看清客户关切和未决问题，减少重复解释与反复交接，把注意力用在实质处理；对外答复及报送由人员审核。"
+        "image": "/images/solutions/trust/trust-value-scene-4-zh_V11.0.webp",
+        "imageAlt": "客户事项持续接续，沟通承诺有据可追",
+        "imageHeight": 623
       }
     ],
     "teamTitle": "面向受托业务的数字员工团队",
@@ -209,45 +221,45 @@ export const trustPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "让受托判断有根基，让长期服务有延续",
-      "body": "让运营人员看清材料缺项，让核算人员把握合同条件，让合规人员追问重要证据，让客户事项持续有人接续。数字员工把专业准备留在组织里，支持信托团队从反复找件和解释，走向有依据的履职与连贯的受托服务。"
+      "title": "信托资料按项目隔离，受托责任全程有据",
+      "body": "在机构私有环境中连接授权资料和业务系统，按项目、部门与岗位管理访问范围。尽调、核算及客户事项保留版本与协作记录，专业结论经人员审定，审核审计支撑持续受托管理。"
     }
   },
   "en": {
     "home": {
-      "title": "Move fiduciary work from document burdens to well-founded judgment.",
-      "pain": "Project records, contractual terms, external due diligence and complaint material change separately. Repeated retrieval, extraction and handovers consume operations and compliance capacity, while important questions remain hidden among documents.",
-      "value": "Digital employees prepare reviewable material on missing records, contractual parameter differences, external evidence and matters raised across channels. Fiduciary teams can focus on contractual duties, material risks and client concerns, with responsibilities, evidence and institutional experience retained throughout the service relationship.",
+      "title": "Apply current terms. Keep trustee duties connected.",
+      "pain": "Project records cross teams over long periods, separating assets from their risk evidence. Supplemental agreements change the terms while accounting follows an earlier version. Ongoing duties and customer matters lose context.",
+      "value": "Digital employees connect contractual changes with accounting references and asset records with risk evidence. Project and customer matters retain their history across the trust’s life, giving professionals more time to examine underlying assets and fulfill trustee duties.",
       "scenarios": [
-        "Project records",
-        "Contract terms",
-        "Accounting parameters",
-        "External due diligence",
-        "Client complaints",
-        "Ongoing administration"
+        "Project due diligence",
+        "Underlying assets",
+        "Contract checks",
+        "Accounting evidence",
+        "Ongoing duties",
+        "Customer matters"
       ],
       "benefits": [
         {
-          "title": "Clearer foundations for fiduciary work",
-          "description": "Record completeness, applicable clauses and accounting discrepancies stay connected so specialists can focus on the questions requiring confirmation."
+          "title": "Clearer asset risk",
+          "description": "Connect multi-source information to the same entity, underlying assets and specific risk questions."
         },
         {
-          "title": "Risk judgment returns to substance",
-          "description": "Working papers retain sources and query dates, keeping material findings and follow-up inquiries available for verification and professional judgment."
+          "title": "Evidence for applying the terms",
+          "description": "Align contracts, supplemental agreements and accounting references for professional review."
         },
         {
-          "title": "Client matters retain accountability",
-          "description": "The same concern stays linked across channels and reporting periods, with clear responsibilities, deadlines and unresolved questions for handover."
+          "title": "Continuity in trustee work",
+          "description": "Retain context for project records, unresolved duties and customer matters across handovers."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Keep expertise focused on fiduciary judgment",
-        "Keep client matters connected through service"
+        "Apply current contract terms",
+        "Keep trustee duties connected"
       ],
       "background": "/images/industries/trust-architecture_V1.0.webp",
-      "illustration": "/images/solutions/trust/trust-team-value-en_V9.5.webp"
+      "illustration": "/images/solutions/trust/trust-value-scene-1-en_V11.0.webp"
     },
     "sources": [
       "Project records and trust agreements",
@@ -256,51 +268,63 @@ export const trustPresentation: IndustrySolutionPresentation = {
       "Service and complaint records across channels"
     ],
     "outputs": [
-      "Project record matching and missing-item priorities",
-      "Contractual and accounting review findings",
-      "Due-diligence evidence and material questions",
-      "Connected complaint records and accountable follow-up"
+      "Contract parameter difference evidence",
+      "Ongoing project records and gaps",
+      "Multi-source due diligence evidence",
+      "Customer matter follow-up records"
     ],
     "features": [
       {
-        "problem": "Missing critical project records can hold up duty reviews even after repeated requests for supporting material.",
+        "title": "Review accounting and distribution against changed terms.",
+        "problem": "A supplemental agreement changes fees or distribution conditions, while accounting follows the previous terms and repeatedly returns for clarification.",
+        "body": "A supplemental agreement may change fees or distribution conditions while earlier accounting references remain in use. Digital employees connect effective contracts, changed clauses and current accounting materials. Business and finance teams can verify the affected references with less repeated explanation, while authorized staff approve accounting and distribution conclusions.",
         "outcomes": [
-          "Project completeness available for review",
-          "Missing items linked to responsibilities",
-          "Operations focused on exceptions"
+          "Identify changed terms",
+          "Align accounting references",
+          "Confirm differences together"
         ],
-        "title": "Keep project records complete throughout the trust lifecycle",
-        "body": "Missing critical project records can hold up duty reviews even after repeated requests for supporting material. Digital employees prepare project indexes, expected-versus-received document comparisons and outstanding requirements. Operations teams can keep track of completeness and focus on fiduciary checks and exceptions. Records staff review and perform formal filing."
+        "image": "/images/solutions/trust/trust-value-scene-1-en_V11.0.webp",
+        "imageAlt": "Review accounting and distribution against changed terms.",
+        "imageHeight": 666
       },
       {
-        "problem": "An addendum may change fee or distribution conditions while accounting still follows the earlier terms, sending the same discrepancy back for confirmation.",
+        "title": "Carry trustee duties and responsibility through handovers.",
+        "problem": "Key documents are missing and earlier reviews are scattered. Repeated requests do not recover the evidence, and a handover starts the same questions again.",
+        "body": "Long-running projects can leave key evidence and unresolved matters scattered across earlier handovers. Digital employees connect project records, prior trustee work and current changes. Teams can see completed checks, missing evidence and outstanding responsibility, continuing substantive trustee work rather than rebuilding the file.",
         "outcomes": [
-          "Clear applicable terms and conditions",
-          "Evidence for accounting discrepancies",
-          "Professional attention to contractual interests"
+          "Clarify document ownership",
+          "Continue earlier trustee work",
+          "Follow unresolved matters"
         ],
-        "title": "Base accounting judgment on the full contractual terms",
-        "body": "An addendum may change fee or distribution conditions while accounting still follows the earlier terms, sending the same discrepancy back for confirmation. Digital employees prepare clause references and parameter discrepancies so accounting specialists can focus on the terms, conditions and exceptions that affect the parties’ interests. Authorized personnel review parameter changes before they take effect."
+        "image": "/images/solutions/trust/trust-value-scene-2-en_V11.0.webp",
+        "imageAlt": "Carry trustee duties and responsibility through handovers.",
+        "imageHeight": 800
       },
       {
-        "problem": "Penalty, enforcement and exception records come from separate sources, requiring further checks of entity identity and evidence.",
+        "title": "Connect asset risk with the evidence behind it.",
+        "problem": "Enforcement, penalties and exceptions have been found, but entity relationships and asset evidence remain disconnected. A full file still cannot explain the project’s risk.",
+        "body": "A penalty, enforcement record or exception still needs to be connected to the relevant project assets and entities. Digital employees relate authorized entity records, asset evidence and risk findings, exposing conflicting facts and open questions. Project professionals can examine underlying assets and transaction structures through specific risk concerns.",
         "outcomes": [
-          "Entity identity matched to sources",
-          "Clear follow-up inquiries for verification",
-          "Compliance focused on material risks"
+          "Clarify entity relationships",
+          "Connect asset evidence",
+          "Verify material risk questions"
         ],
-        "title": "Ground due-diligence judgment in verifiable evidence",
-        "body": "Enforcement, penalty and exception records sit across different sources; collecting them does not by itself establish a sound evidential basis. Digital employees prepare timestamped working papers, evidence indexes and follow-up inquiries. Compliance specialists can concentrate on entity identity, the meaning of findings and material risks, with less time spent copying and formatting. Staff review the professional conclusions."
+        "image": "/images/solutions/trust/trust-value-scene-3-en_V11.0.webp",
+        "imageAlt": "Connect asset risk with the evidence behind it.",
+        "imageHeight": 654
       },
       {
-        "problem": "One complaint may recur across channels and periods, creating duplicate counts, lost context and gaps in accountability.",
+        "title": "Preserve the history and commitments behind customer matters.",
+        "problem": "The same complaint appears across channels and months as separate records. Customers repeat the history while commitments and responsibility are lost.",
+        "body": "Customers repeat the same matter across channels and months while handling responsibility loses continuity. Digital employees connect previous communications, contractual references and handling records for that matter. Incoming teams can see earlier answers, unresolved questions and commitments, reducing repeated explanations and retaining a basis for follow-up.",
         "outcomes": [
-          "Concerns linked across channels",
-          "Responsibilities and deadlines retained",
-          "Attention on substantive resolution"
+          "Consolidate the same matter",
+          "Retain service commitments",
+          "Continue clear ownership"
         ],
-        "title": "Keep one complaint accountable across channels and time",
-        "body": "The same concern may recur across channels and reporting periods, causing duplicated counts and gaps in responsibility. Digital employees prepare linked, deduplicated records with accountable roles, deadlines and supporting material. Teams can keep the customer’s concern and unresolved questions in view, spending less time repeating explanations and handing over context. Staff review external responses and formal submissions."
+        "image": "/images/solutions/trust/trust-value-scene-4-en_V11.0.webp",
+        "imageAlt": "Preserve the history and commitments behind customer matters.",
+        "imageHeight": 670
       }
     ],
     "teamTitle": "A digital employee team for trust business",
@@ -421,8 +445,8 @@ export const trustPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Give fiduciary judgment a clear basis and long-term service continuity",
-      "body": "Help operations identify missing records, accounting specialists understand contractual conditions and compliance teams pursue material evidence. Keep client matters connected through handovers. Digital employees retain the professional preparation within the organization, helping trust teams move from repeated retrieval and explanation toward well-founded fiduciary work and a connected service relationship."
+      "title": "Separate trust records by project. Keep evidence throughout trustee work.",
+      "body": "Connect authorized documents and business systems in the institution’s private environment, managing access by project, department and role. Preserve versions and collaboration records for due diligence, accounting and customer matters, with staff approval and audit support for ongoing trustee management."
     }
   }
 };
