@@ -3,7 +3,6 @@ import { pathFor, site } from '../../../lib/site';
 import EmployeeMarketArt from './EmployeeMarketArt.astro';
 import EmployeeBannerBackdrop from './EmployeeBannerBackdrop.astro';
 import EmployeeFeatureArt from './EmployeeFeatureArt.astro';
-import EmployeeManagementArt from './EmployeeManagementArt.astro';
 import Icon from '../../../components/Icon.astro';
 import experience from './experience';
 import landing from './landing';
@@ -75,9 +74,10 @@ const breadcrumb = {
   <section id="capability-management" class="employee-management employee-wrap" aria-labelledby="capability-features-title">
     <div class="employee-management-intro">
       <h2 id="capability-features-title">{zh ? '数字员工的配置与运行，统一管理' : 'Manage digital employee configuration and operations'}</h2>
-      <p class="employee-story-subtitle">{zh ? '维护岗位模板，按需招募员工，分别配置使用权限、业务委托、任务计划与工作记忆。' : 'Maintain role templates, recruit employees, and manage access, delegation, schedules, and work memory.'}</p>
     </div>
-    <EmployeeManagementArt locale={locale}/>
+    <dl class="employee-management-summary">
+      {copy.features.map(feature => <div><dt>{feature.title}</dt><dd>{feature.body}</dd></div>)}
+    </dl>
   </section>
 </div>
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)}/>

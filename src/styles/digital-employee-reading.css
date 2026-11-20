@@ -69,8 +69,12 @@
 .employee-story-continuity .employee-story-text { max-width: 890px; }
 .employee-story-continuity .employee-story-text :is(.employee-story-subtitle, .employee-story-body) { max-width: 92ch; }
 .employee-story-continuity .employee-story-art { margin-top: 30px; }
-.employee-management { padding-block: 36px 80px; }
-.employee-management-intro { max-width: 1000px; margin-bottom: 38px; }
+.employee-management { padding-block: 48px 88px; }
+.employee-management-intro { max-width: 1000px; margin-bottom: 30px; }
+.employee-management-summary > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 36px; padding-block: 21px; border-bottom: 1px solid #a6c5e01a; }
+.employee-management-summary > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.employee-management-summary dt { color: #dce8f3; font-size: 19px; font-weight: 550; line-height: 1.7; }
+.employee-management-summary dd { color: #b1c0d0; font-size: 16px; line-height: 1.9; text-wrap: pretty; }
 
 @media (max-width: 1200px) {
   .employee-story-recruit { grid-template-columns: minmax(0, 1fr); }
@@ -113,7 +117,10 @@
   .employee-story-recruit .employee-story-text, .employee-story-recruit .employee-story-art { grid-column: auto; grid-row: auto; }
   .employee-story-continuity .employee-story-art { margin-top: 28px; }
   .employee-management { padding-block: 28px 50px; }
-  .employee-management-intro { margin-bottom: 28px; }
+  .employee-management-intro { margin-bottom: 20px; }
+  .employee-management-summary > div { grid-template-columns: minmax(0,1fr); gap: 8px; padding-block: 20px; }
+  .employee-management-summary dt { font-size: 19px; }
+  .employee-management-summary dd { font-size: 16px; line-height: 1.85; }
 }
 
 @media (max-width: 480px) {
