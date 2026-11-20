@@ -6,6 +6,12 @@ const { locale } = Astro.props;
 const zh = locale === 'zh';
 const portrait = '/images/product/digital-employees/employee-portrait-public-service_V1.1.webp';
 const projects = zh ? ['客户管理系统投标', '办公协同平台投标', '数据治理平台投标', '客服中心建设投标'] : ['CRM system bid', 'Office platform bid', 'Data governance bid', 'Contact center bid'];
+const employees = [
+  { name: zh ? '林知夏' : 'Lin Zhixia', portrait: 'hr' },
+  { name: zh ? '陈亦航' : 'Chen Yihang', portrait: 'public-service' },
+  { name: zh ? '许嘉宁' : 'Xu Jianing', portrait: 'teaching' },
+  { name: zh ? '周予安' : 'Zhou Yu’an', portrait: 'claims' },
+];
 const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid writing'];
 ---
 <div class:list={['recruitment-art', { 'recruitment-art-en': !zh }]} aria-hidden="true">
@@ -24,10 +30,10 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
     <svg class="recruit-copy-arrow" viewBox="0 0 120 350" preserveAspectRatio="none"><defs><linearGradient id={`copy-flow-${locale}`} x1="0" y1="175" x2="120" y2="175" gradientUnits="userSpaceOnUse"><stop stop-color="#70b6e8" stop-opacity="0"/><stop offset=".25" stop-color="#75bce9" stop-opacity=".18"/><stop offset=".65" stop-color="#83c3ed" stop-opacity=".65"/><stop offset="1" stop-color="#a2d6f3"/></linearGradient></defs><path d="M0 3C18 102 41 158 88 163V145L120 175 88 205V187C41 192 18 248 0 347Z" fill={`url(#copy-flow-${locale})`}/></svg>
   </div>
   <div class="recruited-employees">
-    {projects.map((project, index) => <div class:list={['employee-instance', `employee-instance-${index}`]}>
+    {employees.map((employee, index) => <div class:list={['employee-instance', `employee-instance-${index}`]}>
 
-      <div class="instance-team"><Icon name="folder" size={13}/><span>{project}</span></div>
-      <div class="instance-person"><img src={portrait} alt="" width="38" height="38" loading="lazy"/><div><strong>{zh ? '标书专员' : 'Bid specialist'}</strong><span class="instance-workspace">{zh ? '独立工作区' : 'Own workspace'}</span></div></div>
+      <div class="instance-team"><Icon name="folder" size={13}/><span>{projects[index]}</span></div>
+      <div class="instance-person"><img src={`/images/product/digital-employees/employee-portrait-${employee.portrait}_V1.1.webp`} alt="" width="38" height="38" loading="lazy"/><div><strong>{employee.name}</strong><span class="instance-workspace">{zh ? '标书专员 · 独立工作区' : 'Bid specialist · Own workspace'}</span></div></div>
       <div class="instance-skills">{skills.map(skill => <span><Icon name="check" size={11}/>{skill}</span>)}</div>
     </div>)}
   </div>
