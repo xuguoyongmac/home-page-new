@@ -19,22 +19,21 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
       <div class="template-group"><span class="group-label"><Icon name="folder" size={14}/>{zh ? '工作文件' : 'Work files'}</span><span class="template-document"><Icon name="file" size={16}/>{zh ? '投标响应规范.md' : 'Bid response guide.md'}</span></div>
     </div>
   </div>
-  <svg class="recruit-copy-arrows" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-    <defs><linearGradient id={`copy-flow-${locale}`} x1="440" y1="0" x2="558" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#70b6e8" stop-opacity="0"/><stop offset=".3" stop-color="#75bce9" stop-opacity=".3"/><stop offset="1" stop-color="#91cef0"/></linearGradient></defs>
-    {[165,388,612,835].map(y=><path d={`M440 ${y-72} C464 ${y-22} 499 ${y-13} 533 ${y-11} V${y-28} L558 ${y} 533 ${y+28} V${y+11} C499 ${y+13} 464 ${y+22} 440 ${y+72}Z`} fill={`url(#copy-flow-${locale})`}/>)}
-  </svg>
-  <div class="recruit-transfer"><span>{zh ? '招募' : 'Recruit'}</span></div>
+  <div class="recruit-transfer">
+    <span>{zh ? '招募' : 'Recruit'}</span>
+    <svg class="recruit-copy-arrow" viewBox="0 0 120 350" preserveAspectRatio="none"><defs><linearGradient id={`copy-flow-${locale}`} x1="0" y1="175" x2="120" y2="175" gradientUnits="userSpaceOnUse"><stop stop-color="#70b6e8" stop-opacity="0"/><stop offset=".25" stop-color="#75bce9" stop-opacity=".18"/><stop offset=".65" stop-color="#83c3ed" stop-opacity=".65"/><stop offset="1" stop-color="#a2d6f3"/></linearGradient></defs><path d="M0 3C18 102 41 158 88 163V145L120 175 88 205V187C41 192 18 248 0 347Z" fill={`url(#copy-flow-${locale})`}/></svg>
+  </div>
   <div class="recruited-employees">
     {projects.map((project, index) => <div class:list={['employee-instance', `employee-instance-${index}`]}>
-      <svg class="mobile-copy-arrow" viewBox="0 0 100 90"><defs><linearGradient id={`mobile-copy-${locale}-${index}`}><stop stop-color="#70b6e8" stop-opacity="0"/><stop offset="1" stop-color="#91cef0"/></linearGradient></defs><path d="M0 0C22 28 46 33 73 35V20L100 45 73 70V55C46 57 22 62 0 90Z" fill={`url(#mobile-copy-${locale}-${index})`}/></svg>
+
       <div class="instance-team"><Icon name="folder" size={13}/><span>{project}</span><span class="instance-workspace"><Icon name="folder" size={12}/>{zh ? '独立工作区' : 'Own workspace'}</span></div>
       <div class="instance-person"><img src={portrait} alt="" width="38" height="38" loading="lazy"/><div><strong>{zh ? '标书专员' : 'Bid specialist'}</strong><div class="instance-skills">{skills.map(skill => <span><Icon name="check" size={11}/>{skill}</span>)}</div></div></div>
     </div>)}
   </div>
 </div>
 <style>
-  .recruitment-art { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr); align-items:center; width:100%; max-width:700px; margin-inline:auto; padding:24px 5px 30px; box-sizing:border-box; color:#e1eaf5; font-size:13px; line-height:1.5; }
-  .recruitment-art::before { content:''; position:absolute; z-index:-1; inset:12% 0; background:radial-gradient(ellipse,#34567d20,transparent 68%); pointer-events:none; }
+  .recruitment-art { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,.9fr) 120px minmax(0,1.1fr); align-items:center; width:100%; max-width:700px; margin-inline:auto; padding:24px 5px 30px; box-sizing:border-box; color:#e1eaf5; font-size:13px; line-height:1.5; }
+  .recruitment-art::before { content:''; position:absolute; z-index:-1; inset:3% -7%; background:radial-gradient(ellipse at 54% 46%,#398fd43b 0%,#23639726 36%,transparent 72%); filter:blur(25px); pointer-events:none; }
   .role-template { background:linear-gradient(145deg,#1b2e45,#111d2e 70%); border:1px solid #93b6df3b; border-radius:10px; box-shadow:0 16px 32px -12px #000b,0 2px 10px #0005; overflow:hidden; }
   .template-heading { display:flex; align-items:center; gap:7px; padding:13px 15px; color:#a7c5e6; background:#95bded06; border-bottom:1px solid #a5c9f019; }
   .template-person { display:flex; align-items:center; gap:11px; padding:20px 15px 18px; }
@@ -49,10 +48,9 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
   .skill-list>span { padding:3px 7px; color:#afc9eb; font-size:11px; background:#86aff512; border-radius:3px; }
   .template-document { display:flex; align-items:center; gap:7px; margin-top:8px; padding:9px 8px; background:#09131e99; border:1px solid #8cafd316; border-radius:4px; color:#c5d4e3; font-size:11px; }
   .template-document :global(svg) { color:#b8acde; flex-shrink:0; }
-  .mobile-copy-arrow { display:none; }
-  .recruit-copy-arrows { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-  .recruit-transfer { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:#b6cde8; font-size:12px; }
-  .recruit-transfer>svg { width:100%; height:auto; display:block; }
+  .recruit-transfer { position:relative; height:350px; display:grid; place-items:center; color:#b6cde8; font-size:12px; }
+  .recruit-transfer>span { position:absolute; left:50%; top:calc(50% - 61px); transform:translateX(-50%); white-space:nowrap; }
+  .recruit-transfer>svg { width:100%; height:100%; display:block; }
   .recruited-employees { display:grid; gap:14px; }
   .employee-instance { position:relative; background:linear-gradient(125deg,#20364c,#132434 75%); border:1px solid #93bad63b; border-radius:7px; padding:11px 12px; box-shadow:0 9px 19px -7px #0009,0 1px 7px #0004; }
   .employee-instance:nth-child(even) { background:linear-gradient(125deg,#26334a,#172032 75%); border-color:#9facdb30; }
@@ -70,6 +68,7 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
   .recruitment-art-en .instance-person strong { font-size:13px; }
   .recruitment-art-en .instance-team { flex-wrap:wrap; gap:4px; }
   .recruitment-art-en .instance-workspace { font-size:9px; }
+  @media(max-width:1200px) { .recruitment-art::before { inset:3% 0; } }
   @media(max-width:600px) {
     .recruitment-art { grid-template-columns:minmax(0,1fr); max-width:390px; padding:12px 2px 24px; }
     .template-person { padding-block:16px; }
@@ -78,19 +77,17 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
     .template-group p { font-size:12px; }
     .template-document { font-size:10px; padding-inline:5px; }
     .template-document :global(svg) { width:13px; }
-    .recruit-copy-arrows { display:none; }
-    .recruit-transfer { height:54px; padding:0; }
-    .recruit-transfer>svg { width:52px; height:52px; transform:rotate(90deg); }
-    .recruited-employees { position:relative; grid-template-columns:minmax(0,1fr); gap:14px; padding-left:36px; }
-    .recruited-employees::before { content:''; position:absolute; left:13px; top:-54px; bottom:46px; border-left:1px solid #78b5dc65; }
-    .mobile-copy-arrow { display:block; position:absolute; left:-23px; top:calc(50% - 17px); width:22px; height:34px; }
+    .recruit-transfer { height:132px; padding:0; }
+    .recruit-transfer>span { left:auto; right:16px; top:50%; transform:translateY(-50%); }
+    .recruit-transfer>svg { position:absolute; width:120px; height:300px; left:50%; top:50%; transform:translate(-50%,-50%) rotate(90deg); }
+    .recruited-employees { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
     .employee-instance { padding:11px 9px; }
-    .instance-team { flex-wrap:nowrap; font-size:10px; }
-    .instance-workspace { width:auto; margin-left:auto; }
+    .instance-team { flex-wrap:wrap; font-size:10px; }
+    .instance-workspace { width:100%; margin-left:18px; }
     .instance-person { gap:6px; align-items:flex-start; }
     .instance-person strong { font-size:14px; }
-    .instance-person img { width:32px; height:32px; }
-    .instance-skills { display:flex; font-size:10px; }
+    .instance-person img { width:26px; height:26px; }
+    .instance-skills { display:grid; font-size:10px; }
     .recruitment-art-en .instance-person { flex-wrap:nowrap; }
     .recruitment-art-en .instance-person strong { font-size:12px; }
   }
