@@ -125,11 +125,11 @@ export default {
         "id": "reuse",
         "kind": "document",
         "title": "让上一项工作的积累，接上下一项任务",
-        "body": "在项目空间保留工作背景、资料和成果。查找同类项目的方案与交付经验，带着已有上下文继续完善工作。",
+        "body": "在项目空间保留工作背景、资料和成果。从有权访问的历史项目中选择可复用材料，带入当前项目，结合新的业务目标继续完善。",
         "points": [
           {
             "title": "复用资料与背景",
-            "body": "把历史方案、交付文档和项目背景带入当前任务，结合新的业务目标继续编制。"
+            "body": "选择有权访问的历史方案与交付文档，加入当前项目后，结合已有背景和新的目标继续编制。"
           },
           {
             "title": "共享遵循访问范围",
@@ -305,11 +305,11 @@ export default {
         "id": "reuse",
         "kind": "document",
         "title": "Carry previous work into the next assignment",
-        "body": "Retain project background, material and deliverables. Find useful proposals and delivery experience from similar work, then continue with the current objective.",
+        "body": "Retain project context, material and deliverables. Select reusable material from past projects you can access, bring it into the current project, and adapt it to the new objective.",
         "points": [
           {
             "title": "Reuse material with its context",
-            "body": "Bring previous proposals, deliverables and background into the current assignment and adapt them to the new objective."
+            "body": "Select previous proposals and deliverables you can access. Add them to the current project and adapt them to its context and objective."
           },
           {
             "title": "Keep sharing within access boundaries",

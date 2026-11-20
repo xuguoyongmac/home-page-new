@@ -10,7 +10,7 @@ export default {
         title: '同一项目资料，支撑整段工作',
         body: '把需求、会议记录与历史成果留在项目空间。成员和数字员工围绕同一组资料开展工作，新任务不必再从搜集背景开始。',
         points: [
-          { title: '资料与工作放在一起', body: '项目集中组织成员、文件、会话和事项，保留任务所需的资料与上下文。' },
+          { title: '资料与工作放在一起', body: '项目集中组织成员、文件与事项，保留任务资料；员工对话由发起人按需分享。' },
           { title: '项目角色确定访问范围', body: '成员按项目角色读写资料，数字员工代委托人在其项目权限内工作。' },
         ],
         visual: {
@@ -82,7 +82,7 @@ export default {
         title: 'One set of project materials for the work ahead',
         body: 'Keep requirements, meeting records and earlier deliverables in the project. People and digital employees work from the same materials without gathering the background again for each new task.',
         points: [
-          { title: 'Keep materials with the work', body: 'Organize members, files, conversations and work items in the project to retain the context each task needs.' },
+          { title: 'Keep materials with the work', body: 'Keep members, files and work items in the project. Employee conversations can be shared by their initiator when needed.' },
           { title: 'Use project roles for access', body: 'Members read and write according to project roles. Digital employees work within the requester’s project permissions.' },
         ],
         visual: {

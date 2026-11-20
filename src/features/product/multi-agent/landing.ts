@@ -27,7 +27,7 @@ export default {
       {"icon": "workflow", "title": "执行依赖与复核有承接", "body": "安装并配置执行看板扩展后，跟踪任务依赖、阻塞、失败重试与人工复核，关联完成凭据，让专业工作按条件衔接。"},
     ],
     scenarios: [
-      { title: '尽调报告编制', body: '资料检索、数据提取与风险梳理分工开展，归集来源材料、财务要点和风险发现，形成尽调报告材料与复核清单。', flow: ['尽调目标与资料', '检索、提取与风险梳理', '报告材料与复核清单'] },
+      { title: '尽调报告编制', body: '基于已提供的企业资料、财务报表与业务合同，分别核对企业背景、财务信息和业务疑点，汇总为尽调报告材料与复核清单。', flow: ['尽调目标与资料', '背景、财务与业务核对', '报告材料与复核清单'] },
       { title: '投标文件复核', body: '围绕资质、商务条款与技术响应分别核对，汇集各专业检查结果，形成风险与修订清单，衔接投标文件修改。', flow: ['招标要求与投标文件', '资质、商务与技术核对', '风险与修订清单'] },
     ],
     benefits: [
@@ -65,7 +65,7 @@ export default {
       {"icon": "workflow", "title": "Connect dependencies and review", "body": "With the execution board extension installed and configured, track dependencies, blocked work, retries and human review, with completion evidence for each handoff."},
     ],
     scenarios: [
-      { title: 'Due diligence reporting', body: 'Coordinate research, data extraction and risk analysis. Collect source materials, financial highlights and risk findings in report materials and a review checklist.', flow: ['Due diligence goal and sources', 'Research, extraction and analysis', 'Report materials and review checklist'] },
+      { title: 'Due diligence reporting', body: 'Review supplied company records, financial statements and business contracts in independent workstreams. Assemble the background, financial highlights and review questions into due diligence materials.', flow: ['Due diligence goal and sources', 'Company, finance and business review', 'Report materials and review checklist'] },
       { title: 'Bid document review', body: 'Assign qualification, commercial and technical checks to specialists. Combine their findings in a risk and revision list for the next round of editing.', flow: ['Requirements and bid documents', 'Qualification, commercial and technical checks', 'Risk and revision list'] },
     ],
     benefits: [

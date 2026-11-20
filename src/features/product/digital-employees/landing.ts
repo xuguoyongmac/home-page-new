@@ -21,9 +21,9 @@ export default {
     },
     features: [
       { icon: 'layers', title: '模板分发', body: '维护职责、模型要求、技能与工作文件，按版本分发至不同团队，模板更新与已运行员工分开管理。' },
-      { icon: 'network', title: '招募审批', body: '从模板创建独立实例，按项目配置并完成审批。' },
+      { icon: 'network', title: '招募审批', body: '从模板招募数字员工，配置使用范围并完成所需审批。' },
       { icon: 'key', title: '权限委托', body: '分别界定使用者范围、知识访问范围与插件代办范围。' },
-      { icon: 'clock', title: '定时任务', body: '配置定时、事件与心跳工作，查看运行与投递记录，按权限、并发与去重规则持续执行。' },
+      { icon: 'clock', title: '任务调度', body: '配置定时、事件与心跳工作，查看运行与投递记录，按权限、并发与去重规则持续执行。' },
       { icon: 'book', title: '记忆复盘', body: '按使用者隔离记忆，按组织策略复盘沉淀为技能。' },
     ],
     scenarios: [
@@ -59,9 +59,9 @@ export default {
     },
     features: [
       { icon: 'layers', title: 'Templates and distribution', body: 'Maintain responsibilities, model requirements, skills and work files in versioned templates. Distribute across teams while keeping template updates separate from running employees.' },
-      { icon: 'network', title: 'Recruitment and approval', body: 'Create a digital employee that runs independently, configure it for the project, and complete any required approval.' },
+      { icon: 'network', title: 'Recruitment and approval', body: 'Create a digital employee that runs independently, configure its access scope, and complete any required approval.' },
       { icon: 'key', title: 'Access and delegation', body: 'Set who can use the digital employee, what knowledge it can access, and which business actions plugins can perform.' },
-      { icon: 'clock', title: 'Scheduled tasks', body: 'Configure scheduled, event-triggered and heartbeat work. Inspect runs and delivery records, with permission, concurrency and deduplication controls.' },
+      { icon: 'clock', title: 'Task scheduling', body: 'Configure scheduled, event-triggered and heartbeat work. Inspect runs and delivery records, with permission, concurrency and deduplication controls.' },
       { icon: 'book', title: 'Memory and work review', body: 'Keep profiles, long-term memory, and work diaries separate for each user. Review work under organizational policy and save repeatable methods as skills.' },
     ],
     scenarios: [

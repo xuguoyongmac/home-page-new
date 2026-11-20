@@ -1,61 +1,13 @@
 ---
-import Icon from '../Icon.astro';
 import type { Locale } from '../../data/types';
+import IntegrationsCapabilityArt from './IntegrationsCapabilityArt.astro';
+import CollaborationCapabilityArt from './CollaborationCapabilityArt.astro';
+import KnowledgeCapabilityArt from './KnowledgeCapabilityArt.astro';
+import GovernanceCapabilityArt from './GovernanceCapabilityArt.astro';
 interface Props { locale: Locale; capability: string; scene?: number; }
-const { locale, capability: slug, scene = -1 } = Astro.props;
-const zh = locale === 'zh';
-const t = (cn: string, en: string) => zh ? cn : en;
-const overview = scene === -1;
-const icons = ['book','folder','plug'];
+const { locale, capability, scene = -1 } = Astro.props;
 ---
-<figure class:list={['cp-art', `cp-art-${slug}`, {'cp-art-overview': overview}]} aria-label={t('产品能力业务图解','Product capability illustration')}>
-  {slug === 'integrations' && <>
-    {(overview || scene === 0) && <div class="cp-connect-map">
-      <div class="cp-system-stack">{[
-        ['users','CRM',t('客户 · 商机 · 跟进','Customers · Deals · Follow-ups')],
-        ['file-check',t('招投标','Bidding'),t('项目 · 资信 · 标书','Projects · Credentials · Proposals')],
-        ['clipboard-check','EHS',t('检查 · 隐患 · 证据','Inspections · Hazards · Evidence')],
-      ].map(([icon,name,body]) => <div class="cp-node"><Icon name={icon} size={21}/><strong>{name}</strong><p>{body}</p></div>)}</div>
-      <span class="cp-flow" aria-hidden="true">→</span>
-      <div class="cp-connection-core cp-raised"><Icon name="network" size={25}/><strong>{t('数字员工','Digital employee')}</strong><p>{t('理解业务对象，调用授权工具','Work with business records and authorized tools')}</p><div class="cp-tags"><span>MCP</span><span>RESTful API</span><span>{t('数据库','Database')}</span></div></div>
-      <span class="cp-flow" aria-hidden="true">→</span>
-      <div class="cp-result-stack"><div class="cp-node cp-accent"><Icon name="file-check" size={23}/><strong>{t('业务成果','Business results')}</strong><p>{t('客户跟进纪要','Customer follow-up brief')}</p><p>{t('项目材料与分析报告','Project materials and analysis')}</p></div><div class="cp-result-line"><Icon name="check" size={17}/>{t('接回业务流程','Back to the workflow')}</div></div>
-    </div>}
-    {scene === 1 && <div class="cp-action-illustration">
-      <div class="cp-art-heading"><Icon name="workflow" size={20}/><strong>{t('客户跟进 · 从沟通到办理','Customer follow-up · From conversation to action')}</strong></div>
-      <div class="cp-action-chain">{[t('读取沟通记录','Read conversations'),t('匹配客户与商机','Match customer and deal'),t('整理跟进事项','Prepare next actions'),t('更新客户时间线','Update the timeline')].map((name,i)=><div class:list={['cp-action-step',{'cp-raised':i===2}]}><Icon name={['message','users','file-check','check'][i]} size={23}/><strong>{name}</strong><span class="cp-status">{t('已完成','Completed')}</span></div>)}</div>
-      <div class="cp-tool-rail"><span>MCP</span><span>RESTful API</span><span>{t('浏览器与设备节点','Browser and device nodes')}</span></div>
-    </div>}
-    {scene === 2 && <div class="cp-api-illustration"><div class="cp-node"><Icon name="buildings" size={23}/><strong>{t('企业业务系统','Business system')}</strong><p>{t('业务要求 + 输入附件','Business request + attachments')}</p><div class="cp-code">Platform OpenAPI<br/>API Key · scope<br/>{t('绑定执行用户','Bound execution identity')}</div></div><span class="cp-flow">⇄</span><div class="cp-api-service cp-raised"><strong>{t('数字员工作业','Digital employee execution')}</strong><div class="cp-tags"><span>{t('同步','Synchronous')}</span><span>{t('异步','Asynchronous')}</span><span>{t('流式','Streaming')}</span></div><ul><li><Icon name="check" size={16}/>{t('执行状态与事件','Execution status and events')}</li><li><Icon name="file" size={16}/>{t('成果文件与附件','Deliverables and attachments')}</li><li><Icon name="users" size={16}/>{t('提问、审批与接手','Questions, approvals and handoffs')}</li></ul></div></div>}
-  </>}
-
-  {slug === 'collaboration' && <>
-    {(overview || scene === 0) && <div class="cp-project-illustration">
-      <div class="cp-project-main cp-raised"><div class="cp-art-heading"><Icon name="folder" size={21}/><strong>{t('服务方案评审项目','Service proposal review')}</strong></div><div class="cp-project-tabs"><b>{t('项目资料','Materials')}</b><span>{t('工作会话','Conversations')}</span><span>{t('任务与决策','Tasks and decisions')}</span></div><div class="cp-file-list">{[t('需求访谈纪要.docx','Interview notes.docx'),t('服务需求清单.xlsx','Requirements.xlsx'),t('项目服务方案.docx','Service proposal.docx')].map((name,i)=><div><Icon name={i===1?'chart':'file'} size={19}/><strong>{name}</strong><span>{['V1.2','V1.1','V1.3'][i]}</span></div>)}</div><div class="cp-project-members"><Icon name="users" size={18}/>{t('所有者 / 编辑者 / 查看者','Owner / Editor / Viewer')}</div></div>
-      <div class="cp-project-comment cp-node"><Icon name="message" size={20}/><strong>{t('围绕成果继续工作','Continue with the deliverable')}</strong><p>{t('@数字员工 补充实施计划与交付边界。','@Digital employee Expand the plan and delivery scope.')}</p><span class="cp-status">{t('新版本已提交到项目','New revision submitted')}</span></div>
-    </div>}
-    {scene === 1 && <div class="cp-version-illustration"><div class="cp-document cp-raised"><span class="cp-file-kind">DOCX</span><h3>{t('项目服务方案','Project service proposal')}</h3><h4>{t('实施安排与交付范围','Implementation and delivery')}</h4><p>{t('分阶段推进需求确认、方案实施与成果交接，交付内容与项目要求逐项对应。','Confirm requirements, carry out the plan and hand over deliverables in stages, aligned with project requirements.')}</p><blockquote>{t('评审意见：补充阶段成果与责任分工。','Review: Add stage deliverables and responsibilities.')}</blockquote><div class="cp-tags"><span>{t('批注','Comments')}</span><span>{t('个人草稿','Personal draft')}</span><span>{t('提交版本','Submitted revision')}</span></div></div><div class="cp-version-history">{[['V1.2',t('归集需求','Requirements')],['V1.3',t('完善方案','Proposal')],['V1.4',t('补充实施安排','Implementation plan')]].map(([version,body],i)=><div class:list={{'cp-active':i===2}}><b>{version}</b><span>{body}</span>{i===2&&<Icon name="check" size={17}/>}</div>)}</div></div>}
-    {scene === 2 && <div class="cp-handoff-illustration"><div class="cp-handoff-entry"><Icon name="message" size={27}/><strong>{t('原任务会话','Original conversation')}</strong><p>{t('请确认方案交付范围','Confirm the delivery scope')}</p></div><span class="cp-flow">→</span><div class="cp-human-card cp-raised"><Icon name="users" size={24}/><strong>{t('待我处理','Pending items')}</strong><div class="cp-tags"><span>{t('问询','Question')}</span><span>{t('审批','Approval')}</span><span>{t('接手','Takeover')}</span></div><div class="cp-human-response"><Icon name="check" size={17}/>{t('负责人已回应','Owner responded')}</div></div><span class="cp-flow">→</span><div class="cp-handoff-entry"><Icon name="file-check" size={27}/><strong>{t('接续原任务','Resume the work')}</strong><p>{t('沿用背景，继续交付','Keep context and continue delivery')}</p></div><div class="cp-return-label">{t('回应与处理记录回到原会话','Responses and handling records return to the original conversation')}</div></div>}
-  </>}
-
-  {slug === 'knowledge' && <>
-    {(overview || scene === 1) && <div class="cp-evidence-illustration"><div class="cp-source-document"><div class="cp-art-heading"><Icon name="book" size={20}/><strong>{t('项目交付管理办法','Project delivery policy')}</strong></div><h4>{t('验收准备','Acceptance preparation')}</h4><p>{t('核对约定成果与交付清单，记录文档版本与待确认事项。','Check agreed deliverables against the list. Record document versions and open confirmations.')}</p><mark>{t('交付资料应包含成果清单、版本记录与确认材料。','Delivery materials include a deliverable list, revision records and confirmations.')}</mark><span class="cp-source-caption">{t('原文片段与上下文','Original passage and context')}</span></div><span class="cp-flow">→</span><div class="cp-answer-document cp-raised"><div class="cp-art-heading"><Icon name="search" size={21}/><strong>{t('项目验收如何准备？','How do we prepare for acceptance?')}</strong></div><p>{t('依据项目交付制度，准备以下材料：','Based on the delivery policy, prepare:')}</p><ol><li>{t('约定成果与交付清单','Agreed deliverables and list')}<sup>[1]</sup></li><li>{t('文档版本与核对记录','Revision and checking records')}<sup>[1]</sup></li><li>{t('确认材料与待办事项','Confirmations and open actions')}<sup>[2]</sup></li></ol><div class="cp-citations"><span>[1] {t('项目交付管理办法','Delivery policy')}</span><span>[2] {t('交付物验收清单','Acceptance checklist')}</span></div></div></div>}
-    {scene === 0 && <div class="cp-library-illustration"><div class="cp-library-sources">{[t('企业制度.pdf','Company policies.pdf'),t('产品资料.docx','Product materials.docx'),t('业务台账.xlsx','Business register.xlsx')].map((name,i)=><div class="cp-node"><Icon name={['book','file','chart'][i]} size={22}/><strong>{name}</strong></div>)}</div><span class="cp-flow">→</span><div class="cp-index-core cp-raised"><Icon name="layers" size={25}/><strong>{t('解析 · 分段 · 索引','Parse · Chunk · Index')}</strong><div class="cp-tags"><span>{t('关键词','Keyword')}</span><span>{t('向量','Vector')}</span><span>{t('混合检索','Hybrid retrieval')}</span></div><p>{t('原文件与片段保持来源关联','Keep passages connected to source files')}</p></div><span class="cp-flow">→</span><div class="cp-retrieval-result"><Icon name="search" size={25}/><strong>{t('授权知识检索','Authorized retrieval')}</strong><p>{t('片段 · 原文 · 引用','Passages · Originals · Citations')}</p><span class="cp-status">{t('检索测试与内容维护','Retrieval testing and maintenance')}</span></div></div>}
-    {scene === 2 && <div class="cp-knowledge-scopes">{[
-      ['book',t('企业知识','Enterprise knowledge'),t('制度、产品资料、研究材料','Policies, products and research'),t('知识库授权','Library permissions')],
-      ['folder',t('项目知识','Project knowledge'),t('需求、项目文件、交付成果','Requirements, files and deliverables'),t('本项目与项目成员','This project and its members')],
-      ['cpu',t('工作记忆','Work memory'),t('偏好、已确认背景、持续事项','Preferences, context and ongoing work'),t('按员工与使用者隔离','Isolated by employee and user')],
-    ].map(([icon,title,body,scope])=><div class="cp-scope-column"><Icon name={icon} size={27}/><h3>{title}</h3><p>{body}</p><div class="cp-scope-content"><Icon name="key" size={16}/>{scope}</div></div>)}</div>}
-  </>}
-
-  {slug === 'governance' && <>
-    {(overview || scene === 0) && <div class="cp-governance-boundary"><div class="cp-boundary-name"><Icon name="shield" size={20}/><strong>{t('企业身份与资源边界','Enterprise identity and resource boundaries')}</strong></div><div class="cp-access-map"><div class="cp-identity"><Icon name="users" size={27}/><strong>{t('组织身份','Organizational identity')}</strong><p>LDAP / OIDC</p><span>{t('租户 · 部门 · 角色','Tenant · Department · Role')}</span></div><span class="cp-flow">→</span><div class="cp-access-resources">{[t('知识库 · 查看与检索','Knowledge · View and retrieve'),t('项目 · 当前成员角色','Projects · Current member role'),t('插件 · 显式业务委托','Plugins · Explicit delegation')].map((name,i)=><div class="cp-resource"><Icon name={icons[i]} size={21}/><strong>{name}</strong><Icon name="key" size={17}/></div>)}</div></div><div class="cp-governance-trail"><span><Icon name="clipboard-check" size={17}/>{t('组织审核','Organizational review')}</span><span><Icon name="workflow" size={17}/>{t('执行记录','Execution records')}</span><span><Icon name="file-search" size={17}/>{t('来源与证据','Sources and evidence')}</span></div></div>}
-    {scene === 1 && <div class="cp-review-illustration"><div class="cp-review-request cp-raised"><Icon name="user-check" size={23}/><h3>{t('数字员工开放申请','Employee access request')}</h3><dl><div><dt>{t('员工','Employee')}</dt><dd>{t('方案文书数字员工','Proposal digital employee')}</dd></div><div><dt>{t('范围','Scope')}</dt><dd>{t('项目服务团队','Project services team')}</dd></div><div><dt>{t('提交内容','Submission')}</dt><dd>{t('职责、技能与资源范围','Role, skills and resource scope')}</dd></div></dl><span class="cp-status">{t('提交快照已保留','Submission snapshot retained')}</span></div><div class="cp-review-trail">{[t('提交申请','Submit request'),t('组织审核','Organizational review'),t('记录决定','Retain decision'),t('按范围开放','Grant scoped access')].map((name,i)=><div><Icon name={i===1?'users':'check'} size={18}/><strong>{name}</strong></div>)}</div></div>}
-    {scene === 2 && <div class="cp-audit-illustration"><div class="cp-audit-timeline"><div class="cp-art-heading"><Icon name="workflow" size={21}/><strong>{t('项目验收准备 · 执行台账','Acceptance preparation · Execution record')}</strong></div>{[
-      [t('任务输入','Task input'),t('项目资料与验收要求','Project files and acceptance requirements')],
-      [t('工具调用','Tool calls'),t('知识检索、文件读取与清单编制','Knowledge retrieval, file access and checklist preparation')],
-      [t('人工确认','Human confirmation'),t('负责人确认交付范围','Owner confirms delivery scope')],
-      [t('交付成果','Deliverable'),t('验收准备清单.docx','Acceptance checklist.docx')],
-    ].map(([title,body])=><div class="cp-audit-event"><i></i><strong>{title}</strong><p>{body}</p></div>)}</div><div class="cp-evidence-receipt cp-raised"><Icon name="file-check" size={28}/><h3>{t('执行回执','Execution receipt')}</h3><p>{t('输入 · 动作 · 结果','Inputs · Actions · Results')}</p><div class="cp-tags"><span>{t('来源关联','Provenance')}</span><span>{t('摘要核验','Integrity')}</span><span>{t('授权导出','Scoped export')}</span></div><div class="cp-receipt-state"><Icon name="shield" size={19}/>{t('记录与证据关联','Records linked to evidence')}</div></div></div>}
-  </>}
-</figure>
+{capability === 'integrations' && <IntegrationsCapabilityArt locale={locale} scene={scene}/>}
+{capability === 'collaboration' && <CollaborationCapabilityArt locale={locale} scene={scene}/>}
+{capability === 'knowledge' && <KnowledgeCapabilityArt locale={locale} scene={scene}/>}
+{capability === 'governance' && <GovernanceCapabilityArt locale={locale} scene={scene}/>}

@@ -6,21 +6,21 @@ interface Props { locale: Locale; scene: 'overview' | 'assignment' | 'execution'
 const { locale, scene } = Astro.props;
 const zh = locale === 'zh';
 const kinds = ['search', 'extract', 'analysis'] as const;
-const tasks = zh ? ['资料检索', '数据提取', '分析核对'] : ['Source research', 'Data extraction', 'Analysis & review'];
-const requirements = zh ? ['检索范围与来源要求', '提取字段与返回格式', '分析目标与核对规则'] : ['Source scope and requirements', 'Fields and return format', 'Analysis goal and review rules'];
-const results = zh ? ['来源材料', '关键数据', '分析结论'] : ['Source materials', 'Key data', 'Findings'];
-const returned = zh ? ['来源目录与关键原文', '关键字段汇总', '分析与复核事项'] : ['Sources and key passages', 'Key field summary', 'Findings and review items'];
-const descriptions = zh ? ['保留引用与关键原文', '整理字段与材料差异', '归集结论与复核事项'] : ['Retain sources and key passages', 'Organize fields and differences', 'Collect findings and review items'];
+const tasks = zh ? ['企业背景核对', '财务资料核对', '业务风险梳理'] : ['Company background', 'Financial review', 'Business review'];
+const requirements = zh ? ['输入：企业与项目资料', '输入：财务报表与明细', '输入：合同与业务说明'] : ['Input: company and project records', 'Input: statements and supporting records', 'Input: contracts and business descriptions'];
+const results = zh ? ['企业背景', '财务要点', '业务疑点'] : ['Company background', 'Financial highlights', 'Business questions'];
+const returned = zh ? ['背景摘要与来源', '财务要点与差异', '业务疑点与复核事项'] : ['Background and sources', 'Financial points and differences', 'Questions for human review'];
+const descriptions = zh ? ['企业与项目背景及来源', '财务字段与材料差异', '合同疑点与复核事项'] : ['Company and project context with sources', 'Financial figures and record differences', 'Contract questions and review items'];
 const labels = zh ? {
   overview: '主 Agent 居中调度，向专业子 Agent 分派任务并接收状态和结果，再汇总输出',
-  assignment: '同一任务目标分解为资料检索、数据提取和分析核对子任务，每项工作对应执行要求',
-  execution: '专业子任务沿三条并行路径执行，状态和结果集中回到主任务',
-  delivery: '来源材料、关键数据和分析结论回到主 Agent，统一组织为任务成果',
+  assignment: '同一尽调目标分为企业背景、财务资料和业务风险三项核对，各自使用已提供的对应资料',
+  execution: '三个专业子任务各自核对对应输入资料，独立执行并将状态与结果回传主任务',
+  delivery: '企业背景、财务要点和业务疑点回到主 Agent，统一组织为尽调报告材料',
 } : {
   overview: 'A main Agent delegates to specialist Agents, receives their states and results, and assembles the output',
-  assignment: 'One goal branches into research, extraction and analysis, each with its own requirements',
-  execution: 'Three parallel specialist paths return their execution states and results to the main task',
-  delivery: 'Sources, data and findings return to the main Agent to become a combined deliverable',
+  assignment: 'One due diligence goal branches into company, finance and business review, each with its own supplied records',
+  execution: 'Three specialists independently review their own supplied records and return states and results to the main task',
+  delivery: 'Company background, financial points and business questions return to the main Agent for due diligence report materials',
 };
 const prefix = `ma-${scene}`;
 ---
@@ -48,11 +48,11 @@ const prefix = `ma-${scene}`;
       <g class="ma-routes-teal" style={`--route-color:url(#${prefix}-teal)`}><path d="M53 372V424H322V145H270"/><path d="M177 372V424M301 372V424"/></g>
       <g class="ma-port-routes"><path d="M177 51V85" marker-end={`url(#${prefix}-arrow)`}/><path d="M80 145H30V474H142" marker-end={`url(#${prefix}-arrow)`}/></g>
     </svg>
-    <div class="ma-topology-port ma-topology-input"><Icon name="message" size={26}/><strong>{zh ? '任务输入' : 'Task input'}</strong></div>
+    <div class="ma-topology-port ma-topology-input"><Icon name="message" size={26}/><strong>{zh ? '尽调目标与材料' : 'Goal and source records'}</strong></div>
     <div class="ma-topology-core"><AgentNode locale={locale} kind="main"/></div>
     <span class="ma-topology-delegate">{zh ? '任务分派' : 'Delegate'}</span><span class="ma-topology-return">{zh ? '状态与结果回传' : 'States & results'}</span>
     <div class="ma-topology-specialists">{kinds.map(kind => <div class="ma-topology-specialist"><AgentNode locale={locale} kind={kind}/></div>)}</div>
-    <div class="ma-topology-port ma-topology-output"><Icon name="layers" size={27}/><strong>{zh ? '汇总输出' : 'Combined output'}</strong></div>
+    <div class="ma-topology-port ma-topology-output"><Icon name="layers" size={27}/><strong>{zh ? '尽调报告材料' : 'Report for review'}</strong></div>
   </div>}
   {scene === 'assignment' && <div class="ma-decomposition ma-art-canvas">
     <svg class="ma-art-routes" viewBox="0 0 660 480" preserveAspectRatio="none" aria-hidden="true">
@@ -81,7 +81,7 @@ const prefix = `ma-${scene}`;
     <div class="ma-composition-sources">{results.map((name,i)=><div class:list={['ma-composition-source',`ma-tone-${i}`]}><Icon name={['file-search','chart','clipboard-check'][i]} size={23}/><strong>{name}</strong></div>)}</div>
     <div class="ma-composition-main"><AgentNode locale={locale} kind="main" compact/></div>
     <article class="ma-outcome-document">
-      <div class="ma-outcome-title"><Icon name="file-check" size={24}/><h3>{zh ? '任务成果' : 'Combined deliverable'}</h3></div>
+      <div class="ma-outcome-title"><Icon name="file-check" size={24}/><h3>{zh ? '尽调报告材料' : 'Due diligence materials'}</h3></div>
       <dl>{results.map((name,i)=><div><dt>{name}</dt><dd>{descriptions[i]}</dd></div>)}</dl>
       <div class="ma-outcome-review"><Icon name="clipboard-check" size={18}/><span>{zh ? '继续审阅与修改' : 'Ready for review and editing'}</span></div>
     </article>

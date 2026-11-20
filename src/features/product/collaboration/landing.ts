@@ -16,7 +16,7 @@ export default {
     },
     concept: {
       title: '项目承接上下文，会话推动工作',
-      body: '成员按项目角色共用资料、会话和事项，在工作会话中 @ 已获授权的数字员工。数字员工按委托人的项目权限读写资料，需要人工回答、审批或接手时发起事项，回应结果回到原会话。',
+      body: '成员按项目角色访问共享资料与事项，在工作会话中 @ 已获授权的数字员工。员工对话默认归发起人，主动分享后供项目成员查看；数字员工按委托人的项目权限读写资料，需要人工参与时发起提问、审批或接手事项，回应结果回到原会话。',
       labels: ['共享项目', '工作会话', '人工回应', '成果版本'],
     },
     features: [
@@ -25,7 +25,7 @@ export default {
       { icon: 'clock', title: '成果修改有版本可查', body: '已提交文件保留版本与变更记录，可查阅历史并按权限恢复，对照每次提交的成果。' },
       {"icon": "file", "title": "办公成果直接处理", "body": "Word 与 PowerPoint 在 Web 和桌面端预览、编辑；Excel 在 Web 端只读预览，在桌面端编辑。PDF、文本与 Markdown 按文件类型查看和处理。"},
       {"icon": "layers", "title": "草稿、提交与定稿连续管理", "body": "个人草稿与已提交版本分开保存，数字员工一次运行的改动可成组提交；并发冲突形成副本，恢复、撤销与定稿保留历史，并可导出项目文件。"},
-      {"icon": "users", "title": "工作消息关联项目与事项", "body": "通过私聊、工作群、项目会话与事项会话推进协作，@ 已获授权的数字员工；项目讨论可转为任务或决策，员工私人会话按需分享。"},
+      {"icon": "users", "title": "工作消息关联项目与事项", "body": "通过私聊、工作群、项目会话与事项会话推进协作，@ 已获授权的数字员工；项目讨论可转为任务或决定，员工私人会话按需分享。"},
       {"icon": "monitor", "title": "多端衔接正在进行的工作", "body": "Web、桌面与移动端承接各自支持的会话、项目和消息，结合语音、附件与通知推进工作；企业微信、钉钉和飞书通过身份绑定作为外部消息入口。"},
       {"icon": "workflow", "title": "结构化交互承接业务判断", "body": "在会话内通过 A2UI 表单、选项与确认内容收集参数、筛选结果，操作回传数字员工，继续原任务。"},
     ],
@@ -57,7 +57,7 @@ export default {
     },
     concept: {
       title: 'Keep context in the project and move work through conversation',
-      body: 'Members share files, conversations and work items according to project roles. Mention authorized digital employees in work conversations. They use the requester’s project permissions and raise work items when a person needs to answer, approve or take over. Responses return to the original conversation.',
+      body: 'Members access shared files and work items according to project roles. Employee conversations belong to their initiator and can be shared for project members to read. Mention authorized digital employees in work conversations; they work within the requester’s project permissions and raise questions, approvals or handoffs when a person needs to participate. Responses return to the original conversation.',
       labels: ['Shared project', 'Work conversation', 'Human response', 'File versions'],
     },
     features: [
