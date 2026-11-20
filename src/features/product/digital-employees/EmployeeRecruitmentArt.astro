@@ -6,10 +6,10 @@ const { locale } = Astro.props;
 const zh = locale === 'zh';
 const portrait = '/images/product/digital-employees/employee-portrait-public-service_V1.1.webp';
 const employees = [
-  { industry: zh ? '金融行业' : 'Finance', project: zh ? '客户管理系统投标' : 'CRM system bid', portrait: 'hr' },
-  { industry: zh ? '政务行业' : 'Government', project: zh ? '政务协同平台投标' : 'Government platform bid', portrait: 'public-service' },
-  { industry: zh ? '教育行业' : 'Education', project: zh ? '校园数据平台投标' : 'Campus data platform bid', portrait: 'teaching' },
-  { industry: zh ? '工程行业' : 'Engineering', project: zh ? '园区建设工程投标' : 'Business park construction bid', portrait: 'claims' },
+  { scope: zh ? '软件售前' : 'Software', role: zh ? '投标专员' : 'bid specialist', project: zh ? '业务系统建设投标' : 'Business system bid', portrait: 'hr' },
+  { scope: zh ? '工程项目' : 'Construction', role: zh ? '投标专员' : 'bid specialist', project: zh ? '园区改造工程投标' : 'Park renovation bid', portrait: 'public-service' },
+  { scope: zh ? '设备供货' : 'Equipment', role: zh ? '标书助理' : 'bid assistant', project: zh ? '生产设备供货投标' : 'Equipment supply bid', portrait: 'teaching' },
+  { scope: zh ? '运维服务' : 'IT operations', role: zh ? '标书助理' : 'bid assistant', project: zh ? '信息系统运维投标' : 'IT operations bid', portrait: 'claims' },
 ];
 const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid writing'];
 ---
@@ -32,7 +32,7 @@ const skills = zh ? ['招标解读', '标书编制'] : ['Tender analysis', 'Bid 
     {employees.map((employee, index) => <div class:list={['employee-instance', `employee-instance-${index}`]}>
 
       <div class="instance-team"><Icon name="folder" size={13}/><span>{employee.project}</span></div>
-      <div class="instance-person"><img src={`/images/product/digital-employees/employee-portrait-${employee.portrait}_V1.1.webp`} alt="" width="38" height="38" loading="lazy"/><div><strong><span>{employee.industry}</span>{!zh && ' '}<span>{zh ? '标书助理' : 'bid assistant'}</span></strong><span class="instance-workspace">{zh ? '独立工作区' : 'Own workspace'}</span></div></div>
+      <div class="instance-person"><img src={`/images/product/digital-employees/employee-portrait-${employee.portrait}_V1.1.webp`} alt="" width="38" height="38" loading="lazy"/><div><strong><span>{employee.scope}</span>{!zh && ' '}<span>{employee.role}</span></strong><span class="instance-workspace">{zh ? '独立工作区' : 'Own workspace'}</span></div></div>
       <div class="instance-skills">{skills.map(skill => <span><Icon name="check" size={11}/>{skill}</span>)}</div>
     </div>)}
   </div>
