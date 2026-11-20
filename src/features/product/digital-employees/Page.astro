@@ -58,7 +58,7 @@ const breadcrumb = {
         <section id={`capability-${id}`} class:list={['employee-story', `employee-story-${id}`]} aria-labelledby={`capability-${id}-title`}>
           <div class="employee-story-text">
             <h2 id={`capability-${id}-title`}>{zh ? title.split('，').map((phrase, index, phrases) => <span class="employee-title-phrase">{phrase}{index < phrases.length - 1 ? '，' : ''}</span>) : title}</h2>
-            {id === 'work' ? <p class="employee-composition-description">{body}</p> : <><p class="employee-story-subtitle">{subtitle}</p><p class="employee-story-body">{body}</p></>}
+            {id === 'work' ? <p class="employee-composition-description">{body}</p> : <>{subtitle && <p class="employee-story-subtitle">{subtitle}</p>}<p class="employee-story-body">{body}</p></>}
           </div>
           {id === 'work' && <dl class="employee-composition-parts">
             {compositionParts.map(part => <div><dt><Icon name={part.icon} size={18}/><span>{part.title}</span></dt><dd>{part.body}</dd></div>)}

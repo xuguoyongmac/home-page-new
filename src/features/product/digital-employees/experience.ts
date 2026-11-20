@@ -3,7 +3,7 @@ import type { Locale } from '../../../data/types';
 interface EmployeeFeatureSection {
   id: 'recruit' | 'work' | 'continuity';
   title: string;
-  subtitle: string;
+  subtitle?: string;
   body: string;
 }
 
@@ -19,8 +19,7 @@ export default {
       {
         id: 'recruit',
         title: '岗位方法入模板，招募生成员工',
-        subtitle: '模板承载职责、Agent 配置、技能与工作文件；按需招募独立员工，沿用同一套做法',
-        body: '岗位方法沉淀在模板中，岗位职责、Agent 配置、专业技能与工作文件随模板一同分发。团队按需招募为独立运行的数字员工，实例沿用统一做法，权限按使用者与项目单独配置。',
+        body: '将职责、Agent 配置、技能与工作文件沉淀为模板。按需招募独立员工，复用岗位方法，按人员与项目分别配置权限。',
       },
       {
         id: 'continuity',
@@ -41,8 +40,7 @@ export default {
       {
         id: 'recruit',
         title: 'Capture role methods in a template. Recruit an employee.',
-        subtitle: 'Templates carry responsibilities, Agent settings, skills, and files into independent instances',
-        body: 'Role methods live in a template, distributed together with responsibilities, Agent configuration, skills, and work files. Teams recruit digital employees that run independently, reuse the same methods, and configure permissions separately for each user and project.',
+        body: 'Package responsibilities, Agent settings, skills, and work files in a template. Recruit independent employees that reuse the same methods, with permissions set for each user and project.',
       },
       {
         id: 'continuity',

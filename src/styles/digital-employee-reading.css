@@ -64,6 +64,7 @@
 .employee-story-recruit { grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); column-gap: 48px; }
 .employee-story-recruit .employee-story-art { grid-column: 2; grid-row: 1; }
 .employee-story-recruit .employee-story-text { grid-column: 1; grid-row: 1; }
+.employee-page .employee-story-recruit .employee-story-body { margin-top: 26px; font-size: 18px; line-height: 1.9; }
 .employee-story-continuity { display: block; }
 .employee-story-continuity .employee-story-text { max-width: 890px; }
 .employee-story-continuity .employee-story-text :is(.employee-story-subtitle, .employee-story-body) { max-width: 92ch; }
