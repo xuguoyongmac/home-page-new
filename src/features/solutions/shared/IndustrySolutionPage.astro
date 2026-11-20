@@ -2,8 +2,7 @@
 import { pathFor } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import type { IndustrySolutionCopy } from './types';
-import EmployeeCarousel from '../banking/EmployeeCarousel.astro';
-import Icon from '../../../components/Icon.astro';
+import SolutionArtwork from '../../../components/SolutionArtwork.astro';
 import '../../../styles/industry-value-page.css';
 
 interface Props { locale: Locale; slug: string; presentation: IndustrySolutionCopy; }
@@ -21,23 +20,18 @@ const zh = locale === 'zh';
     </div>
   </section>
 
-  {copy.features.map((feature, index) => <section class:list={['industry-value-section', { 'industry-value-reversed': index % 2 === 1 }]} aria-labelledby={`${slug}-feature-${index}`}>
-    <div class="container industry-value-grid">
-      <div class="industry-value-copy">
-        <h2 id={`${slug}-feature-${index}`}>{feature.title}</h2>
-        <p class="industry-value-problem">{feature.problem}</p>
-        <p class="industry-value-body">{feature.body}</p>
-        {feature.outcomes?.length && <ul class="industry-value-outcomes">{feature.outcomes.map(outcome => <li><Icon name="check" size={16}/><span>{outcome}</span></li>)}</ul>}
-      </div>
-      <figure class="industry-value-image">
-        <img src={feature.image ?? `/images/solutions/${slug}/${slug}-value-${index + 1}_V2.0.webp`} alt={feature.title} width="1200" height="800" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1200px) 52vw, 650px" loading="lazy" decoding="async"/>
+  <section class="industry-value-story" aria-label={zh ? '方案价值' : 'Business value'}>
+    <div class="container industry-value-story-grid">
+      <figure class="industry-value-artwork">
+        <SolutionArtwork src={copy.hero.illustration} alt={copy.home.title} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1216px) calc(100vw - 96px), 1120px"/>
       </figure>
+      <div class="industry-value-propositions">
+        {copy.features.map((feature, index) => <article aria-labelledby={`${slug}-feature-${index}`}>
+          <h2 id={`${slug}-feature-${index}`}>{feature.title}</h2>
+          <p>{feature.body}</p>
+        </article>)}
+      </div>
     </div>
-  </section>)}
-
-  <section class="industry-value-team" aria-labelledby={`${slug}-team-title`}>
-    <div class="container"><h2 id={`${slug}-team-title`}>{copy.teamTitle}</h2></div>
-    <EmployeeCarousel locale={locale} employees={copy.employees} teamLabel={copy.teamTitle}/>
   </section>
 
   <section class="industry-value-deployment" aria-labelledby={`${slug}-deployment-title`}>

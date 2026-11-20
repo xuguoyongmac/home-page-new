@@ -3,91 +3,92 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const trustPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让受托服务更深入，让项目运行更从容",
-      "pain": "不同信托业务对应不同合同、账户与受益人关系，项目从成立到存续和清算持续变化，运营、投资、合规与披露需要反复协同。",
-      "value": "数字员工围绕资产服务、资产管理与受托运营组织专业工作，连接合同依据、项目资料与系统工具，让服务方案、存续履职和信息披露持续接续。",
+      "title": "让受托履职从反复找件走向有据判断",
+      "pain": "项目档案、合同约定、外部尽调与投诉材料各自变化，运营与合规团队反复找件、摘录和交接，重要问题容易埋在材料之间。",
+      "value": "数字员工把档案缺项、合同参数差异、多源证据与跨渠道事项组织成可复核的专业准备，让受托团队把精力放在合同约定、重大风险和客户关切上。让责任和依据随事项持续接续，把机构经验留在长期服务里。",
       "scenarios": [
-        "资产服务",
-        "受托运营",
-        "合同核对",
-        "投资研究",
-        "风险跟踪",
-        "信息披露"
+        "项目档案",
+        "合同要素",
+        "核算参数",
+        "多源尽调",
+        "客户投诉",
+        "存续服务"
       ],
       "benefits": [
         {
-          "title": "受托服务更有深度",
-          "description": "将客户目标、受益安排与资产资料组织为方案依据，支持家族、财富与其他资产服务信托的专业协作。"
+          "title": "受托依据更加清楚",
+          "description": "材料完整性、有效条款与核算差异持续对应，让专业人员直接面对需要确认的问题。"
         },
         {
-          "title": "项目运行更有连续性",
-          "description": "让有效合同、账户要素、履约事项与阶段资料保持关联，减少成立、存续和清算之间的重复交接。"
+          "title": "风险判断回到实质",
+          "description": "查询底稿保留来源和时点，重大风险与补查事项有据可核，让合规精力从复制整理回到专业判断。"
         },
         {
-          "title": "专业成果更可复用",
-          "description": "投资分析、运营核对与报告编制采用机构方法，经验沉淀为知识与技能，持续服务项目团队。"
+          "title": "客户事项持续负责",
+          "description": "同一诉求跨渠道和月份保持关联，责任、时限与未决事项清楚交接，减少客户重复解释。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让受托服务更深入",
-        "让项目运行更从容"
+        "把专业精力留给受托判断",
+        "把客户事项接成持续服务"
       ],
-      "background": "/images/industries/trust-architecture_V1.0.webp"
+      "background": "/images/industries/trust-architecture_V1.0.webp",
+      "illustration": "/images/solutions/trust/trust-team-value-zh_V9.2.webp"
     },
     "sources": [
-      "客户目标与受益安排",
-      "信托合同与补充协议",
-      "资产资料与运营台账",
-      "投资研究与披露要求"
+      "项目档案与信托契约",
+      "费用估值与分配约定",
+      "主体资料与尽调证据",
+      "跨渠道服务与客诉记录"
     ],
     "outputs": [
-      "资产服务方案准备",
-      "受托运营与合同核对",
-      "投资分析与风险跟踪",
-      "存续报告与披露材料"
+      "项目档案匹配与缺项重点",
+      "合同约定与核算核对意见",
+      "多源尽调依据与关键疑点",
+      "持续客诉事项与责任承接记录"
     ],
     "features": [
       {
-        "title": "围绕长期目标，协同构建资产服务方案",
-        "problem": "资产服务涉及多方主体、不同资产和长期目标，方案准备需要反复梳理客户诉求与受益安排。",
-        "body": "围绕服务目标，数字员工归集客户需求、资产资料与受益安排，协同梳理主体关系、服务事项和合同条件。专业团队可以在同一项目中比较方案、补充事实并修订材料，让方案沟通建立在完整背景上，持续接到后续受托服务。",
+        "problem": "项目关键材料缺失，催办多轮仍找不到依据，履职复核迟迟无法进入实质判断。",
         "outcomes": [
-          "客户与受益关系",
-          "资产服务方案",
-          "长期事项接续"
-        ]
+          "项目材料完整性可查",
+          "缺项与责任清楚对应",
+          "运营精力回到异常协调"
+        ],
+        "title": "让项目档案完整性贯穿信托存续期",
+        "body": "项目关键材料缺失，催办多轮仍找不到依据，履职复核迟迟无法进入实质判断。数字员工形成项目目录、应交实收对照与待补事项，让运营团队持续掌握材料完整性，把精力放在履职检查与异常协调，正式归档由档案岗位复核办理。"
       },
       {
-        "title": "贯通项目全周期，持续组织受托运营",
-        "problem": "成立、存续到清算不断产生新资料，账户、合同与阶段义务关联，运营需要持续核对和交接。",
-        "body": "将阶段材料归集、合同要素核对和存续事项整理交给数字员工，关联有效主文、附件与补充协议，核清费用、估值和分配条件。经办与核算人员围绕差异协作，项目目录、参数依据和履职记录随过程持续更新，减少重复找件与条款摘录。",
+        "problem": "补充协议已经变更费用或分配条件，核算口径仍沿用旧约定，差异反复退回专业确认。",
         "outcomes": [
-          "阶段资料归集",
-          "合同与参数核对",
-          "受托事项跟踪"
-        ]
+          "适用条款与条件清楚",
+          "核算差异有据确认",
+          "合同权益获得专业关注"
+        ],
+        "title": "让合同约定准确进入核算专业判断",
+        "body": "补充协议已经变更费用或分配条件，核算口径仍沿用旧约定，差异反复退回专业确认。数字员工交付条款依据与参数差异，让核算人员直接确认约定、条件和例外，减少跨文件核对，把各方权益落实到清楚的合同依据，参数生效由有权人员审核。"
       },
       {
-        "title": "连接投资研究与资产变化，持续跟踪风险",
-        "problem": "研究、尽调和风险信息分散，新的经营变化需要对应投资逻辑、历史判断与持续管理要求。",
-        "body": "围绕资产管理信托与具体投资任务，数字员工组织主体、财务和底层资产证据，协同研究分析与尽调报告编制。按计划归集经营和履约变化，关联原有假设与合同要求，为专业团队提供持续更新的投资分析、风险重点和沟通材料。",
+        "problem": "处罚、执行与异常查询分属不同来源，资料汇总之后仍需核实主体和证据。",
         "outcomes": [
-          "投资与尽调分析",
-          "底层资产跟踪",
-          "风险背景关联"
-        ]
+          "主体与来源保持对应",
+          "补查事项清楚可核",
+          "合规判断聚焦重大风险"
+        ],
+        "title": "让尽调判断建立在可核实的多源证据上",
+        "body": "处罚、执行与异常记录分布在不同来源，找齐结果仍难保证证据对应。数字员工形成带查询时点的底稿、证据目录和补查事项，让合规人员把精力放在主体一致性、记录含义和重大风险上，减少复制排版，专业结论由人员复核。"
       },
       {
-        "title": "披露接上真实履职，沟通带着完整依据",
-        "problem": "报告、通知和服务反馈各有时点与口径，事实来自运营、核算与业务记录，编制时需要重新汇集。",
-        "body": "按项目适用合同与披露要求，数字员工汇总期间运营、费用分配和重大事项，准备存续报告、受益人沟通及服务答复材料。人员意见与成果版本在协作中接续，将披露准备同受托履职记录连起来，让客户沟通更清楚、内部交接更顺畅。",
+        "problem": "同一客诉跨渠道和月份反映，重复统计、背景断层和责任脱节同时发生。",
         "outcomes": [
-          "存续与披露编制",
-          "受益人沟通准备",
-          "服务反馈协作"
-        ]
+          "跨渠道诉求保持关联",
+          "责任与时限清楚接续",
+          "客户事项聚焦实质解决"
+        ],
+        "title": "让跨渠道客诉成为持续负责的同一事项",
+        "body": "同一诉求跨渠道、跨月份反映，容易造成重复统计和责任脱节。数字员工形成关联去重台账、责任时限与处理依据，让团队持续看清客户关切和未决问题，减少重复解释与反复交接，把注意力用在实质处理；对外答复及报送由人员审核。"
       }
     ],
     "teamTitle": "面向受托业务的数字员工团队",
@@ -208,97 +209,98 @@ export const trustPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "连接项目、合同与系统，持续组织受托作业",
-      "body": "私有化部署 TeGo 数字员工协作平台，围绕项目、岗位与授权资料开展协作，连接获准模型、运营核算、档案及业务服务。将信托专业方法沉淀为知识与技能，统一管理任务、版本、审核和审计，让不同业务类型共享平台能力并保持各自作业规则。"
+      "title": "让受托判断有根基，让长期服务有延续",
+      "body": "让运营人员看清材料缺项，让核算人员把握合同条件，让合规人员追问重要证据，让客户事项持续有人接续。数字员工把专业准备留在组织里，支持信托团队从反复找件和解释，走向有依据的履职与连贯的受托服务。"
     }
   },
   "en": {
     "home": {
-      "title": "Deepen trust services. Keep projects running with confidence.",
-      "pain": "Trust businesses involve distinct agreements, accounts and beneficiary relationships. As projects move through establishment, administration and liquidation, operations, investment, compliance and disclosure teams must coordinate repeatedly.",
-      "value": "Digital employees organize professional work across asset services, asset management and trust administration, connecting agreements, project records and approved tools so proposals, trustee duties and disclosures remain continuous.",
+      "title": "Move fiduciary work from document burdens to well-founded judgment.",
+      "pain": "Project records, contractual terms, external due diligence and complaint material change separately. Repeated retrieval, extraction and handovers consume operations and compliance capacity, while important questions remain hidden among documents.",
+      "value": "Digital employees prepare reviewable material on missing records, contractual parameter differences, external evidence and matters raised across channels. Fiduciary teams can focus on contractual duties, material risks and client concerns, with responsibilities, evidence and institutional experience retained throughout the service relationship.",
       "scenarios": [
-        "Asset services",
-        "Trust administration",
-        "Agreement checks",
-        "Investment research",
-        "Risk monitoring",
-        "Information disclosure"
+        "Project records",
+        "Contract terms",
+        "Accounting parameters",
+        "External due diligence",
+        "Client complaints",
+        "Ongoing administration"
       ],
       "benefits": [
         {
-          "title": "Deliver deeper trust services",
-          "description": "Connect client goals, beneficiary arrangements and asset records to support professional collaboration across family, wealth and other asset-service trusts."
+          "title": "Clearer foundations for fiduciary work",
+          "description": "Record completeness, applicable clauses and accounting discrepancies stay connected so specialists can focus on the questions requiring confirmation."
         },
         {
-          "title": "Maintain project continuity",
-          "description": "Keep effective agreements, account details, obligations and stage records connected across establishment, administration and liquidation."
+          "title": "Risk judgment returns to substance",
+          "description": "Working papers retain sources and query dates, keeping material findings and follow-up inquiries available for verification and professional judgment."
         },
         {
-          "title": "Reuse specialist methods",
-          "description": "Apply institutional methods to investment analysis, operating checks and reporting, retaining useful knowledge and skills for project teams."
+          "title": "Client matters retain accountability",
+          "description": "The same concern stays linked across channels and reporting periods, with clear responsibilities, deadlines and unresolved questions for handover."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Deepen trust services",
-        "Keep projects running with confidence"
+        "Keep expertise focused on fiduciary judgment",
+        "Keep client matters connected through service"
       ],
-      "background": "/images/industries/trust-architecture_V1.0.webp"
+      "background": "/images/industries/trust-architecture_V1.0.webp",
+      "illustration": "/images/solutions/trust/trust-team-value-en_V9.2.webp"
     },
     "sources": [
-      "Client goals and beneficiary arrangements",
-      "Trust agreements and amendments",
-      "Asset records and operating ledgers",
-      "Investment research and disclosure requirements"
+      "Project records and trust agreements",
+      "Fee, valuation and distribution terms",
+      "Entity information and due-diligence evidence",
+      "Service and complaint records across channels"
     ],
     "outputs": [
-      "Asset service proposal preparation",
-      "Trust administration and agreement checks",
-      "Investment analysis and risk monitoring",
-      "Administration reports and disclosure materials"
+      "Project record matching and missing-item priorities",
+      "Contractual and accounting review findings",
+      "Due-diligence evidence and material questions",
+      "Connected complaint records and accountable follow-up"
     ],
     "features": [
       {
-        "title": "Build asset services around long-term goals and clear beneficiary arrangements",
-        "problem": "Family, wealth and other asset services involve multiple parties, assets and long-term objectives. Proposal preparation requires repeated work on needs and contractual arrangements.",
-        "body": "Bring client requirements, asset records and beneficiary arrangements together around service goals. Digital employees help organize parties, service obligations and agreement conditions. Specialists compare approaches, clarify facts and revise proposals within the same project, preserving context for subsequent trustee services.",
+        "problem": "Missing critical project records can hold up duty reviews even after repeated requests for supporting material.",
         "outcomes": [
-          "Client and beneficiary relationships",
-          "Asset service proposals",
-          "Long-term service continuity"
-        ]
+          "Project completeness available for review",
+          "Missing items linked to responsibilities",
+          "Operations focused on exceptions"
+        ],
+        "title": "Keep project records complete throughout the trust lifecycle",
+        "body": "Missing critical project records can hold up duty reviews even after repeated requests for supporting material. Digital employees prepare project indexes, expected-versus-received document comparisons and outstanding requirements. Operations teams can keep track of completeness and focus on fiduciary checks and exceptions. Records staff review and perform formal filing."
       },
       {
-        "title": "Keep the project lifecycle connected and trust administration organized",
-        "problem": "New records arrive throughout establishment, administration and liquidation. Accounts, agreements and stage obligations need ongoing checks and handovers.",
-        "body": "Delegate stage-record collection, agreement checks and ongoing action preparation to digital employees. Connect effective main agreements, attachments and amendments with fees, valuation and distribution conditions. Operating and accounting staff resolve differences while project directories, parameter evidence and duty records stay current.",
+        "problem": "An addendum may change fee or distribution conditions while accounting still follows the earlier terms, sending the same discrepancy back for confirmation.",
         "outcomes": [
-          "Stage-record organization",
-          "Agreement and parameter checks",
-          "Trustee obligation tracking"
-        ]
+          "Clear applicable terms and conditions",
+          "Evidence for accounting discrepancies",
+          "Professional attention to contractual interests"
+        ],
+        "title": "Base accounting judgment on the full contractual terms",
+        "body": "An addendum may change fee or distribution conditions while accounting still follows the earlier terms, sending the same discrepancy back for confirmation. Digital employees prepare clause references and parameter discrepancies so accounting specialists can focus on the terms, conditions and exceptions that affect the parties’ interests. Authorized personnel review parameter changes before they take effect."
       },
       {
-        "title": "Connect asset management with research and give risk changes their full context",
-        "problem": "Asset research, diligence and risk information sit across records. New operating changes must be assessed against investment logic, previous views and ongoing obligations.",
-        "body": "Organize entity, financial and underlying asset evidence around asset-management trusts and specific investment tasks. Support research and diligence report preparation, then collect operating and performance changes on a schedule, linking them with original assumptions and agreement requirements for continuing investment and risk analysis.",
+        "problem": "Penalty, enforcement and exception records come from separate sources, requiring further checks of entity identity and evidence.",
         "outcomes": [
-          "Investment and diligence analysis",
-          "Underlying asset monitoring",
-          "Contextual risk follow-up"
-        ]
+          "Entity identity matched to sources",
+          "Clear follow-up inquiries for verification",
+          "Compliance focused on material risks"
+        ],
+        "title": "Ground due-diligence judgment in verifiable evidence",
+        "body": "Enforcement, penalty and exception records sit across different sources; collecting them does not by itself establish a sound evidential basis. Digital employees prepare timestamped working papers, evidence indexes and follow-up inquiries. Compliance specialists can concentrate on entity identity, the meaning of findings and material risks, with less time spent copying and formatting. Staff review the professional conclusions."
       },
       {
-        "title": "Connect disclosures to trustee work and ground client communication in evidence",
-        "problem": "Administration reports, beneficiary notices and complaint responses have distinct timing and definitions. Their facts span operating, accounting and business records.",
-        "body": "Use applicable agreements and disclosure requirements to organize period operations, fee distributions and material events. Prepare administration reports, beneficiary communication and service responses, carrying staff comments and document versions forward so disclosure preparation remains connected to trustee duty records.",
+        "problem": "One complaint may recur across channels and periods, creating duplicate counts, lost context and gaps in accountability.",
         "outcomes": [
-          "Administration and disclosure drafting",
-          "Beneficiary communication preparation",
-          "Service feedback collaboration"
-        ]
+          "Concerns linked across channels",
+          "Responsibilities and deadlines retained",
+          "Attention on substantive resolution"
+        ],
+        "title": "Keep one complaint accountable across channels and time",
+        "body": "The same concern may recur across channels and reporting periods, causing duplicated counts and gaps in responsibility. Digital employees prepare linked, deduplicated records with accountable roles, deadlines and supporting material. Teams can keep the customer’s concern and unresolved questions in view, spending less time repeating explanations and handing over context. Staff review external responses and formal submissions."
       }
     ],
     "teamTitle": "A digital employee team for trust business",
@@ -419,8 +421,8 @@ export const trustPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Connect projects, agreements and systems for continuous trustee work",
-      "body": "Deploy TeGo Digital Employee Collaboration Platform privately, organizing collaboration by project, role and approved records. Connect authorized models, operations, accounting, archives and business services. Preserve trust methods as knowledge and skills, managing tasks, versions, reviews and audit records so different trust businesses share platform capabilities while retaining their own working rules."
+      "title": "Give fiduciary judgment a clear basis and long-term service continuity",
+      "body": "Help operations identify missing records, accounting specialists understand contractual conditions and compliance teams pursue material evidence. Keep client matters connected through handovers. Digital employees retain the professional preparation within the organization, helping trust teams move from repeated retrieval and explanation toward well-founded fiduciary work and a connected service relationship."
     }
   }
 };

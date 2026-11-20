@@ -3,92 +3,92 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const insurancePresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让保险专业服务，贯穿每一次客户接触",
-      "pain": "展业需要准确理解产品，核保理赔需要关联医学事实与合同依据；保单长期存续，产品版本与服务背景还要持续接续。",
-      "value": "数字员工承接产品解读、核保准备、理赔作业与保单服务，让渠道沟通有专业支持，让个案协作围绕同一背景持续推进。",
+      "title": "把专业精力留给复杂判断，让客户少些反复解释",
+      "pain": "告知资料、医疗单证与产品版本反复核对，疑难事项又需跨团队接续，专业人员与客户都在重复准备和解释中消耗时间。",
+      "value": "数字员工承接资料预检、责任依据整理与疑难服务准备，让核保、理赔和服务团队直达需要专业判断的问题。减少客户反复解释，把机构经验转为跨团队可用的服务能力。",
       "scenarios": [
-        "渠道展业",
-        "产品解读",
-        "核保支持",
-        "理赔作业",
-        "保全续期",
-        "运营分析"
+        "核保预检",
+        "复杂个案",
+        "理赔审核",
+        "保单服务",
+        "疑难协作",
+        "专业方法"
       ],
       "benefits": [
         {
-          "title": "专业知识走向一线",
-          "description": "将适用产品、条款与服务经验带入展业和客户沟通，让不同渠道共享可维护的专业方法。"
+          "title": "复杂个案获得更多专业关注",
+          "description": "减少材料翻阅与重复核对，让核保、理赔人员把精力放在事实矛盾、责任边界和关键风险上。"
         },
         {
-          "title": "个案处理连贯推进",
-          "description": "健康告知、医疗单证、责任条款与人员反馈保持关联，减少核保理赔的重复查找和往返补充。"
+          "title": "长期服务接得住前情",
+          "description": "适用依据、个案背景与未决问题随事项接续，减少客户重复解释和专家重复追问。"
         },
         {
-          "title": "长期服务持续接续",
-          "description": "连接在售与停售产品资料、保单事项和历史反馈，让保全、续期与疑难服务获得完整业务背景。"
+          "title": "机构经验成为共同资产",
+          "description": "经确认的产品知识与专业方法进入日常作业，让不同团队持续获得机构专业积累的支撑。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让保险专业服务",
-        "贯穿每一次客户接触"
+        "把专业精力留给复杂判断",
+        "让客户少些反复解释"
       ],
-      "background": "/images/industries/insurance-architecture_V1.1.webp"
+      "background": "/images/industries/insurance-architecture_V1.1.webp",
+      "illustration": "/images/solutions/insurance/insurance-team-value-zh_V9.1.webp"
     },
     "sources": [
-      "产品条款与渠道资料",
-      "投保申请与健康告知",
-      "医疗单证与费用凭证",
-      "保单记录与服务反馈"
+      "投保告知与健康资料",
+      "医疗单证与费用资料",
+      "产品条款与责任规则",
+      "保单服务记录与专业方法"
     ],
     "outputs": [
-      "渠道展业与产品解读材料",
-      "核保评估准备与问询事项",
-      "理赔事实与责任依据",
-      "保单服务与运营分析"
+      "核保准备与复杂个案要点",
+      "理赔事实与责任核对意见",
+      "保单服务事项与承接记录",
+      "机构方法对应的专业依据"
     ],
     "features": [
       {
-        "title": "产品知识走进渠道，专业支持直达一线",
-        "problem": "产品责任与服务规则随版本变化，渠道准备客户沟通时，需要从多份资料中确认适用内容。",
-        "body": "围绕客户需求与具体产品，数字员工检索适用条款、整理保障结构和办理要求，协同准备产品解读、培训课件与沟通材料。专业团队维护知识和表达口径，让成熟方法快速进入渠道工作，支持更准确、更连贯的客户服务。",
+        "problem": "健康告知与病历表述不一，补充材料后仍有关键矛盾，复杂个案迟迟无法进入实质评估。",
         "outcomes": [
-          "产品责任解读",
-          "渠道培训协作",
-          "客户沟通准备"
-        ]
-      },
-      {
-        "title": "核保准备更充分，专业评估更聚焦",
-        "problem": "健康告知、体检和财务资料表达各异，信息需要前后核对，补充问询还要对应机构材料规则。",
-        "body": "将告知整理、事实比对与问询准备交给数字员工，按机构规则关联投保信息、健康资料和材料触发条件。缺项、矛盾与必要补充汇入同一个案，核保人员可集中开展专业评估，并把回应与修订接续到后续作业。",
-        "outcomes": [
-          "告知事实核对",
-          "材料触发整理",
-          "核保问询准备"
+          "缺项与矛盾集中显现",
+          "核保问题带有依据",
+          "专家聚焦复杂评估"
         ],
-        "image": "/images/solutions/insurance/insurance-value-2_V2.1.webp"
+        "title": "把核保精力留给复杂个案与专业评估",
+        "body": "健康告知与病历表述不一，补充材料后仍有关键矛盾，复杂个案迟迟无法进入实质评估。数字员工交付预检底稿、补充问题与原文依据，让核保人员直达影响风险判断的缺项与矛盾，把精力留给复杂个案；问询及承保结论由有权人员确认。"
       },
       {
-        "title": "把理赔事实与合同责任，放在一起审阅",
-        "problem": "病程、费用与药品分布于不同单证，责任条件涉及合同和批单，理赔人员需要多次交叉核查。",
-        "body": "数字员工归类同案单证，建立事故或诊疗时间线，把费用事实与适用合同责任、除外条件和证明位置关联。专业人员围绕责任依据开展审核，新增材料和意见继续沿用当前案情，减少案卷重整与重复解释。",
+        "problem": "病历中的医疗事实与适用责任条件没有对应，补件、问询反复进行，理赔争议仍未得到实质澄清。",
         "outcomes": [
-          "案情与病程梳理",
-          "责任证据关联",
-          "费用与补件核查"
-        ]
+          "同案事实完整对应",
+          "责任边界清楚可查",
+          "专业审核聚焦争议"
+        ],
+        "title": "让理赔审核直达事实与责任争议",
+        "body": "病历中的医疗事实与适用责任条件没有对应，补件、问询反复进行，理赔争议仍未得到实质澄清。数字员工形成同案病程、费用与条款依据对照，让理赔人员直接核实事实矛盾和责任边界，减少底稿重编，把专业精力用于审慎核赔与客户解释，结论由人员复核。"
       },
       {
-        "title": "延续长期保单背景，接好每一次服务",
-        "problem": "在售与停售产品并存，保全、续期和疑难事项跨越多个岗位，历史背景常需在交接中反复重述。",
-        "body": "围绕当前保单匹配适用资料，整理变更影响、办理条件与未完事项，按计划准备续期服务和运营汇总。数字员工将个案背景、专家意见和成果版本组织到项目协作中，专业经验沉淀为岗位知识与技能，持续支持长期客户经营。",
+        "problem": "长期保单混用新旧产品条款，同一问题前后答复不一，客户反复追问适用依据。",
         "outcomes": [
-          "保全变更协作",
-          "续期服务准备",
-          "疑难事项接续"
-        ]
+          "适用依据随单接续",
+          "个案背景清楚交接",
+          "减少反复说明事项"
+        ],
+        "title": "让长期保单服务少些往返与反复解释",
+        "body": "长期保单混用新旧产品条款，同一问题前后答复不一，客户反复追问适用依据。数字员工带着本单依据、办理准备材料和未决问题接续服务，让一线答复更贴合保单，专家接手即可看清个案背景；对客表达与正式办理仍由负责人员确认。"
+      },
+      {
+        "problem": "经验和资料版本不同让熟悉问题反复上交，专家支持成为服务瓶颈。",
+        "outcomes": [
+          "机构方法持续复用",
+          "不同团队共享积累",
+          "专家聚焦疑难判断"
+        ],
+        "title": "把机构专业方法变成服务团队的共同能力",
+        "body": "相同问题因人员经验和资料版本不同而反复求证，专家支持容易成为瓶颈。数字员工承载经确认的产品知识、核对方法与既有答复，形成可接续的服务材料，让不同团队共享机构专业积累，把专家时间留给真正的疑难判断。"
       }
     ],
     "teamTitle": "服务保险全流程的数字员工团队",
@@ -209,98 +209,98 @@ export const insurancePresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "连接产品、个案与团队，融入机构运行体系",
-      "body": "私有化部署 TeGo 数字员工协作平台，按渠道、核保、理赔与服务岗位配置知识、技能及工具授权。连接机构获准模型与业务接口，统一维护产品版本、能力发布和审计记录，让专业方法与长期服务经验持续复用。"
+      "title": "把专业积累留在机构，把信任延续到长期服务",
+      "body": "减少重复准备对专业时间的占用，让个案背景与未决问题在服务接续中保持完整。把核保、理赔和保单服务中的成熟方法转为机构共同能力，让专家关注疑难，让一线有据答复，让客户获得连贯的服务体验。"
     }
   },
   "en": {
     "home": {
-      "title": "Bring insurance expertise to every client interaction",
-      "pain": "Distribution needs accurate product knowledge, underwriting and claims need medical facts connected to contract evidence, and long-lived policies require continuity across product versions and service history.",
-      "value": "Digital employees support product interpretation, underwriting preparation, claims work and policy services, giving channels specialist support and keeping case collaboration connected to the same business context.",
+      "title": "More room for difficult judgments. Less repeated explanation for policyholders.",
+      "pain": "Health disclosures, medical documents and product versions require repeated checks. Complex matters pass between teams, consuming professional time and asking policyholders to repeat the same context.",
+      "value": "Digital employees take on document checks, coverage evidence and specialist handover preparation, bringing questions that need professional judgment into focus. Teams gain more room for difficult cases, policyholders repeat less context and institutional expertise becomes available across teams.",
       "scenarios": [
-        "Distribution support",
-        "Product interpretation",
-        "Underwriting support",
-        "Claims work",
-        "Policy servicing and renewal",
-        "Operating analysis"
+        "Underwriting preparation",
+        "Complex cases",
+        "Claims review",
+        "Policy servicing",
+        "Specialist handovers",
+        "Institutional expertise"
       ],
       "benefits": [
         {
-          "title": "Bring expertise to the frontline",
-          "description": "Make current products, policy terms and service experience part of everyday channel conversations through maintainable professional methods."
+          "title": "More expert attention for complex cases",
+          "description": "Reduce repeated document checks so underwriting and claims specialists can focus on conflicting facts, coverage boundaries and material risks."
         },
         {
-          "title": "Keep casework connected",
-          "description": "Link disclosures, medical records, coverage terms and staff responses to reduce repeated searches and back-and-forth requests."
+          "title": "Service retains the case context",
+          "description": "Applicable references, case background and unresolved questions stay with the matter, reducing repeated explanations and specialist inquiries."
         },
         {
-          "title": "Maintain long-term service continuity",
-          "description": "Connect current and discontinued products, policy actions and historical feedback for informed servicing and renewals."
+          "title": "Institutional expertise becomes shared capability",
+          "description": "Confirmed product knowledge and professional methods support daily work across teams, making institutional experience more widely available."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Bring insurance expertise",
-        "To every client interaction"
+        "Keep expertise for difficult judgments",
+        "Ask policyholders to repeat less context"
       ],
-      "background": "/images/industries/insurance-architecture_V1.1.webp"
+      "background": "/images/industries/insurance-architecture_V1.1.webp",
+      "illustration": "/images/solutions/insurance/insurance-team-value-en_V9.1.webp"
     },
     "sources": [
-      "Product terms and channel materials",
-      "Applications and health disclosures",
-      "Medical records and expense evidence",
-      "Policy history and service feedback"
+      "Disclosures and health information",
+      "Medical records and expense documents",
+      "Product terms and coverage rules",
+      "Policy service records and professional methods"
     ],
     "outputs": [
-      "Channel and product communication materials",
-      "Underwriting preparation and enquiries",
-      "Claims facts and coverage evidence",
-      "Policy service and operating analysis"
+      "Underwriting preparation and complex-case priorities",
+      "Claims fact and coverage review findings",
+      "Connected policy service records",
+      "Evidence grounded in institutional methods"
     ],
     "features": [
       {
-        "title": "Bring product knowledge to the frontline for more informed channel conversations",
-        "problem": "Coverage, application conditions and service rules change across versions, leaving channel teams to confirm applicable details across multiple documents.",
-        "body": "Retrieve the right policy terms, explain coverage structures and organize processing requirements around a client need and product. Digital employees help prepare product explanations, training and communication materials, while specialists maintain the knowledge and approved language used across channels.",
+        "problem": "Health disclosures and medical records can conflict, leaving material facts unresolved even after more documents arrive.",
         "outcomes": [
-          "Coverage interpretation",
-          "Channel training collaboration",
-          "Client conversation preparation"
-        ]
-      },
-      {
-        "title": "Prepare underwriting cases thoroughly so specialists can focus their assessment",
-        "problem": "Health disclosures, examination results and financial records use different language. Facts need cross-checks and follow-up questions must reflect institutional rules.",
-        "body": "Delegate disclosure organization, factual comparison and enquiry preparation to digital employees. Connect application records, health information and required-document conditions, keeping gaps, contradictions and responses within the same case so underwriters can concentrate on specialist assessment.",
-        "outcomes": [
-          "Disclosure fact checks",
-          "Required-record preparation",
-          "Underwriting enquiries"
+          "Gaps and contradictions in view",
+          "Evidence behind underwriting questions",
+          "Expert focus on complex assessments"
         ],
-        "image": "/images/solutions/insurance/insurance-value-2_V2.1.webp"
+        "title": "Keep underwriting expertise focused on complex cases and risk assessment",
+        "body": "Health disclosures and medical records can conflict, leaving material facts unresolved even after more documents arrive. Digital employees prepare review papers, follow-up questions and source references, bringing gaps and contradictions directly to the underwriter’s attention. Specialists can focus on complex cases, while authorized personnel confirm inquiries and underwriting decisions."
       },
       {
-        "title": "Connect claims facts with contracts for smoother case review",
-        "problem": "Medical histories, expenses and medicines sit across documents. Coverage conditions depend on the applicable agreement and endorsements, requiring repeated cross-checks.",
-        "body": "Organize case records and establish incident or treatment timelines, then link expense facts with coverage, exclusions and supporting passages. Claims specialists review the relevant evidence while new records and comments retain the current case context, reducing repeated file assembly and explanations.",
+        "problem": "Medical facts remain disconnected from the applicable coverage conditions, so repeated requests for documents can leave the real dispute unresolved.",
         "outcomes": [
-          "Incident and treatment timelines",
-          "Coverage evidence mapping",
-          "Expense and missing-record checks"
-        ]
+          "Facts connected within the case",
+          "Clear references for coverage boundaries",
+          "Professional attention on disputed matters"
+        ],
+        "title": "Bring claims review straight to disputed facts and coverage",
+        "body": "Medical facts remain disconnected from the applicable coverage conditions, so repeated requests for documents can leave the real dispute unresolved. Digital employees prepare a coordinated view of the medical history, expenses and relevant clauses. Reviewers can concentrate on disputed facts and coverage boundaries, giving more attention to careful claims judgment and clear explanations to policyholders. Staff review the conclusions."
       },
       {
-        "title": "Carry long-term policy services forward and retain specialist experience",
-        "problem": "Current and discontinued products coexist. Policy changes, renewals and complex matters cross several teams, making historical context difficult to carry forward.",
-        "body": "Match each policy with applicable records and prepare change impacts, processing conditions and open actions. Use scheduled work for renewal preparation and operating summaries. Keep case context, expert responses and document versions in shared projects, then preserve useful methods as role knowledge and skills.",
+        "problem": "Mixed versions of policy terms can produce inconsistent answers, leaving policyholders to ask repeatedly which conditions apply.",
         "outcomes": [
-          "Policy change collaboration",
-          "Renewal preparation",
-          "Complex service handovers"
-        ]
+          "Applicable references remain with the policy",
+          "Case context carries across handovers",
+          "Less repeated explanation"
+        ],
+        "title": "Reduce repeated explanations throughout the policy relationship",
+        "body": "Mixed versions of policy terms can produce inconsistent answers, leaving policyholders to ask repeatedly which conditions apply. Digital employees keep the applicable policy references, preparation documents and unresolved questions together. Frontline teams can give answers that fit the policy, while specialists receive the case context without starting over. Responsible staff confirm customer communications and formal processing."
+      },
+      {
+        "problem": "Differences in experience and document versions send familiar questions back to specialists and create a service bottleneck.",
+        "outcomes": [
+          "Institutional methods remain reusable",
+          "Experience shared across teams",
+          "Specialists focus on difficult judgments"
+        ],
+        "title": "Make institutional expertise a shared strength across service teams",
+        "body": "Differences in experience and document versions can send familiar questions back to specialists, creating a bottleneck. Digital employees apply confirmed product knowledge, review methods and established responses in service materials that teams can continue using. More colleagues benefit from institutional expertise, while specialists reserve their attention for questions that require deeper judgment."
       }
     ],
     "teamTitle": "A digital employee team across insurance services",
@@ -421,8 +421,8 @@ export const insurancePresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Connect products, cases and teams within institutional operations",
-      "body": "Deploy TeGo Digital Employee Collaboration Platform privately and configure knowledge, skills and tool permissions for distribution, underwriting, claims and service roles. Connect approved models and business interfaces, while managing product versions, capability releases and audit records so professional methods and long-term service experience remain reusable."
+      "title": "Keep expertise in the institution. Sustain continuity for policyholders.",
+      "body": "Reduce the professional time consumed by repeated preparation and preserve case background and unresolved questions across handovers. Make established underwriting, claims and policy-service methods a shared institutional strength, so specialists focus on difficult judgments, frontline teams respond with evidence and policyholders receive a connected service experience."
     }
   }
 };

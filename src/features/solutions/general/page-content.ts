@@ -3,90 +3,91 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const generalPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让企业经验成为能力，让团队协作交付价值",
-      "pain": "客户沟通、产品知识和项目资料散落在不同入口，同类方案反复重做，经营汇总依赖人工催收；个人经验难变为团队共同的生产力。",
-      "value": "围绕客户经营、企业知识、方案交付与经营分析组建数字岗位团队，把专业方法接到具体任务，让销售动作有上下文、项目协作有成果、日常管理有持续支持。",
+      "title": "让团队少做重复准备，把精力用在关键业务",
+      "pain": "合同要反复核对，员工事项来回补材料，业务方案不断重起炉灶，经营汇总又忙着抄数；专业人员的时间被可重复的准备工作占用。",
+      "value": "TeGo 数字员工协作平台承接合同核对、事项准备、方案编制与经营资料分析，让团队带着清楚依据讨论合作条件、客户诉求和经营变化，把企业已有经验变成下一项工作的起点。",
       "scenarios": [
-        "客户经营",
-        "企业知识",
-        "方案文书",
-        "项目协作",
-        "经营分析",
-        "共享服务"
+        "采购合同",
+        "员工事项",
+        "客户方案",
+        "项目材料",
+        "经营简报",
+        "制度答复"
       ],
       "benefits": [
         {
-          "title": "把经验转为共享能力",
-          "description": "将有效知识、岗位方法和历史成果沉淀为企业资产，让团队从已有经验出发。"
+          "title": "合作讨论更快进入实质",
+          "description": "条款、金额与履约差异有清楚依据，业务与法务能够把时间用于关键责任和商业例外。"
         },
         {
-          "title": "把沟通接到业务交付",
-          "description": "关联客户、项目和工作话题，接续需求、方案、反馈与行动，减少反复交接。"
+          "title": "团队从已有经验出发",
+          "description": "有效知识、模板与专业反馈进入新方案，团队集中理解客户需求、完善论证和交付内容。"
         },
         {
-          "title": "把例行工作持续推进",
-          "description": "按计划归集经营信息和事项进展，将周期报告与变化反馈送到对应工作场景。"
+          "title": "经营讨论少追数字多看变化",
+          "description": "来源、期间、单位与计算相互对应，让财务和业务共同核实差异，管理层围绕经营变化展开讨论。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让企业经验成为团队能力",
-        "让数字员工融入业务协作"
+        "让团队少做重复准备",
+        "把精力用在关键业务"
       ],
-      "background": "/images/solutions/general/general-hero_V2.0.webp"
+      "background": "/images/solutions/general/general-hero_V2.0.webp",
+      "illustration": "/images/solutions/general/general-team-value-zh_V9.1.webp"
     },
     "sources": [
-      "产品知识、制度与岗位经验",
-      "客户沟通、商机与服务记录",
-      "项目目标、方案模板与交付文件",
-      "经营报表、指标口径与工作计划"
+      "合作合同与业务约定",
+      "员工事项与企业制度",
+      "项目经验与客户材料",
+      "经营资料与指标口径"
     ],
     "outputs": [
-      "客户经营与商机方案",
-      "企业知识与岗位方法",
-      "项目方案与交付成果",
-      "经营分析与周期报告"
+      "合同关键差异与核对依据",
+      "员工事项材料与承接记录",
+      "结合企业经验的业务方案",
+      "经营变化与关键问题简报"
     ],
     "features": [
       {
-        "title": "让客户沟通接续为商机与销售行动",
-        "problem": "客户信息和沟通分散在聊天、会议与业务系统中，团队反复补背景，需求与后续销售动作容易脱节。",
-        "body": "结合获准的客户资料与CRM能力，数字员工梳理客户需求、商机阶段和历史沟通，准备客户分析、交流方案与跟进工作。将会议共识、服务反馈和下一步行动带回同一业务上下文，让团队交接更连贯、客户经营更有重点。",
+        "title": "让合同核对聚焦合作中的关键差异",
+        "problem": "合同不同版本的金额与履约约定相互冲突，审阅意见又未落到当前文本，关键责任迟迟无法确认。",
+        "body": "合同不同版本的金额与履约约定相互冲突，审阅意见又未落到当前文本，关键责任迟迟无法确认。TeGo 数字员工协作平台交付条款对应、金额计算和审阅底稿，让业务与法务更快聚焦合作实质、履约责任与需确认的商业例外。",
         "outcomes": [
-          "客户需求分析",
-          "商机跟进方案",
-          "客户沟通材料"
+          "看清合作条款差异",
+          "核实金额与履约约定",
+          "让专业意见直达商业例外"
         ]
       },
       {
-        "title": "让企业知识转化为可复用的岗位能力",
-        "problem": "制度、产品资料与经验散落在各处，新人反复问、老员工重复找，同一业务在不同团队做法不一。",
-        "body": "将有效制度、产品知识与历史成果整理为可检索的企业知识，把专业步骤、业务规则和交付格式沉淀为岗位技能。数字员工按任务调用知识与方法，并在工作中积累可复用经验，让专家做法进入团队日常，持续维护企业自己的能力资产。",
+        "title": "让员工事项少些往返与重复准备",
+        "problem": "员工反复问制度、补背景、找表单，经办团队不断解释同样要求，真正需要专业服务的例外被挤占。",
+        "body": "差旅等员工事项要符合现行制度与具体条件，反复解释背景和补齐材料消耗双方时间。数字员工形成适用要求、申请草稿与经办交接内容，让员工带着清楚的准备进入办理，让服务团队集中处理例外与需确认的问题。",
         "outcomes": [
-          "企业知识服务",
-          "岗位方法资产",
-          "经验复用成果"
+          "让申请准备符合本次条件",
+          "减少背景解释与材料返工",
+          "让经办精力留给例外"
         ]
       },
       {
-        "title": "让方案文书与项目协作围绕交付展开",
-        "problem": "方案从找资料到编制汇报需要多轮协作，内容口径、修改意见与文件版本分散，影响交付节奏。",
-        "body": "围绕项目目标连接产品资料、历史方案和专业岗位，组织需求分析、内容编制与业务答复。数字员工交付可编辑的Word、Excel和PPT，团队在同一项目中补充背景、审阅修改并接续版本，让方案内容和协作过程共同服务交付。",
+        "title": "让团队经验进入每一份业务方案",
+        "problem": "同类方案反复从空白开始，旧口径和分散意见进入新稿，团队时间被重建内容消耗。",
+        "body": "客户方案反复从头编写，旧版口径与分散意见又容易进入新稿。数字员工结合有效产品资料、企业模板和已确认成果，交付带依据的方案与修订稿，让团队把精力用于客户诉求、专业论证与交付质量，减少经验重复消耗。",
         "outcomes": [
-          "业务方案与报告",
-          "演示汇报材料",
-          "项目交付文件"
+          "从企业已有经验出发",
+          "围绕客户诉求组织论证",
+          "让专业反馈进入交付成果"
         ]
       },
       {
-        "title": "让经营分析与周期工作主动跟上业务",
-        "problem": "经营数据需要跨表整理，周期汇报和事项跟进依赖人工提醒，管理层难以及时看到变化原因。",
-        "body": "结合授权报表、指标定义与工作计划，数字员工组织经营分析、周期简报和重点事项跟进，关联数据变化与业务背景。通过定时任务持续归集资料、更新成果并投递到指定会话，让例行工作有节奏地推进，管理讨论聚焦真正需要关注的变化。",
+        "title": "让经营简报回答变化背后的问题",
+        "problem": "跨报表抄数、换算与核口径占用准备时间，管理层拿到简报后仍需追问数字依据和变化原因。",
+        "body": "经营资料来自多份报表，期间、单位与指标口径不一，讨论前还要反复抄数核算。数字员工交付来源明确的指标表、计算附表与经营简报，突出异常和待核实差异，让财务与业务聚焦变化原因，为管理层研判提供扎实基础。",
         "outcomes": [
-          "经营分析报告",
-          "周期工作简报",
-          "重点事项进展"
+          "让指标回到统一依据",
+          "明确需要核实的经营差异",
+          "把管理讨论转向业务变化"
         ]
       }
     ],
@@ -208,96 +209,97 @@ export const generalPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "让数字岗位融入企业，让方法与成果属于团队",
-      "body": "按企业资料和IT条件选择部署方式，连接已有模型、知识与业务工具，在保留现有系统的基础上组织工作。以岗位职责配置使用范围，以项目接续任务和成果，通过知识版本、技能发布、授权与运行管理，让企业能力能够积累、复用并持续演进。"
+      "title": "企业方法持续复用，业务责任始终清楚",
+      "body": "在企业自有或批准的私有环境部署，连接已有知识、模型与获准业务工具，按岗位管理资料和使用权限。让专业方法跨团队复用、工作成果持续修订，同时保持经办、专业审阅与正式业务处理的职责清楚。"
     }
   },
   "en": {
     "home": {
-      "title": "Turn company experience into shared team capability",
-      "pain": "Client conversations, product knowledge and project records sit in separate places. Teams recreate similar proposals and chase recurring reports, while individual experience is difficult to reuse.",
-      "value": "Build digital roles around client operations, company knowledge, project delivery and performance analysis. Connect professional methods with daily tasks so sales retains context, collaboration produces usable work and management receives continued support.",
+      "title": "Spend less time preparing. Focus on the business that matters.",
+      "pain": "Contracts require repeated checks, employee requests cycle through missing materials, proposals start from scratch, and operating summaries demand manual copying. Repeatable preparation consumes professional time.",
+      "value": "TeGo 数字员工协作平台 undertakes contract checks, request preparation, proposal drafting and operating analysis. Teams can discuss commercial terms, client needs and business changes with a clear basis, making established company experience the starting point for the next piece of work.",
       "scenarios": [
-        "Client operations",
-        "Company knowledge",
-        "Proposals & reports",
-        "Project collaboration",
-        "Business analysis",
-        "Shared services"
+        "Procurement and contracts",
+        "Employee requests",
+        "Client proposals",
+        "Project materials",
+        "Operating briefs",
+        "Policy answers"
       ],
       "benefits": [
         {
-          "title": "Make experience reusable",
-          "description": "Build current knowledge, role methods and past work into company assets that teams can use in new tasks."
+          "title": "Get to substantive commercial discussions sooner",
+          "description": "Clear evidence for clause, amount and performance differences lets business and legal teams spend their time on key responsibilities and commercial exceptions."
         },
         {
-          "title": "Connect conversations with delivery",
-          "description": "Carry requirements, proposals, feedback and actions across clients, projects and working conversations."
+          "title": "Build on the company’s experience",
+          "description": "Carry current knowledge, templates and specialist feedback into new proposals so teams can concentrate on client needs, reasoning and delivery."
         },
         {
-          "title": "Keep recurring work moving",
-          "description": "Collect business information and progress on a schedule, delivering reports and changes to the relevant work context."
+          "title": "Discuss business change with less number tracing",
+          "description": "Keep sources, periods, units and calculations aligned so finance and business teams can verify differences and management can discuss what they mean."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Make company experience reusable",
-        "Bring digital roles into team work"
+        "Spend less time preparing",
+        "Focus on the business that matters"
       ],
-      "background": "/images/solutions/general/general-hero_V2.0.webp"
+      "background": "/images/solutions/general/general-hero_V2.0.webp",
+      "illustration": "/images/solutions/general/general-team-value-en_V9.1.webp"
     },
     "sources": [
-      "Product knowledge, policies and role experience",
-      "Client conversations, opportunities and service records",
-      "Project objectives, templates and deliverables",
-      "Business reports, metric definitions and work plans"
+      "Business agreements and commitments",
+      "Employee requests and company policies",
+      "Project experience and client materials",
+      "Operating information and metric definitions"
     ],
     "outputs": [
-      "Client and opportunity plans",
-      "Company knowledge and role methods",
-      "Project proposals and deliverables",
-      "Business analysis and recurring reports"
+      "Material contract differences and review evidence",
+      "Employee request materials and connected records",
+      "Business proposals informed by company experience",
+      "Briefs on operating changes and key questions"
     ],
     "features": [
       {
-        "title": "Carry client conversations into sales action",
-        "problem": "Client information is spread across chats, meetings and systems. Teams repeatedly rebuild context while requirements drift away from follow-up work.",
-        "body": "Use authorized client records and CRM capabilities to organize needs, opportunity stages and previous conversations. Digital employees prepare client analysis, meeting proposals and follow-up work. Decisions, service feedback and next actions stay connected with the same business context, improving continuity across the team.",
+        "title": "Focus contract checks on the differences that matter",
+        "problem": "Conflicting amounts and obligations across contract versions, coupled with review comments disconnected from the current text, leave key responsibilities unresolved.",
+        "body": "Conflicting amounts and obligations across contract versions, coupled with review comments disconnected from the current text, leave key responsibilities unresolved. TeGo 数字员工协作平台 prepares clause comparisons, amount calculations and review working papers. Business and legal teams can focus sooner on the substance of the agreement, performance obligations and commercial exceptions requiring confirmation.",
         "outcomes": [
-          "Client needs analysis",
-          "Opportunity follow-up plan",
-          "Client communication material"
+          "See material differences in terms",
+          "Verify amounts and performance obligations",
+          "Bring professional review to commercial exceptions"
         ]
       },
       {
-        "title": "Turn company knowledge into reusable role capability",
-        "problem": "Policies, product records and experience sit in separate places. New colleagues repeat questions while experienced staff repeat searches and methods differ across teams.",
-        "body": "Make current policies, product knowledge and past work searchable. Build professional steps, business rules and delivery formats into role skills. Digital employees use this knowledge and these methods in tasks, retaining reusable experience so established expertise becomes part of everyday team work.",
+        "title": "Reduce repeated preparation for employee requests",
+        "problem": "Employees repeatedly ask about policy, explain the background and find forms. Service teams repeat the same requirements, leaving less time for exceptions that need specialist attention.",
+        "body": "Travel and other employee requests must fit current policies and the circumstances of the case. Repeated explanations and missing materials consume time on both sides. Digital employees prepare applicable requirements, draft applications and handover content. Employees reach the service team better prepared, while specialists focus on exceptions and questions needing confirmation.",
         "outcomes": [
-          "Company knowledge service",
-          "Reusable role methods",
-          "Applied team experience"
+          "Prepare for the circumstances of the request",
+          "Reduce repeated explanations and rework",
+          "Reserve specialist time for exceptions"
         ]
       },
       {
-        "title": "Organize proposals and collaboration around delivery",
-        "problem": "Proposal preparation spans research, writing and presentations. Content definitions, feedback and file versions scatter across several rounds of collaboration.",
-        "body": "Connect product records, previous proposals and specialist roles around project objectives. Digital employees help analyze requirements, prepare content and produce editable Word, Excel and PowerPoint files. Teams add context, review revisions and carry versions forward in one project, keeping both content and collaboration focused on delivery.",
+        "title": "Bring company experience into every business proposal",
+        "problem": "Similar proposals repeatedly start from a blank page. Outdated wording and scattered comments enter new drafts, while teams spend their time rebuilding content.",
+        "body": "Client proposals are repeatedly written from scratch, while outdated wording and scattered feedback enter new drafts. Digital employees use current product materials, company templates and confirmed previous work to prepare supported proposals and revisions. Teams can focus on client needs, professional reasoning and delivery quality, building on experience rather than recreating it.",
         "outcomes": [
-          "Business proposals and reports",
-          "Management presentations",
-          "Project deliverables"
+          "Start from established company experience",
+          "Build the case around client needs",
+          "Carry specialist feedback into the deliverable"
         ]
       },
       {
-        "title": "Keep analysis and recurring work close to the business",
-        "problem": "Business reporting requires repeated consolidation across files. Routine updates depend on reminders, leaving management without a timely view of changing conditions.",
-        "body": "Use authorized reports, metric definitions and work plans to organize business analysis, recurring briefs and priority follow-up. Digital employees connect changes with business context. Scheduled tasks collect records, update deliverables and send results to designated conversations, keeping routine work moving and management discussions focused.",
+        "title": "Make operating briefs useful for judging business change",
+        "problem": "Copying figures, converting units and checking definitions dominate preparation. After receiving a brief, management still has to trace the numbers and ask what changed.",
+        "body": "Reports use different periods, units and metric definitions, requiring repeated copying and recalculation before discussion. Digital employees prepare traceable metric tables, supporting calculations and operating briefs that identify exceptions and differences requiring verification. Finance and business teams can focus on the reasons for change and give management a sound basis for judgment.",
         "outcomes": [
-          "Business analysis",
-          "Recurring management briefs",
-          "Priority progress updates"
+          "Ground metrics in consistent evidence",
+          "Identify business differences to verify",
+          "Turn management discussion toward business change"
         ]
       }
     ],
@@ -419,8 +421,8 @@ export const generalPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Bring digital roles into your organization and retain team knowledge",
-      "body": "Choose deployment around your information and IT requirements. Connect existing models, knowledge and business tools while keeping established systems in place. Role-based access, project context, knowledge versions, skill releases and operational management help your team accumulate, reuse and develop its own working capabilities."
+      "title": "Reuse company methods with clear business responsibilities",
+      "body": "Deploy in a company-owned or approved private environment. Connect existing knowledge, models and authorized business tools, with access to records and capabilities managed by role. Reuse professional methods across teams and continue revising work products while keeping preparation, specialist review and formal business handling responsibilities clear."
     }
   }
 };

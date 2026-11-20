@@ -3,90 +3,91 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const stateOwnedPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "把集团经营目标，接续到每个单位与项目",
-      "pain": "集团预算、司库资金与项目执行分属不同系统和单位，经营变化难以穿透；采购履约、现场风险和监督整改跨条线推进，管理要求难落到同一责任链。",
-      "value": "围绕穿透式监管与集团经营管理，以数字岗位连接预算资金、采购履约、工程现场和监督整改，让总部掌握变化、条线接续工作、基层复用方法。",
+      "title": "让重大风险及时显现，让集团管控落在实处",
+      "pain": "采购审查耗在重复比对，整改回复难证明问题已解决，集团汇总又先忙着对口径；统一要求落到不同单位时，责任与实际情况容易失真。",
+      "value": "TeGo 数字员工协作平台承接采购合同核对、整改证据对应和经营资料分析，把疑点与依据交到专业岗位。集团能够从收材料、看状态，转向审查实质、证据充分性与经营变化的判断，成熟方法也能在单位间复用。",
       "scenarios": [
-        "穿透式监管",
-        "预算经营",
-        "司库资金",
-        "采购招投标",
-        "项目履约",
-        "EHS与审计"
+        "采购审查",
+        "合同核对",
+        "整改复查",
+        "财务核对",
+        "经营分析",
+        "集团协作"
       ],
       "benefits": [
         {
-          "title": "经营管控看得更深",
-          "description": "关联集团、板块与项目的经营和资金信息，把指标偏差接到原因、影响与协调行动。"
+          "title": "审查直达关键责任",
+          "description": "将制度、条款、金额和履约约定的差异对应原文，让采购与法务围绕适用条件与商业例外形成意见。"
         },
         {
-          "title": "价值链协作接得更稳",
-          "description": "从采购招投标到合同、项目和现场，串联目标、节点与交付，减少条线间的信息断点。"
+          "title": "监督从回复走向证据",
+          "description": "让每项整改措施接回原问题与实际佐证，监督人员能够区分形式反馈和需要继续核实的实质缺口。"
         },
         {
-          "title": "责任与方法持续落地",
-          "description": "以监督整改贯通责任反馈，以岗位知识和技能复用集团方法，保留单位差异与授权边界。"
+          "title": "管理从汇总走向研判",
+          "description": "让单位数据、口径与责任保持清楚，管理层直接讨论经营差异和共同障碍，共用方法又不抹平单位实际。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让集团管控穿透业务",
-        "让经营责任接续到一线"
+        "让重大风险及时显现",
+        "让集团管控落在实处"
       ],
-      "background": "/images/industries/state-owned-architecture_V1.3.webp"
+      "background": "/images/industries/state-owned-architecture_V1.3.webp",
+      "illustration": "/images/solutions/state-owned/state-owned-team-value-zh_V9.1.webp"
     },
     "sources": [
-      "集团战略、经营预算与司库资料",
-      "采购招投标与供应链记录",
-      "工程合同、项目进度与EHS资料",
-      "制度标准、监督审计与整改反馈"
+      "采购合同与集团制度",
+      "整改措施与实际佐证",
+      "所属企业经营资料",
+      "单位任务与责任记录"
     ],
     "outputs": [
-      "集团经营与资金分析",
-      "采购履约协作成果",
-      "项目执行与EHS报告",
-      "监督整改责任报告"
+      "采购合同差异与审查依据",
+      "整改措施与证据核对意见",
+      "集团经营口径与差异分析",
+      "责任事项与进展研判材料"
     ],
     "features": [
       {
-        "title": "让集团经营与司库资金形成穿透视野",
-        "problem": "总部、板块与所属企业各有经营和资金口径，预算偏差、项目投入与回款变化难在同一视野分析。",
-        "body": "连接获准的经营、预算与司库资料，按集团、板块、单位和项目关联收入、成本、资金与资产信息。数字员工组织偏差分析、资金专题和经营报告，将变化接到业务背景与协调事项，为穿透式监管和资源配置提供持续的工作支撑。",
+        "title": "让采购合同审查直达实质差异",
+        "problem": "送审文件的资格条件、金额与履约节点和适用范本对不上，缺项与商业例外混在一起，采购与法务反复退回确认。",
+        "body": "送审文件的资格条件、金额与履约节点和适用范本对不上，缺项与商业例外混在一起，采购与法务反复退回确认。TeGo 数字员工协作平台交付条款差异、金额计算和履约约定核对底稿，让采购与法务聚焦适用条件、商业例外和重要责任。",
         "outcomes": [
-          "预算经营分析",
-          "司库资金专题",
-          "集团经营专题"
+          "辨明适用条件差异",
+          "核实金额与履约责任",
+          "聚焦需要专业判断的例外"
         ]
       },
       {
-        "title": "让采购招投标衔接合同与供应链履约",
-        "problem": "采购需求、投标响应与合同执行分属不同团队，前端约定难接到交付节点，供应变化影响协同。",
-        "body": "围绕采购方审查与投标方响应分别组织专业任务，连接需求、评审要求、证明与交易文件。合同形成后延续条款、交付节点、变更和供应履约信息，生成采购分析、响应方案与履约成果，让价值链协作贯穿签约前后。",
+        "title": "让整改反馈经得起证据核对",
+        "problem": "收到回复、材料齐备与整改认定容易混为一谈，监督人员难以判断措施和佐证是否真正回应原问题。",
+        "body": "所属单位提交了整改回复，并不意味着原问题已有充分证据支撑。数字员工将问题、措施与附件逐一对应，交付缺项、不一致和原文依据，让监督审计人员聚焦证据有效性与遗留问题，清晰区分反馈、材料齐备与复查认定。",
         "outcomes": [
-          "采购与投标方案",
-          "合同履约分析",
-          "供应协同成果"
+          "判断措施是否回应原问题",
+          "找出缺证与前后矛盾",
+          "让复查围绕实质展开"
         ]
       },
       {
-        "title": "让项目履约与EHS管理接续到现场",
-        "problem": "工程进度、成本变更与现场安环信息散落在多份记录，管理层难以把项目偏差与现场问题关联。",
-        "body": "以项目目标关联合同节点、进度反馈、成本变化与现场记录，按职责整理工程协作和EHS事项。数字员工持续归集偏差、隐患与整改反馈，形成履约分析、现场专题和协调任务，让项目团队掌握执行变化、推动问题接续处理。",
+        "title": "让集团经营讨论建立在同一口径",
+        "problem": "所属单位报表的期间、单位与定义不同，汇总后还要反复追数换算，经营会上难以直接讨论业务。",
+        "body": "所属单位报表的期间、单位和指标定义不一，经营讨论容易耗在基础数字核对。数字员工交付口径差异、计算附表与经营报告，将费用异常和单位差异对应到来源，让财务聚焦业务实质，管理层围绕经营变化开展研判。",
         "outcomes": [
-          "项目履约报告",
-          "成本变更分析",
-          "EHS协同成果"
+          "分清口径差异与业务变化",
+          "核实费用与单位异常",
+          "把经营讨论转向原因与应对"
         ]
       },
       {
-        "title": "让监督审计与整改形成责任闭环",
-        "problem": "监督发现、整改措施与单位反馈分散管理，重复报送负担较重，问题成因与后续改进难以沉淀。",
-        "body": "将监督发现与责任单位、整改要求和反馈材料关联，按问题归集过程、证据与后续事项，支持审计复查和专项汇报。把反复出现的问题转为制度与岗位方法的更新依据，让整改工作既能追溯责任，也能服务后续经营改进。",
+        "title": "让集团要求对应单位实际进展",
+        "problem": "统一要求和单位实际各有差异，简单汇总容易混淆责任、遗漏问题，成熟组织方法又被反复重做。",
+        "body": "集团专项要求落到不同单位，适用制度、责任归属与进展容易在汇总中失真。数字员工保留各单位事实和口径，形成问题清单、任务台账与汇报材料，让归口部门看清共同障碍与个别差异，把成熟方法复用到持续协作中。",
         "outcomes": [
-          "监督问题分析",
-          "整改进展报告",
-          "制度改进依据"
+          "保留单位责任与实际情况",
+          "辨明共同障碍与个别差异",
+          "让成熟方法持续复用"
         ]
       }
     ],
@@ -208,96 +209,97 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "集团统筹共用能力，所属企业按职责使用",
-      "body": "支持集团机房或专有云部署，衔接已有模型、知识和业务系统。将共用制度、岗位模板与专业方法沉淀为可复用资产，分别配置单位资料、工具身份与使用范围；通过版本发布、任务记录和审计诊断，让规模化应用与集团治理共同推进。"
+      "title": "集团共用方法，单位保留边界",
+      "body": "可在集团自有资源或批准的专有云部署，复用已有模型与业务服务。集团共用成熟方法，各单位分别维护制度、资料、使用关系与交付要求，让专业能力规模化复用，同时保持责任归属、资料授权与审核审计清楚。"
     }
   },
   "en": {
     "home": {
-      "title": "Connect group objectives with every business and project",
-      "pain": "Budgets, treasury and project execution sit across systems and subsidiaries. Procurement, delivery, site risks and remediation cross functions, making it difficult to maintain a connected view of performance and responsibility.",
-      "value": "Digital roles connect group planning, treasury, procurement, project execution and audit remediation. Give headquarters a deeper view of changes, connect functions around delivery and help operating teams reuse established methods.",
+      "title": "See material risks sooner. Make group oversight count.",
+      "pain": "Procurement review repeats comparisons, corrective replies do not establish resolution, and consolidated reports require more reconciliation. Common requirements can also obscure individual subsidiaries’ responsibilities and circumstances.",
+      "value": "TeGo 数字员工协作平台 undertakes procurement and contract checks, remediation evidence comparison and operating analysis, bringing issues and their basis to specialist roles. The group can move from collecting documents and status updates to judging substantive obligations, evidence sufficiency and business change, while reusing proven methods across subsidiaries.",
       "scenarios": [
-        "Group oversight",
-        "Budget performance",
-        "Treasury",
-        "Procurement & bids",
-        "Project delivery",
-        "EHS & audit"
+        "Procurement review",
+        "Contract checks",
+        "Remediation review",
+        "Financial verification",
+        "Operating analysis",
+        "Group collaboration"
       ],
       "benefits": [
         {
-          "title": "A deeper view of performance",
-          "description": "Connect group, business-unit and project information, linking variances to causes, implications and coordinated action."
+          "title": "Review the responsibilities that matter",
+          "description": "Connect policy, clause, amount and performance differences to their source wording so procurement and legal teams can judge applicability and commercial exceptions."
         },
         {
-          "title": "Continuity across the value chain",
-          "description": "Carry objectives, milestones and deliverables from procurement through contracts, projects and site work."
+          "title": "Move oversight from replies to evidence",
+          "description": "Tie corrective measures back to the original finding and actual support, distinguishing formal responses from substantive gaps that still need verification."
         },
         {
-          "title": "Accountability and reusable methods",
-          "description": "Connect remediation with responsible teams and reuse group methods while retaining local rules and access boundaries."
+          "title": "Move management from compilation to judgment",
+          "description": "Keep subsidiary figures, definitions and accountability clear so management can discuss operating differences and shared obstacles without losing local context."
         }
       ]
     },
     "hero": {
       "lines": [
-        "See deeper into group performance",
-        "Carry responsibility to operations"
+        "See material risks sooner",
+        "Make group oversight count"
       ],
-      "background": "/images/industries/state-owned-architecture_V1.3.webp"
+      "background": "/images/industries/state-owned-architecture_V1.3.webp",
+      "illustration": "/images/solutions/state-owned/state-owned-team-value-en_V9.1.webp"
     },
     "sources": [
-      "Group strategy, budgets and treasury records",
-      "Procurement, bidding and supply-chain records",
-      "Project contracts, progress and EHS information",
-      "Policies, audit findings and remediation feedback"
+      "Procurement contracts and group policies",
+      "Corrective measures and supporting evidence",
+      "Subsidiary operating information",
+      "Unit tasks and accountability records"
     ],
     "outputs": [
-      "Group performance and treasury analysis",
-      "Procurement and delivery work",
-      "Project execution and EHS report",
-      "Audit remediation report"
+      "Contract differences and review evidence",
+      "Findings on corrective measures and evidence",
+      "Comparable group definitions and operating analysis",
+      "Responsibility and progress review materials"
     ],
     "features": [
       {
-        "title": "Bring group performance and treasury into one view",
-        "problem": "Headquarters and subsidiaries use different performance and funding definitions. Budget variances, project spending and collections are difficult to analyze together.",
-        "body": "Connect authorized operating, budget and treasury records across the group, business units and projects. Digital employees organize revenue, cost, cash and asset information into variance analysis, treasury topics and management reports. Changes remain linked to business context and coordination needs, supporting deeper oversight and resource decisions.",
+        "title": "Focus procurement and contract review on material differences",
+        "problem": "Qualification requirements, amounts and performance milestones in submitted documents can differ from the applicable template. Missing terms and commercial exceptions become mixed together, sending the file repeatedly between procurement and legal teams for clarification.",
+        "body": "Qualification requirements, amounts and performance milestones in submitted documents can differ from the applicable template. Missing terms and commercial exceptions become mixed together, sending the file repeatedly between procurement and legal teams for clarification. TeGo 数字员工协作平台 prepares clause differences, amount calculations and checks of performance obligations. Procurement and legal teams can focus on applicability, commercial exceptions and significant responsibilities.",
         "outcomes": [
-          "Budget performance analysis",
-          "Treasury analysis",
-          "Group operating reviews"
+          "Distinguish differences in applicability",
+          "Verify amounts and performance obligations",
+          "Focus specialist judgment on exceptions"
         ]
       },
       {
-        "title": "Carry procurement and bids through to delivery",
-        "problem": "Requirements, bid responses and contract execution belong to different teams. Early commitments are hard to carry into delivery milestones and supplier coordination.",
-        "body": "Organize buyer-side procurement review and supplier-side bid responses as distinct professional tasks. Connect requirements, evaluation criteria, evidence and transaction documents, then carry contract terms, milestones, changes and supplier performance forward. Prepare procurement analysis, bid proposals and delivery work across the contracting lifecycle.",
+        "title": "Test corrective responses against the evidence",
+        "problem": "Receiving a reply, having complete materials and confirming remediation can be confused. Oversight staff need to know whether measures and evidence answer the original finding.",
+        "body": "A subsidiary’s response does not establish that the original finding has sufficient supporting evidence. Digital employees connect findings, measures and attachments, identifying gaps, inconsistencies and source passages. Oversight and audit teams can focus on evidence quality and unresolved issues while keeping response receipt, document completeness and review conclusions distinct.",
         "outcomes": [
-          "Procurement and bid proposals",
-          "Contract delivery analysis",
-          "Supplier coordination"
+          "Judge whether measures address the finding",
+          "Find missing and contradictory evidence",
+          "Focus follow-up review on substance"
         ]
       },
       {
-        "title": "Connect project execution with site and EHS work",
-        "problem": "Progress, cost changes and site safety records sit in separate documents, making project variances difficult to relate to conditions on the ground.",
-        "body": "Connect contract milestones, progress updates, cost movements and site records around project objectives. Digital employees organize delivery and EHS work by responsibility, tracking variances, hazards and remediation feedback. Prepare project analysis, site reports and coordination tasks so teams can respond to execution changes.",
+        "title": "Start group management discussions from comparable figures",
+        "problem": "Subsidiary reports use different periods, units and definitions. Consolidation is followed by more tracing and conversion before the group can discuss business performance.",
+        "body": "Different reporting periods, units and metric definitions can consume management discussions in basic reconciliation. Digital employees prepare definition differences, supporting calculations and operating reports, linking expense exceptions and subsidiary differences to their sources. Finance can examine business substance, while management evaluates the changes in performance.",
         "outcomes": [
-          "Project delivery report",
-          "Cost change analysis",
-          "EHS coordination"
+          "Separate definition differences from business change",
+          "Examine expense and subsidiary exceptions",
+          "Discuss causes and responses"
         ]
       },
       {
-        "title": "Turn audit remediation into accountable improvement",
-        "problem": "Findings, corrective measures and subsidiary feedback are managed separately. Repeated reporting adds work while recurring causes are hard to retain.",
-        "body": "Connect each finding with its responsible unit, required action and supporting feedback. Organize progress, evidence and follow-up work for audit reviews and management reporting. Recurring issues inform policy and role-method updates, helping remediation support both accountability and ongoing operational improvement.",
+        "title": "Connect group requirements to each subsidiary’s actual progress",
+        "problem": "Common requirements meet different local conditions. Simple consolidation can blur responsibility and omit issues while established coordination methods are repeatedly rebuilt.",
+        "body": "When group initiatives reach different subsidiaries, applicable policies, ownership and progress can be distorted in consolidation. Digital employees preserve each unit’s facts and definitions in issue lists, task records and reports. Coordinating teams can distinguish shared obstacles from local differences and reuse established methods through continuing collaboration.",
         "outcomes": [
-          "Audit issue analysis",
-          "Remediation progress report",
-          "Policy improvement evidence"
+          "Preserve local facts and accountability",
+          "Distinguish shared obstacles from local issues",
+          "Reuse established methods over time"
         ]
       }
     ],
@@ -419,8 +421,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Share group capabilities with role-based local use",
-      "body": "Deploy in group infrastructure or a private cloud and connect existing models, knowledge and business systems. Reuse common policies, role templates and professional methods while configuring subsidiary records, tool identities and access separately. Release management, task records and audit diagnostics support expansion within group governance."
+      "title": "Share group methods. Preserve subsidiary boundaries.",
+      "body": "Deploy on group-owned resources or an approved private cloud, reusing existing models and business services. Share established methods across the group while each subsidiary maintains its policies, records, access relationships and delivery requirements. Scale professional support with clear accountability, authorization, approval and audit."
     }
   }
 };

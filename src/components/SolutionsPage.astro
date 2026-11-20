@@ -8,31 +8,16 @@ import '../styles/solutions-overview.css';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
-const pillars = zh ? [
-  ['面向经营', '从客户经营、风险管理到项目履约，让数字员工参与影响业务结果的关键工作。'],
-  ['深入岗位', '将行业知识、岗位方法与企业系统组合起来，把专业经验转成团队可复用的工作能力。'],
-  ['融入组织', '沿用企业权限、审批与协作规则，让业务成果在既有组织体系中流转、复核和交付。'],
-] : [
-  ['Business priorities', 'Put digital employees to work on client relationships, risk management and project delivery.'],
-  ['Professional capability', 'Combine industry knowledge, specialist methods and enterprise systems into repeatable work.'],
-  ['Organizational fit', 'Deliver work through your established permissions, approvals and collaboration practices.'],
-];
 ---
 <div class="solutions-overview">
   <section class="solutions-overview-hero" aria-labelledby="solutions-title">
     <img class="solutions-overview-landscape" src="/images/solutions/general/general-hero_V2.0.webp" alt="" width="1200" height="800" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
     <div class="container">
       <h1 id="solutions-title">{zh ? <>把行业经验<br/>转化为企业生产力</> : <>Industry expertise.<br/>Enterprise productivity.</>}</h1>
-      <p>{zh ? '面向银行、保险、证券、政务、央国企、信托与企业通用场景，让数字员工融入核心业务链，连接专业作业、客户服务与经营管理。' : 'Digital employees for banking, insurance, securities, government, state-owned enterprises, trust services and general business—connected to the work that moves your organization forward.'}</p>
+      <p>{zh ? '关键数据对不上、重要依据找不到、同类问题反复返工，消耗着企业的专业力量。TeGo 数字员工协作平台承接核验、整理与分析准备，让团队更早看清疑点，把专业判断用于风险、客户与经营。' : 'Conflicting figures, missing evidence and repeated rework consume professional attention. TeGo 数字员工协作平台 undertakes verification, preparation and analysis so teams can see the issues sooner and focus their judgment on risk, customers and business decisions.'}</p>
       <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
     </div>
   </section>
   <section class="solutions-overview-industries"><div class="container"><SolutionExplorer locale={locale}/></div></section>
-  <section class="solutions-overview-principles" aria-labelledby="solutions-value-title">
-    <div class="container">
-      <h2 id="solutions-value-title">{zh ? '让数字员工进入业务，而不止停留在对话' : 'Digital employees that participate in your business'}</h2>
-      <div class="solutions-value-columns">{pillars.map(([title, body]) => <article><h3>{title}</h3><p>{body}</p></article>)}</div>
-    </div>
-  </section>
   <CallToAction locale={locale}/>
 </div>

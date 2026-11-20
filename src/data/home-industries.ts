@@ -16,23 +16,20 @@ export interface HomeIndustry {
   benefits: { title: string; description: string }[];
 }
 
-export const homeIndustries: Record<Locale, Record<string, HomeIndustry>> = {
-  zh: {
-    'banking': bankingPresentation.zh.home,
-    'insurance': insurancePresentation.zh.home,
-    'securities': securitiesPresentation.zh.home,
-    'government': governmentPresentation.zh.home,
-    'state-owned': stateOwnedPresentation.zh.home,
-    'trust': trustPresentation.zh.home,
-    'general': generalPresentation.zh.home,
-  },
-  en: {
-    'banking': bankingPresentation.en.home,
-    'insurance': insurancePresentation.en.home,
-    'securities': securitiesPresentation.en.home,
-    'government': governmentPresentation.en.home,
-    'state-owned': stateOwnedPresentation.en.home,
-    'trust': trustPresentation.en.home,
-    'general': generalPresentation.en.home,
-  },
+const presentations = {
+  banking: bankingPresentation,
+  insurance: insurancePresentation,
+  securities: securitiesPresentation,
+  government: governmentPresentation,
+  'state-owned': stateOwnedPresentation,
+  trust: trustPresentation,
+  general: generalPresentation,
 };
+
+export const homeIndustries = Object.fromEntries((['zh', 'en'] as Locale[]).map(locale => [locale,
+  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => [slug, presentation[locale].home])),
+])) as Record<Locale, Record<string, HomeIndustry>>;
+
+export const industrySolutionImages = Object.fromEntries((['zh', 'en'] as Locale[]).map(locale => [locale,
+  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => [slug, presentation[locale].hero.illustration])),
+])) as Record<Locale, Record<string, string>>;

@@ -24,7 +24,7 @@ function loadData(relativePath) {
   return module.exports;
 }
 
-const { homeIndustries } = loadData('src/data/home-industries.ts');
+const { homeIndustries, industrySolutionImages } = loadData('src/data/home-industries.ts');
 const industries = [
   ['banking', 'bankingPresentation', 0],
   ['insurance', 'insurancePresentation', 1],
@@ -50,15 +50,31 @@ test('solution discovery retains the supported industries, general business and 
   }
 });
 
-test('seven solution pages share the value-led composition and industry-specific artwork', () => {
+test('seven solution pages present one value illustration with four value propositions', () => {
   const sharedPage = readFileSync(path.join(root, 'src/features/solutions/shared/IndustrySolutionPage.astro'), 'utf8');
-  assert.doesNotMatch(sharedPage, /IndustryWorkbench|IndustryValueVisual|SolutionVisual/);
-  assert.match(sharedPage, /\/images\/solutions\/\$\{slug\}\/\$\{slug\}-value-\$\{index \+ 1\}_V2\.0\.webp/);
+  assert.match(sharedPage, /src=\{copy\.hero\.illustration\}/, 'The story must use the industry value illustration');
+  assert.equal([...sharedPage.matchAll(/<figure\b/g)].length, 1, 'The value story uses one illustration');
+  assert.match(sharedPage, /copy\.features\.map[\s\S]*?<article\b/, 'Each value proposition must remain an article');
+  assert.doesNotMatch(sharedPage, /feature\.problem|EmployeeCarousel|feature\.image/, 'The value story must not restore process details or a per-feature gallery');
   for (const [slug] of industries) {
     const route = readFileSync(path.join(root, `src/features/solutions/${slug}/Page.astro`), 'utf8');
     assert.match(route, /import IndustrySolutionPage from '\.\.\/shared\/IndustrySolutionPage\.astro'/);
     assert.match(route, new RegExp(`slug="${slug}"`));
-    assert.doesNotMatch(route, /SolutionVisual|IndustryPage|Visual=\{/);
+  }
+});
+
+test('homepage and overview use the same localized value illustration as each industry story', () => {
+  const explorer = readFileSync(path.join(root, 'src/components/SolutionExplorer.astro'), 'utf8');
+  const imageExpression = explorer.match(/const solutionImage = \(slug: string\) => ([^;]+);/);
+  assert.ok(imageExpression, 'Industry discovery needs a value-illustration resolver');
+  assert.match(explorer, /src=\{solutionImage\(industry\.slug\)\}/);
+  for (const locale of ['zh', 'en']) {
+    const imageFor = runInNewContext(`(slug) => ${imageExpression[1]}`, { locale, industrySolutionImages });
+    for (const [slug, exportName] of industries) {
+      const copy = loadData(`src/features/solutions/${slug}/page-content.ts`)[exportName][locale];
+      assert.equal(imageFor(slug), copy.hero.illustration, `${locale}/${slug} discovery and detail must share the value illustration`);
+      assert.match(copy.hero.illustration, new RegExp(`^/images/solutions/${slug}/${slug}-team-value-${locale}_V9\\.[0-9]+\\.webp$`));
+    }
   }
 });
 
@@ -94,12 +110,9 @@ for (const [slug, exportName, order] of industries) {
       assert.equal(copy.sources.length, 4);
       assert.equal(copy.hero.lines.length, 2);
       for (const feature of copy.features) {
-        assert.ok(feature.title.trim() && feature.problem.trim() && feature.body.trim());
-        assert.equal(feature.outcomes.length, 3, `${slug} needs three business outcomes for each feature`);
-        assert.ok(feature.outcomes.every(outcome => outcome.trim().length > 0));
+        assert.ok(feature.title.trim().length > 0, `${locale}/${slug} needs a value headline`);
+        assert.ok(feature.body.trim().length > 0, `${locale}/${slug} needs a business benefit`);
       }
-      assert.equal('workbench' in copy, false);
-      assert.equal('visual' in copy, false);
       assert.equal(metadata.copy[locale].tasks.length, copy.employees.length);
     }
   });
@@ -119,14 +132,11 @@ for (const [slug, exportName, order] of industries) {
     }
   });
 
-  test(`${slug}: both languages reference complete hero, role and business-value artwork`, () => {
+  test(`${slug}: both languages reference an available value illustration and compatibility assets`, () => {
     for (const locale of ['zh', 'en']) {
       const copy = presentation[locale];
-      const assets = [
-        copy.hero.background,
-        ...copy.employees.map(employee => employee.avatar),
-        ...Array.from({ length: 4 }, (_, index) => copy.features[index].image ?? `/images/solutions/${slug}/${slug}-value-${index + 1}_V2.0.webp`),
-      ];
+      assert.match(copy.hero.illustration, new RegExp(`^/images/solutions/${slug}/${slug}-team-value-${locale}_V9\\.[0-9]+\\.webp$`));
+      const assets = [copy.hero.background, copy.hero.illustration, ...copy.employees.map(employee => employee.avatar)];
       for (const asset of assets) {
         assert.ok(asset.startsWith('/images/'));
         assert.ok(existsSync(path.join(root, 'public', asset)), `Missing asset: ${asset}`);

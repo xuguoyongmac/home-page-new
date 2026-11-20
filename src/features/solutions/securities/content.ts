@@ -12,12 +12,12 @@ export default createIndustryModule({
   "navigation": {
     "zh": {
       "name": "证券",
-      "description": "投资研究、财富服务、分支经营",
+      "description": "研究准备、投行尽调、文件核验",
       "icon": "chart"
     },
     "en": {
       "name": "Securities",
-      "description": "Investment research, wealth services and branch management",
+      "description": "Research preparation, Investment banking due diligence, Document verification",
       "icon": "chart"
     }
   }

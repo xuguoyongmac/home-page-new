@@ -3,91 +3,92 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const securitiesPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让研究形成洞察，让经营接上行动",
-      "pain": "研究资料持续更新，专业观点需要反复验证；客户经营、分支机构分析与合规审阅跨越不同条线，成果难以顺畅接续。",
-      "value": "数字员工协同研究、财富、投行、运营与合规团队，连接业务证据和专业方法，让研究洞察进入客户服务，让经营分析形成具体行动。",
+      "title": "把专业精力还给研究判断与执业质量",
+      "pain": "多源查数、跨版本复核和跨系统核对消耗专业时间，项目证据、交易差异与持续履职事项又需要多人长期接续。",
+      "value": "数字员工承担研究准备、专业核验与履职材料组织，把差异、依据和未决事项送到专业人员面前。让研究聚焦关键假设，投行聚焦核查充分性，交易与运营聚焦重要异常，机构方法持续进入团队作业。",
       "scenarios": [
-        "投资研究",
-        "财富服务",
+        "研究准备",
         "投行尽调",
-        "合规审阅",
-        "运营核对",
-        "营业部经营"
+        "文件核验",
+        "问询复核",
+        "交易运营",
+        "债券履职"
       ],
       "benefits": [
         {
-          "title": "研究洞察更扎实",
-          "description": "围绕研究假设组织公告、财报与行业证据，保留反证和验证过程，让分析师专注观点形成。"
+          "title": "研究时间回到关键假设",
+          "description": "带来源、同口径的研究准备支撑产业理解和风险解释，让观点更有依据。"
         },
         {
-          "title": "客户服务更有准备",
-          "description": "将产品研究、客群变化与服务记录结合，准备沟通议题和路演材料，支持专业人员开展适当的服务。"
+          "title": "执业复核回到重大事项",
+          "description": "勾稽差异、问询依据和文件版本保持对应，让项目组与质控聚焦核查充分性和披露质量。"
         },
         {
-          "title": "经营协作更连贯",
-          "description": "从营业部经营归因到合规审阅与运营跟进，让专业成果、责任事项和修订版本持续流转。"
+          "title": "运营关注回到业务异常",
+          "description": "成交、确认与结算差异形成明确核对事项，持续履职中的问题与依据保持接续。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让研究形成洞察",
-        "让经营接上行动"
+        "把专业精力还给关键判断",
+        "让执业依据贯穿业务全程"
       ],
-      "background": "/images/industries/securities-architecture_V1.1.webp"
+      "background": "/images/industries/securities-architecture_V1.1.webp",
+      "illustration": "/images/solutions/securities/securities-team-value-zh_V9.1.webp"
     },
     "sources": [
-      "公司公告与财务报告",
-      "行业资料与研究方法",
-      "客户资产与服务记录",
-      "业务材料与合规规则"
+      "企业资料与产业信息",
+      "项目文件与核查底稿",
+      "交易结算与运营记录",
+      "存续期履职与专业规则"
     ],
     "outputs": [
-      "公司与行业研究报告",
-      "客户服务与产品解读材料",
-      "合规审阅与业务修订稿",
-      "分支机构经营分析"
+      "研究准备与关键假设依据",
+      "项目差异与重点复核事项",
+      "交易运营差异分析",
+      "存续期履职简报与证据记录"
     ],
     "features": [
       {
-        "title": "持续验证研究假设，让专业观点有据可循",
-        "problem": "公告、财报与产业信息不断更新，研究假设需要跨来源验证，指标、观点与报告版本同步变化。",
-        "body": "围绕公司、行业和专题任务，数字员工跟踪事件与经营指标，组织支持证据、反证和待验证假设，协同完成财务分析及报告编制。分析师可沿原文追查论据、调整假设，并让新信息持续进入研究过程，沉淀可复用的研究方法。",
+        "problem": "关键观点缺少可回查出处，数据时点又与论证不符，研究人员难以回应对结论依据的专业追问。",
         "outcomes": [
-          "事件与指标跟踪",
-          "研究假设验证",
-          "研究报告协作"
-        ]
+          "数据来源与时点对应",
+          "关键假设获得关注",
+          "观点依据清楚可查"
+        ],
+        "title": "让研究精力回到产业与关键假设",
+        "body": "关键观点缺少可回查出处，数据时点又与论证不符，研究人员难以回应对结论依据的专业追问。数字员工形成带来源的数据包、变化明细与研究要点，让研究人员聚焦产业逻辑、关键假设与重要风险，向客户提供更有依据的观点，专业结论由研究团队复核。"
       },
       {
-        "title": "从客户需求出发，准备有价值的服务沟通",
-        "problem": "客户资产、产品持有与历史沟通分散，投顾准备产品解读和服务回访时，需要重新梳理背景。",
-        "body": "结合客户分层、持仓变化和服务记录，数字员工准备需求分析、产品要点与市场沟通材料。研究成果可以接入路演和客户会话，帮助投顾围绕实际需求开展服务；适当性判断和投资建议由专业岗位把关，服务过程保留连续背景。",
+        "problem": "申报数值已经修改，引用仍停在旧版；关键复核意见没有进入终稿，项目反复补核。",
         "outcomes": [
-          "客户需求分析",
-          "产品与市场解读",
-          "服务回访协作"
-        ]
+          "重大差异有据核实",
+          "核查证据对应披露",
+          "专业复核聚焦实质"
+        ],
+        "title": "让项目复核聚焦重大差异与证据",
+        "body": "申报数值已经修改，引用仍停在旧版；关键复核意见没有进入终稿，项目反复补核。数字员工交付勾稽差异、证据索引和问询回复准备稿，让项目组与质控把注意力放在核查充分性、重大差异和披露依据上，重要结论仍由有权人员复核。"
       },
       {
-        "title": "把合规审阅放进作业，接续专业成果",
-        "problem": "研报、投行与对客材料各有审阅要求，问题和修订分散，团队需要反复核对意见处理结果。",
-        "body": "把适用规则、来源依据与当前稿件放进同一项目，数字员工定位表述、数据和材料差异，整理审阅重点并关联原文。专业人员提出意见后，修订版本与处理反馈持续接续，支持研究发布、投行尽调及业务协作按既有流程推进。",
+        "problem": "不同交易与结算口径跨表核对，异常重点和未决事项容易被材料淹没。",
         "outcomes": [
-          "研报与材料审阅",
-          "投行尽调准备",
-          "审阅意见接续"
-        ]
+          "业务差异集中可查",
+          "未决事项清楚交接",
+          "处置判断由有权岗位负责"
+        ],
+        "title": "让交易与运营盯住真实业务偏差",
+        "body": "委托成交、场外确认与期货结算各有口径，跨表核对容易淹没异常重点。数字员工按对应业务规则形成成交核对、条款差异与交割准备材料，让交易、风控和运营人员集中处理真实偏差与未决事项，业务处置仍由有权岗位确认。"
       },
       {
-        "title": "看清营业部增长来源，找准经营行动",
-        "problem": "资产与交易受资金、行情和产品结构共同影响，分支机构还要把分析转成客群与渠道行动。",
-        "body": "按机构、客群、渠道和产品拆解经营变化，区分资金净流入、市值波动及结构调整，关联重点客户与服务反馈。数字员工持续准备经营简报和运营核对材料，让负责人看清变化原因，组织客户维护、团队协作与后续跟进。",
+        "problem": "债券事项和报告材料持续更新，逐轮找件容易造成履职问题和依据脱节。",
         "outcomes": [
-          "资产变化归因",
-          "重点客群识别",
-          "经营行动协作"
-        ]
+          "未决事项持续可见",
+          "重大事项保留依据",
+          "履职责任持续接续"
+        ],
+        "title": "让持续履职保持业务与证据连续",
+        "body": "债券条款节点、发行人变化和履职材料持续更新，团队容易在逐轮找件中丢失未决事项。数字员工形成履职台账、重大事项依据和报告准备稿，让受托管理团队持续关注偿债风险与责任落实，人员复核影响并按职责履行披露。"
       }
     ],
     "teamTitle": "连接证券专业条线的数字员工团队",
@@ -208,97 +209,98 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "保留专业分工，连接全业务协作",
-      "body": "在机构私有环境运行 TeGo 数字员工协作平台，连接获准研究数据、知识与业务工具。按研究、投行、财富与运营条线组织信息访问和工具权限，维护研究方法与技能版本，贯通任务、成果、审核与审计记录，支持跨团队受控协作。"
+      "title": "让专业人才的判断力成为机构竞争优势",
+      "body": "减少查数、复算和找件消耗，把专业注意力投入产业逻辑、重大披露、交易异常与持续履职。让机构方法与业务证据在团队中接续，形成更有依据的研究服务、更扎实的执业质量与更清楚的运营责任。"
     }
   },
   "en": {
     "home": {
-      "title": "Turn research into insight and business analysis into action",
-      "pain": "Research inputs keep changing and professional views need repeated validation. Wealth services, branch analysis and compliance review span different teams, making work difficult to carry forward.",
-      "value": "Digital employees collaborate with research, wealth, investment banking, operations and compliance teams, connecting evidence and professional methods so insights reach clients and business analysis leads to action.",
+      "title": "Give professional time back to research judgment and engagement quality.",
+      "pain": "Searching data sources, checking document versions and reconciling systems consume professional time. Project evidence, trading exceptions and continuing obligations must also remain connected across teams.",
+      "value": "Digital employees take on research preparation, specialist checks and oversight documentation, bringing discrepancies, evidence and unresolved matters to professionals. Researchers focus on key assumptions, investment banking teams on verification quality, and trading and operations teams on material exceptions, with institutional methods carried into everyday work.",
       "scenarios": [
-        "Investment research",
-        "Wealth services",
-        "Investment banking diligence",
-        "Compliance review",
-        "Operations checks",
-        "Branch management"
+        "Research preparation",
+        "Investment banking due diligence",
+        "Document verification",
+        "Inquiry review",
+        "Trading operations",
+        "Bond trustee oversight"
       ],
       "benefits": [
         {
-          "title": "Build stronger research insight",
-          "description": "Organize disclosures, financials and industry evidence around hypotheses, retaining counterevidence and validation so analysts can focus on their views."
+          "title": "Research time returns to key assumptions",
+          "description": "Preparation with clear sources and consistent conventions supports industry understanding, risk explanations and better-supported views."
         },
         {
-          "title": "Prepare more relevant client services",
-          "description": "Combine product research, segment changes and service history to prepare informed conversations and roadshows for professional staff."
+          "title": "Engagement reviews focus on material matters",
+          "description": "Reconciliation findings, inquiry evidence and document versions stay connected so project and quality teams can focus on verification and disclosure quality."
         },
         {
-          "title": "Keep business collaboration connected",
-          "description": "Carry branch findings, compliance reviews, operating actions and document revisions across specialist teams."
+          "title": "Operations focus on business exceptions",
+          "description": "Trade, confirmation and settlement discrepancies become clear review matters, while continuing obligations retain their evidence and unresolved questions."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Turn research into insight",
-        "Turn analysis into action"
+        "Give expertise back to critical judgment",
+        "Keep evidence connected throughout the business"
       ],
-      "background": "/images/industries/securities-architecture_V1.1.webp"
+      "background": "/images/industries/securities-architecture_V1.1.webp",
+      "illustration": "/images/solutions/securities/securities-team-value-en_V9.1.webp"
     },
     "sources": [
-      "Company disclosures and financial reports",
-      "Industry records and research methods",
-      "Client assets and service history",
-      "Business materials and compliance rules"
+      "Company and industry information",
+      "Project files and working papers",
+      "Trading, settlement and operating records",
+      "Ongoing obligations and professional rules"
     ],
     "outputs": [
-      "Company and sector research",
-      "Client service and product materials",
-      "Compliance reviews and revised documents",
-      "Branch operating analysis"
+      "Research preparation and evidence for key assumptions",
+      "Material project differences and review priorities",
+      "Trading and operating exception analysis",
+      "Ongoing oversight briefs and evidence records"
     ],
     "features": [
       {
-        "title": "Keep research current and build views on traceable evidence",
-        "problem": "Disclosures, financials and industry information keep changing. Each hypothesis needs cross-source validation while metrics, views and reports evolve.",
-        "body": "Track events and operating metrics around company, sector and thematic research. Digital employees organize supporting evidence, counterevidence and open hypotheses, and help prepare financial analysis and reports. Analysts can inspect original sources, revise assumptions and bring new information into ongoing research.",
+        "problem": "A key view without traceable sources or data from the relevant date is difficult to defend under professional scrutiny.",
         "outcomes": [
-          "Event and metric tracking",
-          "Research hypothesis validation",
-          "Research report collaboration"
-        ]
+          "Sources matched to analysis dates",
+          "Attention on critical assumptions",
+          "Clear evidence behind research views"
+        ],
+        "title": "Bring research focus back to industry fundamentals and key assumptions",
+        "body": "A key view without traceable sources or data from the relevant date is difficult to defend under professional scrutiny. Digital employees prepare source-linked data packs, itemized changes and research briefs, helping analysts focus on industry fundamentals, key assumptions and material risks—and provide clients with better-supported views. The research team reviews the professional conclusions."
       },
       {
-        "title": "Prepare wealth conversations around real client needs",
-        "problem": "Client assets, holdings and previous conversations sit across systems, leaving advisers to rebuild context for product discussions, reviews and market updates.",
-        "body": "Combine segmentation, holding changes and service history to prepare needs analysis, product explanations and market communication. Bring research into roadshows and client conversations while professional staff retain suitability assessments and investment advice, with the service context carried forward.",
+        "problem": "Figures change while citations remain on an older version. Unresolved review comments can reach the final draft and trigger another round of checks.",
         "outcomes": [
-          "Client needs analysis",
-          "Product and market interpretation",
-          "Service review collaboration"
-        ]
+          "Evidence for material discrepancies",
+          "Verification linked to disclosures",
+          "Substantive professional review"
+        ],
+        "title": "Focus project reviews on material discrepancies and evidence",
+        "body": "Figures change while citations remain on an older version. Unresolved review comments can reach the final draft and trigger another round of checks. Digital employees prepare reconciliation findings, evidence indexes and draft responses to regulatory inquiries, helping project teams and quality reviewers focus on the adequacy of verification, material discrepancies and the evidence supporting disclosures. Authorized personnel review key conclusions."
       },
       {
-        "title": "Make compliance review part of the work and keep professional outputs moving",
-        "problem": "Research, investment banking and client materials follow different review requirements. Findings, feedback and revisions are scattered across rounds.",
-        "body": "Bring applicable rules, supporting sources and the current draft into the same project. Digital employees locate wording, data and document differences, then prepare source-linked review priorities. Staff comments, revised versions and responses stay connected through existing publication and business workflows.",
+        "problem": "Different trading and settlement conventions create extensive cross-record checking that can obscure exceptions and unresolved matters.",
         "outcomes": [
-          "Research and document review",
-          "Investment banking preparation",
-          "Review comment follow-through"
-        ]
+          "Business discrepancies clearly available",
+          "Unresolved matters handed over with context",
+          "Authorized staff retain business decisions"
+        ],
+        "title": "Keep trading and operations focused on business exceptions",
+        "body": "Order and execution records, OTC confirmations and futures settlement records follow different conventions, making significant exceptions harder to identify through cross-record checks. Digital employees prepare trade reconciliations, analyses of contractual differences and delivery preparation documents under the relevant business rules. Trading, risk and operations teams can then concentrate on discrepancies and unresolved items, with business actions confirmed by authorized staff."
       },
       {
-        "title": "Explain branch growth and give operating teams practical priorities",
-        "problem": "Assets and activity reflect flows, markets and product mix. Branch teams need to translate those movements into client and channel actions.",
-        "body": "Analyze changes by institution, segment, channel and product, distinguishing net flows, market movements and mix shifts. Connect findings with priority clients and service feedback, then prepare operating briefs and reconciliation work so managers can coordinate coverage, team actions and follow-up.",
+        "problem": "Changing bond matters and report materials can separate ongoing responsibilities from their supporting evidence.",
         "outcomes": [
-          "Asset change attribution",
-          "Priority segment insight",
-          "Business action collaboration"
-        ]
+          "Unresolved matters stay visible",
+          "Evidence retained for material developments",
+          "Continuity in oversight responsibility"
+        ],
+        "title": "Maintain continuity in bond trustee oversight and supporting evidence",
+        "body": "Bond covenant milestones, issuer developments and trustee documentation change continuously, making unresolved matters easy to lose across successive document reviews. Digital employees prepare trustee oversight registers, supporting evidence for material matters and draft reports, helping bond trustee teams maintain focus on repayment risks and the fulfillment of obligations. Responsible staff assess the implications and fulfill disclosure duties within their roles."
       }
     ],
     "teamTitle": "A digital employee team across securities business lines",
@@ -419,8 +421,8 @@ export const securitiesPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Respect specialist responsibilities and connect business collaboration",
-      "body": "Run TeGo Digital Employee Collaboration Platform in the institution’s private environment, connecting approved research data, knowledge and business tools. Organize access and tool permissions by research, investment banking, wealth and operations teams, and connect methods, skill versions, tasks, deliverables, reviews and audit records for controlled collaboration."
+      "title": "Make professional judgment an institutional advantage",
+      "body": "Reduce the time spent searching, recalculating and retrieving documents. Direct professional attention toward industry fundamentals, material disclosures, trading exceptions and continuing obligations. Keep institutional methods and business evidence connected across teams, supporting better-grounded research, stronger engagement quality and clearer operating responsibility."
     }
   }
 };

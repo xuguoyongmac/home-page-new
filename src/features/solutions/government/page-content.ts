@@ -3,90 +3,91 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const governmentPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让政策找企更精准，让政务服务更协同",
-      "pain": "惠企政策多、适用条件细，企业难以找到真正匹配的服务；跨部门事项、热线诉求与机关事务又分散流转，基层重复沟通、反复准备。",
-      "value": "以数字岗位连接政策知识、事项规则和部门协作，支撑政策找企、高效办成一件事、12345诉求办理与机关日常工作，让服务接续更顺畅，把工作人员的时间还给业务。",
+      "title": "让公众少些往返，让政务履职更有实效",
+      "pain": "材料要求因办理情形而变，采购条款疑点难以集中审看；专项反馈各有口径，新政策又未必及时进入后续工作，专业时间被反复准备消耗。",
+      "value": "TeGo 数字员工协作平台承接事项材料校核、采购条款分析、专项汇报与政策影响整理，让工作人员从重复解释和材料拼接，转向受理条件、条款适用与任务落实的实质判断。",
       "scenarios": [
-        "政策找企",
-        "一件事协同",
-        "12345诉求",
-        "基层文书",
-        "采购管理",
-        "督查督办"
+        "事项材料",
+        "采购条款",
+        "专项任务",
+        "汇报协作",
+        "政策跟踪",
+        "方法维护"
       ],
       "benefits": [
         {
-          "title": "惠企服务更精准",
-          "description": "关联政策条件与企业经营特点，形成适配服务建议，衔接申报准备与政策更新。"
+          "title": "办事准备少些反复",
+          "description": "把具体情形、有效指南与材料要求对应起来，让窗口集中核定关键条件，办事对象按清楚要求准备。"
         },
         {
-          "title": "跨部门办理更连贯",
-          "description": "围绕一件事和热线诉求组织材料、职责与进度，减少重复问询和跨环节信息断点。"
+          "title": "专业审阅直达疑点",
+          "description": "将采购条款、适用依据与修订方向放在一起，让业务人员判断要求是否恰当，意见能够落到原文。"
         },
         {
-          "title": "基层协作更省力",
-          "description": "复用权威知识与办文方法，接续公文、采购和督办工作，让日常成果能够持续使用。"
+          "title": "协同落实看清关键问题",
+          "description": "将责任、反馈、政策变化与受影响事项对应，让牵头和维护人员聚焦推进障碍与业务调整。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让政策服务更精准",
-        "让政务协作更高效"
+        "让公众少些往返",
+        "让政务履职更有实效"
       ],
-      "background": "/images/industries/government-architecture_V1.1.webp"
+      "background": "/images/industries/government-architecture_V1.1.webp",
+      "illustration": "/images/solutions/government/government-team-value-zh_V9.1.webp"
     },
     "sources": [
-      "政策法规与惠企事项",
-      "办事指南与权责目录",
-      "12345诉求与办理记录",
-      "公文、采购与督办资料"
+      "办事指南与适用情形",
+      "采购文件与审查规则",
+      "专项任务与部门反馈",
+      "政策变化与现行方法"
     ],
     "outputs": [
-      "企业政策服务方案",
-      "一件事办理协作包",
-      "诉求治理分析报告",
-      "机关文书与督办成果"
+      "事项材料与适用要求核查",
+      "采购条款疑点与审阅意见",
+      "专项任务协作与落实材料",
+      "政策变化分析与方法更新准备"
     ],
     "features": [
       {
-        "title": "让政策找企从广泛发布走向精准服务",
-        "problem": "惠企政策分散在不同部门，适用条件与企业经营特点难以对应，服务人员反复查找和解释。",
-        "body": "将权威政策、申报指南与企业经营信息组织到同一服务任务，提取行业、规模、资质和申报条件，形成政策适配建议与服务方案。随政策变化更新知识，接续申报准备与沟通反馈，让惠企服务从等企业来问转向主动服务。",
+        "title": "让材料要求对应每一种办事情形",
+        "problem": "同一办理情形下，指南版本与材料条件混用，窗口答复前后不一，办事对象补了材料仍要返工。",
+        "body": "同一办理情形下，指南版本与材料条件混用，窗口答复前后不一，办事对象补了材料仍要返工。TeGo 数字员工协作平台形成对应具体情形的材料表、依据和待确认问题，让窗口人员少做重复解释，集中核定关键条件与受理要求。",
         "outcomes": [
-          "企业政策适配",
-          "申报准备方案",
-          "政策更新跟踪"
+          "分清本次情形要求",
+          "核准材料复用条件",
+          "减少准备阶段往返"
         ]
       },
       {
-        "title": "让高效办成一件事贯通跨部门服务",
-        "problem": "一个办事情形涉及多部门规则与材料，窗口重复询问、企业反复补充，环节之间难以接续。",
-        "body": "围绕高效办成一件事，关联办理情形、事项指南、共用信息与部门职责，组织材料准备、缺项问询和进度交接。通过授权接口衔接已有办理系统，让窗口和承办岗位共享任务背景，减少重复准备与跨部门解释。",
+        "title": "把采购条款疑点留在发布之前",
+        "problem": "品牌、资质、技术参数与评分要求分散在文件各处，形式完整却未必适用，专业审阅难以聚焦。",
+        "body": "特定品牌、无关资质与排他性参数混入采购文件，容易把公平性问题留到发布之后。数字员工交付条款疑点、法规对应和修订建议，让采购人员直接审看问题位置与适用依据，在专业复核中完善文件质量。",
         "outcomes": [
-          "一件事协同准备",
-          "共用信息复用",
-          "办理进度接续"
+          "找准条款实质疑点",
+          "判断要求与标的关联",
+          "让修订有明确落点"
         ]
       },
       {
-        "title": "让12345诉求转化为协同治理线索",
-        "problem": "热线诉求量大、表述多样，责任判定与历史情况分散，分办督办和共性问题分析相互脱节。",
-        "body": "从12345诉求中提炼事项、地点与服务要求，关联权责目录和历史办理，形成主协办建议与答复准备。持续汇集办理反馈、重复诉求和热点变化，支撑工单质检与专题分析，让单件办理与城市治理洞察相互连接。",
+        "title": "让专项任务从归集走向协同落实",
+        "problem": "多部门反馈各有口径，任务原文、责任归属与实际进展难以对应，归口人员忙于汇总而无暇协调。",
+        "body": "一项专项部署分解到多个部门，主责、目标与反馈材料容易各说各话。数字员工将原文要求、责任分工和实际反馈汇成任务台账与汇报稿，突出缺项和推进障碍，让牵头部门把精力放在协调问题、核实进展与推动落实。",
         "outcomes": [
-          "诉求分办建议",
-          "办理质检成果",
-          "热点诉求分析"
+          "看清任务与主责",
+          "核实进展与材料缺项",
+          "集中协调推进障碍"
         ]
       },
       {
-        "title": "把机关日常作业转化为基层减负实效",
-        "problem": "公文、会议、采购和督办依赖大量资料准备，多次改稿与跨科室汇总挤占工作人员时间。",
-        "body": "将公文规范、采购制度与机关经验沉淀为岗位知识和技能，承担文稿起草、采购条款分析、会议纪要和专项汇报。通过项目关联任务、反馈和文件版本，按计划跟进重点事项，让分散的日常作业形成可接续的协作成果。",
+        "title": "让政策变化及时落到业务方法",
+        "problem": "新政策已经发布，办事口径、知识与岗位方法却未同步，工作人员难以判断哪些事项需要调整。",
+        "body": "政策更新后，旧要求仍可能留在办事口径和岗位方法中，影响后续服务。数字员工持续核查指定官方来源，形成变化及影响清单、知识与方法修订稿，让维护人员聚焦真正受影响的事项，经确认后延续统一有效的业务要求。",
         "outcomes": [
-          "机关文稿编制",
-          "采购分析成果",
-          "重点任务督办"
+          "辨明政策变化影响",
+          "找准需要维护的事项",
+          "让后续服务沿用有效依据"
         ]
       }
     ],
@@ -208,96 +209,97 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "复用统筹资源，让专业能力进入日常履职",
-      "body": "支持在获准政务云或本地环境部署，衔接区域共用模型、权威知识与已有业务系统。按部门职责配置资料、工具与数字岗位使用范围，将知识更新、能力发布、任务记录和运行审计纳入日常管理，让专业方法可维护、服务经验可复用。"
+      "title": "复用政务资源，守住部门职责",
+      "body": "在获准环境部署，连接已有知识、模型和业务服务，按部门、岗位与事项配置使用范围。让专业方法服务更多工作人员，同时保留资料归属、事项责任与人员复核，统一维护准入、审核和审计，支撑持续服务。"
     }
   },
   "en": {
     "home": {
-      "title": "Match businesses with relevant policies. Connect public services.",
-      "pain": "Businesses struggle to find policies that fit their circumstances. Cross-agency applications, service requests and internal work pass through disconnected records, creating repeated questions and preparation.",
-      "value": "Connect policy knowledge, service rules and agency collaboration through digital roles. Support policy matching, integrated services, 12345 request handling and daily administration, giving staff more time for public service.",
+      "title": "Fewer unnecessary visits. More effective public service.",
+      "pain": "Document requirements vary by circumstance, procurement questions are difficult to review together, departmental reports use different terms, and policy updates do not always reach later work. Repeated preparation consumes specialist time.",
+      "value": "TeGo 数字员工协作平台 undertakes document requirement checks, procurement clause analysis, initiative reporting and policy impact assessment. Staff can move from repeated explanations and material compilation to substantive judgments about acceptance conditions, applicable clauses and delivery of public duties.",
       "scenarios": [
-        "Policy matching",
-        "Integrated services",
-        "12345 requests",
-        "Official documents",
-        "Public procurement",
-        "Priority follow-up"
+        "Service documents",
+        "Procurement clauses",
+        "Special initiatives",
+        "Report collaboration",
+        "Policy monitoring",
+        "Method maintenance"
       ],
       "benefits": [
         {
-          "title": "More relevant business support",
-          "description": "Relate eligibility to business circumstances, prepare relevant support options and carry changes into application preparation."
+          "title": "Reduce repeated service preparation",
+          "description": "Match the actual circumstance to current guidance and required documents, helping staff confirm key conditions and applicants prepare with clear requirements."
         },
         {
-          "title": "Connected service delivery",
-          "description": "Keep documents, responsibilities and progress together across integrated applications and service requests."
+          "title": "Bring review straight to the issue",
+          "description": "Present procurement wording, its applicable basis and revision direction together so staff can judge suitability and act on precise passages."
         },
         {
-          "title": "Less repetitive administration",
-          "description": "Reuse authoritative knowledge and working methods across official writing, procurement and priority follow-up."
+          "title": "Coordinate around the issues that matter",
+          "description": "Connect responsibilities, feedback and policy changes to affected work so coordinating departments and maintainers can focus on obstacles and necessary adjustments."
         }
       ]
     },
     "hero": {
       "lines": [
-        "More relevant public services",
-        "More connected agency work"
+        "Fewer unnecessary visits",
+        "More effective public service"
       ],
-      "background": "/images/industries/government-architecture_V1.1.webp"
+      "background": "/images/industries/government-architecture_V1.1.webp",
+      "illustration": "/images/solutions/government/government-team-value-en_V9.1.webp"
     },
     "sources": [
-      "Policies and business support programs",
-      "Service guides and agency responsibilities",
-      "12345 requests and handling records",
-      "Official documents, procurement and priority work"
+      "Service guides and applicable circumstances",
+      "Procurement documents and review rules",
+      "Priority work and agency feedback",
+      "Policy changes and current methods"
     ],
     "outputs": [
-      "Business support service plan",
-      "Integrated service collaboration package",
-      "Service request analysis",
-      "Administrative documents and follow-up"
+      "Service requirement and material checks",
+      "Procurement clause findings and review notes",
+      "Coordinated priority-work materials",
+      "Policy impact analysis and method-update preparation"
     ],
     "features": [
       {
-        "title": "Turn published policies into relevant business support",
-        "problem": "Policies sit across agencies, while eligibility is hard to connect with each business. Service teams repeatedly search and explain the same requirements.",
-        "body": "Bring authoritative policies, application guides and business information into one service task. Identify relevant sectors, qualifications and eligibility, then prepare support recommendations and a service plan. Policy updates feed into knowledge and application preparation, helping teams move from answering questions to offering relevant support.",
+        "title": "Match document requirements to each service circumstance",
+        "problem": "For the same service circumstances, mixed guide versions and document conditions can produce conflicting advice, leaving applicants to redo their preparation even after submitting more material.",
+        "body": "For the same service circumstances, mixed guide versions and document conditions can produce conflicting advice, leaving applicants to redo their preparation even after submitting more material. TeGo 数字员工协作平台 prepares circumstance-specific document lists, supporting rules and open questions. Front-desk staff can spend less time repeating requirements and more time confirming the conditions that matter for acceptance.",
         "outcomes": [
-          "Policy fit analysis",
-          "Application preparation",
-          "Policy change tracking"
+          "Distinguish requirements for the case",
+          "Confirm when certificates can be reused",
+          "Reduce repeated preparation"
         ]
       },
       {
-        "title": "Connect agencies around one integrated service",
-        "problem": "A single application can involve several agencies and document rules. Repeated questions and missing context interrupt handovers.",
-        "body": "Organize service circumstances, official guides, shared information and agency responsibilities around an integrated application. Prepare documents, request missing information and carry progress forward. Authorized connections to existing service systems keep front-desk and handling teams working from the same context.",
+        "title": "Resolve procurement clause questions before publication",
+        "problem": "Brand, qualification, technical and evaluation requirements are spread across the document. Formal completeness does not establish suitability, making specialist review hard to focus.",
+        "body": "Brand-specific terms, unrelated qualifications and exclusionary specifications can leave fairness concerns unresolved until publication. Digital employees prepare clause findings, applicable rules and revision suggestions. Procurement staff can examine the exact wording and its basis, then improve the document through professional review.",
         "outcomes": [
-          "Integrated preparation",
-          "Shared information reuse",
-          "Connected handovers"
+          "Locate substantive clause concerns",
+          "Judge relevance to the purchase",
+          "Give revisions a clear target"
         ]
       },
       {
-        "title": "Connect 12345 requests with wider service improvement",
-        "problem": "High request volumes, varied wording and fragmented history make routing difficult and separate individual handling from analysis of recurring issues.",
-        "body": "Extract the issue, location and service need from each 12345 request. Relate agency responsibilities and past handling to prepare routing suggestions and response material. Bring together feedback, repeat requests and emerging topics for quality review and analysis, connecting individual cases with a broader view of public needs.",
+        "title": "Turn cross-department reporting into coordinated delivery",
+        "problem": "Departments report in different terms, separating original requirements, ownership and actual progress. Coordinators spend time compiling material instead of addressing obstacles.",
+        "body": "A special initiative shared across departments can produce conflicting accounts of ownership, targets and progress. Digital employees bring source requirements, responsibilities and feedback into task records and draft reports, drawing out gaps and obstacles. Lead departments can focus on verifying progress, resolving issues and advancing the work.",
         "outcomes": [
-          "Routing recommendations",
-          "Handling quality review",
-          "Recurring-issue analysis"
+          "Clarify tasks and responsible departments",
+          "Verify progress and missing support",
+          "Concentrate coordination on obstacles"
         ]
       },
       {
-        "title": "Reduce repetitive work across daily administration",
-        "problem": "Official writing, meetings, procurement and priority reporting require repeated preparation, revision and cross-team consolidation.",
-        "body": "Build official writing standards, procurement rules and administrative experience into digital roles. Prepare drafts, analyze procurement clauses, capture meeting actions and assemble priority reports. Projects keep tasks, feedback and document versions connected, while scheduled follow-up helps teams carry work forward.",
+        "title": "Carry policy changes into current working methods",
+        "problem": "New policies may be published while service guidance, knowledge and role methods remain unchanged, leaving staff uncertain about which work needs adjustment.",
+        "body": "Old requirements can remain in service guidance and working methods after a policy changes. Digital employees check designated official sources and prepare change assessments and draft updates to knowledge and methods. Maintainers can focus on the work actually affected and, after confirmation, keep subsequent service grounded in current requirements.",
         "outcomes": [
-          "Official documents",
-          "Procurement analysis",
-          "Priority task follow-up"
+          "Understand the impact of policy changes",
+          "Identify the work that needs updating",
+          "Use current rules in subsequent service"
         ]
       }
     ],
@@ -419,8 +421,8 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Reuse shared resources in everyday public service",
-      "body": "Deploy in an approved government cloud or local environment and connect shared models, authoritative knowledge and existing systems. Configure access around agency responsibilities, with knowledge updates, capability releases, task records and operational audit supporting methods that teams can maintain and reuse."
+      "title": "Reuse public-sector resources with clear departmental responsibilities",
+      "body": "Deploy in an approved environment and connect existing knowledge, models and business services. Set access by department, role and service matter. Extend professional methods to more staff while retaining ownership of records, service responsibilities and human review, with managed admission, approval and audit to support continued operation."
     }
   }
 };

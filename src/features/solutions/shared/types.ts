@@ -12,10 +12,10 @@ export interface IndustryEmployee {
 
 export interface IndustrySolutionCopy {
   home: HomeIndustry;
-  hero: { lines: string[]; background: string };
+  hero: { lines: string[]; background: string; illustration: string };
   sources: string[];
   outputs: string[];
-  features: { title: string; problem: string; body: string; image?: string; outcomes?: string[] }[];
+  features: { title: string; problem: string; body: string; outcomes?: string[] }[];
   teamTitle: string;
   employees: IndustryEmployee[];
   deployment: { title: string; body: string };

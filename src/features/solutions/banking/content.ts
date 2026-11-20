@@ -12,12 +12,12 @@ export default createIndustryModule({
   "navigation": {
     "zh": {
       "name": "银行",
-      "description": "信贷审查、客户经营、运营管理",
+      "description": "授信尽调、财务核验、贷后核查",
       "icon": "bank"
     },
     "en": {
       "name": "Banking",
-      "description": "Credit review, client coverage and operations",
+      "description": "Credit due diligence, Financial verification, Post-loan review",
       "icon": "bank"
     }
   }
