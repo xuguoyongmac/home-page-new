@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import { articleLinksPlugin } from './scripts/article-links.mjs';
+import { contactApiIntegration } from './server/contact/dev.mjs';
 
 const legacy = {
   cloud: 'enterprise/#cloud',
@@ -31,9 +32,9 @@ export default defineConfig({
     locales: ['zh', 'en', 'zh-Hant'],
     routing: { prefixDefaultLocale: true },
   },
-  integrations: [sitemap({
+  integrations: [contactApiIntegration(), sitemap({
     i18n: { defaultLocale: 'zh', locales: { zh: 'zh-CN', en: 'en', 'zh-Hant': 'zh-Hant' } },
-    filter: (page) => !page.includes('/404') && !new URL(page).pathname.startsWith('/ja/') && !Object.keys(legacy).some(slug => new URL(page).pathname.endsWith(`/${slug}/`)),
+    filter: (page) => !page.includes('/404') && !page.includes('/contact/submitted/') && !new URL(page).pathname.startsWith('/ja/') && !Object.keys(legacy).some(slug => new URL(page).pathname.endsWith(`/${slug}/`)),
   })],
   redirects: {
     '/': '/zh/',

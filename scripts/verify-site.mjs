@@ -226,7 +226,7 @@ for(const locale of ['zh','en','zh-Hant']){
  const visible=decodeEntities(home.markup.replace(/<[^>]+>/g,' '));
  check(!/example\.com|TODO|FIXME|仅供演示|占位数据|100%|零风险/.test(visible),`${locale} 首页存在未完成或绝对化文案`);
 }
-const baseline=JSON.parse(readFileSync(path.join(root,'docs/content-baseline_V1.1.json'),'utf8'));
+const baseline=JSON.parse(readFileSync(path.join(root,'docs/content-baseline_V1.2.json'),'utf8'));
 const digest=text=>createHash('sha256').update(text).digest('hex');
 const normalizedBody=text=>text.split('---').slice(2).join('---').trim().replaceAll('/blog-assets/images/','/images/').replaceAll('https://www.zhama.com/','https://zhama.com/');
 for(const post of baseline.articles){

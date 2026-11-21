@@ -255,7 +255,7 @@ export const legalContent = {
           "title": "联系信息",
           "content": "如您对这些条款有任何疑问，请通过以下方式联系我们：",
           "methods": [
-            "邮箱：contact@zhama.com.cn",
+            "邮箱：contact@zhama.com",
             "电话：18819810701",
             "地址：深圳市南山区科技园"
           ]
@@ -508,7 +508,7 @@ export const legalContent = {
           "title": "Contact Information",
           "content": "If you have questions about these terms, please contact us at:",
           "methods": [
-            "Email: contact@zhama.com.cn",
+            "Email: contact@zhama.com",
             "Phone: 18819810701",
             "Address: Shenzhen Science and Technology Park, Nanshan District"
           ]

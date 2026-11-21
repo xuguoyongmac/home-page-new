@@ -16,7 +16,7 @@ npm run dev
 中文首页：http://127.0.0.1:4350/zh/  
 英文首页：http://127.0.0.1:4350/en/
 
-开发和预览均固定使用 4350；启动前自动停止占用该端口的旧服务。
+开发和预览均固定使用 4350；启动前自动停止占用该端口的旧服务。两者均提供联系表单的 `/api/contact/` 接口。
 
 ## 检查与构建
 
@@ -31,11 +31,13 @@ npm run preview
 
 ## 部署
 
-将 `dist/` 完整内容部署到支持静态文件的 Web 服务。默认正式域名为 https://www.zhama.com；构建到其他域名时，通过 `PUBLIC_SITE_URL` 设置实际站点地址，控制 canonical、站点地图与分享链接。无需站点后端服务。
+将 `dist/` 完整内容部署到支持静态文件的 Web 服务。默认正式域名为 https://www.zhama.com；构建到其他域名时，通过 `PUBLIC_SITE_URL` 设置实际站点地址，控制 canonical、站点地图与分享链接。联系表单另外使用 Node.js 消息服务接收线索，并发送邮件和飞书卡片。
 
 ```sh
 PUBLIC_SITE_URL=https://www.zhama.com npm run build
 ```
+
+联系页面及消息服务部署、受控配置和投递状态核对见 [联系页面部署说明](docs/contact-deployment_V1.14.md)。邮箱和飞书凭据保存在 Git 忽略的 `.env.contact.local`，不随源码提交。
 
 ## 多人协作
 
