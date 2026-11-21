@@ -18,7 +18,7 @@ const title = zh ? '产品博客' : 'Blog';
 const description = zh ? '产品发布、技术实践与数字员工的工作方式。' : 'Product releases, engineering practice, and how digital employees work.';
 const date = (value: Date) => new Intl.DateTimeFormat(zh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }).format(value);
 ---
-<Layout locale={locale} title={title} description={description} page="blog">
+<Layout locale={locale} title={title} description={description} page="blog" entries={posts.map(({ data }) => ({ name: data.title, url: pathFor(locale, `blog/${data.legacySlug}`) }))}>
   <section class="page-hero inner-page-hero inner-support-hero">
     <div class="container inner-hero-content"><div class="inner-hero-copy">
       <h1>{title}</h1>

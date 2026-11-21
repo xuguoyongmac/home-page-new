@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { prepareTraditionalPages } from './prepare-traditional.mjs';
 import { optimizeMedia } from './optimize-media.mjs';
+import { prepareSeoPublication } from './prepare-seo.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const dist=path.join(root,'dist');
 const traditional = prepareTraditionalPages(dist);
@@ -10,6 +11,8 @@ console.log(`繁體中文靜態頁面準備完成：${traditional.pages} 頁、$
 // Localize originals before deriving srcsets, so every responsive candidate has the same language.
 const media = await optimizeMedia(dist, path.join(root, '.astro/media-cache'));
 console.log('响应式图片构建完成：' + JSON.stringify(media));
+const seo = prepareSeoPublication(dist, process.env.PUBLIC_SITE_URL);
+console.log('搜索索引发布完成：' + JSON.stringify(seo));
 const walk=directory=>readdirSync(directory,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(path.join(directory,entry.name)):[path.join(directory,entry.name)]);
 const files=walk(dist);
 const references=files.filter(file=>/\.(html|css|js|json|xml|svg)$/.test(file)).map(file=>readFileSync(file,'utf8')).join('\n');

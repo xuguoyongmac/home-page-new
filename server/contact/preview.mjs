@@ -5,16 +5,18 @@ import sirv from 'sirv';
 import { createContactApp } from './app.mjs';
 import { loadContactConfig, projectRoot } from './config.mjs';
 import { serveNotFound } from './not-found.mjs';
+import { serveSeoRedirect } from '../../shared/seo-routes.mjs';
 
 const directory = path.join(projectRoot, 'dist');
 if (!existsSync(path.join(directory, 'index.html'))) throw new Error('Run npm run build before npm run preview.');
 const files = sirv(directory, { dev: true, extensions: ['html'], etag: true });
 const app = createContactApp(loadContactConfig());
 const server = createServer((request, response) => {
+  if (serveSeoRedirect(request, response, { isHtmlPage: pathname => existsSync(path.join(directory, pathname, 'index.html')) })) return;
   app.handle(request, response).then(handled => {
     if (handled) return;
     const pathname = new URL(request.url || '/', 'http://preview.internal').pathname;
-    if (/^\/(?:(?:zh|zh-Hant|en)\/)?404(?:\.html|\/)?$/i.test(pathname)) return serveNotFound(request, response, directory);
+    if (/^\/(?:(?:zh|zh-Hant|en)\/)?404(?:\.html|\/(?:index\.html)?)?$/i.test(pathname)) return serveNotFound(request, response, directory);
     files(request, response, () => { void serveNotFound(request, response, directory).catch(() => { if (!response.headersSent) response.writeHead(503); response.end(); }); });
   }).catch(() => { if (!response.headersSent) response.writeHead(503); response.end(); });
 });

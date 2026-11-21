@@ -1,9 +1,10 @@
 import type { Locale } from '../data/types';
+import { normalizeSiteOrigin } from '../../shared/seo-site.mjs';
 
 export const locales: Locale[] = ['zh', 'en'];
 export const site = {
   name: 'TeGo 数字员工协作平台',
-  origin: import.meta.env.PUBLIC_SITE_URL || 'https://www.zhama.com',
+  origin: normalizeSiteOrigin(import.meta.env.PUBLIC_SITE_URL),
   app: 'https://zhama.ai/',
   docs: 'https://docs.zhama.com.cn/',
   blog: 'https://www.zhama.com/zh/blog',

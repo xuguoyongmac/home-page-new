@@ -50,16 +50,17 @@ const contactCodes = [
       </div>
     </div>
     <div>
-      <h2>{zh ? '产品特性' : 'Product features'}</h2>
+      <h2><a href={pathFor(locale, 'product')}>{zh ? '产品特性' : 'Product features'}</a></h2>
       {capabilities.map(capability => <a href={pathFor(locale,`product/${capability.slug}`)}>{capability.copy[locale].name}</a>)}
+      <a href={pathFor(locale, 'enterprise')}>{zh ? '私有化部署' : 'Private deployment'}</a>
     </div>
     <div>
-      <h2>{zh ? '解决方案' : 'Solutions'}</h2>
+      <h2><a href={pathFor(locale, 'solutions')}>{zh ? '解决方案' : 'Solutions'}</a></h2>
       {industries[locale].filter(industry => industry.slug !== 'general').map(industry => <a href={pathFor(locale,`solutions/${industry.slug}`)}>{industry.name}</a>)}
       <a href={pathFor(locale, 'solutions/appliance')}>{zh ? '一体机解决方案' : 'AI appliance solution'}</a>
     </div>
     <div>
-      <h2>{zh ? '资源与支持' : 'Resources'}</h2>
+      <h2><a href={pathFor(locale, 'resources')}>{zh ? '资源与支持' : 'Resources'}</a></h2>
       <a href={site.docs} hreflang="zh-CN">{t.docs}</a>
       <a href={pathFor(locale,'download')}>{t.download}</a>
       <a href={pathFor(locale,'blog')}>{t.blog}</a>
@@ -82,6 +83,8 @@ const contactCodes = [
   <div class="container footer-bottom">
     <span>{zh ? '© 2026 深圳市扎马星辰科技有限公司' : '© 2026 Shenzhen Zhama Xingchen Technology Co., Ltd.'}</span>
     <a href="https://beian.miit.gov.cn/" rel="external" lang="zh-CN">粤ICP备2025426259号-1</a>
+    <a href={pathFor(locale, 'privacy')}>{t.privacy}</a>
+    <a href={pathFor(locale, 'terms')}>{t.terms}</a>
   </div>
 </footer>
 
@@ -123,6 +126,9 @@ const contactCodes = [
 
   .site-footer .footer-grid > div:not(.footer-brand) { text-align: center; }
   .site-footer .footer-grid > div:not(.footer-brand) > a { justify-content: center; }
+
+  .site-footer .footer-grid h2 > a { display: inline; font: inherit; color: inherit; margin: 0; }
+  .site-footer .footer-grid h2 > a:is(:hover, :focus-visible) { color: var(--accent); }
 
   .site-footer .footer-contact-entry {
     display: block;

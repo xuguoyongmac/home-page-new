@@ -24,7 +24,8 @@ const walk = directory => readdirSync(directory, { withFileTypes: true })
   .sort((a, b) => a.name.localeCompare(b.name))
   .flatMap(entry => entry.isDirectory() ? walk(path.join(directory, entry.name)) : [path.join(directory, entry.name)]);
 const allFiles = walk(dist);
-const htmlFiles = allFiles.filter(file => file.endsWith('.html'));
+// Baidu requires this exact plain-text verification response; it is not a public content page.
+const htmlFiles = allFiles.filter(file => file.endsWith('.html') && path.basename(file) !== 'baidu_verify_codeva-z01CSON5KK.html');
 const namedEntities = { amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ' };
 const decodeEntities = value => value.replace(/&(#x[\da-f]+|#\d+|amp|quot|apos|lt|gt|nbsp);/gi, (entity, code) => {
   if (!code.startsWith('#')) return namedEntities[code.toLowerCase()] ?? entity;
@@ -226,7 +227,7 @@ for(const locale of ['zh','en','zh-Hant']){
  const visible=decodeEntities(home.markup.replace(/<[^>]+>/g,' '));
  check(!/example\.com|TODO|FIXME|仅供演示|占位数据|100%|零风险/.test(visible),`${locale} 首页存在未完成或绝对化文案`);
 }
-const baseline=JSON.parse(readFileSync(path.join(root,'docs/content-baseline_V1.3.json'),'utf8'));
+const baseline=JSON.parse(readFileSync(path.join(root,'docs/content-baseline_V1.4.json'),'utf8'));
 const digest=text=>createHash('sha256').update(text).digest('hex');
 const normalizedBody=text=>text.split('---').slice(2).join('---').trim().replaceAll('/blog-assets/images/','/images/').replaceAll('https://www.zhama.com/','https://zhama.com/');
 for(const post of baseline.articles){

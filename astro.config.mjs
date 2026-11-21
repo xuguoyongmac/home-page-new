@@ -3,20 +3,11 @@ import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import { articleLinksPlugin } from './scripts/article-links.mjs';
 import { contactApiIntegration } from './server/contact/dev.mjs';
-
-const legacy = {
-  cloud: 'enterprise/#cloud',
-  'cloud-agent': 'product/#collaboration',
-  platform: 'ecosystem/#integrations',
-  technical: 'product/#execution',
-  'plugin-system': 'ecosystem/#integrations',
-  'multi-agent': 'product/#execution',
-  guide: 'resources/#manual',
-  station: 'enterprise/#station',
-};
+import { astroSeoRedirects, isIndexableSeoPath } from './shared/seo-routes.mjs';
+import { normalizeSiteOrigin } from './shared/seo-site.mjs';
 
 export default defineConfig({
-  site: process.env.PUBLIC_SITE_URL || 'https://www.zhama.com',
+  site: normalizeSiteOrigin(process.env.PUBLIC_SITE_URL),
   output: 'static',
   trailingSlash: 'always',
   compressHTML: true,
@@ -34,11 +25,7 @@ export default defineConfig({
   },
   integrations: [contactApiIntegration(), sitemap({
     i18n: { defaultLocale: 'zh', locales: { zh: 'zh-CN', en: 'en', 'zh-Hant': 'zh-Hant' } },
-    filter: (page) => !page.includes('/404') && !page.includes('/contact/submitted/') && !new URL(page).pathname.startsWith('/ja/') && !Object.keys(legacy).some(slug => new URL(page).pathname.endsWith(`/${slug}/`)),
+    filter: (page) => isIndexableSeoPath(new URL(page).pathname),
   })],
-  redirects: {
-    '/': '/zh/',
-    '/ja/': '/en/',
-    ...Object.fromEntries(['zh', 'en'].flatMap(locale => Object.entries(legacy).map(([from, to]) => [`/${locale}/${from}/`, `/${locale}/${to}`]))),
-  },
+  redirects: astroSeoRedirects,
 });

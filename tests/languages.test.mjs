@@ -64,6 +64,26 @@ test('runtime strings and template fragments translate without changing identifi
   assert.match(output, /`任務\$\{name\}已執行\$\{count\}次`/);
 });
 
+test('Traditional structured data retains all supported languages and localizes only the current page language and social artwork', () => {
+  const graph = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebSite', inLanguage: ['zh-CN', 'zh-Hant', 'en'] },
+    { '@type': 'WebPage', inLanguage: 'zh-CN', url: 'https://www.zhama.com/zh/product/' },
+    { '@type': 'ContactPoint', availableLanguage: ['zh-CN', 'zh-Hant', 'en'] },
+  ] };
+  const source = `<html lang="zh-CN"><head><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:locale:alternate" content="en_US"><meta property="og:image:secure_url" content="https://www.zhama.com/images/scene.webp"><meta name="twitter:image" content="https://www.zhama.com/images/scene.webp"><script type="application/ld+json">${JSON.stringify(graph)}</script></head><body></body></html>`;
+  const translated = translateHtml(source, new Map([['/images/scene.webp', '/images/scene-zh-Hant.webp']]));
+  const nodes = nodesOf(translated);
+  const script = nodes.find(node => node.tagName === 'script');
+  const output = JSON.parse(script.childNodes.map(node => node.value || '').join(''))['@graph'];
+  assert.deepEqual(output[0].inLanguage, ['zh-CN', 'zh-Hant', 'en']);
+  assert.deepEqual(output[2].availableLanguage, ['zh-CN', 'zh-Hant', 'en']);
+  assert.equal(output[1].inLanguage, 'zh-Hant');
+  assert.equal(output[1].url, 'https://www.zhama.com/zh-Hant/product/');
+  assert.match(translated, /property="og:locale:alternate" content="zh_CN"/);
+  assert.match(translated, /name="twitter:image" content="https:\/\/www.zhama.com\/images\/scene-zh-Hant.webp"/);
+  assert.match(translated, /property="og:image:secure_url" content="https:\/\/www.zhama.com\/images\/scene-zh-Hant.webp"/);
+});
+
 test('Traditional artwork keeps SVG geometry and identifiers and localizes media in responsive, lazy and social references', () => {
   const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><style>.员工{fill:#fff}</style><g id="员工" aria-label="数字员工"><path d="M0 0h20"/><text x="20" y="40">企业知识与权限</text></g></svg>';
   const output = translateSvg(svg);

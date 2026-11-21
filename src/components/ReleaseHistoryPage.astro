@@ -3,6 +3,7 @@ import releaseIndex from '../../public/releases/index.json';
 import { releaseArchive } from '../data/legacy';
 import type { Locale } from '../data/types';
 import Shell from '../features/resources/Shell.astro';
+import { releasePackages, releaseStatus } from '../lib/releases';
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
@@ -15,7 +16,13 @@ const versions = releaseIndex.versions.filter(version => clientFiles.some(file =
 const defaultVersion = versions.includes(releaseArchive.defaultVersion) ? releaseArchive.defaultVersion : versions[0];
 const manifestLabel = (file: (typeof clientFiles)[number]) => [products[file.product], file.arch || ''].filter(Boolean).join(' · ');
 const defaultFiles = clientFiles.filter(file => file.version === defaultVersion);
-const config = { versions, files: clientFiles.map(({ path, version, product, arch }) => ({ path, version, product, arch })), defaultVersion };
+const defaultFile = defaultFiles[0];
+if (!defaultFile || !defaultFile.path.startsWith('/releases/manifests/')) throw new Error('The default client release manifest is not listed.');
+const manifests = import.meta.glob('../../public/releases/manifests/**/clients/tego/*.json', { eager: true, import: 'default' });
+const defaultManifest = manifests[`../../public${defaultFile.path}`];
+const initialPackages = releasePackages(defaultManifest, defaultFile, zh);
+const initialStatus = releaseStatus(initialPackages, zh);
+const config = { versions, files: clientFiles.map(({ path, version, product, arch }) => ({ path, version, product, arch })), defaultVersion, initial: { path: defaultFile.path, ...initialPackages } };
 ---
 <Shell locale={locale} page="releases" navigation={false}>
 <header class="support-hero release-hero"><div class="container"><h1>{zh ? '客户端历史版本' : 'Client release history'}</h1></div></header>
@@ -25,9 +32,16 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
     <div class="field"><label for="release-manifest">{zh ? '产品' : 'Product'}</label><select id="release-manifest" aria-controls="release-items">{defaultFiles.map(file => <option value={file.path}>{manifestLabel(file)}</option>)}</select></div>
   </div>
   <p class="release-notice" id="release-version-notice" hidden></p>
-  <div class="release-status-row"><p id="release-status" role="status" aria-live="polite">{zh ? '正在读取所选版本的安装包。' : 'Retrieving packages for the selected release.'}</p><button id="release-retry" class="button button-outline button-small" type="button" hidden>{zh ? '重试' : 'Retry'}</button></div>
-  <div class="release-items" id="release-items" aria-busy="true"></div>
-  <noscript><p class="release-notice">{zh ? '请启用 JavaScript 查看历史版本。' : 'Enable JavaScript to view client releases.'}</p></noscript>
+  <div class="release-status-row" hidden={!initialStatus}><p id="release-status" role="status" aria-live="polite">{initialStatus}</p><button id="release-retry" class="button button-outline button-small" type="button" hidden>{zh ? '重试' : 'Retry'}</button></div>
+  <div class="release-items" id="release-items" aria-busy="false" data-release-path={defaultFile.path}>
+    {initialPackages.cards.map(card => <article class="download-card" aria-label={card.ariaLabel}>
+      <div class="release-card-heading"><h2>{card.title}</h2>{card.version && <span class="download-version">{card.version}</span>}</div>
+      {card.variants.map(variant => <div class="release-client-variant">
+        {!card.version && <span class="download-version">{variant.version}</span>}
+        <a class="button release-download" href={variant.url} aria-label={variant.ariaLabel}>{variant.label}</a>
+      </div>)}
+    </article>)}
+  </div>
 </section>
 </Shell>
 <style>
@@ -53,9 +67,8 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
 @media(max-width:650px){.release-hero{padding:32px 0 26px}.release-controls{grid-template-columns:1fr;gap:20px}.release-items{grid-template-columns:1fr}.release-history{padding-bottom:55px}.release-items :global(.download-card){padding:24px}.release-status-row{align-items:flex-start;flex-direction:column;gap:10px;padding-block:10px}}
 </style>
 <script>
-  interface ManifestFile { path: string; version: string; product: string; arch: string | null; }
-  interface ReleaseConfig { versions: string[]; files: ManifestFile[]; defaultVersion: string; }
-  type Manifest = Record<string, unknown>;
+  import { isReleaseManifest, releasePackages, releaseStatus as packageStatus, type ReleaseFile, type ReleasePackages } from '../lib/releases';
+  interface ReleaseConfig { versions: string[]; files: ReleaseFile[]; defaultVersion: string; initial: ReleasePackages & { path: string }; }
   const historyRoot = document.querySelector<HTMLElement>('[data-release-config]');
   const versionSelect = document.querySelector<HTMLSelectElement>('#release-version');
   const manifestSelect = document.querySelector<HTMLSelectElement>('#release-manifest');
@@ -69,30 +82,7 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
     const productLabels: Record<string, string> = chinese
       ? { desktop: 'TeGo OS 桌面端', mobile: 'TeGo OS 移动端', studio: 'Tego Studio' }
       : { desktop: 'TeGo OS Desktop', mobile: 'TeGo OS Mobile', studio: 'Tego Studio' };
-    const platformLabels: Record<string, string> = { windows: 'Windows', macos: 'macOS', linux: 'Linux', kylin: chinese ? '银河麒麟' : 'Kylin', android: 'Android', ios: 'iOS' };
-    const preferredFormats = ['dmg', 'exe', 'AppImage', 'flatpak', 'apk', 'testflight'];
-    const primaryDownload = (downloads: { format: string; url: string }[]) => preferredFormats.map(format => downloads.find(download => download.format === format)).find(Boolean) ?? downloads[0];
-    const architecture = (platform: string, arch: string) => {
-      if (arch === 'downloads') return '';
-      if (platform === 'macos' && arch === 'arm64') return 'Apple silicon · ARM64';
-      if (platform === 'macos' && arch === 'x64') return 'Intel · x64';
-      if (arch === 'x86') return chinese ? 'x86 · 32 位' : 'x86 · 32-bit';
-      if (arch === 'x64') return chinese ? 'x64 · 64 位' : 'x64 · 64-bit';
-      return arch === 'arm64' ? 'ARM64' : arch;
-    };
-    const downloadLabel = (platform: string, arch: string, format: string) => format === 'testflight'
-      ? (chinese ? '打开 TestFlight' : 'Open TestFlight')
-      : architecture(platform, arch) || `${chinese ? '下载' : 'Download'} ${platformLabels[platform] || platform}`;
     let controller: AbortController | undefined;
-    const record = (value: unknown): value is Manifest => typeof value === 'object' && value !== null && !Array.isArray(value);
-    const text = (value: unknown) => typeof value === 'string' ? value : '';
-    const allowedDownload = (value: unknown) => {
-      if (typeof value !== 'string') return null;
-      try {
-        const url = new URL(value);
-        return url.protocol === 'https:' && ['cdn.zhama.com.cn', 'testflight.apple.com'].includes(url.hostname) && !url.username && !url.password && (!url.port || url.port === '443') ? value : null;
-      } catch { return null; }
-    };
     const make = <K extends keyof HTMLElementTagNameMap>(tag: K, value = '', className = '') => {
       const element = document.createElement(tag);
       element.textContent = value;
@@ -105,57 +95,29 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
       element.href = href;
       return element;
     };
-    const renderManifest = (manifest: Manifest, file: ManifestFile) => {
+    const renderPackages = (packages: ReleasePackages, file: ReleaseFile) => {
       const content = document.createDocumentFragment();
-      let count = 0;
-      let blocked = 0;
-      const product = productLabels[file.product] || file.product;
-      const version = text(manifest.version) || file.version;
-      if (record(manifest.platforms)) {
-        const versions = record(manifest.targetVersions) ? manifest.targetVersions : {};
-        Object.entries(manifest.platforms).forEach(([platform, targets]) => {
-          if (!record(targets)) return;
-          const variants: { arch: string; version: string; downloads: { format: string; url: string }[] }[] = [];
-          Object.entries(targets).forEach(([arch, formats]) => {
-            if (!record(formats)) return;
-            const downloads: { format: string; url: string }[] = [];
-            Object.entries(formats).forEach(([format, rawUrl]) => {
-              const url = allowedDownload(rawUrl);
-              if (url) downloads.push({ format, url }); else blocked += 1;
-            });
-            if (!downloads.length) return;
-            const target = arch === 'downloads' ? platform : `${platform}/${arch}`;
-            variants.push({ arch, downloads, version: text(versions[target]) || version });
-          });
-          if (!variants.length) return;
-          const order = platform === 'macos' ? ['arm64', 'x64', 'x86'] : ['x64', 'arm64', 'x86'];
-          variants.sort((a, b) => order.indexOf(a.arch) - order.indexOf(b.arch));
-          const platformTitle = platformLabels[platform] || platform;
-          const sharedVersion = variants.every(variant => variant.version === variants[0].version);
-          const card = make('article', '', 'download-card');
-          card.setAttribute('aria-label', `${product} ${platformTitle}`);
-          const heading = make('div', '', 'release-card-heading');
-          heading.append(make('h2', platformTitle));
-          if (sharedVersion) heading.append(make('span', variants[0].version, 'download-version'));
-          card.append(heading);
-          variants.forEach(variant => {
-            const panel = make('div', '', 'release-client-variant');
-            if (!sharedVersion) panel.append(make('span', variant.version, 'download-version'));
-            const { format, url } = primaryDownload(variant.downloads);
-            const label = downloadLabel(platform, variant.arch, format);
-            const download = link(label, url);
-            download.setAttribute('aria-label', [product, platformTitle, label, variant.version].join(' · '));
-            panel.append(download);
-            card.append(panel);
-          });
-          content.append(card); count += 1;
+      packages.cards.forEach(packageCard => {
+        const card = make('article', '', 'download-card');
+        card.setAttribute('aria-label', packageCard.ariaLabel);
+        const heading = make('div', '', 'release-card-heading');
+        heading.append(make('h2', packageCard.title));
+        if (packageCard.version) heading.append(make('span', packageCard.version, 'download-version'));
+        card.append(heading);
+        packageCard.variants.forEach(variant => {
+          const panel = make('div', '', 'release-client-variant');
+          if (!packageCard.version) panel.append(make('span', variant.version, 'download-version'));
+          const download = link(variant.label, variant.url);
+          download.setAttribute('aria-label', variant.ariaLabel);
+          panel.append(download);
+          card.append(panel);
         });
-      }
+        content.append(card);
+      });
       items.replaceChildren(content);
-      releaseStatus.textContent = count
-        ? (blocked ? (chinese ? '部分安装包地址不可用。' : 'Some package links are unavailable.') : '')
-        : (chinese ? '所选版本没有可下载的客户端，请选择其他产品或版本。' : 'No client packages are available. Choose another product or release.');
-      releaseStatus.parentElement!.hidden = count > 0 && blocked === 0;
+      items.dataset.releasePath = file.path;
+      releaseStatus.textContent = packageStatus(packages, chinese);
+      releaseStatus.parentElement!.hidden = !releaseStatus.textContent;
     };
     const loadManifest = async () => {
       controller?.abort();
@@ -163,8 +125,14 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
       controller = currentController;
       const file = config.files.find(entry => entry.path === manifestSelect.value && entry.version === versionSelect.value);
       retry.hidden = true;
+      if (file?.path === config.initial.path) {
+        if (items.dataset.releasePath !== file.path) renderPackages(config.initial, file);
+        items.setAttribute('aria-busy', 'false');
+        return;
+      }
       releaseStatus.parentElement!.hidden = false;
       items.replaceChildren();
+      delete items.dataset.releasePath;
       items.setAttribute('aria-busy', 'true');
       if (!file) {
         releaseStatus.textContent = chinese ? '当前版本未收录所选产品，请选择其他产品或版本。' : 'This product is not listed. Choose another product or release.';
@@ -178,8 +146,8 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         let manifest: unknown;
         try { manifest = await response.json(); } catch { throw new Error(chinese ? '清单不是有效的 JSON' : 'Manifest is not valid JSON'); }
-        if (!record(manifest) || manifest.schemaVersion !== 1) throw new Error(chinese ? '清单结构无法识别' : 'Manifest schema is not supported');
-        if (!currentController.signal.aborted) renderManifest(manifest, file);
+        if (!isReleaseManifest(manifest)) throw new Error(chinese ? '清单结构无法识别' : 'Manifest schema is not supported');
+        if (!currentController.signal.aborted) renderPackages(releasePackages(manifest, file, chinese), file);
       } catch (error) {
         if (currentController.signal.aborted) return;
         const reason = error instanceof Error ? error.message : (chinese ? '连接中断' : 'Connection interrupted');

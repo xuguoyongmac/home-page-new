@@ -11,7 +11,7 @@
     "test": "node --test tests/*.test.mjs",
     "prepreview": "node scripts/clear-preview-port.mjs",
     "preview": "node server/contact/preview.mjs",
-    "verify": "node scripts/verify-site.mjs && node scripts/verify-locales.mjs",
+    "verify": "node scripts/verify-site.mjs && node scripts/verify-locales.mjs && node scripts/verify-seo.mjs",
     "contact:serve": "node server/contact/start.mjs",
     "contact:verify": "node server/contact/verify.mjs"
   },

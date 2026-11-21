@@ -166,13 +166,13 @@ export function translateHtml(source, scripts = new Map()) {
   }
   const traditionalLink = languageLinks.find(node => attr(node, 'hreflang') === 'zh-Hant');
   if (traditionalLink && selectedIcon) { traditionalLink.childNodes.push(selectedIcon); selectedIcon.parentNode = traditionalLink; }
-  const translateJson = value => {
+  const translateJson = (value, field) => {
     if (typeof value === 'string') {
       if (/^\s*(?:<!doctype html>|<html\b)/i.test(value)) return translateHtml(value, scripts);
       return /^(?:https?:\/\/|\/)/.test(value) ? localizeUrl(value) : value === 'zh-CN' ? 'zh-Hant' : convert(value);
     }
-    if (Array.isArray(value)) return value.map(translateJson);
-    if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, translateJson(item)]));
+    if (Array.isArray(value)) return ['inLanguage', 'availableLanguage'].includes(field) ? value : value.map(item => translateJson(item, field));
+    if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, translateJson(item, key)]));
     return value;
   };
   const protectedAttributes = new Set(['id', 'class', 'name', 'type', 'for', 'lang', 'hreflang', 'aria-controls', 'aria-labelledby', 'aria-describedby', 'list', 'form', 'style', 'src', 'srcset', 'href']);
@@ -187,13 +187,14 @@ export function translateHtml(source, scripts = new Map()) {
       else if (mediaAttributes.has(item.name)) item.value = scripts.get(item.value) || item.value;
       else if (item.name === 'srcset' || item.name.endsWith('-srcset')) item.value = item.value.split(',').map(candidate => candidate.replace(/^(\s*)(\S+)/, (_, space, url) => space + (scripts.get(url) || url))).join(',');
       else if (item.name === 'style') item.value = item.value.replace(/url\(\s*(['"]?)([^'"\s)]+)\1\s*\)/g, (match, quote, url) => scripts.has(url) ? `url(${quote}${scripts.get(url)}${quote})` : match);
-      else if (node.tagName === 'meta' && ['og:image', 'og:image:url'].includes(attr(node, 'property')) && item.name === 'content') item.value = localizeUrl(item.value);
+      else if (node.tagName === 'meta' && (['og:image', 'og:image:url', 'og:image:secure_url'].includes(attr(node, 'property')) || attr(node, 'name') === 'twitter:image') && item.name === 'content') item.value = localizeUrl(item.value);
       else if (node.tagName === 'meta' && attr(node, 'property') === 'og:url' && item.name === 'content') item.value = localizeUrl(item.value);
       else if (node.tagName === 'meta' && attr(node, 'http-equiv')?.toLowerCase() === 'refresh' && item.name === 'content') item.value = item.value.replace(/(url\s*=\s*)(.+)$/i, (_, prefix, url) => prefix + localizeUrl(url));
       else if (!protectedAttributes.has(item.name) && !preserve && !/^(?:https?:\/\/|\/)/.test(item.value)) item.value = convert(item.value);
     }
     if (node.tagName === 'html') setAttr(node, 'lang', 'zh-Hant');
     if (node.tagName === 'meta' && attr(node, 'property') === 'og:locale') setAttr(node, 'content', 'zh_TW');
+    if (node.tagName === 'meta' && attr(node, 'property') === 'og:locale:alternate' && attr(node, 'content') === 'zh_TW') setAttr(node, 'content', 'zh_CN');
     if (node.tagName === 'button' && (attr(node, 'class') || '').split(/\s+/).includes('language-link')) {
       const label = node.childNodes?.find(child => child.tagName === 'span');
       if (label) label.childNodes = [{ nodeName: '#text', value: '繁體', parentNode: label }];

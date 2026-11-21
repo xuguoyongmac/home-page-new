@@ -857,48 +857,8 @@ export const releaseDownloads: ReleaseDownload[] = [
   }
 ];
 
-export const legacyRoutes = [
-  {
-    "from": "cloud",
-    "to": "enterprise/",
-    "hash": "cloud"
-  },
-  {
-    "from": "cloud-agent",
-    "to": "product/",
-    "hash": "collaboration"
-  },
-  {
-    "from": "platform",
-    "to": "ecosystem/",
-    "hash": "integrations"
-  },
-  {
-    "from": "plugin-system",
-    "to": "ecosystem/",
-    "hash": "integrations"
-  },
-  {
-    "from": "technical",
-    "to": "product/",
-    "hash": "execution"
-  },
-  {
-    "from": "multi-agent",
-    "to": "product/",
-    "hash": "execution"
-  },
-  {
-    "from": "guide",
-    "to": "resources/",
-    "hash": "manual"
-  },
-  {
-    "from": "station",
-    "to": "enterprise/",
-    "hash": "station"
-  }
-] as const;
+export { legacyPageRoutes as legacyRoutes } from '../../shared/seo-routes.mjs';
+import { legacyPageRoutes as legacyRoutes, legacyTarget } from '../../shared/seo-routes.mjs';
 
 export const preservedLegacyPaths = [
   "download",
@@ -909,7 +869,7 @@ export const preservedLegacyPaths = [
 ] as const;
 
 export function legacyDestination(locale: SiteLocale, route: (typeof legacyRoutes)[number]): string {
-  return `/${locale}/${route.to}#${route.hash}`;
+  return legacyTarget(locale, route);
 }
 
 export const releaseArchive = {
