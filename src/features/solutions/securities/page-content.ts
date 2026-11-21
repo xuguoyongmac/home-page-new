@@ -1,292 +1,426 @@
-import type { IndustryEmployee, IndustrySolutionPresentation } from '../shared/types';
-
-export type SecuritiesEmployee = IndustryEmployee;
+import type { IndustrySolutionPresentation } from '../shared/types';
 
 export const securitiesPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让数字员工合规上岗，让专业成果进入业务",
-      "pain": "结果停在对话、对客缺少确认、过程难以追溯、敏感数据出域，让券商难以把模型能力用于实际业务。",
-      "value": "TeGo 数字员工协作平台以岗位技能、系统连接与审核审计承接券商作业，让成果进入业务系统，持牌判断和客户数据始终受控。",
+      "title": "让研究形成洞察，让经营接上行动",
+      "pain": "研究资料持续更新，专业观点需要反复验证；客户经营、分支机构分析与合规审阅跨越不同条线，成果难以顺畅接续。",
+      "value": "数字员工协同研究、财富、投行、运营与合规团队，连接业务证据和专业方法，让研究洞察进入客户服务，让经营分析形成具体行动。",
       "scenarios": [
-        "ETF 潜客",
-        "经营问数",
-        "客户意图",
-        "投研报告",
-        "内容审核",
-        "审计溯源"
+        "投资研究",
+        "财富服务",
+        "投行尽调",
+        "合规审阅",
+        "运营核对",
+        "营业部经营"
       ],
       "benefits": [
         {
-          "title": "成果进入系统",
-          "description": "经人工确认的成果回写客户关系系统与投顾工作台，跟进和转化有正式记录。"
+          "title": "研究洞察更扎实",
+          "description": "围绕研究假设组织公告、财报与行业证据，保留反证和验证过程，让分析师专注观点形成。"
         },
         {
-          "title": "对客经过确认",
-          "description": "适当性和内容审核覆盖对客作业，观点由持牌人员确认，触达遵循授权与审批。"
+          "title": "客户服务更有准备",
+          "description": "将产品研究、客群变化与服务记录结合，准备沟通议题和路演材料，支持专业人员开展适当的服务。"
         },
         {
-          "title": "数据与过程受控",
-          "description": "客户数据在私有环境使用，来源、调用、修改与成果关联留痕，支撑审阅追溯。"
+          "title": "经营协作更连贯",
+          "description": "从营业部经营归因到合规审阅与运营跟进，让专业成果、责任事项和修订版本持续流转。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让数字员工合规上岗",
-        "让专业成果进入业务"
+        "让研究形成洞察",
+        "让经营接上行动"
       ],
       "background": "/images/industries/securities-architecture_V1.1.webp"
     },
-    "solution": {
-      "context": {
-        "title": "券商业务应用的四个断点",
-        "body": "名单、问数和研究初稿已经能够生成，但结果停在对话、对客缺少确认、过程难以追溯、敏感数据出域，仍让券商难以放心投入业务。"
-      },
-      "mappingsTitle": "券商业务断点的对应解法",
-      "mappings": [
-        {
-          "problemTitle": "结果停在对话里",
-          "problem": "潜客名单与分析已经生成，却未进入客户关系系统和投顾工作台，跟进与转化难以追踪。",
-          "capabilities": [
-            "技能与插件",
-            "业务系统连接",
-            "平台 OpenAPI"
-          ],
-          "response": "将投顾方法封装为岗位技能，连接客户关系系统与投顾工作台；经人工确认的结果回写并回读状态，让跟进有正式记录。",
-          "deliverables": [
-            "客户关系系统回写记录",
-            "客户跟进与转化记录"
-          ],
-          "value": "成果接上日常业务，客户跟进和转化有据可查。",
-          "icon": "plug"
-        },
-        {
-          "problemTitle": "对客缺少持牌确认",
-          "problem": "观点建议缺少适当性校验与人工复核，生成内容直接对客，持牌责任和内容边界难以守住。",
-          "capabilities": [
-            "待处理事项",
-            "内容策略",
-            "风险规则"
-          ],
-          "response": "匹配客户风险等级、产品风险与销售限制，按规则检查收益承诺和诱导交易；异常转人工，观点经持牌人员确认后对客。",
-          "deliverables": [
-            "适当性与内容审核记录",
-            "持牌人员确认回执"
-          ],
-          "value": "对客内容经过专业把关，持牌责任清楚落位。",
-          "icon": "user-check"
-        },
-        {
-          "problemTitle": "过程缺少完整记录",
-          "problem": "输入、知识引用、工具调用和人工修改没有关联记录，出现争议后难以还原依据与责任。",
-          "capabilities": [
-            "审计中心",
-            "内容标识与溯源",
-            "版本机制"
-          ],
-          "response": "关联请求、知识来源、模型规则版本、工具调用与人工修改，保留成果溯源和复测记录，让合规审阅能够还原当时依据。",
-          "deliverables": [
-            "任务审计证据链",
-            "成果溯源与复测记录"
-          ],
-          "value": "过程可还原、依据可追查，合规审阅有据可依。",
-          "icon": "file-search"
-        },
-        {
-          "problemTitle": "敏感数据离开内网",
-          "problem": "客户身份、持仓与交易信息需要参与分析，公有服务依赖却让数据路径和访问边界难以控制。",
-          "capabilities": [
-            "私有化部署",
-            "本地模型接入",
-            "最小授权"
-          ],
-          "response": "模型与数据在券商私有环境分区运行，检索、工具、消息与第三方服务按人员权限和接口白名单连接，统一管理数据路径。",
-          "deliverables": [
-            "企业域内模型与数据运行环境",
-            "人员权限与接口白名单"
-          ],
-          "value": "客户数据留在企业域内，业务接入范围清楚可控。",
-          "icon": "key-round"
-        }
-      ],
-      "governance": {
-        "title": "治理嵌入每次业务作业",
-        "items": [
-          {
-            "title": "对客审核",
-            "body": "客户触达核对适当性与销售限制，对客观点由持牌投顾确认，研究结论与评级由持牌分析师审定；系统写入和主动触达按授权审批。"
-          },
-          {
-            "title": "上线准入",
-            "body": "以正常、边界、异常和对抗样本检验岗位成果、工具权限与人工门禁，形成测评基线、风险失效清单和准入标准。"
-          },
-          {
-            "title": "持续留痕",
-            "body": "行情、研报、规则与模型版本纳入维护，工具调用和人员修改保持关联；重要变更复测，审计记录支撑问题追溯。"
-          }
+    "sources": [
+      "公司公告与财务报告",
+      "行业资料与研究方法",
+      "客户资产与服务记录",
+      "业务材料与合规规则"
+    ],
+    "outputs": [
+      "公司与行业研究报告",
+      "客户服务与产品解读材料",
+      "合规审阅与业务修订稿",
+      "分支机构经营分析"
+    ],
+    "features": [
+      {
+        "title": "持续验证研究假设，让专业观点有据可循",
+        "problem": "公告、财报与产业信息不断更新，研究假设需要跨来源验证，指标、观点与报告版本同步变化。",
+        "body": "围绕公司、行业和专题任务，数字员工跟踪事件与经营指标，组织支持证据、反证和待验证假设，协同完成财务分析及报告编制。分析师可沿原文追查论据、调整假设，并让新信息持续进入研究过程，沉淀可复用的研究方法。",
+        "outcomes": [
+          "事件与指标跟踪",
+          "研究假设验证",
+          "研究报告协作"
         ]
       },
-      "values": {
-        "title": "让券商放心投入实际业务",
-        "items": [
-          {
-            "title": "合规使用有抓手",
-            "body": "适当性、内容审核、持牌确认和审计各有落点，让业务与合规围绕同一记录判断是否可用。"
-          },
-          {
-            "title": "专业时间回到判断",
-            "body": "圈客、取数、引用核对与初稿准备由数字员工承接，投顾和研究人员集中服务客户、分析依据与确认观点。"
-          },
-          {
-            "title": "岗位经验成为自有资产",
-            "body": "投顾方法、研究技能、企业知识和审计记录沉淀在券商环境，底层模型调整时，已积累的岗位资产继续复用。"
-          }
+      {
+        "title": "从客户需求出发，准备有价值的服务沟通",
+        "problem": "客户资产、产品持有与历史沟通分散，投顾准备产品解读和服务回访时，需要重新梳理背景。",
+        "body": "结合客户分层、持仓变化和服务记录，数字员工准备需求分析、产品要点与市场沟通材料。研究成果可以接入路演和客户会话，帮助投顾围绕实际需求开展服务；适当性判断和投资建议由专业岗位把关，服务过程保留连续背景。",
+        "outcomes": [
+          "客户需求分析",
+          "产品与市场解读",
+          "服务回访协作"
+        ]
+      },
+      {
+        "title": "把合规审阅放进作业，接续专业成果",
+        "problem": "研报、投行与对客材料各有审阅要求，问题和修订分散，团队需要反复核对意见处理结果。",
+        "body": "把适用规则、来源依据与当前稿件放进同一项目，数字员工定位表述、数据和材料差异，整理审阅重点并关联原文。专业人员提出意见后，修订版本与处理反馈持续接续，支持研究发布、投行尽调及业务协作按既有流程推进。",
+        "outcomes": [
+          "研报与材料审阅",
+          "投行尽调准备",
+          "审阅意见接续"
+        ]
+      },
+      {
+        "title": "看清营业部增长来源，找准经营行动",
+        "problem": "资产与交易受资金、行情和产品结构共同影响，分支机构还要把分析转成客群与渠道行动。",
+        "body": "按机构、客群、渠道和产品拆解经营变化，区分资金净流入、市值波动及结构调整，关联重点客户与服务反馈。数字员工持续准备经营简报和运营核对材料，让负责人看清变化原因，组织客户维护、团队协作与后续跟进。",
+        "outcomes": [
+          "资产变化归因",
+          "重点客群识别",
+          "经营行动协作"
         ]
       }
+    ],
+    "teamTitle": "连接证券专业条线的数字员工团队",
+    "employees": [
+      {
+        "role": "投资研究数字员工",
+        "avatar": "/images/home/employee-avatar-research_V1.0.webp",
+        "skills": [
+          "公司研究",
+          "财务分析",
+          "假设验证"
+        ],
+        "process": [
+          "跟踪公告事件与行业变化",
+          "核对指标并组织正反证据",
+          "协同编制与更新研究报告"
+        ],
+        "outputs": [
+          "公司与行业研究报告",
+          "研究假设与证据索引"
+        ],
+        "value": "让研究人员聚焦有依据的专业观点"
+      },
+      {
+        "role": "财富服务数字员工",
+        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "skills": [
+          "客群分析",
+          "产品解读",
+          "沟通准备"
+        ],
+        "process": [
+          "分析客户持有与服务背景",
+          "匹配产品研究和市场信息",
+          "准备回访议题与路演材料"
+        ],
+        "outputs": [
+          "客户服务准备",
+          "产品解读材料"
+        ],
+        "value": "让专业服务贴近客户实际需求"
+      },
+      {
+        "role": "投行尽调数字员工",
+        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "skills": [
+          "资料核验",
+          "财务勾稽",
+          "底稿编制"
+        ],
+        "process": [
+          "核对企业资料与项目要求",
+          "比对财务和业务证据关系",
+          "组织尽调报告与补充问题"
+        ],
+        "outputs": [
+          "项目尽调报告草稿",
+          "核验与问询材料"
+        ],
+        "value": "让项目团队深入关键业务事实"
+      },
+      {
+        "role": "合规审阅数字员工",
+        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "skills": [
+          "规则匹配",
+          "材料审阅",
+          "修订追踪"
+        ],
+        "process": [
+          "匹配研究与业务审阅规则",
+          "定位原句、数据和依据差异",
+          "接续审阅意见与修订反馈"
+        ],
+        "outputs": [
+          "合规审阅意见",
+          "业务材料修订稿"
+        ],
+        "value": "让审阅问题沿着版本持续落实"
+      },
+      {
+        "role": "证券运营数字员工",
+        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "skills": [
+          "业务核对",
+          "差异归因",
+          "协作交接"
+        ],
+        "process": [
+          "关联交易清算与运营记录",
+          "对照业务规则分析差异",
+          "组织处理反馈和岗位交接"
+        ],
+        "outputs": [
+          "运营差异分析",
+          "业务处理交接"
+        ],
+        "value": "让运营核对与后续处理连起来"
+      },
+      {
+        "role": "分支经营数字员工",
+        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "skills": [
+          "经营归因",
+          "客群洞察",
+          "管理汇报"
+        ],
+        "process": [
+          "拆解资产与交易经营变化",
+          "区分资金、行情和结构影响",
+          "形成客群重点与经营议题"
+        ],
+        "outputs": [
+          "分支机构经营简报",
+          "重点客群行动建议"
+        ],
+        "value": "让增长来源看得清、行动跟得上"
+      }
+    ],
+    "deployment": {
+      "title": "保留专业分工，连接全业务协作",
+      "body": "在机构私有环境运行 TeGo 数字员工协作平台，连接获准研究数据、知识与业务工具。按研究、投行、财富与运营条线组织信息访问和工具权限，维护研究方法与技能版本，贯通任务、成果、审核与审计记录，支持跨团队受控协作。"
     }
   },
   "en": {
     "home": {
-      "title": "Governed digital employees. Outputs connected to business.",
-      "pain": "Outputs confined to chat, missing client approvals, incomplete records and sensitive-data exposure prevent model capabilities from becoming usable securities operations.",
-      "value": "The platform connects role skills, business systems and review controls, turning securities work into recorded business outcomes while licensed professionals retain judgment and client data stays under institutional control.",
+      "title": "Turn research into insight and business analysis into action",
+      "pain": "Research inputs keep changing and professional views need repeated validation. Wealth services, branch analysis and compliance review span different teams, making work difficult to carry forward.",
+      "value": "Digital employees collaborate with research, wealth, investment banking, operations and compliance teams, connecting evidence and professional methods so insights reach clients and business analysis leads to action.",
       "scenarios": [
-        "ETF prospects",
-        "Business data queries",
-        "Client intent",
-        "Research reports",
-        "Content review",
-        "Audit provenance"
+        "Investment research",
+        "Wealth services",
+        "Investment banking diligence",
+        "Compliance review",
+        "Operations checks",
+        "Branch management"
       ],
       "benefits": [
         {
-          "title": "Outputs reach business systems",
-          "description": "Staff-confirmed outputs reach the CRM and adviser workbench, giving follow-up and conversion a formal record."
+          "title": "Build stronger research insight",
+          "description": "Organize disclosures, financials and industry evidence around hypotheses, retaining counterevidence and validation so analysts can focus on their views."
         },
         {
-          "title": "Client communications are reviewed",
-          "description": "Suitability and content controls cover client-facing work; licensed staff confirm opinions and outreach follows authorization and approval."
+          "title": "Prepare more relevant client services",
+          "description": "Combine product research, segment changes and service history to prepare informed conversations and roadshows for professional staff."
         },
         {
-          "title": "Data and work remain controlled",
-          "description": "Client data is used privately, with sources, calls, revisions and outputs connected for review and investigation."
+          "title": "Keep business collaboration connected",
+          "description": "Carry branch findings, compliance reviews, operating actions and document revisions across specialist teams."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Governed digital employees",
-        "Outcomes ready for business"
+        "Turn research into insight",
+        "Turn analysis into action"
       ],
       "background": "/images/industries/securities-architecture_V1.1.webp"
     },
-    "solution": {
-      "context": {
-        "title": "Four gaps in operational adoption",
-        "body": "Lists, analysis and research drafts can already be generated. Adoption remains constrained when outputs stay in chat, client communications bypass approval, work cannot be reconstructed and sensitive data leaves the institution."
-      },
-      "mappingsTitle": "Securities gaps and their solutions",
-      "mappings": [
-        {
-          "problemTitle": "Outputs stop at the conversation",
-          "problem": "Prospect lists and analysis do not reach the CRM or adviser workbench, leaving follow-up and conversion disconnected from the generated output.",
-          "capabilities": [
-            "Skills and plugins",
-            "Business system connections",
-            "Platform OpenAPI"
-          ],
-          "response": "Role skills retain adviser methods and connect with the CRM and adviser workbench. Staff-confirmed outputs are written back and their status read back, giving follow-up a formal business record.",
-          "deliverables": [
-            "CRM write-back records",
-            "Client follow-up and conversion records"
-          ],
-          "value": "Connect outputs with daily business and trace client follow-up through to conversion.",
-          "icon": "plug"
-        },
-        {
-          "problemTitle": "Client content lacks licensed approval",
-          "problem": "Opinions reach clients without suitability checks or professional review, leaving content boundaries and the responsibility of licensed personnel unclear.",
-          "capabilities": [
-            "Pending matters",
-            "Content policies",
-            "Risk rules"
-          ],
-          "response": "Match client risk profiles, product risk and sales restrictions, and check return promises and trading inducements against the firm’s rules. Refer exceptions to staff; licensed professionals confirm opinions before client communication.",
-          "deliverables": [
-            "Suitability and content-review records",
-            "Licensed professional approval receipts"
-          ],
-          "value": "Give client communications professional review and clear licensed ownership.",
-          "icon": "user-check"
-        },
-        {
-          "problemTitle": "The work cannot be reconstructed",
-          "problem": "Inputs, knowledge citations, tool calls and staff revisions lack connected records, making it difficult to establish the evidence and responsibility behind an output.",
-          "capabilities": [
-            "Audit center",
-            "Content identification and provenance",
-            "Version management"
-          ],
-          "response": "Requests, source material, model and rule versions, tool calls and staff revisions remain connected. Output provenance and retest records allow compliance reviewers to reconstruct the evidence available at the time.",
-          "deliverables": [
-            "Task audit evidence chain",
-            "Output provenance and retest records"
-          ],
-          "value": "Reconstruct the work and trace its evidence for informed compliance review.",
-          "icon": "file-search"
-        },
-        {
-          "problemTitle": "Sensitive data leaves the private network",
-          "problem": "Client identities, holdings and transactions are needed for analysis, while reliance on public services makes data routes and access boundaries difficult to control.",
-          "capabilities": [
-            "Private deployment",
-            "Local model connections",
-            "Least-privilege access"
-          ],
-          "response": "Models and data run in separate zones within the firm’s private environment. Retrieval, tools, messaging and third-party services follow user permissions and interface allowlists, keeping data routes under institutional control.",
-          "deliverables": [
-            "Private model and data environment",
-            "User permissions and interface allowlist"
-          ],
-          "value": "Keep client data inside the enterprise boundary and business access clearly controlled.",
-          "icon": "key-round"
-        }
-      ],
-      "governance": {
-        "title": "Controls within each business assignment",
-        "items": [
-          {
-            "title": "Client-facing review",
-            "body": "Client outreach checks suitability and sales restrictions. Licensed advisers confirm client-facing opinions; licensed analysts approve research conclusions and ratings. System writes and proactive contact follow the assigned authorizations and approvals."
-          },
-          {
-            "title": "Production admission",
-            "body": "Normal, boundary, exception and adversarial cases test role outputs, tool permissions and staff approval controls, producing a baseline, failure register and admission criteria."
-          },
-          {
-            "title": "Ongoing traceability",
-            "body": "Market data, research, rules and model versions have maintenance owners. Tool calls and staff changes remain connected; material changes are retested and audit records support investigation."
-          }
+    "sources": [
+      "Company disclosures and financial reports",
+      "Industry records and research methods",
+      "Client assets and service history",
+      "Business materials and compliance rules"
+    ],
+    "outputs": [
+      "Company and sector research",
+      "Client service and product materials",
+      "Compliance reviews and revised documents",
+      "Branch operating analysis"
+    ],
+    "features": [
+      {
+        "title": "Keep research current and build views on traceable evidence",
+        "problem": "Disclosures, financials and industry information keep changing. Each hypothesis needs cross-source validation while metrics, views and reports evolve.",
+        "body": "Track events and operating metrics around company, sector and thematic research. Digital employees organize supporting evidence, counterevidence and open hypotheses, and help prepare financial analysis and reports. Analysts can inspect original sources, revise assumptions and bring new information into ongoing research.",
+        "outcomes": [
+          "Event and metric tracking",
+          "Research hypothesis validation",
+          "Research report collaboration"
         ]
       },
-      "values": {
-        "title": "Put digital employees to work with confidence",
-        "items": [
-          {
-            "title": "Concrete compliance controls",
-            "body": "Suitability, content review, licensed approval and audit have identifiable records, giving business and compliance teams a shared basis for judging whether outputs can be used."
-          },
-          {
-            "title": "Professional attention on judgment",
-            "body": "Digital employees undertake prospect preparation, data retrieval, citation checks and drafting, allowing advisers and researchers to concentrate on clients, evidence and professional conclusions."
-          },
-          {
-            "title": "Institution-owned role assets",
-            "body": "Adviser methods, research skills, enterprise knowledge and audit records remain in the firm’s environment, preserving accumulated role assets when underlying models change."
-          }
+      {
+        "title": "Prepare wealth conversations around real client needs",
+        "problem": "Client assets, holdings and previous conversations sit across systems, leaving advisers to rebuild context for product discussions, reviews and market updates.",
+        "body": "Combine segmentation, holding changes and service history to prepare needs analysis, product explanations and market communication. Bring research into roadshows and client conversations while professional staff retain suitability assessments and investment advice, with the service context carried forward.",
+        "outcomes": [
+          "Client needs analysis",
+          "Product and market interpretation",
+          "Service review collaboration"
+        ]
+      },
+      {
+        "title": "Make compliance review part of the work and keep professional outputs moving",
+        "problem": "Research, investment banking and client materials follow different review requirements. Findings, feedback and revisions are scattered across rounds.",
+        "body": "Bring applicable rules, supporting sources and the current draft into the same project. Digital employees locate wording, data and document differences, then prepare source-linked review priorities. Staff comments, revised versions and responses stay connected through existing publication and business workflows.",
+        "outcomes": [
+          "Research and document review",
+          "Investment banking preparation",
+          "Review comment follow-through"
+        ]
+      },
+      {
+        "title": "Explain branch growth and give operating teams practical priorities",
+        "problem": "Assets and activity reflect flows, markets and product mix. Branch teams need to translate those movements into client and channel actions.",
+        "body": "Analyze changes by institution, segment, channel and product, distinguishing net flows, market movements and mix shifts. Connect findings with priority clients and service feedback, then prepare operating briefs and reconciliation work so managers can coordinate coverage, team actions and follow-up.",
+        "outcomes": [
+          "Asset change attribution",
+          "Priority segment insight",
+          "Business action collaboration"
         ]
       }
+    ],
+    "teamTitle": "A digital employee team across securities business lines",
+    "employees": [
+      {
+        "role": "Investment Research Digital Employee",
+        "avatar": "/images/home/employee-avatar-research_V1.0.webp",
+        "skills": [
+          "Company research",
+          "Financial analysis",
+          "Hypothesis validation"
+        ],
+        "process": [
+          "Track disclosures and sector developments",
+          "Reconcile metrics and organize evidence on both sides",
+          "Draft and update research reports"
+        ],
+        "outputs": [
+          "Company and sector research",
+          "Research hypotheses and evidence index"
+        ],
+        "value": "Keep analysts focused on evidence-backed professional views"
+      },
+      {
+        "role": "Wealth Services Digital Employee",
+        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "skills": [
+          "Client segments",
+          "Product interpretation",
+          "Conversation preparation"
+        ],
+        "process": [
+          "Analyze holdings and service context",
+          "Connect product research and market information",
+          "Prepare review topics and roadshow materials"
+        ],
+        "outputs": [
+          "Client service preparation",
+          "Product interpretation materials"
+        ],
+        "value": "Make professional services relevant to client needs"
+      },
+      {
+        "role": "Investment Banking Diligence Digital Employee",
+        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "skills": [
+          "Document verification",
+          "Financial reconciliation",
+          "Working papers"
+        ],
+        "process": [
+          "Check company records against project requirements",
+          "Compare financial and business evidence",
+          "Prepare diligence drafts and follow-up questions"
+        ],
+        "outputs": [
+          "Project diligence draft",
+          "Verification and enquiry materials"
+        ],
+        "value": "Help project teams examine the business facts that matter"
+      },
+      {
+        "role": "Compliance Review Digital Employee",
+        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "skills": [
+          "Rule matching",
+          "Document review",
+          "Revision tracking"
+        ],
+        "process": [
+          "Match research and business review rules",
+          "Locate wording, data and evidence differences",
+          "Connect comments with revisions and responses"
+        ],
+        "outputs": [
+          "Compliance review findings",
+          "Revised business materials"
+        ],
+        "value": "Carry review findings through successive versions"
+      },
+      {
+        "role": "Securities Operations Digital Employee",
+        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "skills": [
+          "Record reconciliation",
+          "Exception analysis",
+          "Work handovers"
+        ],
+        "process": [
+          "Connect trade, clearing and operating records",
+          "Analyze differences against business rules",
+          "Prepare responses and responsible-team handovers"
+        ],
+        "outputs": [
+          "Operating exception analysis",
+          "Business processing handover"
+        ],
+        "value": "Connect operations checks with subsequent resolution"
+      },
+      {
+        "role": "Branch Management Digital Employee",
+        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "skills": [
+          "Business attribution",
+          "Client insight",
+          "Management reporting"
+        ],
+        "process": [
+          "Analyze asset and activity movements",
+          "Separate flow, market and product effects",
+          "Identify segment priorities and business topics"
+        ],
+        "outputs": [
+          "Branch operating brief",
+          "Priority segment action recommendations"
+        ],
+        "value": "Make growth drivers clear and follow-up practical"
+      }
+    ],
+    "deployment": {
+      "title": "Respect specialist responsibilities and connect business collaboration",
+      "body": "Run TeGo Digital Employee Collaboration Platform in the institution’s private environment, connecting approved research data, knowledge and business tools. Organize access and tool permissions by research, investment banking, wealth and operations teams, and connect methods, skill versions, tasks, deliverables, reviews and audit records for controlled collaboration."
     }
   }
 };

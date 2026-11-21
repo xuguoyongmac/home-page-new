@@ -3,84 +3,91 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const governmentPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让政务服务更一致，让机关落实更有据",
-      "pain": "同一情形前后答复不一，采购疑点留到发布之后，专项反馈和政策更新又各有口径；工作做了很多，服务质量与落实成效仍难稳定。",
-      "value": "以现行政策支撑一致服务，提前审阅采购疑点，让专项协调聚焦责任和实际障碍。",
+      "title": "让政策找企更精准，让政务服务更协同",
+      "pain": "惠企政策多、适用条件细，企业难以找到真正匹配的服务；跨部门事项、热线诉求与机关事务又分散流转，基层重复沟通、反复准备。",
+      "value": "以数字岗位连接政策知识、事项规则和部门协作，支撑政策找企、高效办成一件事、12345诉求办理与机关日常工作，让服务接续更顺畅，把工作人员的时间还给业务。",
       "scenarios": [
-        "事项材料",
-        "采购核查",
-        "专项落实",
-        "政策变更",
-        "依据接续",
-        "经验复用"
+        "政策找企",
+        "一件事协同",
+        "12345诉求",
+        "基层文书",
+        "采购管理",
+        "督查督办"
       ],
       "benefits": [
         {
-          "title": "服务口径更一致",
-          "description": "同一情形对应同一份有效依据，让窗口、答疑与经办围绕相同要求提供服务。"
+          "title": "惠企服务更精准",
+          "description": "关联政策条件与企业经营特点，形成适配服务建议，衔接申报准备与政策更新。"
         },
         {
-          "title": "专业审查更靠前",
-          "description": "采购疑点与依据在发布前进入复核，把注意力放在竞争条件与实质关联。"
+          "title": "跨部门办理更连贯",
+          "description": "围绕一件事和热线诉求组织材料、职责与进度，减少重复问询和跨环节信息断点。"
         },
         {
-          "title": "部署落实更有抓手",
-          "description": "正式要求、责任反馈和待解障碍保持对应，牵头部门直接组织协调。"
+          "title": "基层协作更省力",
+          "description": "复用权威知识与办文方法，接续公文、采购和督办工作，让日常成果能够持续使用。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让政务服务更一致",
-        "让机关落实更有据"
+        "让政策服务更精准",
+        "让政务协作更高效"
       ],
-      "background": "/images/industries/government-architecture_V1.1.webp",
-      "illustration": "/images/solutions/government/government-value-scene-1-zh_V11.0.webp"
+      "background": "/images/industries/government-architecture_V1.1.webp"
     },
     "sources": [
-      "办事指南与适用情形",
-      "采购文件与审查规则",
-      "专项任务与部门反馈",
-      "政策变化与现行方法"
+      "政策法规与惠企事项",
+      "办事指南与权责目录",
+      "12345诉求与办理记录",
+      "公文、采购与督办资料"
     ],
     "outputs": [
-      "事项材料与适用要求核查",
-      "采购条款疑点与审阅意见",
-      "专项任务协作与落实材料",
-      "政策变化分析与方法更新准备"
+      "企业政策服务方案",
+      "一件事办理协作包",
+      "诉求治理分析报告",
+      "机关文书与督办成果"
     ],
     "features": [
       {
-        "title": "材料要求一次说清",
-        "problem": "同一情形得到不同材料要求，补交后仍被追加条件，办事对象反复往返。",
-        "body": "同一办事情形对应现行指南，让窗口答复前后一致，减少群众和企业往返补交。",
-        "image": "/images/solutions/government/government-value-scene-1-zh_V11.0.webp",
-        "imageAlt": "同一办理情形，材料要求一次说清",
-        "imageHeight": 560
+        "title": "让政策找企从广泛发布走向精准服务",
+        "problem": "惠企政策分散在不同部门，适用条件与企业经营特点难以对应，服务人员反复查找和解释。",
+        "body": "将权威政策、申报指南与企业经营信息组织到同一服务任务，提取行业、规模、资质和申报条件，形成政策适配建议与服务方案。随政策变化更新知识，接续申报准备与沟通反馈，让惠企服务从等企业来问转向主动服务。",
+        "outcomes": [
+          "企业政策适配",
+          "申报准备方案",
+          "政策更新跟踪"
+        ]
       },
       {
-        "title": "采购疑点提前审阅",
-        "problem": "无关资质、排他性参数或失配评分项进入采购文件，问题留到质疑环节。",
-        "body": "把排他条件、无关资质和失配评分项带到发布前审阅，减少采购文件的争议风险。",
-        "image": "/images/solutions/government/government-value-scene-2-zh_V11.0.webp",
-        "imageAlt": "采购条款疑点，在发布前看清",
-        "imageHeight": 722
+        "title": "让高效办成一件事贯通跨部门服务",
+        "problem": "一个办事情形涉及多部门规则与材料，窗口重复询问、企业反复补充，环节之间难以接续。",
+        "body": "围绕高效办成一件事，关联办理情形、事项指南、共用信息与部门职责，组织材料准备、缺项问询和进度交接。通过授权接口衔接已有办理系统，让窗口和承办岗位共享任务背景，减少重复准备与跨部门解释。",
+        "outcomes": [
+          "一件事协同准备",
+          "共用信息复用",
+          "办理进度接续"
+        ]
       },
       {
-        "title": "专项协调直达障碍",
-        "problem": "专项材料收齐却看不清目标进展，责任交叉和反馈口径差异拖慢协调。",
-        "body": "让正式要求、单位反馈与责任对应，牵头部门直接协调卡住落实的具体问题。",
-        "image": "/images/solutions/government/government-value-scene-3-zh_V11.0.webp",
-        "imageAlt": "专项协调，直达责任与障碍",
-        "imageHeight": 591
+        "title": "让12345诉求转化为协同治理线索",
+        "problem": "热线诉求量大、表述多样，责任判定与历史情况分散，分办督办和共性问题分析相互脱节。",
+        "body": "从12345诉求中提炼事项、地点与服务要求，关联权责目录和历史办理，形成主协办建议与答复准备。持续汇集办理反馈、重复诉求和热点变化，支撑工单质检与专题分析，让单件办理与城市治理洞察相互连接。",
+        "outcomes": [
+          "诉求分办建议",
+          "办理质检成果",
+          "热点诉求分析"
+        ]
       },
       {
-        "title": "政策更新进入服务",
-        "problem": "政策已经更新，材料清单和业务答复仍沿用旧版本，形成新的执行偏差。",
-        "body": "看清政策变化影响哪些清单与答复，让日常服务跟上现行要求。",
-        "image": "/images/solutions/government/government-value-scene-4-zh_V11.0.webp",
-        "imageAlt": "政策变化，进入现行服务口径",
-        "imageHeight": 800
+        "title": "把机关日常作业转化为基层减负实效",
+        "problem": "公文、会议、采购和督办依赖大量资料准备，多次改稿与跨科室汇总挤占工作人员时间。",
+        "body": "将公文规范、采购制度与机关经验沉淀为岗位知识和技能，承担文稿起草、采购条款分析、会议纪要和专项汇报。通过项目关联任务、反馈和文件版本，按计划跟进重点事项，让分散的日常作业形成可接续的协作成果。",
+        "outcomes": [
+          "机关文稿编制",
+          "采购分析成果",
+          "重点任务督办"
+        ]
       }
     ],
     "teamTitle": "面向政务服务与机关协作的数字员工团队",
@@ -201,90 +208,97 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "部门职责与资源授权",
-      "body": "复用获准的政务资源，按部门职责授权访问，保留办理依据与审核记录。"
+      "title": "复用统筹资源，让专业能力进入日常履职",
+      "body": "支持在获准政务云或本地环境部署，衔接区域共用模型、权威知识与已有业务系统。按部门职责配置资料、工具与数字岗位使用范围，将知识更新、能力发布、任务记录和运行审计纳入日常管理，让专业方法可维护、服务经验可复用。"
     }
   },
   "en": {
     "home": {
-      "title": "Consistent public service. Better-grounded execution.",
-      "pain": "Conflicting document requirements, procurement issues found after publication and disconnected policy updates can undermine service quality despite substantial staff effort.",
-      "value": "Apply current policy to consistent public service, review procurement concerns earlier and focus initiative coordination on clear responsibility and the obstacles preventing delivery.",
+      "title": "Match businesses with relevant policies. Connect public services.",
+      "pain": "Businesses struggle to find policies that fit their circumstances. Cross-agency applications, service requests and internal work pass through disconnected records, creating repeated questions and preparation.",
+      "value": "Connect policy knowledge, service rules and agency collaboration through digital roles. Support policy matching, integrated services, 12345 request handling and daily administration, giving staff more time for public service.",
       "scenarios": [
-        "Service documents",
-        "Procurement review",
-        "Priority initiatives",
-        "Policy changes",
-        "Evidence continuity",
-        "Reusable methods"
+        "Policy matching",
+        "Integrated services",
+        "12345 requests",
+        "Official documents",
+        "Public procurement",
+        "Priority follow-up"
       ],
       "benefits": [
         {
-          "title": "Consistent service requirements",
-          "description": "Give front desks, case handlers and service teams the same current basis for the same circumstances."
+          "title": "More relevant business support",
+          "description": "Relate eligibility to business circumstances, prepare relevant support options and carry changes into application preparation."
         },
         {
-          "title": "Earlier professional scrutiny",
-          "description": "Bring clause concerns and applicable references into review before procurement documents are published."
+          "title": "Connected service delivery",
+          "description": "Keep documents, responsibilities and progress together across integrated applications and service requests."
         },
         {
-          "title": "Actionable coordination",
-          "description": "Keep official requirements, responsibilities and reported obstacles connected so lead departments can act."
+          "title": "Less repetitive administration",
+          "description": "Reuse authoritative knowledge and working methods across official writing, procurement and priority follow-up."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Consistent public service.",
-        "Better-grounded execution."
+        "More relevant public services",
+        "More connected agency work"
       ],
-      "background": "/images/industries/government-architecture_V1.1.webp",
-      "illustration": "/images/solutions/government/government-value-scene-1-en_V11.0.webp"
+      "background": "/images/industries/government-architecture_V1.1.webp"
     },
     "sources": [
-      "Service guides and applicable circumstances",
-      "Procurement documents and review rules",
-      "Priority work and agency feedback",
-      "Policy changes and current methods"
+      "Policies and business support programs",
+      "Service guides and agency responsibilities",
+      "12345 requests and handling records",
+      "Official documents, procurement and priority work"
     ],
     "outputs": [
-      "Service requirement and material checks",
-      "Procurement clause findings and review notes",
-      "Coordinated priority-work materials",
-      "Policy impact analysis and method-update preparation"
+      "Business support service plan",
+      "Integrated service collaboration package",
+      "Service request analysis",
+      "Administrative documents and follow-up"
     ],
     "features": [
       {
-        "title": "Explain service requirements consistently",
-        "problem": "Applicants receive conflicting requirements and return with more documents only to face new conditions.",
-        "body": "Front-desk staff relate the same circumstances to current guidance, giving applicants consistent document requirements and reducing repeated explanations, extra submissions and return visits.",
-        "image": "/images/solutions/government/government-value-scene-1-en_V11.0.webp",
-        "imageAlt": "Give consistent requirements for the same circumstances.",
-        "imageHeight": 800
+        "title": "Turn published policies into relevant business support",
+        "problem": "Policies sit across agencies, while eligibility is hard to connect with each business. Service teams repeatedly search and explain the same requirements.",
+        "body": "Bring authoritative policies, application guides and business information into one service task. Identify relevant sectors, qualifications and eligibility, then prepare support recommendations and a service plan. Policy updates feed into knowledge and application preparation, helping teams move from answering questions to offering relevant support.",
+        "outcomes": [
+          "Policy fit analysis",
+          "Application preparation",
+          "Policy change tracking"
+        ]
       },
       {
-        "title": "Review procurement concerns before publication",
-        "problem": "Unrelated qualifications, exclusionary specifications or unsuitable evaluation criteria enter published documents.",
-        "body": "Procurement teams examine exclusionary conditions, unrelated qualifications and unsuitable scoring criteria before publication, reducing the risk of disputes arising from the wording of procurement documents.",
-        "image": "/images/solutions/government/government-value-scene-2-en_V11.0.webp",
-        "imageAlt": "Examine procurement concerns before publication",
-        "imageHeight": 800
+        "title": "Connect agencies around one integrated service",
+        "problem": "A single application can involve several agencies and document rules. Repeated questions and missing context interrupt handovers.",
+        "body": "Organize service circumstances, official guides, shared information and agency responsibilities around an integrated application. Prepare documents, request missing information and carry progress forward. Authorized connections to existing service systems keep front-desk and handling teams working from the same context.",
+        "outcomes": [
+          "Integrated preparation",
+          "Shared information reuse",
+          "Connected handovers"
+        ]
       },
       {
-        "title": "Coordinate around the actual obstacle",
-        "problem": "Collected progress materials still leave responsibilities, facts and unresolved obstacles disconnected.",
-        "body": "Lead departments connect official requirements, departmental feedback and ownership, directing coordination toward the specific problems preventing an initiative from advancing rather than reconciling more submissions.",
-        "image": "/images/solutions/government/government-value-scene-3-en_V11.0.webp",
-        "imageAlt": "Focus coordination on responsibility and obstacles",
-        "imageHeight": 549
+        "title": "Connect 12345 requests with wider service improvement",
+        "problem": "High request volumes, varied wording and fragmented history make routing difficult and separate individual handling from analysis of recurring issues.",
+        "body": "Extract the issue, location and service need from each 12345 request. Relate agency responsibilities and past handling to prepare routing suggestions and response material. Bring together feedback, repeat requests and emerging topics for quality review and analysis, connecting individual cases with a broader view of public needs.",
+        "outcomes": [
+          "Routing recommendations",
+          "Handling quality review",
+          "Recurring-issue analysis"
+        ]
       },
       {
-        "title": "Bring policy updates into service",
-        "problem": "New policy is published while document lists and service answers continue to follow older rules.",
-        "body": "Responsible teams see which document lists and service answers a policy change affects, helping daily public services apply the current requirements and retire outdated instructions.",
-        "image": "/images/solutions/government/government-value-scene-4-en_V11.0.webp",
-        "imageAlt": "Bring policy changes into current service requirements.",
-        "imageHeight": 800
+        "title": "Reduce repetitive work across daily administration",
+        "problem": "Official writing, meetings, procurement and priority reporting require repeated preparation, revision and cross-team consolidation.",
+        "body": "Build official writing standards, procurement rules and administrative experience into digital roles. Prepare drafts, analyze procurement clauses, capture meeting actions and assemble priority reports. Projects keep tasks, feedback and document versions connected, while scheduled follow-up helps teams carry work forward.",
+        "outcomes": [
+          "Official documents",
+          "Procurement analysis",
+          "Priority task follow-up"
+        ]
       }
     ],
     "teamTitle": "Digital roles for public services and agency collaboration",
@@ -405,8 +419,8 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Resources governed by department",
-      "body": "Reuse authorized government resources, with access aligned to departmental duties and traceable service references and review records."
+      "title": "Reuse shared resources in everyday public service",
+      "body": "Deploy in an approved government cloud or local environment and connect shared models, authoritative knowledge and existing systems. Configure access around agency responsibilities, with knowledge updates, capability releases, task records and operational audit supporting methods that teams can maintain and reuse."
     }
   }
 };

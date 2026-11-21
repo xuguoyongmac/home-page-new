@@ -7,7 +7,7 @@ export default createIndustryModule({
   icon: 'landmark',
   names: { zh: '政务解决方案', en: 'Government' },
   navigation: {
-    zh: { name: '数字政务', description: "事项材料、采购条款、专项任务", icon: 'landmark' },
-    en: { name: 'Digital government', description: "Service documents, Procurement clauses, Special initiatives", icon: 'landmark' },
+    zh: { name: '数字政务', description: '政策精准服务、一件事协同与基层减负', icon: 'landmark' },
+    en: { name: 'Digital government', description: 'Targeted policy services, connected delivery and agency collaboration', icon: 'landmark' },
   },
 }, governmentPresentation);

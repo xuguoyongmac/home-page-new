@@ -2,16 +2,15 @@
 import { pathFor } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import type { IndustrySolutionCopy } from './types';
-import SolutionArtwork from '../../../components/SolutionArtwork.astro';
-import IndustryMappingPage from './IndustryMappingPage.astro';
+import EmployeeCarousel from '../banking/EmployeeCarousel.astro';
+import Icon from '../../../components/Icon.astro';
 import '../../../styles/industry-value-page.css';
 
 interface Props { locale: Locale; slug: string; presentation: IndustrySolutionCopy; }
 const { locale, slug, presentation: copy } = Astro.props;
 const zh = locale === 'zh';
-const chapterLayouts = ['split', 'wide', 'reverse', 'split-final'];
 ---
-{'solution' in copy ? <IndustryMappingPage locale={locale} slug={slug} presentation={copy}/> : <div class="industry-value-page" data-industry-solution={slug}>
+<div class="industry-value-page" data-industry-solution={slug}>
   <section class="industry-value-hero" aria-labelledby={`${slug}-title`}>
     <img class="industry-value-landscape" src={copy.hero.background} alt="" width="1600" height="1067" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
     <div class="container industry-value-hero-content">
@@ -22,31 +21,23 @@ const chapterLayouts = ['split', 'wide', 'reverse', 'split-final'];
     </div>
   </section>
 
-  <section class="industry-value-story" aria-label={zh ? '方案价值' : 'Business value'}>
-    <div class="container industry-value-chapters">
-      {copy.features.map((feature, index) => <article
-        id={`${slug}-feature-${index}`}
-        class={`industry-value-chapter industry-value-chapter--${chapterLayouts[index] || 'split'}`}
-        aria-labelledby={`${slug}-feature-${index}-title`}
-      >
-        <div class="industry-value-chapter-copy">
-          <h2 id={`${slug}-feature-${index}-title`}>{feature.title}</h2>
-          <div class="industry-value-chapter-detail">
-            <p>{feature.body}</p>
-          </div>
-        </div>
-        <figure class="industry-value-chapter-artwork">
-          <SolutionArtwork
-            src={feature.image}
-            alt={feature.imageAlt}
-            height={feature.imageHeight}
-            sizes={index === 1
-              ? '(max-width: 760px) calc(100vw - 40px), (max-width: 1056px) calc(100vw - 96px), 960px'
-              : '(max-width: 760px) calc(100vw - 40px), (max-width: 1050px) calc(100vw - 64px), 720px'}
-          />
-        </figure>
-      </article>)}
+  {copy.features.map((feature, index) => <section class:list={['industry-value-section', { 'industry-value-reversed': index % 2 === 1 }]} aria-labelledby={`${slug}-feature-${index}`}>
+    <div class="container industry-value-grid">
+      <div class="industry-value-copy">
+        <h2 id={`${slug}-feature-${index}`}>{feature.title}</h2>
+        <p class="industry-value-problem">{feature.problem}</p>
+        <p class="industry-value-body">{feature.body}</p>
+        {feature.outcomes?.length && <ul class="industry-value-outcomes">{feature.outcomes.map(outcome => <li><Icon name="check" size={16}/><span>{outcome}</span></li>)}</ul>}
+      </div>
+      <figure class="industry-value-image">
+        <img src={feature.image ?? `/images/solutions/${slug}/${slug}-value-${index + 1}_V2.0.webp`} alt={feature.title} width="1200" height="800" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1200px) 52vw, 650px" loading="lazy" decoding="async"/>
+      </figure>
     </div>
+  </section>)}
+
+  <section class="industry-value-team" aria-labelledby={`${slug}-team-title`}>
+    <div class="container"><h2 id={`${slug}-team-title`}>{copy.teamTitle}</h2></div>
+    <EmployeeCarousel locale={locale} employees={copy.employees} teamLabel={copy.teamTitle}/>
   </section>
 
   <section class="industry-value-deployment" aria-labelledby={`${slug}-deployment-title`}>
@@ -55,4 +46,4 @@ const chapterLayouts = ['split', 'wide', 'reverse', 'split-final'];
       <p>{copy.deployment.body}</p>
     </div>
   </section>
-</div>}
+</div>

@@ -3,84 +3,91 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const stateOwnedPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让集团看清实情，把管控落到关键处",
-      "pain": "送审条款前后冲突，整改回复缺少实证，所属企业报表口径又难统一；集团掌握了大量材料，关键责任和经营变化仍可能被掩盖。",
-      "value": "看清合同责任、整改证据与经营变化，让集团管控直达所属企业的关键问题。",
+      "title": "把集团经营目标，接续到每个单位与项目",
+      "pain": "集团预算、司库资金与项目执行分属不同系统和单位，经营变化难以穿透；采购履约、现场风险和监督整改跨条线推进，管理要求难落到同一责任链。",
+      "value": "围绕穿透式监管与集团经营管理，以数字岗位连接预算资金、采购履约、工程现场和监督整改，让总部掌握变化、条线接续工作、基层复用方法。",
       "scenarios": [
-        "采购文书",
-        "合同核查",
-        "整改复查",
-        "经营分析",
-        "集团专项",
-        "单位协同"
+        "穿透式监管",
+        "预算经营",
+        "司库资金",
+        "采购招投标",
+        "项目履约",
+        "EHS与审计"
       ],
       "benefits": [
         {
-          "title": "重大责任更早识别",
-          "description": "项目条件、合同约定和有效制度对应起来，审阅直达关键条款与商业例外。"
+          "title": "经营管控看得更深",
+          "description": "关联集团、板块与项目的经营和资金信息，把指标偏差接到原因、影响与协调行动。"
         },
         {
-          "title": "整改实效有据可审",
-          "description": "把回复、措施和实际佐证接回原问题，让监督岗位看清缺口和矛盾。"
+          "title": "价值链协作接得更稳",
+          "description": "从采购招投标到合同、项目和现场，串联目标、节点与交付，减少条线间的信息断点。"
         },
         {
-          "title": "集团讨论更贴近经营",
-          "description": "口径差异与单位事实清楚对应，管理层直接讨论业务原因和解决对策。"
+          "title": "责任与方法持续落地",
+          "description": "以监督整改贯通责任反馈，以岗位知识和技能复用集团方法，保留单位差异与授权边界。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让集团看清实情",
-        "把管控落到关键处"
+        "让集团管控穿透业务",
+        "让经营责任接续到一线"
       ],
-      "background": "/images/industries/state-owned-architecture_V1.3.webp",
-      "illustration": "/images/solutions/state-owned/state-owned-value-scene-1-zh_V11.0.webp"
+      "background": "/images/industries/state-owned-architecture_V1.3.webp"
     },
     "sources": [
-      "采购合同与集团制度",
-      "整改措施与实际佐证",
-      "所属企业经营资料",
-      "单位任务与责任记录"
+      "集团战略、经营预算与司库资料",
+      "采购招投标与供应链记录",
+      "工程合同、项目进度与EHS资料",
+      "制度标准、监督审计与整改反馈"
     ],
     "outputs": [
-      "采购合同差异与审查依据",
-      "整改措施与证据核对意见",
-      "集团经营口径与差异分析",
-      "责任事项与进展研判材料"
+      "集团经营与资金分析",
+      "采购履约协作成果",
+      "项目执行与EHS报告",
+      "监督整改责任报告"
     ],
     "features": [
       {
-        "title": "合同责任提前审阅",
-        "problem": "送审版本中的付款条件、履约节点和违约责任相互冲突，重大风险被文件往返掩盖。",
-        "body": "把付款、验收和违约条款的冲突提前呈现，让采购与法务集中审阅重大责任。",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-1-zh_V11.0.webp",
-        "imageAlt": "重大条款，提前进入专业审阅",
-        "imageHeight": 698
+        "title": "让集团经营与司库资金形成穿透视野",
+        "problem": "总部、板块与所属企业各有经营和资金口径，预算偏差、项目投入与回款变化难在同一视野分析。",
+        "body": "连接获准的经营、预算与司库资料，按集团、板块、单位和项目关联收入、成本、资金与资产信息。数字员工组织偏差分析、资金专题和经营报告，将变化接到业务背景与协调事项，为穿透式监管和资源配置提供持续的工作支撑。",
+        "outcomes": [
+          "预算经营分析",
+          "司库资金专题",
+          "集团经营专题"
+        ]
       },
       {
-        "title": "整改实效有证可审",
-        "problem": "回复和附件已经收齐，却没有实质回应原问题，台账进度掩盖证据缺口。",
-        "body": "整改措施与原问题、实际佐证对应，让审计人员看清证据缺口，独立判断整改实效。",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-2-zh_V11.0.webp",
-        "imageAlt": "整改复查，直达实证与缺口",
-        "imageHeight": 800
+        "title": "让采购招投标衔接合同与供应链履约",
+        "problem": "采购需求、投标响应与合同执行分属不同团队，前端约定难接到交付节点，供应变化影响协同。",
+        "body": "围绕采购方审查与投标方响应分别组织专业任务，连接需求、评审要求、证明与交易文件。合同形成后延续条款、交付节点、变更和供应履约信息，生成采购分析、响应方案与履约成果，让价值链协作贯穿签约前后。",
+        "outcomes": [
+          "采购与投标方案",
+          "合同履约分析",
+          "供应协同成果"
+        ]
       },
       {
-        "title": "经营研判看清变化",
-        "problem": "上报期间、计量单位与指标定义不同，汇总数据不能直接解释经营变化。",
-        "body": "区分口径差异与真实经营变化，让集团会议集中讨论成因、资源安排和对策。",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-3-zh_V11.0.webp",
-        "imageAlt": "经营研判，看清口径背后的变化",
-        "imageHeight": 655
+        "title": "让项目履约与EHS管理接续到现场",
+        "problem": "工程进度、成本变更与现场安环信息散落在多份记录，管理层难以把项目偏差与现场问题关联。",
+        "body": "以项目目标关联合同节点、进度反馈、成本变化与现场记录，按职责整理工程协作和EHS事项。数字员工持续归集偏差、隐患与整改反馈，形成履约分析、现场专题和协调任务，让项目团队掌握执行变化、推动问题接续处理。",
+        "outcomes": [
+          "项目履约报告",
+          "成本变更分析",
+          "EHS协同成果"
+        ]
       },
       {
-        "title": "集团协调看清实情",
-        "problem": "统一反馈格式无法替代责任与事实对应，共性障碍在层层汇报中被冲淡。",
-        "body": "在统一要求下保留各单位的实际差异，让总部看清共性障碍和具体责任。",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-4-zh_V11.0.webp",
-        "imageAlt": "集团要求，落到各单位真实情况",
-        "imageHeight": 800
+        "title": "让监督审计与整改形成责任闭环",
+        "problem": "监督发现、整改措施与单位反馈分散管理，重复报送负担较重，问题成因与后续改进难以沉淀。",
+        "body": "将监督发现与责任单位、整改要求和反馈材料关联，按问题归集过程、证据与后续事项，支持审计复查和专项汇报。把反复出现的问题转为制度与岗位方法的更新依据，让整改工作既能追溯责任，也能服务后续经营改进。",
+        "outcomes": [
+          "监督问题分析",
+          "整改进展报告",
+          "制度改进依据"
+        ]
       }
     ],
     "teamTitle": "服务总部、板块与基层的数字员工团队",
@@ -201,90 +208,97 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "集团共用与分级治理",
-      "body": "集团共用模型与知识，所属单位按职责使用，重大事项保留授权、审核和审计记录。"
+      "title": "集团统筹共用能力，所属企业按职责使用",
+      "body": "支持集团机房或专有云部署，衔接已有模型、知识和业务系统。将共用制度、岗位模板与专业方法沉淀为可复用资产，分别配置单位资料、工具身份与使用范围；通过版本发布、任务记录和审计诊断，让规模化应用与集团治理共同推进。"
     }
   },
   "en": {
     "home": {
-      "title": "See the facts across the group. Focus control where it matters.",
-      "pain": "Conflicting contract terms, remediation without adequate proof and inconsistent subsidiary reporting can obscure material responsibilities and business changes beneath a large volume of information.",
-      "value": "Give group oversight a clear view of contractual obligations, remediation evidence and business changes, directing specialist attention toward the issues that matter across subsidiaries.",
+      "title": "Connect group objectives with every business and project",
+      "pain": "Budgets, treasury and project execution sit across systems and subsidiaries. Procurement, delivery, site risks and remediation cross functions, making it difficult to maintain a connected view of performance and responsibility.",
+      "value": "Digital roles connect group planning, treasury, procurement, project execution and audit remediation. Give headquarters a deeper view of changes, connect functions around delivery and help operating teams reuse established methods.",
       "scenarios": [
-        "Procurement documents",
-        "Contract review",
-        "Remediation review",
-        "Operating analysis",
-        "Group initiatives",
-        "Subsidiary coordination"
+        "Group oversight",
+        "Budget performance",
+        "Treasury",
+        "Procurement & bids",
+        "Project delivery",
+        "EHS & audit"
       ],
       "benefits": [
         {
-          "title": "Earlier visibility of material obligations",
-          "description": "Relate project conditions, contract terms and current policies so review reaches substantive exceptions."
+          "title": "A deeper view of performance",
+          "description": "Connect group, business-unit and project information, linking variances to causes, implications and coordinated action."
         },
         {
-          "title": "Evidence-led remediation review",
-          "description": "Connect responses and supporting records to the original finding, exposing gaps and contradictions."
+          "title": "Continuity across the value chain",
+          "description": "Carry objectives, milestones and deliverables from procurement through contracts, projects and site work."
         },
         {
-          "title": "More substantive operating discussions",
-          "description": "Keep reporting differences and subsidiary facts clear so management can examine business causes and responses."
+          "title": "Accountability and reusable methods",
+          "description": "Connect remediation with responsible teams and reuse group methods while retaining local rules and access boundaries."
         }
       ]
     },
     "hero": {
       "lines": [
-        "See the facts across the group.",
-        "Focus control where it matters."
+        "See deeper into group performance",
+        "Carry responsibility to operations"
       ],
-      "background": "/images/industries/state-owned-architecture_V1.3.webp",
-      "illustration": "/images/solutions/state-owned/state-owned-value-scene-1-en_V11.0.webp"
+      "background": "/images/industries/state-owned-architecture_V1.3.webp"
     },
     "sources": [
-      "Procurement contracts and group policies",
-      "Corrective measures and supporting evidence",
-      "Subsidiary operating information",
-      "Unit tasks and accountability records"
+      "Group strategy, budgets and treasury records",
+      "Procurement, bidding and supply-chain records",
+      "Project contracts, progress and EHS information",
+      "Policies, audit findings and remediation feedback"
     ],
     "outputs": [
-      "Contract differences and review evidence",
-      "Findings on corrective measures and evidence",
-      "Comparable group definitions and operating analysis",
-      "Responsibility and progress review materials"
+      "Group performance and treasury analysis",
+      "Procurement and delivery work",
+      "Project execution and EHS report",
+      "Audit remediation report"
     ],
     "features": [
       {
-        "title": "Review material contract obligations earlier",
-        "problem": "Payment terms, milestones and liabilities conflict across submitted versions, obscuring significant obligations.",
-        "body": "Procurement and legal teams see conflicts in payment, acceptance and liability terms before approval, allowing their professional review to concentrate on material contractual obligations.",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-1-en_V11.0.webp",
-        "imageAlt": "Bring material terms into professional review earlier.",
-        "imageHeight": 800
+        "title": "Bring group performance and treasury into one view",
+        "problem": "Headquarters and subsidiaries use different performance and funding definitions. Budget variances, project spending and collections are difficult to analyze together.",
+        "body": "Connect authorized operating, budget and treasury records across the group, business units and projects. Digital employees organize revenue, cost, cash and asset information into variance analysis, treasury topics and management reports. Changes remain linked to business context and coordination needs, supporting deeper oversight and resource decisions.",
+        "outcomes": [
+          "Budget performance analysis",
+          "Treasury analysis",
+          "Group operating reviews"
+        ]
       },
       {
-        "title": "Judge remediation against actual evidence",
-        "problem": "Responses and attachments arrive without demonstrating that the original finding has been addressed.",
-        "body": "Audit teams connect corrective measures with the original finding and supporting records, exposing evidence gaps and preserving an independent professional judgment of actual remediation.",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-2-en_V11.0.webp",
-        "imageAlt": "Review remediation through evidence and gaps",
-        "imageHeight": 800
+        "title": "Carry procurement and bids through to delivery",
+        "problem": "Requirements, bid responses and contract execution belong to different teams. Early commitments are hard to carry into delivery milestones and supplier coordination.",
+        "body": "Organize buyer-side procurement review and supplier-side bid responses as distinct professional tasks. Connect requirements, evaluation criteria, evidence and transaction documents, then carry contract terms, milestones, changes and supplier performance forward. Prepare procurement analysis, bid proposals and delivery work across the contracting lifecycle.",
+        "outcomes": [
+          "Procurement and bid proposals",
+          "Contract delivery analysis",
+          "Supplier coordination"
+        ]
       },
       {
-        "title": "See the business behind reporting differences",
-        "problem": "Different periods, units and metric definitions prevent consolidated figures from explaining business change.",
-        "body": "Group management separates inconsistent reporting definitions from real business changes, allowing operating meetings to examine causes, allocate resources and discuss an appropriate response.",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-3-en_V11.0.webp",
-        "imageAlt": "Separate reporting differences from real business change.",
-        "imageHeight": 800
+        "title": "Connect project execution with site and EHS work",
+        "problem": "Progress, cost changes and site safety records sit in separate documents, making project variances difficult to relate to conditions on the ground.",
+        "body": "Connect contract milestones, progress updates, cost movements and site records around project objectives. Digital employees organize delivery and EHS work by responsibility, tracking variances, hazards and remediation feedback. Prepare project analysis, site reports and coordination tasks so teams can respond to execution changes.",
+        "outcomes": [
+          "Project delivery report",
+          "Cost change analysis",
+          "EHS coordination"
+        ]
       },
       {
-        "title": "Retain local facts in group coordination",
-        "problem": "Standard submission formats still leave responsibilities, facts and common obstacles disconnected.",
-        "body": "Headquarters retains each subsidiary’s actual conditions within common requirements, making shared obstacles and specific responsibilities visible so cross-level coordination addresses the real problem.",
-        "image": "/images/solutions/state-owned/state-owned-value-scene-4-en_V11.0.webp",
-        "imageAlt": "Connect group requirements to subsidiary realities",
-        "imageHeight": 800
+        "title": "Turn audit remediation into accountable improvement",
+        "problem": "Findings, corrective measures and subsidiary feedback are managed separately. Repeated reporting adds work while recurring causes are hard to retain.",
+        "body": "Connect each finding with its responsible unit, required action and supporting feedback. Organize progress, evidence and follow-up work for audit reviews and management reporting. Recurring issues inform policy and role-method updates, helping remediation support both accountability and ongoing operational improvement.",
+        "outcomes": [
+          "Audit issue analysis",
+          "Remediation progress report",
+          "Policy improvement evidence"
+        ]
       }
     ],
     "teamTitle": "Digital roles for headquarters and operating teams",
@@ -405,8 +419,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Shared resources, accountable units",
-      "body": "Share group models and knowledge through unit responsibilities, retaining authorization, review and audit records for material matters."
+      "title": "Share group capabilities with role-based local use",
+      "body": "Deploy in group infrastructure or a private cloud and connect existing models, knowledge and business systems. Reuse common policies, role templates and professional methods while configuring subsidiary records, tool identities and access separately. Release management, task records and audit diagnostics support expansion within group governance."
     }
   }
 };

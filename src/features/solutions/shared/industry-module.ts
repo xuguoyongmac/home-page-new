@@ -13,39 +13,6 @@ interface IndustryDefinition {
 function createCopy(definition: IndustryDefinition, locale: Locale, presentation: IndustrySolutionCopy): Industry {
   const zh = locale === 'zh';
   const separator = zh ? '、' : ', ';
-  if ('solution' in presentation) {
-    const solution = presentation.solution;
-    return {
-      slug: definition.slug,
-      icon: definition.icon,
-      name: definition.names[locale],
-      tag: definition.names[locale],
-      title: presentation.home.title,
-      description: presentation.home.value,
-      scope: solution.governance.items.map(item => item.body).join(zh ? '；' : ' '),
-      image: 'collaborative-review',
-      tasks: solution.mappings.map(mapping => ({
-        title: mapping.problemTitle,
-        input: mapping.problem,
-        action: mapping.response,
-        output: mapping.deliverables.join(separator),
-        value: mapping.value,
-      })),
-      story: {
-        lines: presentation.hero.lines,
-        priorities: solution.mappings.map(mapping => ({ title: mapping.problemTitle, body: mapping.problem })),
-        exhibit: {
-          title: solution.mappingsTitle,
-          request: solution.context.body,
-          sources: [...new Set(solution.mappings.flatMap(mapping => mapping.capabilities))],
-          columns: zh ? ['业务难题', '平台解法', '交付成果'] : ['Business challenge', 'Platform response', 'Deliverables'],
-          rows: solution.mappings.map(mapping => [mapping.problemTitle, mapping.response, mapping.deliverables.join(separator)]),
-          deliverables: solution.mappings.flatMap(mapping => mapping.deliverables),
-        },
-        foundation: solution.governance.items,
-      },
-    };
-  }
   return {
     slug: definition.slug,
     icon: definition.icon,
