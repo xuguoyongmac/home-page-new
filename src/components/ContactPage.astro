@@ -1,161 +1,80 @@
 ---
-import Icon from './Icon.astro';
-import { appFor, site } from '../lib/site';
+import { contactContent } from '../features/contact/content';
+import ContactReplyPicker from './ContactReplyPicker.astro';
+import ContactConfirmation from './ContactConfirmation.astro';
 import type { Locale } from '../data/types';
-
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
-const zh = locale === 'zh';
-const contactApi = import.meta.env.PUBLIC_CONTACT_API_URL || '';
-const submitLabel = contactApi ? (zh ? '发送咨询' : 'Send enquiry') : (zh ? '撰写咨询邮件' : 'Compose enquiry email');
-const copy = zh ? {
-  title: '从一项具体工作，\n开始交流。',
-  heading: '一起找到合适的落地点',
-  emailTitle: '商务咨询', emailBody: '产品体验、业务集成与企业部署',
-  webTitle: '先体验工作空间', webBody: '在浏览器中开始与数字员工协作', webAction: '打开工作空间',
-  docsTitle: '了解使用与部署', docsBody: '产品操作、环境要求与常见问题', docsAction: '查看文档中心',
-  company: '公司名称', email: '工作邮箱', interest: '关注方向', requirement: '具体工作需求',
-  options: [['platform', '平台体验'], ['integration', '业务集成'], ['private', '私有化部署']],
-  compose: '撰写咨询邮件', privacy: '请勿填写密码、验证码或客户敏感信息。',
-  draft: '邮件草稿', open: '打开邮件应用', copy: '复制邮件草稿',
-  fallback: '未打开邮件应用时，可复制草稿发送至 business@zhama.com。',
-  noScript: '请直接发送邮件至 business@zhama.com，说明公司、关注方向和工作需求。',
-} : {
-  title: 'Start with the work\nyour team needs done.',
-  heading: 'Find the right place to start',
-  emailTitle: 'Business enquiries', emailBody: 'Product access, integrations, and enterprise deployment',
-  webTitle: 'Explore the workspace', webBody: 'Start working with digital employees in your browser', webAction: 'Open workspace',
-  docsTitle: 'Using and deploying TeGo', docsBody: 'Product guides, requirements, and common questions', docsAction: 'Read the documentation',
-  company: 'Company', email: 'Work email', interest: 'Area of interest', requirement: 'Work requirements',
-  options: [['platform', 'Platform access'], ['integration', 'Business integration'], ['private', 'Private deployment']],
-  compose: 'Compose enquiry email', privacy: 'Do not include passwords, verification codes, or sensitive customer information.',
-  draft: 'Email draft', open: 'Open email app', copy: 'Copy email draft',
-  fallback: 'If your email app does not open, copy the draft and send it to business@zhama.com.',
-  noScript: 'Email business@zhama.com with your company, area of interest, and work requirements.',
-};
+const copy = contactContent[locale];
+const contactApi = import.meta.env.PUBLIC_CONTACT_API_URL || '/api/contact/';
 ---
-<section class="page-hero inner-page-hero inner-support-hero">
-  <div class="container inner-hero-content"><div class="inner-hero-copy">
-    <h1>{copy.title}</h1>
-  </div></div>
+<section class="page-hero inner-page-hero contact-hero">
+  <div class="container"><h1>{copy.title}</h1></div>
 </section>
-<section class="container contact-grid inner-contact" aria-label={zh ? '咨询方式' : 'Contact options'}>
-  <div class="contact-intro">
-    <h2>{copy.heading}</h2>
-    <div class="contact-option">
-      <Icon name="mail" size={24}/>
-      <div><strong>{copy.emailTitle}</strong><p>{copy.emailBody}</p><a class="text-link contact-link" href={`mailto:${site.email}`}>{site.email}</a></div>
+<section class="container contact-page">
+  <form class="contact-form" id="enquiry-form" data-locale={locale} data-contact-api={contactApi} aria-label={copy.title}>
+    <div class="contact-sections">
+      <fieldset class="contact-section enquiry-section">
+        <legend>{copy.sections.enquiry}</legend>
+        <div class="contact-section-fields">
+          <div class="field"><label for="enquiry-title">{copy.form.title.label} <span aria-hidden="true">*</span></label><input id="enquiry-title" name="title" maxlength="160" placeholder={copy.form.title.placeholder} aria-describedby="enquiry-title-error" required /><p class="field-error" id="enquiry-title-error" aria-live="polite" hidden></p></div>
+          <div class="field enquiry-message"><label for="enquiry-content">{copy.form.content.label} <span aria-hidden="true">*</span></label><textarea id="enquiry-content" name="content" rows="7" maxlength="6000" placeholder={copy.form.content.placeholder} aria-describedby="enquiry-content-error" required></textarea><p class="field-error" id="enquiry-content-error" aria-live="polite" hidden></p></div>
+        </div>
+      </fieldset>
+      <fieldset class="contact-section details-section">
+        <legend>{copy.sections.contact}</legend>
+        <div class="contact-section-fields">
+          <div class="field"><label for="enquiry-contact">{copy.form.contact.label} <span aria-hidden="true">*</span></label><input id="enquiry-contact" name="contact" type="text" maxlength="254" spellcheck="false" placeholder={copy.form.contact.placeholder} aria-describedby="enquiry-contact-error" required /><p class="field-error" id="enquiry-contact-error" aria-live="polite" hidden></p></div>
+          <ContactReplyPicker copy={copy.form.expectedReplyTime} />
+          <div class="field"><label for="enquiry-nickname">{copy.form.nickname.label}</label><input id="enquiry-nickname" name="nickname" autocomplete="nickname" maxlength="80" placeholder={copy.form.nickname.placeholder} aria-describedby="enquiry-nickname-error" /><p class="field-error" id="enquiry-nickname-error" aria-live="polite" hidden></p></div>
+        </div>
+      </fieldset>
     </div>
-    <div class="contact-option">
-      <Icon name="globe" size={24}/>
-      <div><strong>{copy.webTitle}</strong><p>{copy.webBody}</p><a class="text-link contact-link" href={appFor(locale)}>{copy.webAction}</a></div>
+    <div class="contact-trap" aria-hidden="true"><label for="enquiry-website">Website</label><input id="enquiry-website" name="website" tabindex="-1" autocomplete="off" /></div>
+    <div class="contact-submit-row"><button class="button form-submit" type="submit">{copy.form.submit}</button><p class="contact-result" id="enquiry-status" role="status" aria-live="polite" tabindex="-1" hidden></p></div>
+    <noscript><p>{copy.noScript} <a href="mailto:contact@zhama.com">contact@zhama.com</a></p></noscript>
+    <div class="contact-methods">
+      <div><h2>{copy.info.email.title}</h2><a href="mailto:contact@zhama.com">contact@zhama.com</a></div>
+      <div><h2>{copy.info.phone.title}</h2><a href="tel:18819810701">18819810701</a></div>
+      <div><h2>{copy.info.response.title}</h2><p>{copy.info.response.time}</p></div>
     </div>
-    <div class="contact-option">
-      <Icon name="book" size={24}/>
-      <div><strong>{copy.docsTitle}</strong><p>{copy.docsBody}</p><a class="text-link contact-link" href={site.docs}>{copy.docsAction}</a></div>
-    </div>
-  </div>
-  <form class="contact-form" id="enquiry-form" data-locale={locale} data-recipient={site.email} data-contact-api={contactApi} action={`mailto:${site.email}`} method="post" enctype="text/plain">
-    <div class="field-pair">
-      <div class="field"><label for="enquiry-company">{copy.company}</label><input id="enquiry-company" name="company" autocomplete="organization" maxlength="160" required /></div>
-      <div class="field"><label for="enquiry-email">{copy.email}</label><input id="enquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required /></div>
-    </div>
-    <div class="field"><label for="enquiry-interest">{copy.interest}</label><select id="enquiry-interest" name="interest" required>{copy.options.map(([value, label]) => <option value={value}>{label}</option>)}</select></div>
-    <div class="field"><label for="enquiry-requirement">{copy.requirement}</label><textarea id="enquiry-requirement" name="requirement" rows="5" maxlength="4000" required></textarea></div>
-    <p class="contact-privacy">{copy.privacy}</p>
-    <button class="button form-submit" type="submit">{submitLabel}</button>
-    <div class="form-result" id="enquiry-draft" hidden>
-      <div class="field"><label for="enquiry-draft-text">{copy.draft}</label><textarea id="enquiry-draft-text" rows="10" readonly spellcheck="false"></textarea></div>
-      <p class="draft-fallback">{copy.fallback}</p>
-      <div class="draft-actions"><button class="button button-outline button-small" id="copy-enquiry" type="button">{copy.copy}</button><a class="text-link" id="open-enquiry" href={`mailto:${site.email}`}>{copy.open}</a></div>
-      <p id="enquiry-status" role="status" aria-live="polite"></p>
-    </div>
-    <noscript><p class="form-result">{copy.noScript}</p></noscript>
   </form>
 </section>
+<ContactConfirmation copy={copy.confirmation} />
 <style>
-  .page-hero h1{white-space:pre-line}.contact-link{margin-top:12px;font-size:13px;overflow-wrap:anywhere}.contact-privacy{font-size:11px;color:var(--muted);line-height:1.8}.draft-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:18px}.draft-fallback{margin-top:12px!important;font-size:12px}.form-result #enquiry-status{margin-top:12px;min-height:1.8em}.form-result textarea{font-size:12px;line-height:1.8;min-height:230px;white-space:pre-wrap;overflow-wrap:anywhere}.contact-form{min-width:0}.field{min-width:0}
+  .contact-hero { padding-block: clamp(48px, 6vw, 88px) 40px; }
+  .contact-hero h1 { max-width: none; margin: 0; text-align: center; }
+  .contact-page { max-width: 1120px; padding-bottom: clamp(64px, 8vw, 112px); }
+  .contact-form { position: relative; min-width: 0; padding: clamp(24px, 4vw, 44px); gap: 32px; }
+  .contact-sections { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 52px); }
+  .contact-section { min-width: 0; margin: 0; padding: 0; border: 0; }
+  .contact-section legend { padding: 0; margin-bottom: 28px; font-size: 22px; font-weight: 600; letter-spacing: -.4px; }
+  .contact-section-fields { display: grid; gap: 24px; }
+  .field { min-width: 0; }
+  .enquiry-section .contact-section-fields { height: calc(100% - 54px); grid-template-rows: auto minmax(0, 1fr); }
+  .enquiry-message { display: flex; flex-direction: column; }
+  .enquiry-message textarea { flex: 1; min-height: 240px; }
+  .field input, .field textarea { font-family: inherit; }
+  .field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: .72; }
+  .field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #e5a29a; }
+  .field input[aria-invalid="true"]:focus-visible, .field textarea[aria-invalid="true"]:focus-visible { outline-color: #e5a29a; }
+  .field-error { margin: 8px 0 0; color: #ffb2a8; font-size: 12px; line-height: 1.6; }
+  .field-error[hidden] { display: none; }
+  .contact-submit-row { display: grid; gap: 18px; }
+  .form-submit { width: 100%; justify-content: center; }
+  .contact-result { color: var(--ink); font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+  .contact-result[hidden] { display: none; }
+  .contact-result[data-state="error"] { color: #ffb2a8; }
+  .contact-methods { display: grid; grid-template-columns: 1.1fr .9fr 1.2fr; gap: 24px; padding-top: 12px; }
+  .contact-methods h2 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .contact-methods a, .contact-methods p { font-size: 13px; color: var(--muted); line-height: 1.8; overflow-wrap: anywhere; }
+  .contact-methods a:hover { color: var(--accent); }
+  .contact-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  @media (max-width: 760px) { .contact-sections { grid-template-columns: 1fr; gap: 38px; } .contact-section legend { margin-bottom: 22px; font-size: 20px; } .enquiry-section .contact-section-fields { height: auto; } .enquiry-message textarea { min-height: 190px; } }
+  @media (max-width: 600px) { .contact-methods { grid-template-columns: 1fr; gap: 22px; } .contact-hero { padding-bottom: 30px; } }
 </style>
 <script>
-  const form = document.querySelector<HTMLFormElement>('#enquiry-form');
-  const draftPanel = document.querySelector<HTMLElement>('#enquiry-draft');
-  const draftText = document.querySelector<HTMLTextAreaElement>('#enquiry-draft-text');
-  const openEmail = document.querySelector<HTMLAnchorElement>('#open-enquiry');
-  const copyButton = document.querySelector<HTMLButtonElement>('#copy-enquiry');
-  const status = document.querySelector<HTMLElement>('#enquiry-status');
-  if (form && draftPanel && draftText && openEmail && copyButton && status) {
-    const chinese = form.dataset.locale === 'zh';
-    const recipient = form.dataset.recipient || 'business@zhama.com';
-    const company = form.elements.namedItem('company') as HTMLInputElement;
-    const email = form.elements.namedItem('email') as HTMLInputElement;
-    const interest = form.elements.namedItem('interest') as HTMLSelectElement;
-    const requirement = form.elements.namedItem('requirement') as HTMLTextAreaElement;
-    const updateDraft = () => {
-      const companyName = company.value.trim().replace(/[\r\n]+/g, ' ');
-      const direction = interest.selectedOptions[0]?.textContent?.trim() || '';
-      const subject = chinese ? `TeGo 咨询｜${direction}｜${companyName}` : `TeGo enquiry | ${direction} | ${companyName}`;
-      const body = chinese
-        ? `公司名称：${companyName}\r\n工作邮箱：${email.value.trim()}\r\n关注方向：${direction}\r\n\r\n具体工作需求：\r\n${requirement.value.trim()}`
-        : `Company: ${companyName}\r\nWork email: ${email.value.trim()}\r\nArea of interest: ${direction}\r\n\r\nWork requirements:\r\n${requirement.value.trim()}`;
-      draftText.value = chinese ? `收件人：${recipient}\n主题：${subject}\n\n${body}` : `To: ${recipient}\nSubject: ${subject}\n\n${body}`;
-      openEmail.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    };
-    form.addEventListener('submit', async event => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-      if (!company.value.trim() || !requirement.value.trim()) {
-        const emptyField = company.value.trim() ? requirement : company;
-        emptyField.setCustomValidity(chinese ? '请填写具体内容。' : 'Enter a value.');
-        emptyField.reportValidity();
-        emptyField.addEventListener('input', () => emptyField.setCustomValidity(''), { once: true });
-        return;
-      }
-      updateDraft();
-      draftPanel.hidden = false;
-      status.textContent = chinese ? '邮件草稿已准备，可打开邮件应用或复制后发送。' : 'Your email draft is ready. Open your email app or copy it to send.';
-      draftText.focus();
-      const endpoint = form.dataset.contactApi;
-      if (!endpoint) return;
-      const submit = form.querySelector<HTMLButtonElement>('[type="submit"]');
-      if (submit) submit.disabled = true;
-      form.setAttribute('aria-busy', 'true');
-      status.textContent = chinese ? '正在发送咨询。' : 'Sending your enquiry.';
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title: `${interest.selectedOptions[0]?.textContent}｜${company.value.trim()}`,
-            email: email.value.trim(), content: draftText.value, timestamp: new Date().toISOString(),
-          }), signal: AbortSignal.timeout(20000),
-        });
-        const result = await response.json();
-        if (!response.ok || result.success !== true) throw new Error(result.message || (chinese ? '咨询服务未能接收本次请求。' : 'The enquiry service could not accept the request.'));
-        status.textContent = chinese ? '咨询已发送，我们会通过工作邮箱联系。' : 'Enquiry sent. We will reply to your work email.';
-      } catch (error) {
-        const reason = error instanceof Error ? error.message : '';
-        status.textContent = chinese ? `咨询未发送。${reason} 可复制草稿，通过邮件发送。` : `Enquiry was not sent. ${reason} Copy the draft to send it by email.`;
-      } finally {
-        if (submit) submit.disabled = false;
-        form.removeAttribute('aria-busy');
-      }
-    });
-    form.addEventListener('input', () => {
-      if (draftPanel.hidden) return;
-      updateDraft();
-      status.textContent = '';
-    });
-    copyButton.addEventListener('click', async () => {
-      updateDraft();
-      try {
-        if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-        await navigator.clipboard.writeText(draftText.value);
-        status.textContent = chinese ? '邮件草稿已复制，可粘贴到邮件应用后发送。' : 'Email draft copied. Paste it into your email app to send.';
-      } catch {
-        draftText.focus();
-        draftText.select();
-        draftText.setSelectionRange(0, draftText.value.length);
-        status.textContent = chinese ? '无法写入剪贴板，已选中草稿，请手动复制后发送。' : 'Clipboard access was blocked. The draft is selected; copy it manually to send.';
-      }
-    });
-  }
+  import { initContactForm } from '../features/contact/form';
+  initContactForm();
 </script>

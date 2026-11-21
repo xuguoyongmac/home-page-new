@@ -1,0 +1,4 @@
+---
+export function getStaticPaths() { return ['zh', 'en'].map(locale => ({ params: { locale } })); }
+return Astro.redirect(`/${Astro.params.locale}/contact/`);
+---

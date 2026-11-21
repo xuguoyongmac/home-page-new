@@ -10,8 +10,10 @@
     "build": "astro build && node scripts/optimize-media.mjs && node scripts/prepare-publish.mjs",
     "test": "node --test tests/*.test.mjs",
     "prepreview": "node scripts/clear-preview-port.mjs",
-    "preview": "astro preview --host 127.0.0.1 --port 4350",
-    "verify": "node scripts/verify-site.mjs"
+    "preview": "node server/contact/preview.mjs",
+    "verify": "node scripts/verify-site.mjs",
+    "contact:serve": "node server/contact/start.mjs",
+    "contact:verify": "node server/contact/verify.mjs"
   },
   "engines": {
     "node": ">=22.23.4"
@@ -22,12 +24,15 @@
     "@fontsource-variable/plus-jakarta-sans": "5.3.0",
     "astro": "7.4.10",
     "mermaid": "12.3.0",
+    "nodemailer": "10.6.1",
     "opencc-js": "1.4.2",
     "parse5": "8.1.1",
-    "sharp": "0.35.5"
+    "sharp": "0.35.5",
+    "sirv": "3.0.2"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
+    "smtp-server": "3.21.7",
     "typescript": "^5.9.3"
   }
 }

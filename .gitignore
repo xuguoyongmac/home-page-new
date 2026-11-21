@@ -3,6 +3,7 @@ dist/
 .astro/
 .env
 .env.*
+.contact-data/
 .DS_Store
 *.log
 review/
