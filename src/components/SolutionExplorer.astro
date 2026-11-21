@@ -1,10 +1,11 @@
 ---
 import { industries, homeIndustrySlugs } from '../data/industries';
-import { homeIndustries, industrySolutionImages, industrySolutionImageHeights } from '../data/home-industries';
+import { homeIndustries, industrySolutionImages, industrySolutionImageHeights, industrySolutionMappings } from '../data/home-industries';
 import type { Locale } from '../data/types';
 import { pathFor } from '../lib/site';
 import Icon from './Icon.astro';
 import SolutionArtwork from './SolutionArtwork.astro';
+import SolutionMappingOverview from './SolutionMappingOverview.astro';
 interface Props { locale: Locale; home?: boolean; }
 const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
@@ -27,7 +28,9 @@ const solutionImage = (slug: string) => industrySolutionImages[locale][slug];
   {visibleIndustries.map((industry) => (
     <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
       <figure class="industry-scene-column">
-        <SolutionArtwork src={solutionImage(industry.slug)} alt={homeIndustries[locale][industry.slug].title} height={industrySolutionImageHeights[locale][industry.slug]} sizes="(max-width: 760px) calc(100vw - 40px), 56vw"/>
+        {industrySolutionMappings[locale][industry.slug]
+          ? <SolutionMappingOverview locale={locale} solution={industrySolutionMappings[locale][industry.slug]!}/>
+          : <SolutionArtwork src={solutionImage(industry.slug)!} alt={homeIndustries[locale][industry.slug].title} height={industrySolutionImageHeights[locale][industry.slug]} sizes="(max-width: 760px) calc(100vw - 40px), 56vw"/>}
       </figure>
       <div class="industry-delivery">
         <PanelTitle>{homeIndustries[locale][industry.slug].title}</PanelTitle>

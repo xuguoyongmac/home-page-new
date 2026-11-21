@@ -5,7 +5,7 @@ export const governmentPresentation: IndustrySolutionPresentation = {
     "home": {
       "title": "让政务服务更一致，让机关落实更有据",
       "pain": "同一情形前后答复不一，采购疑点留到发布之后，专项反馈和政策更新又各有口径；工作做了很多，服务质量与落实成效仍难稳定。",
-      "value": "让同一办事情形获得一致答复，采购疑点更早接受审查，专项协调直接面对责任和障碍。数字员工把现行政策与具体事项连接起来，减少办事往返、文件返工和无效协调，把专业精力用于服务质量与实际落实。",
+      "value": "以现行政策支撑一致服务，提前审阅采购疑点，让专项协调聚焦责任和实际障碍。",
       "scenarios": [
         "事项材料",
         "采购核查",
@@ -51,53 +51,33 @@ export const governmentPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "同一办理情形，材料要求一次说清",
+        "title": "材料要求一次说清",
         "problem": "同一情形得到不同材料要求，补交后仍被追加条件，办事对象反复往返。",
-        "body": "同一办理情形却得到不同材料要求，补交后还要重新解释，办事对象就在窗口间反复往返。数字员工将现行指南、情形条件与证照复用依据对应呈现，让工作人员清楚说明本次要求，复杂情形获得专业确认，服务口径前后一致。",
-        "outcomes": [
-          "同一情形对应有效依据",
-          "材料要求前后一致",
-          "复杂情形交给专业确认"
-        ],
+        "body": "同一办事情形对应现行指南，让窗口答复前后一致，减少群众和企业往返补交。",
         "image": "/images/solutions/government/government-value-scene-1-zh_V11.0.webp",
         "imageAlt": "同一办理情形，材料要求一次说清",
         "imageHeight": 560
       },
       {
-        "title": "采购条款疑点，在发布前看清",
+        "title": "采购疑点提前审阅",
         "problem": "无关资质、排他性参数或失配评分项进入采购文件，问题留到质疑环节。",
-        "body": "采购文件形式齐全，仍可能存在无关资质、排他性参数或失配评分项。数字员工把疑点定位到具体条款并关联适用依据，让采购人员在发布前审阅条件与采购需求的实质关联，减少问题进入质疑环节后的被动处理。",
-        "outcomes": [
-          "疑点定位到具体条款",
-          "审查聚焦实质关联",
-          "发布前完善文件质量"
-        ],
+        "body": "把排他条件、无关资质和失配评分项带到发布前审阅，减少采购文件的争议风险。",
         "image": "/images/solutions/government/government-value-scene-2-zh_V11.0.webp",
         "imageAlt": "采购条款疑点，在发布前看清",
         "imageHeight": 722
       },
       {
-        "title": "专项协调，直达责任与障碍",
+        "title": "专项协调直达障碍",
         "problem": "专项材料收齐却看不清目标进展，责任交叉和反馈口径差异拖慢协调。",
-        "body": "材料已经收齐，目标进展和责任障碍却未必清楚。数字员工把正式要求、单位反馈与待解问题放在同一事项背景下，让牵头部门看清谁来负责、问题卡在哪里、还缺什么支撑，协调会把时间用于推动实际落实。",
-        "outcomes": [
-          "责任对应正式要求",
-          "进展带着事实反馈",
-          "协调聚焦实际障碍"
-        ],
+        "body": "让正式要求、单位反馈与责任对应，牵头部门直接协调卡住落实的具体问题。",
         "image": "/images/solutions/government/government-value-scene-3-zh_V11.0.webp",
         "imageAlt": "专项协调，直达责任与障碍",
         "imageHeight": 591
       },
       {
-        "title": "政策变化，进入现行服务口径",
+        "title": "政策更新进入服务",
         "problem": "政策已经更新，材料清单和业务答复仍沿用旧版本，形成新的执行偏差。",
-        "body": "政策已更新，窗口清单和业务答复仍可能沿用旧版。数字员工对应变更条款与受影响事项，呈现材料清单、答复依据和岗位方法需要调整的范围，让责任部门有针对性地更新，日常服务跟上现行规则。",
-        "outcomes": [
-          "变更影响范围清楚",
-          "岗位方法接上现行规则",
-          "服务依据保持有效"
-        ],
+        "body": "看清政策变化影响哪些清单与答复，让日常服务跟上现行要求。",
         "image": "/images/solutions/government/government-value-scene-4-zh_V11.0.webp",
         "imageAlt": "政策变化，进入现行服务口径",
         "imageHeight": 800
@@ -221,15 +201,15 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "共用政务资源，部门职责清楚",
-      "body": "复用获准政务云、模型与知识服务，按部门职责配置资料和工具授权。让成熟方法覆盖更多工作人员，同时保留有效依据、专业审核和运行记录，业务决定仍由有权岗位作出。"
+      "title": "部门职责与资源授权",
+      "body": "复用获准的政务资源，按部门职责授权访问，保留办理依据与审核记录。"
     }
   },
   "en": {
     "home": {
       "title": "Consistent public service. Better-grounded execution.",
       "pain": "Conflicting document requirements, procurement issues found after publication and disconnected policy updates can undermine service quality despite substantial staff effort.",
-      "value": "Digital employees connect current policy with the circumstances of each matter. Staff can give consistent requirements, examine procurement concerns before publication and coordinate around clear responsibilities and obstacles, reducing repeat visits, document rework and unproductive meetings.",
+      "value": "Apply current policy to consistent public service, review procurement concerns earlier and focus initiative coordination on clear responsibility and the obstacles preventing delivery.",
       "scenarios": [
         "Service documents",
         "Procurement review",
@@ -275,53 +255,33 @@ export const governmentPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "Give consistent requirements for the same circumstances.",
+        "title": "Explain service requirements consistently",
         "problem": "Applicants receive conflicting requirements and return with more documents only to face new conditions.",
-        "body": "Conflicting requirements send applicants between service desks with repeated explanations and additional documents. Digital employees connect current guidance, case conditions and certificate-reuse rules. Staff can explain the requirements for this matter, refer complex circumstances for professional confirmation and maintain a consistent basis for service.",
-        "outcomes": [
-          "One current basis for the case",
-          "Consistent document requirements",
-          "Specialist attention on exceptions"
-        ],
+        "body": "Front-desk staff relate the same circumstances to current guidance, giving applicants consistent document requirements and reducing repeated explanations, extra submissions and return visits.",
         "image": "/images/solutions/government/government-value-scene-1-en_V11.0.webp",
         "imageAlt": "Give consistent requirements for the same circumstances.",
         "imageHeight": 800
       },
       {
-        "title": "Examine procurement concerns before publication",
+        "title": "Review procurement concerns before publication",
         "problem": "Unrelated qualifications, exclusionary specifications or unsuitable evaluation criteria enter published documents.",
-        "body": "A complete procurement document may still contain unrelated qualifications, exclusionary specifications or unsuitable evaluation criteria. Digital employees locate concerns in specific clauses and connect them with applicable references. Procurement staff can assess their relevance to the actual requirement before publication, reducing issues left for the challenge stage.",
-        "outcomes": [
-          "Locate the exact wording",
-          "Examine substantive relevance",
-          "Improve documents before release"
-        ],
+        "body": "Procurement teams examine exclusionary conditions, unrelated qualifications and unsuitable scoring criteria before publication, reducing the risk of disputes arising from the wording of procurement documents.",
         "image": "/images/solutions/government/government-value-scene-2-en_V11.0.webp",
         "imageAlt": "Examine procurement concerns before publication",
         "imageHeight": 800
       },
       {
-        "title": "Focus coordination on responsibility and obstacles",
+        "title": "Coordinate around the actual obstacle",
         "problem": "Collected progress materials still leave responsibilities, facts and unresolved obstacles disconnected.",
-        "body": "A full set of submissions can still leave progress, responsibility and obstacles unclear. Digital employees connect official requirements, departmental feedback and unresolved issues within the same matter. Lead departments can see who owns the issue, where it is blocked and what support is missing, directing coordination toward delivery.",
-        "outcomes": [
-          "Responsibilities tied to requirements",
-          "Progress supported by facts",
-          "Coordination around real obstacles"
-        ],
+        "body": "Lead departments connect official requirements, departmental feedback and ownership, directing coordination toward the specific problems preventing an initiative from advancing rather than reconciling more submissions.",
         "image": "/images/solutions/government/government-value-scene-3-en_V11.0.webp",
         "imageAlt": "Focus coordination on responsibility and obstacles",
         "imageHeight": 549
       },
       {
-        "title": "Bring policy changes into current service requirements.",
+        "title": "Bring policy updates into service",
         "problem": "New policy is published while document lists and service answers continue to follow older rules.",
-        "body": "Policy may change while service lists and answers still rely on an earlier version. Digital employees relate changed clauses to affected matters, showing which document requirements, response references and professional methods need revision. Responsible teams can target their updates and bring current rules into daily service.",
-        "outcomes": [
-          "Clear scope of impact",
-          "Methods reflect current rules",
-          "Current service references"
-        ],
+        "body": "Responsible teams see which document lists and service answers a policy change affects, helping daily public services apply the current requirements and retire outdated instructions.",
         "image": "/images/solutions/government/government-value-scene-4-en_V11.0.webp",
         "imageAlt": "Bring policy changes into current service requirements.",
         "imageHeight": 800
@@ -445,8 +405,8 @@ export const governmentPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Shared government resources. Clear departmental duties.",
-      "body": "Reuse authorized government-cloud, model and knowledge services, with document and tool access configured by departmental duties. Extend established methods to more staff while retaining current references, professional review and execution records. Authorized officers retain responsibility for business decisions."
+      "title": "Resources governed by department",
+      "body": "Reuse authorized government resources, with access aligned to departmental duties and traceable service references and review records."
     }
   }
 };

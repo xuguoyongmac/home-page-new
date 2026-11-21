@@ -5,450 +5,320 @@ export type BankingEmployee = IndustryEmployee;
 export const bankingPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "信审直达经营实质，专业尺度覆盖全行",
-      "pain": "财报数字看似完整，送审说法却未必经得起交叉核验。风险信号与历史判断脱节，制度更新、专家经验难以同步到分支机构。",
-      "value": "TeGo 数字员工协作平台把财务差异、风险演变和适用依据带到专业人员面前，让授信审查看清偿债基础，贷后跟进抓住风险变化，同类业务沿用本行专业方法。",
+      "title": "让银行工作有据可依、成果可核可溯",
+      "pain": "制度资料跨版本分散，材料核对和系统搬运反复发生；任务跨岗位流转后，背景、责任与成果依据难以接续。",
+      "value": "TeGo 数字员工协作平台连接本行知识、岗位技能与业务工具，承接资料核对和协作交付，让银行人员专注专业判断与客户服务。",
       "scenarios": [
-        "授信尽调",
-        "财务核验",
-        "贷后风险",
-        "外规内化",
-        "制度修订",
-        "方法复用"
+        "制度查询",
+        "授信准备",
+        "贷后检查",
+        "服务准备",
+        "投诉辅助",
+        "经营分析"
       ],
       "benefits": [
         {
-          "title": "审查更深入",
-          "description": "沿财务差异核实收入质量、资金占用和第一还款来源。"
+          "title": "依据清楚，口径有据",
+          "description": "有效资料按权限检索，答复保留原文位置与版本，让业务人员核实适用依据。"
         },
         {
-          "title": "风险更连续",
-          "description": "新变化接上历次核查，保留客户风险认识和后续核实重点。"
+          "title": "差异前置，交接接续",
+          "description": "材料缺项、核对差异和待判断事项进入共同工作背景，责任人带着前情继续办理。"
         },
         {
-          "title": "尺度更一致",
-          "description": "本行制度与专家方法进入分支机构作业，减少同类问题反复求证。"
+          "title": "方法留存，成果可查",
+          "description": "本行方法进入员工模板与版本化技能，依据、修改和成果关联，支持复核及审计取证。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "信审直达经营实质",
-        "专业尺度覆盖全行"
+        "让银行工作有据可依",
+        "让岗位成果可核可溯"
       ],
-      "background": "/images/industries/banking-architecture_V1.1.webp",
-      "illustration": "/images/solutions/banking/banking-value-scene-1-zh_V11.0.webp"
+      "background": "/images/industries/banking-architecture_V1.1.webp"
     },
-    "sources": [
-      "企业经营与财务资料",
-      "授信与历次核查记录",
-      "外部监管与本行制度",
-      "本行审查知识与专业方法"
-    ],
-    "outputs": [
-      "财务核验底稿与尽调报告",
-      "客户风险简报与核查重点",
-      "制度影响分析与修订准备稿",
-      "本行方法对应的审查依据"
-    ],
-    "features": [
-      {
-        "title": "财报疑点看得清，偿债判断有依据",
-        "problem": "报表数字能够对上，经营说法却经不起追问；审查时间花在反复找数，第一还款来源仍未讲清。",
-        "body": "账面利润能否转化为偿债现金，往往藏在报表与送审说明的差异里。数字员工把勾稽异常、原文证据和本行审查要求对应呈现，让信审直接追问收入质量、资金占用与第一还款来源，为专业终审提供扎实依据。",
-        "outcomes": [
-          "追问经营疑点",
-          "核实偿债基础",
-          "支撑专业终审"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-1-zh_V11.0.webp",
-        "imageAlt": "财报疑点看得清，偿债判断有依据",
-        "imageHeight": 580
+    "solution": {
+      "context": {
+        "title": "跨条线的五类工作卡点",
+        "body": "制度依据分散、材料逐项核对、系统操作割裂、岗位交接等待、成果缺少追溯，共同拖住银行工作的衔接与交付。"
       },
-      {
-        "title": "贷后风险看变化，客户认识不断档",
-        "problem": "财务、舆情和现场核查各自更新，新信号反复出现，却难看清风险在改善还是加深。",
-        "body": "孤立预警难以说明风险是否加深。数字员工把本次经营变化与历次核查、已确认的客户背景放在同一脉络中，突出持续未解的问题和新增疑点。贷后人员带着重点核实，人员交接延续已有风险认识。",
-        "outcomes": [
-          "关联历次核查",
-          "突出本次变化",
-          "接续风险跟进"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-2-zh_V11.0.webp",
-        "imageAlt": "贷后风险看变化，客户认识不断档",
-        "imageHeight": 699
+      "mappingsTitle": "银行业务问题的对应解法",
+      "mappings": [
+        {
+          "problemTitle": "资料依据分散多处",
+          "problem": "制度、产品口径与操作指引跨系统、多版本存放，查找反复，办理依据难以统一。",
+          "capabilities": [
+            "企业知识库",
+            "混合检索",
+            "来源引用"
+          ],
+          "response": "以当前人员身份检索获准知识，答复保留原文位置、资料版本与适用条件，口径冲突形成待确认问题。",
+          "deliverables": [
+            "带出处答复",
+            "制度版本差异清单"
+          ],
+          "value": "让办理口径有共同依据，答复能够回查原文。",
+          "icon": "book"
+        },
+        {
+          "problemTitle": "材料核对繁重易漏",
+          "problem": "授信与运营材料中的主体、期间、金额和关联关系需逐项比对，缺项与矛盾容易遗漏。",
+          "capabilities": [
+            "岗位技能",
+            "任务执行",
+            "项目版本"
+          ],
+          "response": "岗位技能组织字段抽取与交叉核对，差异、缺项保留原文出处；核对底稿按项目版本保存，供人员批注、修订与复核。",
+          "deliverables": [
+            "交叉核对表",
+            "待补疑点清单"
+          ],
+          "value": "把差异前置到复核环节，减少漏项与重复返工。",
+          "icon": "clipboard-check"
+        },
+        {
+          "problemTitle": "系统操作相互割裂",
+          "problem": "同一工作跨越客户、信贷与运营系统，反复搬运资料和录入，状态与口径难以衔接。",
+          "capabilities": [
+            "业务插件与 MCP",
+            "平台 OpenAPI",
+            "浏览器与设备节点"
+          ],
+          "response": "通过授权文件、业务插件或 MCP 读取资料，按项目连接接口与设备；平台 OpenAPI 供外部系统调用数字员工。",
+          "deliverables": [
+            "受控业务查询结果",
+            "跨系统资料清单"
+          ],
+          "value": "减少跨系统查找与搬运，业务资料按授权取得。",
+          "icon": "plug"
+        },
+        {
+          "problemTitle": "人工交接反复等待",
+          "problem": "补料、复核与接手依靠线下追问，人员反复解释背景，未决问题和责任难以接续。",
+          "capabilities": [
+            "待处理事项",
+            "工作会话",
+            "工作记忆"
+          ],
+          "response": "在需要判断时发起提问、确认或接手事项，把问题、依据与上下文送达责任人，回应后接回原任务继续办理。",
+          "deliverables": [
+            "责任事项清单",
+            "任务续办记录"
+          ],
+          "value": "让问题有人接、背景接得住，减少重复交代。",
+          "icon": "user-check"
+        },
+        {
+          "problemTitle": "成果过程缺少追溯",
+          "problem": "最终文件与输入依据、规则版本和人工修改缺少关联，复核与审计难以还原处理过程。",
+          "capabilities": [
+            "审计中心",
+            "内容溯源",
+            "项目版本"
+          ],
+          "response": "任务执行台账关联资料来源、所用技能版本、工具记录、人员修改与成果版本，支撑复核和审计取证。",
+          "deliverables": [
+            "审计证据包",
+            "成果版本历史"
+          ],
+          "value": "让成果查得到依据，责任与修改过程有据可追。",
+          "icon": "file-search"
+        }
+      ],
+      "governance": {
+        "title": "按银行边界部署，按岗位责任运行",
+        "items": [
+          {
+            "title": "私有部署与数据路径",
+            "body": "支持私有化部署与获准本地模型，按银行要求核定模型、工具、消息及导出路径，资料使用遵循本行数据管理规则。"
+          },
+          {
+            "title": "人员复核与正式办理",
+            "body": "提问、确认和接手服务于任务续办，专业判断、授信审批与正式业务动作由银行岗位按原有流程负责。"
+          },
+          {
+            "title": "身份授权与运行审计",
+            "body": "知识检索遵循当前人员身份，资料访问和插件调用遵循人员权限；平台记录工具调用、人员确认与成果版本，支持按任务核查责任与变化。"
+          }
+        ]
       },
-      {
-        "title": "外规影响看得清，条线执行有现行依据",
-        "problem": "外规已经更新，相关内规和条线口径仍可能停留在旧版本，业务人员难判断哪条要求适用于当前事项。",
-        "body": "一项外规更新可能同时影响多项内规和业务条线。数字员工对应变更条款、受影响制度与适用事项，让合规人员直接判断执行落差，制度责任部门据此审定修订内容。分支机构处理具体业务时，获得一致的现行依据。",
-        "outcomes": [
-          "看清影响范围",
-          "明确制度责任",
-          "统一执行依据"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-3-zh_V11.0.webp",
-        "imageAlt": "外规影响看得清，条线执行有现行依据",
-        "imageHeight": 701
-      },
-      {
-        "title": "本行专家的方法，成为分支机构的能力",
-        "problem": "同类授信问题在不同机构反复求助，少数专家越忙，一线越难及时获得足够专业支撑。",
-        "body": "少数专家难以持续回应全行反复出现的同类问题。经确认的科目映射、勾稽规则和典型审查方法成为数字员工的专业依据，支撑分支机构日常核验。本行经验覆盖更多岗位，专家把精力留给疑难与例外，关键判断仍由有权人员完成。",
-        "outcomes": [
-          "沿用本行方法",
-          "扩展专业覆盖",
-          "聚焦疑难例外"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-4-zh_V11.0.webp",
-        "imageAlt": "本行专家的方法，成为分支机构的能力",
-        "imageHeight": 594
+      "values": {
+        "title": "把岗位支撑转化为银行工作价值",
+        "items": [
+          {
+            "title": "把专业时间还给银行岗位",
+            "body": "减少找依据、逐字段核对与重复交接，让客户经理、信贷和运营人员把精力留给事实核实、客户沟通与专业判断。"
+          },
+          {
+            "title": "让复核有据，让责任可查",
+            "body": "统一核对方法，前置呈现缺项与差异；把依据、修改、责任事项和成果版本联系起来，支撑复核与审计取证。"
+          },
+          {
+            "title": "把本行方法沉淀为岗位资产",
+            "body": "员工模板、版本化技能与知识库共同承载本行经验，支持同岗复用和条线扩展，资料、规则与运营责任持续维护。"
+          }
+        ]
       }
-    ],
-    "teamTitle": "面向银行业务条线的数字员工团队",
-    "employees": [
-      {
-        "role": "信贷尽调数字员工",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "财务勾稽",
-          "经营分析",
-          "报告编制"
-        ],
-        "process": [
-          "核对企业、财报与合同关系",
-          "调用本行方法分析授信资料",
-          "编制尽调报告并接续修订"
-        ],
-        "outputs": [
-          "授信尽调报告",
-          "财务核验明细"
-        ],
-        "value": "把案头准备转成深入审查的起点"
-      },
-      {
-        "role": "贷后风险数字员工",
-        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
-        "skills": [
-          "预警归并",
-          "风险关联",
-          "持续跟踪"
-        ],
-        "process": [
-          "汇集客户风险与经营变化",
-          "关联授信背景和历史核查",
-          "持续更新跟进重点与反馈"
-        ],
-        "outputs": [
-          "客户风险简报",
-          "贷后核查任务"
-        ],
-        "value": "让每次核查都带着完整客户背景"
-      },
-      {
-        "role": "对公经营数字员工",
-        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
-        "skills": [
-          "客户洞察",
-          "商机准备",
-          "方案协作"
-        ],
-        "process": [
-          "分析客户经营与服务需求",
-          "组织拜访议题和产品资料",
-          "协同形成综合服务方案"
-        ],
-        "outputs": [
-          "客户拜访材料",
-          "综合服务方案"
-        ],
-        "value": "让客户经理带着洞察进入业务沟通"
-      },
-      {
-        "role": "交易运营数字员工",
-        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
-        "skills": [
-          "业务核对",
-          "差异分析",
-          "事项接续"
-        ],
-        "process": [
-          "归集结算与运营业务记录",
-          "对照处理规则定位差异",
-          "组织跨岗位反馈与接续"
-        ],
-        "outputs": [
-          "运营差异分析",
-          "业务交接记录"
-        ],
-        "value": "减少跨系统核对和重复沟通"
-      },
-      {
-        "role": "合规制度数字员工",
-        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
-        "skills": [
-          "条款检索",
-          "内外规比对",
-          "修订协作"
-        ],
-        "process": [
-          "匹配现行条款与业务问题",
-          "分析外规变化对内规的影响",
-          "汇集修订意见并维护版本"
-        ],
-        "outputs": [
-          "制度影响分析",
-          "条款修订准备稿"
-        ],
-        "value": "让制度变化落到业务执行和方法维护"
-      },
-      {
-        "role": "经营分析数字员工",
-        "avatar": "/images/home/employee-avatar-research_V1.0.webp",
-        "skills": [
-          "指标分析",
-          "经营归因",
-          "管理汇报"
-        ],
-        "process": [
-          "关联计划、网点与客群数据",
-          "解释指标变化与业务差异",
-          "准备经营汇报和协调议题"
-        ],
-        "outputs": [
-          "网点经营简报",
-          "经营行动建议"
-        ],
-        "value": "把报表变化转为有重点的经营讨论"
-      }
-    ],
-    "deployment": {
-      "title": "本行知识留在行内，岗位责任贯穿作业",
-      "body": "部署在银行私有环境，连接获准使用的资料、模型和业务系统。按机构、条线与岗位管理权限，保留工作记录、内容审核和人员复核，让专业能力扩展到更多机构，责任仍清晰落在本行治理体系中。"
     }
   },
   "en": {
     "home": {
-      "title": "Deeper credit judgment. Shared bank expertise.",
-      "pain": "Figures can reconcile while the borrower’s account still raises questions. New risk signals lose their history, and policy updates and specialist expertise do not always reach branches.",
-      "value": "Digital employees connect financial discrepancies, evolving risks and applicable rules. Credit specialists examine repayment fundamentals, post-loan teams retain the history behind risk changes, and branches draw on the bank’s established review methods.",
+      "title": "Evidence-backed banking work. Reviewable, traceable outcomes.",
+      "pain": "Policies and documents are scattered across versions, while checking and manual transfer repeat. Handover between roles disconnects the background, ownership and evidence behind an outcome.",
+      "value": "The platform connects the bank’s knowledge, role skills and business tools. Digital employees handle document checks and collaborative delivery, giving bank staff more room for professional judgment and customer service.",
       "scenarios": [
-        "Credit due diligence",
-        "Financial verification",
-        "Post-loan risk",
-        "Regulatory alignment",
-        "Policy revision",
-        "Method reuse"
+        "Policy queries",
+        "Credit preparation",
+        "Post-loan checks",
+        "Service preparation",
+        "Complaint support",
+        "Business analysis"
       ],
       "benefits": [
         {
-          "title": "Deeper reviews",
-          "description": "Move beyond matching figures to examine business substance and the primary repayment source."
+          "title": "Clear references and consistent grounds",
+          "description": "Retrieve effective documents under authorization, retaining original locations and versions so staff can verify applicability."
         },
         {
-          "title": "A continuous risk view",
-          "description": "Connect new developments with earlier checks and retain the focus for further verification."
+          "title": "Early differences and connected handovers",
+          "description": "Keep document gaps, checking differences and questions for judgment in a shared work context, so owners continue with the background intact."
         },
         {
-          "title": "Consistent standards",
-          "description": "Bring confirmed bank policies and specialist methods into daily work across branches."
+          "title": "Reusable methods and traceable outcomes",
+          "description": "Retain bank methods in templates and versioned skills, linking evidence, edits and outputs for professional review and audit."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Deeper credit judgment",
-        "Shared bank expertise"
+        "Evidence for every task",
+        "Traceable banking outcomes"
       ],
-      "background": "/images/industries/banking-architecture_V1.1.webp",
-      "illustration": "/images/solutions/banking/banking-value-scene-1-en_V11.0.webp"
+      "background": "/images/industries/banking-architecture_V1.1.webp"
     },
-    "sources": [
-      "Business and financial information",
-      "Credit and review history",
-      "Regulations and bank policies",
-      "Bank review knowledge and methods"
-    ],
-    "outputs": [
-      "Financial working papers and due-diligence drafts",
-      "Borrower risk briefs and review priorities",
-      "Policy impact analysis and revision drafts",
-      "Review evidence grounded in bank methods"
-    ],
-    "features": [
-      {
-        "title": "Ground repayment judgments in financial evidence.",
-        "problem": "The figures reconcile, but the business explanation does not withstand scrutiny. Repeated data searches leave the primary repayment source unclear.",
-        "body": "Accounting profit does not establish the cash available for repayment. Digital employees connect reconciliation discrepancies, borrower explanations and original evidence with the bank’s review requirements. Credit specialists can examine revenue quality, funds tied up in the business and the primary repayment source, with a stronger basis for professional sign-off.",
-        "outcomes": [
-          "Examine business questions",
-          "Verify repayment fundamentals",
-          "Support professional sign-off"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-1-en_V11.0.webp",
-        "imageAlt": "Ground repayment judgments in financial evidence.",
-        "imageHeight": 649
+    "solution": {
+      "context": {
+        "title": "Five recurring gaps across banking work",
+        "body": "Scattered references, manual document checks, disconnected systems, handover delays and missing traceability interrupt work across teams and business lines."
       },
-      {
-        "title": "Keep the history behind each risk change.",
-        "problem": "Financial updates, public information and site checks remain separate. Teams struggle to distinguish recurring signals from a material change in risk.",
-        "body": "An isolated alert cannot explain whether risk has deepened. Digital employees connect current business changes with earlier checks and confirmed customer context, highlighting unresolved issues and new concerns. Post-loan teams investigate with a clear focus, and staff handovers preserve the reasoning behind earlier risk judgments.",
-        "outcomes": [
-          "Connect earlier checks",
-          "Highlight material changes",
-          "Continue risk follow-up"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-2-en_V11.0.webp",
-        "imageAlt": "Keep the history behind each risk change.",
-        "imageHeight": 800
+      "mappingsTitle": "Banking challenges and their solutions",
+      "mappings": [
+        {
+          "problemTitle": "Scattered business references",
+          "problem": "Policies, product terms and operating guidance sit across systems and versions. Staff repeat searches and struggle to establish a shared basis for handling business.",
+          "capabilities": [
+            "Enterprise knowledge base",
+            "Hybrid retrieval",
+            "Source citations"
+          ],
+          "response": "Retrieve authorized knowledge under the current user’s identity. Responses retain original locations, document versions and applicability conditions, while conflicting interpretations become questions for confirmation.",
+          "deliverables": [
+            "Source-linked responses",
+            "Policy version difference list"
+          ],
+          "value": "Give staff a shared basis for handling business and a direct route back to the original text.",
+          "icon": "book"
+        },
+        {
+          "problemTitle": "Heavy, error-prone document checking",
+          "problem": "Names, periods, amounts and relationships across credit and operations documents require individual checks. Missing items and contradictions are easy to overlook.",
+          "capabilities": [
+            "Role skills",
+            "Task execution",
+            "Project versions"
+          ],
+          "response": "Role skills organize field extraction and cross-document checks, retaining source locations for differences and omissions. Project versions preserve checking papers for staff comments, revision and review.",
+          "deliverables": [
+            "Cross-document checking worksheet",
+            "Missing-item and issue list"
+          ],
+          "value": "Surface differences before review and reduce overlooked items and repeated rework.",
+          "icon": "clipboard-check"
+        },
+        {
+          "problemTitle": "Disconnected system operations",
+          "problem": "One assignment spans customer, credit and operations systems. Repeated data transfer and entry make status and definitions difficult to keep aligned.",
+          "capabilities": [
+            "Business plugins and MCP",
+            "Platform OpenAPI",
+            "Browser and device nodes"
+          ],
+          "response": "Read information through authorized files, business plugins or MCP, and connect interfaces and devices within the project scope. Platform OpenAPI lets external systems invoke digital employees.",
+          "deliverables": [
+            "Authorized business query results",
+            "Cross-system document inventory"
+          ],
+          "value": "Reduce cross-system searching and transfer, with business information obtained under authorization.",
+          "icon": "plug"
+        },
+        {
+          "problemTitle": "Repeated waits at human handovers",
+          "problem": "Document requests, reviews and handovers depend on offline follow-up. Staff repeat the background while unresolved questions and ownership lose continuity.",
+          "capabilities": [
+            "Pending matters",
+            "Work conversations",
+            "Work memory"
+          ],
+          "response": "Raise a question, confirmation or handover when judgment is needed. Send the issue, evidence and context to the responsible person, then return the response to the original task for continued work.",
+          "deliverables": [
+            "Assigned matter list",
+            "Task continuation records"
+          ],
+          "value": "Keep a responsible owner and the full background with each issue.",
+          "icon": "user-check"
+        },
+        {
+          "problemTitle": "Untraceable work and final outputs",
+          "problem": "Final files are disconnected from input evidence, rule versions and staff edits, making it difficult to reconstruct the work for review or audit.",
+          "capabilities": [
+            "Audit center",
+            "Content provenance",
+            "Project versions"
+          ],
+          "response": "Execution records connect document sources, the skill versions used, tool records, staff edits and output versions, supporting professional review and audit evidence retrieval.",
+          "deliverables": [
+            "Audit evidence package",
+            "Output version history"
+          ],
+          "value": "Trace an outcome to its evidence, ownership and revision history.",
+          "icon": "file-search"
+        }
+      ],
+      "governance": {
+        "title": "Deploy within the bank’s boundaries. Keep responsibility with its roles.",
+        "items": [
+          {
+            "title": "Private deployment and data paths",
+            "body": "Support private deployment and approved local models. Establish model, tool, messaging and export paths under the bank’s requirements, with information use governed by its data policies."
+          },
+          {
+            "title": "Staff review and formal business handling",
+            "body": "Questions, confirmations and handovers support task continuation. Bank roles retain professional judgments, credit approvals and formal business actions under existing procedures."
+          },
+          {
+            "title": "Identity, authorization and operational audit",
+            "body": "Knowledge retrieval follows the current user’s identity. Document access and plugin calls follow that person’s permissions. Tool calls, staff confirmations and output versions support task-level reviews of ownership and changes."
+          }
+        ]
       },
-      {
-        "title": "Give business teams a current basis for applying regulations.",
-        "problem": "Regulations change while internal policies and business-line interpretations may still reflect an earlier version. Staff cannot readily identify the requirement that applies.",
-        "body": "One regulatory change can affect several internal policies and business lines. Digital employees relate changed clauses to affected policies and business matters. Compliance teams can assess execution gaps, policy owners approve revisions, and branches work from a shared current basis.",
-        "outcomes": [
-          "Identify affected scope",
-          "Clarify policy ownership",
-          "Align execution references"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-3-en_V11.0.webp",
-        "imageAlt": "Give business teams a current basis for applying regulations.",
-        "imageHeight": 545
-      },
-      {
-        "title": "Extend the bank’s specialist methods across branches.",
-        "problem": "Similar credit questions repeatedly return to a small specialist team, limiting the support available to frontline institutions.",
-        "body": "A small expert team cannot repeatedly resolve the same questions across every branch. Confirmed account mappings, reconciliation rules and review methods give digital employees the bank’s own professional references. Branches gain support for routine checks, specialists focus on difficult cases, and authorized staff retain key judgments.",
-        "outcomes": [
-          "Apply the bank’s methods",
-          "Extend specialist coverage",
-          "Focus on exceptions"
-        ],
-        "image": "/images/solutions/banking/banking-value-scene-4-en_V11.0.webp",
-        "imageAlt": "Extend the bank’s specialist methods across branches.",
-        "imageHeight": 680
+      "values": {
+        "title": "Turn role support into value for banking work",
+        "items": [
+          {
+            "title": "Reserve professional attention for bank staff",
+            "body": "Reduce repeated reference searches, field checks and handovers so relationship managers, credit staff and operations teams can focus on verifying facts, serving customers and applying judgment."
+          },
+          {
+            "title": "Evidence for review. Accountability for the work.",
+            "body": "Apply shared checking methods and surface gaps early. Connect references, edits, assigned matters and output versions to support professional review and audit evidence retrieval."
+          },
+          {
+            "title": "Keep the bank’s methods as reusable role assets",
+            "body": "Employee templates, versioned skills and knowledge bases preserve the bank’s experience for reuse across roles and business lines, with continued ownership of documents, rules and operations."
+          }
+        ]
       }
-    ],
-    "teamTitle": "A digital employee team for banking business lines",
-    "employees": [
-      {
-        "role": "Credit Diligence Digital Employee",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "Financial reconciliation",
-          "Business analysis",
-          "Report drafting"
-        ],
-        "process": [
-          "Check company, financial and contract relationships",
-          "Apply bank-specific diligence methods",
-          "Draft reports and incorporate revisions"
-        ],
-        "outputs": [
-          "Credit diligence report",
-          "Financial verification detail"
-        ],
-        "value": "Turn preparation into a stronger foundation for credit review"
-      },
-      {
-        "role": "Post-loan Risk Digital Employee",
-        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
-        "skills": [
-          "Alert aggregation",
-          "Risk context",
-          "Ongoing monitoring"
-        ],
-        "process": [
-          "Collect client risk and operating changes",
-          "Connect credit history and previous reviews",
-          "Update investigation priorities and follow-up"
-        ],
-        "outputs": [
-          "Client risk brief",
-          "Post-loan review tasks"
-        ],
-        "value": "Give every investigation a complete client context"
-      },
-      {
-        "role": "Corporate Coverage Digital Employee",
-        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
-        "skills": [
-          "Client insight",
-          "Opportunity preparation",
-          "Proposal development"
-        ],
-        "process": [
-          "Analyze client operations and service needs",
-          "Prepare meeting topics and product knowledge",
-          "Develop integrated service proposals"
-        ],
-        "outputs": [
-          "Client meeting materials",
-          "Integrated service proposal"
-        ],
-        "value": "Bring informed insight into client conversations"
-      },
-      {
-        "role": "Transaction Operations Digital Employee",
-        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
-        "skills": [
-          "Record checks",
-          "Exception analysis",
-          "Work handovers"
-        ],
-        "process": [
-          "Collect settlement and operating records",
-          "Locate differences against processing rules",
-          "Connect responses and work across teams"
-        ],
-        "outputs": [
-          "Operating exception analysis",
-          "Business handover record"
-        ],
-        "value": "Reduce repeated checks and cross-system coordination"
-      },
-      {
-        "role": "Policy and Compliance Digital Employee",
-        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
-        "skills": [
-          "Policy retrieval",
-          "Regulatory comparison",
-          "Revision collaboration"
-        ],
-        "process": [
-          "Match current provisions to business questions",
-          "Assess external changes against internal policies",
-          "Collect revisions and maintain versions"
-        ],
-        "outputs": [
-          "Policy impact assessment",
-          "Draft policy revisions"
-        ],
-        "value": "Connect policy changes with business practice"
-      },
-      {
-        "role": "Business Analysis Digital Employee",
-        "avatar": "/images/home/employee-avatar-research_V1.0.webp",
-        "skills": [
-          "Metric analysis",
-          "Business attribution",
-          "Management reporting"
-        ],
-        "process": [
-          "Connect plans, branches and client segments",
-          "Explain indicator changes and variances",
-          "Prepare management reports and discussion topics"
-        ],
-        "outputs": [
-          "Branch operating brief",
-          "Business action recommendations"
-        ],
-        "value": "Turn report movements into focused management discussions"
-      }
-    ],
-    "deployment": {
-      "title": "Keep bank knowledge inside. Preserve accountability throughout the work.",
-      "body": "Deploy in the bank’s private environment and connect approved documents, models and business systems. Manage access by institution, business line and role, retaining work records, content approvals and staff review as specialist capability reaches more branches."
     }
   }
 };

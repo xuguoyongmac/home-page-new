@@ -98,10 +98,11 @@
 
 .industry-value-chapter {
   display: grid;
-  grid-template-columns: minmax(0, .83fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.4fr);
   align-items: center;
-  gap: 56px;
+  gap: 64px;
   min-width: 0;
+  scroll-margin-top: 32px;
 }
 
 .industry-value-chapter-copy,
@@ -122,37 +123,11 @@
 
 .industry-value-chapter-detail > p {
   margin: 20px 0 0;
+  max-width: 25em;
   color: #aebfd3;
-  font-size: 15px;
-  line-height: 1.95;
+  font-size: 17px;
+  line-height: 1.85;
   text-wrap: pretty;
-}
-
-.industry-value-outcomes {
-  display: grid;
-  gap: 10px;
-  margin: 25px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.industry-value-outcomes li {
-  display: flex;
-  align-items: baseline;
-  gap: 11px;
-  color: #d3dfed;
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-.industry-value-outcomes li::before {
-  flex: 0 0 4px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #759ed0;
-  content: '';
-  transform: translateY(-3px);
 }
 
 .industry-value-chapter-artwork {
@@ -180,20 +155,13 @@
   margin-top: 0;
 }
 
-.industry-value-chapter--wide .industry-value-outcomes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 25px;
-  margin-top: 20px;
-}
-
 .industry-value-chapter--wide .industry-value-chapter-artwork {
   width: min(100%, 960px);
   margin-inline: auto;
 }
 
 .industry-value-chapter--reverse {
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, .83fr);
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, .72fr);
 }
 
 .industry-value-chapter--reverse .industry-value-chapter-copy {
@@ -207,7 +175,7 @@
 }
 
 .industry-value-chapter--split-final {
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.23fr);
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.4fr);
 }
 
 .industry-value-deployment {
@@ -380,19 +348,6 @@ html[lang='en'] .industry-value-chapter h2 {
   .industry-value-chapter--wide .industry-value-chapter-detail > p {
     margin-top: 0;
     line-height: 1.9;
-  }
-
-  .industry-value-outcomes,
-  .industry-value-chapter--wide .industry-value-outcomes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px 22px;
-    margin-top: 19px;
-  }
-
-  .industry-value-outcomes li {
-    gap: 9px;
-    font-size: 13px;
   }
 
   .industry-value-deployment {

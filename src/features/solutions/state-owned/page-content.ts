@@ -5,7 +5,7 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
     "home": {
       "title": "让集团看清实情，把管控落到关键处",
       "pain": "送审条款前后冲突，整改回复缺少实证，所属企业报表口径又难统一；集团掌握了大量材料，关键责任和经营变化仍可能被掩盖。",
-      "value": "让合同审阅看清重大责任，整改复查直达实证，经营研判区分口径差异与真实变化。数字员工把集团要求与所属企业的具体事实对应起来，减少追材料和重复核对，让采购、法务、审计与管理层聚焦关键问题。",
+      "value": "看清合同责任、整改证据与经营变化，让集团管控直达所属企业的关键问题。",
       "scenarios": [
         "采购文书",
         "合同核查",
@@ -51,53 +51,33 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "重大条款，提前进入专业审阅",
+        "title": "合同责任提前审阅",
         "problem": "送审版本中的付款条件、履约节点和违约责任相互冲突，重大风险被文件往返掩盖。",
-        "body": "付款条件、履约节点与违约责任散在多个送审版本中，重大分歧容易被文件往返掩盖。数字员工将项目条件、有效制度与合同范本对应呈现，让采购和法务直接审阅缺项、冲突与商业例外，把专业时间用在关键责任上。",
-        "outcomes": [
-          "关键责任提前显现",
-          "审阅依据对应原文",
-          "商业例外交给专业把关"
-        ],
+        "body": "把付款、验收和违约条款的冲突提前呈现，让采购与法务集中审阅重大责任。",
         "image": "/images/solutions/state-owned/state-owned-value-scene-1-zh_V11.0.webp",
         "imageAlt": "重大条款，提前进入专业审阅",
         "imageHeight": 698
       },
       {
-        "title": "整改复查，直达实证与缺口",
+        "title": "整改实效有证可审",
         "problem": "回复和附件已经收齐，却没有实质回应原问题，台账进度掩盖证据缺口。",
-        "body": "回复齐备并不代表原问题已经解决。数字员工把审计发现、整改措施和实际佐证关联起来，突出证据缺口与前后矛盾，让监督审计人员直接追问措施是否落实、问题是否消除，整改进度回到实际效果，复查认定由专业人员把关。",
-        "outcomes": [
-          "每项措施回应原问题",
-          "证据缺口清楚显现",
-          "复查认定保持独立"
-        ],
+        "body": "整改措施与原问题、实际佐证对应，让审计人员看清证据缺口，独立判断整改实效。",
         "image": "/images/solutions/state-owned/state-owned-value-scene-2-zh_V11.0.webp",
         "imageAlt": "整改复查，直达实证与缺口",
         "imageHeight": 800
       },
       {
-        "title": "经营研判，看清口径背后的变化",
+        "title": "经营研判看清变化",
         "problem": "上报期间、计量单位与指标定义不同，汇总数据不能直接解释经营变化。",
-        "body": "汇总表已经齐备，期间、单位与指标定义的差异却仍会掩盖真实变化。数字员工把收入、利润和现金流的口径、计算关系与差异说明对应起来，让集团会议少争数字来源，更多讨论业务成因、资源安排和经营对策。",
-        "outcomes": [
-          "口径差异单独看清",
-          "业务变化有据可追",
-          "经营讨论直达对策"
-        ],
+        "body": "区分口径差异与真实经营变化，让集团会议集中讨论成因、资源安排和对策。",
         "image": "/images/solutions/state-owned/state-owned-value-scene-3-zh_V11.0.webp",
         "imageAlt": "经营研判，看清口径背后的变化",
         "imageHeight": 655
       },
       {
-        "title": "集团要求，落到各单位真实情况",
+        "title": "集团协调看清实情",
         "problem": "统一反馈格式无法替代责任与事实对应，共性障碍在层层汇报中被冲淡。",
-        "body": "统一反馈格式无法替代对真实困难的判断。数字员工按同一集团专项，关联各单位反馈、正式要求与处理意见，让总部看清共性障碍和责任所在，也让所属企业的具体条件得到保留。跨级协调围绕实际问题，减少层层汇报中的信息损耗。",
-        "outcomes": [
-          "总部看清共性障碍",
-          "单位保留实际差异",
-          "跨级协调有具体抓手"
-        ],
+        "body": "在统一要求下保留各单位的实际差异，让总部看清共性障碍和具体责任。",
         "image": "/images/solutions/state-owned/state-owned-value-scene-4-zh_V11.0.webp",
         "imageAlt": "集团要求，落到各单位真实情况",
         "imageHeight": 800
@@ -221,15 +201,15 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "共用集团方法，保留单位差异",
-      "body": "集团沉淀共用制度、核查方法和岗位模板，所属企业绑定本单位资料、合同范本与工具身份。在私有环境中管理授权、变更与运行记录，让专业方法可复用，让各单位的事实、责任和审阅判断保持清楚。"
+      "title": "集团共用与分级治理",
+      "body": "集团共用模型与知识，所属单位按职责使用，重大事项保留授权、审核和审计记录。"
     }
   },
   "en": {
     "home": {
       "title": "See the facts across the group. Focus control where it matters.",
       "pain": "Conflicting contract terms, remediation without adequate proof and inconsistent subsidiary reporting can obscure material responsibilities and business changes beneath a large volume of information.",
-      "value": "Digital employees connect group requirements with subsidiary facts. Procurement and legal teams examine material obligations, audit teams test remediation against evidence, and management separates reporting differences from real business changes, spending less time chasing documents and repeating checks.",
+      "value": "Give group oversight a clear view of contractual obligations, remediation evidence and business changes, directing specialist attention toward the issues that matter across subsidiaries.",
       "scenarios": [
         "Procurement documents",
         "Contract review",
@@ -275,53 +255,33 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "Bring material terms into professional review earlier.",
+        "title": "Review material contract obligations earlier",
         "problem": "Payment terms, milestones and liabilities conflict across submitted versions, obscuring significant obligations.",
-        "body": "Payment terms, milestones and liabilities dispersed across submitted versions can hide material disagreements. Digital employees connect project conditions, current policies and applicable templates. Procurement and legal teams can review omissions, conflicts and commercial exceptions directly, reserving professional attention for significant obligations.",
-        "outcomes": [
-          "Earlier visibility of key obligations",
-          "References tied to the wording",
-          "Specialist review of exceptions"
-        ],
+        "body": "Procurement and legal teams see conflicts in payment, acceptance and liability terms before approval, allowing their professional review to concentrate on material contractual obligations.",
         "image": "/images/solutions/state-owned/state-owned-value-scene-1-en_V11.0.webp",
         "imageAlt": "Bring material terms into professional review earlier.",
         "imageHeight": 800
       },
       {
-        "title": "Review remediation through evidence and gaps",
+        "title": "Judge remediation against actual evidence",
         "problem": "Responses and attachments arrive without demonstrating that the original finding has been addressed.",
-        "body": "A complete response does not establish that the original finding has been resolved. Digital employees connect audit findings, corrective measures and supporting evidence, exposing gaps and contradictions. Oversight teams can examine whether measures were implemented and issues addressed, with professional staff retaining the formal review conclusion.",
-        "outcomes": [
-          "Measures answer the original finding",
-          "Evidence gaps remain visible",
-          "Independent review conclusions"
-        ],
+        "body": "Audit teams connect corrective measures with the original finding and supporting records, exposing evidence gaps and preserving an independent professional judgment of actual remediation.",
         "image": "/images/solutions/state-owned/state-owned-value-scene-2-en_V11.0.webp",
         "imageAlt": "Review remediation through evidence and gaps",
         "imageHeight": 800
       },
       {
-        "title": "Separate reporting differences from real business change.",
+        "title": "See the business behind reporting differences",
         "problem": "Different periods, units and metric definitions prevent consolidated figures from explaining business change.",
-        "body": "Complete consolidated reports can still conceal differences in periods, units and metric definitions. Digital employees connect the definitions, calculations and explanations behind revenue, profit and cash flow. Group meetings spend less time disputing sources and more time examining business causes, resource allocation and operating responses.",
-        "outcomes": [
-          "Separate reporting differences",
-          "Trace business explanations",
-          "Discuss operating responses"
-        ],
+        "body": "Group management separates inconsistent reporting definitions from real business changes, allowing operating meetings to examine causes, allocate resources and discuss an appropriate response.",
         "image": "/images/solutions/state-owned/state-owned-value-scene-3-en_V11.0.webp",
         "imageAlt": "Separate reporting differences from real business change.",
         "imageHeight": 800
       },
       {
-        "title": "Connect group requirements to subsidiary realities",
+        "title": "Retain local facts in group coordination",
         "problem": "Standard submission formats still leave responsibilities, facts and common obstacles disconnected.",
-        "body": "A standard format cannot establish the difficulties a subsidiary actually faces. Digital employees connect subsidiary feedback, formal requirements and handling decisions within each group initiative. Headquarters can see common obstacles and responsibility while retaining local conditions, giving cross-level coordination concrete issues to resolve.",
-        "outcomes": [
-          "Common obstacles visible to headquarters",
-          "Local context remains clear",
-          "Concrete cross-level coordination"
-        ],
+        "body": "Headquarters retains each subsidiary’s actual conditions within common requirements, making shared obstacles and specific responsibilities visible so cross-level coordination addresses the real problem.",
         "image": "/images/solutions/state-owned/state-owned-value-scene-4-en_V11.0.webp",
         "imageAlt": "Connect group requirements to subsidiary realities",
         "imageHeight": 800
@@ -445,8 +405,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Shared group methods. Clear subsidiary context.",
-      "body": "Maintain common policies, review methods and role templates at group level, while subsidiaries connect their own materials, templates and tool identities. Manage authorization, change and execution records in a private environment so methods can be reused without obscuring local facts, responsibility or professional review."
+      "title": "Shared resources, accountable units",
+      "body": "Share group models and knowledge through unit responsibilities, retaining authorization, review and audit records for material matters."
     }
   }
 };

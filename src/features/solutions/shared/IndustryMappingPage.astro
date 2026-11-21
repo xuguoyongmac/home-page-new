@@ -1,0 +1,81 @@
+---
+import type { Locale } from '../../../data/types';
+import type { IndustryMappedSolutionCopy } from './types';
+import { pathFor } from '../../../lib/site';
+import Icon from '../../../components/Icon.astro';
+import SolutionMappingOverview from '../../../components/SolutionMappingOverview.astro';
+import '../../../styles/industry-mapping-page.css';
+
+interface Props { locale: Locale; slug: string; presentation: IndustryMappedSolutionCopy; }
+const { locale, slug, presentation: copy } = Astro.props;
+const { solution } = copy;
+const zh = locale === 'zh';
+const governanceIcons = ['key-round', 'user-check', 'layers'];
+---
+<div class="industry-mapping-page" data-industry-solution={slug}>
+  <section class="imp-hero" aria-labelledby={`${slug}-title`}>
+    <img class="imp-hero-background" src={copy.hero.background} width="1600" height="1067" alt="" aria-hidden="true" loading="eager" decoding="async" fetchpriority="high"/>
+    <div class="container imp-hero-grid">
+      <div class="imp-hero-copy">
+        <h1 id={`${slug}-title`}>{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
+        <p>{copy.home.value}</p>
+        <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
+      </div>
+      <SolutionMappingOverview locale={locale} solution={solution} compact/>
+    </div>
+  </section>
+
+  <section class="imp-mapping-section" aria-labelledby={`${slug}-mapping-title`}>
+    <div class="container">
+      <header class="imp-section-heading">
+        <h2 id={`${slug}-mapping-title`}>{solution.mappingsTitle}</h2>
+        <p>{solution.context.body}</p>
+      </header>
+      <div class="imp-mapping-columns" aria-hidden="true">
+        <span>{zh ? '业务难题' : 'Business challenge'}</span>
+        <span>{zh ? 'TeGo 能力与解法' : 'TeGo capabilities and response'}</span>
+        <span>{zh ? '交付成果与价值' : 'Deliverables and value'}</span>
+      </div>
+      <div class="imp-mappings">
+        {solution.mappings.map((mapping, index) => <article class="imp-mapping" aria-labelledby={`${slug}-mapping-${index}`}>
+          <div class="imp-problem">
+            <h3 id={`${slug}-mapping-${index}`}>{mapping.problemTitle}</h3>
+            <p>{mapping.problem}</p>
+          </div>
+          <div class="imp-response">
+            <div class="imp-capability-group">
+              <span class="imp-capability-icon"><Icon name={mapping.icon} size={25}/></span>
+              <ul class="imp-capabilities" aria-label={zh ? '对应能力' : 'Mapped capabilities'}>{mapping.capabilities.map(capability => <li>{capability}</li>)}</ul>
+            </div>
+            <p>{mapping.response}</p>
+          </div>
+          <div class="imp-result">
+            <ul class="imp-deliverables" aria-label={zh ? '交付成果' : 'Deliverables'}>{mapping.deliverables.map(deliverable => <li><Icon name="file-check" size={17}/>{deliverable}</li>)}</ul>
+            <p>{mapping.value}</p>
+          </div>
+        </article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-governance" aria-labelledby={`${slug}-governance-title`}>
+    <div class="container imp-governance-layout">
+      <h2 id={`${slug}-governance-title`}>{solution.governance.title}</h2>
+      <div class="imp-governance-items">
+        {solution.governance.items.map((item, index) => <article>
+          <Icon name={governanceIcons[index]} size={26}/>
+          <div><h3>{item.title}</h3><p>{item.body}</p></div>
+        </article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="imp-value-section" aria-labelledby={`${slug}-value-title`}>
+    <div class="container">
+      <h2 id={`${slug}-value-title`}>{solution.values.title}</h2>
+      <div class="imp-value-items">
+        {solution.values.items.map(item => <article><h3>{item.title}</h3><p>{item.body}</p></article>)}
+      </div>
+    </div>
+  </section>
+</div>

@@ -5,7 +5,7 @@ export const generalPresentation: IndustrySolutionPresentation = {
     "home": {
       "title": "把专业时间，还给客户与经营",
       "pain": "合同版本冲突，员工事项反复补充，客户方案沿用旧口径，经营会议又忙于对数；专业团队被返工占住，关键业务得不到足够关注。",
-      "value": "让合同审阅抓住合作责任，员工事项少些重复准备，客户方案回应当前需求，经营讨论直达业务变化。数字员工承接核对与材料准备，把企业经验带入具体工作，让专业团队把时间用于判断、沟通与交付。",
+      "value": "合同审阅、员工服务和客户方案少些返工，经营讨论直达变化原因，把专业时间还给客户与业务。",
       "scenarios": [
         "合同审阅",
         "员工服务",
@@ -51,53 +51,33 @@ export const generalPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "合作责任，在关键约定中说清",
+        "title": "签约前看清合作责任",
         "problem": "合同版本已改，金额和履约责任未同步，临近签约才暴露双方理解差异。",
-        "body": "合同已经改版，金额和履约责任却未同步，临近签约才发现理解不同。数字员工对照合同、采购材料与既有约定，呈现关键差异和待确认条件，让业务与法务直接讨论交易责任，把商业分歧放到签约前的专业审阅中。",
-        "outcomes": [
-          "关键约定有据可核",
-          "金额责任保持对应",
-          "商业分歧进入专业审阅"
-        ],
+        "body": "合同、报价与交付约定中的差异提前进入审阅，让业务与法务在签约前说清责任。",
         "image": "/images/solutions/general/general-value-scene-1-zh_V11.0.webp",
         "imageAlt": "合作责任，在关键约定中说清",
         "imageHeight": 800
       },
       {
-        "title": "员工事项准备清楚，服务团队聚焦例外",
+        "title": "员工事项准备清楚",
         "problem": "员工和经办人反复解释同一事项、查制度、补材料，真正的例外问题得不到关注。",
-        "body": "反复问制度、补材料和改表单，挤占员工与经办团队的时间。数字员工结合身份、事项与现行要求，明确本次需要的准备，让员工带着完整背景进入办理，服务团队少些重复解释，把精力用于例外与复杂事项。",
-        "outcomes": [
-          "本次要求准备清楚",
-          "事项背景完整交接",
-          "服务精力留给例外"
-        ],
+        "body": "把本次适用要求与材料准备清楚，让员工少些反复补充，服务团队聚焦复杂事项。",
         "image": "/images/solutions/general/general-value-scene-2-zh_V11.0.webp",
         "imageAlt": "员工事项准备清楚，服务团队聚焦例外",
         "imageHeight": 718
       },
       {
-        "title": "本次需求进入方案，交付承诺有据",
+        "title": "客户方案回应当前需求",
         "problem": "客户需求已经变化，方案仍沿用旧产品口径与历史承诺，评审时出现大段返工。",
-        "body": "客户条件已经变化，方案仍沿用旧口径，团队往往到评审时才大段返工。数字员工将本次需求、当前产品资料与企业经验对应到方案中，让销售、产品和交付共同核实回应是否充分、承诺是否有据，反馈与修订接续到当前版本。",
-        "outcomes": [
-          "本次需求有明确回应",
-          "方案承诺有资料依据",
-          "审阅反馈接续到当前版本"
-        ],
+        "body": "用当前需求、产品资料和企业经验支撑方案，让销售与交付围绕有依据的承诺达成一致。",
         "image": "/images/solutions/general/general-value-scene-3-zh_V11.0.webp",
         "imageAlt": "本次需求进入方案，交付承诺有据",
         "imageHeight": 715
       },
       {
-        "title": "经营讨论，越过反复对数",
+        "title": "经营讨论直达原因",
         "problem": "报告期间、单位和计算方式没有对齐，会议耗在数字争论而非业务研判。",
-        "body": "经营会议耗在报告期、单位和计算方式上，业务变化就得不到足够讨论。数字员工把收入、利润与现金流的来源、口径和计算依据组织清楚，让财务与业务共同核实差异，管理层直接研判原因、安排资源和决定行动。",
-        "outcomes": [
-          "指标来源与口径清楚",
-          "财务与业务共同核实差异",
-          "管理时间用于判断与行动"
-        ],
+        "body": "收入、利润与现金流的来源和口径清楚对应，让管理层把时间用于判断原因与行动。",
         "image": "/images/solutions/general/general-value-scene-4-zh_V11.0.webp",
         "imageAlt": "经营讨论，越过反复对数",
         "imageHeight": 713
@@ -221,15 +201,15 @@ export const generalPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "企业经验留在内部，岗位权限各有边界",
-      "body": "在企业私有环境中沉淀经确认的制度、模板、产品资料与业务方法，按团队和使用者管理资料、模型与工具权限。任务材料、审阅意见和成果版本接续保留，让下一次客户响应与专业交付建立在企业已有积累上。"
+      "title": "企业运行与岗位治理",
+      "body": "在企业私有环境连接知识与业务系统，统一管理岗位权限、成果审核和运行记录。"
     }
   },
   "en": {
     "home": {
       "title": "Put professional time back into customers and business.",
       "pain": "Conflicting contracts, repeated employee submissions, outdated proposal assumptions and disputed operating figures consume specialist time while important business questions wait.",
-      "value": "Digital employees help teams examine contract obligations, prepare employee requests, address current client needs and discuss real business change. They undertake checks and material preparation using the company’s established knowledge, freeing professional time for judgment, communication and delivery.",
+      "value": "Reduce rework in contract review, employee service and client proposals, and focus operating discussions on the reasons behind change, returning professional time to business.",
       "scenarios": [
         "Contract review",
         "Employee services",
@@ -275,53 +255,33 @@ export const generalPresentation: IndustrySolutionPresentation = {
     ],
     "features": [
       {
-        "title": "Clarify responsibilities in the terms that matter",
+        "title": "Clarify obligations before signing",
         "problem": "Revised contracts leave amounts and obligations out of sync, exposing disagreements close to signature.",
-        "body": "A revised contract can leave amounts and obligations out of sync, exposing disagreements close to signature. Digital employees compare the contract, procurement material and existing agreements, highlighting material differences and open conditions. Business and legal teams can examine the transaction’s responsibilities before the parties commit.",
-        "outcomes": [
-          "Check material agreements against evidence",
-          "Keep amounts and duties connected",
-          "Review commercial disagreements"
-        ],
+        "body": "Business and legal teams review differences between contracts, quotations and delivery commitments early, making the parties’ commercial responsibilities clear before they sign the agreement.",
         "image": "/images/solutions/general/general-value-scene-1-en_V11.0.webp",
         "imageAlt": "Clarify responsibilities in the terms that matter",
         "imageHeight": 800
       },
       {
-        "title": "Prepare employee matters clearly. Focus service on exceptions.",
+        "title": "Prepare employee matters with clear context",
         "problem": "Employees and service teams repeat the same explanation and document corrections while exceptions wait.",
-        "body": "Repeated policy questions, missing documents and revised forms consume employee and administrator time. Digital employees relate identity and the current matter to applicable requirements, clarifying the preparation needed. Employees enter the process with complete context, while service teams spend less time repeating explanations and more time resolving exceptions.",
-        "outcomes": [
-          "Clear preparation for this request",
-          "Complete context at handover",
-          "Service attention on exceptions"
-        ],
+        "body": "Employees receive the requirements and document preparation for their current matter, reducing repeated submissions while service teams reserve their attention for complex cases and exceptions.",
         "image": "/images/solutions/general/general-value-scene-2-en_V11.0.webp",
         "imageAlt": "Prepare employee matters clearly. Focus service on exceptions.",
         "imageHeight": 800
       },
       {
-        "title": "Address current client needs. Ground delivery commitments.",
+        "title": "Answer current needs with grounded proposals",
         "problem": "Changed client needs are absent from a proposal that still uses older product assumptions and promises.",
-        "body": "Changed requirements can leave a proposal relying on outdated information, with major rework deferred until review. Digital employees connect current requirements, product material and company experience. Sales, product and delivery teams can assess whether the proposal answers the need and supports its commitments, carrying feedback into the current version.",
-        "outcomes": [
-          "Answer the current requirements",
-          "Ground commitments in current material",
-          "Carry review into the current version"
-        ],
+        "body": "Sales and delivery teams use current requirements, product information and company experience to support proposals, agreeing on commitments with a clear basis for delivery.",
         "image": "/images/solutions/general/general-value-scene-3-en_V11.0.webp",
         "imageAlt": "Address current client needs. Ground delivery commitments.",
         "imageHeight": 800
       },
       {
-        "title": "Move operating discussions beyond number reconciliation",
+        "title": "Focus operating discussions on business causes",
         "problem": "Unaligned periods, units and calculations consume meetings before business change is examined.",
-        "body": "Disputes over periods, units and calculations consume meeting time that should examine business change. Digital employees organize the sources, definitions and calculations behind revenue, profit and cash flow. Finance and business teams can verify differences together, allowing management to assess causes, allocate resources and decide actions.",
-        "outcomes": [
-          "Clear metric sources and definitions",
-          "Joint financial and business explanations",
-          "Management attention on decisions"
-        ],
+        "body": "Management sees the sources and definitions behind revenue, profit and cash flow, spending meeting time examining causes and deciding action rather than repeatedly reconciling figures.",
         "image": "/images/solutions/general/general-value-scene-4-en_V11.0.webp",
         "imageAlt": "Move operating discussions beyond number reconciliation",
         "imageHeight": 800
@@ -445,8 +405,8 @@ export const generalPresentation: IndustrySolutionPresentation = {
       }
     ],
     "deployment": {
-      "title": "Retain company knowledge. Keep role permissions clear.",
-      "body": "Retain confirmed policies, templates, product information and professional methods in the company’s private environment. Manage document, model and tool access by team and user, preserving task materials, review comments and output versions so future client responses and professional delivery build on established company knowledge."
+      "title": "Governed enterprise work",
+      "body": "Connect knowledge and business systems in your private environment, with role permissions, output review and traceable work records."
     }
   }
 };

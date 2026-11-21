@@ -3,6 +3,7 @@ import { pathFor } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import type { IndustrySolutionCopy } from './types';
 import SolutionArtwork from '../../../components/SolutionArtwork.astro';
+import IndustryMappingPage from './IndustryMappingPage.astro';
 import '../../../styles/industry-value-page.css';
 
 interface Props { locale: Locale; slug: string; presentation: IndustrySolutionCopy; }
@@ -10,7 +11,7 @@ const { locale, slug, presentation: copy } = Astro.props;
 const zh = locale === 'zh';
 const chapterLayouts = ['split', 'wide', 'reverse', 'split-final'];
 ---
-<div class="industry-value-page" data-industry-solution={slug}>
+{'solution' in copy ? <IndustryMappingPage locale={locale} slug={slug} presentation={copy}/> : <div class="industry-value-page" data-industry-solution={slug}>
   <section class="industry-value-hero" aria-labelledby={`${slug}-title`}>
     <img class="industry-value-landscape" src={copy.hero.background} alt="" width="1600" height="1067" loading="eager" decoding="async" fetchpriority="high" aria-hidden="true"/>
     <div class="container industry-value-hero-content">
@@ -24,16 +25,14 @@ const chapterLayouts = ['split', 'wide', 'reverse', 'split-final'];
   <section class="industry-value-story" aria-label={zh ? '方案价值' : 'Business value'}>
     <div class="container industry-value-chapters">
       {copy.features.map((feature, index) => <article
+        id={`${slug}-feature-${index}`}
         class={`industry-value-chapter industry-value-chapter--${chapterLayouts[index] || 'split'}`}
-        aria-labelledby={`${slug}-feature-${index}`}
+        aria-labelledby={`${slug}-feature-${index}-title`}
       >
         <div class="industry-value-chapter-copy">
-          <h2 id={`${slug}-feature-${index}`}>{feature.title}</h2>
+          <h2 id={`${slug}-feature-${index}-title`}>{feature.title}</h2>
           <div class="industry-value-chapter-detail">
             <p>{feature.body}</p>
-            {feature.outcomes && feature.outcomes.length > 0 && <ul class="industry-value-outcomes" aria-label={zh ? '业务收益' : 'Business outcomes'}>
-              {feature.outcomes.map(outcome => <li>{outcome}</li>)}
-            </ul>}
           </div>
         </div>
         <figure class="industry-value-chapter-artwork">
@@ -56,4 +55,4 @@ const chapterLayouts = ['split', 'wide', 'reverse', 'split-final'];
       <p>{copy.deployment.body}</p>
     </div>
   </section>
-</div>
+</div>}

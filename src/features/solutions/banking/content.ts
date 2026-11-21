@@ -12,12 +12,12 @@ export default createIndustryModule({
   "navigation": {
     "zh": {
       "name": "银行",
-      "description": "授信尽调、财务核验、贷后核查",
+      "description": "知识依据、材料核对、跨岗协作",
       "icon": "bank"
     },
     "en": {
       "name": "Banking",
-      "description": "Credit due diligence, Financial verification, Post-loan review",
+      "description": "Policy evidence, document checks and connected work",
       "icon": "bank"
     }
   }

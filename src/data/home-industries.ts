@@ -31,9 +31,22 @@ export const homeIndustries = Object.fromEntries((['zh', 'en'] as Locale[]).map(
 ])) as Record<Locale, Record<string, HomeIndustry>>;
 
 export const industrySolutionImages = Object.fromEntries((['zh', 'en'] as Locale[]).map(locale => [locale,
-  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => [slug, presentation[locale].hero.illustration])),
-])) as Record<Locale, Record<string, string>>;
+  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => {
+    const copy = presentation[locale];
+    return [slug, 'solution' in copy ? undefined : copy.hero.illustration];
+  })),
+])) as Record<Locale, Record<string, string | undefined>>;
 
 export const industrySolutionImageHeights = Object.fromEntries((['zh', 'en'] as Locale[]).map(locale => [locale,
-  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => [slug, presentation[locale].features[0].imageHeight])),
-])) as Record<Locale, Record<string, number>>;
+  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => {
+    const copy = presentation[locale];
+    return [slug, 'solution' in copy ? undefined : copy.features[0].imageHeight];
+  })),
+])) as Record<Locale, Record<string, number | undefined>>;
+
+export const industrySolutionMappings = Object.fromEntries((['zh', 'en'] as Locale[]).map(locale => [locale,
+  Object.fromEntries(Object.entries(presentations).map(([slug, presentation]) => {
+    const copy = presentation[locale];
+    return [slug, 'solution' in copy ? copy.solution : undefined];
+  })),
+])) as Record<Locale, Record<string, import('../features/solutions/shared/types').IndustrySolutionMapping | undefined>>;

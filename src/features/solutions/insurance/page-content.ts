@@ -1,452 +1,324 @@
-import type { IndustrySolutionPresentation } from '../shared/types';
+import type { IndustryEmployee, IndustrySolutionPresentation } from '../shared/types';
+
+export type InsuranceEmployee = IndustryEmployee;
 
 export const insurancePresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "复杂个案看清风险，长期服务保持一致",
-      "pain": "健康告知与病历表述不一，理赔事实难与合同责任对应。长期保单跨越多个产品版本，同一事项在不同团队反复解释。",
-      "value": "让告知矛盾、理赔事实与适用条款成为清楚的专业依据，帮助核保核赔人员抓住复杂个案的关键问题。数字员工保留保单前情与已查事实，让专家研判接续、一线服务口径一致。",
+      "title": "让保险作业有据，让专业判断聚焦",
+      "pain": "条款多版、材料关联复杂、系统查询割裂，补料与复核又反复等待；核保理赔的专业时间被资料准备与交接消耗。",
+      "value": "TeGo 数字员工协作平台承接条款检索、材料核对与任务跟进，让保险专业岗位集中处理承保、理赔与对客判断。",
       "scenarios": [
-        "复杂核保",
-        "理赔审核",
-        "责任核对",
-        "保单服务",
-        "医学核保",
-        "专家接续"
+        "条款知识",
+        "销售准备",
+        "投保理赔核对",
+        "保全续期",
+        "质检消保",
+        "经营分析"
       ],
       "benefits": [
         {
-          "title": "专业判断更扎实",
-          "description": "核保关注关键健康风险，理赔核实医疗事实和合同责任。"
+          "title": "条款依据清楚",
+          "description": "答复带出处与版本，核对底稿直达材料差异，专业复核有据可查。"
         },
         {
-          "title": "长期服务更连贯",
-          "description": "适用条款、已沟通事项与未决问题随保单接续。"
+          "title": "跨岗工作接续",
+          "description": "缺料、复核与确认送达责任人，原任务背景随回应保留，减少重复交接。"
         },
         {
-          "title": "专家接续少些重复",
-          "description": "医学、财务与高额事项专家共用已查事实，带着同一背景接续判断。"
+          "title": "成果过程可溯",
+          "description": "来源、人工处理与成果版本保持关联，支撑质检、消保与审计取证。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "复杂个案看清风险",
-        "长期服务保持一致"
+        "把重复核对交给数字员工",
+        "把专业工时留给关键判断"
       ],
-      "background": "/images/industries/insurance-architecture_V1.1.webp",
-      "illustration": "/images/solutions/insurance/insurance-value-scene-1-zh_V11.0.webp"
+      "background": "/images/industries/insurance-architecture_V1.1.webp"
     },
-    "sources": [
-      "投保告知与健康资料",
-      "医疗单证与费用资料",
-      "产品条款与责任规则",
-      "保单服务记录与专业方法"
-    ],
-    "outputs": [
-      "核保准备与复杂个案要点",
-      "理赔事实与责任核对意见",
-      "保单服务事项与承接记录",
-      "机构方法对应的专业依据"
-    ],
-    "features": [
-      {
-        "title": "复杂核保直达风险，问询少些反复",
-        "problem": "健康告知与病历不一致，补充材料已经收齐，影响风险判断的矛盾仍未被说清。",
-        "body": "补件齐备不等于健康风险已经说清。数字员工把告知、病史、检查结果与适用核保要求对应起来，呈现影响评估的缺项和矛盾。核保人员带着明确问题开展问询，把精力用在复杂风险评估和承保判断上。",
-        "outcomes": [
-          "找准告知矛盾",
-          "问询直达风险",
-          "聚焦复杂评估"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-1-zh_V11.0.webp",
-        "imageAlt": "复杂核保直达风险，问询少些反复",
-        "imageHeight": 555
+    "solution": {
+      "context": {
+        "title": "精细运营需要可靠的岗位支撑",
+        "body": "报行合一推动精细运营，代理人转型要求更强专业支撑。条款多版、材料繁杂、交接等待与追溯困难，让智能应用难以进入日常作业。"
       },
-      {
-        "title": "理赔事实对齐责任，争议解释有据",
-        "problem": "材料堆得越来越厚，病程、费用与合同条件仍未对应，客户补件多轮却迟迟得不到清楚解释。",
-        "body": "同一理赔案的病程、费用与合同条件没有对应，补件再多也难解释争议。数字员工将医疗事实、费用依据和适用条款相互关联，突出差异与责任边界，让核赔人员集中研判争议，并向客户说明需要核实的具体问题。",
-        "outcomes": [
-          "同案事实对应",
-          "责任边界可查",
-          "争议解释清楚"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-2-zh_V11.0.webp",
-        "imageAlt": "理赔事实对齐责任，争议解释有据",
-        "imageHeight": 721
+      "mappingsTitle": "保险作业问题的对应解法",
+      "mappings": [
+        {
+          "problemTitle": "条款分散与版本混用",
+          "problem": "条款、制度和案例分散在不同系统，多版本并存，业务人员反复查找，答复依据难回查。",
+          "capabilities": [
+            "企业知识库",
+            "混合检索",
+            "来源引用"
+          ],
+          "response": "以当前会话人员身份检索获准知识，关联原文位置与适用版本；条款冲突直接保留差异，交由业务人员确认。",
+          "deliverables": [
+            "带引用的业务答复",
+            "适用条款对照"
+          ],
+          "value": "减少反复翻找，让同类业务答复有据可查。",
+          "icon": "book"
+        },
+        {
+          "problemTitle": "关联材料核对繁重",
+          "problem": "健康告知、病历、票据与申请材料相互关联，缺项和字段矛盾依赖逐份比对，错漏容易后移。",
+          "capabilities": [
+            "岗位技能",
+            "任务执行",
+            "Office 与文件版本"
+          ],
+          "response": "把材料清单与核对规则固化为岗位技能，由数字员工整理目录、定位字段差异和原文，交付可批注续改的核对底稿。",
+          "deliverables": [
+            "材料核对底稿",
+            "差异与待补清单"
+          ],
+          "value": "让复核直达疑点，把专业工时用在责任认定上。",
+          "icon": "clipboard-check"
+        },
+        {
+          "problemTitle": "跨系统操作衔接困难",
+          "problem": "查询、填报和跟进跨越保单系统、理赔系统与工单，重复搬运信息，业务状态衔接困难。",
+          "capabilities": [
+            "业务插件与 MCP",
+            "平台 OpenAPI",
+            "插件调用权限"
+          ],
+          "response": "业务插件与 MCP 按委托查询保单、理赔与工单记录，并回读业务状态；平台 OpenAPI 供外部系统调用数字员工，写回与发送由人确认。",
+          "deliverables": [
+            "受控数据查询结果",
+            "业务状态核对记录"
+          ],
+          "value": "减少重复搬运，让业务连接始终沿授权执行。",
+          "icon": "plug"
+        },
+        {
+          "problemTitle": "人工交接反复等待",
+          "problem": "等补料、等核保理赔复核、等对客确认，任务背景散落会话和邮件，跨岗位交接反复解释。",
+          "capabilities": [
+            "待处理事项",
+            "工作会话",
+            "工作记忆"
+          ],
+          "response": "把缺失事实、复核请求与授权确认送达责任人，工作会话保留原任务背景；人员回应或接手后，任务接续办理。",
+          "deliverables": [
+            "责任明确的待处理事项",
+            "人工回应与续办记录"
+          ],
+          "value": "缩短找人与等待，让关键判断有人负责、工作不断档。",
+          "icon": "user-check"
+        },
+        {
+          "problemTitle": "成果依据难以追溯",
+          "problem": "条款版本、工具调用、人工修改与最终文件缺少关联，消保争议、质检和审计需要重新取证。",
+          "capabilities": [
+            "审计中心",
+            "内容标识与溯源",
+            "项目版本"
+          ],
+          "response": "在执行中关联任务、工具事件、人工处理与成果版本，输出带内容标识的文件，并按审计权限核验和导出关联证据。",
+          "deliverables": [
+            "关联来源的审计证据",
+            "成果版本与修改记录"
+          ],
+          "value": "让质检与消保回查有据，减少事后取证成本。",
+          "icon": "file-search"
+        }
+      ],
+      "governance": {
+        "title": "按保险业务职责运行",
+        "items": [
+          {
+            "title": "专业判断归岗",
+            "body": "核保条件、保险责任、赔付金额与适当性由专业岗位确认；数字员工交付核对底稿和疑点依据，正式审批、系统写回与对客发送沿用机构授权流程。"
+          },
+          {
+            "title": "敏感资料受控",
+            "body": "健康与身份资料按任务最小必要范围使用。私有化部署与本地模型配合资料授权，逐项管理存储、检索、推理、工具接口和成果记录的数据路径。"
+          },
+          {
+            "title": "运行记录可核",
+            "body": "围绕已采集的执行记录关联来源、工具调用、人工处理和成果版本，按审计权限保留、核验与导出；知识、技能和授权维护分别落实到负责人。"
+          }
+        ]
       },
-      {
-        "title": "长期保单接续服务，适用条款清楚",
-        "problem": "新旧产品条款混用，服务团队切换后重复询问，同一问题前后答复不一，消耗客户信任。",
-        "body": "保单跨越多个产品版本，换人服务后容易混用条款、重复问询。数字员工保留本单适用版本、既有沟通与未决事项，让一线答复有明确依据，专家接手保留前情。客户少些反复解释，长期服务延续一致的专业口径。",
-        "outcomes": [
-          "适用版本明确",
-          "交接保留前情",
-          "服务口径一致"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-3-zh_V11.0.webp",
-        "imageAlt": "长期保单接续服务，适用条款清楚",
-        "imageHeight": 321
-      },
-      {
-        "title": "疑难个案共用事实，专家研判接续",
-        "problem": "医学、财务与高额个案轮流请示，不同专家重复问背景，已经查明的事实与尚未解决的问题混在一起。",
-        "body": "医学、财务与高额事项需要不同专家接续评估，重复了解背景会挤占专业时间。数字员工区分同案已查事实、对应依据与未决问题，让每位专家沿着已有认识继续研判，把讨论集中到真正需要专业判断的疑点上。",
-        "outcomes": [
-          "个案背景完整",
-          "已查依据共享",
-          "专家判断接续"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-4-zh_V11.0.webp",
-        "imageAlt": "疑难个案共用事实，专家研判接续",
-        "imageHeight": 630
+      "values": {
+        "title": "把作业改善落实到保险经营",
+        "items": [
+          {
+            "title": "释放专业工时",
+            "body": "减少查条款、对材料、搬数据和追回复的重复投入，让核保、理赔与业务支持人员把时间用在疑点核实和专业判断上。"
+          },
+          {
+            "title": "稳定核对质量",
+            "body": "同类任务沿用经确认的材料清单、规则与版本，差异定位到原文。业务复核有共同依据，质检与消保能接续查看处理经过。"
+          },
+          {
+            "title": "沉淀岗位资产",
+            "body": "将有效条款、岗位技能、成果模板和审计记录沉淀为企业资产。模型可替换，成熟方法可在同岗位与同条线复用。"
+          }
+        ]
       }
-    ],
-    "teamTitle": "服务保险全流程的数字员工团队",
-    "employees": [
-      {
-        "role": "渠道展业数字员工",
-        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
-        "skills": [
-          "产品解读",
-          "需求分析",
-          "沟通准备"
-        ],
-        "process": [
-          "匹配产品与客户服务需求",
-          "整理适用责任及办理要求",
-          "准备渠道培训与沟通材料"
-        ],
-        "outputs": [
-          "产品解读材料",
-          "渠道培训课件"
-        ],
-        "value": "让一线沟通获得持续的专业支持"
-      },
-      {
-        "role": "核保支持数字员工",
-        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
-        "skills": [
-          "告知核对",
-          "材料规则",
-          "专业问询"
-        ],
-        "process": [
-          "关联告知与健康财务资料",
-          "核对材料触发及事实差异",
-          "整理核保问询和待评估事项"
-        ],
-        "outputs": [
-          "核保准备材料",
-          "补充问询事项"
-        ],
-        "value": "把核保精力放在专业评估上"
-      },
-      {
-        "role": "理赔作业数字员工",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "案情时序",
-          "责任关联",
-          "费用核查"
-        ],
-        "process": [
-          "组织同案单证与诊疗经过",
-          "关联费用事实和合同责任",
-          "接续补件与审核意见"
-        ],
-        "outputs": [
-          "案件事实与责任分析",
-          "理赔审核准备文件"
-        ],
-        "value": "让案件审阅围绕事实与依据展开"
-      },
-      {
-        "role": "保单服务数字员工",
-        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
-        "skills": [
-          "保全协作",
-          "续期准备",
-          "事项交接"
-        ],
-        "process": [
-          "匹配当前保单及适用规则",
-          "分析变更影响和办理条件",
-          "接续客户回应与后续事项"
-        ],
-        "outputs": [
-          "保单服务准备材料",
-          "变更与续期工作记录"
-        ],
-        "value": "让长期服务保留完整上下文"
-      },
-      {
-        "role": "产品知识数字员工",
-        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
-        "skills": [
-          "条款管理",
-          "版本匹配",
-          "经验沉淀"
-        ],
-        "process": [
-          "整理在售与停售产品知识",
-          "匹配问题对应的条款版本",
-          "沉淀专业答复与工作方法"
-        ],
-        "outputs": [
-          "产品责任对照",
-          "专业知识答复"
-        ],
-        "value": "让产品经验成为团队共用能力"
-      },
-      {
-        "role": "运营分析数字员工",
-        "avatar": "/images/home/employee-avatar-research_V1.0.webp",
-        "skills": [
-          "业务分析",
-          "服务归因",
-          "管理汇报"
-        ],
-        "process": [
-          "汇总渠道与保单服务信息",
-          "分析处理变化与协作难点",
-          "准备运营复盘和管理报告"
-        ],
-        "outputs": [
-          "保险运营简报",
-          "服务改进议题"
-        ],
-        "value": "让运营讨论从业务事实出发"
-      }
-    ],
-    "deployment": {
-      "title": "保险专业知识留在机构，服务责任清楚接续",
-      "body": "在机构私有环境中连接保单资料、条款版本与授权业务系统，按使用者和岗位管理访问范围。核保、核赔及对客表达保留人员确认，工作记录与审核审计支撑跨团队服务接续。"
     }
   },
   "en": {
     "home": {
-      "title": "Clearer risk in complex cases. Consistent policy service.",
-      "pain": "Disclosures and medical records conflict, while claim facts remain disconnected from policy responsibilities. Long-term policies span product versions and teams repeatedly revisit the same context.",
-      "value": "Digital employees connect disclosure conflicts, claim facts and applicable policy terms, giving specialists clearer evidence for complex cases. Teams share established facts across handovers and provide consistent service throughout the policy term.",
+      "title": "Ground insurance work in evidence. Focus professional judgment.",
+      "pain": "Competing policy versions, related documents and disconnected system queries consume professional time, while repeated requests for documents and review delay underwriting and claims work.",
+      "value": "The platform handles policy research, document checks and task follow-up, giving insurance professionals more time for underwriting, claims and client-facing judgment.",
       "scenarios": [
-        "Complex underwriting",
-        "Claims review",
-        "Coverage evidence",
-        "Policy servicing",
-        "Medical underwriting",
-        "Expert handovers"
+        "Policy knowledge",
+        "Sales preparation",
+        "Application and claims checks",
+        "Policy servicing and renewals",
+        "Quality and consumer protection",
+        "Operating analysis"
       ],
       "benefits": [
         {
-          "title": "Stronger professional judgment",
-          "description": "Focus underwriting on material health risks and claims review on medical facts and policy responsibility."
+          "title": "Clear policy references",
+          "description": "Responses carry source and version links, while checking papers locate document differences for professional review."
         },
         {
-          "title": "Continuity over the policy term",
-          "description": "Keep applicable clauses, prior communications and unresolved questions with the policy."
+          "title": "Connected professional handovers",
+          "description": "Document requests, reviews and confirmations reach the owner with their original context, reducing repeated handovers."
         },
         {
-          "title": "Connected specialist support",
-          "description": "Medical, financial and high-value specialists share established facts and retain the same case context."
+          "title": "Traceable outputs and handling",
+          "description": "Sources, human actions and output versions stay connected for quality checks, consumer protection and audit evidence."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Clearer risk in complex cases",
-        "Consistent policy service"
+        "Less document work",
+        "More professional judgment"
       ],
-      "background": "/images/industries/insurance-architecture_V1.1.webp",
-      "illustration": "/images/solutions/insurance/insurance-value-scene-1-en_V11.0.webp"
+      "background": "/images/industries/insurance-architecture_V1.1.webp"
     },
-    "sources": [
-      "Disclosures and health information",
-      "Medical records and expense documents",
-      "Product terms and coverage rules",
-      "Policy service records and professional methods"
-    ],
-    "outputs": [
-      "Underwriting preparation and complex-case priorities",
-      "Claims fact and coverage review findings",
-      "Connected policy service records",
-      "Evidence grounded in institutional methods"
-    ],
-    "features": [
-      {
-        "title": "Focus underwriting questions on material risk.",
-        "problem": "Health disclosures conflict with medical records. Further documents arrive, but the contradictions affecting risk assessment remain unclear.",
-        "body": "A complete document set does not resolve a health-risk question. Digital employees relate disclosures, medical history and examination results to applicable underwriting requirements, exposing material gaps and contradictions. Underwriters ask targeted questions and reserve their attention for complex assessment and underwriting decisions.",
-        "outcomes": [
-          "Identify disclosure conflicts",
-          "Target material risk questions",
-          "Focus on complex assessment"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-1-en_V11.0.webp",
-        "imageAlt": "Focus underwriting questions on material risk.",
-        "imageHeight": 536
+    "solution": {
+      "context": {
+        "title": "Reliable role support for disciplined insurance operations",
+        "body": "Closer alignment of filed and actual expenses raises the need for disciplined operations, while insurance-agent professionalization demands stronger professional support. Conflicting policy versions, related documents, handover delays and weak traceability keep intelligent applications outside daily work."
       },
-      {
-        "title": "Connect claim facts with coverage evidence.",
-        "problem": "More documents accumulate while the medical history, expenses and policy conditions remain disconnected. Repeated requests do not resolve the customer’s questions.",
-        "body": "More documents do not explain a dispute when the medical history, expenses and policy conditions remain disconnected. Digital employees relate medical facts, expense evidence and applicable clauses, highlighting differences and coverage boundaries. Claims specialists can assess disputed matters and explain the specific questions that still require verification.",
-        "outcomes": [
-          "Connect facts within the case",
-          "Make coverage references clear",
-          "Explain disputed matters"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-2-en_V11.0.webp",
-        "imageAlt": "Connect claim facts with coverage evidence.",
-        "imageHeight": 677
+      "mappingsTitle": "Insurance challenges and their solutions",
+      "mappings": [
+        {
+          "problemTitle": "Scattered references and conflicting versions",
+          "problem": "Policy wording, procedures and cases sit across systems. Staff repeatedly search competing versions, while the basis of a response is difficult to retrieve.",
+          "capabilities": [
+            "Enterprise knowledge base",
+            "Hybrid retrieval",
+            "Source citations"
+          ],
+          "response": "Retrieve authorized knowledge under the current participant’s identity, linking relevant wording to its source location and applicable version. Preserve conflicting clauses for business specialists to confirm.",
+          "deliverables": [
+            "Source-linked business responses",
+            "Applicable clause comparisons"
+          ],
+          "value": "Less repeated searching, with a retrievable basis for business responses.",
+          "icon": "book"
+        },
+        {
+          "problemTitle": "Laborious checks across related documents",
+          "problem": "Health disclosures, medical records, receipts and applications must be compared together. Missing items and conflicting fields are checked manually and can surface late.",
+          "capabilities": [
+            "Role skills",
+            "Task execution",
+            "Office and file versions"
+          ],
+          "response": "Encode confirmed document lists and checking rules in role skills. Digital employees organize materials, locate field differences and source passages, and deliver working papers that specialists can annotate and revise.",
+          "deliverables": [
+            "Document-checking working papers",
+            "Differences and missing-item lists"
+          ],
+          "value": "Direct review to the questions that need professional confirmation.",
+          "icon": "clipboard-check"
+        },
+        {
+          "problemTitle": "Disconnected work across business systems",
+          "problem": "Queries, data entry and follow-up span policy, claims and ticketing systems. Repeated transfers of information make business status difficult to carry forward.",
+          "capabilities": [
+            "Business plugins and MCP",
+            "Platform OpenAPI",
+            "Plugin call permissions"
+          ],
+          "response": "Business plugins and MCP query authorized policy, claims and service records and read back their status. Platform OpenAPI lets external systems invoke digital employees; staff confirm writes and communications.",
+          "deliverables": [
+            "Authorized query results",
+            "Business status verification records"
+          ],
+          "value": "Less information transfer, with business connections governed by authorization.",
+          "icon": "plug"
+        },
+        {
+          "problemTitle": "Repeated waiting between professional roles",
+          "problem": "Work waits for documents, underwriting or claims review, and client-facing confirmation. Context is scattered across conversations and email, forcing repeated explanations.",
+          "capabilities": [
+            "Pending matters",
+            "Work conversations",
+            "Work memory"
+          ],
+          "response": "Route missing facts, review requests and authorization decisions to the responsible person. Work conversations retain the original context so the assignment can continue after a response or handover.",
+          "deliverables": [
+            "Pending matters with clear ownership",
+            "Human-response and continuation records"
+          ],
+          "value": "Less waiting and searching for owners, with responsibility preserved.",
+          "icon": "user-check"
+        },
+        {
+          "problemTitle": "Results separated from their supporting evidence",
+          "problem": "Clause versions, tool use, human revisions and final files lack clear links. Consumer-protection reviews, quality checks and audits require evidence to be assembled again.",
+          "capabilities": [
+            "Audit center",
+            "Content identification and provenance",
+            "Project versions"
+          ],
+          "response": "Link tasks, tool events, human actions and output versions during execution. Identify delivered content and verify or export the related evidence under the appropriate audit permissions.",
+          "deliverables": [
+            "Source-linked audit evidence",
+            "Output versions and revision history"
+          ],
+          "value": "A retrievable basis for quality and consumer-protection reviews.",
+          "icon": "file-search"
+        }
+      ],
+      "governance": {
+        "title": "Operate within insurance responsibilities",
+        "items": [
+          {
+            "title": "Professional decisions stay with the role",
+            "body": "Specialists confirm underwriting terms, coverage responsibility, claim amounts and suitability. Digital employees provide checking papers and supporting evidence; formal approvals, writebacks and client communications follow the institution’s authorization process."
+          },
+          {
+            "title": "Control sensitive information",
+            "body": "Use health and identity information within the minimum scope required by the task. Combine private deployment and local models with document access controls, managing the paths through storage, retrieval, inference, tools and output records."
+          },
+          {
+            "title": "Keep reviewable operating records",
+            "body": "Connect collected execution records to sources, tool calls, human actions and output versions. Retain, verify and export them under audit permissions, with named owners for knowledge, skills and access maintenance."
+          }
+        ]
       },
-      {
-        "title": "Keep the right terms with long-term policy service.",
-        "problem": "Old and new product terms are mixed. Team changes lead to repeated questions and inconsistent answers that weaken customer trust.",
-        "body": "Long-term policies span product versions, creating room for inconsistent answers and repeated questions after a handover. Digital employees retain the applicable version, previous communications and unresolved matters. Service staff work from clear references, specialists receive the case history, and customers spend less time repeating it.",
-        "outcomes": [
-          "Identify the applicable version",
-          "Preserve handover context",
-          "Maintain consistent references"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-3-en_V11.0.webp",
-        "imageAlt": "Keep the right terms with long-term policy service.",
-        "imageHeight": 662
-      },
-      {
-        "title": "Give specialists a shared factual basis for complex cases.",
-        "problem": "Medical, financial and high-value cases pass between specialists. Each revisits the background while established facts and open questions become mixed.",
-        "body": "Medical, financial and high-value cases can require several specialists. Rebuilding the background at every handover consumes professional time. Digital employees distinguish established facts, supporting evidence and unresolved questions, allowing each specialist to continue the assessment and focus discussion on the issues that need judgment.",
-        "outcomes": [
-          "Complete case context",
-          "Shared reviewed evidence",
-          "Continuity in expert judgment"
-        ],
-        "image": "/images/solutions/insurance/insurance-value-scene-4-en_V11.0.webp",
-        "imageAlt": "Give specialists a shared factual basis for complex cases.",
-        "imageHeight": 670
+      "values": {
+        "title": "Turn operational improvements into insurance value",
+        "items": [
+          {
+            "title": "Recover professional time",
+            "body": "Reduce repeated policy searches, document checks, information transfers and follow-up. Underwriting, claims and business-support specialists can devote more attention to verifying issues and exercising professional judgment."
+          },
+          {
+            "title": "Make checking quality more consistent",
+            "body": "Apply confirmed document lists, rules and versions to comparable tasks, locating differences in the source. Reviewers share a clear basis, while quality and consumer-protection teams can follow how the work was handled."
+          },
+          {
+            "title": "Retain reusable role assets",
+            "body": "Retain current wording, role skills, output templates and audit records as company assets. Models can be replaced while established methods are reused across the same roles and business lines."
+          }
+        ]
       }
-    ],
-    "teamTitle": "A digital employee team across insurance services",
-    "employees": [
-      {
-        "role": "Distribution Support Digital Employee",
-        "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
-        "skills": [
-          "Product interpretation",
-          "Needs analysis",
-          "Communication preparation"
-        ],
-        "process": [
-          "Match products to client service needs",
-          "Organize applicable coverage and requirements",
-          "Prepare training and conversation materials"
-        ],
-        "outputs": [
-          "Product explanation materials",
-          "Channel training deck"
-        ],
-        "value": "Give frontline conversations ongoing specialist support"
-      },
-      {
-        "role": "Underwriting Support Digital Employee",
-        "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
-        "skills": [
-          "Disclosure checks",
-          "Record requirements",
-          "Professional enquiries"
-        ],
-        "process": [
-          "Connect disclosures with health and financial records",
-          "Check required documents and factual differences",
-          "Prepare enquiries and assessment topics"
-        ],
-        "outputs": [
-          "Underwriting preparation",
-          "Follow-up enquiry items"
-        ],
-        "value": "Keep underwriters focused on specialist assessment"
-      },
-      {
-        "role": "Claims Work Digital Employee",
-        "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
-        "skills": [
-          "Case timelines",
-          "Coverage mapping",
-          "Expense checks"
-        ],
-        "process": [
-          "Organize records and treatment history",
-          "Link expense facts to contract coverage",
-          "Carry additional records and review comments forward"
-        ],
-        "outputs": [
-          "Case facts and coverage analysis",
-          "Claims review preparation"
-        ],
-        "value": "Ground claims reviews in facts and evidence"
-      },
-      {
-        "role": "Policy Services Digital Employee",
-        "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
-        "skills": [
-          "Policy changes",
-          "Renewal preparation",
-          "Service handovers"
-        ],
-        "process": [
-          "Match policies with applicable rules",
-          "Analyze change impacts and requirements",
-          "Connect client responses and subsequent work"
-        ],
-        "outputs": [
-          "Policy service materials",
-          "Change and renewal records"
-        ],
-        "value": "Maintain the full context of long-term service"
-      },
-      {
-        "role": "Product Knowledge Digital Employee",
-        "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
-        "skills": [
-          "Policy knowledge",
-          "Version matching",
-          "Experience retention"
-        ],
-        "process": [
-          "Organize current and discontinued product knowledge",
-          "Match questions to the applicable version",
-          "Retain professional answers and working methods"
-        ],
-        "outputs": [
-          "Coverage comparisons",
-          "Professional knowledge answers"
-        ],
-        "value": "Make product experience a shared team capability"
-      },
-      {
-        "role": "Operations Analysis Digital Employee",
-        "avatar": "/images/home/employee-avatar-research_V1.0.webp",
-        "skills": [
-          "Business analysis",
-          "Service attribution",
-          "Management reporting"
-        ],
-        "process": [
-          "Collect channel and policy service information",
-          "Analyze service changes and coordination challenges",
-          "Prepare operating reviews and management reports"
-        ],
-        "outputs": [
-          "Insurance operating brief",
-          "Service improvement topics"
-        ],
-        "value": "Start operating discussions from business evidence"
-      }
-    ],
-    "deployment": {
-      "title": "Keep insurance expertise in the institution. Preserve service accountability.",
-      "body": "Connect policy documents, clause versions and authorized business systems in the institution’s private environment. Manage access by user and role. Staff confirm underwriting, claims and customer communications, while work records and audit trails support service across teams."
     }
   }
 };

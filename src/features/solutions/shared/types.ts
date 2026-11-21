@@ -10,15 +10,43 @@ export interface IndustryEmployee {
   value: string;
 }
 
-export interface IndustrySolutionCopy {
+export interface IndustrySolutionBase {
   home: HomeIndustry;
-  hero: { lines: string[]; background: string; illustration: string };
+  hero: { lines: string[]; background: string };
+}
+
+export interface IndustryValueSolutionCopy extends IndustrySolutionBase {
+  hero: IndustrySolutionBase['hero'] & { illustration: string };
   sources: string[];
   outputs: string[];
-  features: { title: string; problem: string; body: string; outcomes: string[]; image: string; imageAlt: string; imageHeight: number }[];
+  features: { title: string; problem: string; body: string; image: string; imageAlt: string; imageHeight: number }[];
   teamTitle: string;
   employees: IndustryEmployee[];
   deployment: { title: string; body: string };
 }
+
+export interface IndustryProblemMapping {
+  icon: string;
+  problemTitle: string;
+  problem: string;
+  capabilities: string[];
+  response: string;
+  deliverables: string[];
+  value: string;
+}
+
+export interface IndustrySolutionMapping {
+  context: { title: string; body: string };
+  mappingsTitle: string;
+  mappings: IndustryProblemMapping[];
+  governance: { title: string; items: { title: string; body: string }[] };
+  values: { title: string; items: { title: string; body: string }[] };
+}
+
+export interface IndustryMappedSolutionCopy extends IndustrySolutionBase {
+  solution: IndustrySolutionMapping;
+}
+
+export type IndustrySolutionCopy = IndustryValueSolutionCopy | IndustryMappedSolutionCopy;
 
 export type IndustrySolutionPresentation = Record<Locale, IndustrySolutionCopy>;
