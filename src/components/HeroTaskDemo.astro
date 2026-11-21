@@ -5,10 +5,10 @@ import '../styles/hero-task-scene.css';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
-const visualVersion = 'V1.10';
+const visualVersion = 'V1.11';
 const description = zh
   ? '语音交办客户经营分析任务并转成文字，数字员工跨系统取数、分析资产变化、识别跟进客户，交付经营简报与客户清单。'
-  : 'A voice request becomes a written client-review task. The digital employee connects business systems, analyzes asset changes, identifies retention risks, and delivers a briefing and follow-up list.';
+  : 'A voice request becomes a written client analysis task. The digital employee retrieves data across systems, analyzes asset changes, identifies clients for follow-up, and delivers a business briefing and client list.';
 const poster = `/images/hero/task-execution-${locale}-poster_${visualVersion}.webp`;
 const sceneDocument = JSON.stringify(renderTaskSceneDocument(locale)).replaceAll('<', '\\u003c');
 ---

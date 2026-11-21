@@ -326,7 +326,7 @@ Enterprise AI transformation is a systematic project requiring professional guid
 4. **Full Promotion**: Replicate successful experience, scale deployment
 5. **Continuous Support**: Long-term technical support, ensure system stable operation
 
-[Schedule expert consultation now](/en/contact), let's plan your AI transformation journey together.
+[Book a consultation](/en/contact), let's plan your AI transformation journey together.
 
 ## Summary
 

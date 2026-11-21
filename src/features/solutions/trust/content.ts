@@ -12,12 +12,12 @@ export default createIndustryModule({
   "navigation": {
     "zh": {
       "name": "信托",
-      "description": "资产服务、受托运营、投资管理",
+      "description": "资产服务、合同核对、运营报送",
       "icon": "layers"
     },
     "en": {
       "name": "Trust services",
-      "description": "Asset services, trust administration and investment management",
+      "description": "Asset services, agreement checks and reporting",
       "icon": "layers"
     }
   }

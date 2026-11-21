@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { parse } from 'parse5';
-import { prepareTraditionalPages, translateHtml, translateScript } from '../scripts/prepare-traditional.mjs';
+import { prepareTraditionalPages, translateHtml, translateScript, translateSvg } from '../scripts/prepare-traditional.mjs';
 
 const nodesOf = html => {
   const nodes = [];
@@ -64,6 +64,23 @@ test('runtime strings and template fragments translate without changing identifi
   assert.match(output, /`任務\$\{name\}已執行\$\{count\}次`/);
 });
 
+test('Traditional artwork keeps SVG geometry and identifiers and localizes media in responsive, lazy and social references', () => {
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><style>.员工{fill:#fff}</style><g id="员工" aria-label="数字员工"><path d="M0 0h20"/><text x="20" y="40">企业知识与权限</text></g></svg>';
+  const output = translateSvg(svg);
+  assert.match(output, /企業知識與權限/);
+  assert.match(output, /id="员工"/);
+  assert.match(output, /\.员工\{fill:#fff\}/);
+  assert.match(output, /d="M0 0h20"/);
+  const references = new Map([['/images/scene.svg', '/images/scene.zh-Hant.svg'], ['/images/chart.png', '/images/chart-zh-Hant_V1.0.png']]);
+  const html = translateHtml('<html lang="zh"><head><meta property="og:image" content="https://www.zhama.com/images/scene.svg"></head><body><picture><source srcset="/images/scene.svg 1x, /images/chart.png 2x"><img src="/images/scene.svg" data-hero-src="/images/chart.png" data-hero-poster="/images/chart.png" style="background:url(\'/images/scene.svg\')"></picture><script type="application/json">{"image":"/images/chart.png"}</script></body></html>', references);
+  assert.match(html, /content="https:\/\/www.zhama.com\/images\/scene.zh-Hant.svg"/);
+  assert.match(html, /srcset="\/images\/scene.zh-Hant.svg 1x, \/images\/chart-zh-Hant_V1.0.png 2x"/);
+  assert.match(html, /data-hero-src="\/images\/chart-zh-Hant_V1.0.png"/);
+  assert.match(html, /data-hero-poster="\/images\/chart-zh-Hant_V1.0.png"/);
+  assert.match(html, /background:url\('\/images\/scene.zh-Hant.svg'\)/);
+  assert.match(html, /"image":"\/images\/chart-zh-Hant_V1.0.png"/);
+});
+
 for (const type of ['application/json', 'application/ld+json']) {
   test(`traditional publication keeps embedded HTML inert inside ${type}`, () => {
     const embedded = '<!doctype html><html><body><h1 id="home-title">执行任务</h1><script>const label="任务完成";</script></body></html>';
@@ -79,6 +96,7 @@ for (const type of ['application/json', 'application/ld+json']) {
     assert.equal(content.includes('<'), false);
     const decoded = JSON.parse(content);
     const document = type === 'application/json' ? decoded : decoded.description;
+    assert.match(document, /<html lang="zh-Hant">/);
     assert.match(document, /<h1 id="home-title">執行任務<\/h1>/);
     assert.match(document, /<script>const label="任務完成";<\/script>/);
   });

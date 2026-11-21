@@ -36,7 +36,7 @@ export const aboutContent: Record<Locale, AboutContent> = {
     meta: 'Zhama Xingchen builds the TeGo Digital Workforce Collaboration Platform, connecting roles, knowledge, tools and teams to make collaboration visible and outcomes verifiable.',
     introductionTitle: 'Company introduction',
     introduction: [
-      '深圳市扎马星辰科技有限公司 (Zhama Xingchen) is an AI-native technology company focused on how enterprises work together.',
+      'Shenzhen Zhama Xingchen Technology Co., Ltd. is an AI-native technology company transforming enterprise collaboration.',
       'Our core product, the TeGo Digital Workforce Collaboration Platform, connects job responsibilities, enterprise knowledge and business tools. People and digital employees work toward shared goals, turning everyday tasks into outcomes that can be reviewed and delivered.',
     ],
     visionTitle: 'Our vision',

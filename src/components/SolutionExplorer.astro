@@ -4,6 +4,7 @@ import { homeIndustries } from '../data/home-industries';
 import type { Locale } from '../data/types';
 import { pathFor } from '../lib/site';
 import Icon from './Icon.astro';
+import SolutionPanelLayout from './SolutionPanelLayout.astro';
 interface Props { locale: Locale; home?: boolean; }
 const { locale, home = false } = Astro.props;
 const zh = locale === 'zh';
@@ -33,7 +34,7 @@ const resultIcons: Record<string, string[]> = {
   'state-owned': ['chart', 'clipboard-check', 'workflow'],
 };
 ---
-<div class:list={["solution-explorer", "home-solutions", {"solution-overview-explorer":!home}]} data-solution-explorer data-attribution-group="solutions">
+<div class:list={["solution-explorer", "home-solutions", {"solution-overview-explorer":!home, "homepage-solution-explorer":home}]} data-solution-explorer data-attribution-group="solutions">
   <div class="industry-navigation">
     {home && <h2 id="industry-title">{zh ? '行业解决方案' : 'Industry solutions'}</h2>}
     <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
@@ -42,9 +43,8 @@ const resultIcons: Record<string, string[]> = {
   </div>
   {visibleIndustries.map((industry) => (
     <div class="solution-panel" role="tabpanel" id={`panel-${industry.slug}`} aria-labelledby={`tab-${industry.slug}`} tabindex="0" hidden={industry.slug !== defaultSlug}>
-      <>
-        <div class="industry-scene-column">
-          <div class="industry-scene">
+      <SolutionPanelLayout home={home}>
+          <div class="industry-scene" slot="scene">
             <img src={industryImages[industry.slug]} alt="" width="1200" height="800" loading="lazy" decoding="async"/>
             <div class="industry-scene-content">
               <PanelTitle>{homeIndustries[locale][industry.slug].title}</PanelTitle>
@@ -53,31 +53,33 @@ const resultIcons: Record<string, string[]> = {
               </ul>
             </div>
           </div>
-          <section class="industry-context" aria-labelledby={`context-title-${industry.slug}`}>
-            <GroupTitle id={`context-title-${industry.slug}`}>{zh ? '业务现状' : 'Current work'}</GroupTitle>
+          <section class="industry-context" slot="context" aria-labelledby={`context-title-${industry.slug}`}>
+            <GroupTitle id={`context-title-${industry.slug}`}>{zh ? '行业挑战' : 'Industry challenges'}</GroupTitle>
             <p>{homeIndustries[locale][industry.slug].pain}</p>
           </section>
-        </div>
-        <div class="industry-delivery">
-          <section class="industry-work" aria-labelledby={`work-title-${industry.slug}`}>
-            <GroupTitle id={`work-title-${industry.slug}`}>{zh ? '数字员工的工作' : 'Work for digital employees'}</GroupTitle>
+          <section class="industry-work" slot="work" aria-labelledby={`work-title-${industry.slug}`}>
+            <GroupTitle id={`work-title-${industry.slug}`}>{zh ? '解决方案' : 'Our approach'}</GroupTitle>
             <p>{homeIndustries[locale][industry.slug].value}</p>
           </section>
-          <section class="industry-results" aria-labelledby={`results-title-${industry.slug}`}>
-            <GroupTitle id={`results-title-${industry.slug}`}>{zh ? '方案价值' : 'Solution value'}</GroupTitle>
+          <section class="industry-results" slot="results" aria-labelledby={`results-title-${industry.slug}`}>
+            <GroupTitle id={`results-title-${industry.slug}`}>{zh ? '业务价值' : 'Business value'}</GroupTitle>
             <ul>
               {homeIndustries[locale][industry.slug].benefits.map((benefit, index) => <li>
-                <span class="industry-result-icon"><Icon name={resultIcons[industry.slug]?.[index] ?? ['users', 'book', 'chart'][index]} size={24}/></span>
+                {!home && <span class="industry-result-icon"><Icon name={resultIcons[industry.slug]?.[index] ?? ['users', 'book', 'chart'][index]} size={24}/></span>}
                 <div>
-                  <BenefitTitle>{benefit.title}</BenefitTitle>
+                  <BenefitTitle>
+                    {home && <span class="industry-result-icon"><Icon name={resultIcons[industry.slug]?.[index] ?? ['users', 'book', 'chart'][index]} size={20}/></span>}
+                    <span>{benefit.title}</span>
+                  </BenefitTitle>
                   <p>{benefit.description}</p>
                 </div>
               </li>)}
             </ul>
           </section>
-          <a class="button button-outline industry-details-link" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>
-        </div>
-      </>
+          {home
+            ? <a class="button industry-details-link" slot="action" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>
+            : <a class="button button-outline industry-details-link" slot="action" href={pathFor(locale,`solutions/${industry.slug}`)}>{zh ? '查看行业方案' : 'View industry solution'}</a>}
+      </SolutionPanelLayout>
     </div>
   ))}
 </div>

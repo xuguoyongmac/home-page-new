@@ -15,7 +15,7 @@ export default {
       related: [{"path": "product", "label": "查看平台能力"}],
     },
     en: {
-      name: "Digital Employee for Roles",
+      name: "Digital Employees for Business Roles",
       title: landing.en.hero.lines.join(" "),
       description: landing.en.hero.summary,
       navigationDescription: "Reuse role expertise through digital employee templates.",

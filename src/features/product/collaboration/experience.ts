@@ -105,7 +105,7 @@ export default {
         body: 'Mention an authorized digital employee in the project conversation and revise files from the materials and review comments. Personal drafts, run submissions and published revisions remain distinct.',
         points: [
           { title: 'Submit changes from one run together', body: 'Group the file changes produced by a digital employee run into one project submission for review.' },
-          { title: 'Give versions, conflicts and finalization a clear state', body: 'Review and restore history, retain conflict copies, mark final deliverables and export the project.' },
+          { title: 'Give versions, conflicts and finalization a clear state', body: 'Review and restore history, retain conflict copies, mark deliverables as final and export them.' },
         ],
         visual: {
           title: 'Proposal drafting conversation', context: 'Service proposal review', tabs: ['Work conversation', 'File versions', 'Project materials'],

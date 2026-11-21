@@ -22,11 +22,11 @@ const activeLanguage = languages.find(item => item.id === language)!;
         <div id="language-options" class="tego-language-panel" hidden><ul>{languages.map(item => <li><a href={languagePathFor(item.id,page)} lang={item.tag} hreflang={item.tag} aria-current={language === item.id ? 'true' : undefined} data-language-option>{item.label}{language === item.id && <Icon name="check" size={15}/>}</a></li>)}</ul></div>
       </div>
       <a class="button button-outline button-small header-contact" href={pathFor(locale, 'contact')} aria-current={page === 'contact' ? 'page' : undefined}>{zh ? '联系我们' : 'Contact us'}</a>
-      <a class="button button-small header-cta" href={appFor(locale)}>{zh ? '登录' : 'Log in'}</a>
+      <a class="button button-small header-cta" href={appFor(locale)}>{zh ? '立即体验' : 'Try TeGo'}</a>
       <button type="button" class="menu-toggle icon-button" aria-label={t.menu} data-open-label={t.menu} data-close-label={t.close} aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
     </div>
   </div>
-  <nav id="mobile-nav" class="mobile-nav" aria-label={zh ? '移动端导航' : 'Mobile navigation'} inert><NavigationItems locale={locale} page={page} prefix="mobile"/><a class="button button-small mobile-login" href={appFor(locale)}>{zh ? '登录' : 'Log in'}</a></nav>
+  <nav id="mobile-nav" class="mobile-nav" aria-label={zh ? '移动端导航' : 'Mobile navigation'} inert><NavigationItems locale={locale} page={page} prefix="mobile"/><a class="button button-small mobile-login" href={appFor(locale)}>{zh ? '立即体验' : 'Try TeGo'}</a></nav>
 </header>
 <script>
   const header = document.querySelector<HTMLElement>('[data-site-header]');
@@ -81,6 +81,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
         panelAnimations.delete(panel);
         panel.inert = !open;
         if (open) {
+          syncLanguageLinks();
           panel.hidden = false;
           if (desktopMode.matches) panel.dataset.artReady = '';
           positionPointer(button, panel);
@@ -203,13 +204,26 @@ const activeLanguage = languages.find(item => item.id === language)!;
         positionHighlight(panel, panel.querySelector<HTMLElement>('.tego-nav-item:hover, .tego-nav-item:focus-visible') || panel.querySelector<HTMLElement>('.tego-nav-item[aria-current="page"]'));
       }
     });
-    header.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
-      const destination = new URL(languageLink.href);
-      if (destination.pathname.split('/').slice(2).join('/') === location.pathname.split('/').slice(2).join('/')) destination.hash = location.hash;
-      if (location.pathname.endsWith('/releases/')) {
-        const version = new URLSearchParams(location.search).get('version'); if (version) destination.searchParams.set('version', version);
-      }
-      languageLink.href = destination.pathname + destination.search + destination.hash;
+    function syncLanguageLinks() {
+      header!.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
+        const destination = new URL(languageLink.href);
+        if (destination.pathname.split('/').slice(2).join('/') === location.pathname.split('/').slice(2).join('/')) destination.hash = location.hash;
+        if (location.pathname.endsWith('/releases/')) {
+          const current = new URLSearchParams(location.search);
+          for (const parameter of ['version', 'product']) {
+            const value = current.get(parameter);
+            if (value) destination.searchParams.set(parameter, value);
+            else destination.searchParams.delete(parameter);
+          }
+        }
+        languageLink.href = destination.pathname + destination.search + destination.hash;
+      });
+    }
+    syncLanguageLinks();
+    window.addEventListener('hashchange', syncLanguageLinks);
+    window.addEventListener('popstate', syncLanguageLinks);
+    document.addEventListener('change', event => {
+      if (event.target instanceof HTMLSelectElement && ['release-version', 'release-manifest'].includes(event.target.id)) syncLanguageLinks();
     });
   }
 </script>

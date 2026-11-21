@@ -10,10 +10,10 @@ const networkVersion = 'V12.10';
 const deployment = [
   { icon: 'buildings', text: zh ? '企业环境' : 'Your infrastructure' },
   { icon: 'cpu', text: zh ? '本地模型' : 'Local models' },
-  { icon: 'layers', text: zh ? '容器化部署' : 'Container deployment' },
+  { icon: 'layers', text: zh ? '容器化部署' : 'Containerized deployment' },
 ];
 const governance = [
-  { icon: 'users', text: zh ? '组织身份' : 'Organization identity' },
+  { icon: 'users', text: zh ? '组织身份' : 'Organizational identity' },
   { icon: 'key-round', text: zh ? '资源与委托' : 'Access & delegation' },
   { icon: 'file-check', text: zh ? '审核与记录' : 'Reviews & records' },
 ];
@@ -24,11 +24,11 @@ const governance = [
     <header class="enterprise-heading">
       <h2 id="enterprise-control-title">{zh
         ? <><span>按企业边界部署，</span><span>按组织规则运行</span></>
-        : <><span>Deploy on your terms.</span><span>Operate with control.</span></>}
+        : <><span>Deploy within your boundaries.</span><span>Follow your organization’s rules.</span></>}
       </h2>
       <p class="enterprise-intro">{zh
         ? '私有化部署，数据不出域，全程可审计'
-        : 'Private deployment. Data stays within your boundary. Every action is auditable.'}
+        : 'Private deployment. Data stays within your boundary. Auditable from start to finish.'}
       </p>
     </header>
 
@@ -49,7 +49,7 @@ const governance = [
           <h3>{zh ? '企业治理' : 'Enterprise governance'}</h3>
           <p>{zh
             ? '对齐组织身份，分别管理资源权限与业务委托，保留审核决定和执行记录。'
-            : 'Align organizational identities, manage resource access and work delegation separately, and retain review decisions and execution records.'}
+            : 'Align organizational identities, manage resource access and business delegation separately, and retain review decisions and execution records.'}
           </p>
           <ul class="enterprise-capabilities">
             {governance.map(item => <li><Icon name={item.icon} size={22} /><span>{item.text}</span></li>)}

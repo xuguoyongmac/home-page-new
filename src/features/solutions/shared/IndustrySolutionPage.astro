@@ -16,7 +16,7 @@ const zh = locale === 'zh';
     <div class="container industry-value-hero-content">
       <h1 id={`${slug}-title`}>{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
       <p>{copy.home.value}</p>
-      <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a>
+      <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a>
       <ul class="industry-value-scenarios" aria-label={zh ? '业务场景' : 'Business scenarios'}>{copy.home.scenarios.map(item => <li>{item}</li>)}</ul>
     </div>
   </section>

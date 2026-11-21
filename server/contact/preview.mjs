@@ -4,6 +4,7 @@ import path from 'node:path';
 import sirv from 'sirv';
 import { createContactApp } from './app.mjs';
 import { loadContactConfig, projectRoot } from './config.mjs';
+import { serveNotFound } from './not-found.mjs';
 
 const directory = path.join(projectRoot, 'dist');
 if (!existsSync(path.join(directory, 'index.html'))) throw new Error('Run npm run build before npm run preview.');
@@ -12,7 +13,9 @@ const app = createContactApp(loadContactConfig());
 const server = createServer((request, response) => {
   app.handle(request, response).then(handled => {
     if (handled) return;
-    files(request, response, () => { response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); response.end('Page not found'); });
+    const pathname = new URL(request.url || '/', 'http://preview.internal').pathname;
+    if (/^\/(?:(?:zh|zh-Hant|en)\/)?404(?:\.html|\/)?$/i.test(pathname)) return serveNotFound(request, response, directory);
+    files(request, response, () => { void serveNotFound(request, response, directory).catch(() => { if (!response.headersSent) response.writeHead(503); response.end(); }); });
   }).catch(() => { if (!response.headersSent) response.writeHead(503); response.end(); });
 });
 server.requestTimeout = 20000;

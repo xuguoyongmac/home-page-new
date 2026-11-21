@@ -44,7 +44,7 @@ export default {
   en: {
     hero: {
       lines: ['One goal.', 'Agents, coordinated.'],
-      summary: 'A main Agent owns the goal and delivery, delegates bounded work to specialist Agents, and assembles their results into one deliverable.',
+      summary: 'A main Agent owns the goal and delivery, delegates bounded work to specialist sub-Agents, and assembles their results into one deliverable.',
     },
     pain: {
       title: 'Complex work needs clear responsibilities',
@@ -68,7 +68,7 @@ export default {
     scenarios: [
       {
         title: 'Prepare project due diligence materials',
-        body: 'A main Agent delegates financial, legal and business review around one due diligence goal, collects sources, differences and confirmation items, and prepares working materials for continued review.',
+        body: 'A main Agent delegates financial, legal and business review around one due diligence goal, collects sources, differences and confirmation items, and prepares due diligence working papers for continued review.',
         flow: ['Project records and review requirements', 'Parallel financial, legal and business review', 'Source index, cross-checks and issue list'],
       },
     ],

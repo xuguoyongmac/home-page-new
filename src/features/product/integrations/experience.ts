@@ -131,7 +131,7 @@ export default {
         body: 'A business system uses Platform OpenAPI with a bound user and scope to submit tasks and files, then receives status, human work items and results synchronously, asynchronously or as a stream.',
         points: [
           { title: 'Submit the request with its materials', body: 'Tasks, attachments and idempotency information execute under the bound user identity.' },
-          { title: 'Return status, responses and deliverables', body: 'The original system can follow progress, resume events and retrieve results and files.' },
+          { title: 'Return status, responses and deliverables', body: 'The original system can follow progress, continue event-driven interactions and retrieve results and files.' },
         ],
         visual: {
           title: 'Platform OpenAPI', context: 'Business system to platform', tabs: ['Task request', 'Execution status', 'Returned results'],

@@ -60,7 +60,7 @@ const contactCodes = [
     </div>
     <div>
       <h2>{zh ? '资源与支持' : 'Resources'}</h2>
-      <a href={site.docs}>{t.docs}</a>
+      <a href={site.docs} hreflang="zh-CN">{t.docs}</a>
       <a href={pathFor(locale,'download')}>{t.download}</a>
       <a href={pathFor(locale,'blog')}>{t.blog}</a>
     </div>
@@ -77,12 +77,11 @@ const contactCodes = [
         </a>
       </div>
       <a class="footer-contact-entry" href={pathFor(locale, 'contact')}>{zh ? '联系我们' : 'Contact us'}</a>
-      <a class="footer-contact-entry" href={pathFor(locale, 'about')}>{zh ? '关于我们' : 'About us'}</a>
     </div>
   </div>
   <div class="container footer-bottom">
     <span>{zh ? '© 2026 深圳市扎马星辰科技有限公司' : '© 2026 Shenzhen Zhama Xingchen Technology Co., Ltd.'}</span>
-    <a href="https://beian.miit.gov.cn/" rel="external">粤ICP备2025426259号-1</a>
+    <a href="https://beian.miit.gov.cn/" rel="external" lang="zh-CN">粤ICP备2025426259号-1</a>
   </div>
 </footer>
 

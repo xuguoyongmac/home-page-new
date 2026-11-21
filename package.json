@@ -7,11 +7,11 @@
     "predev": "node scripts/clear-preview-port.mjs",
     "dev": "astro dev --host 127.0.0.1 --port 4350",
     "check": "astro check",
-    "build": "astro build && node scripts/optimize-media.mjs && node scripts/prepare-publish.mjs",
+    "build": "astro build && node scripts/prepare-publish.mjs",
     "test": "node --test tests/*.test.mjs",
     "prepreview": "node scripts/clear-preview-port.mjs",
     "preview": "node server/contact/preview.mjs",
-    "verify": "node scripts/verify-site.mjs",
+    "verify": "node scripts/verify-site.mjs && node scripts/verify-locales.mjs",
     "contact:serve": "node server/contact/start.mjs",
     "contact:verify": "node server/contact/verify.mjs"
   },

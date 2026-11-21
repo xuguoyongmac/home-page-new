@@ -3,424 +3,424 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const stateOwnedPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "把集团经营目标，接续到每个单位与项目",
-      "pain": "集团预算、司库资金与项目执行分属不同系统和单位，经营变化难以穿透；采购履约、现场风险和监督整改跨条线推进，管理要求难落到同一责任链。",
-      "value": "围绕穿透式监管与集团经营管理，以数字岗位连接预算资金、采购履约、工程现场和监督整改，让总部掌握变化、条线接续工作、基层复用方法。",
+      "title": "让集团管理要求，转化为一线执行力",
+      "pain": "制度分散、标书拼凑、项目靠催、报告反复汇总。跨层级、跨单位的重复工作，消耗管理资源，也让集团经验难以真正落到基层。",
+      "value": "在自主可控的底座上，把数字员工部署到经营分析、制度公文、招采投标、项目督办与安全监督岗位。贯通总部、板块和所属企业，让集团方法规模复用，让经营变化看得清、管理任务落得下。",
       "scenarios": [
-        "穿透式监管",
-        "预算经营",
-        "司库资金",
-        "采购招投标",
-        "项目履约",
-        "EHS与审计"
+        "制度公文",
+        "招采投标",
+        "项目督办",
+        "经营与资金",
+        "安全生产EHS",
+        "党建与监督"
       ],
       "benefits": [
         {
-          "title": "经营管控看得更深",
-          "description": "关联集团、板块与项目的经营和资金信息，把指标偏差接到原因、影响与协调行动。"
+          "title": "底座可控，资产归企",
+          "description": "私有化部署、模型灵活接入，岗位、技能与知识留在企业，集团经验不再随人员流动。"
         },
         {
-          "title": "价值链协作接得更稳",
-          "description": "从采购招投标到合同、项目和现场，串联目标、节点与交付，减少条线间的信息断点。"
+          "title": "管理穿透，执行到岗",
+          "description": "把经营指标、项目节点与责任反馈关联起来，让总部看清变化，让一线接住任务。"
         },
         {
-          "title": "责任与方法持续落地",
-          "description": "以监督整改贯通责任反馈，以岗位知识和技能复用集团方法，保留单位差异与授权边界。"
+          "title": "一套方法，多级复用",
+          "description": "统一制度口径与成果标准，在所属企业按权限配置使用，把成熟做法转化为持续产能。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让集团管控穿透业务",
-        "让经营责任接续到一线"
+        "让集团管理要求",
+        "转化为一线执行力"
       ],
       "background": "/images/industries/state-owned-architecture_V1.3.webp"
     },
     "sources": [
-      "集团战略、经营预算与司库资料",
-      "采购招投标与供应链记录",
-      "工程合同、项目进度与EHS资料",
-      "制度标准、监督审计与整改反馈"
+      "经营预算、司库资金与指标口径",
+      "招标采购、资信业绩与合同资料",
+      "项目进度、会议决定与EHS记录",
+      "集团制度、公文规范与监督整改"
     ],
     "outputs": [
-      "集团经营与资金分析",
-      "采购履约协作成果",
-      "项目执行与EHS报告",
-      "监督整改责任报告"
+      "经营分析、资金专题与差异明细",
+      "成套标书、自查清单与履约材料",
+      "项目督办周报与安全整改台账",
+      "制度公文、党建材料与监督报告"
     ],
     "features": [
       {
-        "title": "让集团经营与司库资金形成穿透视野",
-        "problem": "总部、板块与所属企业各有经营和资金口径，预算偏差、项目投入与回款变化难在同一视野分析。",
-        "body": "连接获准的经营、预算与司库资料，按集团、板块、单位和项目关联收入、成本、资金与资产信息。数字员工组织偏差分析、资金专题和经营报告，将变化接到业务背景与协调事项，为穿透式监管和资源配置提供持续的工作支撑。",
+        "title": "经营与资金一体看，集团变化看得更深",
+        "problem": "经营、预算和司库数据分散在多个系统，所属企业口径不一，周期报告耗在取数、拼表与反复对账。",
+        "body": "连接经营、财务与司库资料，统一指标、组织和统计周期，核对集团、单位与项目的总分勾稽。数字员工整理预算偏差、资金变化、回款节点与业务说明，交付经营报告、资金专题和计算明细；每个关键数字关联来源，让总部从看报表走向看清变化与待协调事项。",
         "outcomes": [
-          "预算经营分析",
-          "司库资金专题",
-          "集团经营专题"
+          "经营预算与差异分析",
+          "司库资金与回款专题",
+          "来源可查的经营报告"
         ]
       },
       {
-        "title": "让采购招投标衔接合同与供应链履约",
-        "problem": "采购需求、投标响应与合同执行分属不同团队，前端约定难接到交付节点，供应变化影响协同。",
-        "body": "围绕采购方审查与投标方响应分别组织专业任务，连接需求、评审要求、证明与交易文件。合同形成后延续条款、交付节点、变更和供应履约信息，生成采购分析、响应方案与履约成果，让价值链协作贯穿签约前后。",
+        "title": "从招采文件到履约交付，专业方法贯穿全程",
+        "problem": "采购条款反复核、投标材料多源拼、证照业绩易过期，签约后交付节点又与前端约定脱节。",
+        "body": "采购侧核对需求、条款与评审要素；投标侧解析资格、评分与否决条款，关联证照、人员和业绩，编制成套标书、偏离表与递交前自查清单。多人协作保持工期、人员等事实一致，审阅签认后导出；合同形成后继续跟进节点、变更与供应履约，让方法贯穿签约前后。",
         "outcomes": [
-          "采购与投标方案",
-          "合同履约分析",
-          "供应协同成果"
+          "采购核对与成套标书",
+          "资信匹配与递交前自查",
+          "合同节点与供应履约"
         ]
       },
       {
-        "title": "让项目履约与EHS管理接续到现场",
-        "problem": "工程进度、成本变更与现场安环信息散落在多份记录，管理层难以把项目偏差与现场问题关联。",
-        "body": "以项目目标关联合同节点、进度反馈、成本变化与现场记录，按职责整理工程协作和EHS事项。数字员工持续归集偏差、隐患与整改反馈，形成履约分析、现场专题和协调任务，让项目团队掌握执行变化、推动问题接续处理。",
+        "title": "项目有人承接，现场问题持续跟进",
+        "problem": "会议部署、合同节点、进度成本与安环记录各自分散，项目靠人追进度，问题整改容易在交接中断档。",
+        "body": "把会议议定事项、合同要求与现场反馈汇入项目，形成任务草案、进度汇总和督办周报。数字员工跟踪节点、成本变更与材料缺项，整理EHS法规依据、隐患台账和整改反馈，需要判断或授权时交责任岗位处理，回应后接续工作，让部署、执行与复查连起来。",
         "outcomes": [
-          "项目履约报告",
-          "成本变更分析",
-          "EHS协同成果"
+          "项目任务与督办周报",
+          "节点成本与变更分析",
+          "EHS隐患与整改台账"
         ]
       },
       {
-        "title": "让监督审计与整改形成责任闭环",
-        "problem": "监督发现、整改措施与单位反馈分散管理，重复报送负担较重，问题成因与后续改进难以沉淀。",
-        "body": "将监督发现与责任单位、整改要求和反馈材料关联，按问题归集过程、证据与后续事项，支持审计复查和专项汇报。把反复出现的问题转为制度与岗位方法的更新依据，让整改工作既能追溯责任，也能服务后续经营改进。",
+        "title": "让监督有底稿，让整改推动制度改进",
+        "problem": "监督问题、整改证据与单位反馈分散，制度公文反复查，党建纪检材料重复整理，复查与责任追踪成本高。",
+        "body": "关联问题来源、责任单位、整改要求与佐证材料，持续形成进度报告和复查底稿。以集团制度、党章党规和公文规范支撑材料核对、公文起草与党建纪检台账，把重复问题归入制度和技能改进；政治把关、责任认定与正式签发由相应岗位完成，让监督成果持续服务治理。",
         "outcomes": [
-          "监督问题分析",
-          "整改进展报告",
-          "制度改进依据"
+          "监督整改与复查底稿",
+          "制度公文与党建材料",
+          "共性问题与制度改进"
         ]
       }
     ],
-    "teamTitle": "服务总部、板块与基层的数字员工团队",
+    "teamTitle": "从集团总部到所属企业，组建覆盖治理全链条的数字员工团队",
     "employees": [
       {
         "role": "经营分析数字员工",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
-          "预算分析",
-          "指标归因",
-          "经营报告"
+          "指标核对",
+          "预算资金",
+          "周期报告"
         ],
         "process": [
-          "归集集团与所属单位经营资料",
-          "关联目标偏差和业务变化",
-          "组织经营分析与协调事项"
+          "统一指标口径并关联经营、预算与资金资料",
+          "核对总分勾稽，整理偏差、回款与待核实问题",
+          "编制经营报告、资金专题与计算明细"
         ],
         "outputs": [
-          "预算经营报告",
-          "经营协调专题"
+          "经营分析与预算报告",
+          "资金专题与差异明细"
         ],
-        "value": "把经营指标的变化讲清楚、接到业务行动"
+        "value": "让关键数字说得清，让经营讨论更快进入实质"
       },
       {
-        "role": "司库资金数字员工",
+        "role": "制度公文数字员工",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
         "skills": [
-          "资金分析",
-          "回款跟踪",
-          "资产研判"
+          "制度检索",
+          "公文编制",
+          "要素校对"
         ],
         "process": [
-          "关联预算投入与资金记录",
-          "分析回款节点和资金变化",
-          "编制资金专题及管理材料"
+          "按人员权限定位制度效力、版本与适用单位",
+          "依据公文规范编制底稿并核对要素",
+          "整理引用、差异与修改意见供审阅签发"
         ],
         "outputs": [
-          "资金分析报告",
-          "回款跟进专题"
+          "带出处制度答复",
+          "公文底稿与校对清单"
         ],
-        "value": "让资金视野与项目经营保持联系"
+        "value": "让集团制度查得到、用得准，让办文方法跨单位复用"
       },
       {
-        "role": "招采协作数字员工",
+        "role": "招采投标数字员工",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
         "skills": [
-          "采购分析",
-          "投标响应",
-          "供应协同"
+          "条款解析",
+          "资信核对",
+          "标书编制"
         ],
         "process": [
-          "区分采购审查与投标响应任务",
-          "组织要求、方案与证明资料",
-          "接续供应与合同履约信息"
+          "按采购或投标任务解析要求与核对清单",
+          "关联资信、业绩与方案资料并统一事实口径",
+          "协作编制成果，自查签认后衔接合同履约"
         ],
         "outputs": [
-          "采购分析成果",
-          "投标响应方案"
+          "成套标书与自查清单",
+          "采购分析与履约材料"
         ],
-        "value": "把专业方法贯穿采购招投标与供应协作"
+        "value": "把骨干经验沉淀为团队产能，把差错发现前移"
       },
       {
-        "role": "项目履约数字员工",
+        "role": "项目督办数字员工",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
         "skills": [
-          "节点跟进",
-          "成本分析",
-          "变更管理"
+          "任务拆解",
+          "进度跟踪",
+          "履约分析"
         ],
         "process": [
-          "关联合同目标与项目节点",
-          "分析进度成本和变更影响",
-          "汇集责任反馈与项目协调"
+          "整理会议决定、合同节点与责任任务草案",
+          "汇集进度、成本变更与承办反馈",
+          "跟进待处理事项并编制督办周报"
         ],
         "outputs": [
-          "履约分析报告",
-          "项目协调材料"
+          "项目任务与督办周报",
+          "履约分析与协调清单"
         ],
-        "value": "让项目偏差及时进入团队协作"
+        "value": "让会议有后续、任务有回音、项目进展看得见"
       },
       {
-        "role": "EHS协作数字员工",
+        "role": "安全生产数字员工",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
         "skills": [
+          "法规检索",
           "隐患归集",
-          "安环分析",
-          "整改跟踪"
+          "整改跟进"
         ],
         "process": [
-          "关联现场记录与适用安环要求",
-          "整理隐患影响和整改任务",
-          "接续反馈与专项管理报告"
+          "关联EHS法规、作业票与安全教育资料",
+          "整理现场隐患、材料缺项和整改任务",
+          "汇总反馈与复查资料供安全岗位判断"
         ],
         "outputs": [
-          "现场安环专题",
-          "整改跟进报告"
+          "隐患与整改台账",
+          "EHS材料与培训清单"
         ],
-        "value": "把现场信息接到安全环保日常管理"
+        "value": "把现场信息接入日常管理，让安全人员少做重复整理"
       },
       {
-        "role": "监督审计数字员工",
+        "role": "党建监督数字员工",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
         "skills": [
-          "问题分析",
-          "证据关联",
-          "整改协作"
+          "党规检索",
+          "材料核对",
+          "整改汇总"
         ],
         "process": [
-          "关联问题来源与责任单位",
-          "归集整改措施和实际反馈",
-          "组织复查准备与制度改进依据"
+          "按授权检索党章党规、制度与监督资料",
+          "整理党建纪检材料并关联问题和证据",
+          "汇总整改进展与复查材料交责任岗位审阅"
         ],
         "outputs": [
-          "监督整改报告",
-          "问题证据底稿"
+          "党建纪检材料与台账",
+          "监督整改报告与证据底稿"
         ],
-        "value": "让监督成果转化为可接续的经营改进"
+        "value": "让材料准备有章可循，让监督整改有据可查"
       }
     ],
     "deployment": {
-      "title": "集团统筹共用能力，所属企业按职责使用",
-      "body": "支持集团机房或专有云部署，衔接已有模型、知识和业务系统。将共用制度、岗位模板与专业方法沉淀为可复用资产，分别配置单位资料、工具身份与使用范围；通过版本发布、任务记录和审计诊断，让规模化应用与集团治理共同推进。"
+      "title": "集团统筹建设，所属企业按需复用，核心资产归企",
+      "body": "支持集团机房与专有云部署、本地模型接入，并按选型适配信创环境。统一沉淀制度知识、数字员工模板和岗位技能，按单位、项目与人员配置权限；结合现有系统定制业务连接与成果标准。保留版本、执行与审计记录，让成熟岗位从一个团队推广到多级组织，形成可持续运营的数字员工体系。"
     }
   },
   "en": {
     "home": {
-      "title": "Connect group objectives with every business and project",
-      "pain": "Budgets, treasury and project execution sit across systems and subsidiaries. Procurement, delivery, site risks and remediation cross functions, making it difficult to maintain a connected view of performance and responsibility.",
-      "value": "Digital roles connect group planning, treasury, procurement, project execution and audit remediation. Give headquarters a deeper view of changes, connect functions around delivery and help operating teams reuse established methods.",
+      "title": "Turn group requirements into frontline execution",
+      "pain": "Scattered policies, assembled bid documents, manually chased projects and repeated reporting consume management capacity. Proven group methods struggle to reach operating teams.",
+      "value": "Deploy digital employees across performance analysis, policy documents, procurement and bids, project follow-up and safety oversight on an enterprise-controlled foundation. Connect headquarters, divisions and subsidiaries so proven methods scale and management work reaches the frontline.",
       "scenarios": [
-        "Group oversight",
-        "Budget performance",
-        "Treasury",
+        "Policies & documents",
         "Procurement & bids",
-        "Project delivery",
-        "EHS & audit"
+        "Project follow-up",
+        "Performance & treasury",
+        "Safety & EHS",
+        "Party affairs & oversight"
       ],
       "benefits": [
         {
-          "title": "A deeper view of performance",
-          "description": "Connect group, business-unit and project information, linking variances to causes, implications and coordinated action."
+          "title": "Controlled infrastructure. Enterprise-owned assets.",
+          "description": "Private deployment and flexible model connections retain roles, skills and knowledge inside the enterprise, beyond individual staff tenure."
         },
         {
-          "title": "Continuity across the value chain",
-          "description": "Carry objectives, milestones and deliverables from procurement through contracts, projects and site work."
+          "title": "Deeper visibility. Clearer execution.",
+          "description": "Connect operating indicators, project milestones and responsible-team feedback so headquarters sees changes and teams receive actionable work."
         },
         {
-          "title": "Accountability and reusable methods",
-          "description": "Connect remediation with responsible teams and reuse group methods while retaining local rules and access boundaries."
+          "title": "One method, reused across the group",
+          "description": "Share policy definitions and deliverable standards, with local access settings turning established methods into sustained capacity."
         }
       ]
     },
     "hero": {
       "lines": [
-        "See deeper into group performance",
-        "Carry responsibility to operations"
+        "Turn group requirements",
+        "into frontline execution"
       ],
       "background": "/images/industries/state-owned-architecture_V1.3.webp"
     },
     "sources": [
-      "Group strategy, budgets and treasury records",
-      "Procurement, bidding and supply-chain records",
-      "Project contracts, progress and EHS information",
-      "Policies, audit findings and remediation feedback"
+      "Budgets, treasury records and indicator definitions",
+      "Procurement, credentials, track records and contracts",
+      "Project progress, meeting decisions and EHS records",
+      "Group policies, writing standards and audit remediation"
     ],
     "outputs": [
-      "Group performance and treasury analysis",
-      "Procurement and delivery work",
-      "Project execution and EHS report",
-      "Audit remediation report"
+      "Performance reports, treasury briefs and variance details",
+      "Bid packages, review lists and contract materials",
+      "Project follow-up reports and safety remediation records",
+      "Official drafts, Party affairs materials and oversight reports"
     ],
     "features": [
       {
-        "title": "Bring group performance and treasury into one view",
-        "problem": "Headquarters and subsidiaries use different performance and funding definitions. Budget variances, project spending and collections are difficult to analyze together.",
-        "body": "Connect authorized operating, budget and treasury records across the group, business units and projects. Digital employees organize revenue, cost, cash and asset information into variance analysis, treasury topics and management reports. Changes remain linked to business context and coordination needs, supporting deeper oversight and resource decisions.",
+        "title": "See performance and treasury together. Understand changes across the group.",
+        "problem": "Operating, budget and treasury data span systems and inconsistent subsidiary definitions. Periodic reports demand repeated extraction, assembly and reconciliation.",
+        "body": "Connect operating, finance and treasury records using common indicators, organizational mappings and reporting periods. Reconcile group, subsidiary and project totals, then prepare budget variances, cash movements, collection milestones and business explanations. Management reports and calculation details retain their sources, helping headquarters understand changes and coordination needs behind the figures.",
         "outcomes": [
-          "Budget performance analysis",
-          "Treasury analysis",
-          "Group operating reviews"
+          "Budget and variance analysis",
+          "Treasury and collections briefs",
+          "Source-linked management reports"
         ]
       },
       {
-        "title": "Carry procurement and bids through to delivery",
-        "problem": "Requirements, bid responses and contract execution belong to different teams. Early commitments are hard to carry into delivery milestones and supplier coordination.",
-        "body": "Organize buyer-side procurement review and supplier-side bid responses as distinct professional tasks. Connect requirements, evaluation criteria, evidence and transaction documents, then carry contract terms, milestones, changes and supplier performance forward. Prepare procurement analysis, bid proposals and delivery work across the contracting lifecycle.",
+        "title": "Carry professional methods from procurement and bids into delivery",
+        "problem": "Procurement clauses need repeated checks, bid materials come from scattered sources and credentials expire. Contract milestones can lose their connection to earlier commitments.",
+        "body": "On the purchasing side, check requirements, clauses and evaluation factors. On the bidding side, analyze eligibility, scoring and disqualification rules, match credentials and experience, and prepare bid packages, compliance tables and submission checks. Keep shared facts consistent across contributors and export after review and sign-off. Continue into contract milestones, changes and supplier delivery.",
         "outcomes": [
-          "Procurement and bid proposals",
-          "Contract delivery analysis",
-          "Supplier coordination"
+          "Procurement checks and bid packages",
+          "Credential matching and submission checks",
+          "Contract milestones and supplier delivery"
         ]
       },
       {
-        "title": "Connect project execution with site and EHS work",
-        "problem": "Progress, cost changes and site safety records sit in separate documents, making project variances difficult to relate to conditions on the ground.",
-        "body": "Connect contract milestones, progress updates, cost movements and site records around project objectives. Digital employees organize delivery and EHS work by responsibility, tracking variances, hazards and remediation feedback. Prepare project analysis, site reports and coordination tasks so teams can respond to execution changes.",
+        "title": "Give every project action a path to follow-through",
+        "problem": "Meeting instructions, contract milestones, cost updates and EHS records remain disconnected. Progress chasing and handovers interrupt corrective work.",
+        "body": "Bring meeting decisions, contractual requirements and site feedback into the project to prepare task proposals, progress summaries and follow-up reports. Track milestones, cost changes and missing materials, and organize EHS evidence, hazard records and remediation feedback. Refer decisions and authorization to responsible staff, then continue from their responses to connect assignments, execution and review.",
         "outcomes": [
-          "Project delivery report",
-          "Cost change analysis",
-          "EHS coordination"
+          "Project actions and follow-up reports",
+          "Milestone, cost and change analysis",
+          "EHS hazards and remediation records"
         ]
       },
       {
-        "title": "Turn audit remediation into accountable improvement",
-        "problem": "Findings, corrective measures and subsidiary feedback are managed separately. Repeated reporting adds work while recurring causes are hard to retain.",
-        "body": "Connect each finding with its responsible unit, required action and supporting feedback. Organize progress, evidence and follow-up work for audit reviews and management reporting. Recurring issues inform policy and role-method updates, helping remediation support both accountability and ongoing operational improvement.",
+        "title": "Support oversight with evidence. Turn remediation into better methods.",
+        "problem": "Findings, corrective evidence and subsidiary feedback are scattered. Repeated policy searches and Party affairs preparation add to review and accountability work.",
+        "body": "Connect findings with responsible units, corrective requirements and supporting materials to produce progress reports and review working papers. Use group policies, Party rules and writing standards to support document checks, official drafts and records for Party affairs and discipline inspection. Feed recurring issues into policy and skill improvements, with political review, accountability decisions and formal sign-off retained by the responsible staff.",
         "outcomes": [
-          "Audit issue analysis",
-          "Remediation progress report",
-          "Policy improvement evidence"
+          "Remediation reports and review evidence",
+          "Official drafts and Party affairs materials",
+          "Recurring issues and policy improvement"
         ]
       }
     ],
-    "teamTitle": "Digital roles for headquarters and operating teams",
+    "teamTitle": "Build a digital workforce from group headquarters to operating teams",
     "employees": [
       {
         "role": "Performance Analysis Digital Employee",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
-          "Budget analysis",
-          "Variance analysis",
-          "Management reporting"
+          "Indicator checks",
+          "Budget and treasury",
+          "Periodic reporting"
         ],
         "process": [
-          "Collect group and subsidiary operating records",
-          "Relate target variances to business changes",
-          "Prepare performance analysis and coordination topics"
+          "Align definitions across operating, budget and cash records",
+          "Reconcile totals and organize variances, collections and questions",
+          "Prepare operating reports, treasury briefs and calculations"
         ],
         "outputs": [
-          "Budget performance report",
-          "Management coordination brief"
+          "Performance and budget reports",
+          "Treasury briefs and variance details"
         ],
-        "value": "Connect changing indicators with business action"
+        "value": "Make key figures explainable and move management discussions forward"
       },
       {
-        "role": "Treasury Digital Employee",
+        "role": "Policies and Documents Digital Employee",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
         "skills": [
-          "Treasury analysis",
-          "Collections follow-up",
-          "Asset analysis"
+          "Policy research",
+          "Official drafting",
+          "Document checks"
         ],
         "process": [
-          "Connect budget spending with cash records",
-          "Analyze collection milestones and funding changes",
-          "Prepare treasury topics and management material"
+          "Retrieve authorized policies, versions and applicable units",
+          "Prepare drafts and check required document elements",
+          "Organize citations, differences and revisions for sign-off"
         ],
         "outputs": [
-          "Treasury report",
-          "Collections follow-up brief"
+          "Cited policy responses",
+          "Official drafts and review checklists"
         ],
-        "value": "Keep funding visibility connected with project performance"
+        "value": "Make group policies usable and reuse writing methods across subsidiaries"
       },
       {
-        "role": "Procurement Digital Employee",
+        "role": "Procurement and Bids Digital Employee",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
         "skills": [
-          "Procurement analysis",
-          "Bid responses",
-          "Supplier coordination"
+          "Clause analysis",
+          "Credential checks",
+          "Bid preparation"
         ],
         "process": [
-          "Separate buyer review from bid-response work",
-          "Organize requirements, proposals and supporting records",
-          "Carry supplier and contract information forward"
+          "Analyze requirements for the purchasing or bidding task",
+          "Connect credentials, experience and proposals with shared facts",
+          "Prepare and review deliverables before contract follow-through"
         ],
         "outputs": [
-          "Procurement analysis",
-          "Bid response proposal"
+          "Bid packages and review lists",
+          "Procurement analysis and delivery materials"
         ],
-        "value": "Reuse professional methods across procurement and supply"
+        "value": "Turn expert experience into team capacity and find discrepancies earlier"
       },
       {
-        "role": "Project Delivery Digital Employee",
+        "role": "Project Follow-up Digital Employee",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
         "skills": [
-          "Milestone tracking",
-          "Cost analysis",
-          "Change management"
+          "Task breakdown",
+          "Progress tracking",
+          "Delivery analysis"
         ],
         "process": [
-          "Connect contractual objectives and project milestones",
-          "Analyze progress, cost and change implications",
-          "Bring together team feedback and coordination needs"
+          "Prepare task proposals from decisions and contract milestones",
+          "Consolidate progress, cost changes and responsible-team feedback",
+          "Follow pending matters and prepare project updates"
         ],
         "outputs": [
-          "Delivery analysis",
-          "Project coordination material"
+          "Project actions and follow-up reports",
+          "Delivery analysis and coordination list"
         ],
-        "value": "Bring delivery variances into team action"
+        "value": "Connect meetings to action and make project progress visible"
       },
       {
-        "role": "EHS Digital Employee",
+        "role": "Safety Operations Digital Employee",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
         "skills": [
-          "Hazard organization",
-          "EHS analysis",
-          "Remediation follow-up"
+          "Regulation research",
+          "Hazard records",
+          "Corrective follow-up"
         ],
         "process": [
-          "Connect site records and applicable EHS requirements",
-          "Organize hazard implications and corrective work",
-          "Carry feedback into management reports"
+          "Connect EHS regulations, work permits and training materials",
+          "Organize site hazards, missing materials and corrective tasks",
+          "Prepare feedback and review evidence for safety staff"
         ],
         "outputs": [
-          "Site EHS report",
-          "Remediation progress report"
+          "Hazard and corrective-action records",
+          "EHS materials and training lists"
         ],
-        "value": "Connect site information with daily EHS management"
+        "value": "Connect site information to daily safety work with less repetitive preparation"
       },
       {
-        "role": "Audit Coordination Digital Employee",
+        "role": "Party Affairs and Oversight Digital Employee",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
         "skills": [
-          "Issue analysis",
-          "Evidence mapping",
-          "Remediation coordination"
+          "Party rule research",
+          "Document checks",
+          "Remediation reporting"
         ],
         "process": [
-          "Connect findings with responsible units",
-          "Organize corrective measures and feedback",
-          "Prepare review work and policy improvement evidence"
+          "Retrieve authorized Party rules, policies and oversight records",
+          "Prepare materials and connect findings with evidence",
+          "Consolidate remediation progress and review materials"
         ],
         "outputs": [
-          "Audit remediation report",
-          "Issue evidence workbook"
+          "Party affairs materials and records",
+          "Remediation reports and evidence working papers"
         ],
-        "value": "Turn oversight findings into continued operating improvement"
+        "value": "Bring consistent preparation and traceable evidence to oversight work"
       }
     ],
     "deployment": {
-      "title": "Share group capabilities with role-based local use",
-      "body": "Deploy in group infrastructure or a private cloud and connect existing models, knowledge and business systems. Reuse common policies, role templates and professional methods while configuring subsidiary records, tool identities and access separately. Release management, task records and audit diagnostics support expansion within group governance."
+      "title": "Build centrally. Reuse locally. Keep core assets inside the enterprise.",
+      "body": "Deploy in group infrastructure or a private cloud, connect local models and adapt to selected domestic technologies. Share policy knowledge, digital employee templates and professional skills while setting access by subsidiary, project and person. Tailor system connections and deliverable standards to existing operations. Retain version history, execution and audit records as proven roles expand into a sustained digital workforce across the group."
     }
   }
 };

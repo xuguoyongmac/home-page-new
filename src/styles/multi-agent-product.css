@@ -312,7 +312,7 @@
   .ma-wrap { width: calc(100% - 36px); }
   .ma-hero { padding-block: 36px 45px; }
   .ma-hero h1 { font-size: clamp(33px, 9vw, 44px); line-height: 1.42; }
-  :lang(en) .ma-hero h1 { font-size: clamp(30px, 8.2vw, 42px); }
+  :lang(en) .ma-hero h1 { font-size: clamp(26px, 8.2vw, 42px); }
   .ma-hero-copy > p { margin-top: 20px; font-size: 16px; }
   .ma-hero-actions { margin-top: 23px; }
   .ma-overview-scope, .ma-overview-runtime { gap: 8px; padding-inline: 8px; }
@@ -350,6 +350,17 @@
   .ma-context-heading > em { grid-column: 2; margin-top: -7px; }
   .ma-human-loop { align-items: flex-start; }
   .ma-human-loop > span { white-space: normal; }
+}
+
+@media (max-width: 560px) {
+  :lang(en) .ma-panel-header { flex-direction: column; align-items: stretch; gap: 6px; }
+  :lang(en) .ma-panel-header > span { flex: initial; font-size: 10px; line-height: 1.5; }
+  :lang(en) .ma-overview-scope,
+  :lang(en) .ma-overview-runtime { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  :lang(en) .ma-overview-scope > strong,
+  :lang(en) .ma-overview-runtime > strong { font-size: 10px; }
+  :lang(en) .ma-overview-scope span,
+  :lang(en) .ma-overview-runtime span { padding: 6px 4px; line-height: 1.5; overflow-wrap: normal; word-break: normal; }
 }
 
 @media (prefers-reduced-motion: reduce) {

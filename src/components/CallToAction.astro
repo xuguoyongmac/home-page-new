@@ -18,7 +18,7 @@ const zh = locale === 'zh';
     <p>{zh ? '让每一个企业，都拥有一支面向岗位、协同共生、持续进化的数字员工团队。' : 'A role-focused digital workforce that collaborates and evolves with every enterprise.'}</p>
     <div class="sl-actions">
       <a class="button" href={pathFor(locale, 'contact')}>
-        {home ? (zh ? '预约演示' : 'Book a demo') : (zh ? '聊聊你的业务场景' : 'Discuss your workflow')}
+        {zh ? '预约交流' : 'Book a consultation'}
       </a>
       <a class="button button-white" href={appFor(locale)}>{zh ? '开始与数字员工协作' : 'Open workspace'}</a>
     </div>

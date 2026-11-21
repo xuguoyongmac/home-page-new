@@ -222,7 +222,7 @@ export default {
               "Knowledge retrieval"
             ],
             [
-              "Chengyue Services Project",
+              "Chengyue Digital Services Project",
               "Project members",
               "Current project role"
             ],
@@ -247,7 +247,7 @@ export default {
         "id": "review",
         "kind": "governance",
         "title": "Separate approval from delegation",
-        "body": "Digital employee creation and access, digital employee template and plugin publication, skill changes and resource grants can enter organizational review. Business users delegate specific plugin work and withdraw it when the work ends.",
+        "body": "Digital employee creation and availability, together with digital employee template, plugin and skill publication, go through organizational review. Business users delegate specific plugin work as needed and can revoke delegation when it is complete.",
         "points": [
           {
             "title": "Keep the submitted snapshot with the decision",
@@ -266,7 +266,7 @@ export default {
             "Submission snapshot",
             "Access changes"
           ],
-          "request": "Review the proposal employee’s access request and check its usage scope.",
+          "request": "Review the request to make the Proposal and Writing digital employee available, and check its usage scope.",
           "response": "The request links role responsibilities, capabilities and usage scope; its snapshot and decision remain on record.",
           "columns": [
             "Management item",
@@ -275,12 +275,12 @@ export default {
           ],
           "rows": [
             [
-              "Employee access",
+              "Digital employee availability",
               "Project service team",
               "Request and decision"
             ],
             [
-              "Template publication",
+              "Digital employee template publication",
               "Proposal role configuration",
               "Submission snapshot"
             ],
@@ -293,10 +293,10 @@ export default {
           "focus": {
             "label": "Review evidence",
             "title": "Inspect the submitted content",
-            "body": "Keep the request snapshot and decision when reviewing capability access and authorization changes."
+            "body": "Keep the request snapshot and decision when reviewing capability availability and authorization changes."
           },
           "files": [
-            "Access request snapshot",
+            "Availability request snapshot",
             "Review decision record"
           ]
         }
@@ -305,7 +305,7 @@ export default {
         "id": "audit",
         "kind": "execution",
         "title": "Trace results to tasks, calls and sources",
-        "body": "Execution receipts connect inputs, task steps, tool calls, human responses and deliverable files. Content identifiers, provenance codes and digest checks help locate evidence and record changes.",
+        "body": "Execution receipts connect inputs, task steps, tool calls, human responses and deliverable files. Reviewers can trace a deliverable back to its related sources and records.",
         "points": [
           {
             "title": "Start audit from the task, not a pile of logs",

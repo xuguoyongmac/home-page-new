@@ -13,6 +13,7 @@ import { createDelivery } from '../server/contact/delivery.mjs';
 import { LeadStore } from '../server/contact/store.mjs';
 import { buildLeadCard } from '../server/contact/card.mjs';
 import { DEFAULT_REPLY_TIME, IMMEDIATE_REPLY_TIME } from '../shared/contact-fields.mjs';
+import { contactLanguageFor } from '../shared/contact-languages.mjs';
 
 function cardElements(card) {
   const walk = elements => elements.flatMap(element => [element, ...walk(element.elements || []), ...walk(element.columns || [])]);
@@ -34,6 +35,62 @@ async function fixture(t, { max = 100, delivery, env = {} } = {}) {
   const post = (body = leadBody, id = randomUUID(), headers = {}) => fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': id, ...headers }, body: JSON.stringify(body) });
   return { config, app, post, url, calls, dataDir, store: new LeadStore(dataDir) };
 }
+
+test('contact response language respects Chinese scripts, regions and weighted browser preferences', () => {
+  for (const [header, expected] of [
+    ['', 'zh'], ['en-US', 'en'], ['EN-GB', 'en'], ['zh-CN', 'zh'],
+    ['zh-Hant', 'zh-Hant'], ['zh-Hant-TW', 'zh-Hant'], ['zh-TW', 'zh-Hant'],
+    ['zh-HK', 'zh-Hant'], ['zh-MO', 'zh-Hant'], ['zh-Hans-TW', 'zh'],
+    ['fr-FR, en;q=0.6, zh-TW;q=0.8', 'zh-Hant'],
+    ['zh-Hant;q=0, en;q=0.5', 'en'], ['zh-CN;q=0.9, en;q=0.5', 'zh'],
+    ['zh-TW;q=invalid, en;q=0.5', 'en'], ['unsupported', 'zh'],
+  ]) assert.equal(contactLanguageFor(header), expected, header);
+});
+
+test('Traditional Chinese API errors stay localized without persisting or delivering rejected requests', async t => {
+  const f = await fixture(t, { env: { SMTP_PASS: '' } });
+  for (const language of ['zh-Hant', 'zh-TW', 'zh-HK', 'zh-Hant-HK']) {
+    const response = await f.post({}, randomUUID(), { 'Accept-Language': language });
+    assert.equal(response.status, 400);
+    assert.equal(response.headers.get('content-language'), 'zh-Hant');
+    assert.equal((await response.json()).message, '請填寫諮詢主題、內容和聯繫方式。');
+  }
+  const unavailable = await f.post(leadBody, randomUUID(), { 'Accept-Language': 'zh-TW', Origin: 'https://www.zhama.com' });
+  assert.equal(unavailable.status, 503);
+  assert.equal(unavailable.headers.get('vary'), 'Origin, Accept-Language');
+  assert.equal((await unavailable.json()).message, '諮詢接收服務尚未連接郵箱，請直接聯繫 contact@zhama.com。');
+  const forbidden = await f.post(leadBody, randomUUID(), { 'Accept-Language': 'zh-HK', Origin: 'https://untrusted.invalid' });
+  assert.equal(forbidden.status, 403);
+  assert.equal((await forbidden.json()).message, '不允許從此頁面提交。');
+  const english = await f.post({}, randomUUID(), { 'Accept-Language': 'en-US' });
+  assert.equal(english.headers.get('content-language'), 'en');
+  assert.equal((await english.json()).message, 'Enter a subject, message, and contact details.');
+  const simplified = await f.post({}, randomUUID(), { 'Accept-Language': 'zh-Hans' });
+  assert.equal(simplified.headers.get('content-language'), 'zh-CN');
+  assert.equal((await simplified.json()).message, '请填写咨询主题、内容和联系方式。');
+  assert.equal(f.calls.length, 0);
+  assert.equal((await readdir(f.dataDir)).length, 0);
+});
+
+test('changing response language preserves submission fields and idempotency', async t => {
+  const f = await fixture(t);
+  const id = randomUUID();
+  const created = await f.post(leadBody, id, { 'Accept-Language': 'zh-TW' });
+  assert.equal(created.status, 201);
+  assert.deepEqual(await created.json(), { success: true, message: '信息已收到，我們通常在24小時內回覆。', leadId: id });
+  const before = await f.store.get(id);
+  const duplicate = await f.post(leadBody, id, { 'Accept-Language': 'en-GB' });
+  assert.equal(duplicate.status, 200);
+  assert.deepEqual(await duplicate.json(), { success: true, message: 'Your message has been received. We typically reply within 24 hours.', leadId: id });
+  const after = await f.store.get(id);
+  assert.equal(after.fingerprint, before.fingerprint);
+  assert.equal(after.content, leadBody.content);
+  assert.equal(after.expectedReplyTime, leadBody.expectedReplyTime);
+  assert.equal(Object.hasOwn(after, 'locale'), false);
+  assert.equal(Object.hasOwn(after, 'language'), false);
+  await f.app.deliverPending();
+  assert.equal(f.calls.length, 2);
+});
 
 test('persists a lead and delivers once to both recipients and Feishu despite concurrent duplicate submissions', async t => {
   const f = await fixture(t, { env: { FEISHU_APP_ID: 'bot-contract', FEISHU_APP_SECRET: 'local-auth', FEISHU_CHAT_ID: 'market-leads' } });

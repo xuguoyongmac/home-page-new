@@ -27,7 +27,7 @@ const overview = zh ? {
   ],
   alt: '数字员工在岗位目标、权限边界和交付要求下工作。主 Agent 向多个专业 Agent 委派任务，每项子任务单独保留消息与执行过程，并在配置允许的能力范围内推进。进度与结果回传给主 Agent，最终形成完整成果。',
 } : {
-  title: 'Multi-Agent collaboration', goal: 'Complex goal', result: 'Complete result',
+  title: 'Multi-Agent collaboration', goal: 'Complex goal', result: 'Complete deliverable',
   delegate: 'Task delegation', returned: 'Progress and results return', context: 'Isolated task context',
   mainWork: 'Delegate · Coordinate · Assemble', employee: 'Collaboration within a digital employee',
   scopeTitle: 'Work boundaries', scope: ['Role goal', 'Permission boundary', 'Delivery requirements'],
@@ -50,12 +50,12 @@ const labels = zh ? {
   waiting: '等待业务人员', humanJudgment: '需要专业判断', humanReturn: '处理结果回到原任务',
 } : {
   running: 'Collaboration in progress', specialists: 'Specialist work', main: 'Main Agent', goal: 'Business goal',
-  input: 'Input', output: 'Returns', result: 'Complete result', pending: 'Pending item',
+  input: 'Input', output: 'Returns', result: 'Complete deliverable', pending: 'Pending item',
   pendingBody: 'A business owner must confirm the contract interpretation', boundaries: ['Isolated task context', 'Concurrency limit', 'Collaboration depth', 'Timeout policy'],
   review: ['Review', 'Comment', 'Release version'], mainTask: 'Main task',
   mainOwns: 'Define goal · Organize work', separateContext: 'Isolated task context',
-  returnsToMain: 'Continuously receives each subtask return', returnTypes: ['Progress snapshot', 'Issue', 'Result'], policy: 'Collaboration policy',
-  waiting: 'Waiting for a colleague', humanJudgment: 'Professional judgment needed', humanReturn: 'Handled result returns to the original task',
+  returnsToMain: 'Receives progress and results from subtasks', returnTypes: ['Progress snapshot', 'Issue', 'Result'], policy: 'Collaboration policy',
+  waiting: 'Waiting for a colleague', humanJudgment: 'Professional judgment needed', humanReturn: 'The response returns to the original task',
 };
 ---
 <figure class:list={['ma-diagram', `ma-diagram-${scene}`]} aria-label={scene === 'overview' ? overview.alt : data.response}>

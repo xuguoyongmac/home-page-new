@@ -74,20 +74,20 @@ export default {
     ],
   },
   en: {
-    heroAlt: 'Within one digital employee run, a main Agent receives a due diligence goal, delegates financial, legal and business work to specialists, and assembles their results into working materials.',
+    heroAlt: 'Within one digital employee run, a main Agent receives a due diligence goal, delegates financial, legal and business work to specialist sub-Agents, and assembles their results into due diligence working papers.',
     sectionTitle: 'The main Agent owns the outcome while specialists go deep',
     sections: [
       {
         id: 'delegate', kind: 'execution',
         title: 'Clarify, then delegate',
-        body: 'The main Agent defines the goal, source materials and delivery requirements, then delegates independent work to specialist Agents.',
+        body: 'The main Agent defines the goal, source materials and delivery requirements, then delegates independent work to specialist sub-Agents.',
         points: [
           { title: 'The main Agent owns delivery', body: 'It identifies gaps and organizes returned work.' },
           { title: 'Specialists own bounded tasks', body: 'They work within authorized boundaries and return findings and open questions.' },
         ],
         visual: {
           title: 'Prepare project due diligence materials', context: 'Main task · Specialist delegation', tabs: ['Business goal', 'Specialist tasks', 'Return requirements'],
-          request: 'Review the project records and prepare due diligence working materials.',
+          request: 'Review the project records and prepare due diligence working papers.',
           response: 'Financial, legal and business review run separately and return to the same main task.',
           columns: ['Specialist task', 'Scope', 'Expected return'],
           rows: [
@@ -102,7 +102,7 @@ export default {
       {
         id: 'execute', kind: 'execution',
         title: 'Keep execution visible',
-        body: 'Each subtask keeps its own messages and execution process. Progress, issues and results return to the main task, while collaboration depth and timeouts remain policy controlled.',
+        body: 'Each subtask keeps its own messages and execution process. Progress, issues and results return to the main task, while concurrency, collaboration depth and timeouts remain policy controlled.',
         points: [
           { title: 'Run independent work in parallel', body: 'Tasks without dependencies can progress together.' },
           { title: 'Create pending items for people', body: 'Missing facts or approvals go to the responsible colleague.' },
@@ -130,7 +130,7 @@ export default {
           { title: 'Connect human judgment', body: 'Items return to the original task after professional review.' },
         ],
         visual: {
-          title: 'Project due diligence working materials', context: 'Main task · Combined output', tabs: ['Working materials', 'Sources', 'Confirmation items'],
+          title: 'Project due diligence working papers', context: 'Main task · Combined output', tabs: ['Working papers', 'Sources', 'Confirmation items'],
           request: 'Assemble specialist results and retain sources and confirmation items.',
           response: 'Returned work is organized into a project deliverable ready for review and editing.',
           columns: ['Deliverable', 'Content', 'Next action'],
@@ -140,7 +140,7 @@ export default {
             ['Confirmation items', 'Missing, conflicting and judgment-dependent issues', 'Differences and issues'],
           ],
           focus: { label: 'Project deliverable', title: 'Review, comment, edit and release a new version', body: 'Specialist returns and human handling remain in the same project workflow.' },
-          files: ['Due diligence working materials.docx', 'Differences and confirmation items.xlsx'],
+          files: ['Due diligence working papers.docx', 'Differences and confirmation items.xlsx'],
         },
       },
     ],

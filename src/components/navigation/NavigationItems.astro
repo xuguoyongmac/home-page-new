@@ -42,7 +42,7 @@ const resourcesActive = resourceLinks.some(link => link.active);
   <button type="button" class:list={['tego-nav-trigger', {'is-current': resourcesActive}]} aria-expanded="false" aria-controls={`${prefix}-resources`} data-nav-disclosure>{zh ? '资源与支持' : 'Resources & Support'}<Icon name="chevron" size={13}/></button>
   <div class="tego-nav-panel tego-nav-resources" id={`${prefix}-resources`} hidden>
     <div class="tego-nav-panel-body">
-      <ul class="tego-nav-grid">{resourceLinks.map(link => <li><a class="tego-nav-item" href={link.href} aria-current={link.active ? 'page' : undefined} rel={link.external ? 'external' : undefined}><span class="tego-nav-icon"><NavigationIcon name={link.icon}/></span><span class="tego-nav-label"><span>{link.label}</span><small>{link.description}</small></span></a></li>)}</ul>
+      <ul class="tego-nav-grid">{resourceLinks.map(link => <li><a class="tego-nav-item" href={link.href} hreflang={link.external ? 'zh-CN' : undefined} aria-current={link.active ? 'page' : undefined} rel={link.external ? 'external' : undefined}><span class="tego-nav-icon"><NavigationIcon name={link.icon}/></span><span class="tego-nav-label"><span>{link.label}</span><small>{link.description}</small></span></a></li>)}</ul>
     </div>
   </div>
 </div>

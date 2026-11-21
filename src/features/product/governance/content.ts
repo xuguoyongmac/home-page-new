@@ -20,7 +20,7 @@ export default {
       description: landing.en.hero.summary,
       navigationDescription: "Manage resource access and delegation, then inspect execution by task.",
       features: landing.en.features,
-      related: [{"path": "enterprise", "label": "Explore the platform"}],
+      related: [{"path": "enterprise", "label": "Explore enterprise deployment"}],
     },
   },
 } satisfies CapabilityModule;

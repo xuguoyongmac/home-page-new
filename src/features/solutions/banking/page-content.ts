@@ -5,424 +5,424 @@ export type BankingEmployee = IndustryEmployee;
 export const bankingPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让专业作业提速，让客户经营深入",
-      "pain": "授信资料反复核对，风险信息分散在不同系统；客户经理忙于准备材料，经营分析也难以接续到具体服务。",
-      "value": "数字员工连接行内知识与业务工具，承接信贷尽调、贷后跟踪、客户经营与运营分析，让专业人员把精力放在风险判断、客户沟通和业务发展。",
+      "title": "让专业作业提速，让客户经营增效",
+      "pain": "信贷核验耗时，风险线索分散，客户经营依赖个人经验；跨系统取数、补料和交接，让专业人力困在重复作业里。",
+      "value": "以数字员工贯通信贷、风控、客户经营与运营管理，将行内制度、岗位方法和业务系统转化为可执行的作业能力，持续交付审查底稿、客户方案与经营洞察，释放专业产能，推动全行协同增效。",
       "scenarios": [
-        "信贷尽调",
-        "授信审查",
-        "贷后管理",
+        "授信尽调",
+        "贷后风控",
         "对公经营",
-        "合规制度",
-        "网点运营"
+        "零售财富",
+        "运营服务",
+        "合规管理"
       ],
       "benefits": [
         {
-          "title": "专业审查更聚焦",
-          "description": "企业资料、财务关系与行内规则共同进入审查，关键差异带着原文依据交到专业人员手中。"
+          "title": "信贷作业提速，风险审查深入",
+          "description": "从资料归集、财务勾稽到尽调报告协同完成，差异与依据集中呈现，让专业人员直达风险判断。"
         },
         {
-          "title": "客户经营更深入",
-          "description": "把客户经营变化、产品需求和服务历史转为拜访议题与综合服务方案，让一线沟通更有准备。"
+          "title": "客户洞察到位，经营动作跟上",
+          "description": "贯通客户背景、产品知识与服务记录，把需求变化转为拜访议题、服务方案和持续跟进。"
         },
         {
-          "title": "条线协作更顺畅",
-          "description": "贷后核查、运营分析和制度更新按计划推进，业务背景、责任事项与最新成果持续接续。"
+          "title": "岗位经验复用，全行协作增效",
+          "description": "将成熟方法沉淀为技能与模板，把补料、复核、报告和整改接成工作链，让总分支机构共用专业能力。"
         }
       ]
     },
     "hero": {
       "lines": [
         "让专业作业提速",
-        "让客户经营深入"
+        "让客户经营增效"
       ],
       "background": "/images/industries/banking-architecture_V1.1.webp"
     },
     "sources": [
-      "企业资料与财务报表",
-      "授信记录与风险预警",
-      "客户经营与服务数据",
-      "行内制度与业务规则"
+      "客户资料与财务报表",
+      "授信记录与风险线索",
+      "客户经营与服务记录",
+      "行内制度与岗位方法"
     ],
     "outputs": [
-      "授信尽调与审查报告",
-      "客户风险跟踪简报",
-      "对公客户服务方案",
-      "经营分析与行动建议"
+      "授信尽调报告与核验底稿",
+      "贷后风险简报与核查清单",
+      "客户洞察与综合服务方案",
+      "经营分析与合规工作底稿"
     ],
     "features": [
       {
-        "title": "把重复核验交出去，让信贷审查更深入",
-        "problem": "客户资料与合同分批提交，财务口径、本行规则和报告要求各有差异，信审准备占用大量时间。",
-        "body": "将财务核验、资料分析和报告编制交给数字员工，按本行方法对应主体、期间、科目与审查要求。专业人员可围绕差异补充事实、修订报告，少做重复摘录与勾稽，把更多精力放在经营真实性和授信风险判断。",
+        "title": "信贷准备提速，专业审查更深入",
+        "problem": "资料分批到达、报表口径不一，信贷人员在逐份摘录和反复勾稽中消耗时间，关键风险反而难以聚焦。",
+        "body": "数字员工贯通资料归集、字段交叉核对、财务勾稽与报告编制，按本行制度和方法关联企业、期间、金额与交易背景。差异、缺项和原文依据随尽调底稿一并交付，团队接续补料与修订，让专业人员把精力放在经营真实性与授信风险判断。",
         "outcomes": [
-          "财务关系核验",
-          "本行模板编制",
-          "审查依据定位"
+          "财务交叉核验",
+          "尽调报告编制",
+          "审查依据回查"
         ]
       },
       {
-        "title": "贯通客户风险变化，贷后跟进更有重点",
-        "problem": "财务变化、舆情与预警各自更新，贷后人员需要反复查找客户背景，才能明确本次核查重点。",
-        "body": "按计划归集授权风险信息，将新信号与客户授信、经营和历史核查情况关联。数字员工整理变化脉络、影响事项和核查重点，把持续监测接到对应岗位的跟进工作中，保留现场反馈与后续处理记录。",
+        "title": "风险变化持续跟进，贷后核查直达重点",
+        "problem": "财务变化、风险预警与历史核查各自分散，新信号难以关联授信背景，贷后跟进常从重新翻阅材料开始。",
+        "body": "按周期归集客户经营、财务、担保与风险变化，对照授信约定和历史记录，形成变化摘要、影响事项与核查清单。数字员工持续接续补充材料、现场反馈和处理进度，让风险线索有背景、核查工作有重点、后续跟进有着落。",
         "outcomes": [
-          "客户风险归并",
-          "贷后核查准备",
-          "跟进反馈接续"
+          "风险线索归并",
+          "贷后变化分析",
+          "核查事项跟进"
         ]
       },
       {
-        "title": "带着客户洞察，准备更贴近需求的服务",
-        "problem": "客户经营、结算与融资需求分散在多处记录，客户经理准备拜访和方案时，需要重新拼接信息。",
-        "body": "围绕目标客户与重点客群，结合经营资料、产品知识和已授权服务记录，梳理业务变化、潜在需求与沟通议题。数字员工协同准备客户画像、拜访材料和综合服务方案，让客户经理从材料准备走向更深入的业务沟通。",
+        "title": "把客户洞察转为经营机会，把专业服务带到一线",
+        "problem": "客户画像、产品信息和服务历史分散在多个系统，客户经理忙于拼资料，难以把客户变化及时转成有针对性的服务。",
+        "body": "连接客户经营与服务记录、行内产品和行业知识，围绕对公客户与零售财富客群，梳理资金安排、业务变化和沟通需求。数字员工协同产出客户洞察、访前提纲和综合服务方案，接续会后事项，让一线带着判断依据沟通，带着具体方案跟进。",
         "outcomes": [
-          "对公客户画像",
-          "拜访与商机准备",
-          "综合方案协作"
+          "客户需求洞察",
+          "访前与回访准备",
+          "综合服务方案"
         ]
       },
       {
-        "title": "看清经营变化，把分析接到条线行动",
-        "problem": "网点波动、运营差异和制度更新跨越多个条线，报表汇总之后，还要解释原因并组织后续工作。",
-        "body": "连接获准经营数据和制度知识，按网点、客群、产品与渠道分析变化，整理差异原因和协调事项。数字员工可持续准备经营简报、业务答复及制度修订材料，在项目会话中接续责任分工、人员意见和成果版本。",
+        "title": "经营分析形成行动，运营协作形成合力",
+        "problem": "经营报表汇总之后仍要解释差异，运营问题、制度更新和整改事项跨越多个岗位，分析与执行容易脱节。",
+        "body": "结合业务数据与制度知识，按网点、客群、产品和渠道分析变化，持续形成经营简报、运营核对底稿与制度影响分析。通过项目协作接续问题、责任人、复核意见和成果版本，让管理层看清变化，让条线把分析落实到服务改进与运营行动。",
         "outcomes": [
-          "经营归因分析",
-          "运营差异追踪",
-          "制度更新协作"
+          "经营变化归因",
+          "运营问题协作",
+          "制度与整改跟进"
         ]
       }
     ],
-    "teamTitle": "面向银行业务条线的数字员工团队",
+    "teamTitle": "把银行专业方法，装配成可协作的数字员工团队",
     "employees": [
       {
-        "role": "信贷尽调数字员工",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "role": "信贷尽调数字员工",
         "skills": [
-          "财务勾稽",
-          "经营分析",
-          "报告编制"
+          "资料交叉核验",
+          "财务勾稽分析",
+          "尽调报告编制"
         ],
         "process": [
-          "核对企业、财报与合同关系",
-          "调用本行方法分析授信资料",
-          "编制尽调报告并接续修订"
+          "归集客户资料并对照材料要求",
+          "核验主体、期间与财务关系",
+          "形成尽调底稿并接续补料修订"
         ],
         "outputs": [
           "授信尽调报告",
-          "财务核验明细"
+          "财务核验与疑点清单"
         ],
-        "value": "把案头准备转成深入审查的起点"
+        "value": "让信贷人员少做重复核对，多做深入判断"
       },
       {
-        "role": "贷后风险数字员工",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "role": "贷后风险数字员工",
         "skills": [
-          "预警归并",
-          "风险关联",
-          "持续跟踪"
+          "风险线索关联",
+          "经营变化分析",
+          "核查事项跟进"
         ],
         "process": [
-          "汇集客户风险与经营变化",
-          "关联授信背景和历史核查",
-          "持续更新跟进重点与反馈"
+          "对照本期与历史经营财务信息",
+          "关联授信约定、担保与预警线索",
+          "更新核查重点并接续处置反馈"
         ],
         "outputs": [
           "客户风险简报",
-          "贷后核查任务"
+          "贷后核查与待补清单"
         ],
-        "value": "让每次核查都带着完整客户背景"
+        "value": "把分散信号转为有背景、有重点的风险跟进"
       },
       {
-        "role": "对公经营数字员工",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "role": "客户经营数字员工",
         "skills": [
-          "客户洞察",
-          "商机准备",
-          "方案协作"
+          "客户需求洞察",
+          "产品知识匹配",
+          "综合方案协作"
         ],
         "process": [
-          "分析客户经营与服务需求",
-          "组织拜访议题和产品资料",
-          "协同形成综合服务方案"
+          "汇集客户经营与服务背景",
+          "准备对公拜访或财富服务议题",
+          "协同形成方案并接续服务事项"
         ],
         "outputs": [
-          "客户拜访材料",
+          "客户洞察与访前提纲",
           "综合服务方案"
         ],
-        "value": "让客户经理带着洞察进入业务沟通"
+        "value": "让客户经理带着洞察沟通，带着方案经营"
       },
       {
-        "role": "交易运营数字员工",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "role": "运营服务数字员工",
         "skills": [
-          "业务核对",
-          "差异分析",
-          "事项接续"
+          "业务材料核对",
+          "服务问题分析",
+          "跨岗位协作"
         ],
         "process": [
-          "归集结算与运营业务记录",
-          "对照处理规则定位差异",
-          "组织跨岗位反馈与接续"
+          "对照办理规则核验运营材料",
+          "归纳业务差异与客户服务问题",
+          "形成办理底稿并跟进协作反馈"
         ],
         "outputs": [
-          "运营差异分析",
-          "业务交接记录"
+          "运营核对与差异清单",
+          "客户服务办理底稿"
         ],
-        "value": "减少跨系统核对和重复沟通"
+        "value": "把重复核对交出去，把服务衔接接起来"
       },
       {
-        "role": "合规制度数字员工",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "role": "合规制度数字员工",
         "skills": [
-          "条款检索",
+          "制度依据检索",
           "内外规比对",
-          "修订协作"
+          "检查整改协作"
         ],
         "process": [
-          "匹配现行条款与业务问题",
-          "分析外规变化对内规的影响",
-          "汇集修订意见并维护版本"
+          "匹配业务问题与适用制度版本",
+          "梳理外规变化及内规影响",
+          "归集检查凭据并跟进整改事项"
         ],
         "outputs": [
-          "制度影响分析",
-          "条款修订准备稿"
+          "制度影响与修订材料",
+          "检查证据与整改台账"
         ],
-        "value": "让制度变化落到业务执行和方法维护"
+        "value": "让制度有出处、变化有响应、整改有接续"
       },
       {
-        "role": "经营分析数字员工",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
+        "role": "经营分析数字员工",
         "skills": [
-          "指标分析",
-          "经营归因",
-          "管理汇报"
+          "指标口径核对",
+          "经营变化归因",
+          "管理报告编制"
         ],
         "process": [
-          "关联计划、网点与客群数据",
-          "解释指标变化与业务差异",
-          "准备经营汇报和协调议题"
+          "汇集网点、产品与客群经营数据",
+          "核对统计口径并定位指标差异",
+          "编制周期简报与经营讨论材料"
         ],
         "outputs": [
-          "网点经营简报",
-          "经营行动建议"
+          "经营分析报告",
+          "差异说明与行动议题"
         ],
-        "value": "把报表变化转为有重点的经营讨论"
+        "value": "让报表里的变化成为管理层可行动的洞察"
       }
     ],
     "deployment": {
-      "title": "融入本行系统，服务全行协作",
-      "body": "在行内私有环境部署 TeGo 数字员工协作平台，连接获准模型、知识与业务接口。按条线、岗位和资源组织授权，将机构方法沉淀为可复用技能，并统一管理发布、审核、审计与运行，让数字员工随业务持续演进。"
+      "title": "模型灵活选择，专业能力沉淀在行内",
+      "body": "私有化部署 TeGo，接入行内模型、知识与业务系统，按条线和岗位组织数字员工。将本行制度、岗位方法和报告规范沉淀为可复用资产，统一管理模板发布、权限设置、人工确认与审计记录，让成熟做法从一个岗位扩展到更多机构。"
     }
   },
   "en": {
     "home": {
-      "title": "Accelerate specialist work. Deepen client relationships.",
-      "pain": "Credit records require repeated checks, risk information sits across systems, and relationship managers spend valuable time preparing materials. Business analysis often stops before it reaches frontline service.",
-      "value": "Digital employees connect bank knowledge and approved tools to support credit diligence, post-loan monitoring, corporate coverage and operating analysis, freeing specialists for risk judgment, client conversations and business development.",
+      "title": "Accelerate specialist work. Grow client value.",
+      "pain": "Credit checks consume time, risk signals remain fragmented, and client coverage depends on individual experience. Repeated data collection, document requests and handovers keep specialists tied to routine work.",
+      "value": "Connect credit, risk, client coverage and operations through digital employees. Turn internal policies, specialist methods and business systems into working capabilities that deliver review files, client proposals and business insights, releasing capacity across the bank.",
       "scenarios": [
         "Credit diligence",
-        "Credit review",
-        "Post-loan management",
+        "Post-loan risk",
         "Corporate coverage",
-        "Policy and compliance",
-        "Branch operations"
+        "Retail and wealth",
+        "Service operations",
+        "Compliance management"
       ],
       "benefits": [
         {
-          "title": "Focus specialist reviews",
-          "description": "Bring company records, financial relationships and internal requirements together, with source-backed differences ready for review."
+          "title": "Faster preparation, deeper credit review",
+          "description": "Connect document collection, financial reconciliation and diligence reporting. Present differences with their sources so specialists can focus on risk judgment."
         },
         {
-          "title": "Deepen client coverage",
-          "description": "Turn operating changes, product needs and service history into useful meeting topics and integrated service proposals."
+          "title": "Client insight that leads to action",
+          "description": "Connect client context, product knowledge and service history to turn changing needs into meeting agendas, service proposals and ongoing follow-up."
         },
         {
-          "title": "Connect work across teams",
-          "description": "Keep monitoring, analysis and policy updates moving, with business context, ownership and current deliverables carried forward."
+          "title": "Shared expertise across the bank",
+          "description": "Preserve proven methods as skills and templates, connecting document requests, reviews, reports and remediation across head office and branches."
         }
       ]
     },
     "hero": {
       "lines": [
         "Accelerate specialist work",
-        "Deepen client relationships"
+        "Grow client value"
       ],
       "background": "/images/industries/banking-architecture_V1.1.webp"
     },
     "sources": [
-      "Company records and financial statements",
-      "Credit history and risk alerts",
-      "Client activity and service data",
-      "Internal policies and business rules"
+      "Client records and financial statements",
+      "Credit history and risk signals",
+      "Client activity and service records",
+      "Bank policies and specialist methods"
     ],
     "outputs": [
-      "Credit diligence and review reports",
-      "Client risk updates",
-      "Corporate service proposals",
-      "Operating analysis and action plans"
+      "Credit diligence reports and verification files",
+      "Post-loan risk briefs and review checklists",
+      "Client insights and integrated service proposals",
+      "Business analysis and compliance working papers"
     ],
     "features": [
       {
-        "title": "Deepen credit diligence and focus review on the judgments that matter",
-        "problem": "Company records, financials and contracts arrive in batches. Bank-specific methods and reporting requirements add substantial preparation work.",
-        "body": "Delegate financial checks, record analysis and report drafting to digital employees. Apply the bank’s methods to entities, periods, accounts and review requirements, then incorporate specialist questions and revisions. Credit teams spend less time transcribing and reconciling, and more time assessing operating substance and credit risk.",
+        "title": "Accelerate credit preparation. Deepen specialist review.",
+        "problem": "Documents arrive in batches and reporting definitions differ. Repeated transcription and reconciliation leave less time to examine the risks that matter.",
+        "body": "Digital employees connect document collection, cross-document checks, financial reconciliation and reporting using the bank’s own policies and methods. Deliver differences, missing items and source evidence alongside diligence files, then carry document requests and revisions forward so specialists can focus on business substance and credit risk.",
         "outcomes": [
-          "Financial reconciliation",
-          "Bank-specific report drafting",
-          "Source-linked review findings"
+          "Financial cross-checks",
+          "Diligence report drafting",
+          "Source-linked findings"
         ]
       },
       {
-        "title": "Bring post-loan changes together for more focused risk follow-up",
-        "problem": "Financial changes, news and system alerts update independently. Reviewers must reconstruct client history before deciding what to investigate.",
-        "body": "Collect approved risk information on a schedule and connect new signals with credit exposure, operations and previous reviews. Digital employees prepare the change history, affected matters and investigation priorities, while keeping subsequent feedback connected to the responsible teams.",
+        "title": "Keep risk changes in view and focus post-loan follow-up.",
+        "problem": "Financial changes, alerts and earlier reviews sit apart. New signals lack credit context, and each investigation starts with another search through the files.",
+        "body": "Compare periodic changes in client operations, finances, guarantees and risk against credit terms and earlier records. Digital employees prepare change summaries, affected matters and investigation checklists, then carry new documents, field findings and responses forward for focused, continuous follow-up.",
         "outcomes": [
-          "Client risk aggregation",
-          "Post-loan review preparation",
-          "Connected follow-up records"
+          "Connected risk signals",
+          "Post-loan change analysis",
+          "Investigation follow-through"
         ]
       },
       {
-        "title": "Bring client insight into meetings and build more relevant service proposals",
-        "problem": "Operating changes, settlement needs and financing requirements sit across records, leaving relationship managers to assemble the context for each meeting.",
-        "body": "Combine business records, product knowledge and approved service history around target clients and segments. Digital employees identify changes, potential needs and discussion topics, then help prepare client profiles, meeting materials and integrated proposals for more productive relationship conversations.",
+        "title": "Turn client insight into relevant opportunities and better service.",
+        "problem": "Client profiles, product information and service history span multiple systems. Relationship managers assemble materials before they can respond to changing client needs.",
+        "body": "Connect operating and service records with bank product and sector knowledge for corporate, retail and wealth teams. Prepare client insights, meeting agendas and integrated service proposals around funding plans, business changes and service needs, then continue follow-up with the same context.",
         "outcomes": [
-          "Corporate client insight",
-          "Meeting and opportunity preparation",
-          "Integrated proposal collaboration"
+          "Client needs insight",
+          "Meeting and follow-up preparation",
+          "Integrated service proposals"
         ]
       },
       {
-        "title": "Explain operating changes and keep the resulting actions moving",
-        "problem": "Branch performance, operating exceptions and policy changes span multiple teams. Consolidated reports still need explanation and coordinated follow-through.",
-        "body": "Use approved business data and internal knowledge to analyze changes by branch, segment, product and channel. Prepare operating briefs, service answers and policy revisions, then carry responsibilities, staff feedback and document versions forward in shared project conversations.",
+        "title": "Turn business analysis into action and connect operating teams.",
+        "problem": "Consolidated reports still need their differences explained. Operating issues, policy changes and remediation span teams, leaving analysis disconnected from execution.",
+        "body": "Analyze changes by branch, segment, product and channel using business data and policy knowledge. Produce management briefs, operating review files and policy impact assessments, then connect issues, owners, review comments and document versions in shared projects so teams can act on the findings.",
         "outcomes": [
-          "Operating attribution",
-          "Exception follow-up",
-          "Policy update collaboration"
+          "Operating change analysis",
+          "Exception collaboration",
+          "Policy and remediation follow-up"
         ]
       }
     ],
-    "teamTitle": "A digital employee team for banking business lines",
+    "teamTitle": "Turn banking expertise into a digital employee team",
     "employees": [
       {
-        "role": "Credit Diligence Digital Employee",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "role": "Credit Diligence Digital Employee",
         "skills": [
+          "Cross-document verification",
           "Financial reconciliation",
-          "Business analysis",
-          "Report drafting"
+          "Diligence reporting"
         ],
         "process": [
-          "Check company, financial and contract relationships",
-          "Apply bank-specific diligence methods",
-          "Draft reports and incorporate revisions"
+          "Collect client records against document requirements",
+          "Check entities, periods and financial relationships",
+          "Prepare diligence files and continue document revisions"
         ],
         "outputs": [
           "Credit diligence report",
-          "Financial verification detail"
+          "Financial checks and open issues"
         ],
-        "value": "Turn preparation into a stronger foundation for credit review"
+        "value": "Less repeated checking. More capacity for specialist judgment."
       },
       {
-        "role": "Post-loan Risk Digital Employee",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "role": "Post-loan Risk Digital Employee",
         "skills": [
-          "Alert aggregation",
-          "Risk context",
-          "Ongoing monitoring"
+          "Risk signal analysis",
+          "Operating change analysis",
+          "Investigation follow-up"
         ],
         "process": [
-          "Collect client risk and operating changes",
-          "Connect credit history and previous reviews",
-          "Update investigation priorities and follow-up"
+          "Compare current and historical operating records",
+          "Connect credit terms, guarantees and risk alerts",
+          "Update investigation priorities and carry responses forward"
         ],
         "outputs": [
           "Client risk brief",
-          "Post-loan review tasks"
+          "Investigation and document checklist"
         ],
-        "value": "Give every investigation a complete client context"
+        "value": "Turn fragmented signals into focused, contextual follow-up."
       },
       {
-        "role": "Corporate Coverage Digital Employee",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "role": "Client Coverage Digital Employee",
         "skills": [
-          "Client insight",
-          "Opportunity preparation",
-          "Proposal development"
+          "Client needs insight",
+          "Product knowledge matching",
+          "Integrated proposals"
         ],
         "process": [
-          "Analyze client operations and service needs",
-          "Prepare meeting topics and product knowledge",
-          "Develop integrated service proposals"
+          "Bring client operations and service history together",
+          "Prepare corporate or wealth service meeting topics",
+          "Develop proposals and continue service follow-up"
         ],
         "outputs": [
-          "Client meeting materials",
+          "Client insights and meeting agenda",
           "Integrated service proposal"
         ],
-        "value": "Bring informed insight into client conversations"
+        "value": "Give relationship managers insight for conversations and proposals for action."
       },
       {
-        "role": "Transaction Operations Digital Employee",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "role": "Service Operations Digital Employee",
         "skills": [
-          "Record checks",
-          "Exception analysis",
-          "Work handovers"
+          "Business document checks",
+          "Service issue analysis",
+          "Team coordination"
         ],
         "process": [
-          "Collect settlement and operating records",
-          "Locate differences against processing rules",
-          "Connect responses and work across teams"
+          "Check operating documents against processing rules",
+          "Identify differences and recurring service issues",
+          "Prepare working files and follow cross-team responses"
         ],
         "outputs": [
-          "Operating exception analysis",
-          "Business handover record"
+          "Operating checks and exception list",
+          "Client service working file"
         ],
-        "value": "Reduce repeated checks and cross-system coordination"
+        "value": "Reduce repeated checks and connect the service handover."
       },
       {
-        "role": "Policy and Compliance Digital Employee",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "role": "Policy and Compliance Digital Employee",
         "skills": [
-          "Policy retrieval",
+          "Policy evidence retrieval",
           "Regulatory comparison",
-          "Revision collaboration"
+          "Review and remediation"
         ],
         "process": [
-          "Match current provisions to business questions",
-          "Assess external changes against internal policies",
-          "Collect revisions and maintain versions"
+          "Match business questions to applicable policy versions",
+          "Assess regulatory changes against internal requirements",
+          "Collect review evidence and follow remediation work"
         ],
         "outputs": [
-          "Policy impact assessment",
-          "Draft policy revisions"
+          "Policy impact and revision materials",
+          "Review evidence and remediation register"
         ],
-        "value": "Connect policy changes with business practice"
+        "value": "Keep policies traceable and changes connected to action."
       },
       {
-        "role": "Business Analysis Digital Employee",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
+        "role": "Business Analysis Digital Employee",
         "skills": [
-          "Metric analysis",
-          "Business attribution",
+          "Metric definition checks",
+          "Business change analysis",
           "Management reporting"
         ],
         "process": [
-          "Connect plans, branches and client segments",
-          "Explain indicator changes and variances",
-          "Prepare management reports and discussion topics"
+          "Collect branch, product and client segment results",
+          "Check metric definitions and locate differences",
+          "Produce periodic briefs and management discussion materials"
         ],
         "outputs": [
-          "Branch operating brief",
-          "Business action recommendations"
+          "Business analysis report",
+          "Variance explanations and action topics"
         ],
-        "value": "Turn report movements into focused management discussions"
+        "value": "Turn movements in reports into insight managers can act on."
       }
     ],
     "deployment": {
-      "title": "Connect with bank systems and support institution-wide collaboration",
-      "body": "Deploy TeGo Digital Employee Collaboration Platform within the bank’s private environment and connect approved models, knowledge and business interfaces. Organize access by business line, role and resource, preserve institutional methods as reusable skills, and manage releases, reviews, audits and operations as business needs evolve."
+      "title": "Choose your models. Keep banking expertise in-house.",
+      "body": "Deploy TeGo privately and connect bank models, knowledge and business systems. Organize digital employees by business line and role, preserve policies, methods and reporting standards as reusable assets, and manage template releases, access, human confirmations and audit records as proven practices expand across the bank."
     }
   }
 };

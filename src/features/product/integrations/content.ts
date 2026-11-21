@@ -20,7 +20,7 @@ export default {
       description: landing.en.hero.summary,
       navigationDescription: "Bring business records into the task and return results to the workflow.",
       features: landing.en.features,
-      related: [{"path": "ecosystem", "label": "Explore the platform"}],
+      related: [{"path": "ecosystem", "label": "Explore the open ecosystem"}],
     },
   },
 } satisfies CapabilityModule;

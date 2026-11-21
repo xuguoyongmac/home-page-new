@@ -8,7 +8,7 @@ const zh = locale === 'zh';
 const employees = employeeArtworkFor(locale);
 const selected = employees[0];
 ---
-<div class="employee-market-art" role="img" aria-label={zh ? '我的员工界面，八类岗位列表与财务核算专员的岗位职责、专业技能、企业知识、业务系统和业务成果' : 'My employees: eight business roles and a finance profile showing responsibilities, specialist skills, company knowledge, business systems and deliverables'}>
+<div class="employee-market-art" role="img" aria-label={zh ? '我的员工界面，八类岗位列表与财务核算专员的岗位职责、专业技能、企业知识、业务系统和业务成果' : 'My employees: eight business roles and a finance profile showing responsibilities, specialist skills, enterprise knowledge, business systems and deliverables'}>
   <div class="market-shell" aria-hidden="true">
     <div class="market-heading"><strong>{zh ? '我的员工' : 'My employees'}</strong><span><Icon name="search" size={13}/>{zh ? '搜索数字员工' : 'Search employees'}</span></div>
     <div class="market-content">
@@ -33,7 +33,7 @@ const selected = employees[0];
           <div>{(zh ? ['资料整理', '文书编制', '数据核对'] : ['Organize materials', 'Draft documents', 'Reconcile data']).map((skill,index)=><span class={`market-skill-${index}`}>{skill}</span>)}</div>
         </div>
         <div class="market-profile-knowledge market-profile-group">
-          <strong>{zh ? '企业知识' : 'Company knowledge'}</strong>
+          <strong>{zh ? '企业知识' : 'Enterprise knowledge'}</strong>
           <div class="market-profile-resource"><Icon name="book" size={16}/><span>{zh ? '财务口径 · 工资规则' : 'Accounting policies · Payroll rules'}</span></div>
         </div>
         <div class="market-profile-systems market-profile-group">

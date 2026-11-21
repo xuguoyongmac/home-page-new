@@ -46,26 +46,26 @@ export default {
   en: {
     hero: {
       lines: ['Clear access boundaries', 'Keep execution records'],
-      summary: 'Use organizational identity and manage knowledge, project access and plugin delegation separately. Retain review decisions, tool calls and deliverable evidence across digital employee access and execution.',
+      summary: 'Use organizational identity and manage knowledge, project access and plugin delegation separately. Retain review decisions, tool calls and deliverable evidence across digital employee availability, publication and execution.',
     },
     pain: {
       title: 'Delegate the work and keep control of the process',
       items: [
         'Libraries, projects and business plugins have distinct access rules. An assignment does not replace explicit authorization.',
         'A final answer alone does not show which tools ran, which materials were used or what was delivered.',
-        'Growing employee teams need organizational reviews for creation, access and publication, while temporary delegation needs an end.',
+        'Growing digital employee teams need organizational reviews for creation, availability and publication, while temporary delegation needs an end.',
       ],
     },
     concept: {
       title: 'Connect identity, authorization, review and execution records',
-      body: 'Start with organizational identities and roles, then manage knowledge permissions, project access and plugin delegation separately. Review employee creation and access, templates and capability publication under organizational policy, and follow task, tool and deliverable records to inspect the work.',
+      body: 'Start with organizational identities and roles, then manage knowledge permissions, project access and plugin delegation separately. Review digital employee creation and availability, digital employee templates and capability publication under organizational policy, and follow task, tool and deliverable records to inspect the work.',
       labels: ['Identity and roles', 'Resource access', 'Delegation and review', 'Execution records'],
     },
     features: [
       { icon: 'network', title: 'Connect enterprise identities and roles', body: 'Connect LDAP / OIDC identity providers and use organizational roles to manage people and resource access.' },
       { icon: 'key', title: 'Define access for each resource', body: 'Configure knowledge permissions, project access and plugin delegation separately. Knowledge retrieval follows the caller’s permissions; project file access follows the delegating person’s current project role.' },
       { icon: 'key', title: 'Grant delegation for the work, then withdraw it', body: 'Explicitly authorize plugin work using business records visible to the delegating person. Enable or revoke delegation as needed and retain authorization changes.' },
-      { icon: 'check', title: 'Retain organizational decisions from creation to publication', body: 'Review digital employee creation and access, template and plugin publication, skill changes and resource authorization. Keep submission snapshots and decisions.' },
+      { icon: 'check', title: 'Retain organizational decisions from creation to publication', body: 'Review digital employee creation and availability, digital employee template and plugin publication, skill changes and resource authorization. Keep submission snapshots and decisions.' },
       { icon: 'shield', title: 'Follow tasks through tools and deliverables', body: 'Review task steps, tool calls and deliverable records alongside governance changes to reconstruct the work for business review and investigation.' },
       {"icon": "file-search", "title": "Connect provenance, receipts and evidence", "body": "Execution receipts connect inputs, actions, results and files. Link output passages to knowledge, documents or business sources. Use content identifiers, provenance codes and digest checks to inspect evidence and changes."},
       {"icon": "clipboard-check", "title": "Bring risk findings into audit handling", "body": "Configure risk rules and review alerts and quality findings within authorization. Gather tasks and evidence into cases, assign handling and produce reports. Policies govern audit access, redaction, export and legal holds."},
@@ -78,7 +78,7 @@ export default {
     ],
     benefits: [
       { title: 'Defined work boundaries', body: 'Authorize libraries, projects and plugins for their business purpose.' },
-      { title: 'Reviewed capability access', body: 'Retain submission content and organizational decisions for creation and publication.' },
+      { title: 'Reviewed capability availability', body: 'Retain submission content and organizational decisions for creation, availability and publication.' },
       { title: 'Adjustable delegation', body: 'Grant access when needed and withdraw it when the work ends.' },
       { title: 'Inspectable work', body: 'Connect task steps, tools, deliverables and governance changes.' },
     ],

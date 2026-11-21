@@ -13,7 +13,7 @@ const story = industry.story;
   <section class="solution-story-hero" aria-labelledby="solution-title">
     <div class="container">
       <div class="solution-story-hero-grid">
-        <div class="solution-story-copy"><h1 id="solution-title">{(story?.lines ?? [industry.title]).map(line => <span>{line}</span>)}</h1><p>{industry.description}</p><a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约方案交流' : 'Discuss your solution'}</a></div>
+        <div class="solution-story-copy"><h1 id="solution-title">{(story?.lines ?? [industry.title]).map(line => <span>{line}</span>)}</h1><p>{industry.description}</p><a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a></div>
         {story && <OutcomeExhibit exhibit={story.exhibit} locale={locale}/>}
       </div>
     </div>

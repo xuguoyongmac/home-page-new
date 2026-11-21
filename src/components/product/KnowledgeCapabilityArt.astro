@@ -5,7 +5,7 @@ interface Props { locale: Locale; scene?: number; }
 const { locale, scene = -1 } = Astro.props;
 const zh = locale === 'zh';
 const t = (cn: string, en: string) => zh ? cn : en;
-const sources = [t('项目交付管理办法.pdf','Delivery policy.pdf'),t('交付物验收清单.xlsx','Acceptance checklist.xlsx'),t('年度服务方案.docx','Service proposal.docx')];
+const sources = [t('项目交付管理办法.pdf','Delivery policy.pdf'),t('交付物验收清单.xlsx','Acceptance checklist.xlsx'),t('年度服务方案.docx','Annual service proposal.docx')];
 ---
 <figure class:list={['cp-art','knowledge-art',`knowledge-scene-${scene}`]} role="img" aria-label={t('企业知识从授权资料、检索引用到业务文稿的过程','Authorized enterprise sources, retrieval, citations and business documents')}>
   {scene === -1 && <div class="knowledge-overview">
@@ -26,10 +26,10 @@ const sources = [t('项目交付管理办法.pdf','Delivery policy.pdf'),t('交�
     <div class="context-boundaries">
       <div class="boundary-source boundary-enterprise"><Icon name="book" size={19}/><div><strong>{t('企业知识','Enterprise knowledge')}</strong><p>{t('长期维护 · 跨任务复用','Maintained · Reused across tasks')}</p><span><Icon name="key-round" size={12}/>{t('知识库授权','Library permissions')}</span></div></div>
       <div class="boundary-source boundary-project"><Icon name="folder" size={19}/><div><strong>{t('项目资料','Project material')}</strong><p>{t('当前项目 · 文件与成果','Current project · Files and results')}</p><span><Icon name="users" size={12}/>{t('项目成员范围','Project membership')}</span></div></div>
-      <div class="boundary-source boundary-memory"><Icon name="clock" size={19}/><div><strong>{t('工作记忆','Work memory')}</strong><p>{t('已确认背景 · 持续事项','Confirmed context · Ongoing work')}</p><span><Icon name="user-check" size={12}/>{t('成员与数字员工上下文','Member and employee context')}</span></div></div>
+      <div class="boundary-source boundary-memory"><Icon name="clock" size={19}/><div><strong>{t('工作记忆','Work memory')}</strong><p>{t('已确认背景 · 持续事项','Confirmed context · Ongoing work')}</p><span><Icon name="user-check" size={12}/>{t('成员与数字员工上下文','Member and digital employee context')}</span></div></div>
     </div>
     <div class="boundary-routing" aria-hidden="true"><svg viewBox="0 0 74 270" preserveAspectRatio="none"><path d="M1 45H25V135H73M1 135H73M1 225H25V135"/><circle cx="1" cy="45" r="2.5"/><circle cx="1" cy="135" r="2.5"/><circle cx="1" cy="225" r="2.5"/><circle cx="72" cy="135" r="3"/></svg></div>
-    <div class="current-work raised"><div class="art-heading"><Icon name="file-search" size={20}/><strong>{t('当前任务','Current task')}</strong></div><p class="current-work-request">{t('依据交付制度和项目资料，更新下一阶段服务方案。','Update the next service phase proposal using policy and project material.')}</p><div class="context-used"><div><span>{t('制度依据','Policy evidence')}</span><b>{t('企业知识','Knowledge')}</b></div><div><span>{t('当前范围','Current scope')}</span><b>{t('项目资料','Project')}</b></div><div><span>{t('已确认背景','Confirmed context')}</span><b>{t('工作记忆','Memory')}</b></div></div><div class="scope-separation"><Icon name="shield" size={14}/>{t('各自校验访问范围，不自动合并授权','Each source keeps its own access checks')}</div></div>
+    <div class="current-work raised"><div class="art-heading"><Icon name="file-search" size={20}/><strong>{t('当前任务','Current task')}</strong></div><p class="current-work-request">{t('依据交付制度和项目资料，更新下一阶段服务方案。','Update the next service phase proposal using policy and project material.')}</p><div class="context-used"><div><span>{t('制度依据','Policy evidence')}</span><b>{t('企业知识','Enterprise knowledge')}</b></div><div><span>{t('当前范围','Current scope')}</span><b>{t('项目资料','Project files')}</b></div><div><span>{t('已确认背景','Confirmed context')}</span><b>{t('工作记忆','Work memory')}</b></div></div><div class="scope-separation"><Icon name="shield" size={14}/>{t('各自校验访问范围，不自动合并授权','Separate access checks; no automatic permission sharing')}</div></div>
   </div>}
 </figure>
 <style>

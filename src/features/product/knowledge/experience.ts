@@ -229,7 +229,7 @@ export default {
             [
               "Annual service proposal.docx",
               "Searchable",
-              "Scope and deliverables"
+              "Service scope and delivery standards"
             ]
           ],
           "focus": {

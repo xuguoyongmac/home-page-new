@@ -20,7 +20,7 @@ export default {
       description: landing.en.hero.summary,
       navigationDescription: "Retrieve authorized knowledge and carry citations into the work.",
       features: landing.en.features,
-      related: [{"path": "ecosystem", "label": "Explore the platform"}],
+      related: [{"path": "ecosystem", "label": "Explore the open ecosystem"}],
     },
   },
 } satisfies CapabilityModule;

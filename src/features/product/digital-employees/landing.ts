@@ -42,7 +42,7 @@ export default {
   en: {
     hero: {
       lines: ['Digital employees for business roles'],
-      summary: 'Digital employees bring together role responsibilities, specialist skills, company knowledge, and business systems to take on work across enterprise operations, turning business requests into results your team can review and reuse.',
+      summary: 'Digital employees bring together role responsibilities, specialist skills, enterprise knowledge, and business systems to take on work across enterprise operations, turning business requests into results your team can review and reuse.',
     },
     pain: {
       title: 'Delegate repeatable work and keep expertise in the business',

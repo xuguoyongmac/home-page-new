@@ -12,12 +12,12 @@ export default createIndustryModule({
   "navigation": {
     "zh": {
       "name": "保险",
-      "description": "渠道展业、核保理赔、保单服务",
+      "description": "专业展业、核保理赔、保单经营",
       "icon": "shield"
     },
     "en": {
       "name": "Insurance",
-      "description": "Distribution, underwriting and claims, policy services",
+      "description": "Distribution expertise, underwriting, claims and policy services",
       "icon": "shield"
     }
   }

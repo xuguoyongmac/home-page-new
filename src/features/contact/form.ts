@@ -74,7 +74,7 @@ export function initContactForm() {
     submit.textContent = copy.form.submitting; status.hidden = true; delete status.dataset.state;
     try {
       const response = await fetch(form.dataset.contactApi || '/api/contact/', {
-        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept-Language': locale, 'Idempotency-Key': requestId },
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept-Language': document.documentElement.lang || locale, 'Idempotency-Key': requestId },
         body: payload, signal: AbortSignal.timeout(20000),
       });
       if (!response.headers.get('content-type')?.includes('application/json')) throw new Error(copy.failure);

@@ -28,7 +28,7 @@ export const contactContent = {
     sections: { enquiry: 'Enquiry', contact: 'Contact details' },
     form: {
       title: { label: 'Subject', placeholder: 'What would you like to discuss?' },
-      content: { label: 'Message', placeholder: 'Tell us about your team, use case, deployment needs, or timeline.' },
+      content: { label: 'Message', placeholder: 'Describe your question, feedback, or requirements.' },
       nickname: { label: 'Nickname (optional)', placeholder: 'How should we address you?' },
       contact: { label: 'Contact details', placeholder: 'Enter an email or phone number' },
       expectedReplyTime: { label: 'Preferred reply time', defaultValue: 'As soon as possible', clear: 'Clear time', period: 'Time of day', morning: 'Morning', afternoon: 'Afternoon', previousMonth: 'Previous month', nextMonth: 'Next month', done: 'Done' },

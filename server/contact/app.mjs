@@ -4,10 +4,13 @@ import { LeadStore } from './store.mjs';
 import { createDelivery } from './delivery.mjs';
 import { configurationStatus } from './config.mjs';
 import { normalizeSourceTrail } from '../../shared/contact-attribution.mjs';
+import { contactLanguageFor } from '../../shared/contact-languages.mjs';
+import { Converter } from 'opencc-js';
 
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i;
 const LIMIT = 49152;
 const errorCode = error => /^[A-Z0-9_]{1,64}$/.test(error?.code || '') ? error.code : 'DELIVERY_FAILED';
+const traditionalChinese = Converter({ from: 'cn', to: 'tw' });
 
 export function validateLead(body) {
   if (!body || typeof body !== 'object' || Array.isArray(body)) return null;
@@ -93,15 +96,16 @@ export function createContactApp(config, { delivery = createDelivery(config), st
   async function handle(request, response) {
     const url = new URL(request.url || '/', 'http://contact.internal');
     if (!['/api/contact', '/api/contact/'].includes(url.pathname)) return false;
+    const language = contactLanguageFor(request.headers['accept-language']);
     const reply = (status, body, headers = {}) => {
-      response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...headers });
+      response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Content-Language': language === 'zh' ? 'zh-CN' : language, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...headers });
       response.end(JSON.stringify(body)); return true;
     };
-    const zh = !String(request.headers['accept-language'] || 'zh').startsWith('en');
-    const message = (cn, en) => zh ? cn : en;
+    const message = (cn, en) => language === 'en' ? en : language === 'zh-Hant' ? traditionalChinese(cn) : cn;
     const origin = request.headers.origin;
+    response.setHeader('Vary', 'Accept-Language');
     if (origin && !config.origins.has(origin)) return reply(403, { success: false, message: message('不允许从此页面提交。', 'Submissions from this page are not allowed.') });
-    if (origin) { response.setHeader('Access-Control-Allow-Origin', origin); response.setHeader('Vary', 'Origin'); }
+    if (origin) { response.setHeader('Access-Control-Allow-Origin', origin); response.setHeader('Vary', 'Origin, Accept-Language'); }
     if (request.method === 'OPTIONS') return reply(204, {}, { 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Idempotency-Key, Accept-Language', 'Access-Control-Max-Age': '600' });
     if (request.method !== 'POST') return reply(405, { success: false, message: message('此接口仅支持提交消息。', 'This endpoint only accepts message submissions.') }, { Allow: 'POST, OPTIONS' });
     if (!/^application\/json(?:\s*;|$)/i.test(request.headers['content-type'] || '')) return reply(415, { success: false, message: message('请求格式不正确。', 'The request format is not supported.') });

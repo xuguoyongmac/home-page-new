@@ -23,7 +23,7 @@ export function dutyCopy(locale: Locale) {
         steps: zh ? ['读取业务流水', '定位核对差异', '交付差异清单'] : ['Read records', 'Find differences', 'Deliver findings'],
         destination: zh ? '财务工作群' : 'Finance team', file: zh ? '核对差异.xlsx' : 'Differences.xlsx' },
       { id: 'report', time: '06:30', minute: 390, icon: 'chart',
-        name: zh ? '经营日报' : 'Business report', title: zh ? '开工前 日报已就绪' : 'The daily brief is ready',
+        name: zh ? '经营日报' : 'Business report', title: zh ? '开工前 日报已就绪' : 'The daily brief is ready before work',
         steps: zh ? ['汇总经营数据', '分析指标变化', '分发经营日报'] : ['Collect metrics', 'Analyze changes', 'Send daily brief'],
         destination: zh ? '经营工作群' : 'Management team', file: zh ? '经营日报.pdf' : 'Daily brief.pdf' },
       { id: 'monitoring', time: '14:20', minute: 860, icon: 'monitor',
@@ -57,7 +57,7 @@ export function dutyCopy(locale: Locale) {
     trends: {
       source: zh ? '公开资讯归集' : 'Public-source coverage', count: zh ? '条资讯' : 'articles', topics: zh ? '重点主题' : 'Key themes',
       rows: zh ? [['招采动态', '26', '企业 AI 采购进入方案评估'], ['治理要求', '19', '数据权限成为选型重点'], ['部署实践', '16', '轻量部署方案关注上升']]
-        : [['Procurement', '26', 'Enterprise AI moves into solution evaluation'], ['Governance', '19', 'Data access is a key selection criterion'], ['Deployment', '16', 'Interest in lighter deployment grows']],
+        : [['Procurement', '26', 'Enterprise AI procurement moves into evaluation'], ['Governance', '19', 'Data access is a key selection criterion'], ['Deployment', '16', 'Interest in lighter deployment grows']],
     },
   };
 }

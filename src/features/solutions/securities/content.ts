@@ -12,12 +12,12 @@ export default createIndustryModule({
   "navigation": {
     "zh": {
       "name": "证券",
-      "description": "投资研究、财富服务、分支经营",
+      "description": "ETF 潜客、专业投研、经营问数",
       "icon": "chart"
     },
     "en": {
       "name": "Securities",
-      "description": "Investment research, wealth services and branch management",
+      "description": "ETF prospects, research and business analytics",
       "icon": "chart"
     }
   }

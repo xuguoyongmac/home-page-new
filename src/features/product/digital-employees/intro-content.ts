@@ -68,7 +68,7 @@ export default {
       title: '搭建属于企业自己的数字岗位团队',
       summary: '扩充团队作业能力，让员工聚焦高价值工作',
       body: '基于岗位模板批量组建企业专属数字员工团队，补充案头、预审和整理类作业力量，让员工把时间投入研判、沟通与决策。',
-      action: '预约产品演示',
+      action: '预约交流',
     },
   },
   en: {
@@ -114,7 +114,7 @@ export default {
       title: 'Build a digital team around your business roles',
       summary: 'Expand your team’s capacity and free people for higher-value work.',
       body: 'Build your enterprise’s digital team from role templates to handle preparation, preliminary checks and organization. Give colleagues more time for analysis, communication and decisions.',
-      action: 'Book a product demo',
+      action: 'Book a consultation',
     },
   },
 } satisfies Record<Locale, IntroductionCopy>;

@@ -3,426 +3,426 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const insurancePresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让保险专业服务，贯穿每一次客户接触",
-      "pain": "展业需要准确理解产品，核保理赔需要关联医学事实与合同依据；保单长期存续，产品版本与服务背景还要持续接续。",
-      "value": "数字员工承接产品解读、核保准备、理赔作业与保单服务，让渠道沟通有专业支持，让个案协作围绕同一背景持续推进。",
+      "title": "让保险作业提速，让专业服务贯穿全程",
+      "pain": "产品条款多、专业门槛高，核保理赔材料反复核对，保全续期跨岗等待；规模增长与精细化经营，对服务效率和专业一致性提出更高要求。",
+      "value": "以数字员工贯通产品知识、渠道展业、核保理赔与保单服务，将条款、岗位方法和业务系统连接为持续工作的专业能力，交付沟通方案、核对底稿与经营报告，让保险服务更专业、作业更高效、客户经营更长久。",
       "scenarios": [
-        "渠道展业",
-        "产品解读",
+        "销售展业",
+        "产品知识",
         "核保支持",
-        "理赔作业",
+        "理赔协作",
         "保全续期",
-        "运营分析"
+        "质检消保"
       ],
       "benefits": [
         {
-          "title": "专业知识走向一线",
-          "description": "将适用产品、条款与服务经验带入展业和客户沟通，让不同渠道共享可维护的专业方法。"
+          "title": "专业支持直达一线",
+          "description": "把产品条款、需求分析与沟通方法带入渠道工作，让代理人有依据解读产品、有准备回应需求。"
         },
         {
-          "title": "个案处理连贯推进",
-          "description": "健康告知、医疗单证、责任条款与人员反馈保持关联，减少核保理赔的重复查找和往返补充。"
+          "title": "核保理赔聚焦关键",
+          "description": "串联申请、告知、病历和票据，集中呈现缺项、差异与条款依据，减少反复翻找和往返补件。"
         },
         {
-          "title": "长期服务持续接续",
-          "description": "连接在售与停售产品资料、保单事项和历史反馈，让保全、续期与疑难服务获得完整业务背景。"
+          "title": "服务接续，经营做深",
+          "description": "保全、续期、续保与服务反馈沿同一保单背景推进，质检消保与经营分析持续支持服务改进。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让保险专业服务",
-        "贯穿每一次客户接触"
+        "让保险作业提速",
+        "让专业服务贯穿全程"
       ],
       "background": "/images/industries/insurance-architecture_V1.1.webp"
     },
     "sources": [
-      "产品条款与渠道资料",
+      "产品条款与销售知识",
       "投保申请与健康告知",
-      "医疗单证与费用凭证",
-      "保单记录与服务反馈"
+      "理赔单证与费用明细",
+      "保单记录与服务数据"
     ],
     "outputs": [
-      "渠道展业与产品解读材料",
-      "核保评估准备与问询事项",
-      "理赔事实与责任依据",
-      "保单服务与运营分析"
+      "产品对照与客户沟通方案",
+      "核保核对底稿与问询清单",
+      "理赔差异清单与依据索引",
+      "保单服务方案与经营报告"
     ],
     "features": [
       {
-        "title": "产品知识走进渠道，专业支持直达一线",
-        "problem": "产品责任与服务规则随版本变化，渠道准备客户沟通时，需要从多份资料中确认适用内容。",
-        "body": "围绕客户需求与具体产品，数字员工检索适用条款、整理保障结构和办理要求，协同准备产品解读、培训课件与沟通材料。专业团队维护知识和表达口径，让成熟方法快速进入渠道工作，支持更准确、更连贯的客户服务。",
+        "title": "让产品知识，成为一线展业的专业底气",
+        "problem": "产品与条款版本繁多，客户需求各不相同，代理人既要讲清保障，也要回应异议，专业支持却常停留在资料分发。",
+        "body": "连接正式产品条款、培训知识与客户需求，数字员工协同完成保障结构解读、产品对照、沟通方案和异议练习。成熟经验沉淀为可复用方法，随渠道工作持续更新，让一线从查资料、背话术，走向有依据的需求沟通与专业服务。",
         "outcomes": [
-          "产品责任解读",
-          "渠道培训协作",
-          "客户沟通准备"
+          "产品与需求匹配",
+          "销售方案协作",
+          "渠道培训与练习"
         ]
       },
       {
-        "title": "核保准备更充分，专业评估更聚焦",
-        "problem": "健康告知、体检和财务资料表达各异，信息需要前后核对，补充问询还要对应机构材料规则。",
-        "body": "将告知整理、事实比对与问询准备交给数字员工，按机构规则关联投保信息、健康资料和材料触发条件。缺项、矛盾与必要补充汇入同一个案，核保人员可集中开展专业评估，并把回应与修订接续到后续作业。",
+        "title": "投保事实先核清，核保评估更高效",
+        "problem": "投保申请、健康告知、体检与财务资料表达各异，字段冲突、材料缺漏与补充问询反复占用核保时间。",
+        "body": "数字员工关联申请信息、健康资料与机构材料规则，核对身份、时间、告知事实和材料完整性，集中呈现差异、缺项与问询要点。新增材料和人员回应接续到同一个案，形成可回查的核保底稿，让核保人员集中开展风险评估与专业判断。",
         "outcomes": [
-          "告知事实核对",
-          "材料触发整理",
-          "核保问询准备"
+          "投保事实核验",
+          "缺项与差异定位",
+          "核保问询协作"
         ],
         "image": "/images/solutions/insurance/insurance-value-2_V2.1.webp"
       },
       {
-        "title": "把理赔事实与合同责任，放在一起审阅",
-        "problem": "病程、费用与药品分布于不同单证，责任条件涉及合同和批单，理赔人员需要多次交叉核查。",
-        "body": "数字员工归类同案单证，建立事故或诊疗时间线，把费用事实与适用合同责任、除外条件和证明位置关联。专业人员围绕责任依据开展审核，新增材料和意见继续沿用当前案情，减少案卷重整与重复解释。",
+        "title": "让理赔少些往返，让审阅直达关键",
+        "problem": "病历、票据与费用明细分散在不同文件，条款责任与材料事实需要来回对照，补件和交接进一步拉长处理周期。",
+        "body": "围绕健康类理赔，数字员工组织同案材料与诊疗时间线，核对保单、申请、病历及票据之间的字段关系，将差异与待补事项定位到原文。适用条款和依据索引随核对成果一并交付，专业人员据此确认责任与处理结论，后续补件沿当前案情继续推进。",
         "outcomes": [
-          "案情与病程梳理",
-          "责任证据关联",
-          "费用与补件核查"
+          "理赔材料核对",
+          "条款依据关联",
+          "补件与审核接续"
         ]
       },
       {
-        "title": "延续长期保单背景，接好每一次服务",
-        "problem": "在售与停售产品并存，保全、续期和疑难事项跨越多个岗位，历史背景常需在交接中反复重述。",
-        "body": "围绕当前保单匹配适用资料，整理变更影响、办理条件与未完事项，按计划准备续期服务和运营汇总。数字员工将个案背景、专家意见和成果版本组织到项目协作中，专业经验沉淀为岗位知识与技能，持续支持长期客户经营。",
+        "title": "把长期服务接稳，把保单经营做深",
+        "problem": "保单存续多年、产品版本更替，保全续期跨越多个岗位；服务记录与投诉反馈难以沉淀为持续改进的经营依据。",
+        "body": "数字员工围绕适用保单与产品规则，承接保全材料、续期缴费和到期续保的工作准备与进度跟进。结合服务记录筛查质检疑点、归纳消保问题，持续输出渠道与运营分析，让长期服务有背景、事项跟进有接续、经营改进有依据。",
         "outcomes": [
-          "保全变更协作",
-          "续期服务准备",
-          "疑难事项接续"
+          "保全续期与续保",
+          "质检消保协作",
+          "渠道与运营分析"
         ]
       }
     ],
-    "teamTitle": "服务保险全流程的数字员工团队",
+    "teamTitle": "把保险专业经验，变成贯穿全流程的数字员工团队",
     "employees": [
       {
-        "role": "渠道展业数字员工",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "role": "销售展业数字员工",
         "skills": [
-          "产品解读",
-          "需求分析",
-          "沟通准备"
+          "保障结构解读",
+          "需求沟通方案",
+          "销售培训练习"
         ],
         "process": [
-          "匹配产品与客户服务需求",
-          "整理适用责任及办理要求",
-          "准备渠道培训与沟通材料"
+          "匹配客户需求与正式产品资料",
+          "形成产品对照和沟通方案",
+          "协同渠道培训与异议练习"
         ],
         "outputs": [
-          "产品解读材料",
-          "渠道培训课件"
+          "客户沟通与保障方案",
+          "产品对照与培训材料"
         ],
-        "value": "让一线沟通获得持续的专业支持"
+        "value": "让专业经验进入每一次展业准备"
       },
       {
-        "role": "核保支持数字员工",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "role": "核保支持数字员工",
         "skills": [
-          "告知核对",
-          "材料规则",
-          "专业问询"
+          "投保事实核对",
+          "材料规则匹配",
+          "问询协作"
         ],
         "process": [
-          "关联告知与健康财务资料",
-          "核对材料触发及事实差异",
-          "整理核保问询和待评估事项"
+          "归集投保申请与告知资料",
+          "核对字段、缺项与材料触发条件",
+          "形成底稿并接续补充问询"
         ],
         "outputs": [
-          "核保准备材料",
-          "补充问询事项"
+          "核保材料核对底稿",
+          "差异与问询清单"
         ],
-        "value": "把核保精力放在专业评估上"
+        "value": "减少重复比对，让核保评估聚焦关键"
       },
       {
-        "role": "理赔作业数字员工",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "role": "理赔协作数字员工",
         "skills": [
-          "案情时序",
-          "责任关联",
-          "费用核查"
+          "同案单证归集",
+          "跨材料核对",
+          "条款依据定位"
         ],
         "process": [
-          "组织同案单证与诊疗经过",
-          "关联费用事实和合同责任",
-          "接续补件与审核意见"
+          "建立材料目录与诊疗时间线",
+          "核对申请、病历、票据与费用关系",
+          "关联条款依据并跟进补件回应"
         ],
         "outputs": [
-          "案件事实与责任分析",
-          "理赔审核准备文件"
+          "理赔核对与待补清单",
+          "责任条款依据索引"
         ],
-        "value": "让案件审阅围绕事实与依据展开"
+        "value": "让理赔人员沿着事实与依据审阅案件"
       },
       {
-        "role": "保单服务数字员工",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "role": "保单服务数字员工",
         "skills": [
-          "保全协作",
-          "续期准备",
-          "事项交接"
+          "保全材料核验",
+          "续期续保准备",
+          "服务进度跟进"
         ],
         "process": [
-          "匹配当前保单及适用规则",
-          "分析变更影响和办理条件",
-          "接续客户回应与后续事项"
+          "匹配保单规则与办理材料要求",
+          "准备变更、缴费与续保服务事项",
+          "接续补充资料与跨岗服务进度"
         ],
         "outputs": [
-          "保单服务准备材料",
-          "变更与续期工作记录"
+          "保单服务办理材料",
+          "续期续保跟进清单"
         ],
-        "value": "让长期服务保留完整上下文"
+        "value": "让每一轮保单服务都接得上前情"
       },
       {
-        "role": "产品知识数字员工",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "role": "质检消保数字员工",
         "skills": [
-          "条款管理",
-          "版本匹配",
-          "经验沉淀"
+          "服务规则筛查",
+          "投诉问题归纳",
+          "整改事项协作"
         ],
         "process": [
-          "整理在售与停售产品知识",
-          "匹配问题对应的条款版本",
-          "沉淀专业答复与工作方法"
+          "对照规则筛查销售与服务记录",
+          "关联疑点片段和适用条款依据",
+          "形成复核清单并跟进整改反馈"
         ],
         "outputs": [
-          "产品责任对照",
-          "专业知识答复"
+          "质检疑点与依据清单",
+          "消保问题与整改台账"
         ],
-        "value": "让产品经验成为团队共用能力"
+        "value": "把服务问题转成可复核、可跟进的改进事项"
       },
       {
-        "role": "运营分析数字员工",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
+        "role": "经营分析数字员工",
         "skills": [
-          "业务分析",
-          "服务归因",
-          "管理汇报"
+          "指标口径核对",
+          "渠道经营分析",
+          "周期报告编制"
         ],
         "process": [
-          "汇总渠道与保单服务信息",
-          "分析处理变化与协作难点",
-          "准备运营复盘和管理报告"
+          "汇集渠道、保单与服务经营数据",
+          "核对口径并分析指标变化",
+          "定期形成经营简报与专题报告"
         ],
         "outputs": [
-          "保险运营简报",
-          "服务改进议题"
+          "保险经营分析报告",
+          "指标差异与改进议题"
         ],
-        "value": "让运营讨论从业务事实出发"
+        "value": "让经营管理从汇总数字走向解释变化"
       }
     ],
     "deployment": {
-      "title": "连接产品、个案与团队，融入机构运行体系",
-      "body": "私有化部署 TeGo 数字员工协作平台，按渠道、核保、理赔与服务岗位配置知识、技能及工具授权。连接机构获准模型与业务接口，统一维护产品版本、能力发布和审计记录，让专业方法与长期服务经验持续复用。"
+      "title": "专业方法留在企业，数字员工走向全流程",
+      "body": "私有化部署 TeGo，接入机构模型、产品知识与保单、理赔、服务系统。按岗位建设技能、按组织设置权限，将条款版本、人工确认、文件修订和运行审计纳入统一管理。从一类业务起步，持续复用岗位方法，扩展保险服务与经营能力。"
     }
   },
   "en": {
     "home": {
-      "title": "Bring insurance expertise to every client interaction",
-      "pain": "Distribution needs accurate product knowledge, underwriting and claims need medical facts connected to contract evidence, and long-lived policies require continuity across product versions and service history.",
-      "value": "Digital employees support product interpretation, underwriting preparation, claims work and policy services, giving channels specialist support and keeping case collaboration connected to the same business context.",
+      "title": "Accelerate insurance work. Carry expertise through every stage.",
+      "pain": "Complex product terms, repeated underwriting and claims checks, and cross-team policy servicing put pressure on capacity. Growth and more disciplined operations demand faster work and consistent expertise.",
+      "value": "Connect product knowledge, distribution, underwriting, claims and policy services through digital employees. Turn policy terms, specialist methods and business systems into ongoing capabilities that deliver client proposals, verification files and management reports for better service and lasting client relationships.",
       "scenarios": [
-        "Distribution support",
-        "Product interpretation",
+        "Sales and distribution",
+        "Product knowledge",
         "Underwriting support",
-        "Claims work",
-        "Policy servicing and renewal",
-        "Operating analysis"
+        "Claims collaboration",
+        "Policy and renewal services",
+        "Quality and consumer protection"
       ],
       "benefits": [
         {
           "title": "Bring expertise to the frontline",
-          "description": "Make current products, policy terms and service experience part of everyday channel conversations through maintainable professional methods."
+          "description": "Connect product terms, needs analysis and communication methods with distribution work so agents can explain coverage and prepare relevant client conversations."
         },
         {
-          "title": "Keep casework connected",
-          "description": "Link disclosures, medical records, coverage terms and staff responses to reduce repeated searches and back-and-forth requests."
+          "title": "Focus underwriting and claims review",
+          "description": "Connect applications, disclosures, medical records and invoices. Present missing items, differences and policy evidence to reduce repeated searches and document requests."
         },
         {
-          "title": "Maintain long-term service continuity",
-          "description": "Connect current and discontinued products, policy actions and historical feedback for informed servicing and renewals."
+          "title": "Continue service. Deepen relationships.",
+          "description": "Carry policy changes, premium collection, renewals and feedback forward with the same policy context, supported by quality reviews and operating analysis."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Bring insurance expertise",
-        "To every client interaction"
+        "Accelerate insurance work",
+        "Carry expertise through every stage"
       ],
       "background": "/images/industries/insurance-architecture_V1.1.webp"
     },
     "sources": [
-      "Product terms and channel materials",
+      "Product terms and sales knowledge",
       "Applications and health disclosures",
-      "Medical records and expense evidence",
-      "Policy history and service feedback"
+      "Claims documents and expense details",
+      "Policy records and service data"
     ],
     "outputs": [
-      "Channel and product communication materials",
-      "Underwriting preparation and enquiries",
-      "Claims facts and coverage evidence",
-      "Policy service and operating analysis"
+      "Product comparisons and client proposals",
+      "Underwriting verification files and questions",
+      "Claims differences and evidence indexes",
+      "Policy service plans and business reports"
     ],
     "features": [
       {
-        "title": "Bring product knowledge to the frontline for more informed channel conversations",
-        "problem": "Coverage, application conditions and service rules change across versions, leaving channel teams to confirm applicable details across multiple documents.",
-        "body": "Retrieve the right policy terms, explain coverage structures and organize processing requirements around a client need and product. Digital employees help prepare product explanations, training and communication materials, while specialists maintain the knowledge and approved language used across channels.",
+        "title": "Give frontline teams the product expertise to serve with confidence.",
+        "problem": "Product versions multiply and client needs differ. Agents must explain coverage and handle objections, while specialist support often stops at distributing documents.",
+        "body": "Connect official product terms, training knowledge and client needs. Digital employees help interpret coverage, compare products, develop communication plans and support objection-handling practice. Preserve proven experience as reusable methods that evolve with channel work, giving frontline teams stronger evidence for professional conversations.",
         "outcomes": [
-          "Coverage interpretation",
-          "Channel training collaboration",
-          "Client conversation preparation"
+          "Product and needs matching",
+          "Sales proposal collaboration",
+          "Channel training and practice"
         ]
       },
       {
-        "title": "Prepare underwriting cases thoroughly so specialists can focus their assessment",
-        "problem": "Health disclosures, examination results and financial records use different language. Facts need cross-checks and follow-up questions must reflect institutional rules.",
-        "body": "Delegate disclosure organization, factual comparison and enquiry preparation to digital employees. Connect application records, health information and required-document conditions, keeping gaps, contradictions and responses within the same case so underwriters can concentrate on specialist assessment.",
+        "title": "Clarify application facts and accelerate underwriting review.",
+        "problem": "Applications, health disclosures, examination results and financial records vary in format. Conflicting fields, missing documents and follow-up questions consume specialist time.",
+        "body": "Connect application records and health information with institutional document requirements. Check identities, dates, disclosures and completeness, and present differences, missing items and questions together. Carry new records and responses into the same case to build traceable working files for underwriting risk assessment and specialist judgment.",
         "outcomes": [
-          "Disclosure fact checks",
-          "Required-record preparation",
-          "Underwriting enquiries"
+          "Application fact checks",
+          "Missing items and differences",
+          "Underwriting question coordination"
         ],
         "image": "/images/solutions/insurance/insurance-value-2_V2.1.webp"
       },
       {
-        "title": "Connect claims facts with contracts for smoother case review",
-        "problem": "Medical histories, expenses and medicines sit across documents. Coverage conditions depend on the applicable agreement and endorsements, requiring repeated cross-checks.",
-        "body": "Organize case records and establish incident or treatment timelines, then link expense facts with coverage, exclusions and supporting passages. Claims specialists review the relevant evidence while new records and comments retain the current case context, reducing repeated file assembly and explanations.",
+        "title": "Reduce claims back-and-forth. Bring the evidence into focus.",
+        "problem": "Medical records, invoices and expense details span multiple files. Repeated comparisons with policy terms, document requests and handovers extend case processing.",
+        "body": "For health-related claims, organize case records and treatment timelines, then cross-check policy, application, medical and invoice fields. Locate differences and missing items in the original documents and deliver applicable provisions with an evidence index. Claims specialists use these files to confirm liability and outcomes while subsequent documents continue within the same case context.",
         "outcomes": [
-          "Incident and treatment timelines",
-          "Coverage evidence mapping",
-          "Expense and missing-record checks"
+          "Claims document verification",
+          "Policy evidence matching",
+          "Document and review follow-up"
         ]
       },
       {
-        "title": "Carry long-term policy services forward and retain specialist experience",
-        "problem": "Current and discontinued products coexist. Policy changes, renewals and complex matters cross several teams, making historical context difficult to carry forward.",
-        "body": "Match each policy with applicable records and prepare change impacts, processing conditions and open actions. Use scheduled work for renewal preparation and operating summaries. Keep case context, expert responses and document versions in shared projects, then preserve useful methods as role knowledge and skills.",
+        "title": "Keep policy service connected. Build lasting client relationships.",
+        "problem": "Policies last for years while product versions change and servicing moves across roles. Service records and complaints rarely become a consistent basis for operating improvement.",
+        "body": "Prepare policy changes, premium collection and renewals using the applicable policy and product rules, then continue progress tracking. Review service records for quality concerns, organize consumer protection issues, and produce channel and operating analysis so service continuity and management improvement share the same evidence.",
         "outcomes": [
-          "Policy change collaboration",
-          "Renewal preparation",
-          "Complex service handovers"
+          "Policy changes and renewals",
+          "Quality and consumer protection",
+          "Channel and operating analysis"
         ]
       }
     ],
-    "teamTitle": "A digital employee team across insurance services",
+    "teamTitle": "Turn insurance expertise into a digital employee team for every stage",
     "employees": [
       {
-        "role": "Distribution Support Digital Employee",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
+        "role": "Sales and Distribution Digital Employee",
         "skills": [
-          "Product interpretation",
-          "Needs analysis",
-          "Communication preparation"
+          "Coverage interpretation",
+          "Client communication plans",
+          "Sales training practice"
         ],
         "process": [
-          "Match products to client service needs",
-          "Organize applicable coverage and requirements",
-          "Prepare training and conversation materials"
+          "Match client needs with official product information",
+          "Prepare product comparisons and communication plans",
+          "Support channel training and objection-handling practice"
         ],
         "outputs": [
-          "Product explanation materials",
-          "Channel training deck"
+          "Client communication and coverage proposal",
+          "Product comparisons and training materials"
         ],
-        "value": "Give frontline conversations ongoing specialist support"
+        "value": "Bring specialist experience into every sales preparation."
       },
       {
-        "role": "Underwriting Support Digital Employee",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
+        "role": "Underwriting Support Digital Employee",
         "skills": [
-          "Disclosure checks",
-          "Record requirements",
-          "Professional enquiries"
+          "Application fact checks",
+          "Document rule matching",
+          "Question coordination"
         ],
         "process": [
-          "Connect disclosures with health and financial records",
-          "Check required documents and factual differences",
-          "Prepare enquiries and assessment topics"
+          "Collect applications and disclosure records",
+          "Check fields, missing items and document triggers",
+          "Prepare review files and carry follow-up questions forward"
         ],
         "outputs": [
-          "Underwriting preparation",
-          "Follow-up enquiry items"
+          "Underwriting verification file",
+          "Differences and follow-up questions"
         ],
-        "value": "Keep underwriters focused on specialist assessment"
+        "value": "Reduce repeated comparisons and focus specialist assessment."
       },
       {
-        "role": "Claims Work Digital Employee",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
+        "role": "Claims Collaboration Digital Employee",
         "skills": [
-          "Case timelines",
-          "Coverage mapping",
-          "Expense checks"
+          "Case document organization",
+          "Cross-document checks",
+          "Policy evidence retrieval"
         ],
         "process": [
-          "Organize records and treatment history",
-          "Link expense facts to contract coverage",
-          "Carry additional records and review comments forward"
+          "Build document indexes and treatment timelines",
+          "Compare application, medical and expense records",
+          "Connect policy evidence and follow new documents"
         ],
         "outputs": [
-          "Case facts and coverage analysis",
-          "Claims review preparation"
+          "Claims verification and document checklist",
+          "Relevant policy evidence index"
         ],
-        "value": "Ground claims reviews in facts and evidence"
+        "value": "Help specialists review claims through facts and supporting evidence."
       },
       {
-        "role": "Policy Services Digital Employee",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
+        "role": "Policy Service Digital Employee",
         "skills": [
-          "Policy changes",
+          "Policy change checks",
           "Renewal preparation",
-          "Service handovers"
+          "Service progress tracking"
         ],
         "process": [
-          "Match policies with applicable rules",
-          "Analyze change impacts and requirements",
-          "Connect client responses and subsequent work"
+          "Match policy rules with document requirements",
+          "Prepare policy changes, payments and renewal work",
+          "Continue document requests and cross-team progress"
         ],
         "outputs": [
-          "Policy service materials",
-          "Change and renewal records"
+          "Policy service working materials",
+          "Premium and renewal follow-up list"
         ],
-        "value": "Maintain the full context of long-term service"
+        "value": "Carry policy context into every new round of service."
       },
       {
-        "role": "Product Knowledge Digital Employee",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
+        "role": "Quality and Consumer Protection Digital Employee",
         "skills": [
-          "Policy knowledge",
-          "Version matching",
-          "Experience retention"
+          "Service rule screening",
+          "Complaint analysis",
+          "Remediation coordination"
         ],
         "process": [
-          "Organize current and discontinued product knowledge",
-          "Match questions to the applicable version",
-          "Retain professional answers and working methods"
+          "Screen sales and service records against relevant rules",
+          "Link concerns with source passages and policy evidence",
+          "Prepare review lists and follow remediation responses"
         ],
         "outputs": [
-          "Coverage comparisons",
-          "Professional knowledge answers"
+          "Quality findings and evidence list",
+          "Consumer issues and remediation register"
         ],
-        "value": "Make product experience a shared team capability"
+        "value": "Turn service concerns into reviewable improvements with clear follow-up."
       },
       {
-        "role": "Operations Analysis Digital Employee",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
+        "role": "Business Analysis Digital Employee",
         "skills": [
-          "Business analysis",
-          "Service attribution",
-          "Management reporting"
+          "Metric definition checks",
+          "Channel analysis",
+          "Periodic reporting"
         ],
         "process": [
-          "Collect channel and policy service information",
-          "Analyze service changes and coordination challenges",
-          "Prepare operating reviews and management reports"
+          "Collect channel, policy and service operating data",
+          "Check definitions and analyze metric changes",
+          "Produce regular briefs and specialist reports"
         ],
         "outputs": [
-          "Insurance operating brief",
-          "Service improvement topics"
+          "Insurance business analysis report",
+          "Metric differences and improvement topics"
         ],
-        "value": "Start operating discussions from business evidence"
+        "value": "Move management reporting from collecting numbers to explaining change."
       }
     ],
     "deployment": {
-      "title": "Connect products, cases and teams within institutional operations",
-      "body": "Deploy TeGo Digital Employee Collaboration Platform privately and configure knowledge, skills and tool permissions for distribution, underwriting, claims and service roles. Connect approved models and business interfaces, while managing product versions, capability releases and audit records so professional methods and long-term service experience remain reusable."
+      "title": "Keep expertise in-house. Extend digital employees across insurance work.",
+      "body": "Deploy TeGo privately and connect institutional models, product knowledge, policy, claims and service systems. Build role-specific skills and organizational access, with shared management of policy versions, human confirmations, document revisions and audit records. Start with one business area and reuse proven methods to extend service and operating capabilities."
     }
   }
 };

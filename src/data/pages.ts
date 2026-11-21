@@ -169,7 +169,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
     product: {
       eyebrow: 'Product',
       title: 'A digital workforce built around roles',
-      description: 'Connect digital employees, company knowledge, working methods and business tools around each role. People and digital employees share a project, review the work and deliver towards the same objective.',
+      description: 'Connect digital employees, enterprise knowledge, working methods and business tools around each role. People and digital employees share a project, review the work and deliver towards the same objective.',
       sections: [
         {
           id: 'collaboration',
@@ -177,18 +177,18 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           title: 'One project. Shared context.',
           body: 'Bring goals, source materials and team members into a project. Discuss and assign work in conversations, involve colleagues in decisions, and keep the process and deliverables together.',
           items: [
-            { icon: 'network', title: 'Configure digital employees by role', body: 'Recruit a digital employee from a template, configure its models, knowledge, skills and plugins, and manage visibility and access.' },
+            { icon: 'network', title: 'Configure digital employees by role', body: 'Recruit a digital employee from a digital employee template, configure its models, knowledge, skills and plugins, and manage visibility and usage authorization.' },
             { icon: 'folder', title: 'Collaborate around a project', body: 'Share materials and files, and move work forward in project conversations. Member roles and permissions define access to the project.' },
-            { icon: 'message', title: 'Bring decisions to colleagues', body: 'Send questions, approvals and handoffs to the relevant colleague’s attention items. The digital employee can continue with their response.' },
+            { icon: 'message', title: 'Bring decisions to colleagues', body: 'Send questions, approvals and handoff requests to the relevant colleague’s “For me” list. The digital employee continues based on the response.' },
           ],
         },
         {
           id: 'execution',
           eyebrow: 'Connect capabilities',
           title: 'Put knowledge to work',
-          body: 'Company materials provide context, skills carry working methods, and authorized tools connect business operations. Configure specialist Agents for a task and follow their progress and results.',
+          body: 'Enterprise materials provide evidence, skills carry working methods, and authorized tools connect business operations. Configure specialist Agents for a task and follow their progress and results.',
           items: [
-            { icon: 'book', title: 'Use authorized company knowledge', body: 'Import and search materials, and follow citations back to sources. Access is granted by knowledge base; project search stays within its project.' },
+            { icon: 'book', title: 'Use authorized enterprise knowledge', body: 'Import and search materials, and follow citations back to sources. Access is granted by knowledge base; project search stays within its project.' },
             { icon: 'layers', title: 'Coordinate specialist Agents', body: 'A digital employee’s main Agent can delegate work to configured specialist sub-Agents, display their progress and bring their results together.' },
             { icon: 'plug', title: 'Connect tools and business systems', body: 'Work through business plugins, MCP, RESTful APIs and database connections. System interfaces and device tools follow their configured connections and permissions.' },
           ],
@@ -197,7 +197,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           id: 'delivery',
           eyebrow: 'Deliver results',
           title: 'Keep the work editable',
-          body: 'Bring AI-generated content into human review, editing and project versions. Schedule recurring work and follow its progress across the available clients.',
+          body: 'Bring digital employee deliverables into human review, editing and project versions. Schedule recurring work and follow its progress across the available clients.',
           items: [
             { icon: 'file', title: 'Work with office files', body: 'Generate, preview and work with Word, PowerPoint and Excel files. Word and PowerPoint editing is available on web and desktop; Excel editing is desktop-only, with web previews.' },
             { icon: 'folder', title: 'Keep project history', body: 'Publish human drafts and digital employee changes as project versions. Concurrent conflicts create copies; restore earlier versions, mark final files and export deliverables.' },
@@ -249,16 +249,16 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
     ecosystem: {
       eyebrow: 'Ecosystem',
       title: 'Make the team’s methods reusable',
-      description: 'Capture role capabilities in skills, digital employee templates and business plugins. Connect existing systems through MCP, RESTful APIs and databases, expose platform services through OpenAPI, and build capabilities in Tego Studio.',
+      description: 'Capture role capabilities in skills, digital employee templates and business plugins. Connect existing systems through MCP, RESTful APIs and databases, expose platform services through OpenAPI, and develop and package capabilities in Tego Studio.',
       sections: [
         {
           id: 'reuse',
           eyebrow: 'Reuse capabilities',
           title: 'A clear home for each capability',
-          body: 'Skills carry working methods, digital employee templates carry role configurations, and business plugins carry application capabilities. Combine them for the job while keeping their responsibilities distinct.',
+          body: 'Skills carry working methods, digital employee templates carry role configurations, and business plugins carry business interfaces and application capabilities. Combine them for the job while keeping their responsibilities distinct.',
           items: [
             { icon: 'book', title: 'Skills', body: 'Package working methods, business rules and required files as a capability an Agent can call. Skills support uploads and immutable version management.' },
-            { icon: 'network', title: 'Digital employee templates', body: 'Capture role responsibilities and capability settings as static, reusable assets. Recruit a digital employee from a template and configure it for the work.' },
+            { icon: 'network', title: 'Digital employee templates', body: 'Capture role responsibilities and capability settings as static, preconfigured assets for reuse and distribution. Recruit a digital employee from a digital employee template and configure it for the work.' },
             { icon: 'layers', title: 'Business plugins', body: 'Extend business pages, system interfaces and role capabilities around specific records. Existing plugins include CRM, bidding and EHS.' },
           ],
         },
@@ -270,7 +270,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           items: [
             { icon: 'plug', title: 'MCP tools', body: 'Connect external tools to digital employee workflows. Operations follow the tool connection, employee configuration and authorization scope.' },
             { icon: 'network', title: 'RESTful APIs and databases', body: 'Read information and carry out work through enterprise APIs, or query, aggregate and analyze authorized database records. API authentication and database permissions are configured separately.' },
-            { icon: 'terminal', title: 'Platform OpenAPI', body: 'External systems can call digital employees synchronously, asynchronously or through streaming, and use platform services for knowledge, files and attention items.' },
+            { icon: 'terminal', title: 'Platform OpenAPI', body: 'External systems can call digital employees synchronously, asynchronously or through streaming, and use platform services for knowledge, files and pending requests.' },
             { icon: 'monitor', title: 'Authorized device operations', body: 'Work through desktop device nodes, browsers and file tools. Available operations depend on the client platform, node status and permissions.' },
           ],
         },
@@ -278,10 +278,10 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           id: 'build',
           eyebrow: 'Build and connect',
           title: 'Build capabilities. Keep familiar channels.',
-          body: 'Develop role capabilities in Tego Studio and deliver work through platform clients and company collaboration channels. External channels and built-in work conversations are configured separately.',
+          body: 'Develop role capabilities in Tego Studio and deliver work through the platform workspace and enterprise collaboration channels. External channels and built-in work conversations are configured separately.',
           items: [
             { icon: 'terminal', title: 'Tego Studio', body: 'Develop skills, digital employees, business plugins, MCP and web apps. Validate, package and preview applications, and publish plugins and skills to the platform.' },
-            { icon: 'message', title: 'Company collaboration channels', body: 'Connect WeCom, DingTalk and Feishu so digital employees can send and receive messages there. Channel connections and identity binding must be configured first.' },
+            { icon: 'message', title: 'Enterprise collaboration channels', body: 'Connect WeCom, DingTalk and Feishu so digital employees can send and receive messages there. Channel connections and identity binding must be configured first.' },
             { icon: 'globe', title: 'Work across clients', body: 'Follow work on web, desktop, iOS and Android. File editing and device operations are available according to each client’s supported capabilities.' },
           ],
         },
@@ -298,7 +298,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           title: 'Define access and execution rights',
           body: 'Manage access through organizations, roles, digital employees and knowledge bases. Reading company materials, calling tools and acting on business systems each require the appropriate identity and authorization.',
           items: [
-            { icon: 'network', title: 'Organizations and roles', body: 'Manage tenants, organizations and role permissions, and connect LDAP / OIDC identity providers. Digital employee visibility and access relationships define who can use an employee.' },
+            { icon: 'network', title: 'Organizations and roles', body: 'Manage tenants, organizations and role permissions, and connect LDAP / OIDC identity providers. Digital employee visibility and usage authorization define who can use each digital employee.' },
             { icon: 'book', title: 'Knowledge base authorization', body: 'Grant access and citation rights by knowledge base; documents inherit its scope. Project indexes follow project membership and stay outside global knowledge search.' },
             { icon: 'key', title: 'Business delegation', body: 'Control operations through the current user’s identity and business delegation. Delegations can be revoked; external tools and systems need their own access configuration.' },
           ],
@@ -310,7 +310,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           body: 'Use audit records, usage analysis and human participation to operate digital employees. Permissions, audit records and file versions capture their respective parts of the work.',
           items: [
             { icon: 'shield', title: 'Audit and provenance', body: 'Manage audit retention and evidence verification, and inspect output provenance through content identifiers and tracing codes. Records support review of the actual process.' },
-            { icon: 'check', title: 'Review management', body: 'Review employee creation and access, template and plugin publication, skill changes and resource authorization under organization rules. Retain submission snapshots and review decisions.' },
+            { icon: 'check', title: 'Review management', body: 'Review digital employee creation and availability, digital employee template and plugin publication, skill changes and resource authorization under organization rules. Retain submission snapshots and review decisions.' },
             { icon: 'chart', title: 'Usage management', body: 'Inspect model usage and digital employee consumption to support team operations. Charges and allowances follow the selected service plan and configuration.' },
             { icon: 'message', title: 'Human participation', body: 'Route questions, approvals and handoffs to the relevant colleague, keeping item states and responses. The digital employee can continue once a response is available.' },
           ],
@@ -319,7 +319,7 @@ export const detailPages: Record<Locale, Record<DetailPageId, DetailPage>> = {
           id: 'deployment',
           eyebrow: 'Deployment options',
           title: 'Fit the enterprise’s environment',
-          body: 'The platform offers SaaS and private deployment foundations. Select a delivery configuration for your servers, models, network and devices; external connections follow company network policies.',
+          body: 'The platform offers SaaS access and private deployment packages. Select a delivery configuration for your servers, models, network and devices; external connections follow company network policies.',
           items: [
             { icon: 'layers', title: 'Private deployment', body: 'Use Compose or Kubernetes deployment projects to run the platform and materials in your environment. Configure databases, storage and related services for the chosen setup.' },
             { icon: 'cpu', title: 'Local model connections', body: 'Configure model providers and compatible interfaces. An offline vLLM and Qwen model-node installer is available; model and hardware combinations depend on the delivery environment.' },
@@ -346,12 +346,12 @@ export const faqs: Record<Locale, FaqItem[]> = {
     { question: '能否从现成的行业或岗位能力开始？', answer: '可以从数字员工模板与岗位技能开始，也可以结合已有 CRM、招投标或 EHS 业务插件。实际可用范围取决于已安装的资产、知识资料、系统连接和授权配置。' },
   ],
   en: [
-    { question: 'How do digital employees, templates and Agents differ?', answer: 'A digital employee template is a static, reusable configuration asset. A digital employee is an independently running business instance recruited from a template. An Agent is the intelligent execution core inside it; configurations can include a main Agent and specialist sub-Agents.' },
+    { question: 'How do digital employees, digital employee templates and Agents differ?', answer: 'A digital employee template is a static, preconfigured asset for reuse and distribution. A digital employee is an independently running business instance recruited from a digital employee template. An Agent is the intelligent execution core inside it; configurations can include a main Agent and specialist sub-Agents.' },
     { question: 'How does a team work with a digital employee?', answer: 'Create a project with goals, materials and members, then assign work in a conversation. Colleagues participate through questions, approvals or handoffs. Review and edit deliverables, then publish project versions or export final files.' },
     { question: 'Can Word, PowerPoint and Excel be edited on every client?', answer: 'Word and PowerPoint editors are available on web and desktop. Excel editing is available on desktop, with read-only previews on web. Mobile capabilities depend on the supported client features.' },
     { question: 'How do the Tasks page and execution board differ?', answer: 'The current Tasks page manages scheduled tasks for the selected digital employee. The execution board with dependencies, retries, blocking states, human review and delivery evidence is an extension that requires installation and configuration.' },
     { question: 'Do project materials appear in global knowledge search?', answer: 'Project indexes serve only their own project, with access controlled by project membership. They do not enter global knowledge base search. Project search requires a configured knowledge engine and embedding model.' },
-    { question: 'How is company knowledge access granted?', answer: 'Access and citation rights are granted by knowledge base, and documents inherit the scope of their knowledge base. Digital employees still need the relevant authorization to use the materials.' },
+    { question: 'How is enterprise knowledge access granted?', answer: 'Access and citation rights are granted by knowledge base, and documents inherit the scope of their knowledge base. Digital employees still need the relevant authorization to use the materials.' },
     { question: 'What is needed to connect WeCom, DingTalk or Feishu?', answer: 'Configure the channel connection and identity binding, then use it within the platform user’s permissions. External collaboration channels and TeGo built-in work conversations are separate entry points with separate configuration.' },
     { question: 'Can the platform run privately with local models?', answer: 'Compose and Kubernetes private deployment projects are available. The platform supports configurable model providers and compatible interfaces, with an offline vLLM and Qwen model-node installer. Web search, cloud models and external services follow company network policies.' },
     { question: 'What Kylin desktop delivery options are available?', answer: 'Dedicated offline installation and build paths are available for Kylin desktop, currently focused on arm64. Verify the specific operating system, CPU, model, database, middleware and installation combination for delivery.' },

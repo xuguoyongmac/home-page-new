@@ -3,424 +3,424 @@ import type { IndustrySolutionPresentation } from '../shared/types';
 export const generalPresentation: IndustrySolutionPresentation = {
   "zh": {
     "home": {
-      "title": "让企业经验成为能力，让团队协作交付价值",
-      "pain": "客户沟通、产品知识和项目资料散落在不同入口，同类方案反复重做，经营汇总依赖人工催收；个人经验难变为团队共同的生产力。",
-      "value": "围绕客户经营、企业知识、方案交付与经营分析组建数字岗位团队，把专业方法接到具体任务，让销售动作有上下文、项目协作有成果、日常管理有持续支持。",
+      "title": "把企业经验变成生产力，让业务协作直达成果",
+      "pain": "制度经验留在个人手里，客户信息散在聊天与系统中，方案标书反复重做，会议决议靠人追、经营报告靠人拼。业务越忙，跨团队协作越容易断档。",
+      "value": "从客户经营、知识服务到方案投标、项目协作与经营分析，TeGo 将企业知识、岗位方法和业务系统组合成数字员工团队，承接日常执行、交付专业成果，让成熟经验在更多岗位复用。",
       "scenarios": [
         "客户经营",
         "企业知识",
-        "方案文书",
+        "方案投标",
         "项目协作",
         "经营分析",
         "共享服务"
       ],
       "benefits": [
         {
-          "title": "把经验转为共享能力",
-          "description": "将有效知识、岗位方法和历史成果沉淀为企业资产，让团队从已有经验出发。"
+          "title": "专业经验，全员复用",
+          "description": "把制度、产品知识和优秀做法沉淀为岗位能力，让新人有章可循，让团队少走弯路。"
         },
         {
-          "title": "把沟通接到业务交付",
-          "description": "关联客户、项目和工作话题，接续需求、方案、反馈与行动，减少反复交接。"
+          "title": "从业务交办到成果交付",
+          "description": "连接客户、项目、文件与任务，让讨论落到行动，让方案、报告和业务成果接续产出。"
         },
         {
-          "title": "把例行工作持续推进",
-          "description": "按计划归集经营信息和事项进展，将周期报告与变化反馈送到对应工作场景。"
+          "title": "从单岗提效到团队协同",
+          "description": "同一套方法服务更多岗位和部门，持续承接周期工作，支撑业务扩展与组织协作。"
         }
       ]
     },
     "hero": {
       "lines": [
-        "让企业经验成为团队能力",
-        "让数字员工融入业务协作"
+        "把企业经验变成生产力",
+        "让业务协作直达成果"
       ],
       "background": "/images/solutions/general/general-hero_V2.0.webp"
     },
     "sources": [
-      "产品知识、制度与岗位经验",
-      "客户沟通、商机与服务记录",
-      "项目目标、方案模板与交付文件",
+      "企业制度、产品知识与岗位经验",
+      "客户交流、商机与服务记录",
+      "项目需求、招标文件与历史方案",
       "经营报表、指标口径与工作计划"
     ],
     "outputs": [
-      "客户经营与商机方案",
-      "企业知识与岗位方法",
-      "项目方案与交付成果",
-      "经营分析与周期报告"
+      "客户洞察与销售方案",
+      "知识答复与岗位方法",
+      "方案标书与项目成果",
+      "经营分析与督办报告"
     ],
     "features": [
       {
-        "title": "让客户沟通接续为商机与销售行动",
-        "problem": "客户信息和沟通分散在聊天、会议与业务系统中，团队反复补背景，需求与后续销售动作容易脱节。",
-        "body": "结合获准的客户资料与CRM能力，数字员工梳理客户需求、商机阶段和历史沟通，准备客户分析、交流方案与跟进工作。将会议共识、服务反馈和下一步行动带回同一业务上下文，让团队交接更连贯、客户经营更有重点。",
+        "title": "从客户洞察到销售推进，把握每一次商机",
+        "problem": "客户背景反复交代、销售记录更新滞后、关键跟进遗漏，客户关系难以转化为团队持续经营的资产。",
+        "body": "连接 CRM、客户交流与产品知识，数字员工整理客户需求、机会线索和决策关注点，准备会前简报、沟通方案与跟进计划。让售前、销售与服务共享业务上下文，把每一次交流接续为下一步行动，提升客户响应与商机推进效率。",
         "outcomes": [
-          "客户需求分析",
-          "商机跟进方案",
-          "客户沟通材料"
+          "客户洞察与机会分析",
+          "客户交流与方案材料",
+          "商机跟进与阶段交接"
         ]
       },
       {
-        "title": "让企业知识转化为可复用的岗位能力",
-        "problem": "制度、产品资料与经验散落在各处，新人反复问、老员工重复找，同一业务在不同团队做法不一。",
-        "body": "将有效制度、产品知识与历史成果整理为可检索的企业知识，把专业步骤、业务规则和交付格式沉淀为岗位技能。数字员工按任务调用知识与方法，并在工作中积累可复用经验，让专家做法进入团队日常，持续维护企业自己的能力资产。",
+        "title": "把专家经验，变成整个团队的工作能力",
+        "problem": "制度找不到、版本分不清、业务问题反复问，关键经验随人员流动，同一项工作在不同团队做法不一。",
+        "body": "汇聚企业制度、产品资料与项目经验，提供带出处的知识答复与办理材料。进一步将专业步骤、判断规则和成果标准封装为岗位技能，让数字员工带着企业自己的方法工作，把优秀员工的经验积累为可复用、可迭代的组织能力。",
         "outcomes": [
-          "企业知识服务",
-          "岗位方法资产",
-          "经验复用成果"
+          "带出处的业务答复",
+          "制度与产品知识服务",
+          "可复用的岗位技能"
         ]
       },
       {
-        "title": "让方案文书与项目协作围绕交付展开",
-        "problem": "方案从找资料到编制汇报需要多轮协作，内容口径、修改意见与文件版本分散，影响交付节奏。",
-        "body": "围绕项目目标连接产品资料、历史方案和专业岗位，组织需求分析、内容编制与业务答复。数字员工交付可编辑的Word、Excel和PPT，团队在同一项目中补充背景、审阅修改并接续版本，让方案内容和协作过程共同服务交付。",
+        "title": "从方案编制到投标交付，让专业成果成套产出",
+        "problem": "方案、标书与报告横跨多份资料、多位同事和多个版本，反复拼接、核对与返工挤占专业工作的时间。",
+        "body": "围绕客户需求与招标要求，组织资料检索、章节编制、内容核对和专业分工，交付成套 Word、Excel 与 PPT 成果。团队在同一项目中批注、修改和定稿，让要求、依据、版本与交付保持一致，把时间留给方案质量与客户价值。",
         "outcomes": [
-          "业务方案与报告",
-          "演示汇报材料",
-          "项目交付文件"
+          "客户方案与演示文稿",
+          "投标文件与响应材料",
+          "项目审阅与定稿成果"
         ]
       },
       {
-        "title": "让经营分析与周期工作主动跟上业务",
-        "problem": "经营数据需要跨表整理，周期汇报和事项跟进依赖人工提醒，管理层难以及时看到变化原因。",
-        "body": "结合授权报表、指标定义与工作计划，数字员工组织经营分析、周期简报和重点事项跟进，关联数据变化与业务背景。通过定时任务持续归集资料、更新成果并投递到指定会话，让例行工作有节奏地推进，管理讨论聚焦真正需要关注的变化。",
+        "title": "让经营看得清，让重点工作推得动",
+        "problem": "报表跨系统汇总、会议结论难跟进、管理周报反复催，负责人忙于收集信息，却难以及时看清问题。",
+        "body": "按统一指标口径归集经营数据，核对差异并形成分析报告；从会议与项目中提炼决议、责任和待办，持续汇总进展。用定时任务承接周期简报与重点事项跟进，让管理者更早看到变化，把精力放在判断、协调与行动上。",
         "outcomes": [
-          "经营分析报告",
-          "周期工作简报",
-          "重点事项进展"
+          "经营分析与差异清单",
+          "会议纪要与行动清单",
+          "周期简报与督办报告"
         ]
       }
     ],
-    "teamTitle": "围绕共同目标协作的企业数字员工团队",
+    "teamTitle": "让每个团队，都有懂业务的数字员工",
     "employees": [
       {
         "role": "客户经营数字员工",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
         "skills": [
-          "需求分析",
-          "商机跟进",
-          "客户方案"
+          "客户洞察",
+          "商机分析",
+          "销售协同"
         ],
         "process": [
-          "关联沟通记录与客户背景",
-          "整理需求商机与服务重点",
-          "准备方案并接续后续行动"
+          "关联客户背景与交流记录",
+          "提炼需求、机会与决策关注点",
+          "准备沟通方案并接续销售行动"
         ],
         "outputs": [
-          "客户经营方案",
-          "商机跟进计划"
+          "客户洞察与交流方案",
+          "商机跟进与交接材料"
         ],
-        "value": "把每次沟通接到更有重点的客户经营"
+        "value": "让客户信息成为持续经营的资产"
       },
       {
         "role": "知识服务数字员工",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
         "skills": [
           "知识检索",
-          "经验萃取",
-          "方法沉淀"
+          "制度服务",
+          "经验复用"
         ],
         "process": [
-          "组织有效资料与企业经验",
-          "回应岗位任务所需专业问题",
-          "将成熟做法沉淀为知识与技能"
+          "汇聚现行制度与产品资料",
+          "定位业务依据并组织专业答复",
+          "将成熟做法沉淀为岗位技能"
         ],
         "outputs": [
-          "业务知识答复",
-          "岗位方法成果"
+          "业务答复与依据索引",
+          "制度指引与岗位方法"
         ],
-        "value": "让团队用得到企业已经积累的知识"
+        "value": "让企业知识随业务需要触手可及"
       },
       {
-        "role": "方案文书数字员工",
+        "role": "方案投标数字员工",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
         "skills": [
-          "方案策划",
-          "报告编制",
-          "演示表达"
+          "需求解析",
+          "方案编制",
+          "响应审查"
         ],
         "process": [
-          "梳理项目目标与内容主线",
-          "复用产品资料和历史成果",
-          "编制可编辑的方案与演示文件"
+          "梳理客户需求与招标要求",
+          "调用企业资料并组织章节编制",
+          "核对响应内容并交付成套文件"
         ],
         "outputs": [
-          "方案与报告",
-          "演示文稿"
+          "方案标书与演示文稿",
+          "响应核对与审查清单"
         ],
-        "value": "从重复找资料转向更有质量的内容表达"
+        "value": "把重复编制转为高质量的方案交付"
       },
       {
         "role": "项目协作数字员工",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
         "skills": [
-          "任务组织",
           "会议协同",
-          "交付接续"
+          "任务跟进",
+          "成果管理"
         ],
         "process": [
-          "关联项目资料与成员任务",
-          "汇集会议共识和修改反馈",
-          "跟进成果版本与后续工作"
+          "提炼会议决议与项目任务",
+          "汇集成员反馈与交付版本",
+          "持续跟进责任事项和项目进展"
         ],
         "outputs": [
-          "项目工作成果",
-          "会议纪要与行动"
+          "会议纪要与行动清单",
+          "项目进展与交付文件"
         ],
-        "value": "让讨论、任务与交付围绕同一个目标"
+        "value": "让讨论有行动，让协作有成果"
       },
       {
         "role": "经营分析数字员工",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
           "指标分析",
-          "经营归因",
-          "周期报告"
+          "差异核对",
+          "经营复盘"
         ],
         "process": [
-          "归集报表与业务反馈",
-          "关联指标变化和经营背景",
-          "形成分析简报与管理专题"
+          "归集经营报表并统一统计口径",
+          "关联指标变化与业务反馈",
+          "形成经营专题和周期分析"
         ],
         "outputs": [
-          "经营分析报告",
-          "周期经营简报"
+          "经营分析与管理简报",
+          "计算明细与差异清单"
         ],
-        "value": "让管理讨论建立在连贯的经营信息上"
+        "value": "从反复汇总数据到及时发现问题"
       },
       {
-        "role": "综合行政数字员工",
+        "role": "共享服务数字员工",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
         "skills": [
-          "制度服务",
-          "事项准备",
-          "材料协同"
+          "制度咨询",
+          "材料编制",
+          "事项协同"
         ],
         "process": [
-          "理解员工事项与适用制度",
-          "组织申请准备和部门交接",
-          "编制综合材料并跟进待办"
+          "理解行政、人力与财务事项",
+          "按制度组织办理资料与部门协作",
+          "交付工作材料并汇总待办进展"
         ],
         "outputs": [
-          "员工事项材料",
-          "综合工作报告"
+          "内部服务与办理材料",
+          "职能工作与事项报告"
         ],
-        "value": "减少重复咨询与准备，让内部服务更顺畅"
+        "value": "让高频内部服务更专业、更顺畅"
       }
     ],
     "deployment": {
-      "title": "让数字岗位融入企业，让方法与成果属于团队",
-      "body": "按企业资料和IT条件选择部署方式，连接已有模型、知识与业务工具，在保留现有系统的基础上组织工作。以岗位职责配置使用范围，以项目接续任务和成果，通过知识版本、技能发布、授权与运行管理，让企业能力能够积累、复用并持续演进。"
+      "title": "从一个岗位，到企业的数字员工团队",
+      "body": "从销售、招投标到行政、人力、财务、IT 与安全生产，按企业流程定制岗位技能与系统连接，复用现有模型、知识和业务资产。支持私有化部署、本地模型、组织权限与审计管理，让一项任务的成熟做法，扩展为同岗复用、部门协作与企业持续运营的能力。"
     }
   },
   "en": {
     "home": {
-      "title": "Turn company experience into shared team capability",
-      "pain": "Client conversations, product knowledge and project records sit in separate places. Teams recreate similar proposals and chase recurring reports, while individual experience is difficult to reuse.",
-      "value": "Build digital roles around client operations, company knowledge, project delivery and performance analysis. Connect professional methods with daily tasks so sales retains context, collaboration produces usable work and management receives continued support.",
+      "title": "Turn company expertise into productivity and teamwork into results",
+      "pain": "Knowledge stays with individuals, client context is scattered, and proposals are rebuilt from scratch. Teams chase meeting actions and assemble reports by hand. As work grows, coordination breaks down.",
+      "value": "Build digital employee teams for client operations, knowledge services, proposals and bids, projects and business analysis. TeGo combines company knowledge, role methods and business systems to carry out daily work, deliver professional results and extend proven practices across teams.",
       "scenarios": [
         "Client operations",
         "Company knowledge",
-        "Proposals & reports",
+        "Proposals & bids",
         "Project collaboration",
         "Business analysis",
         "Shared services"
       ],
       "benefits": [
         {
-          "title": "Make experience reusable",
-          "description": "Build current knowledge, role methods and past work into company assets that teams can use in new tasks."
+          "title": "Expertise every team can use",
+          "description": "Turn policies, product knowledge and proven methods into role capabilities, helping new colleagues get started and teams avoid repeated mistakes."
         },
         {
-          "title": "Connect conversations with delivery",
-          "description": "Carry requirements, proposals, feedback and actions across clients, projects and working conversations."
+          "title": "From assigned work to usable results",
+          "description": "Connect clients, projects, files and tasks so discussions lead to action and teams can keep developing proposals, reports and deliverables."
         },
         {
-          "title": "Keep recurring work moving",
-          "description": "Collect business information and progress on a schedule, delivering reports and changes to the relevant work context."
+          "title": "From individual roles to connected teams",
+          "description": "Apply the same methods across roles and departments, sustain recurring work and support a growing business."
         }
       ]
     },
     "hero": {
       "lines": [
-        "Make company experience reusable",
-        "Bring digital roles into team work"
+        "Turn expertise into productivity.",
+        "Turn teamwork into results."
       ],
       "background": "/images/solutions/general/general-hero_V2.0.webp"
     },
     "sources": [
-      "Product knowledge, policies and role experience",
+      "Company policies, product knowledge and role expertise",
       "Client conversations, opportunities and service records",
-      "Project objectives, templates and deliverables",
+      "Project needs, tender documents and past proposals",
       "Business reports, metric definitions and work plans"
     ],
     "outputs": [
-      "Client and opportunity plans",
-      "Company knowledge and role methods",
-      "Project proposals and deliverables",
-      "Business analysis and recurring reports"
+      "Client insights and sales proposals",
+      "Knowledge responses and role methods",
+      "Bids, proposals and project deliverables",
+      "Business analysis and action reports"
     ],
     "features": [
       {
-        "title": "Carry client conversations into sales action",
-        "problem": "Client information is spread across chats, meetings and systems. Teams repeatedly rebuild context while requirements drift away from follow-up work.",
-        "body": "Use authorized client records and CRM capabilities to organize needs, opportunity stages and previous conversations. Digital employees prepare client analysis, meeting proposals and follow-up work. Decisions, service feedback and next actions stay connected with the same business context, improving continuity across the team.",
+        "title": "Turn client insight into focused sales action",
+        "problem": "Teams repeatedly explain client context, update records late and miss follow-ups. Relationships are difficult to develop as a shared business asset.",
+        "body": "Connect CRM records, client conversations and product knowledge. Digital employees identify needs, opportunities and decision priorities, then prepare meeting briefs, proposals and follow-up plans. Sales, presales and service teams work from shared context, carrying each conversation into the next action.",
         "outcomes": [
-          "Client needs analysis",
-          "Opportunity follow-up plan",
-          "Client communication material"
+          "Client insights and opportunity analysis",
+          "Meeting briefs and client proposals",
+          "Follow-up plans and stage handovers"
         ]
       },
       {
-        "title": "Turn company knowledge into reusable role capability",
-        "problem": "Policies, product records and experience sit in separate places. New colleagues repeat questions while experienced staff repeat searches and methods differ across teams.",
-        "body": "Make current policies, product knowledge and past work searchable. Build professional steps, business rules and delivery formats into role skills. Digital employees use this knowledge and these methods in tasks, retaining reusable experience so established expertise becomes part of everyday team work.",
+        "title": "Put specialist expertise within reach of every team",
+        "problem": "Policies are hard to find, versions conflict and the same questions recur. Critical experience leaves with people, while teams approach the same work differently.",
+        "body": "Bring policies, product information and project experience together to provide answers and work materials with source references. Package professional steps, business rules and delivery standards as role skills. Digital employees apply your methods, making expert practice reusable and easier to improve across the organization.",
         "outcomes": [
-          "Company knowledge service",
-          "Reusable role methods",
-          "Applied team experience"
+          "Business answers with source references",
+          "Policy and product knowledge services",
+          "Reusable professional skills"
         ]
       },
       {
-        "title": "Organize proposals and collaboration around delivery",
-        "problem": "Proposal preparation spans research, writing and presentations. Content definitions, feedback and file versions scatter across several rounds of collaboration.",
-        "body": "Connect product records, previous proposals and specialist roles around project objectives. Digital employees help analyze requirements, prepare content and produce editable Word, Excel and PowerPoint files. Teams add context, review revisions and carry versions forward in one project, keeping both content and collaboration focused on delivery.",
+        "title": "Deliver complete proposals and bids as a team",
+        "problem": "Proposals, bids and reports span multiple sources, colleagues and versions. Repeated assembly, checking and rework consume time needed for professional work.",
+        "body": "Organize research, drafting, review and specialist contributions around client and tender requirements. Produce coordinated Word, Excel and PowerPoint deliverables. Teams comment, revise and finalize work in one project, keeping requirements, evidence and versions together while focusing on proposal quality and client value.",
         "outcomes": [
-          "Business proposals and reports",
-          "Management presentations",
-          "Project deliverables"
+          "Client proposals and presentations",
+          "Bid documents and response materials",
+          "Reviewed and finalized project deliverables"
         ]
       },
       {
-        "title": "Keep analysis and recurring work close to the business",
-        "problem": "Business reporting requires repeated consolidation across files. Routine updates depend on reminders, leaving management without a timely view of changing conditions.",
-        "body": "Use authorized reports, metric definitions and work plans to organize business analysis, recurring briefs and priority follow-up. Digital employees connect changes with business context. Scheduled tasks collect records, update deliverables and send results to designated conversations, keeping routine work moving and management discussions focused.",
+        "title": "See business changes. Keep priorities moving.",
+        "problem": "Managers chase reports across systems, meeting actions lose momentum and weekly updates require repeated requests. Gathering information crowds out addressing issues.",
+        "body": "Consolidate data using shared metric definitions, reconcile differences and produce business analysis. Extract decisions, owners and actions from meetings and projects, then track progress. Scheduled tasks sustain recurring briefs and follow-ups, helping managers identify changes earlier and focus on decisions and action.",
         "outcomes": [
-          "Business analysis",
-          "Recurring management briefs",
-          "Priority progress updates"
+          "Business analysis and reconciliation lists",
+          "Meeting minutes and action lists",
+          "Recurring briefs and progress reports"
         ]
       }
     ],
-    "teamTitle": "A digital employee team working toward shared business goals",
+    "teamTitle": "Digital employees that understand the work of every team",
     "employees": [
       {
         "role": "Client Operations Digital Employee",
         "avatar": "/images/home/employee-avatar-customer_V1.0.webp",
         "skills": [
-          "Needs analysis",
-          "Opportunity follow-up",
-          "Client proposals"
+          "Client insight",
+          "Opportunity analysis",
+          "Sales collaboration"
         ],
         "process": [
-          "Connect conversations with client background",
-          "Organize needs, opportunities and service priorities",
-          "Prepare proposals and carry next actions forward"
+          "Connect client context with conversation records",
+          "Identify needs, opportunities and decision priorities",
+          "Prepare client plans and continue sales actions"
         ],
         "outputs": [
-          "Client plan",
-          "Opportunity follow-up plan"
+          "Client insights and meeting plans",
+          "Opportunity follow-ups and handovers"
         ],
-        "value": "Make every conversation part of more focused client work"
+        "value": "Make client context a lasting business asset"
       },
       {
         "role": "Knowledge Services Digital Employee",
         "avatar": "/images/home/employee-avatar-knowledge_V1.0.webp",
         "skills": [
-          "Knowledge search",
-          "Experience capture",
-          "Method development"
+          "Knowledge retrieval",
+          "Policy support",
+          "Expertise reuse"
         ],
         "process": [
-          "Organize current records and company experience",
-          "Answer professional questions within working tasks",
-          "Retain established practice as knowledge and skills"
+          "Bring current policies and product information together",
+          "Locate supporting sources and prepare professional answers",
+          "Turn established methods into reusable skills"
         ],
         "outputs": [
-          "Business knowledge responses",
-          "Reusable role methods"
+          "Business answers and source indexes",
+          "Policy guidance and role methods"
         ],
-        "value": "Put the knowledge your company already holds to work"
+        "value": "Put company knowledge within reach of daily work"
       },
       {
-        "role": "Proposal Digital Employee",
+        "role": "Proposals and Bids Digital Employee",
         "avatar": "/images/home/employee-avatar-proposal_V1.0.webp",
         "skills": [
-          "Proposal planning",
-          "Report writing",
-          "Presentation design"
+          "Requirements analysis",
+          "Proposal drafting",
+          "Response review"
         ],
         "process": [
-          "Clarify objectives and the content structure",
-          "Reuse product information and previous work",
-          "Prepare editable proposals and presentations"
+          "Interpret client needs and tender requirements",
+          "Use company materials to organize specialist drafting",
+          "Check responses and deliver coordinated documents"
         ],
         "outputs": [
-          "Proposals and reports",
-          "Presentation files"
+          "Proposals, bids and presentations",
+          "Response checks and review lists"
         ],
-        "value": "Spend less time rebuilding sources and more time on the argument"
+        "value": "Spend less effort assembling work and more on quality"
       },
       {
         "role": "Project Collaboration Digital Employee",
         "avatar": "/images/home/employee-avatar-admin_V1.0.webp",
         "skills": [
-          "Task organization",
-          "Meeting collaboration",
-          "Delivery coordination"
+          "Meeting coordination",
+          "Action tracking",
+          "Deliverable management"
         ],
         "process": [
-          "Connect project sources and team tasks",
-          "Bring together decisions and revision feedback",
-          "Follow deliverable versions and next actions"
+          "Extract meeting decisions and project tasks",
+          "Collect team feedback and delivery versions",
+          "Track owners, priorities and project progress"
         ],
         "outputs": [
-          "Project work package",
-          "Meeting records and actions"
+          "Meeting minutes and action lists",
+          "Project updates and deliverables"
         ],
-        "value": "Keep discussion, tasks and delivery aligned with one goal"
+        "value": "Connect discussion with action and shared results"
       },
       {
         "role": "Business Analysis Digital Employee",
         "avatar": "/images/home/employee-avatar-research_V1.0.webp",
         "skills": [
           "Metric analysis",
-          "Performance analysis",
-          "Recurring reports"
+          "Reconciliation",
+          "Performance review"
         ],
         "process": [
-          "Collect reports and operating feedback",
-          "Relate metric changes to business context",
-          "Prepare analysis briefs and management topics"
+          "Collect business reports using consistent definitions",
+          "Connect metric changes with business feedback",
+          "Prepare business reviews and recurring analysis"
         ],
         "outputs": [
-          "Business analysis report",
-          "Recurring management brief"
+          "Business analysis and management briefs",
+          "Calculations and reconciliation lists"
         ],
-        "value": "Ground management discussions in connected business information"
+        "value": "Move from assembling data to identifying issues"
       },
       {
-        "role": "Administration Digital Employee",
+        "role": "Shared Services Digital Employee",
         "avatar": "/images/home/employee-avatar-risk_V1.0.webp",
         "skills": [
-          "Policy services",
-          "Request preparation",
-          "Team coordination"
+          "Policy guidance",
+          "Document preparation",
+          "Service coordination"
         ],
         "process": [
-          "Understand employee needs and applicable policies",
-          "Prepare requests and department handovers",
-          "Assemble administrative material and follow-up work"
+          "Understand administration, HR and finance requests",
+          "Prepare materials and coordinate teams under company policies",
+          "Deliver work documents and summarize outstanding actions"
         ],
         "outputs": [
-          "Employee request package",
-          "Administrative report"
+          "Internal service and processing materials",
+          "Functional reports and action updates"
         ],
-        "value": "Reduce repeated questions and preparation in internal services"
+        "value": "Make recurring internal services more professional"
       }
     ],
     "deployment": {
-      "title": "Bring digital roles into your organization and retain team knowledge",
-      "body": "Choose deployment around your information and IT requirements. Connect existing models, knowledge and business tools while keeping established systems in place. Role-based access, project context, knowledge versions, skill releases and operational management help your team accumulate, reuse and develop its own working capabilities."
+      "title": "Start with one role. Build a company-wide digital team.",
+      "body": "Tailor role skills and system connections to your workflows across sales, tendering, administration, HR, finance, IT and workplace safety. Reuse existing models, knowledge and business assets. Private deployment, local models, organizational permissions and audit management support expansion from one established task to shared practices across roles and departments."
     }
   }
 };

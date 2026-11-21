@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { parse, serialize } from 'parse5';
+import { parse, parseFragment, serialize } from 'parse5';
 import { Converter } from 'opencc-js/cn2t';
 import ts from 'typescript';
 
@@ -19,6 +19,62 @@ const visit = (node, callback) => {
 };
 const escapeTemplate = value => value.replaceAll('\\', '\\\\').replaceAll('`', '\\`').replaceAll('${', '\\${');
 const inlineJson = value => JSON.stringify(value).replaceAll('<', '\\u003c');
+
+// Text-bearing raster artwork is exported from its original composition, not transliterated as a URL.
+const rasterAssets = new Map([
+  ...['line', 'bar', 'pie'].map(chart => [
+    `/blog-assets/images/blog/a2ui/chart-${chart}.png`,
+    `/blog-assets/images/blog/a2ui/chart-${chart}-zh-Hant_V1.0.png`,
+  ]),
+  ...['integrations', 'collaboration', 'knowledge', 'governance'].map(slug => [
+    `/images/product/${slug}/experience-hero-zh_V3.1.webp`,
+    `/images/product/${slug}/experience-hero-zh-Hant_V3.1.webp`,
+  ]),
+  ['/images/product/digital-employees/employee-market-zh_V1.15.webp', '/images/product/digital-employees/employee-market-zh-Hant_V1.15.webp'],
+  ['/images/product/multi-agent/experience-hero-zh_V3.1.webp', '/images/product/multi-agent/experience-hero-zh-Hant_V3.1.webp'],
+  ['/images/hero/task-execution-zh-poster_V1.11.webp', '/images/hero/task-execution-zh-Hant-poster_V1.11.webp'],
+  ['/images/workforce/workforce-matrix-zh_V3.4.webp', '/images/workforce/workforce-matrix-zh-Hant_V1.0.webp'],
+]);
+
+export function translateSvg(source) {
+  const document = parseFragment(source);
+  const transform = (node, preserve = false) => {
+    const protectedText = preserve || ['style', 'script'].includes(node.tagName);
+    if (node.nodeName === '#text' && !protectedText) node.value = convert(node.value);
+    for (const item of node.attrs || []) if (['aria-label', 'title'].includes(item.name)) item.value = convert(item.value);
+    for (const child of node.childNodes || []) transform(child, protectedText);
+  };
+  transform(document);
+  return serialize(document);
+}
+
+function prepareAssets(dist) {
+  const assets = new Map();
+  for (const [source, target] of rasterAssets) {
+    if (!existsSync(path.join(dist, source))) continue;
+    if (!existsSync(path.join(dist, target))) throw new Error(`Missing Traditional Chinese artwork: ${target}`);
+    assets.set(source, target);
+  }
+  for (const file of walk(dist).filter(file => file.endsWith('.svg') && !file.endsWith('.zh-Hant.svg'))) {
+    const source = readFileSync(file, 'utf8');
+    if (!/\p{Script=Han}/u.test(source)) continue;
+    const translated = translateSvg(source);
+    if (translated === source) continue;
+    const target = file.replace(/\.svg$/, '.zh-Hant.svg');
+    writeFileSync(target, translated);
+    assets.set(`/${path.relative(dist, file).split(path.sep).join('/')}`, `/${path.relative(dist, target).split(path.sep).join('/')}`);
+  }
+  const rewriteCss = source => source.replace(/url\(\s*(['"]?)([^'"\s)]+)\1\s*\)/g, (match, quote, url) => assets.has(url) ? `url(${quote}${assets.get(url)}${quote})` : match);
+  for (const file of (existsSync(path.join(dist, '_astro')) ? walk(path.join(dist, '_astro')) : []).filter(file => file.endsWith('.css') && !file.endsWith('.zh-Hant.css'))) {
+    const source = readFileSync(file, 'utf8');
+    const translated = rewriteCss(source);
+    if (translated === source) continue;
+    const target = file.replace(/\.css$/, '.zh-Hant.css');
+    writeFileSync(target, translated);
+    assets.set(`/${path.relative(dist, file).split(path.sep).join('/')}`, `/${path.relative(dist, target).split(path.sep).join('/')}`);
+  }
+  return assets;
+}
 
 // Rewrite decoded literals only: source code, identifiers and regular expressions retain their meaning.
 export function translateScript(source, transformReference = value => value) {
@@ -44,7 +100,7 @@ export function translateScript(source, transformReference = value => value) {
   return source;
 }
 
-function prepareScripts(dist) {
+function prepareScripts(dist, assets = new Map()) {
   const directory = path.join(dist, '_astro');
   if (!existsSync(directory)) return new Map();
   const sources = new Map(walk(directory).filter(file => file.endsWith('.js') && !file.endsWith('.zh-Hant.js')).map(file => [file, readFileSync(file, 'utf8')]));
@@ -62,7 +118,7 @@ function prepareScripts(dist) {
     const translated = translateScript(source, value => {
       const target = resolveReference(value, file);
       if (target && sources.has(target)) related.add(target);
-      return value;
+      return assets.get(value) || value;
     });
     dependencies.set(file, related);
     if (translated !== source) localized.set(file, targetFor(file));
@@ -78,7 +134,7 @@ function prepareScripts(dist) {
   for (const [file, target] of localized) {
     const translated = translateScript(sources.get(file), value => {
       const resolved = resolveReference(value, file);
-      if (!resolved || !localized.has(resolved)) return value;
+      if (!resolved || !localized.has(resolved)) return assets.get(value) || value;
       return value.replace(/[^/]+\.js$/, path.basename(localized.get(resolved)));
     });
     writeFileSync(target, translated);
@@ -111,19 +167,27 @@ export function translateHtml(source, scripts = new Map()) {
   const traditionalLink = languageLinks.find(node => attr(node, 'hreflang') === 'zh-Hant');
   if (traditionalLink && selectedIcon) { traditionalLink.childNodes.push(selectedIcon); selectedIcon.parentNode = traditionalLink; }
   const translateJson = value => {
-    if (typeof value === 'string') return /^(?:https?:\/\/|\/)/.test(value) ? localizeUrl(value) : value === 'zh-CN' ? 'zh-Hant' : convert(value);
+    if (typeof value === 'string') {
+      if (/^\s*(?:<!doctype html>|<html\b)/i.test(value)) return translateHtml(value, scripts);
+      return /^(?:https?:\/\/|\/)/.test(value) ? localizeUrl(value) : value === 'zh-CN' ? 'zh-Hant' : convert(value);
+    }
     if (Array.isArray(value)) return value.map(translateJson);
     if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, translateJson(item)]));
     return value;
   };
   const protectedAttributes = new Set(['id', 'class', 'name', 'type', 'for', 'lang', 'hreflang', 'aria-controls', 'aria-labelledby', 'aria-describedby', 'list', 'form', 'style', 'src', 'srcset', 'href']);
+  const mediaAttributes = new Set(['src', 'poster', 'data-src', 'data-hero-src', 'data-hero-poster', 'data-static-src', 'data-animated-src']);
   const transform = (node, protectedText = false) => {
     const isLanguage = languageLinks.includes(node);
     const diagram = attr(node, 'data-language') === 'mermaid' || attr(node.parentNode, 'data-language') === 'mermaid';
-    const preserve = protectedText || isLanguage || (!diagram && (node.tagName === 'pre' || node.tagName === 'code'));
+    const officialRegistration = node.tagName === 'a' && /^https:\/\/beian\.miit\.gov\.cn/.test(attr(node, 'href') || '');
+    const preserve = protectedText || isLanguage || officialRegistration || (!diagram && (node.tagName === 'pre' || node.tagName === 'code'));
     for (const item of node.attrs || []) {
       if (item.name === 'href' && !isLanguage && !(node.tagName === 'link' && attr(node, 'rel') === 'alternate' && attr(node, 'hreflang'))) item.value = localizeUrl(item.value);
-      else if (item.name === 'src') item.value = scripts.get(item.value) || item.value;
+      else if (mediaAttributes.has(item.name)) item.value = scripts.get(item.value) || item.value;
+      else if (item.name === 'srcset' || item.name.endsWith('-srcset')) item.value = item.value.split(',').map(candidate => candidate.replace(/^(\s*)(\S+)/, (_, space, url) => space + (scripts.get(url) || url))).join(',');
+      else if (item.name === 'style') item.value = item.value.replace(/url\(\s*(['"]?)([^'"\s)]+)\1\s*\)/g, (match, quote, url) => scripts.has(url) ? `url(${quote}${scripts.get(url)}${quote})` : match);
+      else if (node.tagName === 'meta' && ['og:image', 'og:image:url'].includes(attr(node, 'property')) && item.name === 'content') item.value = localizeUrl(item.value);
       else if (node.tagName === 'meta' && attr(node, 'property') === 'og:url' && item.name === 'content') item.value = localizeUrl(item.value);
       else if (node.tagName === 'meta' && attr(node, 'http-equiv')?.toLowerCase() === 'refresh' && item.name === 'content') item.value = item.value.replace(/(url\s*=\s*)(.+)$/i, (_, prefix, url) => prefix + localizeUrl(url));
       else if (!protectedAttributes.has(item.name) && !preserve && !/^(?:https?:\/\/|\/)/.test(item.value)) item.value = convert(item.value);
@@ -183,7 +247,9 @@ function updateSitemaps(dist) {
 export function prepareTraditionalPages(dist) {
   const sourceRoot = path.join(dist, 'zh');
   if (!existsSync(sourceRoot)) throw new Error('缺少简体中文构建页面，无法生成繁体中文版本。');
-  const scripts = prepareScripts(dist);
+  const assets = prepareAssets(dist);
+  const scripts = prepareScripts(dist, assets);
+  const references = new Map([...assets, ...scripts]);
   let pages = 0;
   let feeds = 0;
   for (const file of walk(sourceRoot)) {
@@ -192,9 +258,11 @@ export function prepareTraditionalPages(dist) {
     if (!/\.(?:html|xml)$/.test(file)) continue;
     mkdirSync(path.dirname(target), { recursive: true });
     const source = readFileSync(file, 'utf8');
-    if (file.endsWith('.html')) { writeFileSync(target, translateHtml(source, scripts)); pages += 1; }
+    if (file.endsWith('.html')) { writeFileSync(target, translateHtml(source, references)); pages += 1; }
     else {
-      writeFileSync(target, convert(source).replaceAll('/zh/', '/zh-Hant/').replace('<language>zh-CN</language>', '<language>zh-Hant</language>'));
+      let translated = convert(source).replaceAll('/zh/', '/zh-Hant/').replace('<language>zh-CN</language>', '<language>zh-Hant</language>');
+      for (const [asset, localized] of assets) translated = translated.replaceAll(asset, localized);
+      writeFileSync(target, translated);
       feeds += 1;
     }
   }

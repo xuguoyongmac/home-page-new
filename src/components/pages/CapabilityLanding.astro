@@ -32,7 +32,7 @@ const breadcrumb = {
     <div class="container pe-hero-grid">
       <div class="pe-hero-copy">
         <h1 id="capability-title">{copy.hero.lines.map((line, index) => <span class:list={{ 'pe-accent': index === copy.hero.lines.length - 1 }}>{line}</span>)}</h1>
-        <div class="pe-hero-description"><p>{copy.hero.summary}</p><a class="button pe-button" href={pathFor(locale, 'contact')}>{zh ? '预约产品演示' : 'Book a product demo'}</a></div>
+        <div class="pe-hero-description"><p>{copy.hero.summary}</p><a class="button pe-button" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a></div>
       </div>
       <figure class="pe-hero-art"><img src={visual.src[locale]} alt={experience.heroAlt} width={visual.width} height={visual.height} sizes={wideHero ? '(max-width: 700px) calc(100vw - 32px), (max-width: 1350px) calc(100vw - 72px), 1280px' : '(max-width: 800px) calc(100vw - 32px), (max-width: 1350px) 62vw, 800px'} loading="eager" fetchpriority="high" decoding="async"/></figure>
     </div>

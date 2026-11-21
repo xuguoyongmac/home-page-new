@@ -46,7 +46,7 @@ export const pricingPlans: Record<Locale, PricingPlan[]> = {
   en: [
     {
       id: 'community', icon: 'network', name: 'Community', audience: 'FREE',
-      description: 'Explore core digital employee and AI collaboration capabilities.', price: '¥0', unit: 'Free', includes: 'Core capabilities',
+      description: 'Explore core digital employee and AI collaboration capabilities.', price: 'CN¥0', unit: 'Free', includes: 'Core capabilities',
       items: [
         'Digital employees and task execution',
         'Skills, plugins and MCP tools',
@@ -58,10 +58,10 @@ export const pricingPlans: Record<Locale, PricingPlan[]> = {
     },
     {
       id: 'subscription', icon: 'shield', name: 'Subscription', audience: 'PRIVATE DEPLOYMENT · ANNUAL',
-      description: 'An annual subscription deployed in your organization’s environment.', price: '¥50,000', unit: '/ year, starting at', includes: 'Everything in Community, plus',
+      description: 'An annual subscription deployed in your organization’s environment.', price: 'From CN¥50,000', unit: '/ year', includes: 'Everything in Community, plus',
       items: [
         'Multi-Agent teamwork and scheduled tasks',
-        'Work memory and company knowledge',
+        'Work memory and enterprise knowledge bases',
         'Skill development and governance',
         'System integration and private deployment',
         'Technical support and maintenance',

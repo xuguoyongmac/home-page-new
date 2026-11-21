@@ -12,12 +12,12 @@ export default createIndustryModule({
   "navigation": {
     "zh": {
       "name": "银行",
-      "description": "信贷审查、客户经营、运营管理",
+      "description": "授信风控、客户经营、运营合规",
       "icon": "bank"
     },
     "en": {
       "name": "Banking",
-      "description": "Credit review, client coverage and operations",
+      "description": "Credit and risk, client coverage and operations",
       "icon": "bank"
     }
   }

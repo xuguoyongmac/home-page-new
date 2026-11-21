@@ -452,7 +452,7 @@ export const legalContent = {
             "A2A open protocol support",
             "On-prem deployment options"
           ],
-          "modification": "We may modify, suspend, or terminate services where necessary, subject to applicable law and contractual commitments."
+          "modification": "We reserve the right to modify, suspend or terminate any service at any time without prior notice."
         },
         "account": {
           "title": "User Accounts",
@@ -498,11 +498,11 @@ export const legalContent = {
         },
         "changes": {
           "title": "Terms Changes",
-          "content": "We may update these terms from time to time. We will notify you of material changes by email or in-product notice where appropriate. Continued use of the services means you accept the updated terms."
+          "content": "We reserve the right to modify these terms at any time. We will notify you of material changes by email or through the service. Continued use of the services means you accept the updated terms."
         },
         "disputes": {
           "title": "Dispute Resolution",
-          "content": "Any dispute arising from use of the services should first be resolved through good-faith discussion. If no resolution is reached, the dispute may be submitted to a court with jurisdiction."
+          "content": "Any dispute arising from use of the services should first be resolved through good-faith discussion. If no resolution is reached, the dispute shall be submitted to a court with jurisdiction."
         },
         "contact": {
           "title": "Contact Information",
