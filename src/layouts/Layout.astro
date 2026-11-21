@@ -30,6 +30,7 @@ import '../styles/action-buttons.css';
 import SiteHeader from '../components/navigation/SiteHeader.astro';
 import SiteFooter from '../components/navigation/SiteFooter.astro';
 import MotionRegions from '../components/MotionRegions.astro';
+import AnalyticsConsent from '../components/analytics/AnalyticsConsent.astro';
 import { site, pathFor } from '../lib/site';
 import { languages, languagePathFor, websiteLanguageFor } from '../lib/languages';
 import { buildSeo, serializeStructuredData, verificationToken } from '../lib/seo';
@@ -99,6 +100,7 @@ const baiduVerification = verificationToken(import.meta.env.BAIDU_SITE_VERIFICAT
     <SiteHeader locale={locale} page={page}/>
     <main id="main" class="page-canvas"><slot/></main>
     <SiteFooter locale={locale}/>
+    <AnalyticsConsent locale={locale}/>
     <MotionRegions/>
 
   </body>

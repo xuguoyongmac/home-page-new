@@ -13,7 +13,7 @@ export const legalContent = {
   "zh": {
     "privacy": {
       "title": "隐私政策",
-      "lastUpdated": "最后更新日期：2026年10月20日",
+      "lastUpdated": "最后更新日期：2026年11月21日",
       "quickLinksLabel": "隐私与数据管理",
       "deletionLink": "注销账号与删除数据",
       "contactLink": "联系隐私支持",
@@ -57,7 +57,7 @@ export const legalContent = {
             },
             {
               "title": "官网咨询与访问：",
-              "content": "您在联系表单或邮件中提交的联系方式、问题内容及必要的请求信息，用于回复咨询。官网可根据部署配置使用 Cookie、本地存储及网页访问统计；此类网页统计与公版移动应用的数据用途分别管理。"
+              "content": "您在联系表单或邮件中提交的联系方式、问题内容及必要的请求信息，用于回复咨询。经同意后，官网使用百度统计分析页面访问、来源渠道、设备环境及体验、下载、咨询等操作，涉及 Cookie、IP 地址、浏览器与设备信息、访问路径和推广渠道标识。可通过页脚的“访问统计设置”允许或停止后续采集。官网的自定义统计事件不包含咨询表单内容、姓名或联系方式；网页统计与公版移动应用的数据用途分别管理。"
             }
           ],
           "usageIntro": "公版移动应用的数据用途与限制：",
@@ -109,6 +109,10 @@ export const legalContent = {
           ],
           "linksLabel": "相关服务方隐私说明",
           "links": [
+            {
+              "title": "百度统计隐私政策",
+              "url": "https://tongji.baidu.com/web/help/article?id=330&type=0"
+            },
             {
               "title": "Firebase隐私与数据处理",
               "url": "https://firebase.google.com/support/privacy"
@@ -266,7 +270,7 @@ export const legalContent = {
   "en": {
     "privacy": {
       "title": "Privacy Policy",
-      "lastUpdated": "Last updated: October 20, 2026",
+      "lastUpdated": "Last updated: November 21, 2026",
       "quickLinksLabel": "Privacy and data controls",
       "deletionLink": "Delete your account and data",
       "contactLink": "Contact privacy support",
@@ -310,7 +314,7 @@ export const legalContent = {
             },
             {
               "title": "Website inquiries and visits: ",
-              "content": "Contact details and messages submitted by form or email, together with necessary request information, support replies to inquiries. Depending on its deployment, the website may use cookies, local storage and web traffic statistics. Website statistics are managed separately from the public mobile app."
+              "content": "Contact details and messages submitted by form or email, together with necessary request information, support replies to inquiries. With consent, the website uses Baidu Tongji to measure page visits, traffic sources, device environments and actions such as product trial, download and inquiry interactions. This involves cookies, IP addresses, browser and device information, page paths and campaign identifiers. Use “Analytics preferences” in the footer to allow or stop future collection. Our custom analytics events exclude inquiry form contents, names and contact details. Website statistics are managed separately from the public mobile app."
             }
           ],
           "usageIntro": "Purposes and limits for the public mobile app:",
@@ -362,6 +366,10 @@ export const legalContent = {
           ],
           "linksLabel": "Related provider privacy notices",
           "links": [
+            {
+              "title": "Baidu Tongji privacy policy",
+              "url": "https://tongji.baidu.com/web/help/article?id=330&type=0"
+            },
             {
               "title": "Firebase privacy and data processing",
               "url": "https://firebase.google.com/support/privacy"

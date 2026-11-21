@@ -17,7 +17,7 @@ const names = {
 };
 
 export function sourcePath(value) {
-  if (typeof value !== 'string' || value.length > 320 || !/^\/(?:zh|en|zh-Hant)\/(?:[a-z0-9-]+\/)*$/.test(value)) return '';
+  if (typeof value !== 'string' || value.length > 320 || !value.endsWith('/') || !/^\/(?:zh|en|zh-Hant)\/(?:[a-z0-9-]+(?:\.[a-z0-9-]+)*\/)*$/.test(value)) return '';
   return value;
 }
 export const isContactPath = path => /^\/(?:zh|en|zh-Hant)\/contact(?:\/|$)/.test(path);

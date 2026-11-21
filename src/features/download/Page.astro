@@ -53,7 +53,7 @@ const filters = zh ? [['all', '全部'], ['desktop', '桌面端'], ['mobile', '�
           <div class="installer-card-heading"><h3>{platformIcons[group.platform] ? <img class="installer-platform-icon" src={`/images/platforms/${platformIcons[group.platform]}_V1.0.svg`} width="28" height="28" alt="" aria-hidden="true"/> : <Icon class="installer-platform-icon" name="monitor" size={28}/>}<span>{platforms[group.platform]}</span></h3>{sharedVersion && <span class="installer-version">{files[0].version}</span>}</div>
           <div class="installer-variants">{files.map(file => <div class="installer-variant">
             {!sharedVersion && <p class="installer-version">{file.version}</p>}
-            <a class="button installer-download" href={file.url} aria-label={`${products[file.product]} ${platforms[file.platform]} ${downloadLabel(file)} ${file.version}`}>{downloadLabel(file)}</a>
+            <a class="button installer-download" href={file.url} data-download-architecture={file.architecture} data-download-version={file.version} data-download-format={file.format} aria-label={`${products[file.product]} ${platforms[file.platform]} ${downloadLabel(file)} ${file.version}`}>{downloadLabel(file)}</a>
           </div>)}</div>
         </article>;
       })}</div>

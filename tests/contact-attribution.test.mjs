@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { sourceStep, normalizeSourceTrail, appendSourceStep, readSourceState, leadJourney, ATTRIBUTION_TTL } from '../shared/contact-attribution.mjs';
+import { sourcePath, sourceStep, normalizeSourceTrail, appendSourceStep, readSourceState, leadJourney, ATTRIBUTION_TTL } from '../shared/contact-attribution.mjs';
 
 test('a real home, solutions menu and banking visit produces a readable source journey', () => {
   let steps = [];
@@ -38,4 +38,18 @@ test('source trails exclude contact pages, query strings, off-site URLs, injecte
   for (const path of ['/zh/contact/', '/zh/contact/submitted/', 'https://reserved.invalid/zh/', '//reserved.invalid/', '/zh/?email=private', '/zh/pricing/#private', '/zh/../pricing/']) assert.equal(sourceStep(path), null);
   for (const value of [null, {}, [{path:'/zh/blog/article/',label:'标题\n注入'}], [{path:'/zh/',label:'首页',kind:'script'}], Array(21).fill({path:'/zh/',label:'首页'})]) assert.equal(normalizeSourceTrail(value), null);
   assert.equal(sourceStep('/zh/blog/article/', '<at id=all>标题</at>').label, '<at id=all>标题</at>');
+});
+
+test('versioned blog slugs remain attributable without allowing dot traversal or URL metadata', () => {
+  for (const locale of ['zh', 'en', 'zh-Hant']) for (const slug of ['tego-os-v2.8.0-digital-avatar', 'tego-os-v3.0.0-launch']) {
+    const path = `/${locale}/blog/${slug}/`;
+    const step = sourceStep(path, 'TeGo OS 产品更新');
+    assert.equal(sourcePath(path), path);
+    assert.equal(step.path, path);
+    assert.deepEqual(normalizeSourceTrail([step]), [step]);
+  }
+  for (const path of ['/zh/blog/../pricing/', '/zh/blog/./article/', '/zh/blog/a..b/', '/zh/blog/%2e%2e/', '/zh/blog/v2.8.0/?contact=private', '/zh/blog/v3.0.0/#private', '/zh/blog/.hidden/', '/zh/blog/trailing./', '/zh/blog/v2.8.0/\n']) {
+    assert.equal(sourcePath(path), '');
+    assert.equal(sourceStep(path, 'TeGo OS 产品更新'), null);
+  }
 });

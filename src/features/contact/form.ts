@@ -5,10 +5,18 @@ import { CONTACT_RETURN_KEY, resolveContactReturn } from '../../../shared/contac
 import { initContactConfirmation } from './confirmation';
 import { getContactAttribution } from '../attribution/tracker';
 
+type ContactStatus = 'validation_error' | 'submit' | 'success' | 'error';
+type ContactReason = 'required' | 'too_long' | 'timeout' | 'network' | 'http' | 'invalid_response';
+
 export function initContactForm() {
   const form = document.querySelector<HTMLFormElement>('#enquiry-form');
   const status = document.querySelector<HTMLElement>('#enquiry-status');
   if (!form || !status) return;
+  const notify = (status: ContactStatus, reason?: ContactReason) => {
+    try {
+      form.dispatchEvent(new CustomEvent('tego:contact-status', { bubbles: true, detail: reason ? { status, reason } : { status } }));
+    } catch { /* Optional event delivery must not interrupt the enquiry. */ return; }
+  };
   const locale = form.dataset.locale === 'en' ? 'en' : 'zh';
   const copy = contactContent[locale];
   const attribution = getContactAttribution();
@@ -52,14 +60,15 @@ export function initContactForm() {
     event.preventDefault();
     if (submitting) return;
     let firstInvalid: HTMLInputElement | HTMLTextAreaElement | undefined;
+    let validationReason: 'required' | 'too_long' | undefined;
     for (const field of fields) {
       const missing = !field.disabled && field.required && !field.value.trim();
       const tooLong = !field.disabled && field.maxLength >= 0 && field.value.length > field.maxLength;
       const message = missing ? copy.validation[field.name as keyof typeof copy.validation] : tooLong ? copy.validation.tooLong : '';
       setFieldError(field, message);
-      if (message && !firstInvalid) firstInvalid = field;
+      if (message && !firstInvalid) { firstInvalid = field; validationReason = missing ? 'required' : 'too_long'; }
     }
-    if (firstInvalid) { status.hidden = true; firstInvalid.focus(); return; }
+    if (firstInvalid) { notify('validation_error', validationReason); status.hidden = true; firstInvalid.focus(); return; }
     const data = new FormData(form);
     const payload = JSON.stringify({
       title: String(data.get('title') || '').trim(), contact: String(data.get('contact') || '').trim(),
@@ -72,18 +81,23 @@ export function initContactForm() {
     lastPayload = payload;
     submitting = true; submit.disabled = true; form.setAttribute('aria-busy', 'true');
     submit.textContent = copy.form.submitting; status.hidden = true; delete status.dataset.state;
+    let failureReason: ContactReason = 'network';
+    notify('submit');
     try {
       const response = await fetch(form.dataset.contactApi || '/api/contact/', {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept-Language': document.documentElement.lang || locale, 'Idempotency-Key': requestId },
         body: payload, signal: AbortSignal.timeout(20000),
       });
+      failureReason = response.ok ? 'invalid_response' : 'http';
       if (!response.headers.get('content-type')?.includes('application/json')) throw new Error(copy.failure);
       const result = await response.json();
       if (!response.ok || result.success !== true) throw new Error(typeof result.message === 'string' ? result.message : copy.failure);
       form.reset(); replyPicker.reset(); fields.forEach(field => setFieldError(field)); requestId = undefined; lastPayload = '';
       confirmation.show();
+      notify('success');
     } catch (error) {
       const timedOut = error instanceof Error && ['TimeoutError', 'AbortError'].includes(error.name);
+      notify('error', timedOut ? 'timeout' : failureReason);
       status.textContent = timedOut ? copy.timeout : error instanceof TypeError ? copy.failure : error instanceof Error ? error.message : copy.failure;
       status.dataset.state = 'error';
     } finally {
