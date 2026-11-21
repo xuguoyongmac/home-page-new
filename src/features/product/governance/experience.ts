@@ -3,21 +3,21 @@ import type { ProductExperienceTranslations } from '../experience-types';
 export default {
   "zh": {
     "heroAlt": "二维企业管理界面：组织身份、知识与项目访问、插件委托、发布审核和任务记录并列呈现，明确数字员工可做的工作与可回看的执行过程。",
-    "sectionTitle": "从明确边界到回看过程，企业管理贯穿作业",
+    "sectionTitle": "先划清访问边界，再保留审核与执行依据",
     "sections": [
       {
         "id": "access",
         "kind": "governance",
-        "title": "访问什么资料，先明确身份与范围",
-        "body": "对齐组织身份和角色，分别配置知识权限、项目访问与插件委托。让业务交办与资源授权各有明确范围。",
+        "title": "授权跟着资源走",
+        "body": "租户身份和组织角色是起点，但一次交办不会自动获得所有资料。知识库、项目和业务插件分别检查自己的资源关系、显式授权和业务委托。",
         "points": [
           {
-            "title": "组织身份接入",
-            "body": "对接 LDAP / OIDC 身份源，结合组织角色管理人员与资源权限。"
+            "title": "组织身份与账号生命周期对齐",
+            "body": "通过 LDAP / OIDC 接入身份，按组织结果同步部门、人员和账号状态。"
           },
           {
-            "title": "资源规则分别生效",
-            "body": "知识检索按调用人权限开展；项目文件按委托人当前项目角色访问，插件工作另行委托。"
+            "title": "三类资源使用不同授权依据",
+            "body": "知识检索看调用人权限，项目文件看当前项目角色，插件工作需要明确业务委托。"
           }
         ],
         "visual": {
@@ -66,16 +66,16 @@ export default {
       {
         "id": "review",
         "kind": "governance",
-        "title": "能力从创建到开放，组织决定有记录",
-        "body": "把数字员工的创建开放、模板与插件发布、技能变更和资源授权纳入审核。专项插件工作按需委托，也能主动收回。",
+        "title": "审核与业务委托分开",
+        "body": "数字员工创建与开放，以及模板、插件和技能发布进入组织审核；具体插件工作由业务人员按需委托，完成后可撤销。",
         "points": [
           {
-            "title": "审核保留提交内容",
-            "body": "按组织规则处理审核，保存提交快照和审核决定，明确本次开放或变更的内容。"
+            "title": "审核保留本次提交快照",
+            "body": "申请内容、使用范围和审核决定一起保存，后续可以核对当时批准的具体版本。"
           },
           {
-            "title": "委托跟随工作调整",
-            "body": "为具体插件工作授予业务委托，读取本人可见记录；工作结束后可主动撤销并保留变更记录。"
+            "title": "委托只覆盖具体业务工作",
+            "body": "数字员工读取委托人可见记录；授予、撤销和有效范围形成独立变更记录。"
           }
         ],
         "visual": {
@@ -124,16 +124,16 @@ export default {
       {
         "id": "audit",
         "kind": "execution",
-        "title": "从一个任务，追到调用与交付",
-        "body": "最终成果之外，保留执行步骤、工具调用和成果记录。结合授权与管理变更，回看数字员工如何完成工作。",
+        "title": "从成果回看执行依据",
+        "body": "执行回执关联输入、任务步骤、工具调用、人工回应和成果文件。复核时可从一份成果回到相关来源与记录。",
         "points": [
           {
-            "title": "任务过程可回看",
-            "body": "按任务查看步骤、工具与交付结果，找到需要业务复核的环节。"
+            "title": "审计从任务进入，不从日志堆里猜",
+            "body": "沿一次工作查看相关步骤、调用、来源和交付结果，定位需要业务复核的环节。"
           },
           {
-            "title": "管理变更可关联",
-            "body": "结合资源授权、委托和审核变更记录，核对执行时的管理背景。"
+            "title": "证据访问和外发继续受控",
+            "body": "审计查看、脱敏、导出和法律保全按策略处理，风险发现可归入案件继续处置。"
           }
         ],
         "visual": {
@@ -183,21 +183,21 @@ export default {
   },
   "en": {
     "heroAlt": "A two-dimensional enterprise governance interface showing identity, knowledge and project access, plugin delegation, publication reviews and task records with clear operating boundaries.",
-    "sectionTitle": "Keep enterprise control connected to the work",
+    "sectionTitle": "Define access first, then retain review and execution evidence",
     "sections": [
       {
         "id": "access",
         "kind": "governance",
-        "title": "Define who can use each resource",
-        "body": "Align organizational identity and roles, then configure knowledge permissions, project access and plugin delegation separately. Keep the assignment distinct from resource authorization.",
+        "title": "Keep authorization with the resource",
+        "body": "Tenant identity and organizational roles are the starting point, but an assignment does not grant every resource. Libraries, projects and business plugins apply their own relationships, explicit grants and delegation.",
         "points": [
           {
-            "title": "Connect organizational identity",
-            "body": "Connect LDAP / OIDC providers and use organizational roles to manage people and resource access."
+            "title": "Align identity and account lifecycle",
+            "body": "Connect LDAP / OIDC and synchronize departments, people and account state from the organization directory."
           },
           {
-            "title": "Apply each resource’s own rules",
-            "body": "Knowledge retrieval follows caller permissions. Project file access follows the delegating person’s current project role, while plugin work requires delegation."
+            "title": "Use a distinct basis for each resource",
+            "body": "Knowledge follows caller permissions, project files follow the current project role, and plugin work requires explicit business delegation."
           }
         ],
         "visual": {
@@ -246,16 +246,16 @@ export default {
       {
         "id": "review",
         "kind": "governance",
-        "title": "Retain decisions from creation to access",
-        "body": "Review employee creation and access, template and plugin publication, skill changes and resource authorization. Grant plugin delegation for the work and withdraw it when needed.",
+        "title": "Separate approval from delegation",
+        "body": "Digital employee creation and access, digital employee template and plugin publication, skill changes and resource grants can enter organizational review. Business users delegate specific plugin work and withdraw it when the work ends.",
         "points": [
           {
-            "title": "Retain the submitted content",
-            "body": "Apply organizational review rules and keep submission snapshots and decisions for the change being made."
+            "title": "Keep the submitted snapshot with the decision",
+            "body": "Retain the request, usage scope and decision so the approved version can be inspected later."
           },
           {
-            "title": "Adjust delegation with the work",
-            "body": "Delegate specific plugin work using records visible to the person granting access. Revoke it when appropriate and retain the change history."
+            "title": "Limit delegation to the business work",
+            "body": "Use records visible to the delegating person and retain the grant, withdrawal and effective scope as separate changes."
           }
         ],
         "visual": {
@@ -304,16 +304,16 @@ export default {
       {
         "id": "audit",
         "kind": "execution",
-        "title": "Follow a task through tools and delivery",
-        "body": "Look beyond the final document to task steps, tool calls and deliverable records. Review the work alongside authorization and governance changes.",
+        "title": "Trace results to tasks, calls and sources",
+        "body": "Execution receipts connect inputs, task steps, tool calls, human responses and deliverable files. Content identifiers, provenance codes and digest checks help locate evidence and record changes.",
         "points": [
           {
-            "title": "Inspect the task process",
-            "body": "Review steps, tools and outputs for the task and locate the work that needs business review."
+            "title": "Start audit from the task, not a pile of logs",
+            "body": "Follow one piece of work through its steps, calls, sources and results to find what needs business review."
           },
           {
-            "title": "Connect governance changes",
-            "body": "Consult resource grants, delegation and review changes to understand the management context of execution."
+            "title": "Keep evidence access and export controlled",
+            "body": "Apply policy to audit access, redaction, export and legal hold, and bring risk findings into cases when needed."
           }
         ],
         "visual": {

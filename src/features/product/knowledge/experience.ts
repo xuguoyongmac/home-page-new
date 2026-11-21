@@ -3,21 +3,21 @@ import type { ProductExperienceTranslations } from '../experience-types';
 export default {
   "zh": {
     "heroAlt": "二维企业知识工作界面：左侧归集制度和项目资料，中间用自然语言检索，右侧答复关联原文引用，展现从企业知识到业务成果的过程。",
-    "sectionTitle": "让知识进入业务，覆盖资料到成果的工作过程",
+    "sectionTitle": "从资料维护到业务引用，让知识真正进入任务",
     "sections": [
       {
         "id": "library",
         "kind": "knowledge",
-        "title": "让制度与经验进入同一知识体系",
-        "body": "把散落的制度、档案和历史方案整理进企业知识库。维护资料、版本与检索配置，让数字员工找到工作所需的内容。",
+        "title": "资料先成为可维护的知识",
+        "body": "制度、档案和业务资料进入知识库后，经过校验、解析、分段和索引，才成为数字员工可检索的内容。来源变化时，可以替换原文件并重新处理。",
         "points": [
           {
-            "title": "资料持续维护",
-            "body": "按知识库和文件夹管理，支持批量上传、同名替换、版本查看与重新处理。"
+            "title": "处理状态和失败原因可见",
+            "body": "查看等待、处理、完成与失败任务，保留尝试记录，支持重试或重新处理。"
           },
           {
-            "title": "检索围绕问题调整",
-            "body": "解析清洗文档并建立分片和索引，配置关键词、语义或混合检索，通过测试核对命中结果。"
+            "title": "原文和检索片段都能维护",
+            "body": "查看来源、阅读段落和检索切片，按业务变化编辑、停用或补充内容。"
           }
         ],
         "visual": {
@@ -66,16 +66,16 @@ export default {
       {
         "id": "evidence",
         "kind": "knowledge",
-        "title": "回答能用，依据也能找到",
-        "body": "从适用制度里提取要求，将依据带进答复和文稿。业务人员沿着引用回看原文片段与上下文，让复核聚焦内容。",
+        "title": "检索与引用伴随整个任务",
+        "body": "数字员工先在调用人有权访问的知识库中检索，再把适用片段带进答复和文稿。引用指向原文和上下文，复核不必重新翻找整份文件。",
         "points": [
           {
-            "title": "先找适用依据",
-            "body": "数字员工结合问题和已授权知识，检索业务规则、要求与相关材料。"
+            "title": "按问题组合检索方式",
+            "body": "支持关键词、语义和混合检索，并通过测试核对召回片段。"
           },
           {
-            "title": "结论关联原文",
-            "body": "引用保留来源线索，从答复或文稿定位原文片段与上下文。"
+            "title": "结论可以回到原文",
+            "body": "答复和文稿保留文档、片段与上下文线索，便于核对业务依据。"
           }
         ],
         "visual": {
@@ -124,16 +124,16 @@ export default {
       {
         "id": "reuse",
         "kind": "document",
-        "title": "让上一项工作的积累，接上下一项任务",
-        "body": "在项目空间保留工作背景、资料和成果。从有权访问的历史项目中选择可复用材料，带入当前项目，结合新的业务目标继续完善。",
+        "title": "知识、项目与记忆分开",
+        "body": "企业知识用于长期维护；项目资料只服务对应项目成员；工作记忆延续已确认背景。三者可共同支持任务，但不会自动合并访问范围。",
         "points": [
           {
-            "title": "复用资料与背景",
-            "body": "选择有权访问的历史方案与交付文档，加入当前项目后，结合已有背景和新的目标继续编制。"
+            "title": "长期资料进入企业知识",
+            "body": "制度、产品资料和研究材料按知识库授权维护，适合跨任务持续使用。"
           },
           {
-            "title": "共享遵循访问范围",
-            "body": "知识库按成员、部门和角色授权；项目资料检索限定在对应项目和成员范围。"
+            "title": "项目背景与工作记忆不越界",
+            "body": "项目索引跟随项目成员范围；工作记忆延续已确认背景，不替代知识或项目授权。"
           }
         ],
         "visual": {
@@ -183,21 +183,21 @@ export default {
   },
   "en": {
     "heroAlt": "A two-dimensional enterprise knowledge workspace showing source materials, natural-language retrieval, and an answer linked to original passages and a business deliverable.",
-    "sectionTitle": "Carry knowledge from source material into the work",
+    "sectionTitle": "Carry maintained sources and citations into the work",
     "sections": [
       {
         "id": "library",
         "kind": "knowledge",
-        "title": "Organize policies and experience in one knowledge system",
-        "body": "Bring scattered policies, archives and proposals into enterprise libraries. Maintain files, versions and retrieval settings so digital employees can find the material a task needs.",
+        "title": "Turn sources into maintained knowledge",
+        "body": "Policies, archives and business material become retrievable only after validation, parsing, chunking and indexing. Replace the source and reprocess it when the underlying material changes.",
         "points": [
           {
-            "title": "Keep source material current",
-            "body": "Manage libraries and folders with bulk upload, replacement, version review and reprocessing."
+            "title": "See processing state and failures",
+            "body": "Follow queued, processing, completed and failed jobs, retain attempts, and retry or reprocess when needed."
           },
           {
-            "title": "Tune retrieval around real questions",
-            "body": "Parse, clean, chunk and index documents. Configure keyword, semantic or hybrid retrieval and test the returned passages."
+            "title": "Maintain both source and retrieval passages",
+            "body": "Review sources, reading passages and retrieval chunks, then edit, disable or add content as the business changes."
           }
         ],
         "visual": {
@@ -246,16 +246,16 @@ export default {
       {
         "id": "evidence",
         "kind": "knowledge",
-        "title": "Keep useful answers connected to their evidence",
-        "body": "Retrieve applicable requirements and bring them into answers and drafts. Reviewers can follow references to the original passage and surrounding context.",
+        "title": "Keep retrieval and citations together",
+        "body": "Digital employees search only the libraries available to the caller, then carry relevant passages into answers and drafts. Citations lead back to the original text and surrounding context.",
         "points": [
           {
-            "title": "Find applicable material first",
-            "body": "Digital employees retrieve relevant rules and supporting content from the caller’s authorized knowledge."
+            "title": "Match retrieval to the question",
+            "body": "Use keyword, semantic or hybrid retrieval and test the passages returned for business questions."
           },
           {
-            "title": "Link conclusions to original passages",
-            "body": "Retain source references in the answer or draft so the evidence stays within reach."
+            "title": "Follow a conclusion back to source",
+            "body": "Keep document, passage and context references in answers and drafts for review."
           }
         ],
         "visual": {
@@ -304,16 +304,16 @@ export default {
       {
         "id": "reuse",
         "kind": "document",
-        "title": "Carry previous work into the next assignment",
-        "body": "Retain project context, material and deliverables. Select reusable material from past projects you can access, bring it into the current project, and adapt it to the new objective.",
+        "title": "Separate knowledge, project files and memory",
+        "body": "Enterprise knowledge supports long-term maintenance and reuse across tasks. Project material serves that project and its members. Work memory continues confirmed context between a digital employee and a member. Their access scopes do not merge automatically.",
         "points": [
           {
-            "title": "Reuse material with its context",
-            "body": "Select previous proposals and deliverables you can access. Add them to the current project and adapt them to its context and objective."
+            "title": "Put maintained sources in enterprise knowledge",
+            "body": "Keep policies, product material and research in authorized libraries for continued use across tasks."
           },
           {
-            "title": "Keep sharing within access boundaries",
-            "body": "Libraries use member, department and role permissions. Project retrieval stays within the relevant project and its members."
+            "title": "Keep project context and work memory within scope",
+            "body": "Project indexes follow project membership. Work memory continues confirmed context without replacing knowledge or project access."
           }
         ],
         "visual": {

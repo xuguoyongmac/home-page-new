@@ -7,18 +7,18 @@ export default {
   icon: "shield",
   copy: {
     zh: {
-      name: "可信权限与审计",
+      name: "企业权限与审计",
       title: landing.zh.hero.lines.join("，"),
       description: landing.zh.hero.summary,
-      navigationDescription: "管理访问范围与业务委托，追溯任务执行。",
+      navigationDescription: "分别管理资源权限与业务委托，沿任务回看执行。",
       features: landing.zh.features,
       related: [{"path": "enterprise", "label": "了解企业部署"}],
     },
     en: {
-      name: "Secure Access & Audit",
+      name: "Enterprise Access & Audit",
       title: landing.en.hero.lines.join(" "),
       description: landing.en.hero.summary,
-      navigationDescription: "Control access and delegation. Trace task execution.",
+      navigationDescription: "Manage resource access and delegation, then inspect execution by task.",
       features: landing.en.features,
       related: [{"path": "enterprise", "label": "Explore the platform"}],
     },

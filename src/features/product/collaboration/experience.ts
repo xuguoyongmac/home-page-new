@@ -3,15 +3,15 @@ import type { ProductExperienceTranslations } from '../experience-types';
 export default {
   zh: {
     heroAlt: '二维项目协作工作台：共享资料、工作会话、方案版本与待办事项在同一项目中关联，人和数字员工围绕服务方案协作。',
-    sectionTitle: '让协作围绕成果连续发生',
+    sectionTitle: '让资料、讨论和交接都围绕同一份成果',
     sections: [
       {
         id: 'project-context', kind: 'document',
-        title: '同一项目资料，支撑整段工作',
-        body: '把需求、会议记录与历史成果留在项目空间。成员和数字员工围绕同一组资料开展工作，新任务不必再从搜集背景开始。',
+        title: '一个项目，承接完整背景',
+        body: '项目把成员、目录、文件、任务、决定和会话放在同一边界内。成员与数字员工围绕当前资料继续工作，不必在每次交办时重新拼接背景。',
         points: [
-          { title: '资料与工作放在一起', body: '项目集中组织成员、文件与事项，保留任务资料；员工对话由发起人按需分享。' },
-          { title: '项目角色确定访问范围', body: '成员按项目角色读写资料，数字员工代委托人在其项目权限内工作。' },
+          { title: '共享资料不等于共享所有对话', body: '项目资料按成员角色访问；数字员工对话默认归发起人，主动分享后供项目成员查看。' },
+          { title: '数字员工沿用委托人的项目范围', body: '访问项目文件时按委托人当前项目角色校验，不因交办自动扩大权限。' },
         ],
         visual: {
           title: '服务方案评审项目', context: '项目共享空间', tabs: ['项目资料', '工作会话', '事项'],
@@ -29,11 +29,11 @@ export default {
       },
       {
         id: 'conversation-versions', kind: 'document',
-        title: '修改意见接到成果，成果保留版本',
-        body: '在工作会话中 @ 数字员工，结合项目资料修改方案。新文件提交后保留版本与变更记录，让讨论有对应的成果，每一次修改都能回看。',
+        title: '讨论直接落到成果版本',
+        body: '在项目会话中 @ 已获授权的数字员工，依据资料和评审意见修改文件。个人草稿、运行提交和已发布版本分开保留，讨论能对应到具体成果。',
         points: [
-          { title: '会话延续当前工作', body: '围绕已有项目资料提出要求、反馈意见，与获授权的数字员工继续协作。' },
-          { title: '文件变更可查可恢复', body: '查看已提交文件的历史版本与变更记录，并按权限恢复。' },
+          { title: '一次运行可以成组提交修改', body: '数字员工产生的多项文件变更作为一次提交进入项目，便于整体审阅。' },
+          { title: '版本、冲突与定稿都有去向', body: '历史版本可查看和恢复；并发冲突保留副本，最终成果可标记定稿并导出。' },
         ],
         visual: {
           title: '项目方案编制会话', context: '服务方案评审项目', tabs: ['工作会话', '成果版本', '项目资料'],
@@ -51,11 +51,11 @@ export default {
       },
       {
         id: 'human-handoffs', kind: 'execution',
-        title: '需要人来判断时，连同背景一起交接',
-        body: '数字员工通过问询、审批和接手事项请同事参与。处理结果回到原会话，后续工作接着已有材料与回应继续，交接不再只转发一句话。',
+        title: '需要判断时，把工作交给人',
+        body: '数字员工把缺少事实、需要批准或必须人工继续的部分，转成提问、审批或接手事项。责任人处理后，结构化回应回到原运行继续。',
         points: [
-          { title: '待确认工作进入事项', body: '将需要回答、审批或人工接手的工作交给对应同事，保留处理回应。' },
-          { title: '回应回到原会话', body: '数字员工收到人工回应后，继续处理相关资料与成果，延续原任务背景。' },
+          { title: '事项带着来源和责任人', body: '保留原话题、项目、摘要、截止时间与处理人，支持回复、批准、拒绝或转交。' },
+          { title: '人工回应接回原任务', body: '处理结果回到原会话和运行，数字员工沿用已有资料与决定继续办理。' },
         ],
         visual: {
           title: '方案评审事项', context: '人工回应与工作接续', tabs: ['待办事项', '处理记录', '原会话'],
@@ -75,15 +75,15 @@ export default {
   },
   en: {
     heroAlt: 'A flat project workspace connecting shared materials, work conversations, proposal versions and work items so people and digital employees can develop one service proposal.',
-    sectionTitle: 'Keep collaboration connected to the deliverable',
+    sectionTitle: 'Keep materials, discussion and handoffs connected to one deliverable',
     sections: [
       {
         id: 'project-context', kind: 'document',
-        title: 'One set of project materials for the work ahead',
-        body: 'Keep requirements, meeting records and earlier deliverables in the project. People and digital employees work from the same materials without gathering the background again for each new task.',
+        title: 'Keep project context together',
+        body: 'A project keeps members, directories, files, tasks, decisions and conversations within one boundary. People and digital employees continue from the current material without rebuilding the background for every assignment.',
         points: [
-          { title: 'Keep materials with the work', body: 'Keep members, files and work items in the project. Employee conversations can be shared by their initiator when needed.' },
-          { title: 'Use project roles for access', body: 'Members read and write according to project roles. Digital employees work within the requester’s project permissions.' },
+          { title: 'Shared files do not expose every conversation', body: 'Project materials follow member roles. Employee conversations belong to their initiator and become readable to members only when shared.' },
+          { title: 'Digital employees use the requester’s project scope', body: 'Project file access follows the requester’s current project role and does not expand automatically with an assignment.' },
         ],
         visual: {
           title: 'Service proposal review', context: 'Shared project workspace', tabs: ['Project materials', 'Work conversations', 'Work items'],
@@ -101,11 +101,11 @@ export default {
       },
       {
         id: 'conversation-versions', kind: 'document',
-        title: 'Connect feedback to a version of the deliverable',
-        body: 'Mention a digital employee in the work conversation and revise the proposal using project materials. Submitted files keep their versions and change records, connecting discussion to a result that can be reviewed later.',
+        title: 'Turn discussion into revisions',
+        body: 'Mention an authorized digital employee in the project conversation and revise files from the materials and review comments. Personal drafts, run submissions and published revisions remain distinct.',
         points: [
-          { title: 'Continue the work in conversation', body: 'Share requirements and feedback with authorized digital employees in the context of the existing project.' },
-          { title: 'Review and restore file history', body: 'View submitted versions and change records, and restore files within the project’s permissions.' },
+          { title: 'Submit changes from one run together', body: 'Group the file changes produced by a digital employee run into one project submission for review.' },
+          { title: 'Give versions, conflicts and finalization a clear state', body: 'Review and restore history, retain conflict copies, mark final deliverables and export the project.' },
         ],
         visual: {
           title: 'Proposal drafting conversation', context: 'Service proposal review', tabs: ['Work conversation', 'File versions', 'Project materials'],
@@ -123,11 +123,11 @@ export default {
       },
       {
         id: 'human-handoffs', kind: 'execution',
-        title: 'Hand over the background when a person needs to decide',
-        body: 'Digital employees bring colleagues into the work through questions, approvals and takeover items. Responses return to the original conversation so further work continues with the materials and decisions already in place.',
+        title: 'Bring in people for judgment',
+        body: 'A digital employee turns missing facts, required approval or work that must continue manually into a question, approval or takeover item. The structured response returns to the original run.',
         points: [
-          { title: 'Raise the work that needs a person', body: 'Send questions, approval requests and takeover items to the relevant colleague, retaining their responses.' },
-          { title: 'Return the response to the conversation', body: 'Digital employees continue working with related materials and deliverables after the person responds.' },
+          { title: 'Keep the source and responsible person with the item', body: 'Retain the originating conversation, project, summary, due time and assignee, with reply, approval, rejection and transfer actions.' },
+          { title: 'Return the human response to the task', body: 'The response resumes the original conversation and run with its material and decisions intact.' },
         ],
         visual: {
           title: 'Proposal review items', context: 'Human responses and continued work', tabs: ['Work items', 'Response records', 'Original conversation'],

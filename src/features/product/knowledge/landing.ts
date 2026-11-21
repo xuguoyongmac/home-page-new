@@ -3,8 +3,8 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['把企业知识用进工作', '让业务成果有据可查'],
-      summary: '让制度、档案与项目经验进入数字员工的工作过程。从检索资料到起草方案，结合授权知识形成回答与文稿，沿着引用回看原文依据。',
+      lines: ['让企业知识进入工作', '让每个结论回到原文'],
+      summary: '将制度、档案和经验维护为可授权检索的知识。数字员工按调用人权限找到相关片段，带着引用形成答复和文稿。',
     },
     pain: {
       title: '资料不断积累，工作不必反复从头开始',
@@ -45,8 +45,8 @@ export default {
   },
   en: {
     hero: {
-      lines: ['Put enterprise knowledge to work', 'Keep the evidence in reach'],
-      summary: 'Bring policies, archives and project experience into digital employees’ work. Retrieve authorized knowledge for answers and drafts, then follow citations back to the original material.',
+      lines: ['Put knowledge to work', 'Keep every answer sourced'],
+      summary: 'Maintain policies, archives and experience as authorized, searchable knowledge. Digital employees retrieve passages within the caller’s access and carry citations into answers and drafts.',
     },
     pain: {
       title: 'Build on what the company already knows',

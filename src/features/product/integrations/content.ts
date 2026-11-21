@@ -7,18 +7,18 @@ export default {
   icon: "plug",
   copy: {
     zh: {
-      name: "业务系统连通",
+      name: "连接业务系统",
       title: landing.zh.hero.lines.join("，"),
       description: landing.zh.hero.summary,
-      navigationDescription: "连接业务插件、MCP 工具与开放接口。",
+      navigationDescription: "把业务对象带进任务，将结果送回原流程。",
       features: landing.zh.features,
       related: [{"path": "ecosystem", "label": "了解开放生态"}],
     },
     en: {
-      name: "Business System Integration",
+      name: "Connect Business Systems",
       title: landing.en.hero.lines.join(" "),
       description: landing.en.hero.summary,
-      navigationDescription: "Connect business plugins, MCP tools and open APIs.",
+      navigationDescription: "Bring business records into the task and return results to the workflow.",
       features: landing.en.features,
       related: [{"path": "ecosystem", "label": "Explore the platform"}],
     },

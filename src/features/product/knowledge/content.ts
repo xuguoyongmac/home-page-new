@@ -7,18 +7,18 @@ export default {
   icon: "book",
   copy: {
     zh: {
-      name: "企业知识原生智能",
+      name: "企业知识进入工作",
       title: landing.zh.hero.lines.join("，"),
       description: landing.zh.hero.summary,
-      navigationDescription: "检索授权知识，延续项目背景，回看原文。",
+      navigationDescription: "按权限检索企业知识，带着引用形成答复与文稿。",
       features: landing.zh.features,
       related: [{"path": "ecosystem", "label": "了解开放生态"}],
     },
     en: {
-      name: "Knowledge-Native Intelligence",
+      name: "Enterprise Knowledge at Work",
       title: landing.en.hero.lines.join(" "),
       description: landing.en.hero.summary,
-      navigationDescription: "Use authorized knowledge and review original sources.",
+      navigationDescription: "Retrieve authorized knowledge and carry citations into the work.",
       features: landing.en.features,
       related: [{"path": "ecosystem", "label": "Explore the platform"}],
     },

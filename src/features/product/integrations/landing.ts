@@ -3,8 +3,8 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['让数字员工接上业务系统', '把工作做到流程里'],
-      summary: '连接客户、项目与业务数据，调用专业工具和业务接口，让数字员工完成查询、分析与办理，把结果接回现有流程。',
+      lines: ['接入现有业务系统', '也把结果送回流程'],
+      summary: '把客户、项目和经营数据带进任务，用插件、MCP 与 API 执行授权动作，再将状态、记录和成果返回原业务系统。',
     },
     pain: {
       title: '查到信息之后，工作还要继续向前',
@@ -45,8 +45,8 @@ export default {
   },
   en: {
     hero: {
-      lines: ['Connect digital employees', 'to the work in your systems'],
-      summary: 'Connect customer records, projects and business data. Give digital employees the tools and APIs to query, analyze and carry out work, then return results to the existing workflow.',
+      lines: ['Connect business systems', 'Bring results back to work'],
+      summary: 'Bring customer records, projects and business data into the task. Use plugins, MCP and APIs for authorized work, then return status, records and deliverables to the original system.',
     },
     pain: {
       title: 'Finding the information is only part of the work',

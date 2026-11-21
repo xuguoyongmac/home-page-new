@@ -3,8 +3,8 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['业务放心交办', '授权与执行有据可查'],
-      summary: '数字员工能接手工作，企业也能掌握边界。对齐组织身份，分别管理知识、项目与插件委托；从创建开放到任务执行，保留审核决定和工作记录。',
+      lines: ['权限有边界', '执行有记录'],
+      summary: '沿用组织身份，分别管理知识、项目和插件业务委托；数字员工的开放、发布与执行留下审核决定、调用记录和成果依据。',
     },
     pain: {
       title: '工作可以交出去，权限与过程仍要掌握在手',
@@ -45,8 +45,8 @@ export default {
   },
   en: {
     hero: {
-      lines: ['Delegate work with clear boundaries', 'Keep authorization and execution visible'],
-      summary: 'Let digital employees handle the work while the company retains control. Align organizational identity, manage knowledge, project access and plugin delegation separately, and retain review decisions and execution records.',
+      lines: ['Clear access boundaries', 'Keep execution records'],
+      summary: 'Use organizational identity and manage knowledge, project access and plugin delegation separately. Retain review decisions, tool calls and deliverable evidence across digital employee access and execution.',
     },
     pain: {
       title: 'Delegate the work and keep control of the process',

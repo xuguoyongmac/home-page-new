@@ -7,18 +7,18 @@ export default {
   icon: "folder",
   copy: {
     zh: {
-      name: "人机协同工作台",
+      name: "项目协作与交付",
       title: landing.zh.hero.lines.join("，"),
       description: landing.zh.hero.summary,
-      navigationDescription: "围绕项目资料，在会话中协作与交接。",
+      navigationDescription: "让成员与数字员工围绕同一项目和成果持续协作。",
       features: landing.zh.features,
       related: [{"path": "product", "label": "查看平台能力"}],
     },
     en: {
-      name: "Human-Agent Collaboration",
+      name: "Project Collaboration & Delivery",
       title: landing.en.hero.lines.join(" "),
       description: landing.en.hero.summary,
-      navigationDescription: "Share project context, conversations and handoffs.",
+      navigationDescription: "Keep people and digital employees working from the same project context.",
       features: landing.en.features,
       related: [{"path": "product", "label": "Explore the platform"}],
     },

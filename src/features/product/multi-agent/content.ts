@@ -7,15 +7,15 @@ export default {
   icon: "layers",
   copy: {
     zh: {
-      name: "分布式任务协同",
+      name: "多 Agent 协作",
       title: landing.zh.hero.lines.join("，"),
       description: landing.zh.hero.summary,
-      navigationDescription: "围绕业务目标分工，跟踪进度并汇总成果。",
+      navigationDescription: "主 Agent 统筹目标，专业子 Agent 分工执行并汇总交付。",
       features: landing.zh.features,
       related: [{"path": "product", "label": "查看平台能力"}],
     },
     en: {
-      name: "Distributed Task Orchestration",
+      name: "Multi-Agent Collaboration",
       title: landing.en.hero.lines.join(" "),
       description: landing.en.hero.summary,
       navigationDescription: "Delegate specialist work and bring the results together.",

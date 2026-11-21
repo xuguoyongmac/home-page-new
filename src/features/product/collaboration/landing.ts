@@ -4,7 +4,7 @@ export default {
   zh: {
     hero: {
       lines: ['人和数字员工', '围绕同一份成果协作'],
-      summary: '把资料、会话与事项放进项目工作空间。从交办、编制到审阅交接，让每一次回应都能接着已有背景继续工作。',
+      summary: '把成员、项目资料、会话、待办和成果版本放进同一项目。数字员工在会话中参与，需要判断时交给人，回应回到原任务继续。',
     },
     pain: {
       title: '成果交出来，也要让团队接得住',
@@ -44,8 +44,8 @@ export default {
   },
   en: {
     hero: {
-      lines: ['People and digital employees', 'working toward one deliverable'],
-      summary: 'Keep materials, conversations and work items in the project workspace. From the first request to review and handoff, each response continues with the context already in place.',
+      lines: ['People and digital employees', 'One shared deliverable'],
+      summary: 'Keep members, project materials, conversations, work items and file revisions together. Digital employees join the conversation, involve people when judgment is needed, and continue from the response.',
     },
     pain: {
       title: 'Make the result something the whole team can continue',

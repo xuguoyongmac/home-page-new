@@ -1,89 +1,172 @@
 ---
 import Icon from '../../../components/Icon.astro';
-import AgentNode from './AgentNode.astro';
 import type { Locale } from '../../../data/types';
-interface Props { locale: Locale; scene: 'overview' | 'assignment' | 'execution' | 'delivery'; }
-const { locale, scene } = Astro.props;
-const zh = locale === 'zh';
-const kinds = ['search', 'extract', 'analysis'] as const;
-const tasks = zh ? ['企业背景核对', '财务资料核对', '业务风险梳理'] : ['Company background', 'Financial review', 'Business review'];
-const requirements = zh ? ['输入：企业与项目资料', '输入：财务报表与明细', '输入：合同与业务说明'] : ['Input: company and project records', 'Input: statements and supporting records', 'Input: contracts and business descriptions'];
-const results = zh ? ['企业背景', '财务要点', '业务疑点'] : ['Company background', 'Financial highlights', 'Business questions'];
-const returned = zh ? ['背景摘要与来源', '财务要点与差异', '业务疑点与复核事项'] : ['Background and sources', 'Financial points and differences', 'Questions for human review'];
-const descriptions = zh ? ['企业与项目背景及来源', '财务字段与材料差异', '合同疑点与复核事项'] : ['Company and project context with sources', 'Financial figures and record differences', 'Contract questions and review items'];
-const labels = zh ? {
-  overview: '主 Agent 居中调度，向专业子 Agent 分派任务并接收状态和结果，再汇总输出',
-  assignment: '同一尽调目标分为企业背景、财务资料和业务风险三项核对，各自使用已提供的对应资料',
-  execution: '三个专业子任务各自核对对应输入资料，独立执行并将状态与结果回传主任务',
-  delivery: '企业背景、财务要点和业务疑点回到主 Agent，统一组织为尽调报告材料',
-} : {
-  overview: 'A main Agent delegates to specialist Agents, receives their states and results, and assembles the output',
-  assignment: 'One due diligence goal branches into company, finance and business review, each with its own supplied records',
-  execution: 'Three specialists independently review their own supplied records and return states and results to the main task',
-  delivery: 'Company background, financial points and business questions return to the main Agent for due diligence report materials',
-};
-const prefix = `ma-${scene}`;
----
-<figure class:list={['ma-diagram', `ma-diagram-${scene}`, 'ma-artwork']} aria-label={labels[scene]}>
-  <svg class="ma-art-defs" width="0" height="0" aria-hidden="true">
-    <defs>
-      <linearGradient id={`${prefix}-blue`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={scene === 'execution' ? 1200 : 660} y2="0"><stop stop-color="#376b9c"/><stop offset=".55" stop-color="#83c6ff"/><stop offset="1" stop-color="#438ac3"/></linearGradient>
-      <linearGradient id={`${prefix}-teal`} gradientUnits="userSpaceOnUse" x1="660" y1="0" x2="0" y2="0"><stop stop-color="#315568"/><stop offset=".55" stop-color="#6dbec4"/><stop offset="1" stop-color="#376f82"/></linearGradient>
-      <marker id={`${prefix}-arrow`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="m2 1 6 4-6 4" fill="none" stroke="#93c9f3" stroke-width="1.2"/></marker>
-      <marker id={`${prefix}-return-arrow`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="m2 1 6 4-6 4" fill="none" stroke="#8fcbd1" stroke-width="1.2"/></marker>
-    </defs>
-  </svg>
-  {scene === 'overview' && <div class="ma-topology ma-art-canvas">
-    <svg class="ma-art-routes ma-topology-desktop" viewBox="0 0 660 520" preserveAspectRatio="none" aria-hidden="true">
-      <g class="ma-routes-blue" style={`--route-color:url(#${prefix}-blue)`}>
-        <path d="M320 184C371 184 367 100 435 100"/><path d="M320 230H435"/><path d="M320 276C371 276 367 420 435 420"/>
-      </g>
-      <g class="ma-routes-teal" style={`--route-color:url(#${prefix}-teal)`}>
-        <path d="M435 120C374 120 371 205 320 205"/><path d="M435 253H320"/><path d="M435 440C367 440 370 297 320 297"/>
-      </g>
-      <g class="ma-port-routes"><path d="M95 91C95 146 88 173 110 192" marker-end={`url(#${prefix}-arrow)`}/><path d="M110 283C86 324 95 365 95 410" marker-end={`url(#${prefix}-arrow)`}/></g>
-    </svg>
-    <svg class="ma-art-routes ma-topology-mobile" viewBox="0 0 354 530" preserveAspectRatio="none" aria-hidden="true">
-      <g class="ma-routes-blue" style={`--route-color:url(#${prefix}-blue)`}><path d="M177 185V237M53 237H301M53 237V268M177 237V268M301 237V268"/></g>
-      <g class="ma-routes-teal" style={`--route-color:url(#${prefix}-teal)`}><path d="M53 372V424H322V145H270"/><path d="M177 372V424M301 372V424"/></g>
-      <g class="ma-port-routes"><path d="M177 51V85" marker-end={`url(#${prefix}-arrow)`}/><path d="M80 145H30V474H142" marker-end={`url(#${prefix}-arrow)`}/></g>
-    </svg>
-    <div class="ma-topology-port ma-topology-input"><Icon name="message" size={26}/><strong>{zh ? '尽调目标与材料' : 'Goal and source records'}</strong></div>
-    <div class="ma-topology-core"><AgentNode locale={locale} kind="main"/></div>
-    <span class="ma-topology-delegate">{zh ? '任务分派' : 'Delegate'}</span><span class="ma-topology-return">{zh ? '状态与结果回传' : 'States & results'}</span>
-    <div class="ma-topology-specialists">{kinds.map(kind => <div class="ma-topology-specialist"><AgentNode locale={locale} kind={kind}/></div>)}</div>
-    <div class="ma-topology-port ma-topology-output"><Icon name="layers" size={27}/><strong>{zh ? '尽调报告材料' : 'Report for review'}</strong></div>
-  </div>}
-  {scene === 'assignment' && <div class="ma-decomposition ma-art-canvas">
-    <svg class="ma-art-routes" viewBox="0 0 660 480" preserveAspectRatio="none" aria-hidden="true">
+import type { ExperienceSection } from '../experience-types';
 
-      <g class="ma-routes-blue" style={`--route-color:url(#${prefix}-blue)`}><path d="M198 211C254 211 251 82 329 82"/><path d="M213 240H329"/><path d="M198 269C254 269 251 398 329 398"/></g>
-    </svg>
-    <div class="ma-goal-node"><AgentNode locale={locale} kind="goal"/></div>
-    <div class="ma-decomposition-branches">{tasks.map((name, i) => <div class:list={['ma-decomposition-branch', `ma-tone-${i}`]}><div><strong>{name}</strong><span>{requirements[i]}</span><p class="ma-branch-return">{zh ? '返回：' : 'Returns: '}{returned[i]}</p></div></div>)}</div>
+interface Props {
+  locale: Locale;
+  scene: 'overview' | 'delegate' | 'execute' | 'deliver';
+  data: ExperienceSection['visual'];
+}
+const { locale, scene, data } = Astro.props;
+const zh = locale === 'zh';
+const specialists = data.rows;
+const specialistIcons = ['chart', 'file-search', 'clipboard-check'];
+const stateClasses = ['active', 'done', 'waiting'];
+const overview = zh ? {
+  title: '多 Agent 协作', goal: '复杂目标', result: '完整成果',
+  delegate: '任务委派', returned: '进度与结果回传', context: '独立子任务上下文',
+  mainWork: '分派 · 协调 · 汇总', employee: '数字员工内的协作单元',
+  scopeTitle: '工作边界', scope: ['岗位目标', '权限边界', '交付要求'],
+  runtimeTitle: '受控运行', runtime: ['独立子任务上下文', '配置允许的能力', '进度与结果回主任务'],
+  agents: [
+    { icon: 'file-search', title: '研究 Agent' },
+    { icon: 'chart', title: '分析 Agent' },
+    { icon: 'layers', title: '执行 Agent' },
+    { icon: 'clipboard-check', title: '审阅 Agent' },
+  ],
+  alt: '数字员工在岗位目标、权限边界和交付要求下工作。主 Agent 向多个专业 Agent 委派任务，每项子任务单独保留消息与执行过程，并在配置允许的能力范围内推进。进度与结果回传给主 Agent，最终形成完整成果。',
+} : {
+  title: 'Multi-Agent collaboration', goal: 'Complex goal', result: 'Complete result',
+  delegate: 'Task delegation', returned: 'Progress and results return', context: 'Isolated task context',
+  mainWork: 'Delegate · Coordinate · Assemble', employee: 'Collaboration within a digital employee',
+  scopeTitle: 'Work boundaries', scope: ['Role goal', 'Permission boundary', 'Delivery requirements'],
+  runtimeTitle: 'Controlled runtime', runtime: ['Isolated task contexts', 'Configured capabilities', 'Progress and results return to the main task'],
+  agents: [
+    { icon: 'file-search', title: 'Research Agent' },
+    { icon: 'chart', title: 'Analysis Agent' },
+    { icon: 'layers', title: 'Execution Agent' },
+    { icon: 'clipboard-check', title: 'Review Agent' },
+  ],
+  alt: 'A digital employee works within a role goal, permission boundary and delivery requirements. Its main Agent delegates work to specialist Agents. Each subtask keeps its own messages and execution process, uses configured capabilities, and returns progress and results so the main Agent can assemble a complete result.',
+};
+const labels = zh ? {
+  running: '协同任务进行中', specialists: '专业任务', main: '主 Agent', goal: '业务目标',
+  input: '输入', output: '返回', result: '完整成果', pending: '待处理事项',
+  pendingBody: '合同口径需要业务负责人确认', boundaries: ['独立子任务上下文', '并发限制', '协作层级', '超时策略'],
+  review: ['审阅', '批注', '发布版本'], mainTask: '主任务',
+  mainOwns: '明确目标 · 组织分工', separateContext: '独立子任务上下文',
+  returnsToMain: '持续接收各子任务的返回', returnTypes: ['进度快照', '异常', '结果'], policy: '协作策略',
+  waiting: '等待业务人员', humanJudgment: '需要专业判断', humanReturn: '处理结果回到原任务',
+} : {
+  running: 'Collaboration in progress', specialists: 'Specialist work', main: 'Main Agent', goal: 'Business goal',
+  input: 'Input', output: 'Returns', result: 'Complete result', pending: 'Pending item',
+  pendingBody: 'A business owner must confirm the contract interpretation', boundaries: ['Isolated task context', 'Concurrency limit', 'Collaboration depth', 'Timeout policy'],
+  review: ['Review', 'Comment', 'Release version'], mainTask: 'Main task',
+  mainOwns: 'Define goal · Organize work', separateContext: 'Isolated task context',
+  returnsToMain: 'Continuously receives each subtask return', returnTypes: ['Progress snapshot', 'Issue', 'Result'], policy: 'Collaboration policy',
+  waiting: 'Waiting for a colleague', humanJudgment: 'Professional judgment needed', humanReturn: 'Handled result returns to the original task',
+};
+---
+<figure class:list={['ma-diagram', `ma-diagram-${scene}`]} aria-label={scene === 'overview' ? overview.alt : data.response}>
+  {scene === 'overview' && <div class="ma-overview-panel">
+    <div class="ma-panel-header">
+      <div><span class="ma-status-dot"></span><strong>{overview.title}</strong></div>
+      <span>{overview.employee}</span>
+    </div>
+    <div class="ma-overview-flow">
+      <div class="ma-overview-scope">
+        <strong>{overview.scopeTitle}</strong>
+        <div>{overview.scope.map(label => <span>{label}</span>)}</div>
+      </div>
+      <div class="ma-overview-core">
+      <div class="ma-overview-goal ma-endpoint-node">
+        <Icon name="target" size={22}/><strong>{overview.goal}</strong>
+      </div>
+      <div class="ma-core-connector ma-core-connector-in"><Icon name="arrow" size={18}/></div>
+      <div class="ma-agent-system">
+        <svg class="ma-overview-routes" viewBox="0 0 400 188" preserveAspectRatio="none" aria-hidden="true">
+          <path class="ma-route-org" d="M200 72V96M50 96H350M50 96V119M150 96V119M250 96V119M350 96V119"/>
+        </svg>
+        <div class="ma-overview-main ma-flow-node">
+          <div class="ma-agent-symbol"><Icon name="workflow" size={21}/></div>
+          <div><strong>{labels.main}</strong><small>{overview.mainWork}</small></div>
+        </div>
+        <div class="ma-overview-legend" aria-hidden="true"><span>{overview.delegate}</span><span>{overview.returned}</span></div>
+        <div class="ma-overview-specialists">
+          {overview.agents.map((agent, index) => <div class:list={['ma-specialist-node', `ma-specialist-${index}`]}>
+            <Icon name={agent.icon} size={17}/><strong>{agent.title}</strong>
+          </div>)}
+        </div>
+      </div>
+      <div class="ma-core-connector ma-core-connector-out"><Icon name="arrow" size={18}/></div>
+      <div class="ma-overview-result ma-endpoint-node">
+        <Icon name="file-check" size={22}/><strong>{overview.result}</strong>
+      </div>
+      </div>
+      <div class="ma-overview-runtime">
+        <strong>{overview.runtimeTitle}</strong>
+        <div>{overview.runtime.map(label => <span>{label}</span>)}</div>
+      </div>
+    </div>
   </div>}
-  {scene === 'execution' && <div class="ma-execution-map ma-art-canvas">
-    <svg class="ma-art-routes ma-execution-desktop" viewBox="0 0 1200 410" preserveAspectRatio="none" aria-hidden="true">
-      <g class="ma-routes-blue" style={`--route-color:url(#${prefix}-blue)`}><path d="M155 205C204 205 164 87 260 87H947C1040 87 994 205 1045 205"/><path d="M155 205H1045"/><path d="M155 205C204 205 164 323 260 323H947C1040 323 994 205 1045 205"/></g>
-    </svg>
-    <div class="ma-execution-root"><AgentNode locale={locale} kind="main" compact/></div>
-    <div class="ma-execution-lanes">{tasks.map((name, i) => <div class:list={['ma-execution-lane', `ma-tone-${i}`]}><strong>{name}</strong><span class="ma-execution-state"><Icon name="check" size={15}/>{zh ? '已完成' : 'Completed'}</span><span class="ma-execution-return">{returned[i]}</span></div>)}</div>
-    <div class="ma-execution-collected"><AgentNode locale={locale} kind="result" compact/></div>
+
+  {scene === 'delegate' && <div class="ma-delegate-panel ma-product-panel">
+    <div class="ma-panel-header">
+      <div><Icon name="workflow" size={19}/><strong>{data.title}</strong></div>
+      <span>{data.context}</span>
+    </div>
+    <div class="ma-delegate-stage">
+      <svg class="ma-delegate-routes" viewBox="0 0 700 360" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M350 142V174M112 174H588M112 174V199M350 174V199M588 174V199"/>
+      </svg>
+      <article class="ma-delegate-owner">
+        <div class="ma-owner-heading"><span class="ma-agent-symbol"><Icon name="workflow" size={20}/></span><div><strong>{labels.main}</strong><span>{labels.mainOwns}</span></div></div>
+        <div class="ma-owner-goal"><span>{labels.goal}</span><strong>{data.request}</strong></div>
+        <div class="ma-brief-files">{data.files.map(file => <span><Icon name="file" size={14}/>{file}</span>)}</div>
+      </article>
+      <div class="ma-work-orders">
+        {specialists.map((row, index) => <article>
+          <div class="ma-work-order-title"><span class:list={['ma-agent-marker', `ma-agent-marker-${index}`]}><Icon name={specialistIcons[index]} size={17}/></span><strong>{row[0]} Agent</strong></div>
+          <dl><div><dt>{labels.input}</dt><dd>{row[1]}</dd></div><div><dt>{labels.output}</dt><dd>{row[2]}</dd></div></dl>
+        </article>)}
+      </div>
+    </div>
   </div>}
-  {scene === 'delivery' && <div class="ma-composition ma-art-canvas">
-    <svg class="ma-art-routes ma-composition-desktop" viewBox="0 0 660 500" preserveAspectRatio="none" aria-hidden="true">
-      <g class="ma-routes-blue" style={`--route-color:url(#${prefix}-blue)`}><path d="M146 102C232 102 203 250 250 250"/><path d="M146 250H250"/><path d="M146 398C232 398 203 250 250 250"/></g>
-      <path class="ma-composition-out" d="M370 250H397" marker-end={`url(#${prefix}-arrow)`}/>
-    </svg>
-    <svg class="ma-art-routes ma-composition-mobile" viewBox="0 0 354 350" preserveAspectRatio="none" aria-hidden="true">
-      <g class="ma-routes-blue" style={`--route-color:url(#${prefix}-blue)`}><path d="M53 90C53 164 177 133 177 202"/><path d="M177 90V202"/><path d="M301 90C301 164 177 133 177 202"/></g><path class="ma-composition-out" d="M177 297V337" marker-end={`url(#${prefix}-arrow)`}/>
-    </svg>
-    <div class="ma-composition-sources">{results.map((name,i)=><div class:list={['ma-composition-source',`ma-tone-${i}`]}><Icon name={['file-search','chart','clipboard-check'][i]} size={23}/><strong>{name}</strong></div>)}</div>
-    <div class="ma-composition-main"><AgentNode locale={locale} kind="main" compact/></div>
-    <article class="ma-outcome-document">
-      <div class="ma-outcome-title"><Icon name="file-check" size={24}/><h3>{zh ? '尽调报告材料' : 'Due diligence materials'}</h3></div>
-      <dl>{results.map((name,i)=><div><dt>{name}</dt><dd>{descriptions[i]}</dd></div>)}</dl>
-      <div class="ma-outcome-review"><Icon name="clipboard-check" size={18}/><span>{zh ? '继续审阅与修改' : 'Ready for review and editing'}</span></div>
-    </article>
+
+  {scene === 'execute' && <div class="ma-execute-panel ma-product-panel">
+    <div class="ma-panel-header">
+      <div><Icon name="chart" size={19}/><strong>{data.title}</strong></div>
+      <span>{data.context}</span>
+    </div>
+    <div class="ma-execute-stage">
+      <div class="ma-execute-contexts">
+        {specialists.map((row, index) => <article class:list={['ma-context-card', `ma-context-card-${stateClasses[index]}`]}>
+          <div class="ma-context-heading"><span class:list={['ma-agent-marker', `ma-agent-marker-${index}`]}><Icon name={specialistIcons[index]} size={16}/></span><strong>{row[0]} Agent</strong><em class:list={[`ma-run-label-${stateClasses[index]}`]}>{row[1]}</em></div>
+          <span class="ma-context-label"><Icon name="message" size={13}/>{labels.separateContext}</span>
+          <div class="ma-context-current"><span class:list={['ma-run-state', `ma-run-state-${stateClasses[index]}`]}></span><strong>{row[2]}</strong></div>
+          {index === 2 && <div class="ma-context-handoff"><Icon name="user-check" size={15}/><span><strong>{labels.pending}</strong>{labels.waiting}</span></div>}
+        </article>)}
+      </div>
+      <div class="ma-execute-mainbar">
+        <div class="ma-execute-main-summary"><span class="ma-agent-symbol"><Icon name="workflow" size={19}/></span><div><strong>{labels.mainTask}</strong><span>{labels.returnsToMain}</span></div></div>
+        <div class="ma-execute-returns">{labels.returnTypes.map(label => <span>{label}</span>)}</div>
+      </div>
+      <div class="ma-execute-policy"><strong>{labels.policy}</strong>{labels.boundaries.map((label, index) => <span><Icon name={index === 0 ? 'message' : index === 1 ? 'network' : index === 2 ? 'layers' : 'clock'} size={13}/>{label}</span>)}</div>
+    </div>
+  </div>}
+
+  {scene === 'deliver' && <div class="ma-deliver-panel ma-product-panel">
+    <div class="ma-panel-header">
+      <div><Icon name="file-check" size={19}/><strong>{data.title}</strong></div>
+      <span>{data.context}</span>
+    </div>
+    <div class="ma-deliver-stage">
+      <svg class="ma-deliver-routes" viewBox="0 0 700 320" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M203 62H248M203 151H286M203 240H248M248 62V240"/>
+      </svg>
+      <div class="ma-return-stack">
+        {specialists.map((row, index) => <div class:list={['ma-return-item', `ma-return-item-${index}`]}>
+          <Icon name={specialistIcons[index]} size={18}/><div><strong>{row[0]}</strong><span>{row[1]}</span></div>
+        </div>)}
+      </div>
+      <div class="ma-deliver-agent"><Icon name="workflow" size={22}/><strong>{labels.main}</strong><span>{zh ? '归集 · 组织 · 交付' : 'Collect · Assemble · Deliver'}</span></div>
+      <article class="ma-deliver-document">
+        <div class="ma-document-title"><Icon name="file-check" size={22}/><div><span>{labels.result}</span><h3>{data.title}</h3></div></div>
+        <dl>{specialists.map(row => <div><dt>{row[2]}</dt><dd>{row[1]}</dd></div>)}</dl>
+        <div class="ma-document-actions">{labels.review.map(label => <span><Icon name={label === labels.review[2] ? 'file-check' : label === labels.review[1] ? 'message' : 'clipboard-check'} size={14}/>{label}</span>)}</div>
+      </article>
+      <div class="ma-human-loop"><div><Icon name="user-check" size={17}/><span><strong>{labels.humanJudgment}</strong>{specialists[2]?.[1]}</span></div><span>{labels.humanReturn}</span></div>
+    </div>
   </div>}
 </figure>

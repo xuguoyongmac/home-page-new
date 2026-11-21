@@ -3,15 +3,15 @@ import type { ProductExperienceTranslations } from '../experience-types';
 export default {
   zh: {
     heroAlt: '二维业务工作台：数字员工连接客户资料、专业工具与业务接口，将沟通整理为跟进清单并接回业务系统。',
-    sectionTitle: '从连接业务到完成办理',
+    sectionTitle: '从业务对象进入任务，到结果回到流程',
     sections: [
       {
         id: 'business-context', kind: 'connections',
-        title: '把系统里的资料变成任务上下文',
-        body: '客户沟通、项目材料和业务单据都能成为工作的起点。通过已安装并授权的业务插件，让数字员工围绕正在处理的对象归集资料，而不只处理孤立的一段文字。',
+        title: '先把业务对象带进任务',
+        body: '客户、商机、项目、单据与查询结果不再只是分散记录。数字员工通过已安装并授权的业务插件和数据库连接，围绕正在处理的对象取得资料与来源。',
         points: [
-          { title: '业务对象直接关联', body: '通过 CRM、招投标与 EHS 等插件，围绕客户、项目和检查记录开展工作。' },
-          { title: '数据查询服务分析', body: '通过数据库连接，在账号授权范围内查询和汇总经营数据，将结果带入问答与报告。' },
+          { title: '对象关系保留在任务里', body: '通过 CRM、招投标与 EHS 等业务插件，关联客户、项目和检查记录。' },
+          { title: '查询结果带着来源进入工作', body: '数据库连接按账号权限查询和汇总数据，结果用于问答、分析与文稿。' },
         ],
         visual: {
           title: '业务连接工作台', context: '客户经营任务', tabs: ['业务插件', '数据库', '业务接口'],
@@ -30,11 +30,11 @@ export default {
       },
       {
         id: 'business-actions', kind: 'execution',
-        title: '从查询分析接续到业务办理',
-        body: '专业工具与业务接口参与同一次任务。数字员工整理沟通要点、调用所需工具，再把跟进事项写入客户时间线，让产出成为后续工作的记录。',
+        title: '不止查询，还能继续办理',
+        body: 'MCP 提供专业工具，RESTful API 承接业务动作，浏览器、桌面节点和文件工具完成需要的操作。每类连接使用自己的身份与凭据。',
         points: [
-          { title: '专业工具按需调用', body: '配置 MCP 服务与认证，将外部专业工具用于任务执行。' },
-          { title: '接口与设备接续工作', body: '通过 RESTful API 执行业务动作；按节点状态与权限使用桌面设备、浏览器和文件工具。' },
+          { title: '工具服务于具体任务', body: '配置 MCP 服务与认证，让数字员工调用检索、计算和处理工具。' },
+          { title: '业务动作需要对应授权', body: '接口、设备和插件分别校验连接身份、访问权限与业务委托。' },
         ],
         visual: {
           title: '客户跟进任务', context: '沟通整理与业务接续', tabs: ['执行记录', '客户时间线', '任务成果'],
@@ -53,11 +53,11 @@ export default {
       },
       {
         id: 'platform-api', kind: 'connections',
-        title: '让现有系统也能交办智能任务',
-        body: '除了让数字员工调用外部工具，也让业务系统调用平台。通过平台 OpenAPI 提交任务与附件，获取执行状态和成果，把智能处理嵌入已有业务入口。',
+        title: '结果回到原有业务入口',
+        body: '业务系统通过平台 OpenAPI 以绑定用户和作用域发起任务，携带附件，并按同步、异步或流式方式获取状态、人工事项和成果。原有入口继续承接后续流程。',
         points: [
-          { title: '任务与附件一并提交', body: '让业务请求带着资料进入平台，围绕原有对象完成处理。' },
-          { title: '状态与成果按接口返回', body: '使用同步、异步或流式接口获取状态、结果与平台服务。' },
+          { title: '请求带着资料进入平台', body: '任务、附件和幂等信息一起提交，在绑定用户身份下执行。' },
+          { title: '状态、回应与成果一起返回', body: '原系统可查询进度、续接事件，并获取结果与交付文件。' },
         ],
         visual: {
           title: '平台 OpenAPI', context: '业务系统调用平台', tabs: ['任务请求', '执行状态', '成果返回'],
@@ -77,15 +77,15 @@ export default {
   },
   en: {
     heroAlt: 'A flat business workspace connecting a digital employee to customer records, specialist tools and business APIs, with follow-up results returned to the workflow.',
-    sectionTitle: 'From business connections to completed actions',
+    sectionTitle: 'From business records in the task to results back in the workflow',
     sections: [
       {
         id: 'business-context', kind: 'connections',
-        title: 'Make business records part of the task',
-        body: 'Customer conversations, project materials and business records can all be the starting point. Installed, authorized plugins let digital employees gather context around the object they are working with.',
+        title: 'Bring business objects into the task',
+        body: 'Customers, deals, projects, records and query results no longer sit apart. Installed, authorized business plugins and database connections bring the relevant material and its source into the work.',
         points: [
-          { title: 'Connect the business object', body: 'Use CRM, bidding and EHS plugins to work with customers, projects and inspection records.' },
-          { title: 'Use data to support analysis', body: 'Query and aggregate operating data within database account permissions, then use the results in answers and reports.' },
+          { title: 'Keep record relationships in the task', body: 'Use CRM, bidding and EHS plugins to connect customers, projects and inspection records.' },
+          { title: 'Carry sourced query results into the work', body: 'Query and aggregate data within database account permissions for answers, analysis and drafts.' },
         ],
         visual: {
           title: 'Business connections', context: 'Customer management', tabs: ['Business plugins', 'Databases', 'Business APIs'],
@@ -104,11 +104,11 @@ export default {
       },
       {
         id: 'business-actions', kind: 'execution',
-        title: 'Carry analysis through to a business action',
-        body: 'Bring specialist tools and business APIs into the same task. Organize the conversation, call the required tools and record follow-up items on the customer timeline so the output becomes part of ongoing work.',
+        title: 'Go from retrieval to action',
+        body: 'MCP provides specialist tools, RESTful APIs carry out business actions, and browser, desktop and file tools complete the required operation. Each connection uses its own identity and credentials.',
         points: [
-          { title: 'Call the specialist tools needed', body: 'Configure MCP services and authentication to use external tools during task execution.' },
-          { title: 'Continue through APIs and devices', body: 'Use RESTful APIs for business actions and authorized desktop nodes, browser and file tools according to their state and permissions.' },
+          { title: 'Use tools for a defined task', body: 'Configure MCP services and authentication for search, calculation and specialist processing.' },
+          { title: 'Authorize each business action', body: 'APIs, devices and plugins check their connection identity, access rules and business delegation.' },
         ],
         visual: {
           title: 'Customer follow-up task', context: 'From conversation to action', tabs: ['Execution record', 'Customer timeline', 'Deliverables'],
@@ -127,11 +127,11 @@ export default {
       },
       {
         id: 'platform-api', kind: 'connections',
-        title: 'Let existing systems hand work to the platform',
-        body: 'Digital employees can call external tools, and business systems can call the platform. Submit tasks and attachments through Platform OpenAPI, retrieve execution status and results, and embed the work in existing entry points.',
+        title: 'Return results to the existing workflow',
+        body: 'A business system uses Platform OpenAPI with a bound user and scope to submit tasks and files, then receives status, human work items and results synchronously, asynchronously or as a stream.',
         points: [
-          { title: 'Submit tasks with their files', body: 'Bring the business request and its materials into the platform together.' },
-          { title: 'Receive status and results', body: 'Use synchronous, asynchronous or streaming interfaces to retrieve status, results and platform services.' },
+          { title: 'Submit the request with its materials', body: 'Tasks, attachments and idempotency information execute under the bound user identity.' },
+          { title: 'Return status, responses and deliverables', body: 'The original system can follow progress, resume events and retrieve results and files.' },
         ],
         visual: {
           title: 'Platform OpenAPI', context: 'Business system to platform', tabs: ['Task request', 'Execution status', 'Returned results'],
