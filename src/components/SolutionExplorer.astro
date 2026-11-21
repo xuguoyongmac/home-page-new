@@ -33,7 +33,7 @@ const resultIcons: Record<string, string[]> = {
   'state-owned': ['chart', 'clipboard-check', 'workflow'],
 };
 ---
-<div class:list={["solution-explorer", "home-solutions", {"solution-overview-explorer":!home}]} data-solution-explorer>
+<div class:list={["solution-explorer", "home-solutions", {"solution-overview-explorer":!home}]} data-solution-explorer data-attribution-group="solutions">
   <div class="industry-navigation">
     {home && <h2 id="industry-title">{zh ? '行业解决方案' : 'Industry solutions'}</h2>}
     <div class="solution-tabs" role="tablist" aria-label={zh ? '行业解决方案' : 'Industry solutions'}>
