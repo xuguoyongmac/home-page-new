@@ -76,9 +76,8 @@ function fixture({ desktop = true, hover = true, animatePanels = false } = {}) {
   const document = new ElementStub('#document');
   document.ownerDocument = document;
   document.getElementById = id => document.querySelector(`#${id}`);
-  const body = new ElementStub('body'); document.append(body); document.body = body; document.activeElement = body;
+  const body = new ElementStub('body'); document.append(body); document.activeElement = body;
   const header = new ElementStub('header', { 'data-site-header': '' }); body.append(header);
-  const main = new ElementStub('main', { id: 'main' }); body.append(main);
   const desktopNav = new ElementStub('nav', { class: 'desktop-nav' });
   const tools = new ElementStub('div', { class: 'header-tools' });
   const mobile = new ElementStub('nav', { id: 'mobile-nav', class: 'mobile-nav' }); mobile.inert = true;
@@ -152,7 +151,7 @@ function fixture({ desktop = true, hover = true, animatePanels = false } = {}) {
     }
     clock = end;
   };
-  return { document, body, header, main, product, solutions, resources, language, mobile, mobileToggle, mobileProduct, direct, outside,
+  return { document, body, header, product, solutions, resources, language, mobile, mobileToggle, mobileProduct, direct, outside,
     hoverMode, desktopMode, reducedMotion, timers, pointer, click, key, emit, advance };
 }
 
@@ -161,7 +160,7 @@ const expectOpen = (entry, open) => {
   assert.equal(entry.panel.hidden, !open);
 };
 
-test('route intent updates the shell before the response and cancels obsolete pending state', async () => {
+test('route intent highlights the destination before the response and ignores an obsolete request', async () => {
   const env = fixture();
   const from = new URL('https://www.zhama.com/zh/pricing/');
   env.direct.setAttribute('href', from.pathname);
@@ -177,8 +176,6 @@ test('route intent updates the shell before the response and cancels obsolete pe
 
   const productNav = begin('/zh/product/digital-employees/', first.signal, () => firstLoad);
   const oldRequest = productNav.loader();
-  assert.equal(env.body.hasAttribute('data-route-pending'), true);
-  assert.equal(env.main.getAttribute('aria-busy'), 'true');
   assert.equal(env.product.link.getAttribute('aria-current'), 'page');
   assert.equal(env.product.button.classList.contains('is-current'), true);
   assert.equal(env.direct.getAttribute('aria-current'), null);
@@ -189,14 +186,11 @@ test('route intent updates the shell before the response and cancels obsolete pe
   await oldRequest;
   assert.equal(env.product.button.classList.contains('is-current'), false);
   assert.equal(env.solutions.button.classList.contains('is-current'), true);
-  assert.equal(env.body.hasAttribute('data-route-pending'), true);
   second.abort();
   assert.equal(env.direct.getAttribute('aria-current'), 'page');
   assert.equal(env.solutions.button.classList.contains('is-current'), false);
-  assert.equal(env.body.hasAttribute('data-route-pending'), false);
-  assert.equal(env.main.hasAttribute('aria-busy'), false);
   begin('/zh/pricing/#plans', new AbortController().signal);
-  assert.equal(env.body.hasAttribute('data-route-pending'), false);
+  assert.equal(env.direct.getAttribute('aria-current'), 'page');
 });
 
 test('a route swap retains the header controls and applies the destination active state', () => {
