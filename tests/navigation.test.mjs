@@ -44,6 +44,7 @@ class ElementStub extends EventTarget {
     if (name.startsWith('data-')) this.dataset[name.slice(5).replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())] = String(value);
   }
   getAttribute(name) { return this.attrs.get(name) ?? null; }
+  hasAttribute(name) { return this.attrs.has(name); }
   removeAttribute(name) { this.attrs.delete(name); }
   append(...children) {
     for (const child of children) {
@@ -75,8 +76,9 @@ function fixture({ desktop = true, hover = true, animatePanels = false } = {}) {
   const document = new ElementStub('#document');
   document.ownerDocument = document;
   document.getElementById = id => document.querySelector(`#${id}`);
-  const body = new ElementStub('body'); document.append(body); document.activeElement = body;
+  const body = new ElementStub('body'); document.append(body); document.body = body; document.activeElement = body;
   const header = new ElementStub('header', { 'data-site-header': '' }); body.append(header);
+  const main = new ElementStub('main', { id: 'main' }); body.append(main);
   const desktopNav = new ElementStub('nav', { class: 'desktop-nav' });
   const tools = new ElementStub('div', { class: 'header-tools' });
   const mobile = new ElementStub('nav', { id: 'mobile-nav', class: 'mobile-nav' }); mobile.inert = true;
@@ -134,7 +136,7 @@ function fixture({ desktop = true, hover = true, animatePanels = false } = {}) {
   const emit = (element, type, properties = {}, bubbles = false) => {
     const event = new Event(type, { cancelable: true });
     Object.defineProperty(event, 'target', { value: element });
-    for (const [name, value] of Object.entries(properties)) Object.defineProperty(event, name, { value });
+    for (const [name, value] of Object.entries(properties)) Object.defineProperty(event, name, { value, writable: name === 'loader' });
     let target = element;
     do { target.dispatchEvent(event); target = bubbles ? target.parentElement : null; } while (target);
     return event;
@@ -150,7 +152,7 @@ function fixture({ desktop = true, hover = true, animatePanels = false } = {}) {
     }
     clock = end;
   };
-  return { document, body, header, product, solutions, resources, language, mobile, mobileToggle, mobileProduct, direct, outside,
+  return { document, body, header, main, product, solutions, resources, language, mobile, mobileToggle, mobileProduct, direct, outside,
     hoverMode, desktopMode, reducedMotion, timers, pointer, click, key, emit, advance };
 }
 
@@ -158,6 +160,44 @@ const expectOpen = (entry, open) => {
   assert.equal(entry.button.getAttribute('aria-expanded'), String(open));
   assert.equal(entry.panel.hidden, !open);
 };
+
+test('route intent updates the shell before the response and cancels obsolete pending state', async () => {
+  const env = fixture();
+  const from = new URL('https://www.zhama.com/zh/pricing/');
+  env.direct.setAttribute('href', from.pathname);
+  env.direct.setAttribute('aria-current', 'page');
+  env.product.link.setAttribute('href', '/zh/product/digital-employees/');
+  const first = new AbortController();
+  const second = new AbortController();
+  let resolveFirst;
+  const firstLoad = new Promise(resolve => { resolveFirst = resolve; });
+  const begin = (path, signal, loader) => env.emit(env.document, 'astro:before-preparation', {
+    from, to: new URL(path, from), signal, loader,
+  });
+
+  const productNav = begin('/zh/product/digital-employees/', first.signal, () => firstLoad);
+  const oldRequest = productNav.loader();
+  assert.equal(env.body.hasAttribute('data-route-pending'), true);
+  assert.equal(env.main.getAttribute('aria-busy'), 'true');
+  assert.equal(env.product.link.getAttribute('aria-current'), 'page');
+  assert.equal(env.product.button.classList.contains('is-current'), true);
+  assert.equal(env.direct.getAttribute('aria-current'), null);
+  first.abort();
+  begin('/zh/solutions/banking/', second.signal);
+  productNav.preventDefault();
+  resolveFirst();
+  await oldRequest;
+  assert.equal(env.product.button.classList.contains('is-current'), false);
+  assert.equal(env.solutions.button.classList.contains('is-current'), true);
+  assert.equal(env.body.hasAttribute('data-route-pending'), true);
+  second.abort();
+  assert.equal(env.direct.getAttribute('aria-current'), 'page');
+  assert.equal(env.solutions.button.classList.contains('is-current'), false);
+  assert.equal(env.body.hasAttribute('data-route-pending'), false);
+  assert.equal(env.main.hasAttribute('aria-busy'), false);
+  begin('/zh/pricing/#plans', new AbortController().signal);
+  assert.equal(env.body.hasAttribute('data-route-pending'), false);
+});
 
 test('a route swap retains the header controls and applies the destination active state', () => {
   const current = fixture();

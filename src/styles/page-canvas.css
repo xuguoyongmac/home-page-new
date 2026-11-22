@@ -16,6 +16,24 @@ body #main.page-canvas .sl-closing::before,
 body #main.page-canvas .sl-closing::after { content: none; }
 body .site-footer { background: var(--page-canvas); }
 
+/* Only the outgoing content is hidden while its replacement loads. */
+body[data-route-pending] > :is(#main, .site-footer) { visibility: hidden; opacity: 0; }
+body[data-route-pending]::after {
+  content: '';
+  position: fixed;
+  inset: 46% auto auto 50%;
+  translate: -50% -50%;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #9eb6d02b;
+  border-top-color: #9eb6d0;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: route-loading-show .14s .18s both, route-loading-spin .85s linear infinite;
+}
+@keyframes route-loading-show { from { opacity: 0; } to { opacity: 1; } }
+@keyframes route-loading-spin { to { transform: rotate(1turn); } }
+
 /* The hero keeps its established atmosphere and fades into the same canvas. */
 body.is-home #main.page-canvas .hero-carousel {
   background: linear-gradient(to bottom, transparent 76%, var(--page-canvas)),
