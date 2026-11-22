@@ -35,6 +35,15 @@ const industries = [
   ['general', 'generalPresentation', 6],
 ];
 
+const finalizedZhHomepageTitles = {
+  banking: '让专业作业提速，让客户经营增效',
+  insurance: '让条款讲得清楚，让理赔办得明白',
+  securities: '让投研响应更快，让专业服务更稳',
+  government: '让政策找得到，让办件办得快',
+  'state-owned': '让集团管控穿透，让专业协同提效',
+  trust: '让尽调做深做透，让受托尽责有据',
+};
+
 test('solution discovery retains the supported industries, general business and appliance routes', () => {
   const directory = path.join(root, 'src/features/solutions');
   const entries = readdirSync(directory, { withFileTypes: true })
@@ -76,13 +85,18 @@ for (const [slug, exportName, order] of industries) {
   const presentation = loadData(`src/features/solutions/${slug}/page-content.ts`)[exportName];
   const metadata = loadData(`src/features/solutions/${slug}/content.ts`).default;
 
-  test(`${slug}: homepage, detail and navigation use consistent localized content`, () => {
+  test(`${slug}: homepage, detail and navigation provide complete localized content`, () => {
     assert.equal(metadata.order, order);
     for (const locale of ['zh', 'en']) {
       const copy = presentation[locale];
       const homepage = homeIndustries[locale][slug];
-      assert.equal(homepage, copy.home, 'Homepage and overview must use the same complete presentation source');
-      assert.equal(homepage.scenarios, copy.home.scenarios, 'Homepage scenarios must use the detail content source');
+      const hasFinalizedZhHomepageCopy = locale === 'zh' && slug in finalizedZhHomepageTitles;
+      if (hasFinalizedZhHomepageCopy) {
+        assert.equal(homepage.title, finalizedZhHomepageTitles[slug]);
+      } else {
+        assert.equal(homepage, copy.home, 'Non-finalized homepage copy must use the detail content source');
+        assert.equal(homepage.scenarios, copy.home.scenarios, 'Non-finalized homepage scenarios must use the detail content source');
+      }
       assert.equal(homepage.scenarios.length, 6);
       assert.equal(homepage.benefits.length, 3);
       assert.ok(homepage.title.trim().length > 0 && homepage.pain.trim().length > 0 && homepage.value.trim().length > 0);
