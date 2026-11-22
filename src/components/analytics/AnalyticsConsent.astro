@@ -7,6 +7,7 @@ interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
 ---
+<span data-analytics-sdk transition:persist="tego-analytics-sdk" hidden aria-hidden="true"></span>
 <section
   id="analytics-consent"
   class="analytics-consent"

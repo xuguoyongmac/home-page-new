@@ -43,8 +43,9 @@ function fixture({ href = 'https://www.zhama.com/zh/', stored, navigator = {}, d
   document.readyState = loading ? 'loading' : 'complete';
   let ready = !loading;
   let scriptPresent = false;
-  document.querySelector = selector => selector === '[data-analytics-consent]' && ready ? root : selector === '#enquiry-content' ? draft : null;
-  document.querySelectorAll = selector => selector === '[data-analytics-preferences]' ? [preferences] : [];
+  let activeRoot = root, activePreferences = preferences;
+  document.querySelector = selector => selector === '[data-analytics-consent]' && ready ? activeRoot : selector === '#enquiry-content' ? draft : null;
+  document.querySelectorAll = selector => selector === '[data-analytics-preferences]' ? [activePreferences] : [];
   document.getElementById = id => id === 'tego-baidu-analytics' && scriptPresent ? {} : null;
   const storage = new Map(stored === undefined ? [] : [[key, stored]]);
   const trace = [];
@@ -65,6 +66,7 @@ function fixture({ href = 'https://www.zhama.com/zh/', stored, navigator = {}, d
       if (name === '../../../shared/analytics.mjs') return { analyticsHosts };
       assert.equal(name, './baidu.mjs');
       return {
+        initBaiduAnalyticsNavigation() {},
         initBaiduAnalytics() {
           assert.equal(storage.get(key), 'granted');
           trace.push('init');
@@ -79,6 +81,18 @@ function fixture({ href = 'https://www.zhama.com/zh/', stored, navigator = {}, d
   return {
     root, allow, deny, status, preferences, browser, document, trace, storage, draft,
     init: () => exports.initAnalyticsConsent(browser),
+    swap(href = browser.location.href) {
+      document.dispatchEvent(new Event('astro:before-swap'));
+      const nextRoot = new Element(), nextAllow = new Element(), nextDeny = new Element(), nextStatus = new Element(), nextPreferences = new Element();
+      nextRoot.dataset = { ...root.dataset };
+      const nextParts = new Map([['[data-analytics-allow]', nextAllow], ['[data-analytics-deny]', nextDeny], ['[data-analytics-status]', nextStatus]]);
+      nextRoot.querySelector = selector => nextParts.get(selector);
+      activeRoot = nextRoot; activePreferences = nextPreferences;
+      browser.location.href = href;
+      document.dispatchEvent(new Event('astro:after-swap'));
+      document.dispatchEvent(new Event('astro:page-load'));
+      return { root: nextRoot, allow: nextAllow, deny: nextDeny, status: nextStatus, preferences: nextPreferences };
+    },
     failRead: value => { readFailure = value; }, failWrite: value => { writeFailure = value; },
     ready() { ready = true; document.dispatchEvent(new Event('DOMContentLoaded')); },
     change(value, eventKey = key) {
@@ -244,4 +258,27 @@ test('a head initializer waits for the consent markup and the footer controls re
   for (const action of ['allow', 'deny']) assert.match(component, new RegExp(`<button[^>]*type="button"[^>]*data-analytics-${action}`));
   assert.match(component, /role="status" aria-live="polite"/);
   assert.match(footer, /<button[^>]*type="button"[^>]*data-analytics-preferences[^>]*aria-controls="analytics-consent"/);
+});
+
+
+test('router swaps rebind current consent controls and dispose detached listeners without losing withdrawal state', async () => {
+  const page = fixture({ stored: 'granted' });
+  const next = page.swap('https://www.zhama.com/en/');
+  assert.equal(next.root.hidden, true);
+  assert.equal(page.init(), false);
+  const beforeDetachedClick = page.trace.length;
+  page.deny.click();
+  assert.equal(page.trace.length, beforeDetachedClick);
+  next.preferences.click();
+  assert.equal(next.root.hidden, false);
+  next.deny.click();
+  assert.equal(page.storage.get(key), 'denied');
+  const afterWithdrawal = page.trace.filter(value => value === 'init').length;
+  const last = page.swap('https://www.zhama.com/zh/contact/');
+  last.preferences.click(); last.allow.click();
+  assert.equal(last.status.textContent, last.root.dataset.analyticsNextVisit);
+  assert.equal(page.trace.filter(value => value === 'init').length, afterWithdrawal);
+  assert.equal(page.draft.value, '企业知识接入与权限配置咨询草稿');
+  const component = await readFile(new URL('../src/components/analytics/AnalyticsConsent.astro', import.meta.url), 'utf8');
+  assert.match(component, /data-analytics-sdk transition:persist="tego-analytics-sdk" hidden/);
 });

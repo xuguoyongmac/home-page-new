@@ -17,6 +17,8 @@ const zh = locale === 'zh';
 </section>
 <script>
  import { observeMotion } from '../lib/motion';
+ import { onPageMount } from '../lib/page-lifecycle';
+ onPageMount(signal => {
  const diagram = document.querySelector<HTMLElement>('.anywhere-topology');
  const flows = diagram?.querySelectorAll<SVGSVGElement>('.topology-links');
  const animatedImages = diagram?.querySelectorAll<HTMLImageElement>('[data-topology-gif]');
@@ -35,7 +37,9 @@ const zh = locale === 'zh';
    });
   };
   flows?.forEach(flow => flow.pauseAnimations());
-  const playback = observeMotion(diagram, sync);
-  window.addEventListener('resize', () => playback.refresh(), { passive:true });
+  const playback = observeMotion(diagram, sync, signal);
+  window.addEventListener('resize', () => playback.refresh(), { passive:true, signal });
+  signal.addEventListener('abort', () => sync({ running:false, reduced:false }), { once:true });
  }
+ });
 </script>

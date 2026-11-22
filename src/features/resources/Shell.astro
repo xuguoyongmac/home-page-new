@@ -12,19 +12,22 @@ const links = [['resources', zh ? '资源中心' : 'Resources'], ['download', zh
   <slot/>
 </div>
 <script>
-  if (document.querySelector('.support-shell')) {
-    document.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
-      languageLink.addEventListener('click', () => {
-        const destination = new URL(languageLink.href, location.origin);
-        const current = new URL(location.href);
-        for (const key of ['version', 'product', 'platform']) {
-          const value = current.searchParams.get(key);
-          if (value) destination.searchParams.set(key, value);
-          else destination.searchParams.delete(key);
-        }
-        destination.hash = current.hash;
-        languageLink.href = destination.pathname + destination.search + destination.hash;
+  import { onPageMount } from '../../lib/page-lifecycle';
+  onPageMount(signal => {
+    if (document.querySelector('.support-shell')) {
+      document.querySelectorAll<HTMLAnchorElement>('[data-language-option]').forEach(languageLink => {
+        languageLink.addEventListener('click', () => {
+          const destination = new URL(languageLink.href, location.origin);
+          const current = new URL(location.href);
+          for (const key of ['version', 'product', 'platform']) {
+            const value = current.searchParams.get(key);
+            if (value) destination.searchParams.set(key, value);
+            else destination.searchParams.delete(key);
+          }
+          destination.hash = current.hash;
+          languageLink.href = destination.pathname + destination.search + destination.hash;
+        }, { signal });
       });
-    });
-  }
+    }
+  });
 </script>

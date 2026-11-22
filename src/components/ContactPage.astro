@@ -76,6 +76,7 @@ const contactApi = import.meta.env.PUBLIC_CONTACT_API_URL || '/api/contact/';
   @media (max-width: 600px) { .contact-methods { grid-template-columns: 1fr; gap: 22px; } .contact-hero { padding-bottom: 30px; } }
 </style>
 <script>
+  import { onPageMount } from '../lib/page-lifecycle';
   import { initContactForm } from '../features/contact/form';
-  initContactForm();
+  onPageMount(signal => initContactForm(signal));
 </script>

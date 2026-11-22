@@ -10,6 +10,7 @@ export default defineConfig({
   site: normalizeSiteOrigin(process.env.PUBLIC_SITE_URL),
   output: 'static',
   trailingSlash: 'always',
+  prefetch: { prefetchAll: false },
   compressHTML: true,
   devToolbar: { enabled: false },
   server: { port: 4350, host: '127.0.0.1' },

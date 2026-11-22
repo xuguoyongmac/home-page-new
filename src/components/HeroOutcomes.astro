@@ -47,5 +47,6 @@ const zh = locale === 'zh';
 </div>
 <script>
   import { initializeDutyVisuals } from '../features/home/hero-outcomes';
-  initializeDutyVisuals();
+  import { onPageMount } from '../lib/page-lifecycle';
+  onPageMount(signal => initializeDutyVisuals(signal));
 </script>

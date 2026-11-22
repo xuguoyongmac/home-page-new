@@ -37,6 +37,9 @@ const href=(value:string)=>value.startsWith('#')?value:pathFor(locale,value);
 <script>
  import { initializeHeroCarousels } from '../features/home/hero-carousel';
  import { initializeTaskScenes } from '../features/home/hero-task-scene';
- initializeHeroCarousels();
- initializeTaskScenes();
+ import { onPageMount } from '../lib/page-lifecycle';
+ onPageMount(signal => {
+  initializeHeroCarousels(signal);
+  initializeTaskScenes(signal);
+ });
 </script>

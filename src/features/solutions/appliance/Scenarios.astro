@@ -42,8 +42,11 @@ const copy = appliancePage[locale];
 </section>
 
 <script>
+  import { onPageMount } from '../../../lib/page-lifecycle';
   import { initStationScenarios } from './scenarios';
-  document.querySelectorAll<HTMLElement>('[data-station-scenarios]').forEach(initStationScenarios);
+  onPageMount(signal => {
+    document.querySelectorAll<HTMLElement>('[data-station-scenarios]').forEach(root => initStationScenarios(root, signal));
+  });
 </script>
 
 <style>

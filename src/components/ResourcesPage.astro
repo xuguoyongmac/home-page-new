@@ -30,29 +30,32 @@ const directory = resources.filter(item => !item.featured);
   @media(max-width:700px){.resource-featured{grid-template-columns:1fr;gap:13px}.resource-portal{flex-direction:row;align-items:center;padding:22px 20px;gap:14px}.resource-portal>div{flex:1}.resource-portal h2{font-size:20px}.resource-directory{grid-template-columns:1fr;margin-top:17px}.resource-entry{padding-block:22px;gap:14px}.resource-collection{padding-bottom:42px}}
 </style>
 <script>
-  const root = document.querySelector<HTMLElement>('[data-resource-browser]');
-  if (root) {
-    const query = root.querySelector<HTMLInputElement>('[data-resource-query]')!;
-    const filters = [...root.querySelectorAll<HTMLButtonElement>('[data-resource-filter]')];
-    const items = [...root.querySelectorAll<HTMLElement>('[data-resource-item]')];
-    const clear = root.querySelector<HTMLButtonElement>('[data-resource-clear]')!;
-    let category = 'all';
-    const update = () => {
-      const terms = query.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
-      let count = 0;
-      items.forEach(item => {
-        item.hidden = !(category === 'all' || item.dataset.category === category) || !terms.every(term => item.dataset.search?.includes(term));
-        if (!item.hidden) count++;
-      });
-      filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.resourceFilter === category)));
-      clear.hidden = !query.value;
-      root.querySelector<HTMLElement>('[data-resource-empty]')!.hidden = count > 0;
-      const featured = root.querySelector<HTMLElement>('#resource-featured')!;
-      featured.hidden = ![...featured.children].some(item => !(item as HTMLElement).hidden);
-    };
-    query.addEventListener('input', update);
-    filters.forEach(button => button.addEventListener('click', () => { category = button.dataset.resourceFilter!; update(); }));
-    clear.addEventListener('click', () => { query.value = ''; update(); query.focus(); });
-    root.querySelector('[data-resource-reset]')?.addEventListener('click', () => { category = 'all'; query.value = ''; update(); query.focus(); });
-  }
+  import { onPageMount } from '../lib/page-lifecycle';
+  onPageMount(signal => {
+    const root = document.querySelector<HTMLElement>('[data-resource-browser]');
+    if (root) {
+      const query = root.querySelector<HTMLInputElement>('[data-resource-query]')!;
+      const filters = [...root.querySelectorAll<HTMLButtonElement>('[data-resource-filter]')];
+      const items = [...root.querySelectorAll<HTMLElement>('[data-resource-item]')];
+      const clear = root.querySelector<HTMLButtonElement>('[data-resource-clear]')!;
+      let category = 'all';
+      const update = () => {
+        const terms = query.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+        let count = 0;
+        items.forEach(item => {
+          item.hidden = !(category === 'all' || item.dataset.category === category) || !terms.every(term => item.dataset.search?.includes(term));
+          if (!item.hidden) count++;
+        });
+        filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.resourceFilter === category)));
+        clear.hidden = !query.value;
+        root.querySelector<HTMLElement>('[data-resource-empty]')!.hidden = count > 0;
+        const featured = root.querySelector<HTMLElement>('#resource-featured')!;
+        featured.hidden = ![...featured.children].some(item => !(item as HTMLElement).hidden);
+      };
+      query.addEventListener('input', update, { signal });
+      filters.forEach(button => button.addEventListener('click', () => { category = button.dataset.resourceFilter!; update(); }, { signal }));
+      clear.addEventListener('click', () => { query.value = ''; update(); query.focus(); }, { signal });
+      root.querySelector('[data-resource-reset]')?.addEventListener('click', () => { category = 'all'; query.value = ''; update(); query.focus(); }, { signal });
+    }
+  });
 </script>

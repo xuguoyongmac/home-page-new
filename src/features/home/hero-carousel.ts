@@ -9,7 +9,8 @@ function hydrateSlide(slide: HTMLElement) {
   });
 }
 
-export function initializeHeroCarousels() {
+export function initializeHeroCarousels(signal?: AbortSignal) {
+  if (signal?.aborted) return;
   document.querySelectorAll<HTMLElement>('[data-hero-carousel]').forEach(hero => {
     if (hero.dataset.initialized) return;
     hero.dataset.initialized = 'true';
@@ -22,6 +23,7 @@ export function initializeHeroCarousels() {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const compactViewport = window.matchMedia('(max-width: 700px)');
     let workspacePaused = false;
+    let disposed = false;
     let active = 0;
     let userPaused = false;
     let hovered = false;
@@ -49,6 +51,7 @@ export function initializeHeroCarousels() {
       remaining = Math.max(0, remaining - (performance.now() - started));
     };
     const sync = () => {
+      if (disposed) return;
       stopClock();
       if (preference.matches && slideAnimations.length) {
         cancelTransition();
@@ -80,6 +83,7 @@ export function initializeHeroCarousels() {
       }
     };
     const select = (next: number, manual: boolean) => {
+      if (disposed) return;
       stopClock();
       if (slideAnimations.length) {
         queuedSelection = (next + slides.length) % slides.length === active ? undefined : { next, manual };
@@ -139,7 +143,7 @@ export function initializeHeroCarousels() {
       sync();
     };
     selectors.forEach((button, index) => {
-      button.addEventListener('click', () => select(index, true));
+      button.addEventListener('click', () => select(index, true), { signal });
       button.addEventListener('keydown', event => {
         if (event.ctrlKey || event.metaKey || event.altKey) return;
         let next: number | undefined;
@@ -148,12 +152,12 @@ export function initializeHeroCarousels() {
         if (event.key === 'Home') next = 0;
         if (event.key === 'End') next = slides.length - 1;
         if (next !== undefined) { event.preventDefault(); select(next, true); selectors[active].focus(); }
-      });
+      }, { signal });
     });
-    toggle.addEventListener('click', togglePlayback);
-    workspaceToggle?.addEventListener('click', () => { workspacePaused = !workspacePaused; sync(); });
-    hero.querySelector('[data-carousel-prev]')?.addEventListener('click', () => select(active - 1, true));
-    hero.querySelector('[data-carousel-next]')?.addEventListener('click', () => select(active + 1, true));
+    toggle.addEventListener('click', togglePlayback, { signal });
+    workspaceToggle?.addEventListener('click', () => { workspacePaused = !workspacePaused; sync(); }, { signal });
+    hero.querySelector('[data-carousel-prev]')?.addEventListener('click', () => select(active - 1, true), { signal });
+    hero.querySelector('[data-carousel-next]')?.addEventListener('click', () => select(active + 1, true), { signal });
     const finishGesture = (event: PointerEvent, commit: boolean) => {
       if (!gesture || event.pointerId !== gesture.id) return;
       const { id, x, y, horizontal } = gesture;
@@ -176,7 +180,7 @@ export function initializeHeroCarousels() {
       gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, horizontal: false };
       slideRegion.setPointerCapture(event.pointerId);
       sync();
-    });
+    }, { signal });
     slideRegion.addEventListener('pointermove', event => {
       if (!gesture || event.pointerId !== gesture.id) return;
       const dx = Math.abs(event.clientX - gesture.x);
@@ -189,24 +193,37 @@ export function initializeHeroCarousels() {
         hero.dataset.carouselDragging = 'true';
       }
       if (event.cancelable) event.preventDefault();
-    });
-    slideRegion.addEventListener('pointerup', event => finishGesture(event, true));
-    slideRegion.addEventListener('pointercancel', event => finishGesture(event, false));
-    slideRegion.addEventListener('lostpointercapture', event => finishGesture(event, false));
-    slideRegion.addEventListener('dragstart', event => event.preventDefault());
+    }, { signal });
+    slideRegion.addEventListener('pointerup', event => finishGesture(event, true), { signal });
+    slideRegion.addEventListener('pointercancel', event => finishGesture(event, false), { signal });
+    slideRegion.addEventListener('lostpointercapture', event => finishGesture(event, false), { signal });
+    slideRegion.addEventListener('dragstart', event => event.preventDefault(), { signal });
     slideRegion.addEventListener('click', event => {
       if (performance.now() < suppressClickUntil) {
         event.preventDefault();
         event.stopImmediatePropagation();
       }
-    }, true);
-    hero.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovered = true; sync(); } });
-    hero.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') { hovered = false; sync(); } });
+    }, { capture: true, signal });
+    hero.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovered = true; sync(); } }, { signal });
+    hero.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') { hovered = false; sync(); } }, { signal });
     // Keyboard focus stops rotation until the visitor explicitly chooses Play.
     hero.addEventListener('focusin', event => {
       if ((event.target as HTMLElement).matches(':focus-visible')) { userPaused = true; sync(); }
-    });
-    compactViewport.addEventListener('change', sync);
-    observeMotion(hero, state => { motionState = state; sync(); });
+    }, { signal });
+    compactViewport.addEventListener('change', sync, { signal });
+    const playback = observeMotion(hero, state => { motionState = state; sync(); }, signal);
+    const cleanup = () => {
+      disposed = true;
+      stopClock();
+      cancelTransition();
+      queuedSelection = undefined;
+      if (gesture && slideRegion.hasPointerCapture(gesture.id)) slideRegion.releasePointerCapture(gesture.id);
+      gesture = undefined;
+      delete hero.dataset.initialized;
+      compactViewport.removeEventListener('change', sync);
+      playback?.dispose();
+    };
+    if (signal) signal.addEventListener('abort', cleanup, { once: true });
+    else document.addEventListener('astro:before-swap', cleanup, { once: true });
   });
 }

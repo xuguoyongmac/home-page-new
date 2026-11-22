@@ -47,6 +47,8 @@ const metricValues=[
 </div>
 
 <script>
+ import { onPageMount } from '../lib/page-lifecycle';
+ onPageMount(signal => {
  document.querySelectorAll<HTMLElement>('.business-dashboard').forEach(dashboard=>{
   const scene=dashboard.closest<HTMLElement>('[data-hero-motion]');
   const panel=dashboard.closest<HTMLElement>('[role="tabpanel"]');
@@ -82,9 +84,11 @@ const metricValues=[
     timer=setTimeout(update,Math.max(16,next-phase));
    }
   };
-  scene.addEventListener('hero-motion-change',update);
-  chart.addEventListener('animationstart',update);
-  chart.addEventListener('animationiteration',update);
+  scene.addEventListener('hero-motion-change',update,{ signal });
+  chart.addEventListener('animationstart',update,{ signal });
+  chart.addEventListener('animationiteration',update,{ signal });
+  signal.addEventListener('abort',()=>clearTimeout(timer),{ once:true });
   update();
+ });
  });
 </script>

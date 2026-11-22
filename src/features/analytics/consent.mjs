@@ -1,8 +1,10 @@
 import { analyticsHosts } from '../../../shared/analytics.mjs';
-import { initBaiduAnalytics, disableBaiduAnalytics } from './baidu.mjs';
+import { initBaiduAnalytics, disableBaiduAnalytics, initBaiduAnalyticsNavigation } from './baidu.mjs';
 
 export const ANALYTICS_CONSENT_KEY = 'tego-analytics-consent';
 const controllers = new WeakMap();
+const choices = new WeakMap();
+const lifecycles = new WeakSet();
 
 function productionSite(location) {
   try {
@@ -19,12 +21,20 @@ function privacySignal(browser) {
 
 export function initAnalyticsConsent(browser = typeof window !== 'undefined' ? window : undefined) {
   const document = browser?.document;
-  if (!document || controllers.has(browser)) return false;
+  if (!document) return false;
+  initBaiduAnalyticsNavigation(browser);
+  if (!lifecycles.has(browser)) {
+    lifecycles.add(browser);
+    document.addEventListener('astro:before-swap', () => controllers.get(browser)?.dispose());
+    document.addEventListener('astro:page-load', () => initAnalyticsConsent(browser));
+  }
   const root = document.querySelector('[data-analytics-consent]');
   if (!root) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => initAnalyticsConsent(browser), { once: true });
     return false;
   }
+  if (controllers.get(browser)?.root === root) return false;
+  controllers.get(browser)?.dispose();
   const allow = root.querySelector('[data-analytics-allow]');
   const deny = root.querySelector('[data-analytics-deny]');
   const status = root.querySelector('[data-analytics-status]');
@@ -32,8 +42,13 @@ export function initAnalyticsConsent(browser = typeof window !== 'undefined' ? w
   const preferences = [...document.querySelectorAll('[data-analytics-preferences]')];
   const production = productionSite(browser.location);
   let returnFocus;
-  let started = false;
-  let disabled = false;
+  if (!choices.has(browser)) choices.set(browser, { started: false, disabled: false });
+  const choice = choices.get(browser);
+  const subscriptions = [];
+  const listen = (target, type, callback, options) => {
+    target.addEventListener(type, callback, options);
+    subscriptions.push(() => target.removeEventListener(type, callback, options));
+  };
   const read = () => {
     try {
       const value = browser.localStorage.getItem(ANALYTICS_CONSENT_KEY);
@@ -73,13 +88,13 @@ export function initAnalyticsConsent(browser = typeof window !== 'undefined' ? w
   const start = () => {
     if (!production || privacySignal(browser)) return false;
     const active = initBaiduAnalytics(browser);
-    started ||= active;
+    choice.started ||= active;
     return active;
   };
   const stop = () => {
-    if (!started && !document.getElementById('tego-baidu-analytics')) return false;
+    if (!choice.started && !document.getElementById('tego-baidu-analytics')) return false;
     disableBaiduAnalytics(browser);
-    disabled = true;
+    choice.disabled = true;
     return true;
   };
   const choose = value => {
@@ -93,32 +108,38 @@ export function initAnalyticsConsent(browser = typeof window !== 'undefined' ? w
       hide(true);
       return;
     }
-    if (disabled) { message(root.dataset.analyticsNextVisit); return; }
+    if (choice.disabled) { message(root.dataset.analyticsNextVisit); return; }
     if (start()) hide(true);
     else message(privacySignal(browser) ? root.dataset.privacyBlocked : root.dataset.analyticsInactive);
   };
 
-  allow.addEventListener('click', () => choose('granted'));
-  deny.addEventListener('click', () => choose('denied'));
-  preferences.forEach(button => button.addEventListener('click', () => { returnFocus = button; show(true); }));
-  root.addEventListener('keydown', event => {
+  listen(allow, 'click', () => choose('granted'));
+  listen(deny, 'click', () => choose('denied'));
+  preferences.forEach(button => listen(button, 'click', () => { returnFocus = button; show(true); }));
+  listen(root, 'keydown', event => {
     if (event.key === 'Escape') { event.preventDefault(); hide(true); }
   });
-  browser.addEventListener('resize', measure, { passive: true });
-  if (browser.ResizeObserver) new browser.ResizeObserver(measure).observe(root);
-  browser.addEventListener('storage', event => {
+  listen(browser, 'resize', measure, { passive: true });
+  const observer = browser.ResizeObserver ? new browser.ResizeObserver(measure) : undefined;
+  observer?.observe(root);
+  listen(browser, 'storage', event => {
     if (event.key !== ANALYTICS_CONSENT_KEY && event.key !== null) return;
     const value = read();
     if (value !== 'granted') {
       stop();
       if (!value && production) show(); else hide();
-    } else if (disabled) {
+    } else if (choice.disabled) {
       if (!root.hidden) message(root.dataset.analyticsNextVisit);
     }
     else { start(); hide(); }
   });
-  controllers.set(browser, { show });
-  if (read() === 'granted') start();
+  controllers.set(browser, { root, show, dispose() {
+    subscriptions.forEach(remove => remove());
+    observer?.disconnect();
+    hide();
+    controllers.delete(browser);
+  } });
+  if (read() === 'granted' && !choice.disabled) start();
   else if (!read() && production) show();
   return true;
 }

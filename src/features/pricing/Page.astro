@@ -106,35 +106,39 @@ const groups = capabilityGroups[locale];
   }
 </style>
 <script>
-  const browser = document.querySelector('[data-capability-browser]');
-  if (browser) {
-    const links = [...browser.querySelectorAll<HTMLAnchorElement>('[data-capability-link]')];
-    const index = browser.querySelector<HTMLElement>('.capability-index');
-    const selectGroup = (id: string) => {
-      links.forEach(link => {
-        if (link.dataset.capabilityLink === id) link.setAttribute('aria-current', 'true');
-        else link.removeAttribute('aria-current');
-      });
-      const selected = links.find(link => link.dataset.capabilityLink === id);
-      if (!selected || !index || index.scrollHeight <= index.clientHeight) return;
-      if (selected.offsetTop < index.scrollTop) index.scrollTop = selected.offsetTop;
-      else if (selected.offsetTop + selected.offsetHeight > index.scrollTop + index.clientHeight) {
-        index.scrollTop = selected.offsetTop + selected.offsetHeight - index.clientHeight;
-      }
-    };
-    const syncHash = () => {
-      const link = links.find(item => item.hash === location.hash);
-      if (link?.dataset.capabilityLink) selectGroup(link.dataset.capabilityLink);
-    };
-    syncHash();
-    links.forEach(link => link.addEventListener('click', () => selectGroup(link.dataset.capabilityLink!)));
-    window.addEventListener('hashchange', syncHash);
-    const observer = new IntersectionObserver(entries => {
-      const current = entries.find(entry => entry.isIntersecting);
-      if (!current) return;
-      const id = (current.target as HTMLElement).dataset.capabilityGroup;
-      if (id) selectGroup(id);
-    }, { rootMargin: '-18% 0px -58% 0px' });
-    browser.querySelectorAll('[data-capability-group]').forEach(group => observer.observe(group));
-  }
+  import { onPageMount } from '../../lib/page-lifecycle';
+  onPageMount(signal => {
+    const browser = document.querySelector('[data-capability-browser]');
+    if (browser) {
+      const links = [...browser.querySelectorAll<HTMLAnchorElement>('[data-capability-link]')];
+      const index = browser.querySelector<HTMLElement>('.capability-index');
+      const selectGroup = (id: string) => {
+        links.forEach(link => {
+          if (link.dataset.capabilityLink === id) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+        const selected = links.find(link => link.dataset.capabilityLink === id);
+        if (!selected || !index || index.scrollHeight <= index.clientHeight) return;
+        if (selected.offsetTop < index.scrollTop) index.scrollTop = selected.offsetTop;
+        else if (selected.offsetTop + selected.offsetHeight > index.scrollTop + index.clientHeight) {
+          index.scrollTop = selected.offsetTop + selected.offsetHeight - index.clientHeight;
+        }
+      };
+      const syncHash = () => {
+        const link = links.find(item => item.hash === location.hash);
+        if (link?.dataset.capabilityLink) selectGroup(link.dataset.capabilityLink);
+      };
+      syncHash();
+      links.forEach(link => link.addEventListener('click', () => selectGroup(link.dataset.capabilityLink!), { signal }));
+      window.addEventListener('hashchange', syncHash, { signal });
+      const observer = new IntersectionObserver(entries => {
+        const current = entries.find(entry => entry.isIntersecting);
+        if (!current) return;
+        const id = (current.target as HTMLElement).dataset.capabilityGroup;
+        if (id) selectGroup(id);
+      }, { rootMargin: '-18% 0px -58% 0px' });
+      browser.querySelectorAll('[data-capability-group]').forEach(group => observer.observe(group));
+      signal.addEventListener('abort', () => observer.disconnect(), { once: true });
+    }
+  });
 </script>

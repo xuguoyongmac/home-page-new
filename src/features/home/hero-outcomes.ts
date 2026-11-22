@@ -2,7 +2,8 @@ import { observeMotion, type MotionState } from '../../lib/motion';
 import { DutyPlayback, dutyFrame, type DutyFrame } from './duty-playback';
 import { createDutyRevealRenderer } from './duty-reveals';
 
-export function initializeDutyVisuals() {
+export function initializeDutyVisuals(signal?: AbortSignal) {
+  if (signal?.aborted) return;
   document.querySelectorAll<HTMLElement>('[data-duty-visual]').forEach(visual => {
     if (visual.dataset.dutyInitialized) return;
     visual.dataset.dutyInitialized = 'true';
@@ -57,13 +58,16 @@ export function initializeDutyVisuals() {
       visual.dataset.dutyPlayback = state.reduced ? 'reduced' : running ? 'running' : 'paused';
       if (state.reduced) render({ scene: 1, step: 2, delivered: true, progress: 1 });
     };
-    const region = observeMotion(visual, value => { state = value; sync(); });
-    hero?.addEventListener('hero-motion-change', sync);
+    const region = observeMotion(visual, value => { state = value; sync(); }, signal);
+    hero?.addEventListener('hero-motion-change', sync, { signal });
     const observer = new MutationObserver(sync);
     if (slide) observer.observe(slide, { attributes: true, attributeFilter: ['data-active'] });
-    document.addEventListener('astro:before-swap', () => {
+    const cleanup = () => {
       clock.dispose(); observer.disconnect(); region.dispose();
       hero?.removeEventListener('hero-motion-change', sync);
-    }, { once: true });
+      delete visual.dataset.dutyInitialized;
+    };
+    if (signal) signal.addEventListener('abort', cleanup, { once: true });
+    else document.addEventListener('astro:before-swap', cleanup, { once: true });
   });
 }

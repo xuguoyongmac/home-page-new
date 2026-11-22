@@ -278,3 +278,80 @@ test('all possible event dimensions stay below the official 10000 diversity prod
   assert.equal(analyticsEvent({ language: 'private@mail.com' }, 'contact', 'email', 'private@mail.com')[3], 'lang=zh;target=unknown');
   assert.equal(analyticsEvent({ language: 'zh' }, 'free-text', 'private@mail.com'), undefined);
 });
+
+test('ClientRouter records each pathname once with the previous page referrer and current event language', () => {
+  const page = fixture(); initBaiduAnalytics(page.browser);
+  const navigate = href => {
+    page.document.emit('astro:before-swap');
+    page.browser.location = new URL(href, page.browser.location);
+    page.document.emit('astro:after-swap');
+    page.document.emit('astro:page-load');
+  };
+  page.document.emit('astro:page-load');
+  navigate('/zh/contact/?plan=enterprise#enquiry-form');
+  assert.deepEqual(page.views().map(command => command[1]), ['/zh/', '/zh/contact/']);
+  assert.deepEqual(page.browser._hmt.filter(command => command[0] === '_setReferrerOverride').at(-1), ['_setReferrerOverride', 'https://www.zhama.com/zh/']);
+  navigate('/en/product/knowledge/');
+  const link = page.body.append(new Element('a', { href: 'https://zhama.ai/' }));
+  page.document.emit('click', link);
+  assert.equal(page.events().at(-1)[3], 'lang=en;target=platform');
+  assert.equal(page.events().filter(command => command[2] === 'conversion.try_product').length, 1);
+  navigate('/zh/contact/');
+  assert.deepEqual(page.views().map(command => command[1]), ['/zh/', '/zh/contact/', '/en/product/knowledge/', '/zh/contact/']);
+  assert.deepEqual(page.browser._hmt.filter(command => command[0] === '_setReferrerOverride').at(-1), ['_setReferrerOverride', 'https://www.zhama.com/en/product/knowledge/']);
+  assert.equal(page.head.children.length, 1);
+  assert.equal(page.document.listeners.get('click').length, 1);
+  assert.equal(page.browser.listeners.get('scroll').length, 1);
+  assert.equal(page.timers.size, 1);
+});
+
+test('query and anchor changes preserve page engagement while real navigation resets per-page state', () => {
+  const page = fixture(); initBaiduAnalytics(page.browser);
+  page.advance(20000);
+  page.document.emit('astro:before-swap');
+  page.browser.location = new URL('https://www.zhama.com/zh/?tab=industry#solutions');
+  page.document.emit('astro:after-swap'); page.document.emit('astro:page-load');
+  page.advance(10000);
+  assert.equal(page.views().length, 1);
+  assert.equal(page.events().filter(command => command[2] === 'engagement.visible_time').length, 1);
+  page.browser.scrollY = 1000; page.browser.emit('scroll');
+  assert.equal(page.events().filter(command => command[2] === 'engagement.scroll').length, 4);
+  page.document.emit('astro:before-swap');
+  page.browser.location = new URL('https://www.zhama.com/en/');
+  page.document.emit('astro:after-swap'); page.document.emit('astro:page-load');
+  page.browser.emit('scroll');
+  assert.equal(page.events().filter(command => command[2] === 'engagement.scroll').length, 8);
+  page.advance(30000);
+  assert.equal(page.events().filter(command => command[2] === 'engagement.visible_time').length, 2);
+});
+
+test('granting after navigation uses its actual previous route and stale callbacks cannot cross page boundaries', async () => {
+  const page = fixture('https://www.zhama.com/zh/', 'denied');
+  initBaiduAnalytics(page.browser);
+  page.browser.location = new URL('https://www.zhama.com/zh/contact/');
+  page.document.emit('astro:after-swap'); page.document.emit('astro:page-load');
+  page.browser.localStorage.getItem = () => 'granted';
+  initBaiduAnalytics(page.browser);
+  assert.deepEqual(page.browser._hmt[1], ['_setReferrerOverride', 'https://www.zhama.com/zh/']);
+  const form = page.body.append(new Element('form', { id: 'enquiry-form' }));
+  page.document.emit('tego:contact-status', form, { detail: { status: 'submit' } });
+  page.document.emit('astro:before-swap');
+  page.browser.location = new URL('https://www.zhama.com/zh/resources/');
+  page.document.emit('astro:after-swap'); page.document.emit('astro:page-load');
+  page.document.emit('tego:contact-status', form, { detail: { status: 'success' } });
+  assert.equal(page.views().some(command => command[1] === '/virtual/contact-success/'), false);
+  const filter = page.body.append(new Element('button', { 'data-resource-filter': 'build', 'aria-pressed': 'false' }));
+  page.document.emit('click', filter, {}, () => filter.setAttribute('aria-pressed', 'true'));
+  page.document.emit('astro:before-swap');
+  page.browser.location = new URL('https://www.zhama.com/en/');
+  page.document.emit('astro:after-swap'); page.document.emit('astro:page-load');
+  await flush();
+  assert.equal(page.events().some(command => command[2] === 'resource.filter'), false);
+  disableBaiduAnalytics(page.browser);
+  const afterWithdrawal = page.browser._hmt.length;
+  page.browser.location = new URL('https://www.zhama.com/zh/');
+  page.document.emit('astro:after-swap'); page.document.emit('astro:page-load');
+  assert.equal(page.browser._hmt.length, afterWithdrawal);
+  assert.equal(page.head.children.length, 0);
+  assert.equal(page.timers.size, 0);
+});

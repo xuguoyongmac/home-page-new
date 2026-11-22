@@ -99,21 +99,23 @@ const contactCodes = [
 ))}
 
 <script>
-  document.querySelectorAll<HTMLButtonElement>('[data-qr-preview]').forEach(trigger => {
+  import { onPageMount } from '../../lib/page-lifecycle';
+
+  onPageMount(signal => document.querySelectorAll<HTMLButtonElement>('[data-qr-preview]').forEach(trigger => {
     const dialog = document.getElementById(trigger.dataset.qrPreview || '');
     if (!(dialog instanceof HTMLDialogElement)) return;
 
-    trigger.addEventListener('click', () => dialog.showModal());
-    dialog.querySelector('[data-qr-close]')?.addEventListener('click', () => dialog.close());
+    trigger.addEventListener('click', () => dialog.showModal(), { signal });
+    dialog.querySelector('[data-qr-close]')?.addEventListener('click', () => dialog.close(), { signal });
     dialog.addEventListener('click', event => {
       if (event.target !== dialog) return;
       const bounds = dialog.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) {
         dialog.close();
       }
-    });
-    dialog.addEventListener('close', () => trigger.focus({ preventScroll: true }));
-  });
+    }, { signal });
+    dialog.addEventListener('close', () => trigger.focus({ preventScroll: true }), { signal });
+  }));
 </script>
 
 <style>

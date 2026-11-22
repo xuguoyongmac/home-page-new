@@ -12,16 +12,16 @@ const t = ui[locale];
 const language = websiteLanguageFor(Astro.params.locale || locale);
 const activeLanguage = languages.find(item => item.id === language)!;
 ---
-<header class="site-header tego-header" data-site-header>
+<header class="site-header tego-header" data-site-header transition:persist={`site-header-${language}`} transition:animate="none">
   <div class="header-inner container">
-    <a class="brand-link" href={languagePathFor(language)} aria-label={zh ? 'TeGo 数字员工协作平台首页' : 'TeGo home'}><Brand locale={locale}/></a>
+    <a class="brand-link" href={languagePathFor(language)} data-astro-prefetch="hover" aria-label={zh ? 'TeGo 数字员工协作平台首页' : 'TeGo home'}><Brand locale={locale}/></a>
     <nav class="desktop-nav" aria-label={zh ? '主导航' : 'Main navigation'}><NavigationItems locale={locale} page={page} prefix="desktop"/></nav>
     <div class="header-tools">
       <div class="tego-language-group" data-nav-group>
         <button type="button" class="language-link" aria-label={zh ? '选择语言' : 'Choose language'} aria-expanded="false" aria-controls="language-options" data-nav-disclosure><Icon name="globe" size={15}/><span>{activeLanguage.short}</span><Icon name="chevron" size={11}/></button>
-        <div id="language-options" class="tego-language-panel" hidden><ul>{languages.map(item => <li><a href={languagePathFor(item.id,page)} lang={item.tag} hreflang={item.tag} aria-current={language === item.id ? 'true' : undefined} data-language-option>{item.label}{language === item.id && <Icon name="check" size={15}/>}</a></li>)}</ul></div>
+        <div id="language-options" class="tego-language-panel" hidden><ul>{languages.map(item => <li><a href={languagePathFor(item.id,page)} lang={item.tag} hreflang={item.tag} aria-current={language === item.id ? 'true' : undefined} data-language-option data-astro-reload>{item.label}{language === item.id && <Icon name="check" size={15}/>}</a></li>)}</ul></div>
       </div>
-      <a class="button button-outline button-small header-contact" href={pathFor(locale, 'contact')} aria-current={page === 'contact' ? 'page' : undefined}>{zh ? '联系我们' : 'Contact us'}</a>
+      <a class="button button-outline button-small header-contact" href={pathFor(locale, 'contact')} data-astro-prefetch="hover" aria-current={page === 'contact' ? 'page' : undefined}>{zh ? '联系我们' : 'Contact us'}</a>
       <a class="button button-small header-cta" href={appFor(locale)}>{t.try}</a>
       <button type="button" class="menu-toggle icon-button" aria-label={t.menu} data-open-label={t.menu} data-close-label={t.close} aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
     </div>
@@ -29,13 +29,19 @@ const activeLanguage = languages.find(item => item.id === language)!;
   <nav id="mobile-nav" class="mobile-nav" aria-label={zh ? '移动端导航' : 'Mobile navigation'} inert><NavigationItems locale={locale} page={page} prefix="mobile"/><a class="button button-small mobile-login" href={appFor(locale)}>{t.try}</a></nav>
 </header>
 <script>
+  import type { TransitionBeforeSwapEvent } from 'astro:transitions/client';
+  import { onPageMount } from '../../lib/page-lifecycle';
+
   const header = document.querySelector<HTMLElement>('[data-site-header]');
   if (header) {
-    const marker = document.querySelector('.header-scroll-marker');
-    if (marker) {
-      header.dataset.scrolled = String(window.scrollY > 24);
-      new IntersectionObserver(([entry]) => { header.dataset.scrolled = String(!entry.isIntersecting); }).observe(marker);
-    }
+    onPageMount(signal => {
+      const marker = document.querySelector('.header-scroll-marker');
+      header.dataset.scrolled = String(Boolean(marker) && window.scrollY > 24);
+      if (!marker) return;
+      const observer = new IntersectionObserver(([entry]) => { header.dataset.scrolled = String(!entry.isIntersecting); });
+      observer.observe(marker);
+      signal.addEventListener('abort', () => observer.disconnect(), { once: true });
+    });
     const toggles = [...header.querySelectorAll<HTMLButtonElement>('[data-nav-disclosure]')];
     const mobileToggle = header.querySelector<HTMLButtonElement>('.menu-toggle');
     const mobile = header.querySelector<HTMLElement>('#mobile-nav');
@@ -125,12 +131,12 @@ const activeLanguage = languages.find(item => item.id === language)!;
         if (!panel?.contains(document.activeElement)) closeDisclosures();
       }, 120);
     };
-    const closeMobile = () => {
+    const closeMobile = (animated = true) => {
       mobileToggle?.setAttribute('aria-expanded', 'false');
       if (mobileToggle) mobileToggle.setAttribute('aria-label', mobileToggle.dataset.openLabel!);
       mobile?.classList.remove('is-open');
       if (mobile) mobile.inert = true;
-      closeDisclosures();
+      closeDisclosures(animated);
     };
     toggles.forEach(button => {
       button.addEventListener('click', event => {
@@ -194,7 +200,29 @@ const activeLanguage = languages.find(item => item.id === language)!;
       if (expanded) { closeDisclosures(); expanded.focus(); }
       else if (mobileToggle?.getAttribute('aria-expanded') === 'true') { closeMobile(); mobileToggle.focus(); }
     });
-    header.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobile));
+    header.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMobile()));
+    document.addEventListener('astro:before-swap', event => {
+      closeMobile(false);
+      const next = (event as TransitionBeforeSwapEvent).newDocument.querySelector<HTMLElement>('[data-site-header]');
+      if (!next || next.getAttribute('data-astro-transition-persist') !== header.getAttribute('data-astro-transition-persist')) return;
+
+      // Keep the existing controls and listeners; take route-specific state from the new page.
+      const currentLinks = header.querySelectorAll<HTMLAnchorElement>('a');
+      next.querySelectorAll<HTMLAnchorElement>('a').forEach((link, index) => {
+        const current = currentLinks[index];
+        if (!current) return;
+        const href = link.getAttribute('href');
+        const active = link.getAttribute('aria-current');
+        if (href !== null) current.setAttribute('href', href);
+        if (active === null) current.removeAttribute('aria-current');
+        else current.setAttribute('aria-current', active);
+      });
+      toggles.forEach(button => {
+        const panel = button.getAttribute('aria-controls');
+        const incoming = [...next.querySelectorAll('[data-nav-disclosure]')].find(node => node.getAttribute('aria-controls') === panel);
+        button.classList.toggle('is-current', Boolean(incoming?.classList.contains('is-current')));
+      });
+    });
     desktopMode.addEventListener('change', () => { closeMobile(); closeDisclosures(false); });
     window.addEventListener('resize', () => {
       const button = toggles.find(item => item.getAttribute('aria-expanded') === 'true');
@@ -220,6 +248,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
       });
     }
     syncLanguageLinks();
+    document.addEventListener('astro:after-swap', syncLanguageLinks);
     window.addEventListener('hashchange', syncLanguageLinks);
     window.addEventListener('popstate', syncLanguageLinks);
     document.addEventListener('change', event => {

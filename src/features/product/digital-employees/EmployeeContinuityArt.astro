@@ -56,10 +56,10 @@ const report = [
 </div>
 
 <script>
-  function initializeContinuityArt() {
+  import { onPageMount } from '../../../lib/page-lifecycle';
+  onPageMount(signal => {
     document.querySelectorAll<HTMLElement>('[data-continuity-art]').forEach(root => {
       if (root.dataset.connectionsReady) return;
-      root.dataset.connectionsReady = 'true';
       const svg = root.querySelector<SVGSVGElement>('.continuity-connections');
       const review = root.querySelector<HTMLElement>('[data-continuity-review]');
       const followup = root.querySelector<HTMLElement>('[data-continuity-followup]');
@@ -67,7 +67,9 @@ const report = [
       const feedbackPath = root.querySelector<SVGPathElement>('.feedback-connection');
       const followupPath = root.querySelector<SVGPathElement>('.followup-connection');
       if (!svg || !review || !followup || !execution || !feedbackPath || !followupPath) return;
+      root.dataset.connectionsReady = 'true';
       function drawConnections() {
+        if (signal.aborted || !root.isConnected) return;
         if (!svg || !review || !followup || !execution || !feedbackPath || !followupPath) return;
         const box = root.getBoundingClientRect();
         const from = review.getBoundingClientRect();
@@ -93,11 +95,12 @@ const report = [
       [root, review, followup, execution].forEach(element => observer.observe(element));
       drawConnections();
       document.fonts.ready.then(drawConnections);
-      document.addEventListener('astro:before-swap', () => observer.disconnect(), { once: true });
+      signal.addEventListener('abort', () => {
+        observer.disconnect();
+        delete root.dataset.connectionsReady;
+      }, { once: true });
     });
-  }
-  initializeContinuityArt();
-  document.addEventListener('astro:page-load', initializeContinuityArt);
+  });
 </script>
 
 <style>

@@ -53,3 +53,81 @@ test('versioned blog slugs remain attributable without allowing dot traversal or
     assert.equal(sourceStep(path, 'TeGo OS 产品更新'), null);
   }
 });
+
+async function trackerFixture({ href = 'https://www.zhama.com/zh/', referrer = '', storageWorks = true } = {}) {
+  const [{ readFile }, { runInNewContext }, ts, shared] = await Promise.all([
+    import('node:fs/promises'), import('node:vm'), import('typescript'), import('../shared/contact-attribution.mjs'),
+  ]);
+  const source = await readFile(new URL('../src/features/attribution/tracker.ts', import.meta.url), 'utf8');
+  const runtime = ts.default.transpileModule(source, { compilerOptions: { module: ts.default.ModuleKind.CommonJS, target: ts.default.ScriptTarget.ES2022 } }).outputText;
+  const browser = new EventTarget(), document = new EventTarget();
+  const storage = new Map();
+  class Link {
+    constructor(path, group) { this.href = new URL(path, browser.location).href; this.target = ''; this.group = group; }
+    closest(selector) { return selector === 'a[href]' ? this : this.group ? { dataset: { attributionGroup: this.group } } : null; }
+    hasAttribute() { return false; }
+  }
+  Object.assign(document, { referrer, title: 'TeGo', body: { dataset: { pageName: 'TeGo' } } });
+  Object.assign(browser, {
+    document, location: new URL(href), Element: Link,
+    history: { state: {}, replaceState(state) { this.state = state; } },
+    sessionStorage: {
+      getItem(key) { if (!storageWorks) throw new Error('Storage blocked'); return storage.get(key) || null; },
+      setItem(key, value) { if (!storageWorks) throw new Error('Storage blocked'); storage.set(key, value); },
+    },
+  });
+  const exports = {};
+  runInNewContext(runtime, { exports, URL, require() { return shared; } });
+  exports.initContactAttribution(browser);
+  return {
+    browser, document, storage,
+    get: () => JSON.parse(JSON.stringify(exports.getContactAttribution(browser))),
+    click(path, group) {
+      const target = new Link(path, group);
+      const event = Object.assign(new Event('click'), { button: 0 });
+      Object.defineProperty(event, 'target', { value: target });
+      document.dispatchEvent(event);
+    },
+    navigate(path, { click = true, group, state = {} } = {}) {
+      if (click) this.click(path, group);
+      document.dispatchEvent(new Event('astro:before-swap'));
+      browser.location = new URL(path, browser.location);
+      browser.history.state = state;
+      document.dispatchEvent(new Event('astro:after-swap'));
+      const atSwap = this.get();
+      document.dispatchEvent(new Event('astro:page-load'));
+      return atSwap;
+    },
+  };
+}
+
+test('contact attribution follows router swaps before form initialization, including programmatic navigation and contact language changes', async () => {
+  for (const storageWorks of [true, false]) {
+    const page = await trackerFixture({ referrer: 'https://search.baidu.com/s?wd=private', storageWorks });
+    page.navigate('/zh/solutions/banking/', { group: 'solutions' });
+    const snapshot = page.navigate('/zh/contact/?plan=enterprise#enquiry-form', { click: false });
+    assert.deepEqual(snapshot.sourceTrail.map(step => step.path), ['/zh/', '/zh/solutions/', '/zh/solutions/banking/']);
+    assert.equal(snapshot.referrer, 'https://www.zhama.com/zh/solutions/banking/');
+    assert.deepEqual(page.navigate('/en/contact/'), snapshot);
+    assert.deepEqual(page.navigate('/en/contact/?plan=subscription#enquiry-form'), snapshot);
+    page.navigate('/en/product/knowledge/');
+    const later = page.navigate('/en/contact/');
+    assert.equal(later.referrer, 'https://www.zhama.com/en/product/knowledge/');
+    assert.equal(later.sourceTrail.at(-1).path, '/en/product/knowledge/');
+    assert.doesNotMatch(JSON.stringify(later), /private|plan=|enquiry-form/);
+  }
+});
+
+test('direct contact entry stays direct and browser history restores the matching contact snapshot', async () => {
+  const direct = await trackerFixture({ href: 'https://www.zhama.com/zh/contact/', referrer: 'https://external.invalid/path' });
+  assert.deepEqual(direct.get(), { sourceTrail: [], referrer: '' });
+  const page = await trackerFixture();
+  page.navigate('/zh/pricing/');
+  const first = page.navigate('/zh/contact/');
+  const firstState = { ...page.browser.history.state };
+  page.navigate('/zh/product/knowledge/');
+  const second = page.navigate('/zh/contact/');
+  assert.notEqual(first.referrer, second.referrer);
+  assert.deepEqual(page.navigate('/zh/pricing/', { click: false }), { sourceTrail: [], referrer: '' });
+  assert.deepEqual(page.navigate('/zh/contact/', { click: false, state: firstState }), first);
+});

@@ -83,41 +83,44 @@ const filters = zh ? [['all', '全部'], ['desktop', '桌面端'], ['mobile', '�
   @media(max-width:600px){.download-hero{padding:32px 0 26px}.installer-grid{grid-template-columns:1fr}.installer-section{padding-bottom:44px}.installer-tabs{gap:27px}.installer-tabs button{font-size:15px}.installer-products{gap:32px}.installer-card{padding:25px}}
 </style>
 <script>
-  const root = document.querySelector<HTMLElement>('[data-download-browser]');
-  if (root) {
-    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-download-filter]')];
-    const productGroups = [...root.querySelectorAll<HTMLElement>('[data-download-product]')];
-    const groupTitles = [...root.querySelectorAll<HTMLElement>('[data-download-group-title]')];
-    const panel = root.querySelector<HTMLElement>('#download-list')!;
-    const params = new URL(location.href).searchParams;
-    let product = tabs.some(tab => tab.dataset.downloadFilter === params.get('product')) ? params.get('product')! : 'all';
-    const update = (writeUrl: boolean) => {
-      productGroups.forEach(group => { group.hidden = product !== 'all' && group.dataset.downloadProduct !== product; });
-      groupTitles.forEach(title => { title.hidden = product !== 'all'; });
-      tabs.forEach(tab => {
-        const active = tab.dataset.downloadFilter === product;
-        tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1;
+  import { onPageMount } from '../../lib/page-lifecycle';
+  onPageMount(signal => {
+    const root = document.querySelector<HTMLElement>('[data-download-browser]');
+    if (root) {
+      const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-download-filter]')];
+      const productGroups = [...root.querySelectorAll<HTMLElement>('[data-download-product]')];
+      const groupTitles = [...root.querySelectorAll<HTMLElement>('[data-download-group-title]')];
+      const panel = root.querySelector<HTMLElement>('#download-list')!;
+      const params = new URL(location.href).searchParams;
+      let product = tabs.some(tab => tab.dataset.downloadFilter === params.get('product')) ? params.get('product')! : 'all';
+      const update = (writeUrl: boolean) => {
+        productGroups.forEach(group => { group.hidden = product !== 'all' && group.dataset.downloadProduct !== product; });
+        groupTitles.forEach(title => { title.hidden = product !== 'all'; });
+        tabs.forEach(tab => {
+          const active = tab.dataset.downloadFilter === product;
+          tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1;
+        });
+        panel.setAttribute('aria-labelledby', `download-tab-${product}`);
+        if (writeUrl) {
+          const url = new URL(location.href);
+          if (product === 'all') url.searchParams.delete('product'); else url.searchParams.set('product', product);
+          url.searchParams.delete('platform'); history.replaceState(history.state, '', url);
+        }
+      };
+      const activate = (tab: HTMLButtonElement) => { product = tab.dataset.downloadFilter!; update(true); };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activate(tab), { signal });
+        tab.addEventListener('keydown', event => {
+          let next: number;
+          if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = tabs.length - 1;
+          else return;
+          event.preventDefault(); activate(tabs[next]); tabs[next].focus(); tabs[next].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        }, { signal });
       });
-      panel.setAttribute('aria-labelledby', `download-tab-${product}`);
-      if (writeUrl) {
-        const url = new URL(location.href);
-        if (product === 'all') url.searchParams.delete('product'); else url.searchParams.set('product', product);
-        url.searchParams.delete('platform'); history.replaceState(null, '', url);
-      }
-    };
-    const activate = (tab: HTMLButtonElement) => { product = tab.dataset.downloadFilter!; update(true); };
-    tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => activate(tab));
-      tab.addEventListener('keydown', event => {
-        let next: number;
-        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-        else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
-        else if (event.key === 'Home') next = 0;
-        else if (event.key === 'End') next = tabs.length - 1;
-        else return;
-        event.preventDefault(); activate(tabs[next]); tabs[next].focus(); tabs[next].scrollIntoView({ block: 'nearest', inline: 'nearest' });
-      });
-    });
-    update(false);
-  }
+      update(false);
+    }
+  });
 </script>

@@ -44,6 +44,7 @@ class ElementStub extends EventTarget {
     if (name.startsWith('data-')) this.dataset[name.slice(5).replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())] = String(value);
   }
   getAttribute(name) { return this.attrs.get(name) ?? null; }
+  removeAttribute(name) { this.attrs.delete(name); }
   append(...children) {
     for (const child of children) {
       child.parentElement = this;
@@ -126,6 +127,7 @@ function fixture({ desktop = true, hover = true, animatePanels = false } = {}) {
   const clearTimer = id => timers.delete(id);
   window.setTimeout = setTimer; window.clearTimeout = clearTimer;
   runInNewContext(source, { document, window, Node: ElementStub, HTMLElement: ElementStub, HTMLButtonElement: ElementStub,
+    exports: {}, require: () => ({ onPageMount: mount => mount(new AbortController().signal) }),
     Event, URL, URLSearchParams, location: { pathname: '/zh/', search: '', hash: '' },
     getComputedStyle: panel => panel.computedStyle ?? { opacity: '1', translate: '0 0' },
     setTimeout: setTimer, clearTimeout: clearTimer });
@@ -156,6 +158,26 @@ const expectOpen = (entry, open) => {
   assert.equal(entry.button.getAttribute('aria-expanded'), String(open));
   assert.equal(entry.panel.hidden, !open);
 };
+
+test('a route swap retains the header controls and applies the destination active state', () => {
+  const current = fixture();
+  const incoming = fixture();
+  incoming.product.button.classList.add('is-current');
+  incoming.product.link.setAttribute('href', '/zh/product/digital-employees/');
+  incoming.product.link.setAttribute('aria-current', 'page');
+  current.direct.setAttribute('aria-current', 'page');
+  current.click(current.product.button, 0);
+
+  current.emit(current.document, 'astro:before-swap', { newDocument: incoming.document });
+
+  expectOpen(current.product, false);
+  assert.equal(current.product.button.classList.contains('is-current'), true);
+  assert.equal(current.product.link.getAttribute('href'), '/zh/product/digital-employees/');
+  assert.equal(current.product.link.getAttribute('aria-current'), 'page');
+  assert.equal(current.direct.getAttribute('aria-current'), null);
+  current.click(current.product.button, 0);
+  expectOpen(current.product, true);
+});
 
 test('desktop hover opens immediately and rapid menu changes cancel an earlier close', () => {
   const env = fixture();

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { parse } from 'parse5';
 import { BAIDU_SITE_ID, analyticsPage } from '../shared/analytics.mjs';
 
-const attributes = node => Object.fromEntries((node.attrs || []).map(item => [item.name, item.value]));
+const attributes = node => Object.fromEntries((node?.attrs || []).map(item => [item.name, item.value]));
 const nodesOf = html => {
   const nodes = [];
   const walk = node => { nodes.push(node); (node.childNodes || []).forEach(walk); };
@@ -45,9 +45,11 @@ export function auditAnalyticsPublication(directory) {
     if (!/^(?:zh|en|zh-Hant)\//.test(relative) && relative !== '404.html') continue;
     pages++;
     const has = attribute => nodes.filter(node => Object.hasOwn(attributes(node), attribute));
-    for (const marker of ['data-analytics-consent', 'data-analytics-allow', 'data-analytics-deny', 'data-analytics-preferences']) {
+    for (const marker of ['data-analytics-consent', 'data-analytics-allow', 'data-analytics-deny', 'data-analytics-preferences', 'data-analytics-sdk']) {
       check(has(marker).length === 1, `${relative}：统计授权入口 ${marker} 缺失或重复`);
     }
+    const sdk = has('data-analytics-sdk')[0];
+    check(attributes(sdk)['data-astro-transition-persist'] === 'tego-analytics-sdk', `${relative}：统计 SDK 容器必须在客户端切换时保留`);
     const banner = has('data-analytics-consent')[0];
     check(banner && Object.hasOwn(attributes(banner), 'hidden'), `${relative}：未执行授权逻辑前不应展示无效控件`);
     check(!nodes.some(node => ['script', 'img', 'iframe'].includes(node.tagName) && /(?:hm\.baidu\.com|hm\.baidu\.com\.cn)/i.test(attributes(node).src || '')), `${relative}：存在绕过授权的直接统计资源`);

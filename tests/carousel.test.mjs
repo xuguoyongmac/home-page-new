@@ -31,7 +31,7 @@ class ElementStub extends EventTarget {
   matches() { return false; }
   focus() {}
 }
-function fixture() {
+function fixture({ signal } = {}) {
   const hero = new ElementStub(), toggle = new ElementStub(), workspace = new ElementStub();
   const slides = Array.from({ length: 3 }, () => new ElementStub());
   slides.forEach((slide, index) => { slide.dataset.duration = '8000'; slide.dataset.active = String(index === 0); });
@@ -54,14 +54,14 @@ function fixture() {
     callback({ running: true, reduced: false, suspended: false, paused: false, enabled: true });
   } }), document, window, Element: ElementStub, Event, Error, performance: { now: () => 0 },
   setTimeout: callback => { timers.set(++id, callback); return id; }, clearTimeout: timer => timers.delete(timer) });
-  module.exports.initializeHeroCarousels();
+  module.exports.initializeHeroCarousels(signal);
   const click = element => element.dispatchEvent(new Event('click'));
   const key = (element, value) => {
     const event = new Event('keydown', { cancelable: true });
     Object.defineProperty(event, 'key', { value });
     element.dispatchEvent(event);
   };
-  return { hero, toggle, workspace, selectors, slides, media, click, key, timers,
+  return { hero, toggle, workspace, selectors, slides, media, click, key, timers, initialize: module.exports.initializeHeroCarousels,
     finishTransition: async () => {
       slides.forEach(slide => slide.animations.at(-1)?.finish());
       await new Promise(resolve => setImmediate(resolve));
@@ -188,4 +188,21 @@ test('enabling reduced motion also applies the last queued selection without ani
   assert.equal(env.slides[2].dataset.active, 'true');
   assert.equal(env.slides[2].animations.length, 0);
   assert.equal(env.slides.some(slide => slide.classes.has('is-leaving')), false);
+});
+
+test('page abort cancels rotation and active transitions without letting settled animations restart them', async () => {
+  const controller = new AbortController();
+  const env = fixture({ signal: controller.signal });
+  assert.equal(env.timers.size, 1);
+  env.click(env.selectors[1]);
+  const incoming = env.slides[1].animations.at(-1);
+  controller.abort();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(env.timers.size, 0);
+  assert.equal(incoming.cancelled, true);
+  assert.equal(env.hero.dataset.initialized, undefined);
+  env.click(env.toggle);
+  env.click(env.selectors[2]);
+  assert.equal(env.slides[2].dataset.active, 'false');
+  assert.equal(env.timers.size, 0);
 });

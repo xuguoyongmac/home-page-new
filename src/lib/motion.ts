@@ -50,6 +50,7 @@ export class MotionCoordinator {
   }
 
   private sync(region: Region) {
+    if (!this.regions.has(region)) return;
     const reduced = this.preference.matches;
     const suspended = this.pageHidden || this.document.hidden || !region.visible;
     const state: MotionState = {
@@ -92,6 +93,8 @@ export class MotionCoordinator {
     };
   }
 
+  get size() { return this.regions.size; }
+
   dispose() {
     this.observer.disconnect();
     this.regions.clear();
@@ -103,7 +106,19 @@ export class MotionCoordinator {
 }
 
 let coordinator: MotionCoordinator | undefined;
-export function observeMotion(element: HTMLElement, callback: Region['callback']) {
+export function observeMotion(element: HTMLElement, callback: Region['callback'], signal?: AbortSignal) {
+  if (signal?.aborted) return { setPaused() {}, setEnabled() {}, refresh() {}, dispose() {} };
   coordinator ??= new MotionCoordinator(document, window);
-  return coordinator.observe(element, callback);
+  const manager = coordinator;
+  const control = manager.observe(element, callback);
+  const dispose = () => {
+    control.dispose();
+    signal?.removeEventListener('abort', dispose);
+    if (manager.size === 0) {
+      manager.dispose();
+      if (coordinator === manager) coordinator = undefined;
+    }
+  };
+  signal?.addEventListener('abort', dispose, { once: true });
+  return { ...control, dispose };
 }

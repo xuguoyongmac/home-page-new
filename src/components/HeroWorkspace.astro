@@ -43,6 +43,8 @@ const employees=zh?[
 </div>
 <script>
  import { observeMotion } from '../lib/motion';
+ import { onPageMount } from '../lib/page-lifecycle';
+ onPageMount(signal => {
  document.querySelectorAll<HTMLElement>('[data-hero-workspace]').forEach(workspace=>{
   const hero=workspace.closest<HTMLElement>('[data-hero-motion]');
   const motionButton=workspace.querySelector<HTMLButtonElement>('[data-hero-motion-toggle]');
@@ -56,8 +58,8 @@ const employees=zh?[
     motionButton.setAttribute('aria-label',label);
     motionButton.title=label;
     hero.dispatchEvent(new Event('hero-motion-change'));
-   });
-   motionButton.addEventListener('click',()=>playback.setPaused(motionButton.getAttribute('aria-pressed')!=='true'));
+   }, signal);
+   motionButton.addEventListener('click',()=>playback.setPaused(motionButton.getAttribute('aria-pressed')!=='true'),{ signal });
   }
   const tabs=[...workspace.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
   const panels=[...workspace.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
@@ -67,7 +69,7 @@ const employees=zh?[
    hero?.dispatchEvent(new Event('hero-motion-change'));
   };
   tabs.forEach((tab,index)=>{
-   tab.addEventListener('click',()=>select(tab));
+   tab.addEventListener('click',()=>select(tab),{ signal });
    tab.addEventListener('keydown',event=>{
     let next:number|undefined;
     if(event.key==='ArrowRight')next=(index+1)%tabs.length;
@@ -75,7 +77,8 @@ const employees=zh?[
     if(event.key==='Home')next=0;
     if(event.key==='End')next=tabs.length-1;
     if(next!==undefined){event.preventDefault();select(tabs[next]);tabs[next].focus();}
-   });
+   },{ signal });
   });
+ });
  });
 </script>

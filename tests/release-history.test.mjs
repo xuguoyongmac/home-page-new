@@ -106,24 +106,50 @@ async function fixture(query = '') {
   const document = { querySelector: selector => selectors.get(selector), createElement: tag => new Element(tag), createDocumentFragment: () => new Element('#fragment') };
   const location = { href: `https://www.zhama.com/zh/releases/${query}`, origin: 'https://www.zhama.com' };
   const requests = [];
+  const requestSignals = [];
+  const lifecycle = new AbortController();
+  const pausedRequests = [];
+  let deferRequests = false;
   let failRequest = false;
   const fetch = async (url, options) => {
     requests.push(url.pathname);
+    requestSignals.push(options.signal);
+    if (deferRequests) await new Promise(resolve => pausedRequests.push(resolve));
     if (failRequest) return { ok: false, status: 503 };
     const file = files.find(file => file.path === url.pathname);
     const manifest = await readManifest(file);
     if (options.signal.aborted) throw new Error('Request aborted');
     return { ok: true, json: async () => manifest };
   };
+  const history = { state: { index: 7, scrollY: 160 }, replaceState(state, _title, url) { this.state = state; location.href = String(url); } };
   runInNewContext(runtime, {
     document, location, URL, AbortController, fetch, exports: {},
-    require: () => ({ isReleaseManifest, releasePackages, releaseStatus }),
-    history: { replaceState(_state, _title, url) { location.href = String(url); } },
+    require: specifier => specifier.endsWith('page-lifecycle') ? { onPageMount: mount => mount(lifecycle.signal) } : { isReleaseManifest, releasePackages, releaseStatus },
+    history,
   });
   const settle = () => new Promise(resolve => setTimeout(resolve, 25));
   await settle();
-  return { version, product, items, staticCard, status, statusRow, notice, retry, requests, location, settle, fail: () => { failRequest = true; } };
+  return { version, product, items, staticCard, status, statusRow, notice, retry, requests, requestSignals, history, location, settle, unmount: () => lifecycle.abort(), defer: () => { deferRequests = true; }, resume: () => pausedRequests.splice(0).forEach(resolve => resolve()), fail: () => { failRequest = true; } };
 }
+
+test('leaving release history aborts a pending manifest and removes the old page controls', async () => {
+  const page = await fixture();
+  const mobile = files.find(file => file.version === defaultVersion && file.product === 'mobile');
+  page.defer();
+  page.product.value = mobile.path;
+  page.product.dispatchEvent(new Event('change'));
+  assert.deepEqual(page.history.state, { index: 7, scrollY: 160 });
+  assert.equal(page.requests.length, 1);
+  page.unmount();
+  assert.equal(page.requestSignals[0].aborted, true);
+  page.resume();
+  await page.settle();
+  assert.equal(page.items.children.length, 0);
+  assert.equal(page.retry.hidden, true);
+  page.retry.dispatchEvent(new Event('click'));
+  page.product.dispatchEvent(new Event('change'));
+  assert.equal(page.requests.length, 1);
+});
 
 test('initial enhancement preserves static links without a manifest request or empty loading frame', async () => {
   const page = await fixture();

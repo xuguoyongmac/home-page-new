@@ -13,7 +13,8 @@ interface TaskSceneWindow extends Window {
 }
 
 /** Play the original artwork only while its own carousel page is visible. */
-export function initializeTaskScenes() {
+export function initializeTaskScenes(signal?: AbortSignal) {
+  if (signal?.aborted) return;
   document.querySelectorAll<HTMLElement>('[data-task-visual]').forEach(visual => {
     if (visual.dataset.taskInitialized) return;
     visual.dataset.taskInitialized = 'true';
@@ -56,17 +57,20 @@ export function initializeTaskScenes() {
         || event.data?.type !== 'tego-task-scene-ready') return;
       sync();
     };
-    frame.addEventListener('load', sync);
-    window.addEventListener('message', ready);
-    hero?.addEventListener('hero-motion-change', sync);
-    const region = observeMotion(visual, value => { state = value; sync(); });
-    document.addEventListener('astro:before-swap', () => {
+    frame.addEventListener('load', sync, { signal });
+    window.addEventListener('message', ready, { signal });
+    hero?.addEventListener('hero-motion-change', sync, { signal });
+    const region = observeMotion(visual, value => { state = value; sync(); }, signal);
+    const cleanup = () => {
       disposed = true;
       scene()?.pause();
       region.dispose();
       frame.removeEventListener('load', sync);
       window.removeEventListener('message', ready);
       hero?.removeEventListener('hero-motion-change', sync);
-    }, { once: true });
+      delete visual.dataset.taskInitialized;
+    };
+    if (signal) signal.addEventListener('abort', cleanup, { once: true });
+    else document.addEventListener('astro:before-swap', cleanup, { once: true });
   });
 }

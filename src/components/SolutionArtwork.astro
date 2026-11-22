@@ -21,6 +21,9 @@ const english = Astro.url.pathname.startsWith('/en/');
 </button>
 
 <script>
+  import { onPageMount } from '../lib/page-lifecycle';
+  onPageMount(signal => {
+  if (!document.querySelector('[data-solution-artwork]')) return;
   let preview: HTMLDialogElement | undefined;
   let previewImage: HTMLImageElement;
   let viewport: HTMLDivElement;
@@ -65,19 +68,19 @@ const english = Astro.url.pathname.startsWith('/en/');
     zoomButton = dialog.querySelector<HTMLButtonElement>('[data-solution-art-preview-zoom]')!;
     closeButton = dialog.querySelector<HTMLButtonElement>('[data-solution-art-preview-close]')!;
 
-    zoomButton.addEventListener('click', () => setZoom(dialog.dataset.zoomed !== 'true'));
-    closeButton.addEventListener('click', () => dialog.close());
+    zoomButton.addEventListener('click', () => setZoom(dialog.dataset.zoomed !== 'true'), { signal });
+    closeButton.addEventListener('click', () => dialog.close(), { signal });
     dialog.addEventListener('click', event => {
       if (event.target !== dialog) return;
       const bounds = dialog.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
-    });
+    }, { signal });
     dialog.addEventListener('close', () => {
       document.documentElement.style.overflow = previousOverflow;
       setZoom(false);
       if (activeTrigger?.isConnected) activeTrigger.focus({ preventScroll: true });
       activeTrigger = undefined;
-    });
+    }, { signal });
 
     document.body.append(dialog);
     return dialog;
@@ -108,5 +111,15 @@ const english = Astro.url.pathname.startsWith('/en/');
     document.documentElement.style.overflow = 'hidden';
     preview.showModal();
     closeButton.focus({ preventScroll: true });
+  }, { signal });
+  signal.addEventListener('abort', () => {
+    if (preview?.open) {
+      preview.close();
+      document.documentElement.style.overflow = previousOverflow;
+    }
+    preview?.remove();
+    preview = undefined;
+    activeTrigger = undefined;
+  }, { once: true });
   });
 </script>

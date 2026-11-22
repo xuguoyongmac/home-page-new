@@ -23,7 +23,7 @@ class Element extends EventTarget {
   focus() { this.focusCount++; }
 }
 
-function fixture(reply = async () => new Response(JSON.stringify({ success: true, leadId: 'server-receipt' }), { headers: { 'content-type': 'application/json' } })) {
+function fixture(reply = async () => new Response(JSON.stringify({ success: true, leadId: 'server-receipt' }), { headers: { 'content-type': 'application/json' } }), signal, attribution = { sourceTrail: [], referrer: '' }) {
   const values = { title: '私有化部署咨询', content: '希望了解企业知识接入与权限配置。', contact: 'consultant@contacts.invalid', nickname: '', expectedReplyTime: '', website: '' };
   const fields = new Map(Object.entries(values).map(([name, value]) => {
     const field = new Element();
@@ -68,7 +68,7 @@ function fixture(reply = async () => new Response(JSON.stringify({ success: true
     './reply-picker': { initReplyPicker: () => ({ reset() { replyResets++; } }) },
     '../../../shared/contact-navigation.mjs': contactNavigation,
     './confirmation': { initContactConfirmation: () => ({ show() { confirmations++; } }) },
-    '../attribution/tracker': { getContactAttribution: () => ({ sourceTrail: [], referrer: '' }) },
+    '../attribution/tracker': { getContactAttribution: () => attribution },
   };
   const exports = {};
   runInNewContext(runtime, {
@@ -78,9 +78,32 @@ function fixture(reply = async () => new Response(JSON.stringify({ success: true
     fetch: async (url, options) => { requests.push({ url, options }); return reply(url, options); },
     require: name => { assert.ok(Object.hasOwn(imports, name), name); return imports[name]; },
   });
-  exports.initContactForm();
-  return { form, fields, status, submit, notifications, requests, send: () => onSubmit(new Event('submit', { cancelable: true })), get resets() { return resets; }, get confirmations() { return confirmations; }, get replyResets() { return replyResets; } };
+  exports.initContactForm(signal);
+  return { form, fields, status, submit, notifications, requests, history, send: () => onSubmit(new Event('submit', { cancelable: true })), get resets() { return resets; }, get confirmations() { return confirmations; }, get replyResets() { return replyResets; } };
 }
+
+test('confirmation return uses the latest client route instead of the original document referrer', () => {
+  const page = fixture(undefined, undefined, { sourceTrail: [{ path: '/zh/pricing/', label: '价格', kind: 'page' }], referrer: 'https://www.zhama.com/zh/pricing/' });
+  assert.equal(page.history.state.contactReturn.path, '/zh/pricing/');
+});
+
+test('leaving the contact page cancels its request and cannot show a stale confirmation or error', async () => {
+  const lifecycle = new AbortController();
+  let receive;
+  const page = fixture(() => new Promise(resolve => { receive = resolve; }), lifecycle.signal);
+  const pending = page.send();
+  assert.equal(page.requests.length, 1);
+  lifecycle.abort();
+  assert.equal(page.requests[0].options.signal.aborted, true);
+  receive(new Response(JSON.stringify({ success: true }), { headers: { 'content-type': 'application/json' } }));
+  await pending;
+  assert.deepEqual(page.notifications, [{ status: 'submit' }]);
+  assert.equal(page.confirmations, 0);
+  assert.equal(page.resets, 0);
+  assert.equal(page.status.focusCount, 0);
+  await page.send();
+  assert.equal(page.requests.length, 1);
+});
 
 test('validation emits one fixed reason without requesting or reporting any field content', async () => {
   const missing = fixture();

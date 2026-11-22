@@ -7,7 +7,7 @@ const shiftMonth = (date: Date, offset: number) => {
   return new Date(first.getFullYear(), first.getMonth(), Math.min(date.getDate(), new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate()));
 };
 
-export function initReplyPicker(form: HTMLFormElement, locale: 'zh' | 'en', onChange: () => void) {
+export function initReplyPicker(form: HTMLFormElement, locale: 'zh' | 'en', onChange: () => void, signal?: AbortSignal) {
   const copy = contactContent[locale].form.expectedReplyTime;
   const input = form.elements.namedItem('expectedReplyTime') as HTMLInputElement;
   const trigger = form.querySelector<HTMLButtonElement>('#enquiry-reply-trigger')!;
@@ -23,6 +23,7 @@ export function initReplyPicker(form: HTMLFormElement, locale: 'zh' | 'en', onCh
   const dayFormat = new Intl.DateTimeFormat(language, { dateStyle: 'full' });
   const weekdayFormat = new Intl.DateTimeFormat(language, { weekday: 'short' });
   const weekdays = calendar.querySelector('.reply-weekdays')!;
+  weekdays.replaceChildren();
   for (let index = 0; index < 7; index++) {
     const heading = document.createElement('th');
     heading.scope = 'col'; heading.textContent = weekdayFormat.format(new Date(2026, 10, 1 + index));
@@ -82,15 +83,15 @@ export function initReplyPicker(form: HTMLFormElement, locale: 'zh' | 'en', onCh
     if (typeof calendar.showPopover === 'function') calendar.showPopover();
     trigger.setAttribute('aria-expanded', 'true'); position();
     days.querySelector<HTMLButtonElement>('[tabindex="0"]')?.focus({ preventScroll: true });
-  });
+  }, { signal });
   calendar.addEventListener('toggle', event => {
     if ((event as ToggleEvent).newState === 'closed') { open = false; calendar.hidden = true; trigger.setAttribute('aria-expanded', 'false'); }
-  });
+  }, { signal });
   days.addEventListener('click', event => {
     const button = (event.target as Element).closest<HTMLButtonElement>('[data-date]');
     if (!button) return;
     selected = button.dataset.date!; focused = fromKey(selected); commit(); render(true);
-  });
+  }, { signal });
   days.addEventListener('keydown', event => {
     const button = (event.target as Element).closest<HTMLButtonElement>('[data-date]');
     if (!button) return;
@@ -100,21 +101,22 @@ export function initReplyPicker(form: HTMLFormElement, locale: 'zh' | 'en', onCh
     else if (event.key === 'PageUp' || event.key === 'PageDown') focused = shiftMonth(focused, (event.key === 'PageUp' ? -1 : 1) * (event.shiftKey ? 12 : 1));
     else return;
     event.preventDefault(); render(true);
-  });
+  }, { signal });
   for (const [selector, offset] of [['.reply-month-previous', -1], ['.reply-month-next', 1]] as const) {
-    calendar.querySelector(selector)!.addEventListener('click', () => { focused = shiftMonth(focused, offset); render(); });
+    calendar.querySelector(selector)!.addEventListener('click', () => { focused = shiftMonth(focused, offset); render(); }, { signal });
   }
-  calendar.addEventListener('change', commit);
+  calendar.addEventListener('change', commit, { signal });
   const reset = () => { selected = ''; morning.checked = true; commit(); close(); };
-  clear.addEventListener('click', () => { reset(); trigger.focus(); });
-  calendar.querySelector('.reply-calendar-reset')!.addEventListener('click', () => { reset(); trigger.focus(); });
-  calendar.querySelector('.reply-calendar-done')!.addEventListener('click', () => close(true));
+  clear.addEventListener('click', () => { reset(); trigger.focus(); }, { signal });
+  calendar.querySelector('.reply-calendar-reset')!.addEventListener('click', () => { reset(); trigger.focus(); }, { signal });
+  calendar.querySelector('.reply-calendar-done')!.addEventListener('click', () => close(true), { signal });
   document.addEventListener('pointerdown', event => {
     if (open && !calendar.contains(event.target as Node) && !trigger.contains(event.target as Node)) close();
-  });
-  document.addEventListener('keydown', event => { if (open && event.key === 'Escape') { event.preventDefault(); close(true); } });
-  document.addEventListener('focusin', event => { if (open && !calendar.contains(event.target as Node) && event.target !== trigger) close(); });
-  window.addEventListener('resize', position);
-  window.addEventListener('scroll', position, true);
+  }, { signal });
+  document.addEventListener('keydown', event => { if (open && event.key === 'Escape') { event.preventDefault(); close(true); } }, { signal });
+  document.addEventListener('focusin', event => { if (open && !calendar.contains(event.target as Node) && event.target !== trigger) close(); }, { signal });
+  window.addEventListener('resize', position, { signal });
+  window.addEventListener('scroll', position, { capture: true, signal });
+  signal?.addEventListener('abort', () => close(), { once: true });
   return { reset };
 }

@@ -1,5 +1,5 @@
 /** Enhance in-page scenario links into a keyboard-accessible tab interface. */
-export function initStationScenarios(root: HTMLElement) {
+export function initStationScenarios(root: HTMLElement, signal?: AbortSignal) {
   if (root.hasAttribute('data-enhanced')) return;
   const tablist = root.querySelector<HTMLElement>('[data-scenario-tablist]');
   const tabs = [...root.querySelectorAll<HTMLAnchorElement>('[data-scenario-tab]')];
@@ -16,7 +16,11 @@ export function initStationScenarios(root: HTMLElement) {
     outgoing?.remove();
     outgoing = null;
   };
-  reducedMotion.addEventListener('change', clearTransition);
+  reducedMotion.addEventListener('change', clearTransition, { signal });
+  signal?.addEventListener('abort', () => {
+    clearTransition();
+    root.removeAttribute('data-enhanced');
+  }, { once: true });
 
   const activate = (index: number, focus = false) => {
     if (activeIndex === index) {
@@ -76,7 +80,7 @@ export function initStationScenarios(root: HTMLElement) {
       if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
       event.preventDefault();
       activate(index);
-    });
+    }, { signal });
     tab.addEventListener('keydown', event => {
       let nextIndex: number;
       if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
@@ -87,7 +91,7 @@ export function initStationScenarios(root: HTMLElement) {
       else return;
       event.preventDefault();
       activate(nextIndex, true);
-    });
+    }, { signal });
   });
 
   const hashIndex = tabs.findIndex(tab => tab.hash === window.location.hash);
@@ -95,6 +99,6 @@ export function initStationScenarios(root: HTMLElement) {
   window.addEventListener('hashchange', () => {
     const index = tabs.findIndex(tab => tab.hash === window.location.hash);
     if (index >= 0) activate(index);
-  });
+  }, { signal });
   root.setAttribute('data-enhanced', '');
 }

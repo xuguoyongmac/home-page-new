@@ -48,18 +48,21 @@ const date = (value: Date) => new Intl.DateTimeFormat(zh ? 'zh-CN' : 'en-US', { 
 </Layout>
 
 <script>
-  const query = document.querySelector<HTMLInputElement>('#blog-query');
-  const articles = Array.from(document.querySelectorAll<HTMLElement>('#blog-articles .article-card'));
-  const empty = document.querySelector<HTMLElement>('.faq-empty');
-  const search = () => {
-    const term = query?.value.trim().toLocaleLowerCase() || '';
-    let count = 0;
-    articles.forEach((article) => {
-      article.hidden = !article.dataset.search?.includes(term);
-      if (!article.hidden) count += 1;
-    });
-    if (empty) empty.hidden = count > 0;
-  };
-  query?.addEventListener('input', search);
-  query?.addEventListener('search', search);
+  import { onPageMount } from '../../../lib/page-lifecycle';
+  onPageMount(signal => {
+    const query = document.querySelector<HTMLInputElement>('#blog-query');
+    const articles = Array.from(document.querySelectorAll<HTMLElement>('#blog-articles .article-card'));
+    const empty = document.querySelector<HTMLElement>('.faq-empty');
+    const search = () => {
+      const term = query?.value.trim().toLocaleLowerCase() || '';
+      let count = 0;
+      articles.forEach((article) => {
+        article.hidden = !article.dataset.search?.includes(term);
+        if (!article.hidden) count += 1;
+      });
+      if (empty) empty.hidden = count > 0;
+    };
+    query?.addEventListener('input', search, { signal });
+    query?.addEventListener('search', search, { signal });
+  });
 </script>

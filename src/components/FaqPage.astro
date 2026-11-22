@@ -31,29 +31,32 @@ const questions = faqs[locale];
 </Shell>
 <style>.faq-content{max-width:1080px;padding-top:22px}@media(max-width:600px){.faq-content{padding-top:14px}}</style>
 <script>
-  const root = document.querySelector<HTMLElement>('[data-faq-search]');
-  const query = document.querySelector<HTMLInputElement>('[data-faq-query]');
-  if(root && query){
-    const items = [...root.querySelectorAll<HTMLDetailsElement>('[data-faq-item]')];
-    const categories = [...root.querySelectorAll<HTMLButtonElement>('[data-faq-category]')];
-    const empty = root.querySelector<HTMLElement>('[data-faq-empty]');
-    const clear = document.querySelector<HTMLButtonElement>('[data-faq-clear]');
-    let category = 'all';
-    const update = () => {
-      const terms = query.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-      let count=0;
-      for(const item of items){
-        const matches = (category==='all'||item.dataset.category===category) && terms.every(term=>(item.dataset.search||'').includes(term));
-        item.hidden=!matches;
-        if(matches)count++; else item.open=false;
-      }
-      categories.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.faqCategory===category)));
-      if(empty)empty.hidden=count!==0;
-      if(clear)clear.hidden=!query.value;
-    };
-    categories.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.faqCategory||'all';update();}));
-    query.addEventListener('input',update);
-    clear?.addEventListener('click',()=>{query.value='';update();query.focus();});
-    root.querySelector('[data-faq-reset]')?.addEventListener('click',()=>{category='all';query.value='';update();query.focus();});
-  }
+  import { onPageMount } from '../lib/page-lifecycle';
+  onPageMount(signal => {
+    const root = document.querySelector<HTMLElement>('[data-faq-search]');
+    const query = document.querySelector<HTMLInputElement>('[data-faq-query]');
+    if(root && query){
+      const items = [...root.querySelectorAll<HTMLDetailsElement>('[data-faq-item]')];
+      const categories = [...root.querySelectorAll<HTMLButtonElement>('[data-faq-category]')];
+      const empty = root.querySelector<HTMLElement>('[data-faq-empty]');
+      const clear = document.querySelector<HTMLButtonElement>('[data-faq-clear]');
+      let category = 'all';
+      const update = () => {
+        const terms = query.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        let count=0;
+        for(const item of items){
+          const matches = (category==='all'||item.dataset.category===category) && terms.every(term=>(item.dataset.search||'').includes(term));
+          item.hidden=!matches;
+          if(matches)count++; else item.open=false;
+        }
+        categories.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.faqCategory===category)));
+        if(empty)empty.hidden=count!==0;
+        if(clear)clear.hidden=!query.value;
+      };
+      categories.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.faqCategory||'all';update();}, { signal }));
+      query.addEventListener('input',update, { signal });
+      clear?.addEventListener('click',()=>{query.value='';update();query.focus();}, { signal });
+      root.querySelector('[data-faq-reset]')?.addEventListener('click',()=>{category='all';query.value='';update();query.focus();}, { signal });
+    }
+  });
 </script>

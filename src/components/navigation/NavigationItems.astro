@@ -20,16 +20,16 @@ const resourcesActive = resourceLinks.some(link => link.active);
   <button type="button" class:list={['tego-nav-trigger', {'is-current': group.active}]} aria-expanded="false" aria-controls={`${prefix}-${group.id}`} data-nav-disclosure>{group.label}<Icon name="chevron" size={13}/></button>
   <div class:list={['tego-nav-panel', {'tego-nav-solutions': group.id === 'solutions', 'tego-nav-product': group.id === 'product'}]} id={`${prefix}-${group.id}`} hidden>
     <div class="tego-nav-panel-body">
-      <ul class="tego-nav-grid">{group.entries.map(entry => <li><a class="tego-nav-item" href={pathFor(locale,entry.path)} aria-current={page === entry.path ? 'page' : undefined}><span class="tego-nav-icon"><NavigationIcon name={entry.icon}/></span><span class="tego-nav-label"><span>{entry.label}</span>{entry.description && <small>{entry.description}</small>}</span></a></li>)}</ul>
+      <ul class="tego-nav-grid">{group.entries.map(entry => <li><a class="tego-nav-item" href={pathFor(locale,entry.path)} data-astro-prefetch="hover" aria-current={page === entry.path ? 'page' : undefined}><span class="tego-nav-icon"><NavigationIcon name={entry.icon}/></span><span class="tego-nav-label"><span>{entry.label}</span>{entry.description && <small>{entry.description}</small>}</span></a></li>)}</ul>
     </div>
   </div>
 </div>)}
-<a class="tego-nav-direct" href={pathFor(locale,'pricing')} aria-current={page === 'pricing' ? 'page' : undefined}>{zh ? '价格' : 'Pricing'}</a>
+<a class="tego-nav-direct" href={pathFor(locale,'pricing')} data-astro-prefetch="hover" aria-current={page === 'pricing' ? 'page' : undefined}>{zh ? '价格' : 'Pricing'}</a>
 <div class="tego-nav-group" data-nav-group data-attribution-group="resources">
   <button type="button" class:list={['tego-nav-trigger', {'is-current': resourcesActive}]} aria-expanded="false" aria-controls={`${prefix}-resources`} data-nav-disclosure>{t.resources}<Icon name="chevron" size={13}/></button>
   <div class="tego-nav-panel tego-nav-resources" id={`${prefix}-resources`} hidden>
     <div class="tego-nav-panel-body">
-      <ul class="tego-nav-grid">{resourceLinks.map(link => <li><a class="tego-nav-item" href={link.href} hreflang={link.external ? 'zh-CN' : undefined} aria-current={link.active ? 'page' : undefined} rel={link.external ? 'external' : undefined}><span class="tego-nav-icon"><NavigationIcon name={link.icon}/></span><span class="tego-nav-label"><span>{link.label}</span><small>{link.description}</small></span></a></li>)}</ul>
+      <ul class="tego-nav-grid">{resourceLinks.map(link => <li><a class="tego-nav-item" href={link.href} data-astro-prefetch={link.external ? undefined : 'hover'} hreflang={link.external ? 'zh-CN' : undefined} aria-current={link.active ? 'page' : undefined} rel={link.external ? 'external' : undefined}><span class="tego-nav-icon"><NavigationIcon name={link.icon}/></span><span class="tego-nav-label"><span>{link.label}</span><small>{link.description}</small></span></a></li>)}</ul>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { MotionCoordinator } from '../src/lib/motion.ts';
+import { MotionCoordinator, observeMotion } from '../src/lib/motion.ts';
 
 class Preference extends EventTarget {
   matches = false;
@@ -114,4 +114,35 @@ test('an error in one animation is reported without stopping another region', ()
   assert.equal(running, true);
   assert.equal(env.errors.length, 3);
   env.manager.dispose();
+});
+
+test('aborting a page disconnects shared observers and the next page receives a fresh coordinator', () => {
+  const env = setup();
+  env.manager.dispose();
+  globalThis.document = env.document;
+  globalThis.window = env.window;
+  try {
+    const first = new AbortController();
+    let firstCalls = 0;
+    const control = observeMotion(env.region(), () => { firstCalls++; }, first.signal);
+    const observer = VisibilityObserver.current;
+    assert.equal(observer.targets.size, 1);
+    first.abort();
+    assert.equal(observer.targets.size, 0);
+    const callsAfterAbort = firstCalls;
+    control.refresh(); control.setPaused(true);
+    env.document.dispatchEvent(new Event('visibilitychange'));
+    env.preference.set(true);
+    assert.equal(firstCalls, callsAfterAbort);
+    const second = new AbortController();
+    let secondState;
+    observeMotion(env.region(), value => { secondState = value; }, second.signal);
+    assert.notEqual(VisibilityObserver.current, observer);
+    assert.equal(secondState.reduced, true);
+    second.abort();
+    assert.equal(VisibilityObserver.current.targets.size, 0);
+  } finally {
+    delete globalThis.document;
+    delete globalThis.window;
+  }
 });

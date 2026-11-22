@@ -84,6 +84,8 @@ const resultIcons: Record<string, string[]> = {
   ))}
 </div>
 <script>
+  import { onPageMount } from '../lib/page-lifecycle';
+  onPageMount(signal => {
   document.querySelectorAll<HTMLElement>('[data-solution-explorer]').forEach(explorer=>{
     const tabs = [...explorer.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
     const panels = [...explorer.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
@@ -109,7 +111,7 @@ const resultIcons: Record<string, string[]> = {
       }
     };
     tabs.forEach((tab,index)=>{
-      tab.addEventListener('click',()=>select(tab));
+      tab.addEventListener('click',()=>select(tab),{ signal });
       tab.addEventListener('keydown',event=>{
         let next:number|undefined;
         if(event.key==='ArrowRight') next=(index+1)%tabs.length;
@@ -117,7 +119,9 @@ const resultIcons: Record<string, string[]> = {
         if(event.key==='Home') next=0;
         if(event.key==='End') next=tabs.length-1;
         if(next!==undefined){event.preventDefault();const target=tabs[next];select(target,event.key==='ArrowRight'?1:event.key==='ArrowLeft'?-1:undefined);target.focus();}
-      });
+      },{ signal });
     });
+    signal.addEventListener('abort',()=>panelAnimation?.cancel(),{ once:true });
+  });
   });
 </script>

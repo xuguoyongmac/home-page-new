@@ -69,6 +69,7 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
 </div>
 
 <script>
+  import { onPageMount } from '../../../lib/page-lifecycle';
   const employeeCarousels = new Map<HTMLElement, () => void>();
 
   const initializeEmployeeCarousels = () => {
@@ -101,6 +102,15 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
       let pendingSteps = 0;
       let transitioning = false;
       let disposed = false;
+      const frameIds = new Set<number>();
+      const queueFrame = (callback: FrameRequestCallback) => {
+        const id = requestAnimationFrame(time => {
+          frameIds.delete(id);
+          if (!disposed) callback(time);
+        });
+        frameIds.add(id);
+        return id;
+      };
       let hovered = window.matchMedia('(hover: hover)').matches && root.matches(':hover');
       let focused = root.contains(document.activeElement);
       let inView = root.getBoundingClientRect().bottom > 0 && root.getBoundingClientRect().top < window.innerHeight;
@@ -218,7 +228,7 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
               card.dataset.rebasing = 'true';
               paintCard(card, slot);
             });
-            requestAnimationFrame(() => requestAnimationFrame(() => {
+            queueFrame(() => queueFrame(() => {
               if (disposed) return;
               rebases.forEach(({ card }) => { delete card.dataset.rebasing; });
               finishNavigation();
@@ -226,7 +236,7 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
           }, duration);
         };
 
-        if (incoming.length) requestAnimationFrame(() => requestAnimationFrame(animateCards));
+        if (incoming.length) queueFrame(() => queueFrame(animateCards));
         else animateCards();
       };
 
@@ -378,7 +388,7 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
       measureCards();
       controls.hidden = false;
       root.dataset.ready = 'true';
-      requestAnimationFrame(() => requestAnimationFrame(() => {
+      queueFrame(() => queueFrame(() => {
         if (!disposed) root.dataset.animated = 'true';
       }));
       document.fonts.ready.then(measureCards);
@@ -388,6 +398,8 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
         disposed = true;
         stopAutoplay();
         clearTimeout(transitionTimer);
+        frameIds.forEach(cancelAnimationFrame);
+        frameIds.clear();
         listeners.abort();
         resizeObserver.disconnect();
         intersectionObserver.disconnect();
@@ -404,9 +416,10 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
     });
   };
 
-  initializeEmployeeCarousels();
-  document.addEventListener('astro:page-load', initializeEmployeeCarousels);
-  document.addEventListener('astro:before-swap', () => {
-    employeeCarousels.forEach(cleanup => cleanup());
+  onPageMount(signal => {
+    initializeEmployeeCarousels();
+    signal.addEventListener('abort', () => {
+      employeeCarousels.forEach(cleanup => cleanup());
+    }, { once: true });
   });
 </script>
