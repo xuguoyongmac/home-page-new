@@ -58,6 +58,7 @@ const related = (await getCollection('blog', ({ data: other }) => other.locale =
 
 <script>
   import { onPageMount } from '../../../lib/page-lifecycle';
+  let diagramMount = 0;
   async function initializeArticleDiagrams(signal: AbortSignal) {
     const blocks = Array.from(document.querySelectorAll<HTMLPreElement>('.prose pre[data-language="mermaid"]'));
     if (!blocks.length) return;
@@ -104,7 +105,7 @@ const related = (await getCollection('blog', ({ data: other }) => other.locale =
     let rendering = false;
     let redrawRequested = false;
     let revision = 0;
-    const renderId = `tego-article-${crypto.randomUUID()}`;
+    const renderId = `tego-article-${++diagramMount}`;
     async function drawDiagrams() {
       if (signal.aborted) return;
       if (rendering) { redrawRequested = true; return; }
