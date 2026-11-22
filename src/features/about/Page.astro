@@ -25,8 +25,7 @@ const copy = aboutContent[locale];
     <div class="container">
       <div class="about-introduction">
         <h2 id="about-company-title"><Icon name="buildings" size={24}/>{copy.introductionTitle}</h2>
-        <p>{copy.introduction[0]}</p>
-        <p>{copy.introduction[1]}</p>
+        {copy.introduction.map(paragraph => <p>{paragraph}</p>)}
       </div>
     </div>
   </section>

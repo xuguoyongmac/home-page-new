@@ -33,14 +33,4 @@ const resourcesActive = resourceLinks.some(link => link.active);
     </div>
   </div>
 </div>
-<div class="tego-nav-group" data-nav-group data-attribution-group="about">
-  <button type="button" class:list={['tego-nav-trigger', {'is-current': page === 'about' || page === 'contact'}]} aria-expanded="false" aria-controls={`${prefix}-about`} data-nav-disclosure>{zh ? '关于我们' : 'About us'}<Icon name="chevron" size={13}/></button>
-  <div class="tego-nav-panel tego-nav-about" id={`${prefix}-about`} hidden>
-    <div class="tego-nav-panel-body">
-      <ul class="tego-nav-grid">
-        <li><a class="tego-nav-item" href={pathFor(locale,'about')} aria-current={page === 'about' ? 'page' : undefined}><span class="tego-nav-icon"><Icon name="buildings" size={20}/></span><span class="tego-nav-label">{zh ? '关于我们' : 'About us'}</span></a></li>
-        <li><a class="tego-nav-item" href={pathFor(locale,'contact')} aria-current={page === 'contact' ? 'page' : undefined}><span class="tego-nav-icon"><Icon name="mail" size={20}/></span><span class="tego-nav-label">{zh ? '联系我们' : 'Contact us'}</span></a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<a class="tego-nav-direct" href={pathFor(locale,'about')} data-astro-prefetch="hover" aria-current={page === 'about' ? 'page' : undefined}>{zh ? '关于我们' : 'About us'}</a>

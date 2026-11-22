@@ -5,7 +5,7 @@ interface AboutContent {
   title: string;
   meta: string;
   introductionTitle: string;
-  introduction: [string, string];
+  introduction: string[];
   visionTitle: string;
   vision: [string, string, string];
   valuesTitle: string;
@@ -15,11 +15,12 @@ interface AboutContent {
 export const aboutContent: Record<Locale, AboutContent> = {
   zh: {
     title: '关于扎马星辰',
-    meta: '深圳市扎马星辰科技有限公司专注企业数字员工的研发与落地，以 TeGo 数字员工协作平台连接岗位、知识、工具与团队，让协作看得见，让成果可验收。',
+    meta: '深圳市扎马星辰科技有限公司成立于 2025 年 10 月，专注企业级数字员工操作系统研发，提供 TeGo OS、私有化部署、业务系统集成与数字员工实施服务。',
     introductionTitle: '公司介绍',
     introduction: [
-      '深圳市扎马星辰科技有限公司，是一家以 AI 原生力量驱动企业协作变革的科技公司。',
-      '我们以 TeGo 数字员工协作平台为核心，将岗位职责、企业知识与业务工具连接起来，让数字员工融入组织，与人类团队围绕共同目标协作，从日常任务走向可审阅、可交付的工作成果。',
+      '深圳市扎马星辰科技有限公司成立于 2025 年 10 月，专注于企业级数字员工操作系统的研发与落地。',
+      '公司的核心产品 TeGo OS 将岗位职责、专业技能、企业知识和业务工具配置到数字员工中。数字员工可以在企业可控的环境中按岗位规则处理业务任务，交付可审阅的成果。',
+      '公司提供私有化部署、业务系统集成和数字员工实施服务。从梳理岗位与流程，到在实际业务环境中部署和验收，公司帮助企业把成熟的做法沉淀为可复用的模板和技能。',
     ],
     visionTitle: '我们的愿景',
     vision: ['让每一个企业，都拥有一支', '面向岗位、协同共生、持续进化', '的数字员工团队'],
@@ -33,11 +34,12 @@ export const aboutContent: Record<Locale, AboutContent> = {
   },
   en: {
     title: 'About Zhama Xingchen',
-    meta: 'Zhama Xingchen builds the TeGo Digital Workforce Collaboration Platform, connecting roles, knowledge, tools and teams to make collaboration visible and outcomes verifiable.',
+    meta: 'Founded in October 2025, Zhama Xingchen develops TeGo OS for enterprise digital employees and offers private deployment, systems integration and implementation services.',
     introductionTitle: 'Company introduction',
     introduction: [
-      'Shenzhen Zhama Xingchen Technology Co., Ltd. is an AI-native technology company transforming enterprise collaboration.',
-      'Our core product, the TeGo Digital Workforce Collaboration Platform, connects job responsibilities, enterprise knowledge and business tools. People and digital employees work toward shared goals, turning everyday tasks into outcomes that can be reviewed and delivered.',
+      'Shenzhen Zhama Xingchen Technology Co., Ltd. was founded in October 2025. The company develops and implements operating systems for enterprise digital employees.',
+      'Its core product, TeGo OS, brings job responsibilities, skills, enterprise knowledge and business tools together in each digital employee. Digital employees follow role-specific rules and deliver work for review in an environment controlled by the enterprise.',
+      'The company offers private deployment, business systems integration and digital employee implementation. It helps enterprises define roles and workflows, deploy and validate them in their own business environments, and turn proven practices into reusable templates and skills.',
     ],
     visionTitle: 'Our vision',
     vision: ['For every enterprise to have', 'a role-focused digital workforce', 'that collaborates and keeps evolving.'],

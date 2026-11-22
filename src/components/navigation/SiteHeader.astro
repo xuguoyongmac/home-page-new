@@ -211,8 +211,7 @@ const activeLanguage = languages.find(item => item.id === language)!;
       const page = segments.join('/').replace(/\/$/, '');
       const entry = page === 'releases' ? 'download' : segments[0] === 'blog' ? 'blog' : page;
       const group = ['product', 'solutions'].includes(segments[0]) ? segments[0]
-        : ['download', 'blog'].includes(entry) ? 'resources'
-        : ['about', 'contact'].includes(entry) ? 'about' : '';
+        : ['download', 'blog'].includes(entry) ? 'resources' : '';
 
       closeMobile(false);
       const links = [...header.querySelectorAll<HTMLAnchorElement>('a')].filter(link => {

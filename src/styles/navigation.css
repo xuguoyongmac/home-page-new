@@ -151,8 +151,6 @@
 .tego-header .tego-nav-item:is(:hover, :focus-visible, [aria-current='page']) .navigation-icon-default { opacity: 0; }
 .tego-header .tego-nav-item:is(:hover, :focus-visible, [aria-current='page']) .navigation-icon-active { opacity: 1; }
 .tego-header .tego-nav-resources { width: 280px; }
-.tego-header .tego-nav-about { width: 220px; }
-.tego-header .tego-nav-about .tego-nav-item { min-height: 48px; align-items: center; }
 .tego-header .header-contact { min-height: 36px; padding-inline: 18px; font-size: 13px; white-space: nowrap; justify-content: center; }
 .tego-header .tego-nav-resources .tego-nav-grid { grid-template-columns: minmax(0, 1fr); }
 
