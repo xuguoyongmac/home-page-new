@@ -44,6 +44,15 @@ const finalizedZhHomepageTitles = {
   trust: '让尽调做深做透，让受托尽责有据',
 };
 
+const finalizedEnHomepageTitles = {
+  banking: 'Accelerate specialist work. Grow client value.',
+  insurance: 'Explain coverage clearly. Handle claims with clarity.',
+  securities: 'Respond faster in research. Deliver consistent professional service.',
+  government: 'Find the policy. Move services forward.',
+  'state-owned': 'See across the group. Coordinate specialist work.',
+  trust: 'Deepen due diligence. Evidence trustee responsibilities.',
+};
+
 test('solution discovery retains the supported industries, general business and appliance routes', () => {
   const directory = path.join(root, 'src/features/solutions');
   const entries = readdirSync(directory, { withFileTypes: true })
@@ -90,9 +99,9 @@ for (const [slug, exportName, order] of industries) {
     for (const locale of ['zh', 'en']) {
       const copy = presentation[locale];
       const homepage = homeIndustries[locale][slug];
-      const hasFinalizedZhHomepageCopy = locale === 'zh' && slug in finalizedZhHomepageTitles;
-      if (hasFinalizedZhHomepageCopy) {
-        assert.equal(homepage.title, finalizedZhHomepageTitles[slug]);
+      const finalizedTitles = locale === 'zh' ? finalizedZhHomepageTitles : finalizedEnHomepageTitles;
+      if (slug in finalizedTitles) {
+        assert.equal(homepage.title, finalizedTitles[slug]);
       } else {
         assert.equal(homepage, copy.home, 'Non-finalized homepage copy must use the detail content source');
         assert.equal(homepage.scenarios, copy.home.scenarios, 'Non-finalized homepage scenarios must use the detail content source');
@@ -107,8 +116,13 @@ for (const [slug, exportName, order] of industries) {
       assert.equal(copy.outputs.length, 4);
       assert.equal(copy.sources.length, 4);
       assert.equal(copy.hero.lines.length, 2);
+      if (slug !== 'general') {
+        assert.equal(copy.reasons.length, 3, `${slug} needs three finalized TeGo reasons`);
+        assert.ok(copy.reasons.every(reason => reason.trim().length > 0));
+      }
       for (const feature of copy.features) {
         assert.ok(feature.title.trim() && feature.problem.trim() && feature.body.trim());
+        if (slug !== 'general') assert.ok(feature.value?.trim(), `${slug} needs finalized business value copy for each feature`);
         assert.equal(feature.outcomes.length, 3, `${slug} needs three business outcomes for each feature`);
         assert.ok(feature.outcomes.every(outcome => outcome.trim().length > 0));
       }

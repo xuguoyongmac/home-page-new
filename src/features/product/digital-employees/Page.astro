@@ -1,6 +1,7 @@
 ---
 import { pathFor, site, ui } from '../../../lib/site';
 import EmployeeMarketArt from './EmployeeMarketArt.astro';
+import ProductHeroArt from '../../../components/product/ProductHeroArt.astro';
 import EmployeeBannerBackdrop from './EmployeeBannerBackdrop.astro';
 import EmployeeFeatureArt from './EmployeeFeatureArt.astro';
 import EmployeeConfigurationArt from './EmployeeConfigurationArt.astro';
@@ -17,13 +18,41 @@ const copy = landing[locale];
 const scenes = experience[locale];
 const product = 'product/digital-employees';
 const compositionParts = zh ? [
-  { icon: 'user-check', title: '岗位职责', body: '明确员工身份、工作规则与协作边界。' },
-  { icon: 'cpu', title: 'Agent 与专业技能', body: 'Agent 承担执行、调用技能，按岗位需要编排协作。' },
-  { icon: 'book', title: '企业知识与业务系统', body: '知识按授权检索，插件与业务系统按配置和授权接入。' },
-  { icon: 'folder', title: '工作区与工作记忆', body: '保存文件、会话与业务成果，工作记忆按使用者隔离。' },
+  {
+    "icon": "user-check",
+    "title": "岗位职责 · IDENTITY",
+    "body": "明确员工身份、角色与适用范围。"
+  },
+  {
+    "icon": "shield",
+    "title": "行为与边界 · SOUL",
+    "body": "约束行为准则、禁止事项与需人工确认的节点。"
+  },
+  {
+    "icon": "cpu",
+    "title": "Agent 与专业技能 · AGENTS",
+    "body": "Agent 承担执行、调用技能，按岗位需要编排主 / 子 Agent 协作。"
+  },
+  {
+    "icon": "wrench",
+    "title": "工具使用规则 · TOOLS",
+    "body": "规定可用插件、业务系统与调用边界。"
+  },
+  {
+    "icon": "book",
+    "title": "企业知识与业务系统",
+    "body": "知识按授权检索，插件与业务系统按配置和授权接入。"
+  },
+  {
+    "icon": "folder",
+    "title": "工作区与工作记忆",
+    "body": "保存文件、会话与业务成果，工作记忆按使用者隔离。"
+  }
 ] : [
-  { icon: 'user-check', title: 'Role responsibilities', body: 'Define the employee’s identity, work rules, and collaboration boundaries.' },
-  { icon: 'cpu', title: 'Agent and specialist skills', body: 'Agents execute work, call skills, and collaborate as the role requires.' },
+  { icon: 'user-check', title: 'Role responsibilities · IDENTITY', body: 'Define the employee’s identity, role, and scope.' },
+  { icon: 'shield', title: 'Behavior and boundaries · SOUL', body: 'Define conduct, prohibited actions, and points requiring human confirmation.' },
+  { icon: 'cpu', title: 'Agent and specialist skills · AGENTS', body: 'Agents execute work, call skills, and coordinate main and sub-Agents as the role requires.' },
+  { icon: 'wrench', title: 'Tool rules · TOOLS', body: 'Define available plugins, business systems, and tool-use boundaries.' },
   { icon: 'book', title: 'Knowledge and business systems', body: 'Search knowledge within permissions. Connect plugins and systems with configuration and authorization.' },
   { icon: 'folder', title: 'Workspace and work memory', body: 'Keep files, conversations, and deliverables, with work memory isolated by user.' },
 ];
@@ -39,7 +68,7 @@ const breadcrumb = {
 <div class="employee-page" data-capability="digital-employees">
   <div class="employee-hero-banner">
     <EmployeeBannerBackdrop locale={locale}/>
-  <section class="employee-hero employee-wrap" aria-labelledby="capability-title">
+  <section class="employee-hero employee-wrap product-banner" aria-labelledby="capability-title">
     <div class="employee-hero-intro">
       <h1 id="capability-title">{copy.hero.lines[0]}</h1>
       <div class="employee-hero-copy">
@@ -47,14 +76,16 @@ const breadcrumb = {
         <a class="button employee-action" href={pathFor(locale, 'contact')}>{ui[locale].contact}</a>
       </div>
     </div>
-    <figure class="employee-hero-art">
+    <ProductHeroArt canvasWidth={880}><figure class="employee-hero-art">
       <EmployeeMarketArt locale={locale}/>
-    </figure>
+    </figure></ProductHeroArt>
   </section>
   </div>
 
   <div class="employee-work employee-wrap">
-    {scenes.sections.map(({ id, title, subtitle, body }) => {
+    {scenes.sections.map(scene => {
+      const { id, title, body } = scene;
+      const subtitle = 'subtitle' in scene ? scene.subtitle : undefined;
       return (
         <section id={`capability-${id}`} class:list={['employee-story', `employee-story-${id}`]} aria-labelledby={`capability-${id}-title`}>
           <div class="employee-story-text">
@@ -75,7 +106,7 @@ const breadcrumb = {
   <section id="capability-management" class="employee-management employee-wrap" aria-labelledby="capability-features-title">
     <div class="employee-management-intro">
       <h2 id="capability-features-title">{zh ? '数字员工的配置与运行，统一管理' : 'Manage digital employee configuration and operations'}</h2>
-      <p class="employee-story-subtitle">{zh ? '岗位文件、技能、知识与插件按需配置，员工授权、启停状态和任务计划集中管理。' : 'Configure role files, skills, knowledge, and plugins. Manage employee access, enablement, and task schedules.'}</p>
+      <p class="employee-story-subtitle">{zh ? '岗位文件、技能、知识与插件按需配置，员工授权、启停状态与任务计划集中管理，运行与投递记录沿任务可查。' : 'Configure role files, skills, knowledge, and plugins. Manage employee access, enablement, and schedules, with run and delivery records traceable by task.'}</p>
     </div>
     <div class="employee-management-layout">
       <div class="employee-management-visual"><EmployeeConfigurationArt locale={locale}/></div>

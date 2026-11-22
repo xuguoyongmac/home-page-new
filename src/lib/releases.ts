@@ -44,8 +44,8 @@ export function allowedReleaseDownload(value: unknown): string | null {
 export function releasePackages(manifest: unknown, file: ReleaseFile, chinese: boolean): ReleasePackages {
   if (!isReleaseManifest(manifest)) throw new Error(chinese ? '清单结构无法识别' : 'Manifest schema is not supported');
   const products: Record<string, string> = chinese
-    ? { desktop: 'TeGo OS 桌面端', mobile: 'TeGo OS 移动端', studio: 'Tego Studio' }
-    : { desktop: 'TeGo OS Desktop', mobile: 'TeGo OS Mobile', studio: 'Tego Studio' };
+    ? { desktop: 'TeGo 桌面端', mobile: 'TeGo 移动端', studio: 'Tego Studio' }
+    : { desktop: 'TeGo Desktop', mobile: 'TeGo Mobile', studio: 'Tego Studio' };
   const platforms: Record<string, string> = { windows: 'Windows', macos: 'macOS', linux: 'Linux', kylin: chinese ? '银河麒麟' : 'Kylin', android: 'Android', ios: 'iOS' };
   const architecture = (platform: string, arch: string) => {
     if (arch === 'downloads') return '';

@@ -3,8 +3,10 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['岗位数字员工'],
-      summary: '数字员工将岗位职责、专业技能、企业知识与业务系统结合，承担企业运营中的各类岗位工作，把工作要求转化为可审阅、可复用的业务成果。',
+      "lines": [
+        "能上岗的数字员工"
+      ],
+      "summary": "岗位文件定义身份与协作边界，Agent 结合已授权的知识、技能和业务系统执行工作，交付可审阅、可复用的成果。"
     },
     pain: {
       title: '把反复做的工作交出去，把专业经验留下来',
@@ -20,11 +22,31 @@ export default {
       labels: ['岗位职责', '技能与工作文件', '招募数字员工', '承接业务任务'],
     },
     features: [
-      { icon: 'layers', title: '模板分发', body: '维护职责、模型要求、技能与工作文件，按版本分发至不同团队，模板更新与已运行员工分开管理。' },
-      { icon: 'network', title: '招募审批', body: '从模板招募数字员工，配置使用范围并完成所需审批。' },
-      { icon: 'key', title: '权限设置', body: '分别界定使用者范围、知识访问范围与插件代办范围。' },
-      { icon: 'clock', title: '任务调度', body: '配置定时、事件与心跳工作，查看运行与投递记录，按权限、并发与去重规则持续执行。' },
-      { icon: 'book', title: '记忆复盘', body: '按使用者隔离记忆，按组织策略复盘沉淀为技能。' },
+      {
+        "icon": "layers",
+        "title": "模板分发",
+        "body": "维护职责、模型要求、技能与工作文件，按版本分发至不同团队，模板更新与已运行员工分开管理。"
+      },
+      {
+        "icon": "network",
+        "title": "招募审批",
+        "body": "从模板招募数字员工，配置使用范围并完成所需审批。"
+      },
+      {
+        "icon": "key",
+        "title": "权限设置",
+        "body": "分别界定使用者范围、知识访问范围与插件业务委托范围。"
+      },
+      {
+        "icon": "clock",
+        "title": "任务调度",
+        "body": "配置定时、事件与心跳工作，查看运行与投递记录，按权限、并发与去重规则持续执行。"
+      },
+      {
+        "icon": "book",
+        "title": "记忆复盘",
+        "body": "按使用者隔离记忆，按组织策略复盘沉淀为技能。"
+      }
     ],
     scenarios: [
       { title: '投标文件编制', body: '按既定要求汇总资质和项目资料，起草技术响应并自查，交给业务专家终审。', flow: ['岗位模板与投标资料', '归集、编制与自查', '投标初稿与检查清单'] },
@@ -42,7 +64,7 @@ export default {
   en: {
     hero: {
       lines: ['Digital employees for business roles'],
-      summary: 'Digital employees bring together role responsibilities, specialist skills, enterprise knowledge, and business systems to take on work across enterprise operations, turning business requests into results your team can review and reuse.',
+      summary: 'Role files define boundaries. Agents use authorized knowledge, skills and systems to deliver reviewable results.',
     },
     pain: {
       title: 'Delegate repeatable work and keep expertise in the business',

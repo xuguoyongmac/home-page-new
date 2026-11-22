@@ -221,70 +221,12 @@
   outline-offset: 4px;
 }
 
-.banking-employees-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 11px;
-  margin-top: 4px;
-}
-
-.banking-employees-controls[hidden] { display: none; }
-
-.banking-employees-controls button {
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-  width: 42px;
-  height: 42px;
-  padding: 0;
-  border: 1px solid #a2bfda30;
-  border-radius: 50%;
-  background: #142332;
-  color: #c1d8ed;
-  cursor: pointer;
-  transition: color .2s ease, border-color .2s ease, background .2s ease;
-}
-
-.banking-employees-controls .banking-employees-playback {
-  width: 34px;
-  height: 34px;
-  border-color: #a2bfda1c;
-  background: transparent;
-}
-
-.banking-employees-previous svg { transform: rotate(90deg); }
-.banking-employees-next svg { transform: rotate(-90deg); }
-
-.banking-employees-playback-icon {
-  display: block;
-  width: 9px;
-  height: 11px;
-  box-sizing: border-box;
-  border-right: 3px solid currentColor;
-  border-left: 3px solid currentColor;
-}
-
-.banking-employees[data-user-paused='true'] .banking-employees-playback-icon {
-  width: 0;
-  height: 0;
-  margin-left: 2px;
-  border-top: 6px solid transparent;
-  border-right: 0;
-  border-bottom: 6px solid transparent;
-  border-left: 9px solid currentColor;
-}
-
-.banking-employees-controls button:focus-visible { outline: 2px solid #b3d9fc; outline-offset: 4px; }
-.banking-employees-controls button:disabled { opacity: .35; cursor: default; }
-
 html[lang='en'] .banking-employee-card h3 { font-size: 19px; line-height: 1.4; }
 html[lang='en'] .banking-employee-value { font-size: 13px; line-height: 1.65; }
 html[lang='en'] .banking-employee-skills li { font-size: 11px; }
 html[lang='en'] .banking-employee-process li { font-size: 12px; }
 
 @media (hover: hover) {
-  .banking-employees-controls button:hover:not(:disabled) { border-color: #b6d7f470; background: #20374b; color: #e5f3ff; }
   .banking-employees[data-ready='true'] .banking-employee-card[data-active='false']:hover { border-color: rgba(var(--employee-accent), .55); }
 }
 
@@ -323,6 +265,5 @@ html[lang='en'] .banking-employee-process li { font-size: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .banking-employees[data-animated='true'] .banking-employee-card,
-  .banking-employees-controls button { transition: none; }
+  .banking-employees[data-animated='true'] .banking-employee-card { transition: none; }
 }

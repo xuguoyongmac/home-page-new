@@ -7,7 +7,7 @@ import Shell from '../resources/Shell.astro';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
-const products = zh ? { desktop: 'TeGo OS 桌面端', mobile: 'TeGo OS 移动端', studio: 'Tego Studio' } : { desktop: 'TeGo OS Desktop', mobile: 'TeGo OS Mobile', studio: 'Tego Studio' };
+const products = zh ? { desktop: 'TeGo 桌面端', mobile: 'TeGo 移动端', studio: 'Tego Studio' } : { desktop: 'TeGo Desktop', mobile: 'TeGo Mobile', studio: 'Tego Studio' };
 const platforms: Record<string, string> = { macos: 'macOS', windows: 'Windows', linux: 'Linux', kylin: zh ? '银河麒麟' : 'Kylin', android: 'Android', ios: 'iOS' };
 const platformIcons: Record<string, string> = { macos: 'apple', windows: 'windows', linux: 'linux', android: 'android', ios: 'apple' };
 const architecture = (platform: string, arch: string) => platform === 'macos' ? (arch === 'arm64' ? 'Apple silicon · ARM64' : 'Intel · x64') : arch === 'x86' ? (zh ? 'x86 · 32 位' : 'x86 · 32-bit') : arch === 'x64' ? (zh ? 'x64 · 64 位' : 'x64 · 64-bit') : arch === 'arm64' ? 'ARM64' : '';

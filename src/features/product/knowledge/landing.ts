@@ -3,8 +3,10 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['让企业知识进入工作', '让每个结论回到原文'],
-      summary: '将制度、档案和经验维护为可授权检索的知识。数字员工按调用人权限找到相关片段，带着引用形成答复和文稿。',
+      "lines": [
+        "让结论回到原文"
+      ],
+      "summary": "按调用人权限检索企业知识，将带来源的片段用于答复与文稿；结论可定位原文，便于核对业务依据。"
     },
     pain: {
       title: '资料不断积累，工作不必反复从头开始',
@@ -46,7 +48,7 @@ export default {
   en: {
     hero: {
       lines: ['Put knowledge to work', 'Keep every answer sourced'],
-      summary: 'Maintain policies, archives and experience as authorized, searchable knowledge. Digital employees retrieve passages within the caller’s access and carry citations into answers and drafts.',
+      summary: 'Search authorized knowledge and carry cited passages into answers and drafts, with links to original sources.',
     },
     pain: {
       title: 'Build on what the company already knows',

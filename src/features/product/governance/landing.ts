@@ -3,8 +3,10 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['权限有边界', '执行有记录'],
-      summary: '沿用组织身份，分别管理知识、项目和插件业务委托；数字员工的开放、发布与执行留下审核决定、调用记录和成果依据。',
+      "lines": [
+        "权限有边界，执行有记录"
+      ],
+      "summary": "沿用组织身份，分别校验知识、项目与插件授权；审核、业务委托和执行记录沿任务留痕，成果依据可回看。"
     },
     pain: {
       title: '工作可以交出去，权限与过程仍要掌握在手',
@@ -46,7 +48,7 @@ export default {
   en: {
     hero: {
       lines: ['Clear access boundaries', 'Keep execution records'],
-      summary: 'Use organizational identity and manage knowledge, project access and plugin delegation separately. Retain review decisions, tool calls and deliverable evidence across digital employee availability, publication and execution.',
+      summary: 'Check access by identity and resource. Trace reviews, delegation and execution from each task to its evidence.',
     },
     pain: {
       title: 'Delegate the work and keep control of the process',

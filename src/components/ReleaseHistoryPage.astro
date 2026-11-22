@@ -9,8 +9,8 @@ interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const zh = locale === 'zh';
 const products: Record<string, string> = zh
-  ? { desktop: 'TeGo OS 桌面端', mobile: 'TeGo OS 移动端', studio: 'Tego Studio' }
-  : { desktop: 'TeGo OS Desktop', mobile: 'TeGo OS Mobile', studio: 'Tego Studio' };
+  ? { desktop: 'TeGo 桌面端', mobile: 'TeGo 移动端', studio: 'Tego Studio' }
+  : { desktop: 'TeGo Desktop', mobile: 'TeGo Mobile', studio: 'Tego Studio' };
 const clientFiles = releaseIndex.files.filter(file => Object.hasOwn(products, file.product));
 const versions = releaseIndex.versions.filter(version => clientFiles.some(file => file.version === version));
 const defaultVersion = versions.includes(releaseArchive.defaultVersion) ? releaseArchive.defaultVersion : versions[0];
@@ -82,8 +82,8 @@ const config = { versions, files: clientFiles.map(({ path, version, product, arc
       const chinese = historyRoot.dataset.locale === 'zh';
       const config = JSON.parse(historyRoot.dataset.releaseConfig || '{}') as ReleaseConfig;
       const productLabels: Record<string, string> = chinese
-        ? { desktop: 'TeGo OS 桌面端', mobile: 'TeGo OS 移动端', studio: 'Tego Studio' }
-        : { desktop: 'TeGo OS Desktop', mobile: 'TeGo OS Mobile', studio: 'Tego Studio' };
+        ? { desktop: 'TeGo 桌面端', mobile: 'TeGo 移动端', studio: 'Tego Studio' }
+        : { desktop: 'TeGo Desktop', mobile: 'TeGo Mobile', studio: 'Tego Studio' };
       let controller: AbortController | undefined;
       signal.addEventListener('abort', () => controller?.abort(), { once: true });
       const make = <K extends keyof HTMLElementTagNameMap>(tag: K, value = '', className = '') => {

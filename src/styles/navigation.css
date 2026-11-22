@@ -138,6 +138,11 @@
   line-height: 1.6;
   white-space: normal;
 }
+.tego-header .tego-nav-product .tego-nav-label small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .tego-header .tego-nav-icon {
   display: grid;
   place-items: center;

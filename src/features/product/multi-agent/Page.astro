@@ -1,5 +1,6 @@
 ---
 import Diagram from './Diagram.astro';
+import ProductHeroArt from '../../../components/product/ProductHeroArt.astro';
 import MultiAgentBackdrop from './MultiAgentBackdrop.astro';
 import landing from './landing';
 import experience from './experience';
@@ -25,7 +26,7 @@ const breadcrumb = {
 <div class="orchestration-page" data-capability="multi-agent">
   <div class="ma-hero-field">
     <MultiAgentBackdrop locale={locale}/>
-    <section class="ma-hero ma-wrap" aria-labelledby="capability-title">
+    <section class="ma-hero ma-wrap product-banner" aria-labelledby="capability-title">
       <div class="ma-hero-copy">
         <h1 id="capability-title">{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
         <p>{copy.hero.summary}</p>
@@ -34,7 +35,7 @@ const breadcrumb = {
           <a class="ma-text-link" href={appFor(locale)}>{ui[locale].try}</a>
         </div>
       </div>
-      <Diagram locale={locale} scene="overview" data={stories[0].visual}/>
+      <ProductHeroArt><Diagram locale={locale} scene="overview" data={stories[0].visual}/></ProductHeroArt>
     </section>
   </div>
 

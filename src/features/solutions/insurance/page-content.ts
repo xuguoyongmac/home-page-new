@@ -53,6 +53,7 @@ export const insurancePresentation: IndustrySolutionPresentation = {
         "title": "让产品知识，成为一线展业的专业底气",
         "problem": "产品与条款版本繁多，客户需求各不相同，代理人既要讲清保障，也要回应异议，专业支持却常停留在资料分发。",
         "body": "连接正式产品条款、培训知识与客户需求，数字员工协同完成保障结构解读、产品对照、沟通方案和异议练习。成熟经验沉淀为可复用方法，随渠道工作持续更新，让一线从查资料、背话术，走向有依据的需求沟通与专业服务。",
+        "value": "代理人从「查资料、背话术」变成「有依据地沟通」——保障解读、产品对照与异议练习成套交付；成熟经验沉淀为 Skill，渠道换人方法还在。",
         "outcomes": [
           "产品与需求匹配",
           "销售方案协作",
@@ -63,6 +64,7 @@ export const insurancePresentation: IndustrySolutionPresentation = {
         "title": "投保事实先核清，核保评估更高效",
         "problem": "投保申请、健康告知、体检与财务资料表达各异，字段冲突、材料缺漏与补充问询反复占用核保时间。",
         "body": "数字员工关联申请信息、健康资料与机构材料规则，核对身份、时间、告知事实和材料完整性，集中呈现差异、缺项与问询要点。新增材料和人员回应接续到同一个案，形成可回查的核保底稿，让核保人员集中开展风险评估与专业判断。",
+        "value": "核保从「逐份核对」变成「看差异与问询要点」——身份、时间、告知事实和缺项集中呈现、接续到同一案；风险评估由核保人员确认，底稿可回查。",
         "outcomes": [
           "投保事实核验",
           "缺项与差异定位",
@@ -74,6 +76,7 @@ export const insurancePresentation: IndustrySolutionPresentation = {
         "title": "让理赔少些往返，让审阅直达关键",
         "problem": "病历、票据与费用明细分散在不同文件，条款责任与材料事实需要来回对照，补件和交接进一步拉长处理周期。",
         "body": "围绕健康类理赔，数字员工组织同案材料与诊疗时间线，核对保单、申请、病历及票据之间的字段关系，将差异与待补事项定位到原文。适用条款和依据索引随核对成果一并交付，专业人员据此确认责任与处理结论，后续补件沿当前案情继续推进。",
+        "value": "理赔从「往返补件」变成「沿案情接续」——诊疗时间线与字段差异定位到原文，适用条款随成果一并交付；核赔人确认责任与结论，过程可回溯。",
         "outcomes": [
           "理赔材料核对",
           "条款依据关联",
@@ -84,12 +87,18 @@ export const insurancePresentation: IndustrySolutionPresentation = {
         "title": "把长期服务接稳，把保单经营做深",
         "problem": "保单存续多年、产品版本更替，保全续期跨越多个岗位；服务记录与投诉反馈难以沉淀为持续改进的经营依据。",
         "body": "数字员工围绕适用保单与产品规则，承接保全材料、续期缴费和到期续保的工作准备与进度跟进。结合服务记录筛查质检疑点、归纳消保问题，持续输出渠道与运营分析，让长期服务有背景、事项跟进有接续、经营改进有依据。",
+        "value": "长期服务从「跨岗位断档」变成「有背景、有接续」——保全续期、质检消保与渠道运营共用同一项目上下文，服务改进有据可依。",
         "outcomes": [
           "保全续期与续保",
           "质检消保协作",
           "渠道与运营分析"
         ]
       }
+    ],
+    "reasons": [
+      "数字员工上岗，不是问答工具——有岗位、有身份、有权限，交付核保底稿、核对清单这类可验收成果。",
+      "主/子 Agent 按公司方法协同——条款解读、核保规则沉淀为 Skill，代理人流动不带走方法。",
+      "数据不出域、关键环节人工把关——保单与客户信息留在机构内，核保理赔结论由有权限人员确认，销售全程可回溯；不承诺收益、不隐瞒免责，守住消保与适当性底线。"
     ],
     "teamTitle": "把保险专业经验，变成贯穿全流程的数字员工团队",
     "employees": [
@@ -269,7 +278,8 @@ export const insurancePresentation: IndustrySolutionPresentation = {
           "Product and needs matching",
           "Sales proposal collaboration",
           "Channel training and practice"
-        ]
+        ],
+        "value": "Agents communicate with evidence through coordinated coverage explanations, product comparisons and objection practice. Established methods become reusable skills and remain available when distribution staff change."
       },
       {
         "title": "Clarify application facts and accelerate underwriting review.",
@@ -280,7 +290,8 @@ export const insurancePresentation: IndustrySolutionPresentation = {
           "Missing items and differences",
           "Underwriting question coordination"
         ],
-        "image": "/images/solutions/insurance/insurance-value-2_V2.1.webp"
+        "image": "/images/solutions/insurance/insurance-value-2_V2.1.webp",
+        "value": "Underwriters focus on differences and follow-up questions. Identity, dates, disclosure facts and missing items stay with the same case. Underwriting staff confirm risk assessments; supporting papers remain available for review."
       },
       {
         "title": "Reduce claims back-and-forth. Bring the evidence into focus.",
@@ -290,7 +301,8 @@ export const insurancePresentation: IndustrySolutionPresentation = {
           "Claims document verification",
           "Policy evidence matching",
           "Document and review follow-up"
-        ]
+        ],
+        "value": "Claims handling continues within the case. Medical timelines and field differences link to original records, with applicable clauses delivered alongside findings. Claims specialists confirm liability and conclusions, with a traceable process."
       },
       {
         "title": "Keep policy service connected. Build lasting client relationships.",
@@ -300,7 +312,8 @@ export const insurancePresentation: IndustrySolutionPresentation = {
           "Policy changes and renewals",
           "Quality and consumer protection",
           "Channel and operating analysis"
-        ]
+        ],
+        "value": "Long-term service retains its background across roles. Policy servicing, renewals, quality checks, consumer protection and channel operations share project context, supporting service improvements with evidence."
       }
     ],
     "teamTitle": "Turn insurance expertise into a digital employee team for every stage",
@@ -423,6 +436,11 @@ export const insurancePresentation: IndustrySolutionPresentation = {
     "deployment": {
       "title": "Keep expertise in-house. Extend digital employees across insurance work.",
       "body": "Deploy TeGo privately and connect institutional models, product knowledge, policy, claims and service systems. Build role-specific skills and organizational access, with shared management of policy versions, human confirmations, document revisions and audit records. Start with one business area and reuse proven methods to extend service and operating capabilities."
-    }
+    },
+    "reasons": [
+      "Digital employees deliver role-based work——Defined roles, identities and permissions support reviewable underwriting papers and verification checklists.",
+      "Main and sub-Agents follow company methods——Policy interpretation and underwriting rules become reusable skills, retaining methods when agents change.",
+      "Keep data in-house and people in control——Policy and client information stays within the organization. Authorized staff confirm underwriting and claims conclusions, with traceable sales records. Consumer protection and suitability requirements remain in place, without return promises or concealed exclusions."
+    ]
   }
 };

@@ -53,6 +53,7 @@ export const trustPresentation: IndustrySolutionPresentation = {
         "title": "让资产服务有温度，也有扎实的专业支撑",
         "problem": "家族、保险金等资产服务信托涉及多方主体与长期安排，材料准备反复，专业人员难以腾出更多精力深入服务。",
         "body": "围绕客户目标与服务事项，数字员工归集身份、资产和受益安排材料，对照不同信托类型的清单与规则，核对要素、整理缺件并形成办理准备包。把家族信托、保险金信托及其他资产服务的专业方法沉淀下来，让团队带着完整背景沟通方案、确认安排，持续承接长期服务。",
+        "value": "资产服务从「反复备材料」变成「带完整背景沟通」——身份、资产与受益安排按清单核对、缺件定位，办理准备包成套；长期事项接续同一上下文。",
         "outcomes": [
           "服务材料准备",
           "要素与缺件核对",
@@ -63,6 +64,7 @@ export const trustPresentation: IndustrySolutionPresentation = {
         "title": "合同核对更扎实，项目运营更从容",
         "problem": "合同、说明书与风险揭示材料多版本并行，主体、金额、期限和费用需要逐项比对，差异常在后续运营才暴露。",
         "body": "数字员工交叉核对信托合同、计划说明书、风险揭示书及补充协议，提取主体、信托财产、受益权、费用与分配要素，将差异定位到原文，形成可直接复核的核对表。合同约定继续关联估值、核算与项目节点，异常由专业人员确认，让成立、存续与清算使用连续的业务依据。",
+        "value": "合同核对从「逐项比对」变成「差异定位到原文」——主体、信托财产、受益权、费用与分配要素交叉核对，核对表可直接复核；异常由专业人员确认。",
         "outcomes": [
           "多文件交叉核对",
           "差异定位原文",
@@ -73,6 +75,7 @@ export const trustPresentation: IndustrySolutionPresentation = {
         "title": "让标品投研跟上市场，让风险跟踪看见变化",
         "problem": "标品业务对研究与运营提出更高要求，研报、产品资料、估值与风险信息分散，团队反复整理仍难及时掌握变化。",
         "body": "围绕资产管理信托的投研与产品任务，数字员工搜读研报、公告和产品资料，协同专题分析与简报编制，关键观点保留来源和时点。持续核对产品要素、估值变化与底层资产信息，将新增事件对应原有判断，交付研究简报、差异清单与风险重点，让专业团队更快看清值得深入的问题。",
+        "value": "标品投研从「反复整理」变成「看清值得深入的问题」——研报与产品资料按方法搜读、观点留来源与时点，估值差异与底层资产变化关联。",
         "outcomes": [
           "标品研究与产品分析",
           "估值差异核对",
@@ -83,12 +86,18 @@ export const trustPresentation: IndustrySolutionPresentation = {
         "title": "把真实履职写进披露，让每次报送有据可查",
         "problem": "运营、核算与业务口径分散，管理报告、受益人通知和监管材料临近时点集中编制，取数与核对挤占大量时间。",
         "body": "将披露要求、报送口径和合同义务连到项目记录，数字员工归集期间运营、费用分配与重大事项，核对字段勾稽，准备存续报告、披露稿和报送底稿。来源、修订与人工确认随成果关联留存，既支持受益人沟通，也让后续审计和受托履职核查更快找到依据。",
+        "value": "披露报送从「临近时点集中编制」变成「持续归集、口径勾稽」——披露要求与合同义务连到项目记录，报送底稿带来源与人工确认，受托履职可查。",
         "outcomes": [
           "披露与报送底稿",
           "数据口径勾稽",
           "履职记录溯源"
         ]
       }
+    ],
+    "reasons": [
+      "数字员工上岗，不是问答工具——有岗位、有身份、有权限，交付核对表、报送底稿这类可验收成果。",
+      "主/子 Agent 按公司方法协同——核对规则、材料清单沉淀为 Skill，三分类业务共享平台、各留专业规则。",
+      "数据不出域、关键环节人工把关——委托人与受益人资料留在机构内，异常与报送由有权限人员确认，受托履职全程留痕。"
     ],
     "teamTitle": "把信托专业方法，转为持续运行的岗位能力",
     "employees": [
@@ -209,7 +218,7 @@ export const trustPresentation: IndustrySolutionPresentation = {
     ],
     "deployment": {
       "title": "数据留在企业内，受托能力沉淀在组织中",
-      "body": "私有化部署 TeGo OS，连接本地模型、企业知识与项目、运营核算、档案及报送系统，围绕委托人、受益人与项目资料设置访问范围。将核对规则、材料清单与办理方法封装为岗位技能，统一管理人工确认、版本与审计记录，并按业务类型定制扩展，让三分类业务共享平台能力，保留各自专业规则。"
+      "body": "私有化部署 TeGo，连接本地模型、企业知识与项目、运营核算、档案及报送系统，围绕委托人、受益人与项目资料设置访问范围。将核对规则、材料清单与办理方法封装为岗位技能，统一管理人工确认、版本与审计记录，并按业务类型定制扩展，让三分类业务共享平台能力，保留各自专业规则。"
     }
   },
   "en": {
@@ -268,7 +277,8 @@ export const trustPresentation: IndustrySolutionPresentation = {
           "Service preparation packs",
           "Term and completeness checks",
           "Long-term service continuity"
-        ]
+        ],
+        "value": "Asset service teams communicate with the full context. Identity, assets and beneficiary arrangements are checked against requirements; missing items are located and preparation materials arrive together. Long-term matters continue within the same context."
       },
       {
         "title": "Strengthen agreement checks and keep projects running smoothly",
@@ -278,7 +288,8 @@ export const trustPresentation: IndustrySolutionPresentation = {
           "Cross-document checks",
           "Differences linked to original text",
           "Connected agreements and operations"
-        ]
+        ],
+        "value": "Agreement review locates differences in original text. Parties, trust assets, beneficial interests, fees and distribution terms are cross-checked in a reviewable table. Specialists confirm exceptions."
       },
       {
         "title": "Keep securities research current and give risk changes their context",
@@ -288,7 +299,8 @@ export const trustPresentation: IndustrySolutionPresentation = {
           "Securities and product research",
           "Valuation difference checks",
           "Asset and risk monitoring"
-        ]
+        ],
+        "value": "Securities researchers focus on questions worth investigating. Research and product material follow established methods, conclusions retain sources and dates, and valuation differences connect to changes in underlying assets."
       },
       {
         "title": "Connect disclosures with trustee work and evidence with every submission",
@@ -298,7 +310,8 @@ export const trustPresentation: IndustrySolutionPresentation = {
           "Disclosure and reporting papers",
           "Data definition reconciliation",
           "Traceable trustee work"
-        ]
+        ],
+        "value": "Disclosure preparation continues throughout the project. Disclosure requirements and contractual obligations connect to project records. Submission papers retain sources and human confirmation, making trustee work available for review."
       }
     ],
     "teamTitle": "Turn trust expertise into capabilities that keep working",
@@ -420,7 +433,12 @@ export const trustPresentation: IndustrySolutionPresentation = {
     ],
     "deployment": {
       "title": "Keep data inside the enterprise and trustee expertise within the organization",
-      "body": "Deploy TeGo OS privately, connecting local models, enterprise knowledge, project records, operations, accounting, archives and reporting systems with defined access to settlor, beneficiary and project information. Package checking rules, document requirements and working methods as role-specific skills, linked to human confirmation, versions and audit records. Customize for each trust business while sharing the platform."
-    }
+      "body": "Deploy TeGo privately, connecting local models, enterprise knowledge, project records, operations, accounting, archives and reporting systems with defined access to settlor, beneficiary and project information. Package checking rules, document requirements and working methods as role-specific skills, linked to human confirmation, versions and audit records. Customize for each trust business while sharing the platform."
+    },
+    "reasons": [
+      "Digital employees deliver role-based work——Defined roles, identities and permissions support reviewable checklists and submission papers.",
+      "Main and sub-Agents follow company methods——Verification rules and material checklists become reusable skills. The three trust business categories share a platform while retaining their own professional rules.",
+      "Keep data in-house and people in control——Settlor and beneficiary information stays within the organization. Authorized staff confirm exceptions and submissions, with records of trustee work retained throughout."
+    ]
   }
 };

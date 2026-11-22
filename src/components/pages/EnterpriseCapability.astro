@@ -1,5 +1,7 @@
 ---
 import Diagram from '../product/CapabilityDiagram.astro';
+import ProductHeroArt from '../product/ProductHeroArt.astro';
+import IntegrationsBackdrop from '../product/IntegrationsBackdrop_V1.0.astro';
 import type { Locale } from '../../data/types';
 import type { CapabilityModule } from '../../features/product/types';
 import type { LandingCopy } from '../../features/product/landing-types';
@@ -18,7 +20,8 @@ const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',ite
 ---
 <div class="capability-product" data-capability={capability.slug}>
   <div class="cp-hero-field">
-    <section class="cp-hero cp-wrap" aria-labelledby="capability-title">
+    {capability.slug === 'integrations' && <IntegrationsBackdrop locale={locale}/>}
+    <section class="cp-hero cp-wrap product-banner" aria-labelledby="capability-title">
       <div class="cp-hero-copy">
         <h1 id="capability-title">{copy.hero.lines.map(line=><span>{line}</span>)}</h1>
         <p>{copy.hero.summary}</p>
@@ -27,7 +30,7 @@ const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',ite
           <a class="cp-text-link" href={appFor(locale)}>{ui[locale].try}</a>
         </div>
       </div>
-      <Diagram locale={locale} capability={capability.slug}/>
+      <ProductHeroArt><Diagram locale={locale} capability={capability.slug}/></ProductHeroArt>
     </section>
   </div>
   <div class="cp-stories cp-wrap">

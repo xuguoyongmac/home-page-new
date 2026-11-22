@@ -9,15 +9,15 @@ export default {
         "id": "access",
         "kind": "governance",
         "title": "授权跟着资源走",
-        "body": "租户身份和组织角色是起点，但一次交办不会自动获得所有资料。知识库、项目和业务插件分别检查自己的资源关系、显式授权和业务委托。",
+        "body": "租户身份与组织角色是起点，一次交办不自动获得所有资料；知识检索校验调用人权限、项目文件校验当前项目角色、插件工作校验显式业务委托。",
         "points": [
           {
             "title": "组织身份与账号生命周期对齐",
-            "body": "通过 LDAP / OIDC 接入身份，按组织结果同步部门、人员和账号状态。"
+            "body": "通过 LDAP / OIDC 接入身份，按组织结果同步部门、人员与账号状态。"
           },
           {
             "title": "三类资源使用不同授权依据",
-            "body": "知识检索看调用人权限，项目文件看当前项目角色，插件工作需要明确业务委托。"
+            "body": "知识检索看调用人权限，项目文件看当前项目角色，插件工作需明确业务委托。"
           }
         ],
         "visual": {
@@ -67,15 +67,15 @@ export default {
         "id": "review",
         "kind": "governance",
         "title": "审核与业务委托分开",
-        "body": "数字员工创建与开放，以及模板、插件和技能发布进入组织审核；具体插件工作由业务人员按需委托，完成后可撤销。",
+        "body": "员工创建开放与模板、插件、技能发布进入组织审核，保留本次提交快照与审核决定；具体插件工作由业务人员按需委托，授予、撤销与有效范围形成独立变更记录。",
         "points": [
           {
             "title": "审核保留本次提交快照",
-            "body": "申请内容、使用范围和审核决定一起保存，后续可以核对当时批准的具体版本。"
+            "body": "申请内容、使用范围与审核决定一起保存，后续可核对当时批准的具体版本。"
           },
           {
             "title": "委托只覆盖具体业务工作",
-            "body": "数字员工读取委托人可见记录；授予、撤销和有效范围形成独立变更记录。"
+            "body": "数字员工读取委托人可见记录，授予、撤销与有效范围形成独立变更记录。"
           }
         ],
         "visual": {
@@ -125,15 +125,15 @@ export default {
         "id": "audit",
         "kind": "execution",
         "title": "从成果回看执行依据",
-        "body": "执行回执关联输入、任务步骤、工具调用、人工回应和成果文件。复核时可从一份成果回到相关来源与记录。",
+        "body": "执行回执关联任务输入、检索读取、人工确认、工具调用与成果文件；复核可从一份成果沿任务回到来源、步骤与审核记录，证据访问与外发继续受控。",
         "points": [
           {
             "title": "审计从任务进入，不从日志堆里猜",
-            "body": "沿一次工作查看相关步骤、调用、来源和交付结果，定位需要业务复核的环节。"
+            "body": "沿一次工作查看相关步骤、调用、来源与交付结果，定位需业务复核的环节。"
           },
           {
             "title": "证据访问和外发继续受控",
-            "body": "审计查看、脱敏、导出和法律保全按策略处理，风险发现可归入案件继续处置。"
+            "body": "审计查看、脱敏、导出与法律保全按策略处理，风险发现可归入案件继续处置。"
           }
         ],
         "visual": {
@@ -305,7 +305,7 @@ export default {
         "id": "audit",
         "kind": "execution",
         "title": "Trace results to tasks, calls and sources",
-        "body": "Execution receipts connect inputs, task steps, tool calls, human responses and deliverable files. Reviewers can trace a deliverable back to its related sources and records.",
+        "body": "Execution receipts connect task inputs, retrieval and reads, human confirmations, tool calls and deliverable files. Reviewers can trace a deliverable through its task to sources, steps and review records; evidence access and external sharing remain controlled.",
         "points": [
           {
             "title": "Start audit from the task, not a pile of logs",

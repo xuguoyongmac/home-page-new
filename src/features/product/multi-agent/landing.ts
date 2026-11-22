@@ -3,8 +3,10 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['一个目标', '多 Agent 协同交付'],
-      summary: '主 Agent 统筹目标与交付，将独立工作委派给专业子 Agent；进度与结果回到主任务，汇成完整成果。',
+      "lines": [
+        "多 Agent 协同交付"
+      ],
+      "summary": "主 Agent 拆解目标、编排分工，专业子 Agent 在独立上下文中并行执行，进度、异常与结果回主任务汇总。"
     },
     pain: {
       title: '复杂任务需要清晰的责任关系',
@@ -44,7 +46,7 @@ export default {
   en: {
     hero: {
       lines: ['One goal.', 'Agents, coordinated.'],
-      summary: 'A main Agent owns the goal and delivery, delegates bounded work to specialist sub-Agents, and assembles their results into one deliverable.',
+      summary: 'The main Agent delegates specialist work. Sub-Agents run in parallel and return progress and results to one task.',
     },
     pain: {
       title: 'Complex work needs clear responsibilities',

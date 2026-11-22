@@ -7,12 +7,9 @@ export default {
     sections: [
       {
         id: 'delegate', kind: 'execution',
-        title: '明确责任，再委派任务',
-        body: '主 Agent 明确目标、资料与交付要求，将可独立推进的工作委派给专业子 Agent。',
-        points: [
-          { title: '主 Agent 负责整体交付', body: '判断缺口，组织各项返回。' },
-          { title: '专业子 Agent 负责分项任务', body: '在授权边界内执行，返回结果与待确认事项。' },
-        ],
+        title: "明确责任，再委派任务",
+        body: "主 Agent 明确目标、资料与交付要求，将可独立推进的工作委派给专业子 Agent；主 Agent 负责判断缺口、组织各项返回，子 Agent 在授权边界内执行分项任务，返回结果与待确认事项。",
+        points: [],
         visual: {
           title: '项目尽调材料准备', context: '主任务 · 专业委派', tabs: ['业务目标', '专业子任务', '返回要求'],
           request: '核对项目材料，形成可供审阅的尽调工作底稿。',
@@ -29,11 +26,17 @@ export default {
       },
       {
         id: 'execute', kind: 'execution',
-        title: '执行独立，过程可见',
-        body: '每项子任务单独保留消息与执行过程，进度、异常和结果回到主任务；协作数量、层级与超时由平台策略约束。',
+        title: "执行独立，过程可见",
+        body: "每项子任务在独立上下文中保留消息与执行过程，进度、异常与结果回主任务；并发数、协作层级与超时由平台策略约束。",
         points: [
-          { title: '独立工作并行推进', body: '没有前后依赖的任务可同步执行。' },
-          { title: '需要人员时进入待办', body: '缺少事实或需要审批时，交由对应人员处理。' },
+          {
+            "title": "独立工作并行推进",
+            "body": "没有前后依赖的任务可同步执行。"
+          },
+          {
+            "title": "需要人员时进入待办",
+            "body": "缺少事实或需要审批时，交由对应人员处理。"
+          }
         ],
         visual: {
           title: '专业执行状态', context: '主任务 · 运行进度', tabs: ['执行进度', '返回结果', '待处理事项'],
@@ -51,11 +54,17 @@ export default {
       },
       {
         id: 'deliver', kind: 'document',
-        title: '分项汇总，形成成果',
-        body: '主 Agent 归集来源、差异和待确认事项，形成可继续审阅、修改和发布的项目成果。',
+        title: "分项汇总，形成成果",
+        body: "主 Agent 归集来源、差异与待确认事项，形成带材料目录、要素核对表与差异问题清单的可审阅成果；需专业判断的处理结果回原任务。",
         points: [
-          { title: '保留分项依据', body: '材料目录、核对表和差异清单随成果交付。' },
-          { title: '连接人工判断', body: '需专业确认的事项处理后回到原任务。' },
+          {
+            "title": "保留分项依据",
+            "body": "材料目录、核对表与差异清单随成果交付。"
+          },
+          {
+            "title": "连接人工判断",
+            "body": "需专业确认的事项处理后回到原任务。"
+          }
         ],
         visual: {
           title: '项目尽调工作底稿', context: '主任务 · 成果汇总', tabs: ['工作底稿', '来源依据', '待确认事项'],
@@ -80,11 +89,8 @@ export default {
       {
         id: 'delegate', kind: 'execution',
         title: 'Clarify, then delegate',
-        body: 'The main Agent defines the goal, source materials and delivery requirements, then delegates independent work to specialist sub-Agents.',
-        points: [
-          { title: 'The main Agent owns delivery', body: 'It identifies gaps and organizes returned work.' },
-          { title: 'Specialists own bounded tasks', body: 'They work within authorized boundaries and return findings and open questions.' },
-        ],
+        body: 'The main Agent defines the goal, source materials and delivery requirements, then delegates independent work to specialist sub-Agents. It identifies gaps and assembles returned work; sub-Agents execute within authorized boundaries and return findings and open questions.',
+        points: [],
         visual: {
           title: 'Prepare project due diligence materials', context: 'Main task · Specialist delegation', tabs: ['Business goal', 'Specialist tasks', 'Return requirements'],
           request: 'Review the project records and prepare due diligence working papers.',
@@ -102,7 +108,7 @@ export default {
       {
         id: 'execute', kind: 'execution',
         title: 'Keep execution visible',
-        body: 'Each subtask keeps its own messages and execution process. Progress, issues and results return to the main task, while concurrency, collaboration depth and timeouts remain policy controlled.',
+        body: 'Each subtask keeps its messages and execution process in an independent context. Progress, issues and results return to the main task, while concurrency, collaboration depth and timeouts remain policy controlled.',
         points: [
           { title: 'Run independent work in parallel', body: 'Tasks without dependencies can progress together.' },
           { title: 'Create pending items for people', body: 'Missing facts or approvals go to the responsible colleague.' },
@@ -124,7 +130,7 @@ export default {
       {
         id: 'deliver', kind: 'document',
         title: 'Assemble results',
-        body: 'The main Agent assembles sources, differences and confirmation items into a project deliverable ready for review, editing and release.',
+        body: 'The main Agent assembles sources, differences and confirmation items into a reviewable deliverable with a source index, cross-check tables and a list of discrepancies. Items requiring professional judgment return to the original task after review.',
         points: [
           { title: 'Keep supporting evidence', body: 'Source indexes, cross-checks and differences stay with the deliverable.' },
           { title: 'Connect human judgment', body: 'Items return to the original task after professional review.' },

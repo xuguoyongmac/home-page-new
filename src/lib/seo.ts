@@ -134,7 +134,7 @@ export function buildSeo(input: SeoInput) {
     });
     webpage.mainEntity = { '@id': articleId };
   } else if (page === 'product') {
-    graph.push({ '@type': 'SoftwareApplication', '@id': softwareId, name: 'TeGo OS', url: canonical, description, applicationCategory: 'BusinessApplication', publisher: { '@id': organizationId } });
+    graph.push({ '@type': 'SoftwareApplication', '@id': softwareId, name: locale === 'zh' ? 'TeGo 数字员工协作平台' : 'TeGo Digital Employee Collaboration Platform', url: canonical, description, applicationCategory: 'BusinessApplication', publisher: { '@id': organizationId } });
     webpage.mainEntity = { '@id': softwareId };
   } else if (page === 'faq' && questions?.length) {
     webpage.mainEntity = questions.map(item => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } }));

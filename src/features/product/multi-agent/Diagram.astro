@@ -62,7 +62,7 @@ const labels = zh ? {
   {scene === 'overview' && <div class="ma-overview-panel">
     <div class="ma-panel-header">
       <div><span class="ma-status-dot"></span><strong>{overview.title}</strong></div>
-      <span>{overview.employee}</span>
+      <span>{zh ? `— ${overview.employee}` : overview.employee}</span>
     </div>
     <div class="ma-overview-flow">
       <div class="ma-overview-scope">

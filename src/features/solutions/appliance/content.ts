@@ -34,7 +34,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
   zh: {
     name: 'TeGo Station',
     headline: '算力、模型与软件，\n一体交付',
-    description: '内置 GB10 算力、预装 TeGo OS 与本地大模型，为企业提供软硬件一体的本地部署方案。',
+    description: '内置 GB10 算力、预装 TeGo 与本地大模型，为企业提供软硬件一体的本地部署方案。',
     action: ui.zh.contact,
     highlights: [
       { value: 'GB10', label: 'Grace Blackwell 超级芯片' },
@@ -57,7 +57,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
       {
         id: 'local-model', icon: 'cpu', title: '缺少本地大模型',
         headline: '从算力到应用，一体准备就绪',
-        description: '尚未建设本地大模型环境，也可以从业务应用开始。算力设备、预部署本地模型、推理服务与 TeGo OS 一体交付，完成系统配置、场景验证和管理员移交，衔接后续使用与运维。',
+        description: '尚未建设本地大模型环境，也可以从业务应用开始。算力设备、预部署本地模型、推理服务与 TeGo 一体交付，完成系统配置、场景验证和管理员移交，衔接后续使用与运维。',
         points: ['GB10 算力与本地存储', '预部署模型与推理服务', '预装平台、配置与售后支持'],
       },
       {
@@ -90,7 +90,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
       },
       {
         icon: 'monitor',
-        title: '预装 TeGo OS',
+        title: '预装 TeGo',
         description: '预装数字员工平台，完成组织、账号、权限与业务模板配置。',
       },
       {
@@ -108,7 +108,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
   en: {
     name: 'TeGo Station',
     headline: 'Compute, models and software.\nDelivered together.',
-    description: 'GB10 compute, preinstalled TeGo OS and local models in one appliance for enterprise deployment.',
+    description: 'GB10 compute, preinstalled TeGo and local models in one appliance for enterprise deployment.',
     action: ui.en.contact,
     highlights: [
       { value: 'GB10', label: 'Grace Blackwell Superchip' },
@@ -131,7 +131,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
       {
         id: 'local-model', icon: 'cpu', title: 'No local model infrastructure',
         headline: 'Compute, models and applications, ready together',
-        description: 'Start with business applications even without an existing local model environment. Compute hardware, predeployed models, inference services and TeGo OS arrive together, with system setup, scenario validation and administrator handover to support ongoing use and operations.',
+        description: 'Start with business applications even without an existing local model environment. Compute hardware, predeployed models, inference services and TeGo arrive together, with system setup, scenario validation and administrator handover to support ongoing use and operations.',
         points: ['GB10 compute and local storage', 'Predeployed models and inference services', 'Platform installation, setup and support'],
       },
       {
@@ -164,7 +164,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
       },
       {
         icon: 'monitor',
-        title: 'Preinstalled TeGo OS',
+        title: 'Preinstalled TeGo',
         description: 'The digital employee platform with organization, account, permission and business template configuration.',
       },
       {

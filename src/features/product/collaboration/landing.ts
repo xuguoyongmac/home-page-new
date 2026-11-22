@@ -3,8 +3,10 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['人和数字员工', '围绕同一份成果协作'],
-      summary: '把成员、项目资料、会话、待办和成果版本放进同一项目。数字员工在会话中参与，需要判断时交给人，回应回到原任务继续。',
+      "lines": [
+        "人与数字员工协作"
+      ],
+      "summary": "成员与数字员工共享项目资料，围绕会话、文件和成果版本协作；需要判断时交给人，处理结果接回原任务。"
     },
     pain: {
       title: '成果交出来，也要让团队接得住',
@@ -45,7 +47,7 @@ export default {
   en: {
     hero: {
       lines: ['People and digital employees', 'One shared deliverable'],
-      summary: 'Keep members, project materials, conversations, work items and file revisions together. Digital employees join the conversation, involve people when judgment is needed, and continue from the response.',
+      summary: 'People and digital employees share project context, review deliverables and return human decisions to the task.',
     },
     pain: {
       title: 'Make the result something the whole team can continue',

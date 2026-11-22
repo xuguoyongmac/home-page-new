@@ -3,8 +3,10 @@ import type { LandingTranslations } from '../landing-types';
 export default {
   zh: {
     hero: {
-      lines: ['接入现有业务系统', '也把结果送回流程'],
-      summary: '把客户、项目和经营数据带进任务，用插件、MCP 与 API 执行授权动作，再将状态、记录和成果返回原业务系统。',
+      "lines": [
+        "连接业务系统"
+      ],
+      "summary": "通过插件、MCP 与 API 按授权接入业务系统，把客户、项目与单据带进任务，让状态、记录与成果回到原流程。"
     },
     pain: {
       title: '查到信息之后，工作还要继续向前',
@@ -46,7 +48,7 @@ export default {
   en: {
     hero: {
       lines: ['Connect business systems', 'Bring results back to work'],
-      summary: 'Bring customer records, projects and business data into the task. Use plugins, MCP and APIs for authorized work, then return status, records and deliverables to the original system.',
+      summary: 'Connect authorized business systems with plugins, MCP and APIs, then return records and results to the workflow.',
     },
     pain: {
       title: 'Finding the information is only part of the work',

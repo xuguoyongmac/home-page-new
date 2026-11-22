@@ -55,17 +55,6 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
       </div>
     </article>)}
   </div>
-  <div class="banking-employees-controls" data-employee-controls hidden>
-    <button type="button" class="banking-employees-arrow banking-employees-previous" data-employee-step="-1" aria-label={zh ? '上一位数字员工' : 'Previous digital employee'}>
-      <Icon name="chevron" size={21}/>
-    </button>
-    <button type="button" class="banking-employees-playback" data-employee-playback aria-label={zh ? '暂停自动轮播' : 'Pause autoplay'} aria-pressed="false">
-      <span class="banking-employees-playback-icon" aria-hidden="true"></span>
-    </button>
-    <button type="button" class="banking-employees-arrow banking-employees-next" data-employee-step="1" aria-label={zh ? '下一位数字员工' : 'Next digital employee'}>
-      <Icon name="chevron" size={21}/>
-    </button>
-  </div>
 </div>
 
 <script>
@@ -81,11 +70,8 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
       if (employeeCarousels.has(root)) return;
       const stage = root.querySelector<HTMLElement>('[data-employee-stage]');
       const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-employee-card]'));
-      const controls = root.querySelector<HTMLElement>('[data-employee-controls]');
-      const playback = root.querySelector<HTMLButtonElement>('[data-employee-playback]');
-      if (!stage || cards.length < 2 || !controls || !playback) return;
+      if (!stage || cards.length < 2) return;
 
-      const zh = root.dataset.locale === 'zh';
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const listeners = new AbortController();
       const { signal } = listeners;
@@ -114,7 +100,6 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
       let hovered = window.matchMedia('(hover: hover)').matches && root.matches(':hover');
       let focused = root.contains(document.activeElement);
       let inView = root.getBoundingClientRect().bottom > 0 && root.getBoundingClientRect().top < window.innerHeight;
-      let userPaused = false;
       let focusAfterNavigation = false;
       let autoplayTimer: ReturnType<typeof setTimeout> | undefined;
       let transitionTimer: ReturnType<typeof setTimeout> | undefined;
@@ -155,22 +140,9 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
         autoplayTimer = undefined;
       };
 
-      const updatePlayback = () => {
-        root.dataset.userPaused = String(userPaused);
-        playback.disabled = reducedMotion.matches;
-        playback.setAttribute('aria-pressed', String(userPaused));
-        const label = reducedMotion.matches
-          ? (zh ? '自动轮播已关闭' : 'Autoplay is off')
-          : userPaused
-            ? (zh ? '继续自动轮播' : 'Resume autoplay')
-            : (zh ? '暂停自动轮播' : 'Pause autoplay');
-        playback.setAttribute('aria-label', label);
-        playback.title = label;
-      };
-
       const scheduleAutoplay = () => {
         stopAutoplay();
-        if (disposed || userPaused || reducedMotion.matches || hovered || focused || pointer || !inView || document.hidden || transitioning || pendingSteps) return;
+        if (disposed || reducedMotion.matches || hovered || focused || pointer || !inView || document.hidden || transitioning || pendingSteps) return;
         autoplayTimer = setTimeout(() => requestStep(1), pauseDuration);
       };
 
@@ -271,15 +243,6 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
         }, { signal });
       });
 
-      root.querySelectorAll<HTMLButtonElement>('[data-employee-step]').forEach(button => {
-        button.addEventListener('click', () => requestStep(Number(button.dataset.employeeStep)), { signal });
-      });
-      playback.addEventListener('click', () => {
-        userPaused = !userPaused;
-        updatePlayback();
-        scheduleAutoplay();
-      }, { signal });
-
       root.addEventListener('keydown', event => {
         if (event.ctrlKey || event.metaKey || event.altKey) return;
         if (event.repeat && transitioning) return;
@@ -378,15 +341,10 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
       }, { threshold: .15 });
       intersectionObserver.observe(root);
       document.addEventListener('visibilitychange', scheduleAutoplay, { signal });
-      reducedMotion.addEventListener('change', () => {
-        updatePlayback();
-        scheduleAutoplay();
-      }, { signal });
+      reducedMotion.addEventListener('change', scheduleAutoplay, { signal });
 
       updateAccessibility();
-      updatePlayback();
       measureCards();
-      controls.hidden = false;
       root.dataset.ready = 'true';
       queueFrame(() => queueFrame(() => {
         if (!disposed) root.dataset.animated = 'true';
@@ -411,7 +369,6 @@ const accents = ['110, 180, 234', '94, 191, 176', '151, 163, 222', '197, 171, 11
           card.removeAttribute('aria-current');
           card.tabIndex = 0;
         });
-        controls.hidden = true;
       });
     });
   };

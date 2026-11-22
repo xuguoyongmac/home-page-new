@@ -53,6 +53,7 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
         "title": "经营与资金一体看，集团变化看得更深",
         "problem": "经营、预算和司库数据分散在多个系统，所属企业口径不一，周期报告耗在取数、拼表与反复对账。",
         "body": "连接经营、财务与司库资料，统一指标、组织和统计周期，核对集团、单位与项目的总分勾稽。数字员工整理预算偏差、资金变化、回款节点与业务说明，交付经营报告、资金专题和计算明细；每个关键数字关联来源，让总部从看报表走向看清变化与待协调事项。",
+        "value": "总部从「看报表对账」变成「看变化与待协调事项」——指标、组织与周期统一，总分勾稽逐项核对，每个关键数字关联来源。",
         "outcomes": [
           "经营预算与差异分析",
           "司库资金与回款专题",
@@ -63,6 +64,7 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
         "title": "从招采文件到履约交付，专业方法贯穿全程",
         "problem": "采购条款反复核、投标材料多源拼、证照业绩易过期，签约后交付节点又与前端约定脱节。",
         "body": "采购侧核对需求、条款与评审要素；投标侧解析资格、评分与否决条款，关联证照、人员和业绩，编制成套标书、偏离表与递交前自查清单。多人协作保持工期、人员等事实一致，审阅签认后导出；合同形成后继续跟进节点、变更与供应履约，让方法贯穿签约前后。",
+        "value": "招采从「逐条核、多源拼」变成「成套准备、递交前自查」——资格评分与否决条款解析、证照业绩关联，偏离表与自查清单成套；审阅签认后导出。",
         "outcomes": [
           "采购核对与成套标书",
           "资信匹配与递交前自查",
@@ -73,6 +75,7 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
         "title": "项目有人承接，现场问题持续跟进",
         "problem": "会议部署、合同节点、进度成本与安环记录各自分散，项目靠人追进度，问题整改容易在交接中断档。",
         "body": "把会议议定事项、合同要求与现场反馈汇入项目，形成任务草案、进度汇总和督办周报。数字员工跟踪节点、成本变更与材料缺项，整理EHS法规依据、隐患台账和整改反馈，需要判断或授权时交责任岗位处理，回应后接续工作，让部署、执行与复查连起来。",
+        "value": "项目从「靠人追」变成「任务有人接、问题持续跟」——议定事项、合同要求与现场反馈汇入同一项目，节点成本与 EHS 隐患有台账；授权事项交责任岗位。",
         "outcomes": [
           "项目任务与督办周报",
           "节点成本与变更分析",
@@ -83,12 +86,18 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
         "title": "让监督有底稿，让整改推动制度改进",
         "problem": "监督问题、整改证据与单位反馈分散，制度公文反复查，党建纪检材料重复整理，复查与责任追踪成本高。",
         "body": "关联问题来源、责任单位、整改要求与佐证材料，持续形成进度报告和复查底稿。以集团制度、党章党规和公文规范支撑材料核对、公文起草与党建纪检台账，把重复问题归入制度和技能改进；政治把关、责任认定与正式签发由相应岗位完成，让监督成果持续服务治理。",
+        "value": "监督从「证据分散」变成「底稿连续」——问题、责任、佐证与整改关联，制度公文与党建材料有出处；政治把关、责任认定与正式签发由相应岗位完成。",
         "outcomes": [
           "监督整改与复查底稿",
           "制度公文与党建材料",
           "共性问题与制度改进"
         ]
       }
+    ],
+    "reasons": [
+      "数字员工上岗，不是问答工具——有岗位、有身份、有权限，交付经营报告、招采底稿这类可验收成果。",
+      "主/子 Agent 按集团方法协同——招采规则、制度口径沉淀为 Skill，成熟岗位从总部推广到所属企业。",
+      "数据不出域、关键环节人工把关——经营与资金数据留在集团内网，签批与责任认定由有权岗位完成，全过程留痕。"
     ],
     "teamTitle": "从集团总部到所属企业，组建覆盖治理全链条的数字员工团队",
     "employees": [
@@ -268,7 +277,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
           "Budget and variance analysis",
           "Treasury and collections briefs",
           "Source-linked management reports"
-        ]
+        ],
+        "value": "Headquarters focuses on changes and coordination needs. Metrics, organizational units and periods use consistent definitions, consolidated figures are reconciled with their components, and key figures link to sources."
       },
       {
         "title": "Carry professional methods from procurement and bids into delivery",
@@ -278,7 +288,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
           "Procurement checks and bid packages",
           "Credential matching and submission checks",
           "Contract milestones and supplier delivery"
-        ]
+        ],
+        "value": "Procurement and bid teams prepare complete submissions and check them before delivery. Qualification, scoring and disqualification clauses connect to credentials and project experience. Deviation tables and review checklists are exported after review and sign-off."
       },
       {
         "title": "Give every project action a path to follow-through",
@@ -288,7 +299,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
           "Project actions and follow-up reports",
           "Milestone, cost and change analysis",
           "EHS hazards and remediation records"
-        ]
+        ],
+        "value": "Project tasks have owners and issues receive continued follow-up. Meeting decisions, contract requirements and site feedback stay in one project. Milestones, costs and EHS findings have tracking records; authorized matters go to responsible roles."
       },
       {
         "title": "Support oversight with evidence. Turn remediation into better methods.",
@@ -298,7 +310,8 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
           "Remediation reports and review evidence",
           "Official drafts and Party affairs materials",
           "Recurring issues and policy improvement"
-        ]
+        ],
+        "value": "Oversight retains a continuous evidence trail. Issues, responsibilities, supporting records and remediation stay connected. Policies, official documents and Party-building material retain sources; responsible roles conduct political review, determine accountability and approve formal issuance."
       }
     ],
     "teamTitle": "Build a digital workforce from group headquarters to operating teams",
@@ -421,6 +434,11 @@ export const stateOwnedPresentation: IndustrySolutionPresentation = {
     "deployment": {
       "title": "Build centrally. Reuse locally. Keep core assets inside the enterprise.",
       "body": "Deploy in group infrastructure or a private cloud, connect local models and adapt to selected domestic technologies. Share policy knowledge, digital employee templates and professional skills while setting access by subsidiary, project and person. Tailor system connections and deliverable standards to existing operations. Retain version history, execution and audit records as proven roles expand into a sustained digital workforce across the group."
-    }
+    },
+    "reasons": [
+      "Digital employees deliver role-based work——Defined roles, identities and permissions support reviewable operating reports and procurement papers.",
+      "Main and sub-Agents follow group methods——Procurement rules and policy definitions become reusable skills, extending established role methods from headquarters to subsidiaries.",
+      "Keep data in-house and people in control——Operating and treasury data stays within the group network. Authorized roles complete approvals and accountability decisions, with records retained throughout."
+    ]
   }
 };

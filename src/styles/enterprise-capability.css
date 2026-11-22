@@ -13,7 +13,7 @@
 .cp-hero{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.2fr);gap:58px;align-items:center;min-height:570px;padding-block:52px 58px}
 .cp-hero-copy{position:relative;z-index:2}
 .cp-hero h1{font-size:clamp(38px,3.65vw,52px);font-weight:600;line-height:1.38;text-wrap:balance}
-.cp-hero h1 span{display:block;white-space:nowrap}.cp-hero h1 span:last-child{color:#a9cdf6}
+.cp-hero h1 span{display:block;white-space:nowrap}.cp-hero h1 span:lang(zh){white-space:normal}.cp-hero h1 span:last-child{color:#a9cdf6}
 .cp-hero-copy>p{max-width:33em;margin-top:25px;color:var(--cp-body);font-size:17px;line-height:1.78;text-wrap:pretty}
 .cp-hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:25px;margin-top:30px}
 .cp-text-link{display:inline-flex;align-items:center;min-height:44px;color:#c4dcf4;font-size:14px;text-decoration:none}.cp-text-link:hover{color:#fff}.cp-text-link:focus-visible{outline:2px solid var(--cp-blue);outline-offset:5px}

@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'parse5';
 import { Converter } from 'opencc-js/cn2t';
+import { marketingStructure } from '../shared/content-parity.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = path.join(root, 'dist');
 const languages = { zh: 'zh-CN', en: 'en', 'zh-Hant': 'zh-Hant' };
@@ -174,6 +175,11 @@ for(const [language, paths] of Object.entries(routes)) for(const route of paths)
   for(const c of node.childNodes||[])inspect(c,excluded,inMain);
  };inspect(nodes[0]);
  const originalNodes=language==='zh-Hant'?nodesOf(sourceFor(path.join(dist,'zh',route))):[];
+ // Historical articles can have editorial differences; current marketing pages must retain the same business groups.
+ if(language!=='zh' && !/^blog\/.+\/index\.html$/.test(route)) {
+  const sourceNodes=language==='zh-Hant'?originalNodes:nodesOf(sourceFor(path.join(dist,'zh',route)));
+  check(JSON.stringify(marketingStructure(nodes[0]))===JSON.stringify(marketingStructure(sourceNodes[0])),`${label}: translated business sections, headings, definitions or value blocks are missing`);
+ }
  checkEmbedded(embeddedDocuments(nodes),embeddedDocuments(originalNodes),language,label);
  if(language==='zh-Hant')check(contentText(nodes[0]).join('')===contentText(originalNodes[0]).map(value=>convert(value)).join(''),`${label}: Traditional content must match the source conversion without gaps`);
 }

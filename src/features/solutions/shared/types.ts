@@ -15,7 +15,8 @@ export interface IndustrySolutionCopy {
   hero: { lines: string[]; background: string };
   sources: string[];
   outputs: string[];
-  features: { title: string; problem: string; body: string; image?: string; outcomes?: string[] }[];
+  features: { title: string; problem: string; body: string; value?: string; image?: string; outcomes?: string[] }[];
+  reasons?: string[];
   teamTitle: string;
   employees: IndustryEmployee[];
   deployment: { title: string; body: string };

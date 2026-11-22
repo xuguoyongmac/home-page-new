@@ -27,7 +27,7 @@
   padding-block: 40px 45px;
 }
 .employee-hero-intro { min-width: 0; }
-.employee-hero h1 { font-size: clamp(38px, 3.6vw, 51px); font-weight: 600; line-height: 1.25; }
+.employee-hero h1 { font-size: clamp(38px, 3.6vw, 51px); font-weight: 600; line-height: 1.25; text-wrap: balance; }
 .employee-hero-copy p { max-width: 38ch; margin-top: 24px; font-size: 18px; line-height: 1.85; }
 .employee-page .employee-action { margin-top: 18px; }
 .employee-page .employee-hero-art { width: 100%; max-width: 900px; min-width: 0; justify-self: center; }

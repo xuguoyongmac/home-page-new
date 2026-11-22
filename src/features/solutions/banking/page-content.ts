@@ -55,6 +55,7 @@ export const bankingPresentation: IndustrySolutionPresentation = {
         "title": "信贷准备提速，专业审查更深入",
         "problem": "资料分批到达、报表口径不一，信贷人员在逐份摘录和反复勾稽中消耗时间，关键风险反而难以聚焦。",
         "body": "数字员工贯通资料归集、字段交叉核对、财务勾稽与报告编制，按本行制度和方法关联企业、期间、金额与交易背景。差异、缺项和原文依据随尽调底稿一并交付，团队接续补料与修订，让专业人员把精力放在经营真实性与授信风险判断。",
+        "value": "审查从「翻材料」变成「看疑点」——差异、缺项与原文依据随底稿交付；主/子 Agent 按本行制度分工核对，财报勾稽方法沉淀为可复用 Skill，人员轮换不带走经验。",
         "outcomes": [
           "财务交叉核验",
           "尽调报告编制",
@@ -65,6 +66,7 @@ export const bankingPresentation: IndustrySolutionPresentation = {
         "title": "风险变化持续跟进，贷后核查直达重点",
         "problem": "财务变化、风险预警与历史核查各自分散，新信号难以关联授信背景，贷后跟进常从重新翻阅材料开始。",
         "body": "按周期归集客户经营、财务、担保与风险变化，对照授信约定和历史记录，形成变化摘要、影响事项与核查清单。数字员工持续接续补充材料、现场反馈和处理进度，让风险线索有背景、核查工作有重点、后续跟进有着落。",
+        "value": "贷后从「重新翻材料」变成「接着上次判断往下看」——变化摘要、影响事项与核查清单都带背景；周期任务持续巡检，风险结论由有权人员确认，过程可回溯。",
         "outcomes": [
           "风险线索归并",
           "贷后变化分析",
@@ -75,6 +77,7 @@ export const bankingPresentation: IndustrySolutionPresentation = {
         "title": "把客户洞察转为经营机会，把专业服务带到一线",
         "problem": "客户画像、产品信息和服务历史分散在多个系统，客户经理忙于拼资料，难以把客户变化及时转成有针对性的服务。",
         "body": "连接客户经营与服务记录、行内产品和行业知识，围绕对公客户与零售财富客群，梳理资金安排、业务变化和沟通需求。数字员工协同产出客户洞察、访前提纲和综合服务方案，接续会后事项，让一线带着判断依据沟通，带着具体方案跟进。",
+        "value": "一线从「拼资料」变成「带判断沟通」——客户洞察、访前提纲与综合方案成套交付、带依据可接续；客户经营方法沉淀为 Skill，各网点口径一致。",
         "outcomes": [
           "客户需求洞察",
           "访前与回访准备",
@@ -85,12 +88,18 @@ export const bankingPresentation: IndustrySolutionPresentation = {
         "title": "经营分析形成行动，运营协作形成合力",
         "problem": "经营报表汇总之后仍要解释差异，运营问题、制度更新和整改事项跨越多个岗位，分析与执行容易脱节。",
         "body": "结合业务数据与制度知识，按网点、客群、产品和渠道分析变化，持续形成经营简报、运营核对底稿与制度影响分析。通过项目协作接续问题、责任人、复核意见和成果版本，让管理层看清变化，让条线把分析落实到服务改进与运营行动。",
+        "value": "管理层从「看报表」变成「看变化与待协调事项」——每个关键数字关联来源，分析落到责任人与行动；跨岗位在同一项目里协作，成果有版本、有留痕。",
         "outcomes": [
           "经营变化归因",
           "运营问题协作",
           "制度与整改跟进"
         ]
       }
+    ],
+    "reasons": [
+      "数字员工上岗，不是问答工具——有岗位、有身份、有权限，交付尽调底稿、核查清单这类可验收成果。",
+      "主/子 Agent 按本行方法协同——财报勾稽、审查规则沉淀为 Skill，人员轮换不带走经验。",
+      "数据不出域、关键环节人工把关——征信与账户信息留在行内，授信结论由有权人员确认，全过程留痕可回溯。"
     ],
     "teamTitle": "把银行专业方法，装配成可协作的数字员工团队",
     "employees": [
@@ -270,7 +279,8 @@ export const bankingPresentation: IndustrySolutionPresentation = {
           "Financial cross-checks",
           "Diligence report drafting",
           "Source-linked findings"
-        ]
+        ],
+        "value": "Reviewers focus on discrepancies. Differences, missing items and source references accompany the working papers. Main and sub-Agents divide checks according to bank policy; financial reconciliation methods remain reusable skills when staff change."
       },
       {
         "title": "Keep risk changes in view and focus post-loan follow-up.",
@@ -280,7 +290,8 @@ export const bankingPresentation: IndustrySolutionPresentation = {
           "Connected risk signals",
           "Post-loan change analysis",
           "Investigation follow-through"
-        ]
+        ],
+        "value": "Post-loan follow-up continues from the previous assessment. Change summaries, impact items and verification checklists retain their context. Recurring tasks monitor changes; authorized staff confirm risk conclusions, with a traceable process."
       },
       {
         "title": "Turn client insight into relevant opportunities and better service.",
@@ -290,7 +301,8 @@ export const bankingPresentation: IndustrySolutionPresentation = {
           "Client needs insight",
           "Meeting and follow-up preparation",
           "Integrated service proposals"
-        ]
+        ],
+        "value": "Frontline teams communicate with supporting evidence. Client insights, meeting briefs and service proposals arrive together and support continued follow-up. Reusable client management skills keep methods consistent across branches."
       },
       {
         "title": "Turn business analysis into action and connect operating teams.",
@@ -300,7 +312,8 @@ export const bankingPresentation: IndustrySolutionPresentation = {
           "Operating change analysis",
           "Exception collaboration",
           "Policy and remediation follow-up"
-        ]
+        ],
+        "value": "Managers focus on changes and coordination needs. Key figures link to sources, analysis connects to owners and actions, and teams work in the same project with versioned deliverables and retained records."
       }
     ],
     "teamTitle": "Turn banking expertise into a digital employee team",
@@ -423,6 +436,11 @@ export const bankingPresentation: IndustrySolutionPresentation = {
     "deployment": {
       "title": "Choose your models. Keep banking expertise in-house.",
       "body": "Deploy TeGo privately and connect bank models, knowledge and business systems. Organize digital employees by business line and role, preserve policies, methods and reporting standards as reusable assets, and manage template releases, access, human confirmations and audit records as proven practices expand across the bank."
-    }
+    },
+    "reasons": [
+      "Digital employees deliver role-based work——Defined roles, identities and permissions support reviewable due diligence papers and verification checklists.",
+      "Main and sub-Agents follow the bank’s methods——Financial reconciliation and review rules become reusable skills, retaining expertise when staff change.",
+      "Keep data in-house and people in control——Credit and account information stays within the bank. Authorized staff confirm credit decisions, with traceable records throughout."
+    ]
   }
 };

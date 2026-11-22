@@ -9,6 +9,11 @@ import '../../../styles/industry-value-page.css';
 interface Props { locale: Locale; slug: string; presentation: IndustrySolutionCopy; }
 const { locale, slug, presentation: copy } = Astro.props;
 const zh = locale === 'zh';
+const whyReasons = (copy.reasons ?? []).map((reason) => {
+  const [title, ...body] = reason.split('——');
+  return { title, body: body.join('——') };
+});
+const whyReasonIcons = ['user-check', 'workflow', 'shield'];
 ---
 <div class="industry-value-page" data-industry-solution={slug}>
   <section class="industry-value-hero" aria-labelledby={`${slug}-title`}>
@@ -25,9 +30,10 @@ const zh = locale === 'zh';
     <div class="container industry-value-grid">
       <div class="industry-value-copy">
         <h2 id={`${slug}-feature-${index}`}>{feature.title}</h2>
-        <p class="industry-value-problem">{feature.problem}</p>
-        <p class="industry-value-body">{feature.body}</p>
-        {feature.outcomes?.length && <ul class="industry-value-outcomes">{feature.outcomes.map(outcome => <li><Icon name="check" size={16}/><span>{outcome}</span></li>)}</ul>}
+        <p class="industry-value-problem"><strong>{zh ? '业务挑战' : 'Business challenge'}</strong>{feature.problem}</p>
+        <p class="industry-value-body"><strong>{zh ? '解决方案' : 'Solution'}</strong>{feature.body}</p>
+        {feature.value && <p class="industry-value-result"><strong>{zh ? '业务价值' : 'Business value'}</strong>{feature.value}</p>}
+        {feature.outcomes?.length && <ul class="industry-value-outcomes">{feature.outcomes.map(outcome => <li><Icon name="circle-check" size={18}/><span>{outcome}</span></li>)}</ul>}
       </div>
       <figure class="industry-value-image">
         <img src={feature.image ?? `/images/solutions/${slug}/${slug}-value-${index + 1}_V2.0.webp`} alt={feature.title} width="1200" height="800" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1200px) 52vw, 650px" loading="lazy" decoding="async"/>
@@ -35,15 +41,33 @@ const zh = locale === 'zh';
     </div>
   </section>)}
 
+  <section class="industry-value-why" aria-labelledby={`${slug}-why-title`}>
+    <div class="container">
+      <div class="industry-value-why-heading">
+        <div class="industry-value-why-main">
+          <h2 id={`${slug}-why-title`}>{zh ? 'TeGo 数字员工协作平台' : 'TeGo Digital Employee Collaboration Platform'}</h2>
+          <div class="industry-value-why-summary">
+            <h3>{copy.deployment.title}</h3>
+            <p>{copy.deployment.body}</p>
+          </div>
+        </div>
+        <div class="industry-value-why-detail">
+          {whyReasons.length > 0 && <ul class="industry-value-why-reasons">
+            {whyReasons.map((reason, index) => <li>
+              <span class="industry-value-why-icon"><Icon name={whyReasonIcons[index]} size={18}/></span>
+              <div>
+                <h3>{reason.title}</h3>
+                <p>{reason.body}</p>
+              </div>
+            </li>)}
+          </ul>}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="industry-value-team" aria-labelledby={`${slug}-team-title`}>
     <div class="container"><h2 id={`${slug}-team-title`}>{copy.teamTitle}</h2></div>
     <EmployeeCarousel locale={locale} employees={copy.employees} teamLabel={copy.teamTitle}/>
-  </section>
-
-  <section class="industry-value-deployment" aria-labelledby={`${slug}-deployment-title`}>
-    <div class="container industry-value-deployment-grid">
-      <h2 id={`${slug}-deployment-title`}>{copy.deployment.title}</h2>
-      <p>{copy.deployment.body}</p>
-    </div>
   </section>
 </div>

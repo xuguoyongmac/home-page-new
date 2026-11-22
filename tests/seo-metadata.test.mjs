@@ -28,7 +28,7 @@ test('page identity links the actual publisher, site and current page without ob
   assert.equal(webpage.publisher['@id'], organization['@id']);
   assert.equal(webpage.isPartOf['@id'], nodeOf(seo, 'WebSite')['@id']);
   assert.equal(webpage.mainEntity['@id'], software['@id']);
-  assert.equal(software.name, 'TeGo OS');
+  assert.equal(software.name, 'TeGo 数字员工协作平台');
   assert.equal(software.offers, undefined);
   assert.equal(software.aggregateRating, undefined);
   assert.equal(software.dateModified, undefined);

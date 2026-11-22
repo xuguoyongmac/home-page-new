@@ -1,9 +1,3 @@
-import { bankingPresentation } from '../features/solutions/banking/page-content';
-import { insurancePresentation } from '../features/solutions/insurance/page-content';
-import { securitiesPresentation } from '../features/solutions/securities/page-content';
-import { governmentPresentation } from '../features/solutions/government/page-content';
-import { stateOwnedPresentation } from '../features/solutions/state-owned/page-content';
-import { trustPresentation } from '../features/solutions/trust/page-content';
 import { generalPresentation } from '../features/solutions/general/page-content';
 
 import type { Locale } from './types';
@@ -85,18 +79,82 @@ const finalizedZhHomeIndustries: Record<string, HomeIndustry> = {
   },
 };
 
+const finalizedEnHomeIndustries: Record<string, HomeIndustry> = {
+  banking: {
+    title: 'Accelerate specialist work. Grow client value.',
+    scenarios: ['Credit diligence', 'Post-loan risk', 'Corporate coverage', 'Retail and wealth', 'Service operations', 'Compliance management'],
+    pain: 'Corporate credit teams reconcile financial statements, cash flows, credit records and guarantees. Manual checks take time and can miss risks, while wealth allocation relies on individual expertise. Data access and transfers are restricted; conclusions and client communications need traceable sources.',
+    value: 'TeGo coordinates credit, risk, wealth and branch operations through digital employees. A main Agent breaks down tasks; sub-Agents check financial statements, cash flows and client communications in parallel. Policies and role methods become reusable skills, data stays within the bank, and people confirm key conclusions.',
+    benefits: [
+      { title: 'Coordinate due diligence', description: 'A main Agent delegates parallel financial and cash flow checks to sub-Agents, producing working papers for human judgment.' },
+      { title: 'Reuse role methods as skills', description: 'Credit, suitability and client communication review methods become reusable skills for branches.' },
+      { title: 'Keep data in-house and results traceable', description: 'Credit and account information follows access permissions. People confirm conclusions, with evidence and records retained.' },
+    ],
+  },
+  insurance: {
+    title: 'Explain coverage clearly. Handle claims with clarity.',
+    scenarios: ['Sales support', 'Underwriting', 'Claims review', 'Consumer protection', 'Policy servicing', 'Business analysis'],
+    pain: 'Complex terms, exclusions and health disclosures make consistent answers difficult. Underwriting and claims depend on specialist experience. Sales communications must meet consumer protection requirements, with traceable handling and human confirmation of conclusions.',
+    value: 'TeGo coordinates sales, underwriting, claims, consumer protection and policy servicing through digital employees. A main Agent breaks down tasks; sub-Agents parse documents, compare terms and review sales communications in parallel. Rules and experience become reusable skills, data stays in-house, and people confirm conclusions.',
+    benefits: [
+      { title: 'Coordinate case preparation', description: 'A main Agent delegates parallel document and policy checks to sub-Agents, preparing findings for human confirmation.' },
+      { title: 'Reuse underwriting and claims methods', description: 'Policy comparisons, health disclosure checks and liability assessment methods become reusable skills across the organization.' },
+      { title: 'Keep data in-house and sales traceable', description: 'Policy and client information follows access permissions. People confirm communications and underwriting and claims conclusions.' },
+    ],
+  },
+  securities: {
+    title: 'Respond faster in research. Deliver consistent professional service.',
+    scenarios: ['Investment research', 'Investment advisory', 'Investment banking and asset management', 'Compliance review', 'Wealth management', 'Business analysis'],
+    pain: 'Research reports, announcements and market data consume time before analysis begins. Advisory and investment banking methods rely on individual expertise. Suitability, diligence and opinions need traceable evidence, with key content confirmed by licensed professionals.',
+    value: 'TeGo coordinates research, advisory, investment banking and business analysis through digital employees. A main Agent breaks down tasks; sub-Agents retrieve, summarize and cross-check in parallel. Research methods become reusable skills, data stays within the firm, and licensed professionals confirm opinions and review conclusions.',
+    benefits: [
+      { title: 'Coordinate research work', description: 'A main Agent delegates parallel retrieval, summaries and comparisons to sub-Agents. Opinions retain their sources.' },
+      { title: 'Reuse specialist methods as skills', description: 'Advisory service and investment banking diligence methods become reusable skills across teams.' },
+      { title: 'Keep data in-house and opinions sourced', description: 'Research and holdings data follows access permissions. People confirm client-facing content and review conclusions.' },
+    ],
+  },
+  government: {
+    title: 'Find the policy. Move services forward.',
+    scenarios: ['Policy services', 'Official documents', 'Service processing', 'Hotline assessment', 'Action follow-up', 'Public request response'],
+    pain: 'Policies, guides and case files sit apart. Frontline staff spend time finding sources, checking material and routing requests. Classified and personal information must stay within permissions, while policy guidance and public releases need accurate records.',
+    value: 'TeGo coordinates policy services, documents, case handling and hotline follow-up through digital employees. A main Agent breaks down tasks; sub-Agents retrieve policies, check materials and classify requests in parallel. Service methods become reusable skills, data stays on the internal network, and people confirm guidance and formal issuance.',
+    benefits: [
+      { title: 'Coordinate service preparation', description: 'A main Agent delegates parallel policy searches, material checks and request classification to sub-Agents.' },
+      { title: 'Reuse consistent service methods', description: 'Policy responses, document standards and hotline assessment methods become reusable skills for service desks and departments.' },
+      { title: 'Keep data internal and handling traceable', description: 'Government data follows access permissions. People confirm policy guidance and formal issuance.' },
+    ],
+  },
+  'state-owned': {
+    title: 'See across the group. Coordinate specialist work.',
+    scenarios: ['Official documents', 'Procurement compliance', 'Business analysis', 'Action follow-up', 'Policies and contracts', 'Audit preparation'],
+    pain: 'Operating data, official documents and procurement materials pass through reporting layers. Manual checks use inconsistent definitions and miss issues, while staff changes disrupt established methods. Group data stays internal, and decision and audit records must remain complete.',
+    value: 'TeGo coordinates documents, procurement, business analysis and contract review through digital employees. A main Agent breaks down tasks; sub-Agents scan disqualification clauses, compare terms and consolidate metrics in parallel. Group policies become reusable skills, data access follows classification, and people confirm decisions and formal issuance.',
+    benefits: [
+      { title: 'Coordinate complete working materials', description: 'A main Agent delegates parallel disqualification checks, clause comparisons and metric consolidation to sub-Agents.' },
+      { title: 'Reuse group methods as skills', description: 'Document, procurement and legal review methods become reusable skills for headquarters and subsidiaries.' },
+      { title: 'Keep data in-house and decisions traceable', description: 'Group data access follows classification. People confirm decisions and formal issuance; outputs retain supporting evidence.' },
+    ],
+  },
+  trust: {
+    title: 'Deepen due diligence. Evidence trustee responsibilities.',
+    scenarios: ['Product due diligence', 'Wealth management', 'Family trusts', 'Securities research', 'Ongoing monitoring', 'Compliance records'],
+    pain: 'Scattered project files prolong diligence and contract checks and make risks easier to miss. Wealth allocation depends on individual expertise. Suitability and trustee responsibilities need records, while client and project data stays in-house.',
+    value: 'TeGo coordinates diligence, wealth management, family trusts and ongoing monitoring through digital employees. A main Agent breaks down tasks; sub-Agents reconcile materials, compare clauses and monitor changes in parallel. Rules and methods become reusable skills, data stays in-house, and people confirm key conclusions.',
+    benefits: [
+      { title: 'Coordinate due diligence', description: 'A main Agent delegates parallel material reconciliation and contract comparisons to sub-Agents.' },
+      { title: 'Reuse trustee work methods', description: 'Diligence review, allocation methods and ongoing monitoring become reusable skills for business teams.' },
+      { title: 'Keep data in-house and trustee work traceable', description: 'Project and client data follows access permissions. People confirm suitability and trustee conclusions.' },
+    ],
+  },
+};
+
 export const homeIndustries: Record<Locale, Record<string, HomeIndustry>> = {
   zh: {
     ...finalizedZhHomeIndustries,
     'general': generalPresentation.zh.home,
   },
   en: {
-    'banking': bankingPresentation.en.home,
-    'insurance': insurancePresentation.en.home,
-    'securities': securitiesPresentation.en.home,
-    'government': governmentPresentation.en.home,
-    'state-owned': stateOwnedPresentation.en.home,
-    'trust': trustPresentation.en.home,
+    ...finalizedEnHomeIndustries,
     'general': generalPresentation.en.home,
   },
 };

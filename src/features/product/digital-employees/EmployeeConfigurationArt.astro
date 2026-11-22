@@ -11,7 +11,7 @@ const employees = [
   { name: t('人事档案专员', 'HR records specialist'), portrait: 'hr', enabled: false },
 ];
 ---
-<div class:list={['configuration-art', { 'configuration-art-en':!zh }]} role="img" aria-label={t('统一管理员工列表中的启停状态，展开项目周报专员的配置：岗位文件、专业技能、知识库开关、插件、独立成员授权与每周任务计划。知识检索受权限约束，插件代办需另行委托。', 'Manage employee enablement and configure the selected reporting specialist: role files, skills, knowledge access, plugins, separate member grants, and a weekly task schedule. Knowledge access remains permission-bound; plugin work requires separate delegation.')}>
+<div class:list={['configuration-art', { 'configuration-art-en':!zh }]} role="img" aria-label={t('统一管理员工列表中的启停状态，展开项目周报专员的配置：岗位文件、专业技能、知识库开关、插件、独立成员授权与每周任务计划。知识检索受权限约束，插件工作需明确业务委托。', 'Manage employee enablement and configure the selected reporting specialist: role files, skills, knowledge access, plugins, separate member grants, and a weekly task schedule. Knowledge access remains permission-bound; plugin work requires separate delegation.')}>
   <div class="configuration-scene" aria-hidden="true">
     <div class="employee-admin-list">
       <div class="admin-list-heading"><strong>{t('员工管理', 'Employee management')}</strong><span><Icon name="plus" size={15}/>{t('招募员工', 'Recruit')}</span></div>
@@ -32,7 +32,7 @@ const employees = [
         <div class="config-field"><span>{t('岗位文件', 'Role files')}</span><div class="config-file-values"><span><Icon name="file" size={15}/>SOUL.md</span><span><Icon name="file" size={15}/>AGENTS.md</span></div></div>
         <div class="config-field"><span>{t('专业技能', 'Skills')}</span><div class="config-skill-values"><span>{t('进度汇总', 'Progress summaries')}</span><span>{t('周报编制', 'Report drafting')}</span></div></div>
         <div class="config-field config-knowledge"><span>{t('企业知识', 'Knowledge')}</span><div><div class="config-toggle-line"><strong>{t('启用知识库', 'Enable knowledge bases')}</strong><span class="config-toggle"></span></div><p>{t('检索有权限访问的知识库', 'Search knowledge bases within permissions')}</p></div></div>
-        <div class="config-field"><span>{t('业务插件', 'Plugins')}</span><div class="config-plugin-value"><Icon name="plug" size={16}/><span>{t('安装与配置', 'Install and configure')}</span><small>{t('代办需另行委托', 'Separate delegation for business actions')}</small></div></div>
+        <div class="config-field"><span>{t('业务插件', 'Plugins')}</span><div class="config-plugin-value"><Icon name="plug" size={16}/><span>{t('安装与配置', 'Install and configure')}</span><small>{t('需明确业务委托', 'Separate delegation for business actions')}</small></div></div>
       </div>
       <div class="config-member-grant"><div><span>{t('发现范围', 'Discoverability')}</span><strong>{t('指定团队可发现', 'Discoverable by selected teams')}</strong></div><div><span>{t('授权', 'Access grant')}</span><strong>{t('项目管理组', 'Project management team')}<em>{t('聊天', 'Chat')}</em></strong></div></div>
       <div class="config-recurring-task"><span class="task-clock"><Icon name="clock" size={21}/></span><div><strong>{t('项目周报编制', 'Project weekly report')}</strong><span>{t('每周五', 'Every Friday')} · 16:30</span></div><span class="config-toggle"></span></div>
