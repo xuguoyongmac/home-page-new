@@ -1,32 +1,19 @@
 ---
 import Icon from '../Icon.astro';
 import NavigationIcon from './NavigationIcon.astro';
-import { capabilities } from '../../features/product';
-import { solutionModules } from '../../features/solutions';
-import { pathFor, site } from '../../lib/site';
+import { navigationEntriesFor } from './entries';
+import { pathFor, ui } from '../../lib/site';
 import type { Locale } from '../../data/types';
 interface Props { locale: Locale; page: string; prefix: string; }
 const { locale, page, prefix } = Astro.props;
 const zh = locale === 'zh';
-const appliancePath = 'solutions/appliance';
-const solutionEntries = [
-  ...solutionModules.filter(entry => entry.category === 'industry').map(entry => ({ label: entry.navigation?.[locale].name || entry.copy[locale].name, description: entry.navigation?.[locale].description, icon: entry.navigation?.[locale].icon || entry.copy[locale].icon, path: `solutions/${entry.slug}` })),
-  {
-    label: zh ? '一体机解决方案' : 'AI appliance solution',
-    description: zh ? '软件、硬件、大模型与算力一体交付。' : 'Software, hardware, LLMs and compute in one appliance.',
-    icon: 'cpu',
-    path: appliancePath,
-  },
-];
+const t = ui[locale];
+const entries = navigationEntriesFor(locale);
 const groups = [
-  { id: 'product', label: zh ? '产品能力' : 'Product', active: page.startsWith('product'), entries: capabilities.map(entry => ({ label: entry.copy[locale].name, description: entry.copy[locale].navigationDescription || entry.copy[locale].description, icon: entry.icon, path: `product/${entry.slug}` })) },
-  { id: 'solutions', label: zh ? '解决方案' : 'Solutions', active: page.startsWith('solutions'), entries: solutionEntries },
+  { id: 'product', label: t.product, active: page.startsWith('product'), entries: entries.products },
+  { id: 'solutions', label: t.solutions, active: page.startsWith('solutions'), entries: entries.solutions },
 ];
-const resourceLinks = [
-  { href: site.docs, label: zh ? '文档中心' : 'Docs', description: zh ? '产品指南、操作手册与最佳实践。' : 'Guides, manuals and best practices.', icon: 'book', active: false, external: true },
-  { href: pathFor(locale,'download'), label: zh ? '资源下载' : 'Downloads', description: zh ? '桌面端、移动端与开发工具下载。' : 'Desktop, mobile and developer tools.', icon: 'download', active: page === 'download' || page === 'releases', external: false },
-  { href: pathFor(locale,'blog'), label: zh ? '博客' : 'Blog', description: zh ? '产品动态、应用实践与技术分享。' : 'Product news, use cases and engineering.', icon: 'file', active: page.startsWith('blog'), external: false },
-];
+const resourceLinks = entries.resources.map(link => ({ ...link, active: link.path === 'download' ? page === 'download' || page === 'releases' : link.path === 'blog' && page.startsWith('blog') }));
 const resourcesActive = resourceLinks.some(link => link.active);
 ---
 {groups.map(group => <div class="tego-nav-group" data-nav-group data-attribution-group={group.id}>
@@ -39,7 +26,7 @@ const resourcesActive = resourceLinks.some(link => link.active);
 </div>)}
 <a class="tego-nav-direct" href={pathFor(locale,'pricing')} aria-current={page === 'pricing' ? 'page' : undefined}>{zh ? '价格' : 'Pricing'}</a>
 <div class="tego-nav-group" data-nav-group data-attribution-group="resources">
-  <button type="button" class:list={['tego-nav-trigger', {'is-current': resourcesActive}]} aria-expanded="false" aria-controls={`${prefix}-resources`} data-nav-disclosure>{zh ? '资源与支持' : 'Resources & Support'}<Icon name="chevron" size={13}/></button>
+  <button type="button" class:list={['tego-nav-trigger', {'is-current': resourcesActive}]} aria-expanded="false" aria-controls={`${prefix}-resources`} data-nav-disclosure>{t.resources}<Icon name="chevron" size={13}/></button>
   <div class="tego-nav-panel tego-nav-resources" id={`${prefix}-resources`} hidden>
     <div class="tego-nav-panel-body">
       <ul class="tego-nav-grid">{resourceLinks.map(link => <li><a class="tego-nav-item" href={link.href} hreflang={link.external ? 'zh-CN' : undefined} aria-current={link.active ? 'page' : undefined} rel={link.external ? 'external' : undefined}><span class="tego-nav-icon"><NavigationIcon name={link.icon}/></span><span class="tego-nav-label"><span>{link.label}</span><small>{link.description}</small></span></a></li>)}</ul>

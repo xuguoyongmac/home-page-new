@@ -2,7 +2,7 @@
 import type { Locale } from '../data/types';
 import SolutionExplorer from './SolutionExplorer.astro';
 import CallToAction from './CallToAction.astro';
-import { pathFor } from '../lib/site';
+import { pathFor, ui } from '../lib/site';
 import '../styles/industry-tabs.css';
 import '../styles/solutions-overview.css';
 interface Props { locale: Locale; }
@@ -24,7 +24,7 @@ const pillars = zh ? [
     <div class="container">
       <h1 id="solutions-title">{zh ? <>把行业经验<br/>转化为业务成果</> : <>Industry expertise.<br/>Business results.</>}</h1>
       <p>{zh ? '面向银行、保险、证券、政务、央国企、信托与企业通用场景，把行业知识、专业方法和企业系统组织成数字员工团队，从专业作业到客户服务与经营管理，拓展组织的业务能力。' : 'Digital employee teams for banking, insurance, securities, government, state-owned enterprises, trust services and general business. Bring industry knowledge, professional methods and business systems together to expand what your organization can deliver.'}</p>
-      <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a>
+      <a class="button" href={pathFor(locale, 'contact')}>{ui[locale].contact}</a>
     </div>
   </section>
   <section class="solutions-overview-industries"><div class="container"><SolutionExplorer locale={locale}/></div></section>

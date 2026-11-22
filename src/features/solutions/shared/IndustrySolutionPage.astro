@@ -1,5 +1,5 @@
 ---
-import { pathFor } from '../../../lib/site';
+import { pathFor, ui } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import type { IndustrySolutionCopy } from './types';
 import EmployeeCarousel from '../banking/EmployeeCarousel.astro';
@@ -16,7 +16,7 @@ const zh = locale === 'zh';
     <div class="container industry-value-hero-content">
       <h1 id={`${slug}-title`}>{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
       <p>{copy.home.value}</p>
-      <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a>
+      <a class="button" href={pathFor(locale, 'contact')}>{ui[locale].contact}</a>
       <ul class="industry-value-scenarios" aria-label={zh ? '业务场景' : 'Business scenarios'}>{copy.home.scenarios.map(item => <li>{item}</li>)}</ul>
     </div>
   </section>

@@ -65,13 +65,23 @@ export function createContactApp(config, { delivery = createDelivery(config), st
     if (worker) return worker;
     worker = (async () => {
       for (const id of await store.list()) {
-        const lead = await store.get(id);
-        if (!lead) continue;
-        const channels = [
-          ...lead.delivery.email.map(item => ({ state: item, send: () => delivery.email(lead, item.recipient), name: 'email' })),
-          ...(lead.delivery.feishu ? [{ state: lead.delivery.feishu, send: () => delivery.feishu(lead), name: 'feishu' }] : []),
-        ];
+        if (closed) break;
+        let lead, channels;
+        try {
+          lead = await store.get(id);
+          if (!lead) continue;
+          const validState = state => state && ['pending', 'delivered'].includes(state.status) && Number.isInteger(state.attempts) && state.attempts >= 0 && Number.isFinite(state.nextAttempt) && state.nextAttempt >= 0;
+          if (lead.id !== id || !Array.isArray(lead.delivery?.email) || !lead.delivery.email.every(item => validState(item) && typeof item.recipient === 'string') || (lead.delivery.feishu && !validState(lead.delivery.feishu))) throw Object.assign(new Error('Invalid lead record'), { code: 'INVALID_LEAD_RECORD' });
+          channels = [
+            ...lead.delivery.email.map(item => ({ state: item, send: () => delivery.email(lead, item.recipient), name: 'email' })),
+            ...(lead.delivery.feishu ? [{ state: lead.delivery.feishu, send: () => delivery.feishu(lead), name: 'feishu' }] : []),
+          ];
+        } catch (error) {
+          writeLog('lead_record_unavailable', id, error instanceof SyntaxError ? 'INVALID_LEAD_JSON' : errorCode(error));
+          continue;
+        }
         for (const channel of channels) {
+          if (closed) break;
           if (channel.state.status === 'delivered' || channel.state.nextAttempt > Date.now()) continue;
           try {
             const receipt = await channel.send();
@@ -98,10 +108,12 @@ export function createContactApp(config, { delivery = createDelivery(config), st
     if (!['/api/contact', '/api/contact/'].includes(url.pathname)) return false;
     const language = contactLanguageFor(request.headers['accept-language']);
     const reply = (status, body, headers = {}) => {
+      if (response.destroyed || response.writableEnded) return true;
       response.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'Content-Language': language === 'zh' ? 'zh-CN' : language, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...headers });
       response.end(JSON.stringify(body)); return true;
     };
     const message = (cn, en) => language === 'en' ? en : language === 'zh-Hant' ? traditionalChinese(cn) : cn;
+    if (closed) return reply(503, { success: false, message: message('咨询服务正在重启，请稍后重试。', 'The enquiry service is restarting. Please try again shortly.') }, { 'Retry-After': '5' });
     const origin = request.headers.origin;
     response.setHeader('Vary', 'Accept-Language');
     if (origin && !config.origins.has(origin)) return reply(403, { success: false, message: message('不允许从此页面提交。', 'Submissions from this page are not allowed.') });
@@ -109,6 +121,7 @@ export function createContactApp(config, { delivery = createDelivery(config), st
     if (request.method === 'OPTIONS') return reply(204, {}, { 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, Idempotency-Key, Accept-Language', 'Access-Control-Max-Age': '600' });
     if (request.method !== 'POST') return reply(405, { success: false, message: message('此接口仅支持提交消息。', 'This endpoint only accepts message submissions.') }, { Allow: 'POST, OPTIONS' });
     if (!/^application\/json(?:\s*;|$)/i.test(request.headers['content-type'] || '')) return reply(415, { success: false, message: message('请求格式不正确。', 'The request format is not supported.') });
+    if (request.headers['content-encoding'] && request.headers['content-encoding'] !== 'identity') return reply(415, { success: false, message: message('请求格式不正确。', 'The request format is not supported.') });
     const forwarded = config.trustProxy ? String(request.headers['x-forwarded-for'] || '').split(',').at(-1)?.trim() : '';
     const ip = isIP(forwarded || '') ? forwarded : request.socket.remoteAddress || 'unknown';
     const now = Date.now();
@@ -146,7 +159,7 @@ export function createContactApp(config, { delivery = createDelivery(config), st
       setImmediate(() => { deliverPending().catch(() => writeLog('delivery_worker_failed', id)); });
       return result;
     } catch (error) {
-      const status = error.status || 503;
+      const status = [400, 413].includes(error.status) ? error.status : 503;
       writeLog('contact_request_failed', undefined, status === 503 ? 'STORAGE_UNAVAILABLE' : `HTTP_${status}`);
       return reply(status, { success: false, message: message(status === 413 ? '内容过长，请缩短后提交。' : status === 400 ? '提交内容格式不正确。' : '信息未能保存，请稍后重试或直接发送邮件。', status === 413 ? 'The message is too long.' : status === 400 ? 'The message format is invalid.' : 'Your message could not be saved. Try again or contact us by email.') });
     }

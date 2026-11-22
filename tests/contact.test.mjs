@@ -24,7 +24,7 @@ const leadBody = { title: '企业版部署咨询', email: 'procurement@inquiry.i
 const logger = { info() {} };
 async function fixture(t, { max = 100, delivery, env = {} } = {}) {
   const dataDir = await mkdtemp(path.join(os.tmpdir(), 'tego-contact-'));
-  const config = loadContactConfig({ SMTP_HOST: '127.0.0.1', SMTP_USER: 'contact@zhama.com', SMTP_PASS: 'local-transport', CONTACT_DATA_DIR: dataDir, RATE_LIMIT_MAX: String(max), ...env });
+  const config = loadContactConfig({ SMTP_HOST: '127.0.0.1', SMTP_USER: 'contact@zhama.com', SMTP_PASS: 'local-transport', CONTACT_DATA_DIR: dataDir, CONTACT_EXTRA_EMAIL: 'secondary@notifications.invalid', RATE_LIMIT_MAX: String(max), ...env });
   const calls = [];
   delivery ||= { async email(lead, recipient) { calls.push({ channel: 'email', recipient, id: lead.id }); }, async feishu(lead) { calls.push({ channel: 'feishu', id: lead.id }); } };
   const app = createContactApp(config, { delivery, logger });
@@ -100,7 +100,7 @@ test('persists a lead and delivers once to both recipients and Feishu despite co
   assert.ok((await Promise.all(responses.map(response => response.json()))).every(value => value.success && value.leadId === id));
   await f.app.deliverPending();
   assert.equal(f.calls.length, 3);
-  assert.deepEqual(f.calls.filter(call => call.channel === 'email').map(call => call.recipient).sort(), ['contact@zhama.com', 'xuguoyong@zhama.com']);
+  assert.deepEqual(f.calls.filter(call => call.channel === 'email').map(call => call.recipient).sort(), ['contact@zhama.com', 'secondary@notifications.invalid']);
   const lead = await f.store.get(id);
   assert.equal(lead.referrer, 'https://www.zhama.com/zh/contact/');
   assert.equal(lead.nickname, leadBody.nickname);
@@ -141,7 +141,7 @@ test('missing SMTP configuration rejects submission without falsely claiming rec
 test('a persisted failure survives restart and retries only the unfinished recipient and Feishu channel', async t => {
   let fail = true;
   const calls = [];
-  const delivery = { async email(_lead, recipient) { calls.push(recipient); if (fail && recipient.startsWith('xuguoyong')) throw Object.assign(new Error('recipient unavailable'), { code: 'ETIMEDOUT' }); }, async feishu() { if (fail) throw Object.assign(new Error('permission denied'), { code: 'FEISHU_99991672' }); } };
+  const delivery = { async email(_lead, recipient) { calls.push(recipient); if (fail && recipient.startsWith('secondary@')) throw Object.assign(new Error('recipient unavailable'), { code: 'ETIMEDOUT' }); }, async feishu() { if (fail) throw Object.assign(new Error('permission denied'), { code: 'FEISHU_99991672' }); } };
   const f = await fixture(t, { delivery, env: { FEISHU_APP_ID: 'bot-contract', FEISHU_APP_SECRET: 'local-auth', FEISHU_CHAT_ID: 'market-leads' } });
   const id = randomUUID();
   await f.post(leadBody, id); await f.app.deliverPending(); await f.app.close();
@@ -154,7 +154,7 @@ test('a persisted failure survives restart and retries only the unfinished recip
   lead = await f.store.get(id);
   assert.ok(lead.delivery.email.every(item => item.status === 'delivered')); assert.equal(lead.delivery.feishu.status, 'delivered');
   assert.equal(calls.filter(recipient => recipient === 'contact@zhama.com').length, 1);
-  assert.equal(calls.filter(recipient => recipient === 'xuguoyong@zhama.com').length, 2);
+  assert.equal(calls.filter(recipient => recipient === 'secondary@notifications.invalid').length, 2);
 });
 
 test('real SMTP protocol preserves both recipients, reply-to and lead content; Feishu uses token and stable uuid', async t => {
@@ -162,7 +162,7 @@ test('real SMTP protocol preserves both recipients, reply-to and lead content; F
   const smtpServer = new SMTPServer({ disabledCommands: ['AUTH', 'STARTTLS'], onData(stream, session, done) { let text = ''; stream.on('data', chunk => { text += chunk; }); stream.on('end', () => { messages.push({ envelope: session.envelope, text }); done(); }); } });
   await new Promise(resolve => smtpServer.listen(0, '127.0.0.1', resolve));
   t.after(() => new Promise(resolve => smtpServer.close(resolve)));
-  const config = loadContactConfig({ SMTP_HOST: '127.0.0.1', SMTP_USER: 'contact@zhama.com', SMTP_PASS: 'local-auth', FEISHU_APP_ID: 'bot-contract', FEISHU_APP_SECRET: 'local-auth', FEISHU_CHAT_ID: 'market-leads' });
+  const config = loadContactConfig({ SMTP_HOST: '127.0.0.1', SMTP_USER: 'contact@zhama.com', SMTP_PASS: 'local-auth', CONTACT_EXTRA_EMAIL: 'secondary@notifications.invalid', FEISHU_APP_ID: 'bot-contract', FEISHU_APP_SECRET: 'local-auth', FEISHU_CHAT_ID: 'market-leads' });
   const transporter = nodemailer.createTransport({ host: '127.0.0.1', port: smtpServer.server.address().port, secure: false, ignoreTLS: true });
   const requests = [];
   const fetchImpl = async (url, options) => { requests.push({ url, ...options }); return Response.json(url.includes('/auth/') ? { code: 0, tenant_access_token: 'contract-token', expire: 7200 } : { code: 0, data: { message_id: 'accepted' } }); };
@@ -243,7 +243,7 @@ test('phone-only email notification omits reply-to while retaining recipient and
   let mail;
   const delivery = createDelivery(config, { transporter: { async sendMail(message) { mail = message; return { accepted: [message.to], messageId: message.messageId }; }, close() {} } });
   const lead = { ...leadBody, email: '', phone: '+1 202-555-0148', id: randomUUID(), createdAt: new Date().toISOString() };
-  await delivery.email(lead, 'xuguoyong@zhama.com');
+  await delivery.email(lead, 'secondary@notifications.invalid');
   assert.equal(Object.hasOwn(mail, 'replyTo'), false);
   assert.ok(mail.text.includes(lead.phone)); assert.ok(mail.text.includes(lead.nickname)); assert.ok(mail.text.includes(lead.expectedReplyTime));
   assert.ok(!mail.text.includes('邮箱：'));

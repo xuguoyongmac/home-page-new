@@ -28,7 +28,7 @@ export function createDelivery(config, { fetchImpl = fetch, transporter } = {}) 
   let cachedToken;
   let tokenExpires = 0;
   async function feishuRequest(url, options) {
-    const response = await fetchImpl(url, { ...options, signal: AbortSignal.timeout(15000) });
+    const response = await fetchImpl(url, { ...options, redirect: 'error', signal: AbortSignal.timeout(15000) });
     const data = await response.json();
     if (!response.ok || data.code !== 0) {
       const error = new Error('Feishu request failed');

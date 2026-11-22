@@ -1,5 +1,5 @@
 ---
-import { pathFor, site } from '../../../lib/site';
+import { pathFor, site, ui } from '../../../lib/site';
 import EmployeeMarketArt from './EmployeeMarketArt.astro';
 import EmployeeBannerBackdrop from './EmployeeBannerBackdrop.astro';
 import EmployeeFeatureArt from './EmployeeFeatureArt.astro';
@@ -44,7 +44,7 @@ const breadcrumb = {
       <h1 id="capability-title">{copy.hero.lines[0]}</h1>
       <div class="employee-hero-copy">
         <p>{copy.hero.summary}</p>
-        <a class="button employee-action" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a>
+        <a class="button employee-action" href={pathFor(locale, 'contact')}>{ui[locale].contact}</a>
       </div>
     </div>
     <figure class="employee-hero-art">

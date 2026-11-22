@@ -1,5 +1,6 @@
 import type { Locale } from '../../../data/types';
 import type { SolutionModule } from '../types';
+import { ui } from '../../../lib/ui';
 
 type ApplianceFeature = {
   icon: string;
@@ -34,7 +35,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
     name: 'TeGo Station',
     headline: '算力、模型与软件，\n一体交付',
     description: '内置 GB10 算力、预装 TeGo OS 与本地大模型，为企业提供软硬件一体的本地部署方案。',
-    action: '咨询一体机',
+    action: ui.zh.contact,
     highlights: [
       { value: 'GB10', label: 'Grace Blackwell 超级芯片' },
       { value: '128 GB', label: 'LPDDR5x CPU / GPU 共享内存' },
@@ -108,7 +109,7 @@ export const appliancePage: Record<Locale, AppliancePage> = {
     name: 'TeGo Station',
     headline: 'Compute, models and software.\nDelivered together.',
     description: 'GB10 compute, preinstalled TeGo OS and local models in one appliance for enterprise deployment.',
-    action: 'Discuss an appliance',
+    action: ui.en.contact,
     highlights: [
       { value: 'GB10', label: 'Grace Blackwell Superchip' },
       { value: '128 GB', label: 'LPDDR5x shared CPU / GPU memory' },

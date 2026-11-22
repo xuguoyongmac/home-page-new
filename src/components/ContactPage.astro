@@ -2,6 +2,7 @@
 import { contactContent } from '../features/contact/content';
 import ContactReplyPicker from './ContactReplyPicker.astro';
 import ContactConfirmation from './ContactConfirmation.astro';
+import { site } from '../lib/site';
 import type { Locale } from '../data/types';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
@@ -32,9 +33,9 @@ const contactApi = import.meta.env.PUBLIC_CONTACT_API_URL || '/api/contact/';
     </div>
     <div class="contact-trap" aria-hidden="true"><label for="enquiry-website">Website</label><input id="enquiry-website" name="website" tabindex="-1" autocomplete="off" /></div>
     <div class="contact-submit-row"><button class="button form-submit" type="submit">{copy.form.submit}</button><p class="contact-result" id="enquiry-status" role="status" aria-live="polite" tabindex="-1" hidden></p></div>
-    <noscript><p>{copy.noScript} <a href="mailto:contact@zhama.com">contact@zhama.com</a></p></noscript>
+    <noscript><p>{copy.noScript} <a href={`mailto:${site.email}`}>{site.email}</a></p></noscript>
     <div class="contact-methods">
-      <div><h2>{copy.info.email.title}</h2><a href="mailto:contact@zhama.com">contact@zhama.com</a></div>
+      <div><h2>{copy.info.email.title}</h2><a href={`mailto:${site.email}`}>{site.email}</a></div>
       <div><h2>{copy.info.phone.title}</h2><a href="tel:18819810701">18819810701</a></div>
       <div><h2>{copy.info.response.title}</h2><p>{copy.info.response.time}</p></div>
     </div>

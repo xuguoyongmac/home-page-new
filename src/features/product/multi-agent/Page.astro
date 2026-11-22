@@ -4,7 +4,7 @@ import MultiAgentBackdrop from './MultiAgentBackdrop.astro';
 import landing from './landing';
 import experience from './experience';
 import content from './content';
-import { appFor, pathFor, site } from '../../../lib/site';
+import { appFor, pathFor, site, ui } from '../../../lib/site';
 import type { Locale } from '../../../data/types';
 import '../../../styles/multi-agent-product.css';
 
@@ -30,8 +30,8 @@ const breadcrumb = {
         <h1 id="capability-title">{copy.hero.lines.map(line => <span>{line}</span>)}</h1>
         <p>{copy.hero.summary}</p>
         <div class="ma-hero-actions">
-          <a class="button" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a>
-          <a class="ma-text-link" href={appFor(locale)}>{zh ? '开始使用' : 'Get started'}</a>
+          <a class="button" href={pathFor(locale, 'contact')}>{ui[locale].contact}</a>
+          <a class="ma-text-link" href={appFor(locale)}>{ui[locale].try}</a>
         </div>
       </div>
       <Diagram locale={locale} scene="overview" data={stories[0].visual}/>

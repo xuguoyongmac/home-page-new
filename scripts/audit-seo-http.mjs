@@ -4,6 +4,7 @@ import { parse } from 'parse5';
 import { seoAliasRoutes } from '../shared/seo-routes.mjs';
 
 const base = process.env.AUDIT_ORIGIN || 'http://localhost:4350';
+const preview = process.env.AUDIT_MODE === 'preview';
 const report = process.argv[2];
 if (!report || existsSync(report)) throw new Error('Provide a new, versioned report path.');
 const dist = path.resolve('dist');
@@ -39,7 +40,7 @@ const parallel = async (items, action) => {
 await parallel([...documents], async ([route, page]) => {
   for (const method of ['GET', 'HEAD']) {
     const result = await request(route, method);
-    check(result.status === 200 && !/noindex/i.test(result.robots || ''), { kind: 'canonical-http', route, method, status: result.status });
+    check(result.status === 200 && /noindex/i.test(result.robots || '') === preview, { kind: 'canonical-http', route, method, status: result.status, robots: result.robots });
     if (method === 'GET') {
       const nodes = nodesOf(result.body);
       check(attr(nodes.find(node => node.tagName === 'link' && attr(node, 'rel') === 'canonical'), 'href') === page.canonical && nodes.some(node => node.tagName === 'h1'), { kind: 'crawlable-html', route });
@@ -77,6 +78,9 @@ for (const locale of ['zh', 'en', 'zh-Hant']) {
 for (const route of ['/robots.txt', '/sitemap.xml', '/sitemap-index.xml', '/sitemap-0.xml', '/baidu_verify_codeva-z01CSON5KK.html']) {
   const result = await request(route);
   check(result.status === 200, { kind: 'crawler-resource', route, status: result.status });
+  if (route === '/robots.txt') {
+    check(/^Disallow:\s*\/\s*$/m.test(result.body) === preview, { kind: 'crawler-policy', route });
+  }
   if (route.includes('baidu_verify')) check(result.body === '5af2a22732e8cfd9025cb8bae7c8d444', { kind: 'baidu-verification', route });
 }
 // Crawl ordinary anchor links only; scripts and language metadata cannot hide orphan pages.
@@ -93,7 +97,7 @@ for (let index = 0; index < pending.length; index++) {
 }
 for (const route of documents.keys()) check(reached.has(route), { kind: 'internal-crawl-reachability', route });
 const failures = outcomes.filter(item => !item.ok);
-const summary = { origin: base, pages: documents.size, aliases: aliases.length, checks: outcomes.length, failures, outcomes };
+const summary = { origin: base, mode: preview ? 'preview' : 'indexable', pages: documents.size, aliases: aliases.length, checks: outcomes.length, failures, outcomes };
 mkdirSync(path.dirname(report), { recursive: true });
 writeFileSync(report, JSON.stringify(summary, null, 2), { flag: 'wx' });
 console.log(JSON.stringify({ report: path.resolve(report), pages: summary.pages, aliases: summary.aliases, checks: summary.checks, failures }, null, 2));

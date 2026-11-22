@@ -14,7 +14,7 @@ export function publishedHtmlPaths(directory) {
 }
 
 /** Include in both HTTP and HTTPS website servers, after setting their static root. */
-export function renderNginxSeoConfig(pages, canonicalOrigin = 'https://www.zhama.com') {
+export function renderNginxSeoConfig(pages, canonicalOrigin = 'https://www.zhama.com', { preview = false } = {}) {
   const origin = new URL(normalizeSiteOrigin(canonicalOrigin));
   const canonicalPages = [...new Set(pages)].filter(page => page.endsWith('/') && isIndexableSeoPath(page)).sort();
   const redirects = new Map();
@@ -39,12 +39,13 @@ export function renderNginxSeoConfig(pages, canonicalOrigin = 'https://www.zhama
     '# Replace the previous static location blocks with this include.',
     '',
   ];
+  if (preview) lines.push('absolute_redirect off;', '');
   for (const [from, to] of [...redirects].sort(([a], [b]) => a.localeCompare(b))) {
     const destination = new URL(to, origin);
-    lines.push(`location = ${from} { return 301 "${origin.origin}${destination.pathname}$is_args$args${destination.hash}"; }`);
+    lines.push(`location = ${from} { return 301 "${preview ? '' : origin.origin}${destination.pathname}$is_args$args${destination.hash}"; }`);
   }
   lines.push('');
-  const canonicalRules = [
+  const canonicalRules = preview ? [] : [
     `    if ($host != ${origin.hostname}) { return 301 ${origin.origin}$request_uri; }`,
     `    if ($scheme != ${origin.protocol.slice(0, -1)}) { return 301 ${origin.origin}$request_uri; }`,
   ];
@@ -60,7 +61,7 @@ export function renderNginxSeoConfig(pages, canonicalOrigin = 'https://www.zhama
   };
   for (const locale of seoLocales) {
     for (const route of [`/${locale}/404`, `/${locale}/404/`, `/${locale}/404.html`, `/${locale}/404/index.html`]) errorLocation(route, locale);
-    lines.push(`location @seo_not_found_${locale.replace('-', '_')} {`, '    default_type text/html;', '    add_header X-Robots-Tag "noindex" always;', `    add_header Content-Language "${locale === 'zh' ? 'zh-CN' : locale}" always;`, `    try_files /${locale}/404/index.html =404;`, '}');
+    lines.push(`location @seo_not_found_${locale.replace('-', '_')} {`, '    default_type text/html;', `    add_header X-Robots-Tag "${preview ? 'noindex, nofollow, noarchive' : 'noindex'}" always;`, `    add_header Content-Language "${locale === 'zh' ? 'zh-CN' : locale}" always;`, `    try_files /${locale}/404/index.html =404;`, '}');
     lines.push(`location /${locale}/ {`, ...canonicalRules, errorRule(locale), '    try_files $uri =404;', '}');
   }
   for (const route of ['/404', '/404/', '/404.html']) errorLocation(route, 'zh');
@@ -69,7 +70,8 @@ export function renderNginxSeoConfig(pages, canonicalOrigin = 'https://www.zhama
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  if (process.argv.length > 2) throw new Error('Set PUBLIC_SITE_URL for the canonical origin; redirect stdout to the Nginx include file.');
+  const args = process.argv.slice(2);
+  if (args.length > 1 || (args.length === 1 && args[0] !== '--preview')) throw new Error('Usage: node deploy/website/generate-nginx.mjs [--preview]');
   const root = fileURLToPath(new URL('../../', import.meta.url));
-  process.stdout.write(renderNginxSeoConfig(publishedHtmlPaths(path.join(root, 'dist')), process.env.PUBLIC_SITE_URL || 'https://www.zhama.com'));
+  process.stdout.write(renderNginxSeoConfig(publishedHtmlPaths(path.join(root, 'dist')), process.env.PUBLIC_SITE_URL, { preview: args[0] === '--preview' }));
 }

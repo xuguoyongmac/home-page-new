@@ -2,11 +2,9 @@
 
 TeGo 数字员工协作平台官网，基于 Astro、TypeScript 和静态资源构建，包含中英文页面、行业解决方案、产品博客、下载中心和发行记录。
 
-当前源码版本：1.46.0。
-
 ## 本地运行
 
-使用 Node.js 22.23.4 或更高版本与 npm。端口清理脚本依赖 macOS / Linux 的 `lsof`。
+使用 Node.js 22.23.4 或更高版本与 npm。当前版本以 `package.json` 为准。
 
 ```sh
 npm ci
@@ -16,28 +14,29 @@ npm run dev
 中文首页：http://127.0.0.1:4350/zh/  
 英文首页：http://127.0.0.1:4350/en/
 
-开发和预览均固定使用 4350；启动前自动停止占用该端口的旧服务。两者均提供联系表单的 `/api/contact/` 接口。
+开发和预览默认监听 4350，仅接受本机连接。端口被占用时，先关闭已知的站点进程；开发模式也可通过 `npm run dev -- --port 4354` 选择其他端口。两者均提供联系表单的 `/api/contact/` 接口。
 
 ## 检查与构建
 
 ```sh
-npm run check
-npm run build
-npm run verify
+npm run release:check
 npm run preview
 ```
 
-`build` 输出 `dist/` 静态站点，并清理未引用的历史图片。`verify` 核验页面、本地资源、锚点、文章完整性和发行记录。先构建，再校验或预览。
+`release:check` 依次运行类型检查、测试、构建和产物核验。构建产物位于 `dist/`；核验覆盖路由、资源、三语页面、SEO 和统计接入。GitHub 在合并请求和每次更新 `main` 后运行同一套检查，并使用 Nginx 检验实际 HTTP 跳转与错误页。
 
 ## 部署
 
-将 `dist/` 完整内容部署到支持静态文件的 Web 服务。默认正式域名为 https://www.zhama.com；构建到其他域名时，通过 `PUBLIC_SITE_URL` 设置实际站点地址，控制 canonical、站点地图与分享链接。联系表单另外使用 Node.js 消息服务接收线索，并发送邮件和飞书卡片。
+将通过核验的 `dist/` 部署到静态服务，并配置历史路由和咨询 API。默认正式域名为 https://www.zhama.com；`PUBLIC_SITE_URL` 控制 canonical、站点地图与分享链接。线上发布后应以正式域名的响应为准，推送 Git 不代表域名已切换。
 
 ```sh
-PUBLIC_SITE_URL=https://www.zhama.com npm run build
+PUBLIC_SITE_URL=https://www.zhama.com npm run release:check
+node deploy/website/generate-nginx.mjs
 ```
 
-联系页面及消息服务部署、受控配置和投递状态核对见 [联系页面部署说明](docs/contact-deployment_V1.14.md)。邮箱和飞书凭据保存在 Git 忽略的 `.env.contact.local`，不随源码提交。
+查看 [SEO 部署与 HTTP 验收](docs/seo-deployment_V1.0.md)、[百度统计验证](docs/baidu-analytics_V1.0.md) 和 [咨询服务配置](docs/contact-deployment_V1.14.md)。邮件和飞书凭据由服务端环境注入。本机可使用 Git 忽略的 `.env.contact.local`，不要将凭据放入 `PUBLIC_*`、`dist/` 或发布归档。
+
+服务器预览使用 `deploy/website/compose.preview.yml`。部署前运行 `node deploy/website/generate-nginx.mjs --preview > deploy/website/preview-routes.conf`，注入 `CONTACT_IMAGE`（版本镜像标签）、`CONTACT_PREVIEW_ORIGIN`（含端口的预览 Origin）和 `CONTACT_ENV_FILE`（发布目录以外的联系服务环境文件绝对路径）。预览禁止索引与表单提交，不能用来确认真实统计采集。
 
 ## 多人协作
 
@@ -53,7 +52,7 @@ PUBLIC_SITE_URL=https://www.zhama.com npm run build
 - `src/data/`、`src/content/`：站点内容与历史文章。
 - `src/assets/`：构建时处理的首屏材质。
 - `public/`：当前站点所需的图片、字体、品牌素材与静态文件。
-- `scripts/`：端口清理、构建素材整理和站点校验。
+- `scripts/`：构建素材整理和站点校验。
 - `docs/content-baseline_V1.0.json`：历史文章与发行数据的校验基线。
 
 首页经营分析内容用于呈现数字员工任务成果，其数据口径维护在 `src/data/home-dashboard.ts`。

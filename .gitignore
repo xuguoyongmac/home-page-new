@@ -9,3 +9,4 @@ dist/
 review/
 tmp/
 output/motion/**/.hyperframes/
+/deploy/website/preview-routes.conf

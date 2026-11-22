@@ -22,11 +22,11 @@ const activeLanguage = languages.find(item => item.id === language)!;
         <div id="language-options" class="tego-language-panel" hidden><ul>{languages.map(item => <li><a href={languagePathFor(item.id,page)} lang={item.tag} hreflang={item.tag} aria-current={language === item.id ? 'true' : undefined} data-language-option>{item.label}{language === item.id && <Icon name="check" size={15}/>}</a></li>)}</ul></div>
       </div>
       <a class="button button-outline button-small header-contact" href={pathFor(locale, 'contact')} aria-current={page === 'contact' ? 'page' : undefined}>{zh ? '联系我们' : 'Contact us'}</a>
-      <a class="button button-small header-cta" href={appFor(locale)}>{zh ? '立即体验' : 'Try TeGo'}</a>
+      <a class="button button-small header-cta" href={appFor(locale)}>{t.try}</a>
       <button type="button" class="menu-toggle icon-button" aria-label={t.menu} data-open-label={t.menu} data-close-label={t.close} aria-expanded="false" aria-controls="mobile-nav"><Icon name="menu"/></button>
     </div>
   </div>
-  <nav id="mobile-nav" class="mobile-nav" aria-label={zh ? '移动端导航' : 'Mobile navigation'} inert><NavigationItems locale={locale} page={page} prefix="mobile"/><a class="button button-small mobile-login" href={appFor(locale)}>{zh ? '立即体验' : 'Try TeGo'}</a></nav>
+  <nav id="mobile-nav" class="mobile-nav" aria-label={zh ? '移动端导航' : 'Mobile navigation'} inert><NavigationItems locale={locale} page={page} prefix="mobile"/><a class="button button-small mobile-login" href={appFor(locale)}>{t.try}</a></nav>
 </header>
 <script>
   const header = document.querySelector<HTMLElement>('[data-site-header]');

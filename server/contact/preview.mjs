@@ -24,6 +24,15 @@ server.requestTimeout = 20000;
 server.headersTimeout = 10000;
 server.on('error', error => { console.error('Preview could not start:', error.code); void app.close(); process.exitCode = 1; });
 server.listen(4350, '127.0.0.1', () => console.info('Website and contact API: http://127.0.0.1:4350/zh/contact/'));
-async function shutdown() { server.close(); await app.close(); }
+let stopping = false;
+async function shutdown() {
+  if (stopping) return;
+  stopping = true;
+  const stopConnections = setTimeout(() => server.closeAllConnections(), 25000);
+  stopConnections.unref();
+  await new Promise(resolve => server.close(resolve));
+  clearTimeout(stopConnections);
+  await app.close();
+}
 process.once('SIGTERM', shutdown);
 process.once('SIGINT', shutdown);

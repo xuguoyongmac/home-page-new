@@ -1,4 +1,5 @@
 import type { Locale } from '../../../data/types';
+import { ui } from '../../../lib/ui';
 
 interface IntroductionSection {
   id: 'recruit' | 'work' | 'continuity';
@@ -29,7 +30,7 @@ export default {
     hero: {
       title: ['数字员工，', '让岗位能力成为', '团队生产力'],
       body: '数字员工是可承接完整岗位工作的数字劳动力。具备明确岗位职责、专业技能与专属工作资料，理解业务任务、自主执行作业，输出可复用、可二次加工的业务成果。',
-      action: '开始使用',
+      action: ui.zh.try,
       alt: '六项岗位能力汇聚到简洁的数字员工岗位图标，由数字员工向下交付业务成果。蓝紫色全景成果驾驶舱展示成果图谱、交付指标、经营分析、收入成本、利润趋势及成果文件。',
     },
     sections: [
@@ -68,14 +69,14 @@ export default {
       title: '搭建属于企业自己的数字岗位团队',
       summary: '扩充团队作业能力，让员工聚焦高价值工作',
       body: '基于岗位模板批量组建企业专属数字员工团队，补充案头、预审和整理类作业力量，让员工把时间投入研判、沟通与决策。',
-      action: '预约交流',
+      action: ui.zh.contact,
     },
   },
   en: {
     hero: {
       title: ['Digital employees.', 'Role expertise.', 'Team productivity.'],
       body: 'Digital employees take on role-based work with clear responsibilities, specialist skills and dedicated work materials. They understand business tasks, carry out work and deliver results your team can reuse and refine.',
-      action: 'Get started',
+      action: ui.en.try,
       alt: 'Six role capabilities converge on a simple digital employee role icon, which delivers business results to the blue-violet panoramic cockpit below. The cockpit shows a results map, delivery gauge, business KPIs, revenue and costs, profit trends and delivered files.',
     },
     sections: [
@@ -114,7 +115,7 @@ export default {
       title: 'Build a digital team around your business roles',
       summary: 'Expand your team’s capacity and free people for higher-value work.',
       body: 'Build your enterprise’s digital team from role templates to handle preparation, preliminary checks and organization. Give colleagues more time for analysis, communication and decisions.',
-      action: 'Book a consultation',
+      action: ui.en.contact,
     },
   },
 } satisfies Record<Locale, IntroductionCopy>;

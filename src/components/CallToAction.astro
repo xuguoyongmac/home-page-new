@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../data/types';
-import { pathFor, appFor } from '../lib/site';
+import { pathFor, appFor, ui } from '../lib/site';
 const {locale = 'zh', home = false} = Astro.props as {locale:Locale;home?:boolean};
 const zh = locale === 'zh';
 ---
@@ -18,9 +18,9 @@ const zh = locale === 'zh';
     <p>{zh ? '让每一个企业，都拥有一支面向岗位、协同共生、持续进化的数字员工团队。' : 'A role-focused digital workforce that collaborates and evolves with every enterprise.'}</p>
     <div class="sl-actions">
       <a class="button" href={pathFor(locale, 'contact')}>
-        {zh ? '预约交流' : 'Book a consultation'}
+        {ui[locale].contact}
       </a>
-      <a class="button button-white" href={appFor(locale)}>{zh ? '开始与数字员工协作' : 'Open workspace'}</a>
+      <a class="button button-white" href={appFor(locale)}>{ui[locale].try}</a>
     </div>
   </div>
 </section>

@@ -4,7 +4,7 @@ import type { Locale } from '../../data/types';
 import type { CapabilityModule } from '../../features/product/types';
 import type { LandingCopy } from '../../features/product/landing-types';
 import { productExperiences } from '../../features/product/experiences';
-import { appFor, pathFor, site } from '../../lib/site';
+import { appFor, pathFor, site, ui } from '../../lib/site';
 import '../../styles/enterprise-capability.css';
 interface Props { locale: Locale; capability: CapabilityModule; copy: LandingCopy; }
 const { locale, capability, copy } = Astro.props;
@@ -23,8 +23,8 @@ const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',ite
         <h1 id="capability-title">{copy.hero.lines.map(line=><span>{line}</span>)}</h1>
         <p>{copy.hero.summary}</p>
         <div class="cp-hero-actions">
-          <a class="button" href={pathFor(locale,'contact')}>{zh?'预约交流':'Book a consultation'}</a>
-          <a class="cp-text-link" href={appFor(locale)}>{zh?'开始使用':'Get started'}</a>
+          <a class="button" href={pathFor(locale,'contact')}>{ui[locale].contact}</a>
+          <a class="cp-text-link" href={appFor(locale)}>{ui[locale].try}</a>
         </div>
       </div>
       <Diagram locale={locale} capability={capability.slug}/>

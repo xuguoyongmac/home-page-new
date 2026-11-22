@@ -17,8 +17,14 @@ const server = createServer((request, response) => {
 server.requestTimeout = 20000;
 server.headersTimeout = 10000;
 server.listen(config.port, config.host, () => console.info(JSON.stringify({ event: 'contact_service_started', port: config.port, configuration: configurationStatus(config) })));
+let stopping = false;
 async function shutdown() {
-  server.close();
+  if (stopping) return;
+  stopping = true;
+  const stopConnections = setTimeout(() => server.closeAllConnections(), 25000);
+  stopConnections.unref();
+  await new Promise(resolve => server.close(resolve));
+  clearTimeout(stopConnections);
   await app.close();
 }
 process.once('SIGTERM', shutdown);

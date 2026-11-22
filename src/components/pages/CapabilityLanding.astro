@@ -7,7 +7,7 @@ import type { LandingCopy } from '../../features/product/landing-types';
 import { capabilities } from '../../features/product';
 import { productExperiences } from '../../features/product/experiences';
 import { capabilityVisuals } from '../../features/product/visuals';
-import { pathFor, site, appFor } from '../../lib/site';
+import { pathFor, site, appFor, ui } from '../../lib/site';
 import '../../styles/product-experience.css';
 interface Props { locale: Locale; capability: CapabilityModule; copy: LandingCopy; }
 const { locale, capability, copy } = Astro.props;
@@ -32,7 +32,7 @@ const breadcrumb = {
     <div class="container pe-hero-grid">
       <div class="pe-hero-copy">
         <h1 id="capability-title">{copy.hero.lines.map((line, index) => <span class:list={{ 'pe-accent': index === copy.hero.lines.length - 1 }}>{line}</span>)}</h1>
-        <div class="pe-hero-description"><p>{copy.hero.summary}</p><a class="button pe-button" href={pathFor(locale, 'contact')}>{zh ? '预约交流' : 'Book a consultation'}</a></div>
+        <div class="pe-hero-description"><p>{copy.hero.summary}</p><a class="button pe-button" href={pathFor(locale, 'contact')}>{ui[locale].contact}</a></div>
       </div>
       <figure class="pe-hero-art"><img src={visual.src[locale]} alt={experience.heroAlt} width={visual.width} height={visual.height} sizes={wideHero ? '(max-width: 700px) calc(100vw - 32px), (max-width: 1350px) calc(100vw - 72px), 1280px' : '(max-width: 800px) calc(100vw - 32px), (max-width: 1350px) 62vw, 800px'} loading="eager" fetchpriority="high" decoding="async"/></figure>
     </div>
@@ -61,6 +61,6 @@ const breadcrumb = {
     <h2 id="capability-related-title">{zh ? '连接更多产品能力' : 'Connect more capabilities'}</h2>
     <nav aria-label={zh ? '相关产品能力' : 'Related capabilities'}>{related.map(item => <a href={pathFor(locale, `product/${item.slug}`)}>{item.copy[locale].name}</a>)}</nav>
   </div></section>
-  <section class="pe-closing" aria-labelledby="capability-closing-title"><div class="container pe-closing-inner"><h2 id="capability-closing-title">{copy.closing}</h2><div class="pe-closing-actions"><a class="button pe-button" href={appFor(locale)}>{zh ? '开始使用' : 'Get started'}</a><a class="pe-resource" href={resource ? pathFor(locale, resource.path) : site.docs} rel={resource ? undefined : 'external'}>{resource ? resource.label : zh ? '产品文档' : 'Product documentation'}</a></div></div></section>
+  <section class="pe-closing" aria-labelledby="capability-closing-title"><div class="container pe-closing-inner"><h2 id="capability-closing-title">{copy.closing}</h2><div class="pe-closing-actions"><a class="button pe-button" href={appFor(locale)}>{ui[locale].try}</a><a class="pe-resource" href={resource ? pathFor(locale, resource.path) : site.docs} rel={resource ? undefined : 'external'}>{resource ? resource.label : zh ? '产品文档' : 'Product documentation'}</a></div></div></section>
 </div>
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)}/>
